@@ -23536,9 +23536,6 @@ async function triggerUIRedraw(searching, container = defaultContainer, searchQu
     if (snippets.length == 0) {
       new import_obsidian4.Notice(`No Results Found for '${searchQuery}'!`);
     } else {
-      new import_obsidian4.Notice(
-        `Search for '${searchQuery}' found ` + snippets.length + " result(s)."
-      );
       createSnippetListView(
         container,
         snippets,
@@ -25135,7 +25132,7 @@ var PiecesPlugin = class extends import_obsidian10.Plugin {
       copyToClipboard(link || "");
     }
   }
-  async onload() {
+  onload() {
     theme = document.body.classList.contains("theme-dark") ? "dark" : "light";
     document.body.addEventListener("change", (e) => {
       const temptheme = document.body.classList.contains("theme-dark") ? "dark" : "light";
@@ -25152,10 +25149,10 @@ var PiecesPlugin = class extends import_obsidian10.Plugin {
       theme = temptheme;
     });
     appPlugin = this.app;
-    await this.loadSettings();
+    this.loadSettings();
     pluginSettings = this.settings;
     (0, import_obsidian10.addIcon)("pieces_logo", Constants.PIECES_LOGO);
-    await updateConnectionType(this.settings);
+    updateConnectionType(this.settings);
     ConnectorSingleton.checkConnection({}).then((result) => {
       if (result === false) {
         this.showDownloadPos();
@@ -25188,7 +25185,7 @@ var PiecesPlugin = class extends import_obsidian10.Plugin {
     if (!hasLoaded) {
       this.settings.hasLoaded = true;
       this.saveSettings();
-      await this.showOnboarding();
+      this.showOnboarding();
     }
     fetchSnippets(false).then((e) => {
       setSnippetsLoaded(true);
@@ -25285,16 +25282,16 @@ var PiecesPlugin = class extends import_obsidian10.Plugin {
     );
   }
   // This function loads and merges default settings with user-defined settings.
-  async loadSettings() {
+  loadSettings() {
     this.settings = Object.assign(
       {},
       DEFAULT_SETTINGS,
-      await this.loadData()
+      this.loadData()
     );
   }
   // This function saves the settings data using the saveData function.
-  async saveSettings() {
-    await this.saveData(this.settings);
+  saveSettings() {
+    this.saveData(this.settings);
   }
   async toggleView() {
     const leaf = this.app.workspace.getLeavesOfType(
@@ -25308,8 +25305,8 @@ var PiecesPlugin = class extends import_obsidian10.Plugin {
       this.activateView();
     }
   }
-  async activateView() {
-    await this.app.workspace.getRightLeaf(false).setViewState({
+  activateView() {
+    this.app.workspace.getRightLeaf(false).setViewState({
       type: Constants.PIECES_SNIPPET_LIST_VIEW_TYPE,
       active: true
     });
