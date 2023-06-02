@@ -202,7 +202,7 @@ Styles */
 }
 
 .button_delete_modal {
-	color: #FFFFFF;
+	color: #ffffff;
 	background-color: #f44336 !important;
 	width: 80px;
 	height: 40px;
@@ -417,7 +417,7 @@ Styles */
 	margin-bottom: 15px;
 	font-size: medium;
 	margin-top: 12px;
-	color: #FFFFFF;
+	color: #ffffff;
 }
 
 .list-body {
@@ -455,7 +455,7 @@ Styles */
 }
 
 .list-button-container span {
-	color: #FFFFFF;
+	color: #ffffff;
 	/* margin-bottom: 10px; */
 	font-size: small;
 	z-index: 1;
@@ -542,7 +542,6 @@ Styles */
 	top: 0;
 }
 
-
 @keyframes bouncing-loader {
 	to {
 		opacity: 0.1;
@@ -602,7 +601,7 @@ Styles */
 	height: 100%; /* Set the desired height of the container */
 }
 
-.download-pieces-div img{
+.download-pieces-div img {
 	max-width: 550px;
 	max-height: 100%;
 	object-fit: contain; /* Adjust as needed (contain, cover, etc.) */

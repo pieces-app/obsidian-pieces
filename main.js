@@ -1905,10 +1905,12 @@ var BaseAPI = class {
     const { url, init } = this.createFetchParams(context, initOverrides);
     let response;
     try {
+      console.log(fetch);
       response = await fetch(url, init);
     } catch (err) {
       response = await this.fetchApi(url, init);
     }
+    console.log(response);
     if (response.status >= 200 && response.status < 300) {
       return response;
     }
@@ -2144,7 +2146,8 @@ function ActivityFromJSONTyped2(json, ignoreDiscriminator) {
     asset: !exists(json, "asset") ? void 0 : FlattenedAssetFromJSON(json["asset"]),
     user: !exists(json, "user") ? void 0 : FlattenedUserProfileFromJSON(json["user"]),
     format: !exists(json, "format") ? void 0 : FlattenedFormatFromJSON(json["format"]),
-    mechanism: MechanismEnumFromJSON(json["mechanism"])
+    mechanism: MechanismEnumFromJSON(json["mechanism"]),
+    rank: !exists(json, "rank") ? void 0 : json["rank"]
   };
 }
 
@@ -2438,7 +2441,9 @@ function AssetFromJSONTyped(json, ignoreDiscriminator) {
     persons: !exists(json, "persons") ? void 0 : PersonsFromJSON(json["persons"]),
     curated: !exists(json, "curated") ? void 0 : json["curated"],
     discovered: !exists(json, "discovered") ? void 0 : json["discovered"],
-    activities: !exists(json, "activities") ? void 0 : ActivitiesFromJSON(json["activities"])
+    activities: !exists(json, "activities") ? void 0 : ActivitiesFromJSON(json["activities"]),
+    score: !exists(json, "score") ? void 0 : ScoreFromJSON(json["score"]),
+    favorited: !exists(json, "favorited") ? void 0 : json["favorited"]
   };
 }
 
@@ -2818,7 +2823,9 @@ function ExternalProviderFromJSONTyped(json, ignoreDiscriminator) {
     expiresIn: !exists(json, "expires_in") ? void 0 : json["expires_in"],
     created: GroupedTimestampFromJSON(json["created"]),
     updated: GroupedTimestampFromJSON(json["updated"]),
-    profileData: !exists(json, "profileData") ? void 0 : ExternalProviderProfileDataFromJSON(json["profileData"])
+    profileData: !exists(json, "profileData") ? void 0 : ExternalProviderProfileDataFromJSON(json["profileData"]),
+    connection: !exists(json, "connection") ? void 0 : json["connection"],
+    isSocial: !exists(json, "isSocial") ? void 0 : json["isSocial"]
   };
 }
 function ExternalProviderToJSON(value) {
@@ -2836,7 +2843,9 @@ function ExternalProviderToJSON(value) {
     expires_in: value.expiresIn,
     created: GroupedTimestampToJSON(value.created),
     updated: GroupedTimestampToJSON(value.updated),
-    profileData: ExternalProviderProfileDataToJSON(value.profileData)
+    profileData: ExternalProviderProfileDataToJSON(value.profileData),
+    connection: value.connection,
+    isSocial: value.isSocial
   };
 }
 
@@ -3093,7 +3102,8 @@ function FlattenedActivityFromJSONTyped(json, ignoreDiscriminator) {
     asset: !exists(json, "asset") ? void 0 : ReferencedAssetFromJSON(json["asset"]),
     format: !exists(json, "format") ? void 0 : ReferencedFormatFromJSON(json["format"]),
     user: !exists(json, "user") ? void 0 : FlattenedUserProfileFromJSON(json["user"]),
-    mechanism: MechanismEnumFromJSON(json["mechanism"])
+    mechanism: MechanismEnumFromJSON(json["mechanism"]),
+    rank: !exists(json, "rank") ? void 0 : json["rank"]
   };
 }
 function FlattenedActivityToJSON(value) {
@@ -3114,7 +3124,8 @@ function FlattenedActivityToJSON(value) {
     asset: ReferencedAssetToJSON(value.asset),
     format: ReferencedFormatToJSON(value.format),
     user: FlattenedUserProfileToJSON(value.user),
-    mechanism: MechanismEnumToJSON(value.mechanism)
+    mechanism: MechanismEnumToJSON(value.mechanism),
+    rank: value.rank
   };
 }
 
@@ -3180,7 +3191,9 @@ function FlattenedAssetFromJSONTyped3(json, ignoreDiscriminator) {
     persons: !exists(json, "persons") ? void 0 : FlattenedPersonsFromJSON(json["persons"]),
     curated: !exists(json, "curated") ? void 0 : json["curated"],
     discovered: !exists(json, "discovered") ? void 0 : json["discovered"],
-    activities: !exists(json, "activities") ? void 0 : FlattenedActivitiesFromJSON(json["activities"])
+    activities: !exists(json, "activities") ? void 0 : FlattenedActivitiesFromJSON(json["activities"]),
+    score: !exists(json, "score") ? void 0 : ScoreFromJSON(json["score"]),
+    favorited: !exists(json, "favorited") ? void 0 : json["favorited"]
   };
 }
 function FlattenedAssetToJSON(value) {
@@ -3212,7 +3225,9 @@ function FlattenedAssetToJSON(value) {
     persons: FlattenedPersonsToJSON(value.persons),
     curated: value.curated,
     discovered: value.discovered,
-    activities: FlattenedActivitiesToJSON(value.activities)
+    activities: FlattenedActivitiesToJSON(value.activities),
+    score: ScoreToJSON(value.score),
+    favorited: value.favorited
   };
 }
 
@@ -3484,7 +3499,8 @@ function FlattenedPersonFromJSONTyped(json, ignoreDiscriminator) {
     expiration: !exists(json, "expiration") ? void 0 : GroupedTimestampFromJSON(json["expiration"]),
     type: PersonTypeFromJSON(json["type"]),
     asset: !exists(json, "asset") ? void 0 : ReferencedAssetFromJSON(json["asset"]),
-    mechanism: MechanismEnumFromJSON(json["mechanism"])
+    mechanism: MechanismEnumFromJSON(json["mechanism"]),
+    interactions: !exists(json, "interactions") ? void 0 : json["interactions"]
   };
 }
 function FlattenedPersonToJSON(value) {
@@ -3504,7 +3520,8 @@ function FlattenedPersonToJSON(value) {
     expiration: GroupedTimestampToJSON(value.expiration),
     type: PersonTypeToJSON(value.type),
     asset: ReferencedAssetToJSON(value.asset),
-    mechanism: MechanismEnumToJSON(value.mechanism)
+    mechanism: MechanismEnumToJSON(value.mechanism),
+    interactions: value.interactions
   };
 }
 
@@ -3585,7 +3602,8 @@ function FlattenedSensitiveFromJSONTyped(json, ignoreDiscriminator) {
     severity: SensitiveSeverityEnumFromJSON(json["severity"]),
     name: json["name"],
     description: json["description"],
-    metadata: !exists(json, "metadata") ? void 0 : SensitiveMetadataFromJSON(json["metadata"])
+    metadata: !exists(json, "metadata") ? void 0 : SensitiveMetadataFromJSON(json["metadata"]),
+    interactions: !exists(json, "interactions") ? void 0 : json["interactions"]
   };
 }
 function FlattenedSensitiveToJSON(value) {
@@ -3608,7 +3626,8 @@ function FlattenedSensitiveToJSON(value) {
     severity: SensitiveSeverityEnumToJSON(value.severity),
     name: value.name,
     description: value.description,
-    metadata: SensitiveMetadataToJSON(value.metadata)
+    metadata: SensitiveMetadataToJSON(value.metadata),
+    interactions: value.interactions
   };
 }
 
@@ -3731,7 +3750,8 @@ function FlattenedTagFromJSONTyped(json, ignoreDiscriminator) {
     format: !exists(json, "format") ? void 0 : ReferencedFormatFromJSON(json["format"]),
     deleted: !exists(json, "deleted") ? void 0 : GroupedTimestampFromJSON(json["deleted"]),
     category: TagCategoryEnumFromJSON(json["category"]),
-    relationship: !exists(json, "relationship") ? void 0 : RelationshipFromJSON(json["relationship"])
+    relationship: !exists(json, "relationship") ? void 0 : RelationshipFromJSON(json["relationship"]),
+    interactions: !exists(json, "interactions") ? void 0 : json["interactions"]
   };
 }
 function FlattenedTagToJSON(value) {
@@ -3752,7 +3772,8 @@ function FlattenedTagToJSON(value) {
     format: ReferencedFormatToJSON(value.format),
     deleted: GroupedTimestampToJSON(value.deleted),
     category: TagCategoryEnumToJSON(value.category),
-    relationship: RelationshipToJSON(value.relationship)
+    relationship: RelationshipToJSON(value.relationship),
+    interactions: value.interactions
   };
 }
 
@@ -3836,7 +3857,8 @@ function FlattenedWebsiteFromJSONTyped(json, ignoreDiscriminator) {
     created: GroupedTimestampFromJSON(json["created"]),
     updated: GroupedTimestampFromJSON(json["updated"]),
     deleted: !exists(json, "deleted") ? void 0 : GroupedTimestampFromJSON(json["deleted"]),
-    mechanism: MechanismEnumFromJSON(json["mechanism"])
+    mechanism: MechanismEnumFromJSON(json["mechanism"]),
+    interactions: !exists(json, "interactions") ? void 0 : json["interactions"]
   };
 }
 function FlattenedWebsiteToJSON(value) {
@@ -3856,7 +3878,8 @@ function FlattenedWebsiteToJSON(value) {
     created: GroupedTimestampToJSON(value.created),
     updated: GroupedTimestampToJSON(value.updated),
     deleted: GroupedTimestampToJSON(value.deleted),
-    mechanism: MechanismEnumToJSON(value.mechanism)
+    mechanism: MechanismEnumToJSON(value.mechanism),
+    interactions: value.interactions
   };
 }
 
@@ -4615,7 +4638,8 @@ function PersonFromJSONTyped(json, ignoreDiscriminator) {
     expiration: !exists(json, "expiration") ? void 0 : GroupedTimestampFromJSON(json["expiration"]),
     type: PersonTypeFromJSON(json["type"]),
     asset: !exists(json, "asset") ? void 0 : FlattenedAssetFromJSON(json["asset"]),
-    mechanism: MechanismEnumFromJSON(json["mechanism"])
+    mechanism: MechanismEnumFromJSON(json["mechanism"]),
+    interactions: !exists(json, "interactions") ? void 0 : json["interactions"]
   };
 }
 
@@ -5154,6 +5178,34 @@ function SaveSuggestionFromJSONTyped(json, ignoreDiscriminator) {
   return {
     schema: !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
     suggested: json["suggested"]
+  };
+}
+
+// PiecesSDK/connector/models/Score.ts
+function ScoreFromJSON(json) {
+  return ScoreFromJSONTyped3(json, false);
+}
+function ScoreFromJSONTyped3(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    schema: !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    manual: json["manual"],
+    automatic: json["automatic"]
+  };
+}
+function ScoreToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    schema: EmbeddedModelSchemaToJSON(value.schema),
+    manual: value.manual,
+    automatic: value.automatic
   };
 }
 
@@ -6068,7 +6120,8 @@ function SensitiveFromJSONTyped(json, ignoreDiscriminator) {
     severity: SensitiveSeverityEnumFromJSON(json["severity"]),
     name: json["name"],
     description: json["description"],
-    metadata: !exists(json, "metadata") ? void 0 : SensitiveMetadataFromJSON(json["metadata"])
+    metadata: !exists(json, "metadata") ? void 0 : SensitiveMetadataFromJSON(json["metadata"]),
+    interactions: !exists(json, "interactions") ? void 0 : json["interactions"]
   };
 }
 
@@ -6898,7 +6951,8 @@ function TagFromJSONTyped(json, ignoreDiscriminator) {
     format: !exists(json, "format") ? void 0 : FlattenedFormatFromJSON(json["format"]),
     deleted: !exists(json, "deleted") ? void 0 : GroupedTimestampFromJSON(json["deleted"]),
     category: TagCategoryEnumFromJSON(json["category"]),
-    relationship: !exists(json, "relationship") ? void 0 : RelationshipFromJSON(json["relationship"])
+    relationship: !exists(json, "relationship") ? void 0 : RelationshipFromJSON(json["relationship"]),
+    interactions: !exists(json, "interactions") ? void 0 : json["interactions"]
   };
 }
 
@@ -7660,7 +7714,8 @@ function WebsiteFromJSONTyped(json, ignoreDiscriminator) {
     created: GroupedTimestampFromJSON(json["created"]),
     updated: GroupedTimestampFromJSON(json["updated"]),
     deleted: !exists(json, "deleted") ? void 0 : GroupedTimestampFromJSON(json["deleted"]),
-    mechanism: MechanismEnumFromJSON(json["mechanism"])
+    mechanism: MechanismEnumFromJSON(json["mechanism"]),
+    interactions: !exists(json, "interactions") ? void 0 : json["interactions"]
   };
 }
 
@@ -8063,10 +8118,12 @@ var BaseAPI2 = class {
     const { url, init } = this.createFetchParams(context, initOverrides);
     let response;
     try {
+      console.log(fetch);
       response = await fetch(url, init);
     } catch (err) {
       response = await this.fetchApi(url, init);
     }
+    console.log(response);
     if (response.status >= 200 && response.status < 300) {
       return response;
     }
@@ -8322,7 +8379,8 @@ function ActivityFromJSONTyped4(json, ignoreDiscriminator) {
     asset: !exists2(json, "asset") ? void 0 : FlattenedAssetFromJSON2(json["asset"]),
     user: !exists2(json, "user") ? void 0 : FlattenedUserProfileFromJSON2(json["user"]),
     format: !exists2(json, "format") ? void 0 : FlattenedFormatFromJSON2(json["format"]),
-    mechanism: MechanismEnumFromJSON2(json["mechanism"])
+    mechanism: MechanismEnumFromJSON2(json["mechanism"]),
+    rank: !exists2(json, "rank") ? void 0 : json["rank"]
   };
 }
 function ActivityToJSON2(value) {
@@ -8343,7 +8401,8 @@ function ActivityToJSON2(value) {
     asset: FlattenedAssetToJSON2(value.asset),
     user: FlattenedUserProfileToJSON2(value.user),
     format: FlattenedFormatToJSON2(value.format),
-    mechanism: MechanismEnumToJSON2(value.mechanism)
+    mechanism: MechanismEnumToJSON2(value.mechanism),
+    rank: value.rank
   };
 }
 
@@ -8666,7 +8725,9 @@ function AssetFromJSONTyped4(json, ignoreDiscriminator) {
     persons: !exists2(json, "persons") ? void 0 : PersonsFromJSON2(json["persons"]),
     curated: !exists2(json, "curated") ? void 0 : json["curated"],
     discovered: !exists2(json, "discovered") ? void 0 : json["discovered"],
-    activities: !exists2(json, "activities") ? void 0 : ActivitiesFromJSON2(json["activities"])
+    activities: !exists2(json, "activities") ? void 0 : ActivitiesFromJSON2(json["activities"]),
+    score: !exists2(json, "score") ? void 0 : ScoreFromJSON2(json["score"]),
+    favorited: !exists2(json, "favorited") ? void 0 : json["favorited"]
   };
 }
 function AssetToJSON2(value) {
@@ -8698,7 +8759,9 @@ function AssetToJSON2(value) {
     persons: PersonsToJSON2(value.persons),
     curated: value.curated,
     discovered: value.discovered,
-    activities: ActivitiesToJSON2(value.activities)
+    activities: ActivitiesToJSON2(value.activities),
+    score: ScoreToJSON2(value.score),
+    favorited: value.favorited
   };
 }
 
@@ -9099,9 +9162,9 @@ function EdgesToJSON2(value) {
 
 // PiecesSDK/core/models/EmbeddedModelSchema.ts
 function EmbeddedModelSchemaFromJSON2(json) {
-  return EmbeddedModelSchemaFromJSONTyped202(json, false);
+  return EmbeddedModelSchemaFromJSONTyped203(json, false);
 }
-function EmbeddedModelSchemaFromJSONTyped202(json, ignoreDiscriminator) {
+function EmbeddedModelSchemaFromJSONTyped203(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -9224,7 +9287,9 @@ function ExternalProviderFromJSONTyped3(json, ignoreDiscriminator) {
     expiresIn: !exists2(json, "expires_in") ? void 0 : json["expires_in"],
     created: GroupedTimestampFromJSON2(json["created"]),
     updated: GroupedTimestampFromJSON2(json["updated"]),
-    profileData: !exists2(json, "profileData") ? void 0 : ExternalProviderProfileDataFromJSON2(json["profileData"])
+    profileData: !exists2(json, "profileData") ? void 0 : ExternalProviderProfileDataFromJSON2(json["profileData"]),
+    connection: !exists2(json, "connection") ? void 0 : json["connection"],
+    isSocial: !exists2(json, "isSocial") ? void 0 : json["isSocial"]
   };
 }
 function ExternalProviderToJSON2(value) {
@@ -9242,7 +9307,9 @@ function ExternalProviderToJSON2(value) {
     expires_in: value.expiresIn,
     created: GroupedTimestampToJSON2(value.created),
     updated: GroupedTimestampToJSON2(value.updated),
-    profileData: ExternalProviderProfileDataToJSON2(value.profileData)
+    profileData: ExternalProviderProfileDataToJSON2(value.profileData),
+    connection: value.connection,
+    isSocial: value.isSocial
   };
 }
 
@@ -9499,7 +9566,8 @@ function FlattenedActivityFromJSONTyped3(json, ignoreDiscriminator) {
     asset: !exists2(json, "asset") ? void 0 : ReferencedAssetFromJSON2(json["asset"]),
     format: !exists2(json, "format") ? void 0 : ReferencedFormatFromJSON2(json["format"]),
     user: !exists2(json, "user") ? void 0 : FlattenedUserProfileFromJSON2(json["user"]),
-    mechanism: MechanismEnumFromJSON2(json["mechanism"])
+    mechanism: MechanismEnumFromJSON2(json["mechanism"]),
+    rank: !exists2(json, "rank") ? void 0 : json["rank"]
   };
 }
 function FlattenedActivityToJSON2(value) {
@@ -9520,7 +9588,8 @@ function FlattenedActivityToJSON2(value) {
     asset: ReferencedAssetToJSON2(value.asset),
     format: ReferencedFormatToJSON2(value.format),
     user: FlattenedUserProfileToJSON2(value.user),
-    mechanism: MechanismEnumToJSON2(value.mechanism)
+    mechanism: MechanismEnumToJSON2(value.mechanism),
+    rank: value.rank
   };
 }
 
@@ -9586,7 +9655,9 @@ function FlattenedAssetFromJSONTyped13(json, ignoreDiscriminator) {
     persons: !exists2(json, "persons") ? void 0 : FlattenedPersonsFromJSON2(json["persons"]),
     curated: !exists2(json, "curated") ? void 0 : json["curated"],
     discovered: !exists2(json, "discovered") ? void 0 : json["discovered"],
-    activities: !exists2(json, "activities") ? void 0 : FlattenedActivitiesFromJSON2(json["activities"])
+    activities: !exists2(json, "activities") ? void 0 : FlattenedActivitiesFromJSON2(json["activities"]),
+    score: !exists2(json, "score") ? void 0 : ScoreFromJSON2(json["score"]),
+    favorited: !exists2(json, "favorited") ? void 0 : json["favorited"]
   };
 }
 function FlattenedAssetToJSON2(value) {
@@ -9618,7 +9689,9 @@ function FlattenedAssetToJSON2(value) {
     persons: FlattenedPersonsToJSON2(value.persons),
     curated: value.curated,
     discovered: value.discovered,
-    activities: FlattenedActivitiesToJSON2(value.activities)
+    activities: FlattenedActivitiesToJSON2(value.activities),
+    score: ScoreToJSON2(value.score),
+    favorited: value.favorited
   };
 }
 
@@ -9890,7 +9963,8 @@ function FlattenedPersonFromJSONTyped3(json, ignoreDiscriminator) {
     expiration: !exists2(json, "expiration") ? void 0 : GroupedTimestampFromJSON2(json["expiration"]),
     type: PersonTypeFromJSON2(json["type"]),
     asset: !exists2(json, "asset") ? void 0 : ReferencedAssetFromJSON2(json["asset"]),
-    mechanism: MechanismEnumFromJSON2(json["mechanism"])
+    mechanism: MechanismEnumFromJSON2(json["mechanism"]),
+    interactions: !exists2(json, "interactions") ? void 0 : json["interactions"]
   };
 }
 function FlattenedPersonToJSON2(value) {
@@ -9910,7 +9984,8 @@ function FlattenedPersonToJSON2(value) {
     expiration: GroupedTimestampToJSON2(value.expiration),
     type: PersonTypeToJSON2(value.type),
     asset: ReferencedAssetToJSON2(value.asset),
-    mechanism: MechanismEnumToJSON2(value.mechanism)
+    mechanism: MechanismEnumToJSON2(value.mechanism),
+    interactions: value.interactions
   };
 }
 
@@ -9991,7 +10066,8 @@ function FlattenedSensitiveFromJSONTyped3(json, ignoreDiscriminator) {
     severity: SensitiveSeverityEnumFromJSON2(json["severity"]),
     name: json["name"],
     description: json["description"],
-    metadata: !exists2(json, "metadata") ? void 0 : SensitiveMetadataFromJSON2(json["metadata"])
+    metadata: !exists2(json, "metadata") ? void 0 : SensitiveMetadataFromJSON2(json["metadata"]),
+    interactions: !exists2(json, "interactions") ? void 0 : json["interactions"]
   };
 }
 function FlattenedSensitiveToJSON2(value) {
@@ -10014,7 +10090,8 @@ function FlattenedSensitiveToJSON2(value) {
     severity: SensitiveSeverityEnumToJSON2(value.severity),
     name: value.name,
     description: value.description,
-    metadata: SensitiveMetadataToJSON2(value.metadata)
+    metadata: SensitiveMetadataToJSON2(value.metadata),
+    interactions: value.interactions
   };
 }
 
@@ -10137,7 +10214,8 @@ function FlattenedTagFromJSONTyped3(json, ignoreDiscriminator) {
     format: !exists2(json, "format") ? void 0 : ReferencedFormatFromJSON2(json["format"]),
     deleted: !exists2(json, "deleted") ? void 0 : GroupedTimestampFromJSON2(json["deleted"]),
     category: TagCategoryEnumFromJSON2(json["category"]),
-    relationship: !exists2(json, "relationship") ? void 0 : RelationshipFromJSON2(json["relationship"])
+    relationship: !exists2(json, "relationship") ? void 0 : RelationshipFromJSON2(json["relationship"]),
+    interactions: !exists2(json, "interactions") ? void 0 : json["interactions"]
   };
 }
 function FlattenedTagToJSON2(value) {
@@ -10158,7 +10236,8 @@ function FlattenedTagToJSON2(value) {
     format: ReferencedFormatToJSON2(value.format),
     deleted: GroupedTimestampToJSON2(value.deleted),
     category: TagCategoryEnumToJSON2(value.category),
-    relationship: RelationshipToJSON2(value.relationship)
+    relationship: RelationshipToJSON2(value.relationship),
+    interactions: value.interactions
   };
 }
 
@@ -10242,7 +10321,8 @@ function FlattenedWebsiteFromJSONTyped3(json, ignoreDiscriminator) {
     created: GroupedTimestampFromJSON2(json["created"]),
     updated: GroupedTimestampFromJSON2(json["updated"]),
     deleted: !exists2(json, "deleted") ? void 0 : GroupedTimestampFromJSON2(json["deleted"]),
-    mechanism: MechanismEnumFromJSON2(json["mechanism"])
+    mechanism: MechanismEnumFromJSON2(json["mechanism"]),
+    interactions: !exists2(json, "interactions") ? void 0 : json["interactions"]
   };
 }
 function FlattenedWebsiteToJSON2(value) {
@@ -10262,7 +10342,8 @@ function FlattenedWebsiteToJSON2(value) {
     created: GroupedTimestampToJSON2(value.created),
     updated: GroupedTimestampToJSON2(value.updated),
     deleted: GroupedTimestampToJSON2(value.deleted),
-    mechanism: MechanismEnumToJSON2(value.mechanism)
+    mechanism: MechanismEnumToJSON2(value.mechanism),
+    interactions: value.interactions
   };
 }
 
@@ -11146,7 +11227,8 @@ function PersonFromJSONTyped3(json, ignoreDiscriminator) {
     expiration: !exists2(json, "expiration") ? void 0 : GroupedTimestampFromJSON2(json["expiration"]),
     type: PersonTypeFromJSON2(json["type"]),
     asset: !exists2(json, "asset") ? void 0 : FlattenedAssetFromJSON2(json["asset"]),
-    mechanism: MechanismEnumFromJSON2(json["mechanism"])
+    mechanism: MechanismEnumFromJSON2(json["mechanism"]),
+    interactions: !exists2(json, "interactions") ? void 0 : json["interactions"]
   };
 }
 function PersonToJSON2(value) {
@@ -11166,7 +11248,8 @@ function PersonToJSON2(value) {
     expiration: GroupedTimestampToJSON2(value.expiration),
     type: PersonTypeToJSON2(value.type),
     asset: FlattenedAssetToJSON2(value.asset),
-    mechanism: MechanismEnumToJSON2(value.mechanism)
+    mechanism: MechanismEnumToJSON2(value.mechanism),
+    interactions: value.interactions
   };
 }
 
@@ -11686,6 +11769,34 @@ function RoleFromJSONTyped6(json, ignoreDiscriminator) {
 }
 function RoleToJSON2(value) {
   return value;
+}
+
+// PiecesSDK/core/models/Score.ts
+function ScoreFromJSON2(json) {
+  return ScoreFromJSONTyped6(json, false);
+}
+function ScoreFromJSONTyped6(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    schema: !exists2(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON2(json["schema"]),
+    manual: json["manual"],
+    automatic: json["automatic"]
+  };
+}
+function ScoreToJSON2(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    schema: EmbeddedModelSchemaToJSON2(value.schema),
+    manual: value.manual,
+    automatic: value.automatic
+  };
 }
 
 // PiecesSDK/core/models/SearchedAsset.ts
@@ -12692,7 +12803,8 @@ function SensitiveFromJSONTyped3(json, ignoreDiscriminator) {
     severity: SensitiveSeverityEnumFromJSON2(json["severity"]),
     name: json["name"],
     description: json["description"],
-    metadata: !exists2(json, "metadata") ? void 0 : SensitiveMetadataFromJSON2(json["metadata"])
+    metadata: !exists2(json, "metadata") ? void 0 : SensitiveMetadataFromJSON2(json["metadata"]),
+    interactions: !exists2(json, "interactions") ? void 0 : json["interactions"]
   };
 }
 function SensitiveToJSON2(value) {
@@ -12715,7 +12827,8 @@ function SensitiveToJSON2(value) {
     severity: SensitiveSeverityEnumToJSON2(value.severity),
     name: value.name,
     description: value.description,
-    metadata: SensitiveMetadataToJSON2(value.metadata)
+    metadata: SensitiveMetadataToJSON2(value.metadata),
+    interactions: value.interactions
   };
 }
 
@@ -13588,7 +13701,8 @@ function TagFromJSONTyped3(json, ignoreDiscriminator) {
     format: !exists2(json, "format") ? void 0 : FlattenedFormatFromJSON2(json["format"]),
     deleted: !exists2(json, "deleted") ? void 0 : GroupedTimestampFromJSON2(json["deleted"]),
     category: TagCategoryEnumFromJSON2(json["category"]),
-    relationship: !exists2(json, "relationship") ? void 0 : RelationshipFromJSON2(json["relationship"])
+    relationship: !exists2(json, "relationship") ? void 0 : RelationshipFromJSON2(json["relationship"]),
+    interactions: !exists2(json, "interactions") ? void 0 : json["interactions"]
   };
 }
 function TagToJSON2(value) {
@@ -13609,7 +13723,8 @@ function TagToJSON2(value) {
     format: FlattenedFormatToJSON2(value.format),
     deleted: GroupedTimestampToJSON2(value.deleted),
     category: TagCategoryEnumToJSON2(value.category),
-    relationship: RelationshipToJSON2(value.relationship)
+    relationship: RelationshipToJSON2(value.relationship),
+    interactions: value.interactions
   };
 }
 
@@ -14434,7 +14549,8 @@ function WebsiteFromJSONTyped3(json, ignoreDiscriminator) {
     created: GroupedTimestampFromJSON2(json["created"]),
     updated: GroupedTimestampFromJSON2(json["updated"]),
     deleted: !exists2(json, "deleted") ? void 0 : GroupedTimestampFromJSON2(json["deleted"]),
-    mechanism: MechanismEnumFromJSON2(json["mechanism"])
+    mechanism: MechanismEnumFromJSON2(json["mechanism"]),
+    interactions: !exists2(json, "interactions") ? void 0 : json["interactions"]
   };
 }
 function WebsiteToJSON2(value) {
@@ -14454,7 +14570,8 @@ function WebsiteToJSON2(value) {
     created: GroupedTimestampToJSON2(value.created),
     updated: GroupedTimestampToJSON2(value.updated),
     deleted: GroupedTimestampToJSON2(value.deleted),
-    mechanism: MechanismEnumToJSON2(value.mechanism)
+    mechanism: MechanismEnumToJSON2(value.mechanism),
+    interactions: value.interactions
   };
 }
 
@@ -15937,7 +16054,7 @@ var UserApi = class extends BaseAPI2 {
 };
 
 // package.json
-var version = "0.0.7-staging.1";
+var version = "0.0.7";
 
 // src/connection/notification_handler.ts
 var import_obsidian = require("obsidian");
@@ -20165,7 +20282,7 @@ var DeleteModal = class extends import_obsidian2.Modal {
     });
     delTitle.style.cssText = "color: #f44336; opacity: 0.8;";
     contentEl.createEl("h3", {
-      text: "Are you sure you want to delete '" + this.snippetTitle + "'?"
+      text: `Are you sure you want to delete '${this.snippetTitle}'?`
     });
     const buttonDiv = contentEl.createEl("div");
     buttonDiv.style.cssText = "display: flex; justify-content: flex-end;";
