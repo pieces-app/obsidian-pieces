@@ -13,3 +13,6 @@
 # Intellij
 *.iml
 .idea
+
+# Obsidian
+data.json
