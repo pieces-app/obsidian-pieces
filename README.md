@@ -7,7 +7,8 @@ translating, and enhancing code snippets.
 
 ## Install Instructions
 
-Download instructions for the latest Pieces for Obsidian release: https://github.com/pieces-app/plugin_obsidian/releases
+Download instructions for the latest Pieces for Obsidian
+release: https://github.com/pieces-app/obsidian-pieces#install-instructions
 
 - Download and unzip the latest `obsidian-pieces-X.X.X` zip file
 - Put that folder in your `Documents/Obsidian Vault/.obsidian/plugins` directory
@@ -16,7 +17,7 @@ Download instructions for the latest Pieces for Obsidian release: https://github
 
 ## Share code from Obsidian without breaking your flow
 
-Share snippets with a simple right-click action from within Obsidian. Your friends receive both the
+Share snippets with a simple right-click action from within Obsidian. The link ships with both the
 snippet and its related context - tags, descriptions, where it’s from and more!
 
 ## Save useful code to your Pieces micro-repo
@@ -26,14 +27,14 @@ later.
 
 ## Find and re-use just the right snippet when you need it
 
-Blazing fast, powerful search of your Pieces snippets right inside Obsidian.
+Blazing fast, powerful search of your code snippets right inside Obsidian.
 
 ## Thoughtfully designed by fellow developers
 
 * **Runs locally** on your machine with the option to connect to the Cloud for backup, sync and sharing
 * **Deeply embedded into Obsidian** - save, search, and share your snippets entirely from the Pieces for Obsidian
   plugin
-* Fully keyboard **shortcut-enabled**
+* Keyboard **shortcuts-enabled** 
 
 ### Getting started
 
@@ -52,6 +53,7 @@ To use a Pieces command, simply highlight code in your editor or hover a snippet
 | Command        | macOS       | Windows      |
 |----------------|-------------|--------------|
 | Save a snippet | CMD+Shift+P | Ctrl+Shift+P |
+| Share a snippet | CMD+Shift+L | CMD+Shift+L |
 
 ### Other Products from the Pieces Team
 
@@ -86,9 +88,9 @@ adhering strictly to the developer policies of Obsidian, notably:
 * For any issues, feature requests, or policy violations, please feel free to open an issue in this repository. In the
   case of severe issues or policy violations, please also contact the Obsidian team.
 
-To ensure the continued functionality and reliability of our plugin/theme, we commit to providing updates and addressing
-any issues in a timely manner.
+To ensure the continued functionality and reliability of the Pieces For Obsidian plugin, we commit to providing updates
+and addressing any issues in a timely manner.
 
-Please refer to the included LICENSE file for details on the terms of use for our plugin/theme.
+Please refer to the included LICENSE file for details on the terms of use for our plugin.
 
 Thank you for your understanding, and we hope you enjoy using the Pieces For Obsidian plugin.
