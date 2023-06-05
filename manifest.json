@@ -1,10 +1,10 @@
 {
-	"id": "obsidian-pieces",
-	"name": "Pieces For Obsidian",
-	"version": "0.1.0",
-	"minAppVersion": "0.15.0",
-	"description": "Streamline your coding workflow in Obsidian with the Pieces plugin, offering powerful features for capturing, managing, translating, and enhancing code snippets.",
-	"author": "Pieces For Developers",
-	"authorUrl": "https://pieces.app",
-	"isDesktopOnly": true
+  "id": "obsidian-pieces",
+  "name": "Pieces For Developers",
+  "version": "0.1.1",
+  "minAppVersion": "0.15.0",
+  "description": "Streamline your coding workflow in Obsidian with the Pieces For Developers plugin, offering powerful features for capturing, managing, translating, and enhancing code snippets.",
+  "author": "Pieces For Developers",
+  "authorUrl": "https://pieces.app",
+  "isDesktopOnly": true
 }

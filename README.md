@@ -1,42 +1,50 @@
-# Pieces for Obsidian
+# Pieces for Developers | Obsidian Plugin
 
 Streamline your coding workflow in Obsidian with the Pieces plugin, offering powerful features for capturing, managing,
 translating, and enhancing code snippets.
 
-![Pieces For Developers Banner](./assets/readme/636d597da4dc6a9878198706_open-graph.webp)
+[![Pieces For Developers Banner](./assets/readme/pfd-obisidan-plugin-hero.png)](https://youtu.be/x2JdssFEk2I)
 
 ## Install Instructions
 
-Download instructions for the latest Pieces for Obsidian
+Download instructions for the latest Pieces for Developers Obsidian Plugin
 release: https://github.com/pieces-app/obsidian-pieces#install-instructions
 
 - Download and unzip the latest `obsidian-pieces-X.X.X` zip file
 - Put that folder in your `Documents/Obsidian Vault/.obsidian/plugins` directory
 - Go to `Obsidian > Settings > Community plugins`
-- Enable the `Pieces For Obsidian` plugin under `Installed plugins`
-
-## Share code from Obsidian without breaking your flow
-
-Share snippets with a simple right-click action from within Obsidian. The link ships with both the
-snippet and its related context - tags, descriptions, where it’s from and more!
+- Enable the `Pieces For Developers` plugin under `Installed plugins`
 
 ## Save useful code to your Pieces micro-repo
 
 Templates, terminal commands, useful snippets, notes...save elements of your notes in one-click to reference or re-use
 later.
 
+![Save with Right Click](./assets/readme/gifs/OBSIDIAN_RIGHTCLICK.gif)
+
 ## Find and re-use just the right snippet when you need it
 
 Blazing fast, powerful search of your code snippets right inside Obsidian.
 
+![Manage your Snippets](./assets/readme/gifs/OBSIDIAN_SEARCH.gif)
+
+## Share code from Obsidian without breaking your flow
+
+Share snippets with a simple right-click action from within Obsidian. The link ships with both the
+snippet and its related context - tags, descriptions, where it’s from and more!
+
+![Share your Snippets](./assets/readme/gifs/OBSIDIAN_SHARE.gif)
+
 ## Thoughtfully designed by fellow developers
 
 * **Runs locally** on your machine with the option to connect to the Cloud for backup, sync and sharing
-* **Deeply embedded into Obsidian** - save, search, and share your snippets entirely from the Pieces for Obsidian
-  plugin
-* Keyboard **shortcuts-enabled** 
+* **Deeply embedded into Obsidian** - save, search, and share your snippets entirely from the Pieces for Developers
+  Obsidian Plugin
+* Keyboard **shortcuts-enabled**
 
-### Getting started
+![Save with Button](./assets/readme/gifs/OBSIDIAN_SAVE.gif)
+
+## Getting started
 
 To get started, it is **required** to download Pieces OS* from pieces.app/install.
 
@@ -46,7 +54,7 @@ will not work properly without Pieces OS installed and running.**
 *_The Pieces OS install includes the Pieces for Developers Desktop App where you can also view and manage your
 snippets._
 
-## Commands
+### Commands
 
 To use a Pieces command, simply highlight code in your editor or hover a snippet in your Pieces List.
 
@@ -77,20 +85,19 @@ Please note that this repository is hosting a closed-source Obsidian plugin. Whi
 available, we assure you that the utmost care has been taken to ensure its quality, performance, and respect for user
 privacy and data security.
 
-The Pieces For Obsidian plugin is intended to enhance the functionality and user experience of the Obsidian application,
-while
-adhering strictly to the developer policies of Obsidian, notably:
+The Pieces For Developers Obsidian Plugin is intended to enhance the functionality and user experience of the Obsidian
+application, while adhering strictly to the developer policies of Obsidian, notably:
 
 * We do not obfuscate our code to hide its purpose.
-* We do not insert dynamic ads or static ads outside the Pieces For Obsidian plugin interface.
+* We do not insert dynamic ads or static ads outside the Pieces For Developers Obsidian Plugin interface.
 * We do not include client-side telemetry.
 * We respect Obsidian's trademark policy.
 * For any issues, feature requests, or policy violations, please feel free to open an issue in this repository. In the
   case of severe issues or policy violations, please also contact the Obsidian team.
 
-To ensure the continued functionality and reliability of the Pieces For Obsidian plugin, we commit to providing updates
-and addressing any issues in a timely manner.
+To ensure the continued functionality and reliability of the Pieces For Developers Obsidian Plugin, we commit to
+providing updates and addressing any issues in a timely manner.
 
 Please refer to the included LICENSE file for details on the terms of use for our plugin.
 
-Thank you for your understanding, and we hope you enjoy using the Pieces For Obsidian plugin.
+Thank you for your understanding, and we hope you enjoy using the Pieces For Developers Obsidian Plugin.

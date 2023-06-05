@@ -499,9 +499,37 @@ Styles */
 
 .loading-div {
 	display: flex;
+	flex-direction: column;
 	justify-content: center !important;
 	align-items: center !important;
-	margin-top: 50px;
+	margin-top: 30px;
+}
+
+.loading-div-row {
+	display: flex;
+	flex-direction: row;
+	justify-content: center !important;
+	align-items: center !important;
+	margin-top: 30px;
+}
+
+.loading-div-col {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.loading-div-button {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	text-align: center;
+	width: 100%;
+}
+
+.loading-div-button button {
+	cursor: pointer !important;
 }
 
 .loading-div img {
@@ -611,10 +639,16 @@ Styles */
 
 .download-pieces-div {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	width: 100%; /* Set the desired width of the container */
 	height: 100%; /* Set the desired height of the container */
+	scrollbar-width: none;
+}
+
+.download-pieces-div::-webkit-scrollbar {
+	display: none;
 }
 
 .download-pieces-div img {
@@ -625,18 +659,6 @@ Styles */
 	left: 0px;
 }
 
-.download-pieces-div button {
-	position: absolute;
-	max-width: 100%;
-	max-height: 100%;
-	top: 50%;
-	left: 50%;
-	transform: translate(-121%, 377%);
-	padding: 10px 20px;
-	font-size: 16px;
-	font-family: Roboto, sans-serif;
-}
-
 div[theme='dark'] button {
 	background-color: white !important;
 	color: black !important;
@@ -645,4 +667,18 @@ div[theme='dark'] button {
 div[theme='light'] button {
 	background-color: black !important;
 	color: white !important;
+}
+
+.opening-row {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	max-width: 550px;
+	width: 100%;
+}
+
+.row-button {
+	margin-left: 10%;
+	margin-right: 10%;
+	cursor: pointer;
 }
