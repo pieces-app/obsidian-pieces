@@ -60,6 +60,8 @@ snippets._
 
 To use a Pieces command, simply highlight code in your editor or hover a snippet in your Pieces List.
 
+_Hotkeys aren't set by default, but here are our recomended layouts._
+
 | Command        | macOS       | Windows      |
 |----------------|-------------|--------------|
 | Save a snippet | CMD+Shift+P | Ctrl+Shift+P |
