@@ -1,5 +1,7 @@
 # Pieces for Developers | Obsidian Plugin
 
+> This plugin is closed source. @joethei, @marcusolsson, & @liamcain all have access to our codebase.
+
 Streamline your coding workflow in Obsidian with the Pieces plugin, offering powerful features for capturing, managing,
 translating, and enhancing code snippets.
 
