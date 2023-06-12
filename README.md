@@ -9,7 +9,10 @@ translating, and enhancing code snippets.
 
 ## Install Instructions
 
-Download instructions for the latest Pieces for Developers Obsidian Plugin
+[Watch on YouTube](https://youtu.be/-88XiOa_hso): Learn how to Manually Side-Load Early Release Previews on MacOS (It's also very similar on Windows and Linux)
+
+
+Instructions for the latest Pieces for Developers Obsidian Plugin
 release: https://github.com/pieces-app/obsidian-pieces#install-instructions
 
 - Download and unzip the latest `obsidian-pieces-X.X.X` zip file
