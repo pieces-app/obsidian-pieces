@@ -9,15 +9,18 @@ translating, and enhancing code snippets.
 
 ## Install Instructions
 
-[Watch on YouTube](https://youtu.be/-88XiOa_hso): Learn how to Manually Side-Load Early Release Previews on MacOS (It's also very similar on Windows and Linux)
+[Watch on YouTube](https://youtu.be/w8Ry7MVr6v0): Learn how to Automatically Side-Load Early Release Previews on MacOS (It's also very similar on Windows and Linux)
 
 Instructions for the latest Pieces for Developers Obsidian Plugin
 release: https://github.com/pieces-app/obsidian-pieces#install-instructions
 
-- Download and unzip the latest `obsidian-pieces-X.X.X` zip file
-- Put that folder in your `Documents/Obsidian Vault/.obsidian/plugins` directory
-- Go to `Obsidian > Settings > Community plugins`
-- Enable the `Pieces For Developers` plugin under `Installed plugins`
+- Install `Obsidian42 - BRAT` from the Community Plugins in Obsidian
+- Go to the `Obsidian42 - BRAT` plugin settings
+- Click `Add Beta Plugin`
+- Enter `https://github.com/pieces-app/obsidian-pieces` into the input
+- Click `Add Plugin`
+- Enable `Auto-update plugins at startup` in the BRAT plugin settings
+- Go back to Community Plugins and enable the `Pieces For Developers` plugin
 
 ## Save useful code to your Pieces micro-repo
 
