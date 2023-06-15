@@ -1,5 +1,7 @@
 # Pieces for Developers | Obsidian Plugin
 
+> This plugin is closed source. @joethei, @marcusolsson, & @liamcain all have access to our codebase.
+
 Streamline your coding workflow in Obsidian with the Pieces plugin, offering powerful features for capturing, managing,
 translating, and enhancing code snippets.
 
@@ -61,7 +63,6 @@ snippets._
 To use a Pieces command, simply highlight code in your editor or hover a snippet in your Pieces List.
 
 _Hotkeys aren't set by default, but here are our recomended layouts._
-
 
 | Command        | macOS       | Windows      |
 |----------------|-------------|--------------|

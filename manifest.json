@@ -1,9 +1,9 @@
 {
   "id": "pieces-for-developers",
-  "name": "Pieces For Developers",
-  "version": "0.1.1",
+  "name": "Pieces for Developers",
+  "version": "0.0.9",
   "minAppVersion": "0.15.0",
-  "description": "Streamline your coding workflow in Obsidian with the Pieces For Developers plugin, offering powerful features for capturing, managing, translating, and enhancing code snippets.",
+  "description": "Streamline your coding workflow in Obsidian with the Pieces For Developers plugin, offering powerful features for capturing, managing, translating, and enhancing code snippets. (Closed Source) ",
   "author": "Pieces For Developers",
   "authorUrl": "https://pieces.app",
   "isDesktopOnly": true
