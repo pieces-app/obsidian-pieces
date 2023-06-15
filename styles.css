@@ -59,7 +59,7 @@
 
 .code-button-input {
 	display: block;
-	z-index: 999 !important;
+	z-index: 997 !important;
 	opacity: 0;
 	cursor: pointer !important;
 	position: absolute;
@@ -96,6 +96,18 @@ Styles */
 	margin-bottom: -20px;
 	margin-top: 0px;
 	margin-right: 0px;
+}
+
+.snippet {
+	background-color: var(--background-primary-alt);
+	border-radius: 5px;
+	box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.8);
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 5px;
+	margin-right: 10px;
+	padding: 10px;
+	overflow: hidden;
 }
 
 .snippet_raw {
@@ -139,6 +151,10 @@ Styles */
 	overflow-y: scroll;
 	white-space: nowrap;
 	position: relative;
+}
+
+#editParent {
+	max-height: 400px !important;
 }
 
 .rawCode::-webkit-scrollbar {
@@ -457,7 +473,7 @@ Styles */
 
 .list-button-input {
 	display: block;
-	z-index: 2 !important;
+	z-index: -1 !important;
 	height: 22px !important;
 	width: 87px !important;
 	margin-top: -29.5px !important;
@@ -475,6 +491,7 @@ Styles */
 	font-size: small;
 	z-index: 1;
 	margin-left: 4px;
+	cursor: pointer;
 }
 
 .settings-div {
@@ -543,7 +560,7 @@ Styles */
 	max-width: 150px !important;
 	height: auto;
 	width: auto \9; /* ie8 */
-	margin-top: -10px;
+	margin-top: 12px;
 	text-align: left;
 	font-size: small;
 }
@@ -682,3 +699,113 @@ div[theme='light'] button {
 	margin-right: 10%;
 	cursor: pointer;
 }
+
+.edit-form-row {
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.justify-left {
+	justify-content: left;
+}
+
+.edit-form-col {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	margin: 8px;
+}
+
+.col-small {
+	width: fit-content;
+}
+
+.edit-form {
+	max-width: 550px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.edit-title-input {
+	background: transparent !important;
+	font-weight: 600 !important;
+}
+
+.edit-dropdown {
+	text-align: center !important;
+	cursor: pointer;
+	max-height: 50px !important;
+	overflow-y: scroll;
+	background: transparent !important;
+	border: var(--input-border-width) solid var(--background-modifier-border);
+}
+
+.edit-dropdown:focus {
+	box-shadow: none !important;
+	border: var(--input-border-width) solid var(--background-modifier-border);
+	/* background: var(--interactive-normal) !important; */
+	background: transparent !important;
+}
+
+.edit-text,
+.edit-text-title {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: smaller;
+	opacity: 0.8;
+}
+
+.edit-text-title {
+	font-size: x-large;
+	opacity: 0.9;
+	margin-bottom: 0px;
+}
+
+.verticalAlign {
+	align-items: center !important;
+}
+
+.delTitle {
+	color: #f44336;
+	opacity: 0.8;
+}
+
+.buttonDiv {
+	display: flex;
+	justify-content: flex-end;
+}
+
+/* If we ever want to 
+build an image dropdown */
+
+/* #toggler {
+  opacity: 0;
+  pointer-events: none;
+  touch-action: none;
+}
+
+.dropdownTest {
+  display: none;
+  position: absolute;
+  top: calc(0% + 10px);
+  flex-direction: column;
+  border: 1px solid black;
+  padding: 20px;
+  gap: 5px;
+  left: 87px;
+  background-color: white;
+}
+input:checked ~ .dropdownTest {
+  display: flex;
+} */
+
+/* .col-img {
+	max-width: 40px !important;
+	max-height: 40px !important;
+	position: absolute;
+	left: 10px;
+	top: 33px;
+} */

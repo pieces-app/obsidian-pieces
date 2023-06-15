@@ -1,7 +1,5 @@
 # Pieces for Developers | Obsidian Plugin
 
-> This plugin is closed source. @joethei, @marcusolsson, & @liamcain all have access to our codebase.
-
 Streamline your coding workflow in Obsidian with the Pieces plugin, offering powerful features for capturing, managing,
 translating, and enhancing code snippets.
 
@@ -9,10 +7,7 @@ translating, and enhancing code snippets.
 
 ## Install Instructions
 
-[Watch on YouTube](https://youtu.be/-88XiOa_hso): Learn how to Manually Side-Load Early Release Previews on MacOS (It's also very similar on Windows and Linux)
-
-
-Instructions for the latest Pieces for Developers Obsidian Plugin
+Download instructions for the latest Pieces for Developers Obsidian Plugin
 release: https://github.com/pieces-app/obsidian-pieces#install-instructions
 
 - Download and unzip the latest `obsidian-pieces-X.X.X` zip file
@@ -64,6 +59,7 @@ snippets._
 To use a Pieces command, simply highlight code in your editor or hover a snippet in your Pieces List.
 
 _Hotkeys aren't set by default, but here are our recomended layouts._
+
 
 | Command        | macOS       | Windows      |
 |----------------|-------------|--------------|
