@@ -707,6 +707,11 @@ div[theme='light'] button {
 	justify-content: center;
 }
 
+.edit-form-desc{
+	padding-left: 5px;
+	padding-right: 8px;
+}
+
 .justify-left {
 	justify-content: left;
 }
