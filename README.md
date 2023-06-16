@@ -27,7 +27,7 @@ release: https://github.com/pieces-app/obsidian-pieces#install-instructions
 Templates, terminal commands, useful snippets, notes...save elements of your notes in one-click to reference or re-use
 later.
 
-![Save with Right Click](./assets/readme/gifs/OBSIDIAN_RIGHTCLICK.gif)
+![Save with Right Click](./assets/onboarding/saveWithMenu.png)
 
 ## Find and re-use just the right snippet when you need it
 
@@ -71,6 +71,7 @@ _Hotkeys aren't set by default, but here are our recomended layouts._
 |----------------|-------------|--------------|
 | Save a snippet | CMD+Shift+P | Ctrl+Shift+P |
 | Share a snippet | CMD+Shift+L | CMD+Shift+L |
+
 
 ### Other Products from the Pieces Team
 
