@@ -2674,7 +2674,6 @@ var require_semver2 = __commonJS({
 var main_exports = {};
 __export(main_exports, {
   Prism: () => Prism,
-  appPlugin: () => appPlugin,
   codeViewProps: () => codeViewProps,
   default: () => PiecesPlugin,
   expandId: () => expandId,
@@ -2683,7 +2682,7 @@ __export(main_exports, {
   theme: () => theme
 });
 module.exports = __toCommonJS(main_exports);
-var import_obsidian13 = require("obsidian");
+var import_obsidian14 = require("obsidian");
 
 // src/const.ts
 var Constants = class {
@@ -16536,7 +16535,7 @@ var WellKnownApi = class extends BaseAPI2 {
 };
 
 // package.json
-var version = "0.3.8";
+var version = "0.3.9";
 
 // src/connection/notification_handler.ts
 var import_obsidian = require("obsidian");
@@ -16650,18 +16649,6 @@ var ConnectorSingleton = class {
       console.log(`Error from api.track Error: ${error}`);
       return false;
     });
-  }
-};
-
-// src/actions/launch_runtime.ts
-var launchRuntime = async (wait) => {
-  try {
-    await fetch(`http://localhost:${portNumber}/.well-known/health`);
-  } catch (error) {
-    window.open("pieces://launch", "_blank");
-    if (wait) {
-      return new Promise((resolve) => setTimeout(resolve, 3e3));
-    }
   }
 };
 
@@ -17611,6 +17598,18 @@ var highlightSnippet = ({
 
 // src/ui/modals/delete-modal.ts
 var import_obsidian4 = require("obsidian");
+
+// src/actions/launch_runtime.ts
+var launchRuntime = async (wait) => {
+  try {
+    await fetch(`http://localhost:${portNumber}/.well-known/health`);
+  } catch (error) {
+    window.open("pieces://launch", "_blank");
+    if (wait) {
+      return new Promise((resolve) => setTimeout(resolve, 3e3));
+    }
+  }
+};
 
 // src/actions/delete.ts
 var DeletePiece = class {
@@ -18655,8 +18654,13 @@ function renderSearchBox({
       loading.createEl("div");
       SearchBoxDiv.replaceChild(loading, searchButton.buttonEl);
       try {
-        await loadPieces({});
-        await triggerUIRedraw(false, containerVar2);
+        await loadPieces();
+        await triggerUIRedraw(
+          false,
+          containerVar2,
+          void 0,
+          false
+        );
       } catch (e) {
       }
       SearchBoxDiv.replaceChild(searchButton.buttonEl, loading);
@@ -18701,7 +18705,7 @@ async function triggerUIRedraw(searching2, container = defaultContainer, searchQ
     } else if (fetch2) {
       snippets = await fetchSnippets(false);
     } else {
-      snippets = (await processAssets({ assets: storage.assets, fetch: false })).snippets;
+      snippets = (await processAssets({ assets: storage.assets })).snippets;
     }
   }
   if (searchQuery) {
@@ -18902,12 +18906,47 @@ function stopPolling() {
   intervalIds = [];
 }
 
+// src/database/pieces_database.ts
+var import_obsidian9 = require("obsidian");
+async function getData() {
+  const { vault } = app;
+  const dataFile = await loadFile();
+  const rawData = await vault.read(dataFile);
+  const data = JSON.parse(rawData);
+  data.assets.forEach(
+    (e) => e.created.value = new Date(e.created.value)
+  );
+  return data.assets;
+}
+async function writeData(assets) {
+  const { vault } = app;
+  const dataFile = await loadFile();
+  vault.modify(dataFile, JSON.stringify({ assets }));
+}
+async function cacheAssets(assets) {
+  const cache2 = PiecesCacheSingleton.getInstance();
+  cache2.store({ assets });
+}
+async function loadFile(retries = 0) {
+  const { vault } = app;
+  const dbPath = "piecesdb.json";
+  const dataFile = vault.getAbstractFileByPath(dbPath);
+  if (dataFile === null) {
+    if (retries < 5) {
+      await sleep(100);
+      return loadFile(retries + 1);
+    }
+    return vault.create(dbPath, '{"assets":[]}');
+  }
+  if (dataFile instanceof import_obsidian9.TFolder) {
+    await vault.delete(dataFile);
+    return vault.create(dbPath, '{"assets":[]}');
+  }
+  return dataFile;
+}
+
 // src/connection/api_wrapper.ts
-var loadPieces = async ({
-  insert = false,
-  retry: retry2 = false,
-  notification = true
-}) => {
+var loadPieces = async () => {
   stopPolling();
   const config8 = ConnectorSingleton.getInstance();
   const notifications3 = Notifications.getInstance();
@@ -18931,18 +18970,17 @@ var loadPieces = async ({
     setFetchFailed(true);
     return Promise.reject(snapshot);
   }
+  await fetchAllFormats({ assets: snapshot.assets.iterable });
   const piecesStorage = PiecesCacheSingleton.getInstance();
-  snapshot.assets = mergeAssetsWithTransferables({
+  const assets = mergeAssetsWithTransferables({
     assets: snapshot.assets,
     references: piecesStorage.formatTransferables
   });
-  piecesStorage.store({ assets: snapshot.assets.iterable });
-  const { snippets, fetching } = await processAssets({
+  writeData(assets.iterable);
+  piecesStorage.store({ assets: assets.iterable });
+  const { snippets } = await processAssets({
     assets: piecesStorage.assets
   });
-  if (fetching.length > 0) {
-    await Promise.all(fetching);
-  }
   setFetchFailed(false);
   pollForNewSnippets();
   return snippets;
@@ -18957,114 +18995,70 @@ var fetchSnapshot = async ({
     snapshot = await config8.api.snapshot({
       application: config8.context.application.id,
       suggested: false,
-      transferables: true
+      transferables: false
     });
     return snapshot;
   } catch (error) {
-    if (error.status === 401 || error.status === 400) {
-      console.log("401 or 400 error connecting to POS");
-    } else {
-      if (error.code === "ECONNREFUSED") {
-        if (!retry2) {
-          await launchRuntime(true);
-        } else {
-          notifications3.error({
-            message: "Failed to load snippets. We were unable to locate your Pieces OS. Please ensure that it is up-to-date, installed and running. If the problem persists please reach out to support at support@pieces.app."
-          });
-        }
-      }
-      if (!retry2) {
-        return await fetchSnapshot({
-          suggested: false,
-          config: config8,
-          retry: true
-        });
-      } else {
-        notifications3.error({
-          message: "Failed to load snippets. Please restart Pieces OS, ensure that it is up-to-date, and try again. If the problem persists please reach out to support at support@pieces.app."
-        });
-        return Promise.reject("Failed to fetch snapshot");
-      }
-    }
-    if (error.code === "500") {
-      console.log("500 error connecting to POS");
-      notifications3.error({
-        message: "Failed to load snippets. Please restart Pieces OS and ensure that it is up-to-date. If the problem persists please reach out to support at support@pieces.app."
+    if (!retry2) {
+      return await fetchSnapshot({
+        suggested: false,
+        config: config8,
+        retry: true
       });
+    } else {
+      notifications3.error({
+        message: "Failed to load snippets. Please restart Pieces OS, ensure that it is up-to-date, and try again. If the problem persists please reach out to support at support@pieces.app."
+      });
+      return Promise.reject("Failed to fetch snapshot");
     }
-    return {
-      context: config8.context,
-      assets: {
-        iterable: []
-      }
-    };
   }
 };
-var processAssets = async ({
-  assets,
-  fetch: fetch2 = true
-}) => {
-  const fetching = [];
+var fetchAllFormats = async ({ assets }) => {
   const piecesStorage = PiecesCacheSingleton.getInstance();
+  const formatFetching = [];
+  for (const asset of assets) {
+    for (const format of asset.formats.iterable || []) {
+      if (!(format.id in piecesStorage.fetchedFormats) || piecesStorage.fetchedFormats[format.id] < format.updated.value) {
+        formatFetching.push(fetchFormatTransferable({ format, asset }));
+      }
+    }
+  }
+  await Promise.all(formatFetching);
+};
+var processAssets = async ({ assets }) => {
+  var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z;
   const snippets = [];
   for (const asset of assets) {
-    const formatFetching = [];
-    if (fetch2) {
-      for (const format of asset.formats.iterable || []) {
-        if (!(format.id in piecesStorage.fetchedFormats) || piecesStorage.fetchedFormats[format.id] < format.updated.value) {
-          formatFetching.push(
-            fetchFormatTransferable({ format, asset })
-          );
-        }
+    let rawText = void 0;
+    let rawFormat = void 0;
+    const type = (_a = asset.original.reference) == null ? void 0 : _a.classification.generic;
+    if (type === "IMAGE") {
+      const decoder = new TextDecoder("utf-8");
+      const ocrid = (_e = (_d = (_c = (_b = asset.original.reference) == null ? void 0 : _b.analysis) == null ? void 0 : _c.image) == null ? void 0 : _d.ocr) == null ? void 0 : _e.raw.id;
+      if (!ocrid) {
       }
+      const format = (_f = asset.formats.iterable) == null ? void 0 : _f.find((e) => e.id === ocrid);
+      const bytes = new Uint8Array((_i = (_h = (_g = format == null ? void 0 : format.file) == null ? void 0 : _g.bytes) == null ? void 0 : _h.raw) != null ? _i : []);
+      rawText = decoder.decode(bytes);
+      rawFormat = format == null ? void 0 : format.classification.specific;
     }
-    Promise.all(formatFetching).then(() => {
-      var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z;
-      const storage4 = PiecesCacheSingleton.getInstance();
-      const assets2 = storage4.assets;
-      const index = assets2.findIndex(({ id }) => id === asset.id);
-      if (index >= 0) {
-        assets2[index] = mergeAssetWithTransferables({
-          asset,
-          references: storage4.formatTransferables
-        });
-        storage4.store({ assets: assets2 });
-      }
-      let rawText = void 0;
-      let rawFormat = void 0;
-      const type = (_a = asset.original.reference) == null ? void 0 : _a.classification.generic;
-      if (type === "IMAGE") {
-        const decoder = new TextDecoder("utf-8");
-        const ocrid = (_e = (_d = (_c = (_b = asset.original.reference) == null ? void 0 : _b.analysis) == null ? void 0 : _c.image) == null ? void 0 : _d.ocr) == null ? void 0 : _e.raw.id;
-        if (!ocrid) {
-        }
-        const format = (_f = asset.formats.iterable) == null ? void 0 : _f.find(
-          (e) => e.id === ocrid
-        );
-        const bytes = new Uint8Array((_i = (_h = (_g = format == null ? void 0 : format.file) == null ? void 0 : _g.bytes) == null ? void 0 : _h.raw) != null ? _i : []);
-        rawText = decoder.decode(bytes);
-        rawFormat = format == null ? void 0 : format.classification.specific;
-      }
-      snippets.push({
-        title: asset.name || "Unnamed Asset",
-        id: asset.id,
-        type: ((_j = asset.original.reference) == null ? void 0 : _j.classification.generic) || "Unknown Type",
-        raw: (_y = (_u = (_q = rawText != null ? rawText : (_m = (_l = (_k = asset.original.reference) == null ? void 0 : _k.fragment) == null ? void 0 : _l.string) == null ? void 0 : _m.raw) != null ? _q : (_p = (_o = (_n = asset.preview.base.reference) == null ? void 0 : _n.fragment) == null ? void 0 : _o.string) == null ? void 0 : _p.raw) != null ? _u : (_t = (_s = (_r = asset.original.reference) == null ? void 0 : _r.file) == null ? void 0 : _s.string) == null ? void 0 : _t.raw) != null ? _y : (_x = (_w = (_v = asset.preview.base.reference) == null ? void 0 : _v.file) == null ? void 0 : _w.string) == null ? void 0 : _x.raw,
-        //@ts-ignore what the hell i don't even know anymore this is all randy's fault and we are shipping TOMORROW so i guess this is okay
-        language: rawFormat != null ? rawFormat : ((_z = asset.original.reference) == null ? void 0 : _z.classification.specific) || "ts" /* Ts */,
-        time: asset.created.readable || "Unknown Time",
-        created: asset.created.value,
-        description: asset.description
-      });
+    snippets.push({
+      title: asset.name || "Unnamed Asset",
+      id: asset.id,
+      type: ((_j = asset.original.reference) == null ? void 0 : _j.classification.generic) || "Unknown Type",
+      raw: (_y = (_u = (_q = rawText != null ? rawText : (_m = (_l = (_k = asset.original.reference) == null ? void 0 : _k.fragment) == null ? void 0 : _l.string) == null ? void 0 : _m.raw) != null ? _q : (_p = (_o = (_n = asset.preview.base.reference) == null ? void 0 : _n.fragment) == null ? void 0 : _o.string) == null ? void 0 : _p.raw) != null ? _u : (_t = (_s = (_r = asset.original.reference) == null ? void 0 : _r.file) == null ? void 0 : _s.string) == null ? void 0 : _t.raw) != null ? _y : (_x = (_w = (_v = asset.preview.base.reference) == null ? void 0 : _v.file) == null ? void 0 : _w.string) == null ? void 0 : _x.raw,
+      //@ts-ignore
+      language: rawFormat != null ? rawFormat : ((_z = asset.original.reference) == null ? void 0 : _z.classification.specific) || "ts" /* Ts */,
+      time: asset.created.readable || "Unknown Time",
+      created: asset.created.value,
+      description: asset.description
     });
-    fetching.push(Promise.all(formatFetching));
   }
   return {
-    snippets,
-    fetching
+    snippets
   };
 };
-var fetchFormatTransferable = ({
+var fetchFormatTransferable = async ({
   format,
   asset,
   retryCount = 0
@@ -19100,7 +19094,7 @@ var fetchFormatTransferable = ({
 };
 
 // src/settings/index.ts
-var import_obsidian9 = require("obsidian");
+var import_obsidian10 = require("obsidian");
 
 // src/actions/login.ts
 var notifications2 = Notifications.getInstance();
@@ -19150,7 +19144,7 @@ var youtube_default = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAADwAAAAhwCAM
 var twitter_default = "data:image/png;base64,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";
 
 // src/settings/index.ts
-var PiecesSettingTab = class extends import_obsidian9.PluginSettingTab {
+var PiecesSettingTab = class extends import_obsidian10.PluginSettingTab {
   constructor(app2, plugin) {
     super(app2, plugin);
     this.cloud = CloudService.getInstance();
@@ -19161,17 +19155,17 @@ var PiecesSettingTab = class extends import_obsidian9.PluginSettingTab {
     const config8 = ConnectorSingleton.getInstance();
     containerEl.empty();
     containerEl.createEl("h1", { text: "Pieces Settings" });
-    new import_obsidian9.Setting(containerEl).setName(Constants.SHOW_TUTORIAL).setDesc(Constants.TUTORIAL_DESCRIPTION).addButton(
+    new import_obsidian10.Setting(containerEl).setName(Constants.SHOW_TUTORIAL).setDesc(Constants.TUTORIAL_DESCRIPTION).addButton(
       (comp) => comp.setButtonText("Show").onClick(() => {
         this.plugin.showOnboarding();
       }).setClass("button")
     );
-    new import_obsidian9.Setting(containerEl).setName(Constants.TOGGLE_AUTOOPEN).setDesc(Constants.TOGGLE_AUTOOPEN_DESC).addToggle(
+    new import_obsidian10.Setting(containerEl).setName(Constants.TOGGLE_AUTOOPEN).setDesc(Constants.TOGGLE_AUTOOPEN_DESC).addToggle(
       (comp) => comp.setValue(this.plugin.settings.autoOpen).onChange(async (value) => {
         this.plugin.settings.autoOpen = value;
       })
     );
-    new import_obsidian9.Setting(containerEl).setName(Constants.CLOUD_SELECT).setDesc(Constants.CLOUD_SELECT_DESC).addDropdown(
+    new import_obsidian10.Setting(containerEl).setName(Constants.CLOUD_SELECT).setDesc(Constants.CLOUD_SELECT_DESC).addDropdown(
       (comp) => comp.addOptions({
         blended: "Blended",
         local: "Local",
@@ -19184,12 +19178,12 @@ var PiecesSettingTab = class extends import_obsidian9.PluginSettingTab {
         }
       )
     );
-    new import_obsidian9.Setting(containerEl).setName(Constants.PORT_PROMPT).addText(
+    new import_obsidian10.Setting(containerEl).setName(Constants.PORT_PROMPT).addText(
       (comp) => comp.setValue(Constants.PORT_VALUE).setDisabled(true)
     ).setDesc(Constants.PORT_DESCRIPTION);
     let user = (await config8.userApi.userSnapshot()).user;
     if (user) {
-      new import_obsidian9.Setting(containerEl).setName(Constants.LOGOUT_TITLE).setDesc(Constants.LOGOUT_DESC).addButton(
+      new import_obsidian10.Setting(containerEl).setName(Constants.LOGOUT_TITLE).setDesc(Constants.LOGOUT_DESC).addButton(
         (comp) => comp.setButtonText("Logout").onClick(async () => {
           const success = await logout();
           if (success) {
@@ -19199,7 +19193,7 @@ var PiecesSettingTab = class extends import_obsidian9.PluginSettingTab {
       );
       this.cloud.connect({ user });
     } else {
-      new import_obsidian9.Setting(containerEl).setName(Constants.LOGIN_TITLE).setDesc(Constants.LOGIN_DESC).addButton(
+      new import_obsidian10.Setting(containerEl).setName(Constants.LOGIN_TITLE).setDesc(Constants.LOGIN_DESC).addButton(
         (comp) => comp.setButtonText("Login").onClick(async () => {
           const success = await login();
           user = (await config8.userApi.userSnapshot()).user;
@@ -19343,9 +19337,9 @@ var DEFAULT_SETTINGS = {
 };
 
 // src/ui/views/pieces-snippet-list-view.ts
-var import_obsidian10 = require("obsidian");
+var import_obsidian11 = require("obsidian");
 var containerVar;
-var PiecesSnippetListView = class extends import_obsidian10.ItemView {
+var PiecesSnippetListView = class extends import_obsidian11.ItemView {
   constructor(leaf, workspace) {
     super(leaf);
     this.storage = PiecesCacheSingleton.getInstance();
@@ -19364,8 +19358,7 @@ var PiecesSnippetListView = class extends import_obsidian10.ItemView {
     containerVar = this.containerEl.children[1];
     containerVar.empty();
     const { snippets } = await processAssets({
-      assets: this.storage.assets,
-      fetch: false
+      assets: this.storage.assets
     });
     createSnippetListView(
       containerVar,
@@ -19380,7 +19373,7 @@ var PiecesSnippetListView = class extends import_obsidian10.ItemView {
 };
 
 // src/actions/search.ts
-var import_obsidian11 = require("obsidian");
+var import_obsidian12 = require("obsidian");
 var config6 = ConnectorSingleton.getInstance();
 var storage2 = PiecesCacheSingleton.getInstance();
 var searching;
@@ -19432,15 +19425,15 @@ var search = async ({
         returnedResults.push(found_asset);
       }
     }
-    const snippets = (await processAssets({ assets: returnedResults, fetch: false })).snippets;
-    new import_obsidian11.Notice(
+    const snippets = (await processAssets({ assets: returnedResults })).snippets;
+    new import_obsidian12.Notice(
       `Search for '${query}' found ` + snippets.length + " result(s)."
     );
     return snippets;
   } catch (error) {
     searching = void 0;
-    const snippets = (await processAssets({ assets: storage2.assets, fetch: false })).snippets;
-    new import_obsidian11.Notice(Constants.SEARCH_FAILURE);
+    const snippets = (await processAssets({ assets: storage2.assets })).snippets;
+    new import_obsidian12.Notice(Constants.SEARCH_FAILURE);
     return snippets;
   }
 };
@@ -19452,7 +19445,7 @@ var import_language = require("@codemirror/language");
 
 // src/ui/plugins/SaveToPiecesWidget.ts
 var import_view = require("@codemirror/view");
-var import_obsidian12 = require("obsidian");
+var import_obsidian13 = require("obsidian");
 var config7 = ConnectorSingleton.getInstance();
 var storage3 = PiecesCacheSingleton.getInstance();
 function truncateAfterNewline(str) {
@@ -19507,8 +19500,7 @@ async function findSimilarity(codeBlock) {
       assetArray.push(storage3.mappedAssets[element.identifier]);
     });
     const returnedSnippets = await processAssets({
-      assets: assetArray,
-      fetch: false
+      assets: assetArray
     });
     returnedSnippets.snippets.forEach((element) => {
       try {
@@ -19548,23 +19540,23 @@ var SaveToPiecesWidget = class extends import_view.WidgetType {
     if (!this.premoExit) {
       if (!this.piecesPreview) {
         if (this.id) {
-          const copyButton = new import_obsidian12.ButtonComponent(holderDiv).onClick(async () => {
+          const copyButton = new import_obsidian13.ButtonComponent(holderDiv).onClick(async () => {
             const codeContent = "```" + this.lang + "\n" + this.codeBlock + "```";
             copyToClipboard(codeContent);
-            new import_obsidian12.Notice("This code is already saved!", 5e3);
-            new import_obsidian12.Notice("Snippet copied to clipboard!");
+            new import_obsidian13.Notice("This code is already saved!", 5e3);
+            new import_obsidian13.Notice("Snippet copied to clipboard!");
             await sleep(1500);
             if (pluginSettings.autoOpen) {
-              const leaf = appPlugin.workspace.getLeavesOfType(
+              const leaf = app.workspace.getLeavesOfType(
                 Constants.PIECES_SNIPPET_LIST_VIEW_TYPE
               );
               if (!leaf.length) {
-                await appPlugin.workspace.getRightLeaf(false).setViewState({
+                await app.workspace.getRightLeaf(false).setViewState({
                   type: Constants.PIECES_SNIPPET_LIST_VIEW_TYPE,
                   active: true
                 });
-                appPlugin.workspace.revealLeaf(
-                  appPlugin.workspace.getLeavesOfType(
+                app.workspace.revealLeaf(
+                  app.workspace.getLeavesOfType(
                     Constants.PIECES_SNIPPET_LIST_VIEW_TYPE
                   )[0]
                 );
@@ -19594,7 +19586,7 @@ var SaveToPiecesWidget = class extends import_view.WidgetType {
           svgElement.appendChild(pathElement);
           copyButton.buttonEl.innerHTML = svgElement.outerHTML;
         } else {
-          const saveButton = new import_obsidian12.ButtonComponent(holderDiv).onClick(async () => {
+          const saveButton = new import_obsidian13.ButtonComponent(holderDiv).onClick(async () => {
             const loading = holderDiv.createEl("div");
             loading.addClass("share-code-bouncing-loader");
             loading.createEl("div");
@@ -19610,8 +19602,8 @@ var SaveToPiecesWidget = class extends import_view.WidgetType {
             if (similarity < 2) {
               const codeContent = "```" + this.lang + "\n" + this.codeBlock + "```";
               copyToClipboard(codeContent);
-              new import_obsidian12.Notice("This code is already saved!", 5e3);
-              new import_obsidian12.Notice("Snippet copied to clipboard!");
+              new import_obsidian13.Notice("This code is already saved!", 5e3);
+              new import_obsidian13.Notice("Snippet copied to clipboard!");
             } else {
               await createAsset(
                 this.codeBlock,
@@ -19621,16 +19613,16 @@ var SaveToPiecesWidget = class extends import_view.WidgetType {
               );
               await sleep(1500);
               if (pluginSettings.autoOpen) {
-                const leaf = appPlugin.workspace.getLeavesOfType(
+                const leaf = app.workspace.getLeavesOfType(
                   Constants.PIECES_SNIPPET_LIST_VIEW_TYPE
                 );
                 if (!leaf.length) {
-                  await appPlugin.workspace.getRightLeaf(false).setViewState({
+                  await app.workspace.getRightLeaf(false).setViewState({
                     type: Constants.PIECES_SNIPPET_LIST_VIEW_TYPE,
                     active: true
                   });
-                  appPlugin.workspace.revealLeaf(
-                    appPlugin.workspace.getLeavesOfType(
+                  app.workspace.revealLeaf(
+                    app.workspace.getLeavesOfType(
                       Constants.PIECES_SNIPPET_LIST_VIEW_TYPE
                     )[0]
                   );
@@ -19671,12 +19663,12 @@ var SaveToPiecesWidget = class extends import_view.WidgetType {
           saveButton.buttonEl.innerHTML = svgElement.outerHTML;
         }
       } else {
-        new import_obsidian12.ButtonComponent(holderDiv).onClick(async () => {
+        new import_obsidian13.ButtonComponent(holderDiv).onClick(async () => {
           copyToClipboard(this.codeRaw);
-          new import_obsidian12.Notice("Snippet copied to clipboard!");
+          new import_obsidian13.Notice("Snippet copied to clipboard!");
         }).setTooltip("Copy code to clipboard").setClass("save-to-pieces-btn").setIcon("copy");
       }
-      const shareButton = new import_obsidian12.ButtonComponent(holderDiv).onClick(async () => {
+      const shareButton = new import_obsidian13.ButtonComponent(holderDiv).onClick(async () => {
         const loading = holderDiv.createEl("div");
         loading.addClass("share-code-bouncing-loader");
         loading.createEl("div");
@@ -19712,7 +19704,7 @@ var SaveToPiecesWidget = class extends import_view.WidgetType {
       }).setTooltip("Share via Pieces").setClass("save-to-pieces-btn");
       shareButton.setIcon("share-2");
       if (this.id && this.id != "" && storage3.mappedAssets[this.id]) {
-        const expandButton = new import_obsidian12.ButtonComponent(holderDiv).onClick(async () => {
+        const expandButton = new import_obsidian13.ButtonComponent(holderDiv).onClick(async () => {
           const codeContent = "```" + this.lang + `:${this.id}
 ` + this.codeBlock + "```";
           await createExpandedView({
@@ -19874,7 +19866,6 @@ Utilize the Pieces [Flagship Desktop App](https://pieces.app) in combination wit
 `;
 
 // main.ts
-var appPlugin;
 var pluginSettings;
 var theme = "dark";
 var Prism;
@@ -19889,14 +19880,14 @@ var expandId = {
   codeID: "",
   codeRaw: ""
 };
-var PiecesPlugin = class extends import_obsidian13.Plugin {
+var PiecesPlugin = class extends import_obsidian14.Plugin {
   /*
          Saves the current editor selection to pieces
      */
   async saveSelectionToPieces(getSimilarity) {
     var _a, _b;
-    const markdownView = this.app.workspace.getActiveViewOfType(import_obsidian13.MarkdownView);
-    if (markdownView) {
+    const markdownView = this.app.workspace.activeEditor;
+    if (markdownView instanceof import_obsidian14.MarkdownView) {
       const editor = markdownView.editor;
       const selection = editor.getSelection();
       if (selection.length < 5) {
@@ -19932,7 +19923,8 @@ var PiecesPlugin = class extends import_obsidian13.Plugin {
     }
   }
   async onload() {
-    Prism = await (0, import_obsidian13.loadPrism)();
+    app = this.app;
+    Prism = await (0, import_obsidian14.loadPrism)();
     theme = document.body.classList.contains("theme-dark") ? "dark" : "light";
     document.body.addEventListener("change", (e) => {
       const temptheme = document.body.classList.contains("theme-dark") ? "dark" : "light";
@@ -19948,10 +19940,9 @@ var PiecesPlugin = class extends import_obsidian13.Plugin {
       }
       theme = temptheme;
     });
-    appPlugin = this.app;
     await this.loadSettings();
     pluginSettings = this.settings;
-    (0, import_obsidian13.addIcon)("pieces_logo", Constants.PIECES_LOGO);
+    (0, import_obsidian14.addIcon)("pieces_logo", Constants.PIECES_LOGO);
     updateConnectionType(this.settings);
     ConnectorSingleton.checkConnection({});
     versionCheck({}).then((val) => {
@@ -19987,10 +19978,19 @@ var PiecesPlugin = class extends import_obsidian13.Plugin {
       await this.saveSettings();
       this.showOnboarding();
     }
-    fetchSnippets(false).then((e) => {
-      setSnippetsLoaded(true);
-      triggerUIRedraw(false, void 0, void 0, false);
-    }).catch(() => {
+    getData().then((data) => {
+      if (data && data.length && !snippetsFetched) {
+        setSnippetsLoaded(true);
+        cacheAssets(data);
+        triggerUIRedraw(false, void 0, void 0, false);
+      }
+    }).catch((e) => {
+      console.log(
+        "Pieces: Something went wrong fetching assets from piecesdb.json ",
+        e
+      );
+    });
+    fetchSnippets(false).finally(() => {
       setSnippetsLoaded(true);
       triggerUIRedraw(false, void 0, void 0, false);
     });
@@ -20070,7 +20070,6 @@ var PiecesPlugin = class extends import_obsidian13.Plugin {
       }
     });
     this.addSettingTab(new PiecesSettingTab(this.app, this));
-    app = this.app;
     this.registerEditorExtension([codeDetectionPlugin]);
   }
   onunload() {
@@ -20101,15 +20100,12 @@ var PiecesPlugin = class extends import_obsidian13.Plugin {
     }
   }
   activateView() {
-    this.app.workspace.getRightLeaf(false).setViewState({
+    const PiecesLeaf = this.app.workspace.getRightLeaf(false);
+    PiecesLeaf.setViewState({
       type: Constants.PIECES_SNIPPET_LIST_VIEW_TYPE,
       active: true
     });
-    this.app.workspace.revealLeaf(
-      this.app.workspace.getLeavesOfType(
-        Constants.PIECES_SNIPPET_LIST_VIEW_TYPE
-      )[0]
-    );
+    this.app.workspace.revealLeaf(PiecesLeaf);
   }
   async showOnboarding() {
     const leaf = await this.app.workspace.getLeaf(true);
@@ -20126,6 +20122,6 @@ var fetchSnippets = (isSearch, sQuery) => {
   if (isSearch) {
     return search({ query: sQuery != null ? sQuery : "" });
   } else {
-    return loadPieces({ notification: false });
+    return loadPieces();
   }
 };
