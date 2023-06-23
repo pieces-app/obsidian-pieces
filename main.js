@@ -16535,7 +16535,7 @@ var WellKnownApi = class extends BaseAPI2 {
 };
 
 // package.json
-var version = "0.3.10";
+var version = "0.3.11";
 
 // src/connection/notification_handler.ts
 var import_obsidian = require("obsidian");
@@ -18471,7 +18471,7 @@ function renderSnippet(contentEl, snippetTitle, seperatedRaw, snippetContent, sn
       await copyToClipboard(shareableLink || "");
     }
     buttonDiv.replaceChild(shareButton.buttonEl, loading);
-  }).setIcon("share-2").setTooltip("Copy a sharable link to clipboard").setClass("button");
+  }).setIcon("share-2").setTooltip("Copy a shareable link to clipboard").setClass("button");
   buttonDiv.appendChild(shareButton.buttonEl);
   buttonDiv.createEl("div").addClass("vertBreak");
   if (!newSnippet) {

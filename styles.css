@@ -110,6 +110,10 @@ Styles */
 	overflow: hidden;
 }
 
+.snippet-content-parent {
+	cursor: pointer;
+}
+
 .snippet_raw {
 	color: var(--text-muted);
 	font-family: Consolas, monospace;
@@ -167,6 +171,7 @@ Styles */
 	margin-left: 35px;
 	z-index: 0;
 	margin-right: 1px;
+	padding-right: 25px;
 }
 
 .lineNums {
@@ -591,11 +596,14 @@ Styles */
 
 .expand-icon {
 	position: absolute;
-	height: 18px;
-	width: 18px;
-	top: 2px;
+	height: 22px;
+	width: 22px;
+	top: 0px;
 	right: 0px;
 	cursor: pointer;
+	background-color: #171515;
+	padding: 2px;
+	border-radius: 7px;
 }
 
 .expand-wrapper {
