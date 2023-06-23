@@ -388,19 +388,19 @@ Styles */
 	margin-top: 15px;
 }
 
-#last-snippet {
+.last-snippet {
 	border-bottom: none;
 	border-bottom-left-radius: 5%;
 	border-bottom-right-radius: 5%;
 	padding-bottom: 3px;
 }
 
-#first-snippet {
+.first-snippet {
 	border-top-left-radius: 5%;
 	border-top-right-radius: 5%;
 }
 
-#only-snippet {
+.only-snippet {
 	border-bottom: none;
 	border-bottom-left-radius: 5%;
 	border-bottom-right-radius: 5%;

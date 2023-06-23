@@ -1,26 +1,26 @@
 # Pieces for Developers | Obsidian Plugin
 
-> This plugin is closed source. @joethei, @marcusolsson, & @liamcain all have access to our codebase.
+> This plugin is closed source. The Obsidian team has full access to our private codebase.
 
 Streamline your coding workflow in Obsidian with the Pieces plugin, offering powerful features for capturing, managing,
 translating, and enhancing code snippets.
 
 [![Pieces For Developers Banner](./assets/readme/pfd-obisidan-plugin-hero.png)](https://youtu.be/x2JdssFEk2I)
 
+## Getting started
+
+To get started, it is **required** to download Pieces OS* from pieces.app/install.
+
+This enables Pieces products to run locally on your machine and manages connections to Pieces plugins. **This plugin
+will not work properly without Pieces OS installed and running.**
+
+*_The Pieces OS install includes the Pieces for Developers Desktop App where you can also view and manage your
+snippets._
+
 ## Install Instructions
 
-[Watch on YouTube](https://youtu.be/w8Ry7MVr6v0): Learn how to Automatically Side-Load Early Release Previews on MacOS (It's also very similar on Windows and Linux)
-
-Instructions for the latest Pieces for Developers Obsidian Plugin
-release: https://github.com/pieces-app/obsidian-pieces#install-instructions
-
-- Install `Obsidian42 - BRAT` from the Community Plugins in Obsidian
-- Go to the `Obsidian42 - BRAT` plugin settings
-- Click `Add Beta Plugin`
-- Enter `https://github.com/pieces-app/obsidian-pieces` into the input
-- Click `Add Plugin`
-- Enable `Auto-update plugins at startup` in the BRAT plugin settings
-- Go back to Community Plugins and enable the `Pieces For Developers` plugin
+1. Visit the [Pieces for Developers Obsidian Plugin](https://obsidian.md/plugins?id=pieces-for-developers) install page
+2. Click the `Install` button and then `Enable` to activate the plugin
 
 ## Save useful code to your Pieces micro-repo
 
@@ -51,21 +51,11 @@ snippet and its related context - tags, descriptions, where it’s from and more
 
 ![Save with Button](./assets/readme/gifs/OBSIDIAN_SAVE.gif)
 
-## Getting started
-
-To get started, it is **required** to download Pieces OS* from pieces.app/install.
-
-This enables Pieces products to run locally on your machine and manages connections to Pieces plugins. **This plugin
-will not work properly without Pieces OS installed and running.**
-
-*_The Pieces OS install includes the Pieces for Developers Desktop App where you can also view and manage your
-snippets._
-
 ### Commands
 
 To use a Pieces command, simply highlight code in your editor or hover a snippet in your Pieces List.
 
-_Hotkeys aren't set by default, but here are our recomended layouts._
+_Hotkeys aren't set by default, but here are our recommended layouts._
 
 | Command        | macOS       | Windows      |
 |----------------|-------------|--------------|

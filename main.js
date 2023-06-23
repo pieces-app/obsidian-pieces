@@ -16535,7 +16535,7 @@ var WellKnownApi = class extends BaseAPI2 {
 };
 
 // package.json
-var version = "0.3.9";
+var version = "0.3.10";
 
 // src/connection/notification_handler.ts
 var import_obsidian = require("obsidian");
@@ -17676,10 +17676,11 @@ var DeletePiece = class {
 
 // src/ui/modals/delete-modal.ts
 var DeleteModal = class extends import_obsidian4.Modal {
-  constructor(app2, snippetTitle, snippetId) {
+  constructor(app2, snippetTitle, snippetId, snippetParent) {
     super(app2);
     this.snippetTitle = snippetTitle;
     this.snippetId = snippetId;
+    this.snippetParent = snippetParent;
   }
   onOpen() {
     const { contentEl } = this;
@@ -17695,7 +17696,7 @@ var DeleteModal = class extends import_obsidian4.Modal {
     new import_obsidian4.ButtonComponent(buttonDiv).setButtonText("Delete").onClick(async () => {
       await DeletePiece.delete({ id: this.snippetId });
       this.close();
-      triggerUIRedraw(false, void 0, void 0, false);
+      this.snippetParent.remove();
     }).setTooltip("Delete snippet").setClass("button_delete_modal");
   }
   onClose() {
@@ -18125,9 +18126,101 @@ var update = async ({
   }
 };
 
+// src/ui/render/renderListView.ts
+function renderListView(contentEl, snippetTitle, snippetContent, snippetId, snippetLanguage, snippetDesc, created) {
+  const ListView = contentEl.createEl("div");
+  ListView.addClass("list-view");
+  ListView.id = `list-view-${snippetId}`;
+  const snippetContentDiv = ListView.createEl("div");
+  snippetContentDiv.addClass("snippet-content-parent");
+  const titleDiv = snippetContentDiv.createEl("div");
+  titleDiv.addClass("list-title-div");
+  const titleWrapper = titleDiv.createDiv();
+  titleWrapper.addClass("list-title-wrapper");
+  const imageLang = titleWrapper.createEl("img");
+  imageLang.setAttr("src", getIcon(snippetLanguage));
+  imageLang.setAttr("alt", "Pieces language logo");
+  imageLang.addClass("list-title-div");
+  imageLang.setAttr("width", "20px");
+  imageLang.setAttr("height", "20px");
+  const title = titleWrapper.createEl("h4");
+  title.addClass("list-title-div");
+  title.innerText = snippetTitle;
+  const body = snippetContentDiv.createEl("div");
+  body.addClass("list-body");
+  body.innerText = parseDescription(snippetDesc);
+  if (snippetDesc === "\u{1F4DD} Custom Description: \nWrite a custom description here." && isDateLessThan15MinutesOld(created)) {
+    pollAndUpdateSnippetDesc({
+      descEl: body,
+      snippetId,
+      created,
+      titleEl: title
+    });
+  }
+  const buttonContainer = snippetContentDiv.createEl("div");
+  buttonContainer.addClass("list-button-container");
+  const buttonInput = snippetContentDiv.createEl("input", {
+    attr: { type: "checkbox" }
+  });
+  buttonInput.addClass("list-button-input");
+  buttonInput.disabled = true;
+  const buttonContentOpen = buttonContainer.createEl("span");
+  buttonContentOpen.innerText = "View Code \u25BC";
+  buttonContentOpen.addClass("list-button-content");
+  const buttonContentClosed = buttonContainer.createEl("span");
+  buttonContentClosed.innerText = "View Code \u25B6";
+  buttonContentClosed.addClass("list-button-content");
+  if (buttonInput.checked) {
+    buttonContainer.removeChild(buttonContentClosed);
+  } else {
+    buttonContainer.removeChild(buttonContentOpen);
+  }
+  let newSnippet;
+  let clickTimer = null;
+  snippetContentDiv.addEventListener("click", async function() {
+    if (clickTimer === null) {
+      clickTimer = setTimeout(function() {
+        buttonInput.checked = !buttonInput.checked;
+        if (buttonInput.checked) {
+          const seperatedRaw = snippetContent.split("\n");
+          newSnippet = renderSnippet(
+            ListView,
+            snippetTitle,
+            seperatedRaw,
+            snippetContent,
+            snippetId,
+            snippetLanguage,
+            snippetDesc
+          );
+          buttonContainer.removeChild(buttonContentClosed);
+          buttonContainer.appendChild(buttonContentOpen);
+          ListView.appendChild(newSnippet);
+        } else {
+          buttonContainer.removeChild(buttonContentOpen);
+          buttonContainer.appendChild(buttonContentClosed);
+          newSnippet.empty();
+          ListView.removeChild(newSnippet);
+        }
+        clickTimer = null;
+      }, 140);
+    } else {
+      clearTimeout(clickTimer);
+      clickTimer = null;
+      const snippetFormatted = "```" + LangSpecificEnum[snippetLanguage] + `:${snippetId}
+` + snippetContent + "\n```";
+      await createExpandedView({
+        snippetId,
+        snippetTitle,
+        snippetFormatted
+      });
+    }
+  });
+  return ListView;
+}
+
 // src/ui/modals/edit-asset-modal.ts
 var EditModal = class extends import_obsidian5.Modal {
-  constructor(app2, snippetTitle, snippetId, snippetContent, snippetLanguage, snippetDesc) {
+  constructor(app2, snippetTitle, snippetId, snippetContent, snippetLanguage, snippetDesc, snippetEl) {
     super(app2);
     this.snippetTitle = snippetTitle;
     this.snippetId = snippetId;
@@ -18135,6 +18228,7 @@ var EditModal = class extends import_obsidian5.Modal {
     this.snippetLanguage = snippetLanguage;
     this.seperatedRaw = this.snippetContent.split("\n");
     this.snippetDesc = snippetDesc;
+    this.snippetEl = snippetEl;
   }
   onOpen() {
     var _a;
@@ -18256,7 +18350,24 @@ var EditModal = class extends import_obsidian5.Modal {
       }
       cache2.updateAsset({ asset });
       this.close();
-      triggerUIRedraw(false, void 0, void 0, false);
+      const piecesContainer = document.getElementById(
+        "pieces-snippet-container"
+      );
+      const newSnippetEl = renderListView(
+        piecesContainer,
+        this.snippetTitle,
+        this.snippetContent,
+        this.snippetId,
+        this.snippetLanguage,
+        this.snippetDesc,
+        asset.created.value
+      );
+      this.snippetEl.replaceWith(newSnippetEl);
+      const clickEvent = new Event("click");
+      const snippetContentParent = newSnippetEl.querySelectorAll(
+        ".snippet-content-parent"
+      );
+      snippetContentParent[0].dispatchEvent(clickEvent);
     } catch (error) {
       console.log(error);
     }
@@ -18334,7 +18445,8 @@ function renderSnippet(contentEl, snippetTitle, seperatedRaw, snippetContent, sn
       snippetId,
       snippetContent,
       snippetLanguage,
-      snippetDesc || ""
+      snippetDesc || "",
+      contentEl
     ).open();
   }).setClass("button");
   buttonDiv.createEl("div").addClass("vertBreak");
@@ -18364,7 +18476,12 @@ function renderSnippet(contentEl, snippetTitle, seperatedRaw, snippetContent, sn
   buttonDiv.createEl("div").addClass("vertBreak");
   if (!newSnippet) {
     new import_obsidian6.ButtonComponent(footerDiv).setIcon("trash-2").onClick(() => {
-      new DeleteModal(this.app, snippetTitle, snippetId).open();
+      new DeleteModal(
+        this.app,
+        snippetTitle,
+        snippetId,
+        contentEl
+      ).open();
     }).setTooltip("Delete snippet").setClass("button_delete");
   }
   return snippet;
@@ -18445,96 +18562,6 @@ function showLoadingState({
   const loadImg = loadingDiv.createEl("img");
   loadImg.setAttr("src", loadingCat_default);
   loadImg.setAttr("alt", "Loading your snippets...");
-}
-
-// src/ui/render/renderListView.ts
-function renderListView(contentEl, snippetTitle, snippetContent, snippetId, snippetLanguage, snippetDesc, created) {
-  const ListView = contentEl.createEl("div");
-  ListView.addClass("list-view");
-  const snippetContentDiv = ListView.createEl("div");
-  const titleDiv = snippetContentDiv.createEl("div");
-  titleDiv.addClass("list-title-div");
-  const titleWrapper = titleDiv.createDiv();
-  titleWrapper.addClass("list-title-wrapper");
-  const imageLang = titleWrapper.createEl("img");
-  imageLang.setAttr("src", getIcon(snippetLanguage));
-  imageLang.setAttr("alt", "Pieces language logo");
-  imageLang.addClass("list-title-div");
-  imageLang.setAttr("width", "20px");
-  imageLang.setAttr("height", "20px");
-  const title = titleWrapper.createEl("h4");
-  title.addClass("list-title-div");
-  title.innerText = snippetTitle;
-  const body = snippetContentDiv.createEl("div");
-  body.addClass("list-body");
-  body.innerText = parseDescription(snippetDesc);
-  if (snippetDesc === "\u{1F4DD} Custom Description: \nWrite a custom description here." && isDateLessThan15MinutesOld(created)) {
-    pollAndUpdateSnippetDesc({
-      descEl: body,
-      snippetId,
-      created,
-      titleEl: title
-    });
-  }
-  const buttonContainer = snippetContentDiv.createEl("div");
-  buttonContainer.addClass("list-button-container");
-  const buttonInput = snippetContentDiv.createEl("input", {
-    attr: { type: "checkbox" }
-  });
-  buttonInput.addClass("list-button-input");
-  buttonInput.disabled = true;
-  const buttonContentOpen = buttonContainer.createEl("span");
-  buttonContentOpen.innerText = "View Code \u25BC";
-  buttonContentOpen.addClass("list-button-content");
-  const buttonContentClosed = buttonContainer.createEl("span");
-  buttonContentClosed.innerText = "View Code \u25B6";
-  buttonContentClosed.addClass("list-button-content");
-  if (buttonInput.checked) {
-    buttonContainer.removeChild(buttonContentClosed);
-  } else {
-    buttonContainer.removeChild(buttonContentOpen);
-  }
-  let newSnippet;
-  let clickTimer = null;
-  snippetContentDiv.addEventListener("click", async function() {
-    if (clickTimer === null) {
-      clickTimer = setTimeout(function() {
-        buttonInput.checked = !buttonInput.checked;
-        if (buttonInput.checked) {
-          const seperatedRaw = snippetContent.split("\n");
-          newSnippet = renderSnippet(
-            ListView,
-            snippetTitle,
-            seperatedRaw,
-            snippetContent,
-            snippetId,
-            snippetLanguage,
-            snippetDesc
-          );
-          buttonContainer.removeChild(buttonContentClosed);
-          buttonContainer.appendChild(buttonContentOpen);
-          ListView.appendChild(newSnippet);
-        } else {
-          buttonContainer.removeChild(buttonContentOpen);
-          buttonContainer.appendChild(buttonContentClosed);
-          newSnippet.empty();
-          ListView.removeChild(newSnippet);
-        }
-        clickTimer = null;
-      }, 140);
-    } else {
-      clearTimeout(clickTimer);
-      clickTimer = null;
-      const snippetFormatted = "```" + LangSpecificEnum[snippetLanguage] + `:${snippetId}
-` + snippetContent + "\n```";
-      await createExpandedView({
-        snippetId,
-        snippetTitle,
-        snippetFormatted
-      });
-    }
-  });
-  return ListView;
 }
 
 // src/ui/utils/getRangeOfChanges.ts
@@ -18769,6 +18796,7 @@ function createListView({
 }) {
   const snippetContainer = containerVar2.createEl("div");
   snippetContainer.addClass("snippet-container");
+  snippetContainer.id = "pieces-snippet-container";
   for (let i = 0; i < snippets.length; i++) {
     const snippetTitle = snippets[i].title;
     let snippetContent = snippets[i].raw;
@@ -18789,11 +18817,11 @@ function createListView({
       created
     );
     if (snippets.length == 1) {
-      listView.id = "only-snippet";
+      listView.addClass("only-snippet");
     } else if (i == snippets.length - 1) {
-      listView.id = "last-snippet";
+      listView.addClass("last-snippet");
     } else if (i == 0) {
-      listView.id = "first-snippet";
+      listView.addClass("first-snippet");
     }
     snippetContainer.appendChild(listView);
   }
@@ -19051,7 +19079,8 @@ var processAssets = async ({ assets }) => {
       language: rawFormat != null ? rawFormat : ((_z = asset.original.reference) == null ? void 0 : _z.classification.specific) || "ts" /* Ts */,
       time: asset.created.readable || "Unknown Time",
       created: asset.created.value,
-      description: asset.description
+      description: asset.description,
+      updated: asset.updated.value
     });
   }
   return {
@@ -19417,10 +19446,7 @@ var search = async ({
     let found_asset;
     for (const asset of results.iterable) {
       found_asset = void 0;
-      found_asset = assets.find((e) => {
-        var _a;
-        return e.id === ((_a = asset.asset) == null ? void 0 : _a.id);
-      });
+      found_asset = assets.find((e) => e.id === asset.identifier);
       if (found_asset) {
         returnedResults.push(found_asset);
       }
@@ -19814,10 +19840,10 @@ var keyboardShortcuts_default = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA
 // src/ui/views/pieces-onboarding.ts
 var heroLink = "https://youtu.be/rWm_VMOhaNk";
 var supercutLink = "https://youtu.be/5atxB5RRUvI";
-var saveWithMenuLink = "https://drive.google.com/uc?id=14GiD1mj4NJnzXfecR6Ngier7SEyfyGGi";
-var saveWithButtonLink = "https://drive.google.com/uc?id=18AVF0Yqe8ESjOVEH9WAsZOofi9xdD7Jl";
-var searchLink = "https://drive.google.com/uc?id=1Sr6OCIiT0aSa0Bs_gZK-IWgOC9Il9QUc";
-var shareLink = "https://drive.google.com/uc?id=1Y5l2wsQhJTu1cwQm_rWJXkqyYd79fAEK";
+var RIGHT_CLICK_SAVE = "https://storage.googleapis.com/pieces_multimedia/PROMOTIONAL/PIECES_FOR_DEVELOPERS/OBSIDIAN/MACOS/RIGHT_CLICK_SAVE/16X9/PIECES_FOR_DEVELOPERS-OBSIDIAN-RIGHT_CLICK_SAVE-MACOS-16X9-6_22_2023.gif";
+var EMBEDDED_BUTTON_SAVE = "https://storage.googleapis.com/pieces_multimedia/PROMOTIONAL/PIECES_FOR_DEVELOPERS/OBSIDIAN/MACOS/EMBEDDED_BUTTON_SAVE/16X9/PIECES_FOR_DEVELOPERS-OBSIDIAN-EMBEDDED_BUTTON_SAVE-MACOS-16X9-6_22_2023.gif";
+var SEARCH = "https://storage.googleapis.com/pieces_multimedia/PROMOTIONAL/PIECES_FOR_DEVELOPERS/OBSIDIAN/MACOS/SEARCH/16X9/PIECES_FOR_DEVELOPERS-OBSIDIAN-SEARCH-MACOS-16X9-6_22_2023.gif";
+var SHARE = "https://storage.googleapis.com/pieces_multimedia/PROMOTIONAL/PIECES_FOR_DEVELOPERS/OBSIDIAN/MACOS/SHARE/16X9/PIECES_FOR_DEVELOPERS-OBSIDIAN-SHARE-MACOS-16X9-6_22_2023.gif";
 var onboardingMD = `<a href="https://docs.pieces.app/extensions-plugins/obsidian" style="display: inline-block; text-decoration: none; border-radius: 4px;">Docs</a>		<a href="https://pieces.app" style="display: inline-block; text-decoration: none; border-radius: 4px;">Learn More</a>
 
 ### Elevate your Obsidian experience with Pieces
@@ -19828,11 +19854,12 @@ var onboardingMD = `<a href="https://docs.pieces.app/extensions-plugins/obsidian
 
 #### 1. Save your first snippet
 - To save a snippet, highlight the text, right-click, and select "Save to Pieces."
-![Save with Right Click](${saveWithMenuLink})
+![Save with Right Click](${RIGHT_CLICK_SAVE})
 
 **Additional ways to save**
 - Click the Pieces Save button within any code block.
-![Save to Pieces via Button](${saveWithButtonLink})
+![Save to Pieces via Button](${EMBEDDED_BUTTON_SAVE})
+
 
 - Highlight the desired code and use our dedicated keyboard shortcuts
 ![Keyboard Shortcuts](` + keyboardShortcuts_default + `)
@@ -19841,12 +19868,12 @@ var onboardingMD = `<a href="https://docs.pieces.app/extensions-plugins/obsidian
 
 #### 2. Find & use your snippets
 - To access your saved snippets, click on the Pieces icon in your left sidebar.
-![Search Your Pieces](${searchLink})
+![Search Your Pieces](${SEARCH})
 
 
 #### 3. Share your Snippets
 - Collaborate with others with ease using shareable links for your snippetst
-![Share you Snippets](${shareLink})
+![Share you Snippets](${SHARE})
 
 
 ### Maximize productivity with our Flagship Desktop App
@@ -20074,6 +20101,7 @@ var PiecesPlugin = class extends import_obsidian14.Plugin {
   }
   onunload() {
     stopPolling();
+    writeData(PiecesCacheSingleton.getInstance().assets);
   }
   // This function loads and merges default settings with user-defined settings.
   async loadSettings() {
