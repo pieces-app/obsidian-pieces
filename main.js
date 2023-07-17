@@ -17533,7 +17533,7 @@ var WellKnownApi = class extends BaseAPI2 {
 };
 
 // package.json
-var version = "1.0.0";
+var version = "1.0.1";
 
 // src/connection/notification_handler.ts
 var import_obsidian = require("obsidian");

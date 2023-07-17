@@ -46,7 +46,7 @@ snippet and its related context - tags, descriptions, where it’s from and more
 
 * **Runs locally** on your machine with the option to connect to the Cloud for backup, sync and sharing
 * **Deeply embedded into Obsidian** - save, search, and share your snippets entirely from the Pieces for Developers
-  Obsidian Plugin
+	Obsidian Plugin
 * Keyboard **shortcuts-enabled**
 
 ![Save with Button](./assets/readme/gifs/OBSIDIAN_SAVE.gif)
@@ -61,7 +61,6 @@ _Hotkeys aren't set by default, but here are our recommended layouts._
 |----------------|-------------|--------------|
 | Save a snippet | CMD+Shift+P | Ctrl+Shift+P |
 | Share a snippet | CMD+Shift+L | CMD+Shift+L |
-
 
 ### Other Products from the Pieces Team
 
@@ -91,9 +90,12 @@ application, while adhering strictly to the developer policies of Obsidian, nota
 * We do not obfuscate our code to hide its purpose.
 * We do not insert dynamic ads or static ads outside the Pieces For Developers Obsidian Plugin interface.
 * We do not include client-side telemetry.
+* We temporarily leverage ChatGPT API endpoints.
 * We respect Obsidian's trademark policy.
 * For any issues, feature requests, or policy violations, please feel free to open an issue in this repository. In the
-  case of severe issues or policy violations, please also contact the Obsidian team.
+	case of severe issues or policy violations, please also contact the Obsidian team.
+
+[Pieces Privacy Policy](https://docs.pieces.app/privacy-policy)
 
 To ensure the continued functionality and reliability of the Pieces For Developers Obsidian Plugin, we commit to
 providing updates and addressing any issues in a timely manner.
