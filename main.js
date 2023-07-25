@@ -1508,7 +1508,7 @@ var require_range = __commonJS({
       parseRange(range) {
         const memoOpts = (this.options.includePrerelease && FLAG_INCLUDE_PRERELEASE) | (this.options.loose && FLAG_LOOSE);
         const memoKey = memoOpts + ":" + range;
-        const cached = cache3.get(memoKey);
+        const cached = cache5.get(memoKey);
         if (cached) {
           return cached;
         }
@@ -1542,7 +1542,7 @@ var require_range = __commonJS({
           rangeMap.delete("");
         }
         const result = [...rangeMap.values()];
-        cache3.set(memoKey, result);
+        cache5.set(memoKey, result);
         return result;
       }
       intersects(range, options2) {
@@ -1581,7 +1581,7 @@ var require_range = __commonJS({
     };
     module2.exports = Range;
     var LRU = require_lru_cache();
-    var cache3 = new LRU({ max: 1e3 });
+    var cache5 = new LRU({ max: 1e3 });
     var parseOptions = require_parse_options();
     var Comparator = require_comparator();
     var debug = require_debug();
@@ -2719,7 +2719,7 @@ __export(main_exports, {
   theme: () => theme
 });
 module.exports = __toCommonJS(main_exports);
-var import_obsidian16 = require("obsidian");
+var import_obsidian18 = require("obsidian");
 
 // PiecesSDK/connector/runtime.ts
 var BASE_PATH = "http://localhost:1000".replace(/\/+$/, "");
@@ -10044,6 +10044,134 @@ function CodeAnalysisToJSON2(value) {
   };
 }
 
+// PiecesSDK/core/models/DiscoveredAsset.ts
+function DiscoveredAssetFromJSON(json) {
+  return DiscoveredAssetFromJSONTyped(json, false);
+}
+function DiscoveredAssetFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    schema: !exists2(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON2(json["schema"]),
+    file: !exists2(json, "file") ? void 0 : SeededFileFromJSON2(json["file"]),
+    fragment: !exists2(json, "fragment") ? void 0 : SeededFragmentFromJSON2(json["fragment"]),
+    directory: !exists2(json, "directory") ? void 0 : json["directory"],
+    metadata: !exists2(json, "metadata") ? void 0 : SeededAssetMetadataFromJSON2(json["metadata"]),
+    filters: !exists2(json, "filters") ? void 0 : TLPDirectedDiscoveryFiltersFromJSON(json["filters"])
+  };
+}
+
+// PiecesSDK/core/models/DiscoveredAssets.ts
+function DiscoveredAssetsFromJSON(json) {
+  return DiscoveredAssetsFromJSONTyped(json, false);
+}
+function DiscoveredAssetsFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    schema: !exists2(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON2(json["schema"]),
+    application: json["application"],
+    iterable: json["iterable"].map(DiscoveredAssetFromJSON)
+  };
+}
+
+// PiecesSDK/core/models/DiscoveredHtmlWebpage.ts
+function DiscoveredHtmlWebpageFromJSON(json) {
+  return DiscoveredHtmlWebpageFromJSONTyped(json, false);
+}
+function DiscoveredHtmlWebpageFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    schema: !exists2(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON2(json["schema"]),
+    assets: DiscoveredAssetsFromJSON(json["assets"]),
+    url: json["url"]
+  };
+}
+
+// PiecesSDK/core/models/DiscoveredHtmlWebpages.ts
+function DiscoveredHtmlWebpagesFromJSON(json) {
+  return DiscoveredHtmlWebpagesFromJSONTyped(json, false);
+}
+function DiscoveredHtmlWebpagesFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    schema: !exists2(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON2(json["schema"]),
+    iterable: json["iterable"].map(
+      DiscoveredHtmlWebpageFromJSON
+    ),
+    application: json["application"]
+  };
+}
+
+// PiecesSDK/core/models/DiscoveredRelatedTag.ts
+function DiscoveredRelatedTagFromJSON(json) {
+  return DiscoveredRelatedTagFromJSONTyped(json, false);
+}
+function DiscoveredRelatedTagFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    schema: !exists2(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON2(json["schema"]),
+    seed: SeededTagFromJSON2(json["seed"])
+  };
+}
+
+// PiecesSDK/core/models/DiscoveredRelatedTags.ts
+function DiscoveredRelatedTagsFromJSON(json) {
+  return DiscoveredRelatedTagsFromJSONTyped(json, false);
+}
+function DiscoveredRelatedTagsFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    schema: !exists2(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON2(json["schema"]),
+    application: json["application"],
+    iterable: json["iterable"].map(
+      DiscoveredRelatedTagFromJSON
+    )
+  };
+}
+
+// PiecesSDK/core/models/DiscoveredSensitive.ts
+function DiscoveredSensitiveFromJSON(json) {
+  return DiscoveredSensitiveFromJSONTyped(json, false);
+}
+function DiscoveredSensitiveFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    schema: !exists2(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON2(json["schema"]),
+    seed: SeededSensitiveFromJSON(json["seed"]),
+    text: json["text"]
+  };
+}
+
+// PiecesSDK/core/models/DiscoveredSensitives.ts
+function DiscoveredSensitivesFromJSON(json) {
+  return DiscoveredSensitivesFromJSONTyped(json, false);
+}
+function DiscoveredSensitivesFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    schema: !exists2(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON2(json["schema"]),
+    iterable: json["iterable"].map(
+      DiscoveredSensitiveFromJSON
+    ),
+    application: json["application"]
+  };
+}
+
 // PiecesSDK/core/models/Distribution.ts
 function DistributionFromJSON2(json) {
   return DistributionFromJSONTyped3(json, false);
@@ -13391,6 +13519,146 @@ function SeededConnectorTrackingToJSON2(value) {
   };
 }
 
+// PiecesSDK/core/models/SeededDiscoverableAsset.ts
+function SeededDiscoverableAssetToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    schema: EmbeddedModelSchemaToJSON2(value.schema),
+    file: SeededFileToJSON2(value.file),
+    fragment: SeededFragmentToJSON2(value.fragment),
+    directory: value.directory,
+    filters: TLPDirectedDiscoveryFiltersToJSON(value.filters)
+  };
+}
+
+// PiecesSDK/core/models/SeededDiscoverableAssets.ts
+function SeededDiscoverableAssetsToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    schema: EmbeddedModelSchemaToJSON2(value.schema),
+    application: value.application,
+    iterable: value.iterable.map(
+      SeededDiscoverableAssetToJSON
+    ),
+    filters: TLPDirectedDiscoveryFiltersToJSON(value.filters)
+  };
+}
+
+// PiecesSDK/core/models/SeededDiscoverableHtmlWebpage.ts
+function SeededDiscoverableHtmlWebpageToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    schema: EmbeddedModelSchemaToJSON2(value.schema),
+    url: value.url,
+    page: value.page
+  };
+}
+
+// PiecesSDK/core/models/SeededDiscoverableHtmlWebpages.ts
+function SeededDiscoverableHtmlWebpagesToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    schema: EmbeddedModelSchemaToJSON2(value.schema),
+    iterable: value.iterable.map(
+      SeededDiscoverableHtmlWebpageToJSON
+    ),
+    application: value.application
+  };
+}
+
+// PiecesSDK/core/models/SeededDiscoverableRelatedTag.ts
+function SeededDiscoverableRelatedTagToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    schema: EmbeddedModelSchemaToJSON2(value.schema),
+    text: value.text,
+    asset: value.asset,
+    mechanism: MechanismEnumToJSON2(value.mechanism),
+    format: value.format,
+    category: TagCategoryEnumToJSON2(value.category)
+  };
+}
+
+// PiecesSDK/core/models/SeededDiscoverableRelatedTags.ts
+function SeededDiscoverableRelatedTagsToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    schema: EmbeddedModelSchemaToJSON2(value.schema),
+    iterable: value.iterable.map(
+      SeededDiscoverableRelatedTagToJSON
+    ),
+    application: value.application
+  };
+}
+
+// PiecesSDK/core/models/SeededDiscoverableSensitive.ts
+function SeededDiscoverableSensitiveToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    schema: EmbeddedModelSchemaToJSON2(value.schema),
+    asset: value.asset,
+    text: value.text,
+    mechanism: MechanismEnumToJSON2(value.mechanism),
+    category: SensitiveCategoryEnumToJSON2(value.category),
+    severity: SensitiveSeverityEnumToJSON2(value.severity),
+    name: value.name,
+    description: value.description,
+    metadata: SensitiveMetadataToJSON2(value.metadata)
+  };
+}
+
+// PiecesSDK/core/models/SeededDiscoverableSensitives.ts
+function SeededDiscoverableSensitivesToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    schema: EmbeddedModelSchemaToJSON2(value.schema),
+    iterable: value.iterable.map(
+      SeededDiscoverableSensitiveToJSON
+    ),
+    application: value.application
+  };
+}
+
 // PiecesSDK/core/models/SeededDistribution.ts
 function SeededDistributionToJSON(value) {
   if (value === void 0) {
@@ -13589,6 +13857,27 @@ function SeededPersonToJSON2(value) {
     expiration: GroupedTimestampToJSON2(value.expiration),
     access: PersonAccessToJSON2(value.access),
     type: PersonTypeToJSON2(value.type)
+  };
+}
+
+// PiecesSDK/core/models/SeededSensitive.ts
+function SeededSensitiveFromJSON(json) {
+  return SeededSensitiveFromJSONTyped2(json, false);
+}
+function SeededSensitiveFromJSONTyped2(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    schema: !exists2(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON2(json["schema"]),
+    asset: json["asset"],
+    text: json["text"],
+    mechanism: !exists2(json, "mechanism") ? void 0 : MechanismEnumFromJSON2(json["mechanism"]),
+    category: SensitiveCategoryEnumFromJSON2(json["category"]),
+    severity: SensitiveSeverityEnumFromJSON2(json["severity"]),
+    name: json["name"],
+    description: json["description"],
+    metadata: !exists2(json, "metadata") ? void 0 : SensitiveMetadataFromJSON2(json["metadata"])
   };
 }
 
@@ -14901,6 +15190,69 @@ function TLPCodeSnippetTagifyCodeToJSON2(value) {
     inferred_threshold: value.inferredThreshold,
     context: value.context,
     asset: value.asset
+  };
+}
+
+// PiecesSDK/core/models/TLPDirectedDiscoveryFilter.ts
+function TLPDirectedDiscoveryFilterFromJSON(json) {
+  return TLPDirectedDiscoveryFilterFromJSONTyped(json, false);
+}
+function TLPDirectedDiscoveryFilterFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    name: TLPDirectedDiscoveryFilterEnumFromJSON(json["name"])
+  };
+}
+function TLPDirectedDiscoveryFilterToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    name: TLPDirectedDiscoveryFilterEnumToJSON(value.name)
+  };
+}
+
+// PiecesSDK/core/models/TLPDirectedDiscoveryFilterEnum.ts
+function TLPDirectedDiscoveryFilterEnumFromJSON(json) {
+  return TLPDirectedDiscoveryFilterEnumFromJSONTyped2(json, false);
+}
+function TLPDirectedDiscoveryFilterEnumFromJSONTyped2(json, ignoreDiscriminator) {
+  return json;
+}
+function TLPDirectedDiscoveryFilterEnumToJSON(value) {
+  return value;
+}
+
+// PiecesSDK/core/models/TLPDirectedDiscoveryFilters.ts
+function TLPDirectedDiscoveryFiltersFromJSON(json) {
+  return TLPDirectedDiscoveryFiltersFromJSONTyped4(json, false);
+}
+function TLPDirectedDiscoveryFiltersFromJSONTyped4(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    iterable: json["iterable"].map(
+      TLPDirectedDiscoveryFilterFromJSON
+    )
+  };
+}
+function TLPDirectedDiscoveryFiltersToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    iterable: value.iterable.map(
+      TLPDirectedDiscoveryFilterToJSON
+    )
   };
 }
 
@@ -16698,6 +17050,150 @@ var AssetsApi = class extends BaseAPI2 {
   }
 };
 
+// PiecesSDK/core/apis/DiscoveryApi.ts
+var DiscoveryApi = class extends BaseAPI2 {
+  /**
+   * This is the endpoint used for bulk import. In both cases of the bulk import flow, fragments or files. When we already have \"snippets\" or fragments to discover and now our job is to check if they are actually valid snippets(clustering). Otherwise, we should have a file to parse && snippitize and then run through the clustering.
+   * /discovery/discover/assets [POST]
+   */
+  async discoveryDiscoverAssetsRaw(requestParameters) {
+    const queryParameters = {};
+    if (requestParameters.automatic !== void 0) {
+      queryParameters["automatic"] = requestParameters.automatic;
+    }
+    const headerParameters = {};
+    headerParameters["Content-Type"] = "application/json";
+    const response = await this.request({
+      path: `/discovery/discover/assets`,
+      method: "POST",
+      headers: headerParameters,
+      query: queryParameters,
+      body: SeededDiscoverableAssetsToJSON(
+        requestParameters.seededDiscoverableAssets
+      )
+    });
+    return new JSONApiResponse2(
+      response,
+      (jsonValue) => DiscoveredAssetsFromJSON(jsonValue)
+    );
+  }
+  /**
+   * This is the endpoint used for bulk import. In both cases of the bulk import flow, fragments or files. When we already have \"snippets\" or fragments to discover and now our job is to check if they are actually valid snippets(clustering). Otherwise, we should have a file to parse && snippitize and then run through the clustering.
+   * /discovery/discover/assets [POST]
+   */
+  async discoveryDiscoverAssets(requestParameters) {
+    const response = await this.discoveryDiscoverAssetsRaw(
+      requestParameters
+    );
+    return await response.value();
+  }
+  /**
+   * This is the discover discover assets html endpoint. The goal of this endpoint is to either take an iterable of urls and pages(an html string) and extract all the assets from the iterable.
+   * /discovery/discover/assets/html[POST]
+   */
+  async discoveryDiscoverAssetsHtmlRaw(requestParameters) {
+    const queryParameters = {};
+    if (requestParameters.automatic !== void 0) {
+      queryParameters["automatic"] = requestParameters.automatic;
+    }
+    const headerParameters = {};
+    headerParameters["Content-Type"] = "application/json";
+    const response = await this.request({
+      path: `/discovery/discover/assets/html`,
+      method: "POST",
+      headers: headerParameters,
+      query: queryParameters,
+      body: SeededDiscoverableHtmlWebpagesToJSON(
+        requestParameters.seededDiscoverableHtmlWebpages
+      )
+    });
+    return new JSONApiResponse2(
+      response,
+      (jsonValue) => DiscoveredHtmlWebpagesFromJSON(jsonValue)
+    );
+  }
+  /**
+   * This is the discover discover assets html endpoint. The goal of this endpoint is to either take an iterable of urls and pages(an html string) and extract all the assets from the iterable.
+   * /discovery/discover/assets/html[POST]
+   */
+  async discoveryDiscoverAssetsHtml(requestParameters) {
+    const response = await this.discoveryDiscoverAssetsHtmlRaw(
+      requestParameters
+    );
+    return await response.value();
+  }
+  /**
+   * This endpoint will accept an array of text values, and attampt to extract sensitive data out of it.
+   * /discovery/discover/sensitives [POST]
+   */
+  async discoveryDiscoverSensitivesRaw(requestParameters) {
+    const queryParameters = {};
+    if (requestParameters.automatic !== void 0) {
+      queryParameters["automatic"] = requestParameters.automatic;
+    }
+    const headerParameters = {};
+    headerParameters["Content-Type"] = "application/json";
+    const response = await this.request({
+      path: `/discovery/discover/sensitives`,
+      method: "POST",
+      headers: headerParameters,
+      query: queryParameters,
+      body: SeededDiscoverableSensitivesToJSON(
+        requestParameters.seededDiscoverableSensitives
+      )
+    });
+    return new JSONApiResponse2(
+      response,
+      (jsonValue) => DiscoveredSensitivesFromJSON(jsonValue)
+    );
+  }
+  /**
+   * This endpoint will accept an array of text values, and attampt to extract sensitive data out of it.
+   * /discovery/discover/sensitives [POST]
+   */
+  async discoveryDiscoverSensitives(requestParameters) {
+    const response = await this.discoveryDiscoverSensitivesRaw(
+      requestParameters
+    );
+    return await response.value();
+  }
+  /**
+   * This will take in a tag or multiple tags and return all the tags that are related to the tag or tag provide in the body.
+   * /discovery/discover/tags/related [POST]
+   */
+  async discoveryDiscoverTagsRelatedRaw(requestParameters) {
+    const queryParameters = {};
+    if (requestParameters.automatic !== void 0) {
+      queryParameters["automatic"] = requestParameters.automatic;
+    }
+    const headerParameters = {};
+    headerParameters["Content-Type"] = "application/json";
+    const response = await this.request({
+      path: `/discovery/discover/tags/related`,
+      method: "POST",
+      headers: headerParameters,
+      query: queryParameters,
+      body: SeededDiscoverableRelatedTagsToJSON(
+        requestParameters.seededDiscoverableRelatedTags
+      )
+    });
+    return new JSONApiResponse2(
+      response,
+      (jsonValue) => DiscoveredRelatedTagsFromJSON(jsonValue)
+    );
+  }
+  /**
+   * This will take in a tag or multiple tags and return all the tags that are related to the tag or tag provide in the body.
+   * /discovery/discover/tags/related [POST]
+   */
+  async discoveryDiscoverTagsRelated(requestParameters) {
+    const response = await this.discoveryDiscoverTagsRelatedRaw(
+      requestParameters
+    );
+    return await response.value();
+  }
+};
+
 // PiecesSDK/core/apis/FormatApi.ts
 var FormatApi = class extends BaseAPI2 {
   /**
@@ -17533,7 +18029,7 @@ var WellKnownApi = class extends BaseAPI2 {
 };
 
 // package.json
-var version = "1.0.1";
+var version = "1.1.0";
 
 // src/connection/notification_handler.ts
 var import_obsidian = require("obsidian");
@@ -17597,6 +18093,9 @@ var ConnectorSingleton = class {
     this.assetApi = new AssetApi(
       new Configuration2({ fetchApi: fetch, basePath: this.parameters.basePath })
     );
+    this.DiscoveryApi = new DiscoveryApi(
+      new Configuration2({ fetchApi: fetch, basePath: this.parameters.basePath })
+    );
     this.wellKnownApi = new WellKnownApi(
       new Configuration2({ fetchApi: fetch, basePath: this.parameters.basePath })
     );
@@ -17625,9 +18124,9 @@ var ConnectorSingleton = class {
       await fetch(`http://localhost:${portNumber}/.well-known/health`);
       return true;
     } catch (e) {
-      const notifications5 = Notifications.getInstance();
+      const notifications7 = Notifications.getInstance();
       if (notification) {
-        notifications5.information({
+        notifications7.information({
           message: Constants.CORE_PLATFORM_MSG
         });
       }
@@ -17637,9 +18136,7 @@ var ConnectorSingleton = class {
   async track(event) {
     const { context, api } = this;
     if (!context) {
-      throw new Error(
-        "Application context could not be found when calling"
-      );
+      throw new Error("Application context could not be found when calling");
     }
     const seededConnectorTracking = { ...event };
     const seed = {
@@ -17707,6 +18204,7 @@ Constants.SEND_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="100" heigh
 Constants.ENRICH_ICON = '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>';
 Constants.CODE_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-braces"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"/><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/></svg>`;
 Constants.OPEN_ICON = '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-panel-right-open"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="15" x2="15" y1="3" y2="21"/><path d="m10 15-3-3 3-3"/></svg>';
+Constants.SAVE_ALL_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-save-all"><path d="M6 4a2 2 0 0 1 2-2h10l4 4v10.2a2 2 0 0 1-2 1.8H8a2 2 0 0 1-2-2Z"/><path d="M10 2v4h6"/><path d="M18 18v-7h-8v7"/><path d="M18 22H4a2 2 0 0 1-2-2V6"/></svg>`;
 /*
        -------------
        |   Views   |
@@ -17735,6 +18233,8 @@ Constants.LOGOUT_TITLE = "Logout";
 Constants.LOGOUT_DESC = "You will no longer have the ability to generate shareable links or share via GitHub Gist.";
 Constants.TOGGLE_AUTOOPEN = "Auto-Open Pieces list on snippet save";
 Constants.TOGGLE_AUTOOPEN_DESC = "Automatically open the Pieces snippet list view when saving a snippet.";
+Constants.TOGGLE_AUTODISCOVER = "Auto-Discover snippets from your vault";
+Constants.TOGGLE_AUTODISCOVER_DESC = "Automatically discover snippets from your vault when opening Pieces.";
 /*
      ---------------------
      |   SAVE SNIPPETS   |
@@ -17742,6 +18242,7 @@ Constants.TOGGLE_AUTOOPEN_DESC = "Automatically open the Pieces snippet list vie
      notification text for saving a piece
    */
 Constants.NO_SAVE_SELECTION = "Make sure you select some text before you save a snippet";
+Constants.NO_SELECTION_SAVE = "Make sure to select some snippets before you try to save";
 Constants.SAVE_SUCCESS = "Success saving to Pieces";
 Constants.SAVE_FAIL = "Failed saving to Pieces";
 /*
@@ -17799,10 +18300,10 @@ Constants.SEARCH_SUCCESS = "Snippet search success!";
 Constants.SEARCH_FAILURE = "Something went wrong while searching for your snippets, if the issue persists please reach out to support at support@pieces.app.";
 /*
        -----------------------------------
-       |   TEXT FOR POS DOWNLOAD MODAL   |
+       |   TEXT FOR Pieces OS DOWNLOAD MODAL   |
        -----------------------------------
        This is shown in the 'download-pos-modal'
-       if we are not able to contact POS on their machine
+       if we are not able to contact Pieces OS on their machine
    */
 Constants.INSTALL_TEXT = "Please download, install, and run our core dependency to use Pieces with Obsidian:";
 Constants.PIECES_ONDEVICE_COPY = "Pieces for Developers | Core Platform runs offline and on-device to power our IDE and Browser Extensions";
@@ -17835,13 +18336,12 @@ Constants.UPDATE_OS = `In order to use the Pieces for Developers Obsidian Plugin
 	|------------------|
 */
 Constants.RECLASSIFY_SUCCESS = "Snippet successfully reclassified";
-Constants.RECLASSIFY_FAILURE = "Error reclassifying snippet, please try again.";
+Constants.RECLASSIFY_FAILURE = "Error reclassifying snippet, please try again... or contact support@pieces.app";
 Constants.UPDATE_SUCCESS = "Snippet successfully updated";
-Constants.UPDATE_FAILURE = "Error updating snippet, please try again.";
+Constants.UPDATE_FAILURE = "Error updating snippet, please try again... or contact support@pieces.app";
+Constants.UPDATE_CODE_SUCCESS = "Snippet code successfully updated";
+Constants.UPDATE_CODE_FAILURE = "Error updating snippet code, please try again... or contact support@pieces.app";
 Constants.GPT_DEFAULT_LANGUAGE = "txt";
-
-// PiecesSDK/common/runtime.ts
-var BASE_PATH3 = "http://localhost:1000".replace(/\/+$/, "");
 
 // src/cache/pieces_cache.ts
 var PiecesCacheSingleton = class {
@@ -17852,6 +18352,9 @@ var PiecesCacheSingleton = class {
     this.mappedAssets = {};
     this.fetchedFormats = {};
     this.snippetMap = /* @__PURE__ */ new Map();
+    this.discoveredSnippets = [];
+    this.gptContextPaths = [];
+    this.gptFolderNames = [];
     // this is a map of key: format uuid and value here is a transferable
     this.formatTransferables = {};
   }
@@ -17862,33 +18365,19 @@ var PiecesCacheSingleton = class {
     assets: incomingAssets,
     transferables
   }) {
-    var _a, _b, _c, _d, _e, _f, _g;
     if (incomingAssets) {
       this.assets = incomingAssets;
       this.convertToMap(incomingAssets);
       for (let i = 0; i < incomingAssets.length; i++) {
-        const isImage = ((_a = incomingAssets[i].original.reference) == null ? void 0 : _a.classification.generic) === "IMAGE" /* Image */;
-        let classification;
-        if (isImage) {
-          const ocrid = (_e = (_d = (_c = (_b = incomingAssets[i].original.reference) == null ? void 0 : _b.analysis) == null ? void 0 : _c.image) == null ? void 0 : _d.ocr) == null ? void 0 : _e.raw.id;
-          if (!ocrid) {
-            continue;
-          }
-          const format = (_f = incomingAssets[i].formats.iterable) == null ? void 0 : _f.find(
-            (e) => e.id === ocrid
-          );
-          classification = format == null ? void 0 : format.classification.specific;
-        } else {
-          classification = (_g = incomingAssets[i].original.reference) == null ? void 0 : _g.classification.specific;
-        }
-        if (!classification) {
+        const currentLanguage = incomingAssets[i].language;
+        if (!currentLanguage) {
           continue;
         }
-        const curList = this.snippetMap.get(classification);
+        const curList = this.snippetMap.get(currentLanguage);
         if (curList) {
           curList.push(incomingAssets[i].id);
         } else {
-          this.snippetMap.set(classification, [incomingAssets[i].id]);
+          this.snippetMap.set(currentLanguage, [incomingAssets[i].id]);
         }
       }
     }
@@ -17905,8 +18394,9 @@ var PiecesCacheSingleton = class {
     if (this.mappedAssets[asset.id]) {
       return this.updateAsset({ asset });
     }
-    this.assets.unshift(asset);
-    this.mappedAssets[asset.id] = asset;
+    const processed = processAsset({ asset });
+    this.assets.unshift(processed);
+    this.mappedAssets[asset.id] = processed;
     if (((_a = asset.original.reference) == null ? void 0 : _a.file) || ((_b = asset.original.reference) == null ? void 0 : _b.fragment)) {
       this.formatTransferables[(_c = asset.original.reference) == null ? void 0 : _c.id] = {
         file: (_d = asset.original.reference) == null ? void 0 : _d.file,
@@ -17915,12 +18405,13 @@ var PiecesCacheSingleton = class {
     }
   }
   updateAsset({ asset }) {
+    const processed = processAsset({ asset });
     for (let i = 0; i < this.assets.length; i++) {
       if (this.assets[i].id === asset.id) {
-        this.assets[i] = asset;
+        this.assets[i] = processed;
       }
     }
-    this.mappedAssets[asset.id] = asset;
+    this.mappedAssets[asset.id] = processed;
   }
   /**
    * Maps the iterable of Pieces so they are accessible by the id.
@@ -17941,6 +18432,9 @@ var PiecesCacheSingleton = class {
     return PiecesCacheSingleton._instance;
   }
 };
+
+// PiecesSDK/common/runtime.ts
+var BASE_PATH3 = "http://localhost:1000".replace(/\/+$/, "");
 
 // src/utils.ts
 var timeoutPromise = (duration) => new Promise((resolver) => setTimeout(resolver, duration));
@@ -18002,7 +18496,7 @@ var mergeAssetWithTransferables = ({
 };
 
 // src/ui/views/create_snippet_view.ts
-var import_obsidian9 = require("obsidian");
+var import_obsidian10 = require("obsidian");
 
 // assets/classifications/batchfile-white.png
 var batchfile_white_default = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAH/SURBVHgB7ZiLccIwDIaVXgeADcIGjAAbsAFhgmQD6AYwAbBBmACYADZINoANXMk95ZyHctCEntvqu9Mp59hGin/LCQCKoiiKoii/B2NMjJYZv8jQomeSiIzfJNWYAyGRDF0I/pIHQTByG6REDHgOJlKK/Q3+CJqIb/y/REajEW2wkg2HQ5hOp7Df78Vxi8Wi6Hu/34v20+lUm6/JaPy3aSrcYRhSJRNtvV7XxmRZJvY5Ho+t87FFUfOR1jkRd2IKlNvJV9lut6WgJpOJkaB5pXkeSaTTHsEfBQxOvM+SwyCtJzldr1d4BZ0SyfPcBkdUE3LvxXFc3D8cDvBjmBZpDQYDe+3umfF4bGXmkiRJSSqr1aoY7420SFJsBMnlfD6X+qRpav1sNrN+Pp9bT5WLV6pPnk6EAsOKYw1XAfDJ23byXF4pUJIWgSsAu93OtnHibeW6V9qkVS2H+OQLibG8WCaSkbxut1uv0nqHjrCECHr6tCrcRhvcLQJ0D88S62lVqAi8lLYVcTc7XUPl4HLPjsvlUpuHzhJoOFO6rsjTiUCDTJbLZSEVDlQKiKsXOFLsI5GHP6x487qQlMikfry5pbnc8SQ3LhbSOJfqh5V+IfqGJuIbUiKveUXtj1p8UiIf4DebakMg9TRff03Sm14I/pCjbbBgpaAoiqIoiuI/nzQheYPhf7t6AAAAAElFTkSuQmCC";
@@ -18561,7 +19055,8 @@ var loadingCat_default = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABrUAAAa1
 
 // src/ui/render/showLoadingState.ts
 var showLoadingState = ({
-  containerVar: containerVar2
+  containerVar: containerVar2,
+  discovery
 }) => {
   const piecesDiv = containerVar2.createEl("div");
   piecesDiv.addClass("loading-div");
@@ -18576,7 +19071,7 @@ var showLoadingState = ({
   const loadingTextDiv = containerVar2.createEl("div");
   loadingTextDiv.addClass("loading-div");
   const loadTxt = loadingTextDiv.createEl("h4", {
-    text: "We haven\u2019t found any snippets yet! We\u2019re still looking... "
+    text: discovery ? `You've saved all your discovered snippets!` : "We haven\u2019t found any snippets yet! We\u2019re still looking... "
   });
   loadTxt.addClass("loading-div");
   const loadingDiv = containerVar2.createEl("div");
@@ -18601,9 +19096,7 @@ var parseDescription = (input) => {
     return lines.slice(firstMarkerIndex + 1, secondMarkerIndex).join("\n");
   }
   if (secondMarkerIndex !== -1) {
-    const thirdMarkerIndex = lines.findIndex(
-      (line) => line === thirdMarker
-    );
+    const thirdMarkerIndex = lines.findIndex((line) => line === thirdMarker);
     if (thirdMarkerIndex !== -1) {
       return lines.slice(secondMarkerIndex + 1, thirdMarkerIndex).join("\n");
     } else {
@@ -18624,13 +19117,10 @@ var highlightSnippet = ({
   snippetContent,
   snippetLanguage
 }) => {
+  snippetLanguage = snippetLanguage.toLowerCase();
   switch (snippetLanguage) {
     case "bat":
-      return Prism.highlight(
-        snippetContent,
-        Prism.languages.batch,
-        "batch"
-      );
+      return Prism.highlight(snippetContent, Prism.languages.batch, "batch");
       break;
     case "coffee":
       return Prism.highlight(
@@ -18640,11 +19130,7 @@ var highlightSnippet = ({
       );
       break;
     case "erl":
-      return Prism.highlight(
-        snippetContent,
-        Prism.languages.erlang,
-        "erlang"
-      );
+      return Prism.highlight(snippetContent, Prism.languages.erlang, "erlang");
       break;
     case "hs":
       return Prism.highlight(
@@ -18664,11 +19150,7 @@ var highlightSnippet = ({
       );
       break;
     case "matlab":
-      return Prism.highlight(
-        snippetContent,
-        Prism.languages.matlab,
-        "matlab"
-      );
+      return Prism.highlight(snippetContent, Prism.languages.matlab, "matlab");
       break;
     case "m":
       return Prism.highlight(snippetContent, Prism.languages.cpp, "cpp");
@@ -18683,11 +19165,7 @@ var highlightSnippet = ({
       return Prism.highlight(snippetContent, Prism.languages.cpp, "cpp");
       break;
     case "cs":
-      return Prism.highlight(
-        snippetContent,
-        Prism.languages.csharp,
-        "csharp"
-      );
+      return Prism.highlight(snippetContent, Prism.languages.csharp, "csharp");
       break;
     case "css":
       return Prism.highlight(snippetContent, Prism.languages.css, "css");
@@ -18697,18 +19175,10 @@ var highlightSnippet = ({
       break;
     case "htm":
     case "html":
-      return Prism.highlight(
-        snippetContent,
-        Prism.languages.html,
-        "html"
-      );
+      return Prism.highlight(snippetContent, Prism.languages.html, "html");
       break;
     case "java":
-      return Prism.highlight(
-        snippetContent,
-        Prism.languages.java,
-        "java"
-      );
+      return Prism.highlight(snippetContent, Prism.languages.java, "java");
       break;
     case "js":
       return Prism.highlight(
@@ -18725,36 +19195,20 @@ var highlightSnippet = ({
       );
       break;
     case "dart":
-      return Prism.highlight(
-        snippetContent,
-        Prism.languages.dart,
-        "dart"
-      );
+      return Prism.highlight(snippetContent, Prism.languages.dart, "dart");
       break;
     case "scala":
-      return Prism.highlight(
-        snippetContent,
-        Prism.languages.scala,
-        "scala"
-      );
+      return Prism.highlight(snippetContent, Prism.languages.scala, "scala");
       break;
     case "sql":
       return Prism.highlight(snippetContent, Prism.languages.sql, "sql");
       break;
     case "pl":
-      return Prism.highlight(
-        snippetContent,
-        Prism.languages.perl,
-        "perl"
-      );
+      return Prism.highlight(snippetContent, Prism.languages.perl, "perl");
       break;
     case "pyc":
     case "py":
-      return Prism.highlight(
-        snippetContent,
-        Prism.languages.python,
-        "python"
-      );
+      return Prism.highlight(snippetContent, Prism.languages.python, "python");
       break;
     case "ps1":
       return Prism.highlight(
@@ -18767,83 +19221,43 @@ var highlightSnippet = ({
       return Prism.highlight(snippetContent, Prism.languages.r, "r");
       break;
     case "sh":
-      return Prism.highlight(
-        snippetContent,
-        Prism.languages.bash,
-        "bash"
-      );
+      return Prism.highlight(snippetContent, Prism.languages.bash, "bash");
       break;
     case "swift":
-      return Prism.highlight(
-        snippetContent,
-        Prism.languages.swift,
-        "swift"
-      );
+      return Prism.highlight(snippetContent, Prism.languages.swift, "swift");
       break;
     case "rb":
-      return Prism.highlight(
-        snippetContent,
-        Prism.languages.ruby,
-        "ruby"
-      );
+      return Prism.highlight(snippetContent, Prism.languages.ruby, "ruby");
       break;
     case "tex":
-      return Prism.highlight(
-        snippetContent,
-        Prism.languages.latex,
-        "latex"
-      );
+      return Prism.highlight(snippetContent, Prism.languages.latex, "latex");
       break;
     case "text":
     case "txt":
       return snippetContent;
       break;
     case "rs":
-      return Prism.highlight(
-        snippetContent,
-        Prism.languages.rust,
-        "rust"
-      );
+      return Prism.highlight(snippetContent, Prism.languages.rust, "rust");
       break;
     case "json":
-      return Prism.highlight(
-        snippetContent,
-        Prism.languages.json,
-        "json"
-      );
+      return Prism.highlight(snippetContent, Prism.languages.json, "json");
       break;
     case "yaml":
     case "yml":
-      return Prism.highlight(
-        snippetContent,
-        Prism.languages.yaml,
-        "yaml"
-      );
+      return Prism.highlight(snippetContent, Prism.languages.yaml, "yaml");
       break;
     case "tml":
     case "toml":
-      return Prism.highlight(
-        snippetContent,
-        Prism.languages.toml,
-        "toml"
-      );
+      return Prism.highlight(snippetContent, Prism.languages.toml, "toml");
       break;
     case "xml":
       return Prism.highlight(snippetContent, Prism.languages.xml, "xml");
       break;
     case "groovy":
-      return Prism.highlight(
-        snippetContent,
-        Prism.languages.groovy,
-        "groovy"
-      );
+      return Prism.highlight(snippetContent, Prism.languages.groovy, "groovy");
       break;
     case "kt":
-      return Prism.highlight(
-        snippetContent,
-        Prism.languages.kotlin,
-        "kotlin"
-      );
+      return Prism.highlight(snippetContent, Prism.languages.kotlin, "kotlin");
       break;
     case "clj":
       return Prism.highlight(
@@ -18853,18 +19267,10 @@ var highlightSnippet = ({
       );
       break;
     case "el":
-      return Prism.highlight(
-        snippetContent,
-        Prism.languages.lisp,
-        "lisp"
-      );
+      return Prism.highlight(snippetContent, Prism.languages.lisp, "lisp");
       break;
     case "ex":
-      return Prism.highlight(
-        snippetContent,
-        Prism.languages.elixir,
-        "elixir"
-      );
+      return Prism.highlight(snippetContent, Prism.languages.elixir, "elixir");
       break;
     default:
       return snippetContent;
@@ -18881,18 +19287,18 @@ var DeletePiece = class {
     id,
     retry: retry2 = false
   }) {
-    const config8 = ConnectorSingleton.getInstance();
-    const notifications5 = Notifications.getInstance();
+    const config9 = ConnectorSingleton.getInstance();
+    const notifications7 = Notifications.getInstance();
     const storage4 = PiecesCacheSingleton.getInstance();
     try {
       const piece = storage4.mappedAssets[id];
       if (!piece) {
-        notifications5.information({
+        notifications7.information({
           message: Constants.SNIPPET_IS_DELETED
         });
         return;
       }
-      await config8.assetsApi.assetsDeleteAsset({ asset: id });
+      await config9.assetsApi.assetsDeleteAsset({ asset: id });
       delete storage4.mappedAssets[id];
       const indx = storage4.assets.findIndex((e) => e.id === id);
       if (indx >= 0) {
@@ -18904,19 +19310,19 @@ var DeletePiece = class {
       if (storage4.assets.length === 0) {
         await triggerUIRedraw(false, void 0, void 0, false);
       }
-      notifications5.information({
+      notifications7.information({
         message: Constants.SNIPPET_DELETE_SUCCESS
       });
     } catch (error) {
       if (error.status === 401 || error.status === 400) {
         if (retry2) {
-          notifications5.error({
+          notifications7.error({
             message: Constants.SNIPPET_DELETE_FAILURE
           });
         } else {
           try {
-            config8.context = await config8.api.connect({
-              seededConnectorConnection: config8.seeded
+            config9.context = await config9.api.connect({
+              seededConnectorConnection: config9.seeded
             });
             return await this.delete({ id, retry: true });
           } catch (e) {
@@ -18927,13 +19333,13 @@ var DeletePiece = class {
         if (!retry2) {
           if (error.code === "ECONNREFUSED") {
             await launchRuntime(true);
-            config8.context = await config8.api.connect({
-              seededConnectorConnection: config8.seeded
+            config9.context = await config9.api.connect({
+              seededConnectorConnection: config9.seeded
             });
           }
           return await this.delete({ id, retry: true });
         }
-        notifications5.error({
+        notifications7.error({
           message: Constants.SNIPPET_DELETE_FAILURE
         });
       }
@@ -19101,19 +19507,17 @@ var CloudService = class {
     });
     return connected;
   }
-  async disconnect({
-    user
-  }) {
+  async disconnect({ user }) {
     try {
-      const { config: config8 } = this;
-      user = user ? user : (await config8.userApi.userSnapshot()).user;
+      const { config: config9 } = this;
+      user = user ? user : (await config9.userApi.userSnapshot()).user;
       if (!user || !(user == null ? void 0 : user.allocation)) {
         this.notifications.information({
           message: Constants.CLOUD_DISCONNECT_ALR
         });
         return true;
       }
-      await config8.allocationsApi.allocationsDisconnectCloud({
+      await config9.allocationsApi.allocationsDisconnectCloud({
         allocationCloud: user.allocation
       });
       this.notifications.information({
@@ -19148,39 +19552,37 @@ var ShareableLinksService = class {
   }) {
     var _a, _b, _c;
     try {
-      const { config: config8, cloud, notifications: notifications5 } = this;
-      const profile = await config8.userApi.userSnapshot();
+      const { config: config9, cloud, notifications: notifications7 } = this;
+      const profile = await config9.userApi.userSnapshot();
       if (!(profile == null ? void 0 : profile.user)) {
-        notifications5.error({ message: Constants.LOGIN_TO_POS });
+        notifications7.error({ message: Constants.LOGIN_TO_POS });
         return;
       } else if (!((_a = profile == null ? void 0 : profile.user) == null ? void 0 : _a.allocation)) {
         const allocation = await cloud.connect({
           user: profile == null ? void 0 : profile.user
         });
         if (!allocation) {
-          notifications5.error({
+          notifications7.error({
             message: Constants.CLOUD_CONNECT_FAIL
           });
           return;
         }
         profile.user.allocation = allocation;
       } else if (((_c = (_b = profile == null ? void 0 : profile.user) == null ? void 0 : _b.allocation) == null ? void 0 : _c.status.cloud) != "RUNNING" /* Running */) {
-        notifications5.error({
+        notifications7.error({
           message: Constants.CLOUD_CONNECT_INPROG
         });
         return;
       }
-      const asset = await config8.assetApi.assetSnapshot({ asset: id }).catch((error) => {
+      const asset = await config9.assetApi.assetSnapshot({ asset: id }).catch((error) => {
         if (error.status === 410) {
           throw new Error("Snippet no longer exists");
         } else {
-          throw new Error(
-            "Please check that Pieces OS is installed"
-          );
+          throw new Error("Please check that Pieces OS is installed");
         }
       });
-      notifications5.information({ message: `Generating a link...` });
-      const link = await config8.linkifyApi.linkify({
+      notifications7.information({ message: `Generating a link...` });
+      const link = await config9.linkifyApi.linkify({
         linkify: {
           asset,
           access: "PUBLIC" /* Public */
@@ -19204,19 +19606,19 @@ var ShareableLinksService = class {
           );
         }
       });
-      notifications5.information({
+      notifications7.information({
         message: Constants.LINK_GEN_SUCCESS
       });
       return link.iterable[0].link;
     } catch (error) {
-      const { config: config8, notifications: notifications5 } = this;
+      const { config: config9, notifications: notifications7 } = this;
       if (error.status === 401 || error.status === 400) {
         if (retry2) {
-          notifications5.error({ message: Constants.LINK_GEN_FAIL });
+          notifications7.error({ message: Constants.LINK_GEN_FAIL });
         } else {
           try {
-            config8.context = await config8.api.connect({
-              seededConnectorConnection: config8.seeded
+            config9.context = await config9.api.connect({
+              seededConnectorConnection: config9.seeded
             });
             return await this.generate({ id, retry: true });
           } catch (e) {
@@ -19230,24 +19632,30 @@ var ShareableLinksService = class {
           }
           return await this.generate({ id, retry: true });
         }
-        notifications5.error({ message: Constants.LINK_GEN_FAIL });
+        notifications7.error({ message: Constants.LINK_GEN_FAIL });
       }
     }
   }
 };
 
 // src/actions/create_asset.ts
-var createAsset = async (selection, retry2 = false, description, lang) => {
-  const config8 = ConnectorSingleton.getInstance();
-  const notifications5 = Notifications.getInstance();
-  let context = config8.context;
+var createAsset = async ({
+  selection,
+  retry: retry2 = false,
+  name,
+  description,
+  lang
+}) => {
+  const config9 = ConnectorSingleton.getInstance();
+  const notifications7 = Notifications.getInstance();
+  let context = config9.context;
   try {
-    config8.context = await config8.api.connect({
-      seededConnectorConnection: config8.seeded
+    config9.context = await config9.api.connect({
+      seededConnectorConnection: config9.seeded
     });
-    context = config8.context;
+    context = config9.context;
   } catch (error) {
-    notifications5.error({ message: Constants.CONNECTION_FAIL });
+    notifications7.error({ message: Constants.CONNECTION_FAIL });
     return Promise.reject(new Error("Failed to Connect"));
   }
   const application = context.application.id;
@@ -19256,7 +19664,7 @@ var createAsset = async (selection, retry2 = false, description, lang) => {
       format: {
         fragment: {
           string: {
-            raw: selection
+            raw: selection || ""
           }
         }
       }
@@ -19267,40 +19675,40 @@ var createAsset = async (selection, retry2 = false, description, lang) => {
       ext: invertedSearchLangSpecificEnum[lang.toLowerCase()]
     };
   }
-  if (description) {
-    seededConnectorCreation.asset.metadata = { description };
+  seededConnectorCreation.asset.metadata = {};
+  if (name && name.length) {
+    seededConnectorCreation.asset.metadata = { ...seededConnectorCreation.asset.metadata, name };
+  }
+  if (description && description.length) {
+    seededConnectorCreation.asset.metadata = { ...seededConnectorCreation.asset.metadata, description };
   }
   try {
-    const id = await config8.api.create({
+    const id = await config9.api.create({
       application,
       seededConnectorCreation
     });
-    notifications5.information({ message: Constants.SAVE_SUCCESS });
+    notifications7.information({ message: Constants.SAVE_SUCCESS });
     return id;
   } catch (error) {
     if (retry2) {
-      notifications5.error({ message: Constants.SAVE_FAIL });
-      return Promise.reject(
-        new Error(`Error saving piece ${error.message}`)
-      );
+      notifications7.error({ message: Constants.SAVE_FAIL });
+      return Promise.reject(new Error(`Error saving piece ${error.message}`));
     }
     if (error.status === 401 || error.status === 400) {
       return Promise.reject(
-        new Error(`User error reported from POS ${error.status}`)
+        new Error(`User error reported from Pieces OS ${error.status}`)
       );
     }
     if (error.code === "ECONNREFUSED") {
       if (retry2) {
-        return Promise.reject(
-          new Error(`Error saving piece ${error.message}`)
-        );
+        return Promise.reject(new Error(`Error saving piece ${error.message}`));
       }
       await launchRuntime(true);
-      config8.context = await config8.api.connect({
-        seededConnectorConnection: config8.seeded
+      config9.context = await config9.api.connect({
+        seededConnectorConnection: config9.seeded
       });
     }
-    return createAsset(selection, true);
+    return createAsset({ selection, retry: true });
   }
 };
 
@@ -19387,17 +19795,144 @@ var update = async ({
     return;
   }
 };
+var updateFormat = async ({ format }) => {
+  try {
+    const ret = await config2.formatApi.formatUpdateValue({ format });
+    notifications.information({ message: Constants.UPDATE_CODE_SUCCESS });
+    return ret;
+  } catch (error) {
+    console.error(error);
+    notifications.error({ message: Constants.UPDATE_CODE_FAILURE });
+    return;
+  }
+};
+
+// src/ui/utils/langExtToClassificationSpecific.ts
+function langExtToClassificationSpecificEnum(ext) {
+  ext = ext.toLowerCase();
+  switch (ext) {
+    case "batchfile":
+    case "bat":
+      return "bat" /* Bat */;
+    case "c#":
+    case "c-sharp":
+    case "cs":
+      return "cs" /* Cs */;
+    case "coffeescript":
+    case "coffee":
+      return "coffee" /* Coffee */;
+    case "clojure":
+    case "clj":
+      return "clj" /* Clj */;
+    case "erlang":
+    case "erl":
+      return "erl" /* Erl */;
+    case "el":
+      return "el" /* El */;
+    case "ex":
+      return "ex" /* Ex */;
+    case "groovy":
+      return "groovy" /* Groovy */;
+    case "haskell":
+    case "hs":
+      return "hs" /* Hs */;
+    case "kt":
+      return "kt" /* Kt */;
+    case "lua":
+      return "lua" /* Lua */;
+    case "markdown":
+    case "md":
+      return "md" /* Md */;
+    case "matlab":
+      return "matlab" /* Matlab */;
+    case "objective-c":
+    case "objective":
+    case "m":
+      return "m" /* M */;
+    case "c":
+      return "c" /* C */;
+    case "cpp":
+    case "c++":
+    case "cc":
+    case "hh":
+    case "h":
+      return "cpp" /* Cpp */;
+    case "css":
+      return "css" /* Css */;
+    case "go":
+      return "go" /* Go */;
+    case "html":
+      return "html" /* Html */;
+    case "htm":
+      return "htm" /* Htm */;
+    case "java":
+      return "java" /* Java */;
+    case "javascript":
+    case "js":
+      return "js" /* Js */;
+    case "json":
+      return "json" /* Json */;
+    case "typescript":
+    case "ts":
+      return "ts" /* Ts */;
+    case "dart":
+      return "dart" /* Dart */;
+    case "scala":
+      return "scala" /* Scala */;
+    case "sql":
+      return "sql" /* Sql */;
+    case "perl":
+    case "pl":
+      return "pl" /* Pl */;
+    case "php":
+      return "php" /* Php */;
+    case "python":
+    case "py":
+      return "py" /* Py */;
+    case "powershell":
+    case "ps1":
+      return "ps" /* Ps */;
+    case "plaintext":
+    case "txt":
+    case "text":
+      return "text" /* Text */;
+    case "r":
+      return "r" /* R */;
+    case "ruby":
+    case "rb":
+      return "rb" /* Rb */;
+    case "shell":
+    case "sh":
+      return "sh" /* Sh */;
+    case "swift":
+      return "swift" /* Swift */;
+    case "tex":
+      return "tex" /* Tex */;
+    case "rust":
+    case "rs":
+      return "rs" /* Rs */;
+    case "toml":
+      return "toml" /* Toml */;
+    case "xml":
+      return "xml" /* Xml */;
+    case "yaml":
+    case "yml":
+      return "yaml" /* Yaml */;
+    default:
+      return "js" /* Js */;
+  }
+}
 
 // src/ui/modals/edit-asset-modal.ts
 var EditModal = class extends import_obsidian5.Modal {
-  constructor(app2, snippetTitle, snippetId, snippetContent, snippetLanguage, snippetDesc, snippetEl) {
+  constructor(app2, snippetObject, snippetEl) {
     super(app2);
-    this.snippetTitle = snippetTitle;
-    this.snippetId = snippetId;
-    this.snippetContent = snippetContent;
-    this.snippetLanguage = snippetLanguage;
-    this.seperatedRaw = this.snippetContent.split("\n");
-    this.snippetDesc = snippetDesc;
+    this.snippetTitle = snippetObject.title;
+    this.snippetId = snippetObject.id;
+    this.snippetContent = snippetObject.raw;
+    this.snippetLanguage = snippetObject.language;
+    this.seperatedRaw = (snippetObject.raw || "").split("\n");
+    this.snippetDesc = snippetObject.description || "";
     this.snippetEl = snippetEl;
   }
   onOpen() {
@@ -19417,11 +19952,7 @@ var EditModal = class extends import_obsidian5.Modal {
     const languageLabel = languageDiv.createEl("span", {
       text: "Language:"
     });
-    languageLabel.addClasses([
-      "edit-form-row",
-      "edit-text",
-      "justify-left"
-    ]);
+    languageLabel.addClasses(["edit-form-row", "edit-text", "justify-left"]);
     const classificationDropdown = new import_obsidian5.DropdownComponent(languageDiv);
     classificationDropdown.selectEl.addClasses([
       "edit-dropdown",
@@ -19434,9 +19965,6 @@ var EditModal = class extends import_obsidian5.Modal {
       classificationDropdown.addOption(value, value);
     }
     classificationDropdown.selectEl.value = (_a = searchLangSpecificEnum[this.snippetLanguage]) != null ? _a : "dart" /* Dart */;
-    classificationDropdown.onChange(() => {
-      this.snippetLanguage = classificationDropdown.getValue();
-    });
     const titleDiv = titleRow.createDiv();
     titleDiv.addClasses(["edit-form-col"]);
     const titleLabel = titleDiv.createEl("span", { text: "Title:" });
@@ -19453,7 +19981,7 @@ var EditModal = class extends import_obsidian5.Modal {
     const snippet = contentEl.createEl("div");
     snippet.addClasses(["snippet-form-row", "snippet"]);
     const snippetDiv = snippet.createEl("div");
-    snippetDiv.addClass("parent");
+    snippetDiv.addClass("pieces-parent");
     snippetDiv.setAttribute("id", "editParent");
     const lineNumDiv = snippetDiv.createEl("div");
     lineNumDiv.addClass("lineNums");
@@ -19461,6 +19989,7 @@ var EditModal = class extends import_obsidian5.Modal {
     rawCodeDiv.addClass("rawCode");
     const preElement = rawCodeDiv.createEl("pre");
     preElement.addClasses(["snippet_pre", "line-numbers"]);
+    preElement.contentEditable = "true";
     for (let i = 0; i < this.seperatedRaw.length; i++) {
       const lineNum = contentEl.createEl("code", {
         text: (i + 1).toString()
@@ -19470,8 +19999,28 @@ var EditModal = class extends import_obsidian5.Modal {
       lineNumDiv.createEl("br");
     }
     preElement.innerHTML = highlightSnippet({
-      snippetContent: this.snippetContent,
+      snippetContent: this.snippetContent || "",
       snippetLanguage: this.snippetLanguage
+    });
+    preElement.addEventListener("focusout", () => {
+      this.snippetContent = preElement.innerText;
+      const highlighted = highlightSnippet({
+        snippetContent: this.snippetContent || "",
+        snippetLanguage: langExtToClassificationSpecificEnum(
+          this.snippetLanguage
+        )
+      });
+      preElement.innerHTML = highlighted;
+    });
+    classificationDropdown.onChange(() => {
+      this.snippetLanguage = classificationDropdown.getValue();
+      const highlighted = highlightSnippet({
+        snippetContent: this.snippetContent || "",
+        snippetLanguage: langExtToClassificationSpecificEnum(
+          this.snippetLanguage
+        )
+      });
+      preElement.innerHTML = highlighted;
     });
     const descRow = contentEl.createDiv();
     descRow.addClass("edit-form-row", "edit-form-desc");
@@ -19491,10 +20040,10 @@ var EditModal = class extends import_obsidian5.Modal {
     }).setTooltip("Save changes").setClass("button");
   }
   async updateHandler() {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _i;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n;
     try {
-      const config8 = ConnectorSingleton.getInstance();
-      let asset = await config8.assetApi.assetSnapshot({
+      const config9 = ConnectorSingleton.getInstance();
+      let asset = await config9.assetApi.assetSnapshot({
         asset: this.snippetId,
         transferables: false
       });
@@ -19516,10 +20065,33 @@ var EditModal = class extends import_obsidian5.Modal {
           ext: newClassification
         }) || asset;
       }
-      if (asset.name !== this.snippetTitle || asset.description !== this.snippetDesc) {
+      if (asset.name !== this.snippetTitle || // if the title or description changed
+      asset.description !== this.snippetDesc) {
         asset.name = this.snippetTitle;
         asset.description = this.snippetDesc;
         asset = await update({ asset }) || asset;
+      }
+      const processed = processAsset({ asset });
+      if (processed.raw !== this.snippetContent) {
+        const id = isImage ? (_m = (_l = (_k = (_j = asset.original.reference) == null ? void 0 : _j.analysis) == null ? void 0 : _k.image) == null ? void 0 : _l.ocr) == null ? void 0 : _m.raw.id : asset.preview.base.id;
+        const encoder = new TextEncoder();
+        const format = (_n = asset.formats.iterable) == null ? void 0 : _n.find(
+          (element) => element.id === id
+        );
+        if (isImage) {
+          format.file = {
+            bytes: {
+              raw: Array.from(encoder.encode(this.snippetContent))
+            }
+          };
+        } else {
+          format.fragment = {
+            string: {
+              raw: this.snippetContent
+            }
+          };
+        }
+        updateFormat({ format });
       }
       this.close();
     } catch (error) {
@@ -19540,14 +20112,21 @@ var EditModal = class extends import_obsidian5.Modal {
 
 // src/ui/render/renderSnippet.ts
 var notifications2 = Notifications.getInstance();
-function renderSnippet(contentEl, snippetTitle, seperatedRaw, snippetContent, snippetId, snippetLanguage, snippetDesc, newSnippet, share) {
+var cache = PiecesCacheSingleton.getInstance();
+function renderSnippet({
+  contentEl,
+  snippetObject,
+  seperatedRaw,
+  newSnippet = false,
+  discovery = false
+}) {
   const snippet = contentEl.createEl("div");
   snippet.addClass("snippet");
-  const snippetFormatted = "```" + LangSpecificEnum[snippetLanguage] + `:${snippetId}
-` + snippetContent + "\n```";
+  const snippetFormatted = "```" + LangSpecificEnum[snippetObject.language] + `:${snippetObject.id}
+` + snippetObject.raw + "\n```";
   const snippetDiv = snippet.createEl("div");
-  snippetDiv.addClass("parent");
-  if (snippetId !== "") {
+  snippetDiv.addClass("pieces-parent");
+  if (snippetObject.id !== "" && "discovery" /* DISCOVERY */ !== defaultView) {
     const imgWrapper = snippetDiv.createDiv();
     imgWrapper.addClass("expand-wrapper");
     const expandIconImg = imgWrapper.createEl("img");
@@ -19559,8 +20138,8 @@ function renderSnippet(contentEl, snippetTitle, seperatedRaw, snippetContent, sn
       // Tested to make sure this is only added once.
       "click",
       async () => await createExpandedView({
-        snippetId,
-        snippetTitle,
+        snippetId: snippetObject.id,
+        snippetTitle: snippetObject.title,
         snippetFormatted
       })
     );
@@ -19580,15 +20159,15 @@ function renderSnippet(contentEl, snippetTitle, seperatedRaw, snippetContent, sn
     lineNumDiv.createEl("br");
   }
   preElement.innerHTML = highlightSnippet({
-    snippetContent,
-    snippetLanguage
+    snippetContent: snippetObject.raw || "",
+    snippetLanguage: snippetObject.language
   });
   snippet.createEl("div").addClass("horizontalBreak");
   const footerDiv = snippet.createEl("div");
   footerDiv.addClass("footerDiv");
   const buttonDiv = footerDiv.createEl("div");
   buttonDiv.addClass("buttonDiv");
-  if (newSnippet) {
+  if (newSnippet || discovery) {
     const saveButton = new import_obsidian6.ButtonComponent(buttonDiv).setButtonText("Save snippet").onClick(async () => {
       const loading = buttonDiv.createEl("div");
       loading.addClass("bouncing-loader");
@@ -19596,7 +20175,18 @@ function renderSnippet(contentEl, snippetTitle, seperatedRaw, snippetContent, sn
       loading.createEl("div");
       loading.createEl("div");
       buttonDiv.replaceChild(loading, saveButton.buttonEl);
-      await createAsset(snippetContent);
+      await createAsset({
+        selection: snippetObject.raw,
+        name: snippetObject.title,
+        description: snippetObject.description,
+        lang: snippetObject.language
+      });
+      if (defaultView === "discovery" /* DISCOVERY */) {
+        const discoverIndx = cache.discoveredSnippets.findIndex((value) => {
+          return value.id === snippetObject.id;
+        });
+        cache.discoveredSnippets.splice(discoverIndx, 1);
+      }
       triggerUIRedraw(false, void 0, void 0, false);
       buttonDiv.replaceChild(saveButton.buttonEl, loading);
     }).setIcon("save").setTooltip("Save snippet to Pieces").setClass("button_copy");
@@ -19607,40 +20197,38 @@ function renderSnippet(contentEl, snippetTitle, seperatedRaw, snippetContent, sn
     new import_obsidian6.Notice("Snippet copied to clipboard!");
   }).setIcon("copy").setTooltip("Copy snippet to clipboard").setClass("button_copy");
   buttonDiv.createEl("div").addClass("vertBreak");
-  if (!newSnippet) {
+  if (!newSnippet && !discovery) {
     new import_obsidian6.ButtonComponent(buttonDiv).setIcon("pencil").setTooltip("Edit snippet").onClick(async () => {
-      new EditModal(
-        this.app,
-        snippetTitle,
-        snippetId,
-        snippetContent,
-        snippetLanguage,
-        snippetDesc || "",
-        contentEl
-      ).open();
+      new EditModal(this.app, snippetObject, contentEl).open();
     }).setClass("button");
     buttonDiv.createEl("div").addClass("vertBreak");
   }
   const shareButton = new import_obsidian6.ButtonComponent(buttonDiv).setButtonText("Share snippet").onClick(async () => {
+    var _a;
     const loading = buttonDiv.createEl("div");
     loading.addClass("bouncing-loader");
     loading.createEl("div");
     loading.createEl("div");
     loading.createEl("div");
     buttonDiv.replaceChild(loading, shareButton.buttonEl);
-    if (newSnippet) {
-      const id = await createAsset(this.codeBlock);
+    if (newSnippet || discovery) {
+      const id = await createAsset({
+        selection: snippetObject.raw,
+        name: snippetObject.title,
+        description: snippetObject.description,
+        lang: snippetObject.language
+      });
       if (typeof id === "string") {
         const link = await this.shareableLinks.generate({ id });
         copyToClipboard(link != null ? link : "");
       }
       triggerUIRedraw(false, void 0, void 0, false);
     } else {
-      const shareableLink = share != null ? share : await ShareableLinksService.getInstance().generate({
-        id: snippetId
+      const shareableLink = (_a = snippetObject.share) != null ? _a : await ShareableLinksService.getInstance().generate({
+        id: snippetObject.id
       });
       await copyToClipboard(shareableLink || "");
-      if (share) {
+      if (snippetObject.share) {
         notifications2.information({
           message: Constants.LINK_GEN_COPY
         });
@@ -19650,12 +20238,12 @@ function renderSnippet(contentEl, snippetTitle, seperatedRaw, snippetContent, sn
   }).setIcon("share-2").setTooltip("Copy a shareable link to clipboard").setClass("button");
   buttonDiv.appendChild(shareButton.buttonEl);
   buttonDiv.createEl("div").addClass("vertBreak");
-  if (!newSnippet) {
+  if (!newSnippet && !discovery) {
     new import_obsidian6.ButtonComponent(footerDiv).setIcon("trash-2").onClick(() => {
       new DeleteModal(
         this.app,
-        snippetTitle,
-        snippetId,
+        snippetObject.title,
+        snippetObject.id,
         contentEl
       ).open();
     }).setTooltip("Delete snippet").setClass("button_delete");
@@ -19664,44 +20252,67 @@ function renderSnippet(contentEl, snippetTitle, seperatedRaw, snippetContent, sn
 }
 
 // src/ui/render/renderListView.ts
-var renderListView = (contentEl, snippetTitle, snippetContent, snippetId, snippetLanguage, snippetDesc, created, share, opened, newAsset = false) => {
+var renderListView = ({
+  contentEl,
+  snippetObject,
+  opened = false,
+  newAsset = false,
+  discovery = false
+}) => {
+  var _a, _b;
   const ListView = contentEl.createEl("div");
   ListView.addClass("list-view");
-  ListView.id = `list-view-${snippetId}`;
+  ListView.id = `list-view-${snippetObject.id}`;
+  if (defaultView === "discovery" /* DISCOVERY */) {
+    const discoveryDiv = ListView.createEl("div");
+    discoveryDiv.addClass("discovery-div-parent");
+    const selectAllCheckbox = discoveryDiv.createEl("input", {
+      type: "checkbox"
+    });
+    selectAllCheckbox.addClasses(["discovery-checkbox"]);
+    appendDiscovery({
+      snippetCheckBox: selectAllCheckbox,
+      snippetObject
+    });
+  }
   const snippetContentDiv = ListView.createEl("div");
   snippetContentDiv.addClass("snippet-content-parent");
   const titleDiv = snippetContentDiv.createEl("div");
   titleDiv.addClass("list-title-div");
   const titleWrapper = titleDiv.createDiv();
   titleWrapper.addClass("list-title-wrapper");
+  if (defaultView === "discovery" /* DISCOVERY */) {
+    const seperator = titleWrapper.createEl("span");
+    seperator.addClass("discovery-seperator");
+    seperator.innerText = " ";
+  }
   const imageLang = titleWrapper.createEl("img");
-  imageLang.setAttr("src", getIcon(snippetLanguage));
+  imageLang.setAttr("src", getIcon(snippetObject.language));
   imageLang.setAttr("alt", "Pieces language logo");
   imageLang.addClass("list-title-div");
   imageLang.setAttr("width", "20px");
   imageLang.setAttr("height", "20px");
   const title = titleWrapper.createEl("h4");
   title.addClass("list-title-div");
-  title.innerText = snippetTitle;
+  title.innerText = snippetObject.title;
   const body = snippetContentDiv.createEl("div");
   body.addClass("list-body");
-  body.innerText = parseDescription(snippetDesc).replace(/\n/g, " ");
+  body.innerText = parseDescription(snippetObject.description).replace(
+    /\n/g,
+    " "
+  );
   const buttonContainer = snippetContentDiv.createEl("div");
   buttonContainer.addClass("list-button-container");
   let newSnippet;
   if (newAsset) {
-    const seperatedRaw = snippetContent.split("\n");
-    newSnippet = renderSnippet(
-      ListView,
-      snippetTitle,
-      seperatedRaw,
-      snippetContent,
-      snippetId,
-      snippetLanguage,
-      snippetDesc,
-      newAsset,
-      share
-    );
+    const seperatedRaw = (_a = snippetObject.raw) == null ? void 0 : _a.split("\n");
+    newSnippet = renderSnippet({
+      contentEl: ListView,
+      snippetObject,
+      seperatedRaw: seperatedRaw || [],
+      newSnippet: newAsset,
+      discovery
+    });
     ListView.appendChild(newSnippet);
     return ListView;
   }
@@ -19723,18 +20334,13 @@ var renderListView = (contentEl, snippetTitle, snippetContent, snippetId, snippe
   }
   if (opened) {
     buttonInput.checked = true;
-    const seperatedRaw = snippetContent.split("\n");
-    newSnippet = renderSnippet(
-      ListView,
-      snippetTitle,
-      seperatedRaw,
-      snippetContent,
-      snippetId,
-      snippetLanguage,
-      snippetDesc,
-      void 0,
-      share
-    );
+    const seperatedRaw = (_b = snippetObject.raw) == null ? void 0 : _b.split("\n");
+    newSnippet = renderSnippet({
+      contentEl: ListView,
+      snippetObject,
+      seperatedRaw: seperatedRaw || [],
+      discovery
+    });
     buttonContainer.replaceChild(buttonContentOpen, buttonContentClosed);
     ListView.appendChild(newSnippet);
   }
@@ -19742,30 +20348,20 @@ var renderListView = (contentEl, snippetTitle, snippetContent, snippetId, snippe
   snippetContentDiv.addEventListener("click", async () => {
     if (clickTimer === null) {
       clickTimer = setTimeout(() => {
+        var _a2;
         buttonInput.checked = !buttonInput.checked;
         if (buttonInput.checked) {
-          const seperatedRaw = snippetContent.split("\n");
-          newSnippet = renderSnippet(
-            ListView,
-            snippetTitle,
-            seperatedRaw,
-            snippetContent,
-            snippetId,
-            snippetLanguage,
-            snippetDesc,
-            void 0,
-            share
-          );
-          buttonContainer.replaceChild(
-            buttonContentOpen,
-            buttonContentClosed
-          );
+          const seperatedRaw = (_a2 = snippetObject.raw) == null ? void 0 : _a2.split("\n");
+          newSnippet = renderSnippet({
+            contentEl: ListView,
+            snippetObject,
+            seperatedRaw: seperatedRaw || [],
+            discovery
+          });
+          buttonContainer.replaceChild(buttonContentOpen, buttonContentClosed);
           ListView.appendChild(newSnippet);
         } else {
-          buttonContainer.replaceChild(
-            buttonContentClosed,
-            buttonContentOpen
-          );
+          buttonContainer.replaceChild(buttonContentClosed, buttonContentOpen);
           newSnippet.empty();
           ListView.removeChild(newSnippet);
         }
@@ -19774,31 +20370,32 @@ var renderListView = (contentEl, snippetTitle, snippetContent, snippetId, snippe
     } else {
       clearTimeout(clickTimer);
       clickTimer = null;
-      const snippetFormatted = "```" + LangSpecificEnum[snippetLanguage] + `:${snippetId}
-` + snippetContent + "\n```";
-      await createExpandedView({
-        snippetId,
-        snippetTitle,
-        snippetFormatted
-      });
+      const snippetFormatted = "```" + LangSpecificEnum[snippetObject.language] + `:${snippetObject.id}
+` + snippetObject.raw + "\n```";
+      if (defaultView !== "discovery" /* DISCOVERY */) {
+        await createExpandedView({
+          snippetId: snippetObject.id,
+          snippetTitle: snippetObject.title,
+          snippetFormatted
+        });
+      }
     }
   });
   return ListView;
 };
 
 // src/ui/render/renderLanguageView.ts
-var cache = PiecesCacheSingleton.getInstance();
+var cache2 = PiecesCacheSingleton.getInstance();
 var renderLanguageView = ({
-  containerVar: containerVar2,
-  snippets
+  containerVar: containerVar2
 }) => {
   const snippetContainer = containerVar2.createEl("div");
   snippetContainer.addClass("snippet-container");
   snippetContainer.id = "language-snippet-container";
-  const sortedArray = Array.from(cache.snippetMap.entries());
+  const sortedArray = Array.from(cache2.snippetMap.entries());
   sortedArray.sort((a, b) => a[0].localeCompare(b[0]));
-  cache.snippetMap = new Map(sortedArray);
-  for (const [key, value] of cache.snippetMap) {
+  cache2.snippetMap = new Map(sortedArray);
+  for (const [key, value] of cache2.snippetMap) {
     let snippetsInRange = value;
     const CodeView = snippetContainer.createEl("div");
     CodeView.addClass("code-view");
@@ -19833,16 +20430,14 @@ var renderLanguageView = ({
     buttonInput.addEventListener("click", () => {
       var _a;
       if (buttonInput.checked) {
-        snippetsInRange = (_a = cache.snippetMap.get(key)) != null ? _a : [];
+        snippetsInRange = (_a = cache2.snippetMap.get(key)) != null ? _a : [];
         for (let i = 0; i < snippetsInRange.length; i++) {
-          if (!cache.mappedAssets[snippetsInRange[i]]) {
+          if (!cache2.mappedAssets[snippetsInRange[i]]) {
             snippetsInRange.splice(i, 1);
           }
         }
         const assetsInRange = snippetsInRange.map((snippetId) => {
-          return processAsset({
-            asset: cache.mappedAssets[snippetId]
-          });
+          return cache2.mappedAssets[snippetId];
         });
         newCodeView = createListView({
           containerVar: containerVar2,
@@ -19866,104 +20461,82 @@ var renderLanguageView = ({
 };
 
 // src/ui/render/renderSearchBox.ts
-var import_obsidian7 = require("obsidian");
-var defaultSearchQuery = "";
-var searchResultsView = false;
-var renderSearchBox = ({
-  containerVar: containerVar2
-}) => {
-  const SearchBoxDiv = containerVar2.createEl("div");
-  SearchBoxDiv.addClass("search-box-div");
-  const searchBackground = containerVar2.createEl("div");
-  searchBackground.addClass("search-background");
-  const searchInput = SearchBoxDiv.createEl("input", {
-    type: "text",
-    placeholder: "\u{1F50D}  Search for Snippets..."
-  });
-  searchInput.addClass("input-search");
-  searchInput.id = "input-search";
-  searchInput.value = defaultSearchQuery;
-  searchInput.readOnly = !versionValid || fetchFailed ? true : false;
-  const searchButton = new import_obsidian7.ButtonComponent(SearchBoxDiv);
-  if (searchResultsView) {
-    searchButton.setIcon("x").onClick(async () => {
-      searchResultsView = false;
-      defaultSearchQuery = "";
-      await triggerUIRedraw(false, containerVar2, void 0, false);
-    }).setTooltip("Clear search").setClass("button_refresh");
-  } else {
-    searchButton.setIcon("refresh-cw").onClick(async () => {
-      new import_obsidian7.Notice("Refreshing Pieces...", 500);
-      searchResultsView = false;
-      defaultSearchQuery = "";
-      const loading = SearchBoxDiv.createEl("div");
-      loading.addClass("refresh-bouncing-loader");
-      loading.createEl("div");
-      loading.createEl("div");
-      loading.createEl("div");
-      SearchBoxDiv.replaceChild(loading, searchButton.buttonEl);
-      try {
-        await loadPieces();
-        await triggerUIRedraw(
-          false,
-          containerVar2,
-          void 0,
-          false
-        );
-      } catch (e) {
-      }
-      SearchBoxDiv.replaceChild(searchButton.buttonEl, loading);
-    }).setTooltip("Refresh Pieces").setClass("button_refresh");
-  }
-  searchInput.addEventListener("keyup", async (event) => {
-    if (event.key === "Enter" && searchInput.value != "") {
-      const loading = SearchBoxDiv.createEl("div");
-      loading.addClass("refresh-bouncing-loader");
-      loading.createEl("div");
-      loading.createEl("div");
-      loading.createEl("div");
-      SearchBoxDiv.replaceChild(loading, searchButton.buttonEl);
-      searchResultsView = true;
-      defaultSearchQuery = searchInput.value;
-      await triggerUIRedraw(true, containerVar2, searchInput.value);
-      SearchBoxDiv.replaceChild(searchButton.buttonEl, loading);
+var import_obsidian9 = require("obsidian");
+
+// src/actions/draft_asset.ts
+var draft_asset = ({ text }) => {
+  const config9 = ConnectorSingleton.getInstance();
+  const params = {
+    seed: {
+      asset: {
+        application: config9.context.application,
+        format: {
+          fragment: {
+            string: {
+              raw: text
+            }
+          },
+          classification: {
+            specific: "py" /* Py */
+          }
+        }
+      },
+      type: "SEEDED_ASSET" /* Asset */
     }
-  });
-};
-var renderNavBar = ({
-  containerVar: containerVar2
-}) => {
-  const wrapperDiv = containerVar2.createDiv();
-  wrapperDiv.addClass("wrapper");
-  const tabsDiv = wrapperDiv.createDiv();
-  tabsDiv.addClass("tabs");
-  tabsDiv.id = "piecesTabs";
-  const tabInput1 = tabsDiv.createEl("input");
-  tabInput1.setAttr("type", "radio");
-  tabInput1.setAttr("id", "radio-1");
-  tabInput1.setAttr("name", "tabs-1");
-  tabInput1.checked = true;
-  const tabLabel1 = tabsDiv.createEl("label");
-  tabLabel1.setAttr("for", "radio-1");
-  tabLabel1.addClass("tab");
-  (0, import_obsidian7.addIcon)("codeSVG", Constants.CODE_ICON);
-  (0, import_obsidian7.setIcon)(tabLabel1, "codeSVG");
-  const tabInput2 = tabsDiv.createEl("input");
-  tabInput2.setAttr("type", "radio");
-  tabInput2.setAttr("id", "radio-2");
-  tabInput2.setAttr("name", "tabs-2");
-  const tabLabel2 = tabsDiv.createEl("label");
-  tabLabel2.setAttr("for", "radio-2");
-  tabLabel2.addClass("tab");
-  (0, import_obsidian7.addIcon)("aiSVG", Constants.AI_ICON);
-  (0, import_obsidian7.setIcon)(tabLabel2, "aiSVG");
-  const slider = tabsDiv.createEl("span");
-  slider.addClass("glider");
-  return wrapperDiv;
+  };
+  return config9.assetsApi.assetsDraft(params);
 };
 
+// node_modules/uuid/dist/esm-browser/rng.js
+var getRandomValues;
+var rnds8 = new Uint8Array(16);
+function rng() {
+  if (!getRandomValues) {
+    getRandomValues = typeof crypto !== "undefined" && crypto.getRandomValues && crypto.getRandomValues.bind(crypto);
+    if (!getRandomValues) {
+      throw new Error("crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported");
+    }
+  }
+  return getRandomValues(rnds8);
+}
+
+// node_modules/uuid/dist/esm-browser/stringify.js
+var byteToHex = [];
+for (let i = 0; i < 256; ++i) {
+  byteToHex.push((i + 256).toString(16).slice(1));
+}
+function unsafeStringify(arr, offset = 0) {
+  return (byteToHex[arr[offset + 0]] + byteToHex[arr[offset + 1]] + byteToHex[arr[offset + 2]] + byteToHex[arr[offset + 3]] + "-" + byteToHex[arr[offset + 4]] + byteToHex[arr[offset + 5]] + "-" + byteToHex[arr[offset + 6]] + byteToHex[arr[offset + 7]] + "-" + byteToHex[arr[offset + 8]] + byteToHex[arr[offset + 9]] + "-" + byteToHex[arr[offset + 10]] + byteToHex[arr[offset + 11]] + byteToHex[arr[offset + 12]] + byteToHex[arr[offset + 13]] + byteToHex[arr[offset + 14]] + byteToHex[arr[offset + 15]]).toLowerCase();
+}
+
+// node_modules/uuid/dist/esm-browser/native.js
+var randomUUID = typeof crypto !== "undefined" && crypto.randomUUID && crypto.randomUUID.bind(crypto);
+var native_default = {
+  randomUUID
+};
+
+// node_modules/uuid/dist/esm-browser/v4.js
+function v4(options2, buf, offset) {
+  if (native_default.randomUUID && !buf && !options2) {
+    return native_default.randomUUID();
+  }
+  options2 = options2 || {};
+  const rnds = options2.random || (options2.rng || rng)();
+  rnds[6] = rnds[6] & 15 | 64;
+  rnds[8] = rnds[8] & 63 | 128;
+  if (buf) {
+    offset = offset || 0;
+    for (let i = 0; i < 16; ++i) {
+      buf[offset + i] = rnds[i];
+    }
+    return buf;
+  }
+  return unsafeStringify(rnds);
+}
+var v4_default = v4;
+
 // src/actions/search.ts
-var import_obsidian8 = require("obsidian");
+var import_obsidian7 = require("obsidian");
 var config3 = ConnectorSingleton.getInstance();
 var storage = PiecesCacheSingleton.getInstance();
 var fetchSnippets = (isSearch, sQuery) => {
@@ -20057,37 +20630,730 @@ var search = async ({
       searching = void 0;
       for (const asset of results2.iterable) {
         found_asset = void 0;
-        found_asset = storage.assets.find(
-          (e) => e.id === asset.identifier
-        );
+        found_asset = storage.assets.find((e) => e.id === asset.identifier);
         if (found_asset && !returnedResults.includes(found_asset)) {
           returnedResults.push(found_asset);
         }
       }
     }
-    const snippets = (await processAssets({ assets: returnedResults })).snippets;
+    const snippets = returnedResults;
     if (snippets.length == 0) {
-      new import_obsidian8.Notice(`No results found for '${query}'!`);
+      new import_obsidian7.Notice(`No results found for '${query}'!`);
     } else {
-      new import_obsidian8.Notice(
+      new import_obsidian7.Notice(
         `Search for '${query}' found ` + snippets.length + " result(s)."
       );
     }
     return shuffleAndReinsert(snippets);
   } catch (error) {
     searching = void 0;
-    const snippets = (await processAssets({ assets: storage.assets })).snippets;
-    new import_obsidian8.Notice(Constants.SEARCH_FAILURE);
+    const snippets = storage.assets;
+    new import_obsidian7.Notice(Constants.SEARCH_FAILURE);
     return snippets;
   }
 };
 
+// src/actions/discover_snippets.ts
+var import_obsidian8 = require("obsidian");
+var discovery_loaded = false;
+var cache3 = PiecesCacheSingleton.getInstance();
+var notifications3 = Notifications.getInstance();
+var config4 = ConnectorSingleton.getInstance();
+async function discoverSnippets() {
+  discovery_loaded = false;
+  const allFiles = shuffle(app.vault.getMarkdownFiles());
+  cache3.discoveredSnippets = [];
+  const MAX_SNIPPET_NUM = 50;
+  if (defaultView === "discovery" /* DISCOVERY */) {
+    triggerUIRedraw(false, void 0, void 0, false);
+  }
+  for (let i = 0; i < allFiles.length; i++) {
+    if (MAX_SNIPPET_NUM <= cache3.discoveredSnippets.length)
+      break;
+    const fileData = await app.vault.read(allFiles[i]);
+    await findCodeBlocks(fileData);
+  }
+  discovery_loaded = true;
+  if (cache3.discoveredSnippets.length === 0) {
+    new import_obsidian8.Notice("Couldn't find any snippets in your vault!", 1e3);
+    if (defaultView === "discovery" /* DISCOVERY */) {
+      triggerUIRedraw(false, void 0, void 0, false, true);
+    }
+    return;
+  } else {
+    new import_obsidian8.Notice("Finished discovering snippets!", 1e3);
+  }
+}
+var findCodeBlocks = async (data) => {
+  const codeFenceRegex = /```([\w-]+)(?::[\s\S]*?)?\n([\s\S]*?)```/g;
+  let match;
+  while ((match = codeFenceRegex.exec(data)) !== null) {
+    const [, lang, code] = match;
+    code.trim();
+    await populateDiscoveredSnippet({ lang, code });
+  }
+};
+var populateDiscoveredSnippet = async (codeBlock) => {
+  var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y;
+  const discoverable = {};
+  const seed = {
+    string: {
+      raw: codeBlock.code
+    },
+    metadata: {
+      ext: langExtToClassificationSpecificEnum(codeBlock.lang)
+    }
+  };
+  if (codeBlock.code.split("\n").length > 50) {
+    discoverable.file = seed;
+  } else {
+    discoverable.fragment = seed;
+  }
+  if (!discoverable) {
+    notifications3.error({
+      message: "Something went wrong, we weren't able to discover a snippet"
+    });
+    return;
+  }
+  const params = {
+    automatic: false,
+    seededDiscoverableAssets: {
+      application: config4.context.application.id,
+      iterable: [discoverable]
+    }
+  };
+  const discovery_result = await config4.DiscoveryApi.discoveryDiscoverAssets(
+    params
+  );
+  let _text;
+  if (discovery_result.iterable[0] === void 0 || !((_b = (_a = discovery_result.iterable[0].fragment) == null ? void 0 : _a.string) == null ? void 0 : _b.raw)) {
+    return;
+  } else {
+    _text = (_d = (_c = discovery_result.iterable[0].fragment) == null ? void 0 : _c.string) == null ? void 0 : _d.raw;
+  }
+  const draft_res = await draft_asset({
+    text: _text
+  });
+  const snippetObject = {
+    id: v4_default(),
+    title: (_g = (_f = (_e = draft_res.asset) == null ? void 0 : _e.metadata) == null ? void 0 : _f.name) != null ? _g : "Unknown Title",
+    raw: (_m = (_l = (_i = (_h = discoverable.fragment) == null ? void 0 : _h.string) == null ? void 0 : _i.raw) != null ? _l : (_k = (_j = discoverable.file) == null ? void 0 : _j.string) == null ? void 0 : _k.raw) != null ? _m : "unable to unpack snippet",
+    created: new Date(),
+    updated: new Date(),
+    language: (_s = (_r = (_o = (_n = discoverable.file) == null ? void 0 : _n.metadata) == null ? void 0 : _o.ext) != null ? _r : (_q = (_p = discoverable.fragment) == null ? void 0 : _p.metadata) == null ? void 0 : _q.ext) != null ? _s : "ts" /* Ts */,
+    description: (_v = (_u = (_t = draft_res.asset) == null ? void 0 : _t.metadata) == null ? void 0 : _u.description) != null ? _v : "Unknown Description",
+    type: (_y = (_x = (_w = draft_res.asset) == null ? void 0 : _w.format.classification) == null ? void 0 : _x.specific) != null ? _y : "Unknown type",
+    time: new Date().toISOString(),
+    share: void 0
+  };
+  cache3.discoveredSnippets.push(snippetObject);
+  if (defaultView === "discovery" /* DISCOVERY */) {
+    if (cache3.discoveredSnippets.length === 1) {
+      const loadingDivs = document.querySelectorAll(".loading-div");
+      loadingDivs.forEach((loadingDiv) => {
+        loadingDiv.remove();
+      });
+      createListView({
+        containerVar: defaultContainer,
+        snippets: cache3.discoveredSnippets,
+        discovery: true
+      });
+    } else if (cache3.discoveredSnippets.length > 1) {
+      const parentDiv = document.getElementById(
+        "pieces-snippet-container"
+      );
+      parentDiv.firstChild.classList.remove("only-snippet");
+      renderListView({
+        contentEl: parentDiv,
+        snippetObject,
+        discovery: true
+      });
+    }
+  }
+  if (cache3.discoveredSnippets.length < 5) {
+    await sleep(1e3);
+  } else {
+    await sleep(8e3);
+  }
+};
+
+// src/ui/render/renderSearchBox.ts
+var defaultSearchQuery = "";
+var searchResultsView = false;
+var renderSearchBox = ({
+  containerVar: containerVar2
+}) => {
+  const SearchBoxDiv = containerVar2.createEl("div");
+  SearchBoxDiv.addClass("search-box-div");
+  const searchBackground = containerVar2.createEl("div");
+  searchBackground.addClass("search-background");
+  const searchInput = SearchBoxDiv.createEl("input", {
+    type: "text",
+    placeholder: "\u{1F50D}  Search for Snippets..."
+  });
+  searchInput.addClass("input-search");
+  searchInput.id = "input-search";
+  searchInput.value = defaultSearchQuery;
+  searchInput.readOnly = !versionValid || fetchFailed ? true : false;
+  const searchButton = new import_obsidian9.ButtonComponent(SearchBoxDiv);
+  if (searchResultsView) {
+    searchButton.setIcon("x").onClick(async () => {
+      searchResultsView = false;
+      defaultSearchQuery = "";
+      await triggerUIRedraw(false, containerVar2, void 0, false);
+    }).setTooltip("Clear search").setClass("button_refresh");
+  } else {
+    searchButton.setIcon("refresh-cw").onClick(async () => {
+      if ("discovery" /* DISCOVERY */ === defaultView) {
+        new import_obsidian9.Notice(
+          discovery_loaded ? "Discovering Pieces..." : "We still haven't finished discovering your snippets, please wait.",
+          1e3
+        );
+      } else {
+        new import_obsidian9.Notice("Refreshing Pieces...", 1e3);
+      }
+      searchResultsView = false;
+      defaultSearchQuery = "";
+      const loading = SearchBoxDiv.createEl("div");
+      loading.addClass("refresh-bouncing-loader");
+      loading.createEl("div");
+      loading.createEl("div");
+      loading.createEl("div");
+      SearchBoxDiv.replaceChild(loading, searchButton.buttonEl);
+      if ("discovery" /* DISCOVERY */ === defaultView) {
+        if (discovery_loaded) {
+          try {
+            clearDiscovery();
+            await discoverSnippets();
+          } catch (e) {
+          }
+        }
+      } else {
+        try {
+          await loadPieces();
+          await triggerUIRedraw(false, containerVar2, void 0, false);
+        } catch (e) {
+        }
+      }
+      SearchBoxDiv.replaceChild(searchButton.buttonEl, loading);
+    }).setClass("button_refresh");
+    if (defaultView === "discovery" /* DISCOVERY */) {
+      searchButton.setTooltip("Discover Pieces");
+    } else {
+      searchButton.setTooltip("Refresh Pieces");
+    }
+  }
+  searchInput.addEventListener("keyup", async (event) => {
+    if (event.key === "Enter" && searchInput.value != "") {
+      const loading = SearchBoxDiv.createEl("div");
+      loading.addClass("refresh-bouncing-loader");
+      loading.createEl("div");
+      loading.createEl("div");
+      loading.createEl("div");
+      SearchBoxDiv.replaceChild(loading, searchButton.buttonEl);
+      searchResultsView = true;
+      defaultSearchQuery = searchInput.value;
+      await triggerUIRedraw(true, containerVar2, searchInput.value);
+      SearchBoxDiv.replaceChild(searchButton.buttonEl, loading);
+    }
+  });
+};
+var renderNavBar = ({
+  containerVar: containerVar2
+}) => {
+  const wrapperDiv = containerVar2.createDiv();
+  wrapperDiv.addClass("wrapper");
+  const tabsDiv = wrapperDiv.createDiv();
+  tabsDiv.addClass("tabs");
+  tabsDiv.id = "piecesTabs";
+  const tabInput1 = tabsDiv.createEl("input");
+  tabInput1.setAttr("type", "radio");
+  tabInput1.setAttr("id", "radio-1");
+  tabInput1.setAttr("name", "tabs-1");
+  tabInput1.checked = true;
+  const tabLabel1 = tabsDiv.createEl("label");
+  tabLabel1.setAttr("for", "radio-1");
+  tabLabel1.addClass("tab");
+  (0, import_obsidian9.addIcon)("codeSVG", Constants.CODE_ICON);
+  (0, import_obsidian9.setIcon)(tabLabel1, "codeSVG");
+  const tabInput2 = tabsDiv.createEl("input");
+  tabInput2.setAttr("type", "radio");
+  tabInput2.setAttr("id", "radio-2");
+  tabInput2.setAttr("name", "tabs-2");
+  const tabLabel2 = tabsDiv.createEl("label");
+  tabLabel2.setAttr("for", "radio-2");
+  tabLabel2.addClass("tab");
+  (0, import_obsidian9.addIcon)("aiSVG", Constants.AI_ICON);
+  (0, import_obsidian9.setIcon)(tabLabel2, "aiSVG");
+  const slider = tabsDiv.createEl("span");
+  slider.addClass("glider");
+  if (!(theme === "dark")) {
+    slider.addClass("glider-light");
+  }
+  return wrapperDiv;
+};
+
+// node_modules/js-search/dist/esm/js-search.js
+var PrefixIndexStrategy = /* @__PURE__ */ function() {
+  function PrefixIndexStrategy2() {
+  }
+  var _proto = PrefixIndexStrategy2.prototype;
+  _proto.expandToken = function expandToken(token) {
+    var expandedTokens = [];
+    var string = "";
+    for (var i = 0, length = token.length; i < length; ++i) {
+      string += token.charAt(i);
+      expandedTokens.push(string);
+    }
+    return expandedTokens;
+  };
+  return PrefixIndexStrategy2;
+}();
+var LowerCaseSanitizer = /* @__PURE__ */ function() {
+  function LowerCaseSanitizer2() {
+  }
+  var _proto = LowerCaseSanitizer2.prototype;
+  _proto.sanitize = function sanitize(text) {
+    return text ? text.toLocaleLowerCase().trim() : "";
+  };
+  return LowerCaseSanitizer2;
+}();
+function getNestedFieldValue(object, path) {
+  path = path || [];
+  object = object || {};
+  var value = object;
+  for (var i = 0; i < path.length; i++) {
+    value = value[path[i]];
+    if (value == null) {
+      return null;
+    }
+  }
+  return value;
+}
+var TfIdfSearchIndex = /* @__PURE__ */ function() {
+  function TfIdfSearchIndex2(uidFieldName) {
+    this._uidFieldName = uidFieldName;
+    this._tokenToIdfCache = {};
+    this._tokenMap = {};
+  }
+  var _proto = TfIdfSearchIndex2.prototype;
+  _proto.indexDocument = function indexDocument(token, uid, doc) {
+    this._tokenToIdfCache = {};
+    var tokenMap = this._tokenMap;
+    var tokenDatum;
+    if (typeof tokenMap[token] !== "object") {
+      tokenMap[token] = tokenDatum = {
+        $numDocumentOccurrences: 0,
+        $totalNumOccurrences: 1,
+        $uidMap: {}
+      };
+    } else {
+      tokenDatum = tokenMap[token];
+      tokenDatum.$totalNumOccurrences++;
+    }
+    var uidMap = tokenDatum.$uidMap;
+    if (typeof uidMap[uid] !== "object") {
+      tokenDatum.$numDocumentOccurrences++;
+      uidMap[uid] = {
+        $document: doc,
+        $numTokenOccurrences: 1
+      };
+    } else {
+      uidMap[uid].$numTokenOccurrences++;
+    }
+  };
+  _proto.search = function search2(tokens, corpus) {
+    var uidToDocumentMap = {};
+    for (var i = 0, numTokens = tokens.length; i < numTokens; i++) {
+      var token = tokens[i];
+      var tokenMetadata = this._tokenMap[token];
+      if (!tokenMetadata) {
+        return [];
+      }
+      if (i === 0) {
+        var keys = Object.keys(tokenMetadata.$uidMap);
+        for (var j = 0, numKeys = keys.length; j < numKeys; j++) {
+          var uid = keys[j];
+          uidToDocumentMap[uid] = tokenMetadata.$uidMap[uid].$document;
+        }
+      } else {
+        var keys = Object.keys(uidToDocumentMap);
+        for (var j = 0, numKeys = keys.length; j < numKeys; j++) {
+          var uid = keys[j];
+          if (typeof tokenMetadata.$uidMap[uid] !== "object") {
+            delete uidToDocumentMap[uid];
+          }
+        }
+      }
+    }
+    var documents = [];
+    for (var uid in uidToDocumentMap) {
+      documents.push(uidToDocumentMap[uid]);
+    }
+    var calculateTfIdf = this._createCalculateTfIdf();
+    return documents.sort(function(documentA, documentB) {
+      return calculateTfIdf(tokens, documentB, corpus) - calculateTfIdf(tokens, documentA, corpus);
+    });
+  };
+  _proto._createCalculateIdf = function _createCalculateIdf() {
+    var tokenMap = this._tokenMap;
+    var tokenToIdfCache = this._tokenToIdfCache;
+    return function calculateIdf(token, documents) {
+      if (!tokenToIdfCache[token]) {
+        var numDocumentsWithToken = typeof tokenMap[token] !== "undefined" ? tokenMap[token].$numDocumentOccurrences : 0;
+        tokenToIdfCache[token] = 1 + Math.log(documents.length / (1 + numDocumentsWithToken));
+      }
+      return tokenToIdfCache[token];
+    };
+  };
+  _proto._createCalculateTfIdf = function _createCalculateTfIdf() {
+    var tokenMap = this._tokenMap;
+    var uidFieldName = this._uidFieldName;
+    var calculateIdf = this._createCalculateIdf();
+    return function calculateTfIdf(tokens, document2, documents) {
+      var score = 0;
+      for (var i = 0, numTokens = tokens.length; i < numTokens; ++i) {
+        var token = tokens[i];
+        var inverseDocumentFrequency = calculateIdf(token, documents);
+        if (inverseDocumentFrequency === Infinity) {
+          inverseDocumentFrequency = 0;
+        }
+        var uid;
+        if (uidFieldName instanceof Array) {
+          uid = document2 && getNestedFieldValue(document2, uidFieldName);
+        } else {
+          uid = document2 && document2[uidFieldName];
+        }
+        var termFrequency = typeof tokenMap[token] !== "undefined" && typeof tokenMap[token].$uidMap[uid] !== "undefined" ? tokenMap[token].$uidMap[uid].$numTokenOccurrences : 0;
+        score += termFrequency * inverseDocumentFrequency;
+      }
+      return score;
+    };
+  };
+  return TfIdfSearchIndex2;
+}();
+var REGEX = /[^a-zа-яё0-9\-']+/i;
+var SimpleTokenizer = /* @__PURE__ */ function() {
+  function SimpleTokenizer2() {
+  }
+  var _proto = SimpleTokenizer2.prototype;
+  _proto.tokenize = function tokenize(text) {
+    return text.split(REGEX).filter(
+      function(text2) {
+        return text2;
+      }
+      // Filter empty tokens
+    );
+  };
+  return SimpleTokenizer2;
+}();
+var StopWordsMap = {
+  a: true,
+  able: true,
+  about: true,
+  across: true,
+  after: true,
+  all: true,
+  almost: true,
+  also: true,
+  am: true,
+  among: true,
+  an: true,
+  and: true,
+  any: true,
+  are: true,
+  as: true,
+  at: true,
+  be: true,
+  because: true,
+  been: true,
+  but: true,
+  by: true,
+  can: true,
+  cannot: true,
+  could: true,
+  dear: true,
+  did: true,
+  "do": true,
+  does: true,
+  either: true,
+  "else": true,
+  ever: true,
+  every: true,
+  "for": true,
+  from: true,
+  "get": true,
+  got: true,
+  had: true,
+  has: true,
+  have: true,
+  he: true,
+  her: true,
+  hers: true,
+  him: true,
+  his: true,
+  how: true,
+  however: true,
+  i: true,
+  "if": true,
+  "in": true,
+  into: true,
+  is: true,
+  it: true,
+  its: true,
+  just: true,
+  least: true,
+  "let": true,
+  like: true,
+  likely: true,
+  may: true,
+  me: true,
+  might: true,
+  most: true,
+  must: true,
+  my: true,
+  neither: true,
+  no: true,
+  nor: true,
+  not: true,
+  of: true,
+  off: true,
+  often: true,
+  on: true,
+  only: true,
+  or: true,
+  other: true,
+  our: true,
+  own: true,
+  rather: true,
+  said: true,
+  say: true,
+  says: true,
+  she: true,
+  should: true,
+  since: true,
+  so: true,
+  some: true,
+  than: true,
+  that: true,
+  the: true,
+  their: true,
+  them: true,
+  then: true,
+  there: true,
+  these: true,
+  they: true,
+  "this": true,
+  tis: true,
+  to: true,
+  too: true,
+  twas: true,
+  us: true,
+  wants: true,
+  was: true,
+  we: true,
+  were: true,
+  what: true,
+  when: true,
+  where: true,
+  which: true,
+  "while": true,
+  who: true,
+  whom: true,
+  why: true,
+  will: true,
+  "with": true,
+  would: true,
+  yet: true,
+  you: true,
+  your: true
+};
+StopWordsMap.constructor = false;
+StopWordsMap.hasOwnProperty = false;
+StopWordsMap.isPrototypeOf = false;
+StopWordsMap.propertyIsEnumerable = false;
+StopWordsMap.toLocaleString = false;
+StopWordsMap.toString = false;
+StopWordsMap.valueOf = false;
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor)
+      descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps)
+    _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps)
+    _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+var Search = /* @__PURE__ */ function() {
+  function Search2(uidFieldName) {
+    if (!uidFieldName) {
+      throw Error("js-search requires a uid field name constructor parameter");
+    }
+    this._uidFieldName = uidFieldName;
+    this._indexStrategy = new PrefixIndexStrategy();
+    this._searchIndex = new TfIdfSearchIndex(uidFieldName);
+    this._sanitizer = new LowerCaseSanitizer();
+    this._tokenizer = new SimpleTokenizer();
+    this._documents = [];
+    this._searchableFields = [];
+  }
+  var _proto = Search2.prototype;
+  _proto.addDocument = function addDocument(document2) {
+    this.addDocuments([document2]);
+  };
+  _proto.addDocuments = function addDocuments(documents) {
+    this._documents = this._documents.concat(documents);
+    this.indexDocuments_(documents, this._searchableFields);
+  };
+  _proto.addIndex = function addIndex(field) {
+    this._searchableFields.push(field);
+    this.indexDocuments_(this._documents, [field]);
+  };
+  _proto.search = function search2(query) {
+    var tokens = this._tokenizer.tokenize(this._sanitizer.sanitize(query));
+    return this._searchIndex.search(tokens, this._documents);
+  };
+  _proto.indexDocuments_ = function indexDocuments_(documents, _searchableFields) {
+    this._initialized = true;
+    var indexStrategy = this._indexStrategy;
+    var sanitizer = this._sanitizer;
+    var searchIndex = this._searchIndex;
+    var tokenizer = this._tokenizer;
+    var uidFieldName = this._uidFieldName;
+    for (var di = 0, numDocuments = documents.length; di < numDocuments; di++) {
+      var doc = documents[di];
+      var uid;
+      if (uidFieldName instanceof Array) {
+        uid = getNestedFieldValue(doc, uidFieldName);
+      } else {
+        uid = doc[uidFieldName];
+      }
+      for (var sfi = 0, numSearchableFields = _searchableFields.length; sfi < numSearchableFields; sfi++) {
+        var fieldValue;
+        var searchableField = _searchableFields[sfi];
+        if (searchableField instanceof Array) {
+          fieldValue = getNestedFieldValue(doc, searchableField);
+        } else {
+          fieldValue = doc[searchableField];
+        }
+        if (fieldValue != null && typeof fieldValue !== "string" && fieldValue.toString) {
+          fieldValue = fieldValue.toString();
+        }
+        if (typeof fieldValue === "string") {
+          var fieldTokens = tokenizer.tokenize(sanitizer.sanitize(fieldValue));
+          for (var fti = 0, numFieldValues = fieldTokens.length; fti < numFieldValues; fti++) {
+            var fieldToken = fieldTokens[fti];
+            var expandedTokens = indexStrategy.expandToken(fieldToken);
+            for (var eti = 0, nummExpandedTokens = expandedTokens.length; eti < nummExpandedTokens; eti++) {
+              var expandedToken = expandedTokens[eti];
+              searchIndex.indexDocument(expandedToken, uid, doc);
+            }
+          }
+        }
+      }
+    }
+  };
+  _createClass(Search2, [{
+    key: "indexStrategy",
+    set: function set(value) {
+      if (this._initialized) {
+        throw Error("IIndexStrategy cannot be set after initialization");
+      }
+      this._indexStrategy = value;
+    },
+    get: function get() {
+      return this._indexStrategy;
+    }
+    /**
+     * Override the default text sanitizing strategy.
+     * @param value Custom text sanitizing strategy
+     * @throws Error if documents have already been indexed by this search instance
+     */
+  }, {
+    key: "sanitizer",
+    set: function set(value) {
+      if (this._initialized) {
+        throw Error("ISanitizer cannot be set after initialization");
+      }
+      this._sanitizer = value;
+    },
+    get: function get() {
+      return this._sanitizer;
+    }
+    /**
+     * Override the default search index strategy.
+     * @param value Custom search index strategy
+     * @throws Error if documents have already been indexed
+     */
+  }, {
+    key: "searchIndex",
+    set: function set(value) {
+      if (this._initialized) {
+        throw Error("ISearchIndex cannot be set after initialization");
+      }
+      this._searchIndex = value;
+    },
+    get: function get() {
+      return this._searchIndex;
+    }
+    /**
+     * Override the default text tokenizing strategy.
+     * @param value Custom text tokenizing strategy
+     * @throws Error if documents have already been indexed by this search instance
+     */
+  }, {
+    key: "tokenizer",
+    set: function set(value) {
+      if (this._initialized) {
+        throw Error("ITokenizer cannot be set after initialization");
+      }
+      this._tokenizer = value;
+    },
+    get: function get() {
+      return this._tokenizer;
+    }
+  }]);
+  return Search2;
+}();
+
+// src/ui/utils/discoverySearch.ts
+var doSearch = ({
+  query,
+  snippets
+}) => {
+  const search2 = new Search("id");
+  search2.addIndex("language");
+  search2.addIndex("raw");
+  search2.addIndex("title");
+  search2.addIndex("description");
+  search2.addDocuments(snippets);
+  return search2.search(query);
+};
+var discoverySearch_default = doSearch;
+
 // src/ui/views/create_snippet_view.ts
 var defaultContainer;
 var defaultWorkspace;
-var defaultView = "newest";
-var config4 = ConnectorSingleton.getInstance();
+var defaultView = "newest" /* RECENT */;
+var config5 = ConnectorSingleton.getInstance();
 var storage2 = PiecesCacheSingleton.getInstance();
+var notifications4 = Notifications.getInstance();
+var discoveryCheckboxArray = [];
+var discoveryDeleteArray = [];
+var appendDiscovery = (value) => {
+  discoveryCheckboxArray.push(value);
+};
+var clearDiscovery = () => {
+  discoveryCheckboxArray = [];
+};
 var snippetsFetched = false;
 var fetchFailed = false;
 var setSnippetsLoaded = (value) => {
@@ -20099,38 +21365,51 @@ var setFetchFailed = (value) => {
 var setDefaultView = (newView) => {
   defaultView = newView;
 };
-var triggerUIRedraw = async (searching2, container = defaultContainer, searchQuery, fetch2 = true) => {
+(0, import_obsidian10.addIcon)("save-all", Constants.SAVE_ALL_ICON);
+var triggerUIRedraw = async (searching2, container = defaultContainer, searchQuery, fetch2 = true, discovery = false) => {
   let snippets = [];
   if (!fetchFailed && versionValid) {
-    if (searching2) {
+    if ("discovery" /* DISCOVERY */ === defaultView && searching2) {
+      snippets = discoverySearch_default({
+        query: searchQuery != null ? searchQuery : "",
+        snippets: storage2.discoveredSnippets
+      });
+    } else if (searching2) {
       snippets = await fetchSnippets(true, searchQuery);
     } else if (fetch2) {
       snippets = await fetchSnippets(false);
     } else {
-      snippets = (await processAssets({ assets: storage2.assets })).snippets;
+      snippets = storage2.assets;
     }
   }
   if (searchQuery) {
     if (snippets.length !== 0) {
-      createSnippetListView(
-        container,
+      createSnippetListView({
+        containerVar: container,
         snippets,
-        defaultView,
-        defaultWorkspace,
-        searching2
-      );
+        viewType: defaultView,
+        workspace: defaultWorkspace,
+        searched: searching2
+      });
     }
   } else if (container) {
-    createSnippetListView(
-      container,
+    createSnippetListView({
+      containerVar: container,
       snippets,
-      defaultView,
-      defaultWorkspace
-    );
+      viewType: defaultView,
+      workspace: defaultWorkspace,
+      discovery
+    });
   }
 };
-var createSnippetListView = async (containerVar2, snippets, viewType = "newest", workspace, searched = false) => {
-  const cache3 = PiecesCacheSingleton.getInstance();
+var createSnippetListView = async ({
+  containerVar: containerVar2,
+  snippets,
+  viewType,
+  workspace,
+  searched = false,
+  discovery = false
+}) => {
   containerVar2.removeClasses(["gpt-container"]);
   containerVar2.empty();
   defaultView = viewType;
@@ -20139,14 +21418,90 @@ var createSnippetListView = async (containerVar2, snippets, viewType = "newest",
   renderSearchBox({ containerVar: containerVar2 });
   const titleDiv = containerVar2.createEl("div");
   titleDiv.addClass("title_div");
-  new import_obsidian9.DropdownComponent(titleDiv).addOption("newest", "\u{1F553} RECENT").addOption("language", "\u{1F310} LANGUAGE").onChange(async (value) => {
-    createSnippetListView(
-      containerVar2,
-      (await processAssets({ assets: cache3.assets })).snippets,
-      value,
+  new import_obsidian10.DropdownComponent(titleDiv).addOption("newest" /* RECENT */, "\u{1F553} RECENT").addOption("language" /* LANGUAGE */, "\u{1F310} LANGUAGE").addOption("discovery" /* DISCOVERY */, "\u{1F50D} DISCOVER").onChange(async (value) => {
+    defaultView = value;
+    createSnippetListView({
+      containerVar: containerVar2,
+      snippets: storage2.assets,
+      viewType: value,
       workspace
-    );
+    });
   }).setValue(viewType).selectEl.addClass("sort-dropdown");
+  if (defaultView === "discovery" /* DISCOVERY */) {
+    const saveAllDiv = titleDiv.createDiv();
+    saveAllDiv.addClasses(["discovery-div"]);
+    const selectAllDiv = saveAllDiv.createDiv();
+    selectAllDiv.addClasses(["discovery-div-inner"]);
+    const selectAllCheckbox = selectAllDiv.createEl("input", {
+      type: "checkbox"
+    });
+    selectAllCheckbox.id = "select-all-checkbox";
+    selectAllCheckbox.onClickEvent(() => {
+      if (selectAllCheckbox.checked) {
+        for (let i = 0; i < discoveryCheckboxArray.length; i++) {
+          discoveryCheckboxArray[i].snippetCheckBox.checked = true;
+        }
+      } else {
+        for (let i = 0; i < discoveryCheckboxArray.length; i++) {
+          discoveryCheckboxArray[i].snippetCheckBox.checked = false;
+        }
+      }
+    });
+    const selectAllLabel = selectAllDiv.createEl("label");
+    selectAllLabel.htmlFor = "select-all-checkbox";
+    selectAllLabel.innerText = "Select all";
+    selectAllLabel.addClasses(["discovery-title"]);
+    saveAllDiv.createEl("div").addClass("discovery-break");
+    const saveButton = new import_obsidian10.ButtonComponent(saveAllDiv).setButtonText("Save all selected snippets").onClick(async () => {
+      defaultView = "discovery" /* DISCOVERY */;
+      const loading = saveAllDiv.createEl("div");
+      loading.addClass("bouncing-loader");
+      loading.createEl("div");
+      loading.createEl("div");
+      loading.createEl("div");
+      saveAllDiv.replaceChild(loading, saveButton.buttonEl);
+      for (let i = 0; i < discoveryCheckboxArray.length; i++) {
+        const element = discoveryCheckboxArray[i];
+        if (element.snippetCheckBox.checked) {
+          await createAsset({
+            selection: element.snippetObject.raw,
+            name: element.snippetObject.title,
+            description: element.snippetObject.description,
+            lang: element.snippetObject.language
+          });
+          const discoverIndx = storage2.discoveredSnippets.findIndex(
+            (value) => {
+              return value.id === element.snippetObject.id;
+            }
+          );
+          storage2.discoveredSnippets.splice(discoverIndx, 1);
+          const removalEl = document.getElementById(
+            "list-view-" + element.snippetObject.id
+          );
+          removalEl == null ? void 0 : removalEl.remove();
+          discoveryDeleteArray.push(element.snippetObject.id);
+        }
+      }
+      discoveryCheckboxArray.forEach((element) => {
+        if (discoveryDeleteArray.includes(element.snippetObject.id)) {
+          discoveryCheckboxArray.splice(
+            discoveryCheckboxArray.indexOf(element),
+            1
+          );
+        }
+      });
+      if (discoveryDeleteArray.length === 0)
+        notifications4.information({
+          message: Constants.NO_SELECTION_SAVE
+        });
+      discoveryDeleteArray = [];
+      saveAllDiv.replaceChild(saveButton.buttonEl, loading);
+      triggerUIRedraw(false, void 0, void 0, false, true);
+    }).setIcon("save-all").setTooltip(
+      storage2.discoveredSnippets.length < 1 ? "There aren't any discovered snippets to save" : "Save all selected snippets to Pieces"
+    ).setClass("button_copy");
+    saveButton.disabled = storage2.discoveredSnippets.length < 1;
+  }
   if (fetchFailed || !versionValid) {
     showFetchFailedState({ containerVar: containerVar2 });
   } else if (!snippets.length && !snippetsFetched) {
@@ -20154,7 +21509,7 @@ var createSnippetListView = async (containerVar2, snippets, viewType = "newest",
   } else if (!snippets.length && snippetsFetched) {
     showNoSnippetState({ containerVar: containerVar2 });
   } else {
-    if (viewType === "newest") {
+    if (viewType === "newest" /* RECENT */) {
       createListView({
         containerVar: containerVar2,
         snippets: searched ? snippets : snippets.sort(
@@ -20162,13 +21517,25 @@ var createSnippetListView = async (containerVar2, snippets, viewType = "newest",
           // eslint-disable-next-line no-mixed-spaces-and-tabs
         )
       });
-    } else if (viewType === "language") {
+    } else if (viewType === "language" /* LANGUAGE */) {
       renderLanguageView({
-        containerVar: containerVar2,
-        snippets: snippets.sort(
-          (a, b) => a.language.localeCompare(b.language)
-        )
+        containerVar: containerVar2
       });
+    } else if (viewType === "discovery" /* DISCOVERY */) {
+      if (!storage2.discoveredSnippets.length && discovery) {
+        showLoadingState({
+          containerVar: containerVar2,
+          discovery
+        });
+      } else if (!snippets.length || !storage2.discoveredSnippets.length) {
+        showLoadingState({ containerVar: containerVar2 });
+      } else {
+        createListView({
+          containerVar: containerVar2,
+          snippets: searched ? snippets : storage2.discoveredSnippets,
+          discovery: true
+        });
+      }
     }
   }
 };
@@ -20177,7 +21544,8 @@ var createListView = ({
   snippets,
   language = false,
   lView = false,
-  newSnippet = false
+  newSnippet = false,
+  discovery = false
 }) => {
   const snippetContainer = containerVar2.createEl("div");
   snippetContainer.addClass("snippet-container");
@@ -20185,29 +21553,18 @@ var createListView = ({
   if (lView) {
     snippetContainer.addClass("l-view");
   }
+  clearDiscovery();
   for (let i = 0; i < snippets.length; i++) {
-    const snippetTitle = snippets[i].title;
-    let snippetContent = snippets[i].raw;
-    const snippetId = snippets[i].id;
-    const snippetLanguage = snippets[i].language;
-    const snippetDesc = snippets[i].description;
-    const created = snippets[i].created;
-    const share = snippets[i].share;
-    if (!(typeof snippetContent === "string")) {
-      snippetContent = "Loading code...";
+    if (!(typeof snippets[i].raw === "string")) {
+      snippets[i].raw = "Loading code...";
     }
-    const listView = renderListView(
-      snippetContainer,
-      snippetTitle,
-      snippetContent,
-      snippetId,
-      snippetLanguage,
-      snippetDesc,
-      created,
-      share,
-      newSnippet,
-      newSnippet
-    );
+    const listView = renderListView({
+      contentEl: snippetContainer,
+      snippetObject: snippets[i],
+      opened: newSnippet,
+      newAsset: newSnippet,
+      discovery
+    });
     if (snippets.length == 1) {
       listView.addClass("only-snippet");
     } else if (i == snippets.length - 1) {
@@ -20217,7 +21574,7 @@ var createListView = ({
     }
     snippetContainer.appendChild(listView);
   }
-  if (!language) {
+  if (!language && !discovery) {
     snippetContainer.createEl("br");
   }
   return snippetContainer;
@@ -20233,11 +21590,8 @@ var createExpandedView = async ({
     asset: snippetId,
     exportType: "MD" /* Md */
   };
-  let expandedSnippetMD = (_b = (_a = (await config4.assetApi.assetSpecificAssetExport(exportParams)).raw.string) == null ? void 0 : _a.raw) != null ? _b : "";
-  expandedSnippetMD = expandedSnippetMD.replace(
-    "Preview:",
-    "Pieces Preview:"
-  );
+  let expandedSnippetMD = (_b = (_a = (await config5.assetApi.assetSpecificAssetExport(exportParams)).raw.string) == null ? void 0 : _a.raw) != null ? _b : "";
+  expandedSnippetMD = expandedSnippetMD.replace("Preview:", "Pieces Preview:");
   const firstIndex = expandedSnippetMD.indexOf("```");
   const secondIndex = expandedSnippetMD.indexOf("```", firstIndex + 1);
   expandedSnippetMD = expandedSnippetMD.substring(0, secondIndex + 3) + "\n" + expandedSnippetMD.substring(secondIndex + 3);
@@ -20264,24 +21618,33 @@ var createExpandedView = async ({
 };
 
 // src/database/pieces_database.ts
-var import_obsidian10 = require("obsidian");
+var import_obsidian11 = require("obsidian");
 var getData = async () => {
+  var _a;
   const { vault } = app;
   const dataFile = await loadFile();
   const rawData = await vault.read(dataFile);
   const data = JSON.parse(rawData);
-  data.assets.forEach(
-    (e) => e.created.value = new Date(e.created.value)
+  (_a = data.assets) == null ? void 0 : _a.forEach(
+    (e) => e.created = new Date(e.created)
   );
-  return data.assets;
+  return data;
 };
 var writeTimeout;
-var writeData = async (assets) => {
+var writeData = async () => {
   clearTimeout(writeTimeout);
-  setTimeout(async () => {
+  writeTimeout = setTimeout(async () => {
+    if (true) {
+      console.log("Pieces for Developers DEV: Writing to piecesdb.json");
+    }
+    const cache5 = PiecesCacheSingleton.getInstance();
     const { vault } = app;
     const dataFile = await loadFile();
-    vault.modify(dataFile, JSON.stringify({ assets }));
+    const fileData = JSON.parse(await vault.read(dataFile));
+    fileData.assets = cache5.assets;
+    fileData.gptContexts = cache5.gptContextPaths;
+    fileData.gptFolderNames = cache5.gptFolderNames;
+    vault.modify(dataFile, JSON.stringify(fileData));
   }, 15e3);
 };
 var loadFile = async (retries = 0) => {
@@ -20295,7 +21658,7 @@ var loadFile = async (retries = 0) => {
     }
     return vault.create(dbPath, '{"assets":[]}');
   }
-  if (dataFile instanceof import_obsidian10.TFolder) {
+  if (dataFile instanceof import_obsidian11.TFolder) {
     await vault.delete(dataFile);
     return vault.create(dbPath, '{"assets":[]}');
   }
@@ -20303,34 +21666,36 @@ var loadFile = async (retries = 0) => {
 };
 var clearStaleIds = async () => {
   var _a;
-  const config8 = ConnectorSingleton.getInstance();
-  const cache3 = PiecesCacheSingleton.getInstance();
-  const idSnapshot = await config8.assetsApi.assetsIdentifiersSnapshot();
+  const config9 = ConnectorSingleton.getInstance();
+  const cache5 = PiecesCacheSingleton.getInstance();
+  const idSnapshot = await config9.assetsApi.assetsIdentifiersSnapshot();
   const idMap = /* @__PURE__ */ new Map();
   (_a = idSnapshot.iterable) == null ? void 0 : _a.forEach((identifier) => {
     idMap.set(identifier.id, true);
   });
-  const staleIds = Object.keys(cache3.mappedAssets).filter((id) => {
+  const staleIds = Object.keys(cache5.mappedAssets).filter((id) => {
     return !idMap.has(id);
   });
   staleIds.forEach((id) => {
     const snippetEl = document.getElementById(`list-view-${id}`);
     snippetEl == null ? void 0 : snippetEl.remove();
-    delete cache3.mappedAssets[id];
+    delete cache5.mappedAssets[id];
   });
-  cache3.assets = Object.values(cache3.mappedAssets);
-  await writeData(cache3.assets);
-  if (!cache3.assets.length) {
+  cache5.assets = Object.values(cache5.mappedAssets);
+  if (staleIds.length) {
+    writeData();
+  }
+  if (!cache5.assets.length) {
     triggerUIRedraw(false, void 0, void 0, false);
   }
 };
 
 // src/connection/api_wrapper.ts
 var loadConnect = async () => {
-  const config8 = ConnectorSingleton.getInstance();
+  const config9 = ConnectorSingleton.getInstance();
   try {
-    config8.context = await config8.api.connect({
-      seededConnectorConnection: config8.seeded
+    config9.context = await config9.api.connect({
+      seededConnectorConnection: config9.seeded
     });
     return true;
   } catch (err) {
@@ -20338,24 +21703,24 @@ var loadConnect = async () => {
   }
 };
 var loadPieces = async () => {
-  const config8 = ConnectorSingleton.getInstance();
-  const notifications5 = Notifications.getInstance();
-  if (!config8.context) {
+  const config9 = ConnectorSingleton.getInstance();
+  const notifications7 = Notifications.getInstance();
+  if (!config9.context) {
     try {
-      config8.context = await config8.api.connect({
-        seededConnectorConnection: config8.seeded
+      config9.context = await config9.api.connect({
+        seededConnectorConnection: config9.seeded
       });
     } catch (err) {
     }
-    if (!config8.context) {
-      notifications5.error({
-        message: "Failed to connect to Pieces OS. Please check that Pieces OS is installed."
+    if (!config9.context) {
+      notifications7.error({
+        message: "Failed to connect to Pieces OS. Please check that Pieces OS is installed and up to date."
       });
       setFetchFailed(true);
       return Promise.reject(new Error("Context Undefined"));
     }
   }
-  const snapshot = await fetchSnapshot({ config: config8 });
+  const snapshot = await fetchSnapshot({ config: config9 });
   if (snapshot instanceof Error) {
     setFetchFailed(true);
     return Promise.reject(snapshot);
@@ -20366,23 +21731,23 @@ var loadPieces = async () => {
     assets: snapshot.assets,
     references: piecesStorage.formatTransferables
   });
-  piecesStorage.store({ assets: assets.iterable });
-  writeData(assets.iterable);
-  const { snippets } = await processAssets({
-    assets: piecesStorage.assets
+  piecesStorage.store({
+    assets: processAssets({ assets: assets.iterable }).snippets
   });
+  writeData();
+  const snippets = piecesStorage.assets;
   setFetchFailed(false);
   return snippets;
 };
 var fetchSnapshot = async ({
-  config: config8,
+  config: config9,
   retry: retry2 = false
 }) => {
-  const notifications5 = Notifications.getInstance();
+  const notifications7 = Notifications.getInstance();
   let snapshot;
   try {
-    snapshot = await config8.api.snapshot({
-      application: config8.context.application.id,
+    snapshot = await config9.api.snapshot({
+      application: config9.context.application.id,
       suggested: false,
       transferables: false
     });
@@ -20391,11 +21756,11 @@ var fetchSnapshot = async ({
     if (!retry2) {
       return await fetchSnapshot({
         suggested: false,
-        config: config8,
+        config: config9,
         retry: true
       });
     } else {
-      notifications5.error({
+      notifications7.error({
         message: "Failed to load snippets. Please restart Pieces OS, ensure that it is up-to-date, and try again. If the problem persists please reach out to support at support@pieces.app."
       });
       return Promise.reject("Failed to fetch snapshot");
@@ -20414,7 +21779,7 @@ var fetchAllFormats = async ({ assets }) => {
   }
   await Promise.all(formatFetching);
 };
-var processAssets = async ({ assets }) => {
+var processAssets = ({ assets }) => {
   const snippets = [];
   for (const asset of assets) {
     snippets.push(processAsset({ asset }));
@@ -20495,33 +21860,33 @@ var fetchFormatTransferable = async ({
 };
 
 // src/settings/index.ts
-var import_obsidian11 = require("obsidian");
+var import_obsidian12 = require("obsidian");
 
 // src/actions/login.ts
-var notifications3 = Notifications.getInstance();
-var config5 = ConnectorSingleton.getInstance();
+var notifications5 = Notifications.getInstance();
+var config6 = ConnectorSingleton.getInstance();
 var login = async () => {
   try {
-    const user = (await config5.userApi.userSnapshot()).user;
+    const user = (await config6.userApi.userSnapshot()).user;
     if (!user) {
-      await config5.osApi.signIntoOS();
+      await config6.osApi.signIntoOS();
     }
-    notifications3.information({ message: Constants.SIGNIN_SUCCESS });
+    notifications5.information({ message: Constants.SIGNIN_SUCCESS });
     return true;
   } catch (error) {
-    notifications3.error({ message: Constants.SIGNIN_FAIL });
+    notifications5.error({ message: Constants.SIGNIN_FAIL });
     return false;
   }
 };
 var logout = async () => {
   try {
-    const user = (await config5.userApi.userSnapshot()).user;
+    const user = (await config6.userApi.userSnapshot()).user;
     if (user) {
-      await config5.osApi.signOutOfOS();
-      notifications3.information({ message: Constants.SIGNOUT_SUCCESS });
+      await config6.osApi.signOutOfOS();
+      notifications5.information({ message: Constants.SIGNOUT_SUCCESS });
       return true;
     } else {
-      notifications3.error({ message: Constants.SIGNOUT_FAIL });
+      notifications5.error({ message: Constants.SIGNOUT_FAIL });
       return false;
     }
   } catch (error) {
@@ -20545,7 +21910,7 @@ var youtube_default = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAADwAAAAhwCAM
 var twitter_default = "data:image/png;base64,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";
 
 // src/settings/index.ts
-var PiecesSettingTab = class extends import_obsidian11.PluginSettingTab {
+var PiecesSettingTab = class extends import_obsidian12.PluginSettingTab {
   constructor(app2, plugin) {
     super(app2, plugin);
     this.cloud = CloudService.getInstance();
@@ -20553,20 +21918,25 @@ var PiecesSettingTab = class extends import_obsidian11.PluginSettingTab {
   }
   async display() {
     const { containerEl } = this;
-    const config8 = ConnectorSingleton.getInstance();
+    const config9 = ConnectorSingleton.getInstance();
     containerEl.empty();
     containerEl.createEl("h1", { text: "Pieces Settings" });
-    new import_obsidian11.Setting(containerEl).setName(Constants.SHOW_TUTORIAL).setDesc(Constants.TUTORIAL_DESCRIPTION).addButton(
+    new import_obsidian12.Setting(containerEl).setName(Constants.SHOW_TUTORIAL).setDesc(Constants.TUTORIAL_DESCRIPTION).addButton(
       (comp) => comp.setButtonText("Show").onClick(() => {
         this.plugin.showOnboarding();
       }).setClass("button")
     );
-    new import_obsidian11.Setting(containerEl).setName(Constants.TOGGLE_AUTOOPEN).setDesc(Constants.TOGGLE_AUTOOPEN_DESC).addToggle(
+    new import_obsidian12.Setting(containerEl).setName(Constants.TOGGLE_AUTOOPEN).setDesc(Constants.TOGGLE_AUTOOPEN_DESC).addToggle(
       (comp) => comp.setValue(this.plugin.settings.autoOpen).onChange(async (value) => {
         this.plugin.settings.autoOpen = value;
       })
     );
-    new import_obsidian11.Setting(containerEl).setName(Constants.CLOUD_SELECT).setDesc(Constants.CLOUD_SELECT_DESC).addDropdown(
+    new import_obsidian12.Setting(containerEl).setName(Constants.TOGGLE_AUTODISCOVER).setDesc(Constants.TOGGLE_AUTODISCOVER_DESC).addToggle(
+      (comp) => comp.setValue(this.plugin.settings.autoDiscover).onChange(async (value) => {
+        this.plugin.settings.autoDiscover = value;
+      })
+    );
+    new import_obsidian12.Setting(containerEl).setName(Constants.CLOUD_SELECT).setDesc(Constants.CLOUD_SELECT_DESC).addDropdown(
       (comp) => comp.addOptions({
         blended: "Blended",
         local: "Local",
@@ -20579,12 +21949,10 @@ var PiecesSettingTab = class extends import_obsidian11.PluginSettingTab {
         }
       )
     );
-    new import_obsidian11.Setting(containerEl).setName(Constants.PORT_PROMPT).addText(
-      (comp) => comp.setValue(Constants.PORT_VALUE).setDisabled(true)
-    ).setDesc(Constants.PORT_DESCRIPTION);
-    let user = (await config8.userApi.userSnapshot()).user;
+    new import_obsidian12.Setting(containerEl).setName(Constants.PORT_PROMPT).addText((comp) => comp.setValue(Constants.PORT_VALUE).setDisabled(true)).setDesc(Constants.PORT_DESCRIPTION);
+    let user = (await config9.userApi.userSnapshot()).user;
     if (user) {
-      new import_obsidian11.Setting(containerEl).setName(Constants.LOGOUT_TITLE).setDesc(Constants.LOGOUT_DESC).addButton(
+      new import_obsidian12.Setting(containerEl).setName(Constants.LOGOUT_TITLE).setDesc(Constants.LOGOUT_DESC).addButton(
         (comp) => comp.setButtonText("Logout").onClick(async () => {
           const success = await logout();
           if (success) {
@@ -20594,10 +21962,10 @@ var PiecesSettingTab = class extends import_obsidian11.PluginSettingTab {
       );
       this.cloud.connect({ user });
     } else {
-      new import_obsidian11.Setting(containerEl).setName(Constants.LOGIN_TITLE).setDesc(Constants.LOGIN_DESC).addButton(
+      new import_obsidian12.Setting(containerEl).setName(Constants.LOGIN_TITLE).setDesc(Constants.LOGIN_DESC).addButton(
         (comp) => comp.setButtonText("Login").onClick(async () => {
           const success = await login();
-          user = (await config8.userApi.userSnapshot()).user;
+          user = (await config9.userApi.userSnapshot()).user;
           if (success) {
             await this.refreshSettingsView();
           }
@@ -20734,26 +22102,85 @@ var updateConnectionType = async (settings) => {
 var DEFAULT_SETTINGS = {
   cloudCapabilities: "blended",
   hasLoaded: false,
-  autoOpen: true
+  autoOpen: true,
+  autoDiscover: true
 };
 
 // src/ui/views/pieces-snippet-list-view.ts
-var import_obsidian15 = require("obsidian");
+var import_obsidian17 = require("obsidian");
 
 // src/ui/views/create_gpt_view.ts
-var import_obsidian14 = require("obsidian");
+var import_obsidian16 = require("obsidian");
 
 // src/actions/qgpt.ts
-var askQGPT = async ({ query }) => {
-  const config8 = ConnectorSingleton.getInstance();
+var allFilesAsContext = () => {
+  const cache5 = PiecesCacheSingleton.getInstance();
+  const files = app.vault.getMarkdownFiles();
+  const paths = [];
+  const folders = [];
+  files.forEach((file) => {
+    paths.push(file.path);
+    if (file.parent !== null && !folders.includes(file.parent.path))
+      folders.push(file.parent.name);
+  });
+  cache5.gptFolderNames = folders;
+  cache5.gptContextPaths = paths;
+};
+var loadedFiles = {};
+var loadingPromise = void 0;
+var cancelLoading = false;
+var loadContext = async () => {
+  if (cancelLoading) {
+    return;
+  }
+  if (loadingPromise !== void 0) {
+    cancelLoading = true;
+    await loadingPromise;
+    cancelLoading = false;
+  }
+  const cache5 = PiecesCacheSingleton.getInstance();
+  const config9 = ConnectorSingleton.getInstance();
   const { vault } = app;
-  const files = vault.getMarkdownFiles();
+  const MAX_PATHS_PER_REQUEST = 8;
+  let loadCount = 0;
+  const files = cache5.gptContextPaths;
   const basePath = vault.adapter.basePath;
+  const contextLoader = async () => {
+    while (loadCount < files.length && !cancelLoading) {
+      loadCount += MAX_PATHS_PER_REQUEST;
+      const cur_paths = files.slice(loadCount - MAX_PATHS_PER_REQUEST, loadCount).filter((file) => {
+        return loadedFiles[file] === void 0;
+      }).map((file) => {
+        return basePath + "/" + file;
+      });
+      const relevanceInput = {
+        qGPTRelevanceInput: {
+          query: "nothing",
+          paths: cur_paths
+        }
+      };
+      await config9.QGPTApi.relevance(relevanceInput);
+      cur_paths.forEach((path) => {
+        loadedFiles[path] = true;
+      });
+    }
+  };
+  loadingPromise = contextLoader();
+};
+var askQGPT = async ({ query }) => {
+  const config9 = ConnectorSingleton.getInstance();
+  const cache5 = PiecesCacheSingleton.getInstance();
+  const { vault } = app;
+  const files = cache5.gptContextPaths;
+  const basePath = vault.adapter.basePath;
+  const filePaths = files.map((file) => {
+    return basePath + "/" + file;
+  }).filter((file) => {
+    return loadedFiles[file];
+  });
   const relevanceInput = {
     query,
-    paths: files.map((file) => {
-      return basePath + "/" + file.path;
-    }),
+    paths: filePaths,
     options: {
       question: true
     }
@@ -20762,7 +22189,7 @@ var askQGPT = async ({ query }) => {
     qGPTRelevanceInput: relevanceInput
   };
   return {
-    result: await config8.QGPTApi.relevance(params),
+    result: await config9.QGPTApi.relevance(params),
     query
   };
 };
@@ -20771,8 +22198,8 @@ var reprompt = async ({
   query
 }) => {
   const reversedConv = conversation.reverse();
-  const config8 = ConnectorSingleton.getInstance();
-  const repromptRes = await config8.QGPTApi.reprompt({
+  const config9 = ConnectorSingleton.getInstance();
+  const repromptRes = await config9.QGPTApi.reprompt({
     qGPTRepromptInput: {
       query,
       conversation: {
@@ -20787,8 +22214,8 @@ var hints = async ({
   answer,
   query
 }) => {
-  const config8 = ConnectorSingleton.getInstance();
-  return config8.QGPTApi.hints({
+  const config9 = ConnectorSingleton.getInstance();
+  return config9.QGPTApi.hints({
     qGPTHintsInput: {
       relevant,
       answer,
@@ -23023,107 +24450,191 @@ var lexer = Lexer.lex;
 
 // src/ui/plugins/SaveToPiecesWidget.ts
 var import_view = require("@codemirror/view");
-var import_obsidian12 = require("obsidian");
+var import_obsidian13 = require("obsidian");
 
-// src/actions/draft_asset.ts
-var draft_asset = ({ text }) => {
-  const config8 = ConnectorSingleton.getInstance();
-  const params = {
-    seed: {
-      asset: {
-        application: config8.context.application,
-        format: {
-          fragment: {
-            string: {
-              raw: text
-            }
+// src/actions/auto_link.ts
+var AutoLinker = class {
+  /*
+  	Initialize code block search
+  */
+  static async findCode() {
+    if (this.findingCode) {
+      return;
+    }
+    this._findCode();
+  }
+  /*
+  	Setter in order to relate a code snippet to a file path
+  */
+  static setSeedToPath(code, path) {
+    this.seedToPath[code.substring(this.KEY_SUBSTR_LEN)] = path;
+  }
+  /*
+  	Getter in order to relate a code snippet to a file path
+  */
+  static getSeedToPath(code) {
+    return this.seedToPath[code.substring(this.KEY_SUBSTR_LEN)];
+  }
+  /*
+  	Private runner to parse the markdown in order to find the code.
+  	- uses regex to find code fences within the markdown and appends them to this.codeBlocks
+  */
+  static async _findCode() {
+    this.codeBlocks = [];
+    this.findingCode = true;
+    const vault = app.vault;
+    const allFiles = vault.getMarkdownFiles();
+    for (let i = 0; i < allFiles.length; i++) {
+      const data = await vault.read(allFiles[i]);
+      let match;
+      while ((match = this.fence_regex.exec(data)) !== null) {
+        const [, lang, code] = match;
+        code.trim();
+        this.codeBlocks.push({
+          codeBlock: {
+            lang,
+            code
           },
-          classification: {
-            specific: "py" /* Py */
+          path: allFiles[i].path
+        });
+        this.setSeedToPath(code, allFiles[i]);
+        await sleep(this.CODE_FENCE_SEARCH_WAIT);
+      }
+    }
+    this.findingCode = false;
+  }
+  /*
+  	Pass in a code block and receive a list of paths to the relevant snippets
+  	- uses all of the code blocks in this.codeBlocks as the NCS search space
+  	- calls /relevance with the inputted code block as the query.
+  */
+  static async linkCode(code) {
+    var _a, _b, _c, _d;
+    const config9 = ConnectorSingleton.getInstance();
+    const relevanceParams = {
+      qGPTRelevanceInput: {
+        query: code,
+        seeds: {
+          iterable: []
+        }
+      }
+    };
+    for (let i = 0; i < this.codeBlocks.length; i++) {
+      const currentSeed = {
+        type: "SEEDED_ASSET" /* Asset */,
+        asset: {
+          application: config9.context.application,
+          format: {
+            fragment: {
+              string: { raw: this.codeBlocks[i].codeBlock.code },
+              metadata: {
+                ext: langExtToClassificationSpecificEnum(
+                  this.codeBlocks[i].codeBlock.lang
+                )
+              }
+            }
           }
         }
-      },
-      type: "SEEDED_ASSET" /* Asset */
+      };
+      relevanceParams.qGPTRelevanceInput.seeds.iterable.push(currentSeed);
     }
-  };
-  return config8.assetsApi.assetsDraft(params);
+    const relevant = await config9.QGPTApi.relevance(relevanceParams);
+    const paths = /* @__PURE__ */ new Set();
+    for (let i = 0; i < relevant.relevant.iterable.length && i < 5; i++) {
+      const raw = (_d = (_c = (_b = (_a = relevant.relevant.iterable[i].seed) == null ? void 0 : _a.asset) == null ? void 0 : _b.format.fragment) == null ? void 0 : _c.string) == null ? void 0 : _d.raw;
+      if (!raw)
+        continue;
+      paths.add(this.getSeedToPath(raw));
+    }
+    return paths;
+  }
+  constructor() {
+  }
+};
+AutoLinker.fence_regex = /```([\w-]+)(?::[\s\S]*?)?\n([\s\S]*?)```/g;
+AutoLinker.codeBlocks = [];
+AutoLinker.CODE_FENCE_SEARCH_WAIT = 50;
+AutoLinker.KEY_SUBSTR_LEN = 100;
+AutoLinker.seedToPath = {};
+AutoLinker.findingCode = false;
+
+// src/actions/expiring_map.ts
+var ExpirationMinutes = 5;
+var ExpiringMap = class {
+  constructor() {
+    this.map = /* @__PURE__ */ new Map();
+  }
+  set(key, value, expirationTimeMs = ExpirationMinutes * 60 * 1e3) {
+    const expirationTime = Date.now() + expirationTimeMs;
+    this.map.set(key, { value, expirationTime });
+    setTimeout(() => {
+      this.delete(key);
+    }, expirationTimeMs);
+  }
+  get(key) {
+    const entry = this.map.get(key);
+    if (entry && entry.expirationTime > Date.now()) {
+      return entry.value;
+    }
+    this.delete(key);
+    return void 0;
+  }
+  delete(key) {
+    this.map.delete(key);
+  }
+  clear() {
+    this.map.clear();
+  }
+  size() {
+    return this.map.size;
+  }
+};
+
+// src/actions/DebounceNCS.ts
+var config7 = ConnectorSingleton.getInstance();
+var DebounceNCS = class {
+  constructor() {
+    this.ExpiringMap = new ExpiringMap();
+  }
+  // private ncsResMap: {[key: string]: { score: number; identifier: string; }} = {};
+  static getInstance() {
+    if (!DebounceNCS.instance) {
+      DebounceNCS.instance = new DebounceNCS();
+    }
+    return DebounceNCS.instance;
+  }
+  async ncsSearch(code) {
+    if (!this.ExpiringMap.get(code)) {
+      const ncsResult = await config7.searchApi.neuralCodeSearch({
+        query: code
+      });
+      this.ExpiringMap.set(code, this.findHighestRelated(ncsResult.iterable));
+    }
+    return this.ExpiringMap.get(code);
+  }
+  saveCodeToExpand(code, identifier) {
+    this.ExpiringMap.set(code, { score: 1, identifier });
+  }
+  findHighestRelated(assets) {
+    var _a;
+    if (assets.length === 0)
+      return { score: 0, identifier: "" };
+    let index = 0;
+    let highest = (_a = assets[0].score) != null ? _a : 0;
+    for (let i = 1; i < assets.length; i++) {
+      if (assets[i].score > highest) {
+        highest = assets[i].score;
+        index = i;
+      }
+    }
+    return { score: assets[index].score, identifier: assets[index].identifier };
+  }
 };
 
 // src/ui/plugins/SaveToPiecesWidget.ts
-var notifications4 = Notifications.getInstance();
-var config6 = ConnectorSingleton.getInstance();
+var notifications6 = Notifications.getInstance();
 var storage3 = PiecesCacheSingleton.getInstance();
-var truncateAfterNewline = (str) => {
-  const newlineIndex = str.indexOf("\n");
-  if (newlineIndex !== -1) {
-    return str.substring(0, newlineIndex);
-  } else {
-    return str;
-  }
-};
-var calculateLevenshteinDistance = (str1, str2) => {
-  const m = str1.length;
-  const n = str2.length;
-  if (Math.abs(m - n) > 2) {
-    return Infinity;
-  }
-  const dp = [];
-  for (let i = 0; i <= m; i++) {
-    dp[i] = [i];
-  }
-  for (let j = 1; j <= n; j++) {
-    dp[0][j] = j;
-  }
-  for (let i = 1; i <= m; i++) {
-    for (let j = 1; j <= n; j++) {
-      if (str1[i - 1] === str2[j - 1]) {
-        dp[i][j] = dp[i - 1][j - 1];
-      } else {
-        dp[i][j] = Math.min(
-          dp[i - 1][j] + 1,
-          // deletion
-          dp[i][j - 1] + 1,
-          // insertion
-          dp[i - 1][j - 1] + 1
-          // substitution
-        );
-      }
-    }
-  }
-  return dp[m][n];
-};
-var findSimilarity = async (codeBlock) => {
-  let comparisonScore = Infinity;
-  let comparisonID = "";
-  const rawCode = {
-    query: truncateAfterNewline(codeBlock)
-  };
-  const result = config6.searchApi.fullTextSearch(rawCode);
-  const assetArray = [];
-  await result.then(async (res) => {
-    res.iterable.forEach((element) => {
-      assetArray.push(storage3.mappedAssets[element.identifier]);
-    });
-    const returnedSnippets = await processAssets({
-      assets: assetArray
-    });
-    returnedSnippets.snippets.forEach((element) => {
-      try {
-        const currentCompScore = calculateLevenshteinDistance(
-          codeBlock,
-          element.raw
-        );
-        if (currentCompScore < comparisonScore) {
-          comparisonScore = currentCompScore;
-          comparisonID = element.id;
-        }
-      } catch (e) {
-        console.log("Error in calculating similarity score");
-      }
-    });
-  });
-  return { similarity: comparisonScore, comparisonID };
-};
+var debounceNCS = DebounceNCS.getInstance();
 var extractDescription = (input) => {
   if (!input) {
     return "";
@@ -23155,11 +24666,20 @@ var SaveToPiecesWidget = class extends import_view.WidgetType {
     // if we want to show the enrich button or not
     this.shareableLinks = ShareableLinksService.getInstance();
     this.tempCollapseTimer = void 0;
+    this.handleNCS = async (codeBlock) => {
+      if (!this.score && !this.identifier) {
+        debounceNCS.ncsSearch(codeBlock).then((res) => {
+          var _a, _b;
+          this.score = (_a = res == null ? void 0 : res.score) != null ? _a : 0;
+          this.identifier = (_b = res == null ? void 0 : res.identifier) != null ? _b : "";
+        });
+      }
+    };
     this.enrichButton = (container, holderDiv) => {
-      const enrichBtn = new import_obsidian12.ButtonComponent(container).onClick(async () => {
-        var _a, _b, _c, _d, _e;
+      const enrichBtn = new import_obsidian13.ButtonComponent(container).onClick(async () => {
+        var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j;
         if (this.enriched) {
-          new import_obsidian12.Notice("Snippet already enriched!");
+          new import_obsidian13.Notice("Snippet already enriched!");
           return;
         }
         this.enriched = true;
@@ -23172,6 +24692,8 @@ var SaveToPiecesWidget = class extends import_view.WidgetType {
         const draft_seed = await draft_asset({
           text: this.codeBlock
         });
+        const links = await AutoLinker.linkCode(this.codeBlock);
+        const linksArray = Array.from(links).reverse();
         const titleParent = (_a = document.getElementById(
           "placeholder_Div:" + this.codeBlockNum
         )) == null ? void 0 : _a.parentElement;
@@ -23184,17 +24706,43 @@ var SaveToPiecesWidget = class extends import_view.WidgetType {
           "beforebegin",
           `<div><h1>**${name}**</h1></div>`
         );
+        let fileLinks = 0;
+        for (let i = 0; i < linksArray.length; i++) {
+          if (((_g = (_f = app.workspace.activeEditor) == null ? void 0 : _f.file) == null ? void 0 : _g.path) === linksArray[i].path) {
+            continue;
+          }
+          descParent == null ? void 0 : descParent.insertAdjacentHTML(
+            "afterend",
+            `<div><p>- [[${linksArray[i].path}|${linksArray[i].name.slice(
+              0,
+              -3
+            )}]]</p></div>`
+          );
+          fileLinks++;
+        }
+        if (fileLinks != 0) {
+          descParent == null ? void 0 : descParent.insertAdjacentHTML(
+            "afterend",
+            `<div><p>**Links:**</p></div>`
+          );
+        }
         descParent == null ? void 0 : descParent.insertAdjacentHTML(
           "afterend",
-          `<div><p>${desc}</p></div>`
+          `<div><p>${desc}</p></div><br>`
+        );
+        descParent == null ? void 0 : descParent.insertAdjacentHTML(
+          "afterend",
+          `<div>${(_j = (_i = (_h = draft_seed.asset) == null ? void 0 : _h.metadata) == null ? void 0 : _i.tags) == null ? void 0 : _j.slice(0, 5).map((tag) => {
+            return `<span>#${tag.text.trim().replace(/ /g, "-")}</span>`;
+          }).join(" ")}</div><br>`
         );
         container.replaceChild(enrichBtn.buttonEl, loading);
       }).setTooltip("Enrich code snippet").setClass("save-to-pieces-btn").setIcon("sparkles");
     };
     this.expandButton = (container, ID) => {
-      new import_obsidian12.ButtonComponent(container).onClick(async () => {
+      const expandButton = new import_obsidian13.ButtonComponent(container).onClick(async () => {
         if (!ID) {
-          notifications4.error({
+          notifications6.error({
             message: Constants.EXPAND_ERROR
           });
           return;
@@ -23203,13 +24751,14 @@ var SaveToPiecesWidget = class extends import_view.WidgetType {
 ` + this.codeBlock + "```";
         await createExpandedView({
           snippetId: ID,
-          snippetTitle: storage3.mappedAssets[ID != null ? ID : ""].name || "",
+          snippetTitle: storage3.mappedAssets[ID != null ? ID : ""].title || "",
           snippetFormatted: codeContent
         });
       }).setTooltip("Expand via Pieces").setClass("save-to-pieces-btn").setIcon("expand");
+      return expandButton;
     };
     this.shareButton = (container, holderDiv) => {
-      const shareButton = new import_obsidian12.ButtonComponent(container).onClick(async () => {
+      const shareButton = new import_obsidian13.ButtonComponent(container).onClick(async () => {
         const loading = holderDiv.createEl("div");
         loading.addClass("share-code-bouncing-loader");
         loading.createEl("div");
@@ -23217,34 +24766,30 @@ var SaveToPiecesWidget = class extends import_view.WidgetType {
         loading.createEl("div");
         container.replaceChild(loading, shareButton.buttonEl);
         if (this.id) {
-          const existingLink = processAsset({
-            asset: storage3.mappedAssets[this.id]
-          }).share;
+          const existingLink = storage3.mappedAssets[this.id].share;
           const link = existingLink != null ? existingLink : await this.shareableLinks.generate({
             id: this.id
           });
           copyToClipboard(link != null ? link : "");
           if (existingLink) {
-            notifications4.information({
+            notifications6.information({
               message: Constants.LINK_GEN_COPY
             });
           }
         } else {
-          if (this.similarity < 2) {
-            const existingLink = processAsset({
-              asset: storage3.mappedAssets[this.comparisonID]
-            }).share;
+          if (this.score > 0.97) {
+            const existingLink = storage3.mappedAssets[this.identifier].share;
             const link = existingLink != null ? existingLink : await this.shareableLinks.generate({
-              id: this.comparisonID
+              id: this.identifier
             });
             copyToClipboard(link != null ? link : "");
             if (existingLink) {
-              notifications4.information({
+              notifications6.information({
                 message: Constants.LINK_GEN_COPY
               });
             }
           } else {
-            const id = await createAsset(this.codeBlock);
+            const id = await createAsset({ selection: this.codeBlock });
             if (typeof id === "string") {
               const link = await this.shareableLinks.generate({
                 id
@@ -23258,25 +24803,28 @@ var SaveToPiecesWidget = class extends import_view.WidgetType {
       return shareButton;
     };
     this.copyButton = (container) => {
-      const copyButton = new import_obsidian12.ButtonComponent(container).onClick(async () => {
+      const copyButton = new import_obsidian13.ButtonComponent(container).onClick(async () => {
         var _a;
         if (this.lang && this.codeBlock && this.codeBlock.substring(0, 3) !== "```\n") {
           this.codeBlock = "```" + this.lang + "\n" + this.codeBlock + "```";
         }
         copyToClipboard((_a = this.codeBlock) != null ? _a : this.codeRaw);
-        new import_obsidian12.Notice("Snippet copied to clipboard!");
+        new import_obsidian13.Notice("Snippet copied to clipboard!");
       }).setTooltip("Copy code to clipboard").setClass("save-to-pieces-btn").setIcon("copy");
       return copyButton;
     };
     this.saveButton = (container, holderDiv) => {
-      const saveButton = new import_obsidian12.ButtonComponent(container).onClick(async () => {
+      const saveButton = new import_obsidian13.ButtonComponent(container).onClick(async () => {
         const loading = holderDiv.createEl("div");
         loading.addClass("share-code-bouncing-loader");
         loading.createEl("div");
         loading.createEl("div");
         loading.createEl("div");
         container.replaceChild(loading, saveButton.buttonEl);
-        await createAsset(this.codeBlock, false, void 0, this.lang);
+        const id = await createAsset({
+          selection: this.codeBlock,
+          lang: this.lang
+        });
         if (pluginSettings.autoOpen && !app.workspace.getLeavesOfType(
           Constants.PIECES_SNIPPET_LIST_VIEW_TYPE
         ).length) {
@@ -23290,9 +24838,17 @@ var SaveToPiecesWidget = class extends import_view.WidgetType {
             )[0]
           );
         }
-        loading.remove();
-        const computedWidth = (5 + 42) * container.childElementCount;
-        container.style.width = computedWidth + "px";
+        if (id !== void 0) {
+          const expand = this.expandButton(container, id);
+          container.replaceChild(expand.buttonEl, loading);
+          debounceNCS.saveCodeToExpand(this.codeBlock, id);
+          this.score = 1;
+          this.identifier = id;
+        } else {
+          loading.remove();
+          const computedWidth = (5 + 42) * container.childElementCount;
+          container.style.width = computedWidth + "px";
+        }
       }).setTooltip("Save code to Pieces").setClass("save-to-pieces-btn").setIcon("save");
     };
     this.codeBlock = codeBlock;
@@ -23310,30 +24866,24 @@ var SaveToPiecesWidget = class extends import_view.WidgetType {
     if (this.codeBlock.length < 5) {
       return holderDiv;
     }
+    this.handleNCS(this.codeBlock);
+    const { id } = this;
     const collapsedHolder = holderDiv.createDiv();
     collapsedHolder.addClasses(["collapsed-pieces-holder", "collapsed"]);
-    const collapseControlButton = new import_obsidian12.ButtonComponent(holderDiv).onClick(async () => {
+    const collapseControlButton = new import_obsidian13.ButtonComponent(holderDiv).onClick(async () => {
       clearTimeout(this.tempCollapseTimer);
-      const { similarity, comparisonID } = await findSimilarity(
-        this.codeBlock
-      );
-      this.similarity = similarity;
-      this.comparisonID = comparisonID;
       if (collapsedHolder.classList.contains("collapsed")) {
         if (!this.piecesPreview) {
-          if (this.id || similarity < 2) {
-            this.copyButton(collapsedHolder);
-          } else {
-            this.copyButton(collapsedHolder);
-            this.saveButton(collapsedHolder, holderDiv);
-          }
+          this.copyButton(collapsedHolder);
           if (!this.disableEnrichment) {
             this.enrichButton(collapsedHolder, holderDiv);
           }
-          if (this.id && this.id != "" && storage3.mappedAssets[this.id]) {
-            this.expandButton(collapsedHolder, this.id);
-          } else if (similarity < 2 && comparisonID != "" && storage3.mappedAssets[comparisonID]) {
-            this.expandButton(collapsedHolder, comparisonID);
+          if (id && storage3.mappedAssets[id]) {
+            this.expandButton(collapsedHolder, id);
+          } else if (this.score > 0.97 && this.identifier && storage3.mappedAssets[this.identifier]) {
+            this.expandButton(collapsedHolder, this.identifier);
+          } else {
+            this.saveButton(collapsedHolder, holderDiv);
           }
         } else {
           this.copyButton(collapsedHolder);
@@ -23399,21 +24949,23 @@ var PlaceHolderWidget = class extends import_view.WidgetType {
   }
 };
 
-// src/actions/open_vault_file.ts
-var import_obsidian13 = require("obsidian");
-var openVaultFile = (myPath) => {
+// src/actions/open_vault_note.ts
+var import_obsidian14 = require("obsidian");
+var openVaultNote = (myPath) => {
   const cleanedPath = myPath.substring(myPath.lastIndexOf("/") + 1);
   const vaultFiles = app.vault.getFiles();
-  const targetFile = vaultFiles.find((f) => f.path === cleanedPath);
+  const targetFile = vaultFiles.find(
+    (f) => f.path.contains(cleanedPath)
+  );
   try {
     if (targetFile) {
       const leaf = app.workspace.getLeaf("tab");
       leaf.openFile(targetFile);
     } else {
-      console.error("Target file error");
+      console.error(`Target file error: ${targetFile}`);
     }
   } catch (e) {
-    new import_obsidian13.Notice(`Error opening ${myPath}, the file may not exist.`);
+    new import_obsidian14.Notice(`Error opening ${myPath}, the file may not exist.`);
   }
 };
 
@@ -23423,11 +24975,293 @@ var piecesCopilotW_default = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAByoA
 // assets/piecesCopilotB.png
 var piecesCopilotB_default = "data:image/png;base64,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";
 
+// src/ui/modals/context-modal.ts
+var import_obsidian15 = require("obsidian");
+var ContextModal = class extends import_obsidian15.Modal {
+  constructor(app2) {
+    super(app2);
+    this.cache = PiecesCacheSingleton.getInstance();
+    this.files = [];
+    this.fileCheckBoxes = {};
+    this.folderCheckBoxes = {};
+    this.getFileTree();
+  }
+  getFileTree() {
+    const vault = this.app.vault;
+    const root = {
+      name: "",
+      children: [],
+      file: vault.getRoot()
+    };
+    this.files = vault.getMarkdownFiles();
+    this.files.forEach((file) => {
+      const filePath = file.path;
+      const pathSegments = filePath.split("/");
+      let currentNode = root;
+      for (const segment of pathSegments) {
+        let childNode = currentNode.children.find(
+          (node) => node.name === segment
+        );
+        if (!childNode) {
+          childNode = {
+            name: segment,
+            children: [],
+            file
+          };
+          currentNode.children.push(childNode);
+        }
+        currentNode.children = currentNode.children.sort((a, b) => {
+          return b.children.length - a.children.length;
+        });
+        currentNode = childNode;
+      }
+    });
+    this.tree = root;
+    return root;
+  }
+  async getFileContent(file) {
+    const vault = app.vault;
+    return vault.read(file);
+  }
+  /*
+  	This will return all of the selected files to be used for context
+  	 - in this case key is a filepath.
+  */
+  getSelectedPaths() {
+    const selected = Object.keys(this.fileCheckBoxes).filter((key) => {
+      return this.fileCheckBoxes[key].checked;
+    });
+    return selected;
+  }
+  getSelectedFolders() {
+    const selected = Object.keys(this.folderCheckBoxes).filter((key) => {
+      return this.folderCheckBoxes[key].checked;
+    });
+    return selected;
+  }
+  onOpen() {
+    this.getFileTree();
+    const contextTitle = this.titleEl.createEl("p");
+    contextTitle.addClasses(["context-title"]);
+    contextTitle.innerText = "Context Selector";
+    const holderDiv = this.contentEl.createDiv();
+    holderDiv.addClasses(["context-col"]);
+    const contextParent = holderDiv.createDiv("context-parent");
+    const contextContainer = contextParent.createDiv("context-list-container");
+    contextContainer.addClasses(["context-col"]);
+    contextContainer.createDiv("context-background");
+    const contextRow = contextContainer.createDiv("context-row");
+    this.createContextList(contextRow);
+    const contextPreviewContainer = contextParent.createDiv(
+      "context-preview-container"
+    );
+    contextPreviewContainer.addClasses(["context-col"]);
+    const contextPreviewTitleDiv = contextPreviewContainer.createDiv();
+    contextPreviewTitleDiv.addClasses([
+      "context-row",
+      "context-preview-title-parent"
+    ]);
+    this.contextTitle = contextPreviewTitleDiv.createEl("h3");
+    this.contextTitle.addClass("context-preview-title");
+    this.contextTitle.textContent = "Preview: ";
+    const contextPreviewDiv = contextPreviewContainer.createEl("div");
+    contextPreviewDiv.addClasses(["context-row", "context-preview"]);
+    this.contextPreview = contextPreviewDiv.createEl("div");
+    buildDefaultPreview(this.contextPreview);
+    this.contextPreview.addClasses(["context-col", "context-display-width"]);
+  }
+  async handleShowPreview({
+    file,
+    previewTitle,
+    previewElement
+  }) {
+    const content = await this.getFileContent(file);
+    previewElement.innerHTML = content ? marked.parse(content, {
+      headerIds: false,
+      mangle: false
+      // eslint-disable-next-line no-mixed-spaces-and-tabs
+    }) : `${file.path} is empty`;
+    const pChildren = Array.from(previewElement.children);
+    const codeChildren = [];
+    pChildren.forEach((child) => {
+      if (child.tagName.toUpperCase() === "PRE") {
+        child.classList.add("gpt-col");
+        codeChildren.push(child.children[0]);
+      }
+    });
+    if (codeChildren.length) {
+      codeChildren.forEach((codeChild) => {
+        let lang;
+        try {
+          lang = (codeChild == null ? void 0 : codeChild.classList[0]).split("-")[1];
+        } catch (e) {
+          lang = Constants.GPT_DEFAULT_LANGUAGE;
+        }
+        codeChild.innerHTML = highlightSnippet({
+          snippetContent: codeChild.innerText,
+          snippetLanguage: langExtToClassificationSpecificEnum(lang)
+        });
+        codeChild.classList.add("context-shadow");
+      });
+    }
+    const splitPath = file.path.split("/");
+    const lastPath = splitPath[splitPath.length - 1];
+    const cleanedPath = lastPath.split(".");
+    const finalCleanedPath = cleanedPath[0];
+    previewTitle.innerText = finalCleanedPath;
+  }
+  onClose() {
+    const { contentEl, titleEl } = this;
+    this.cache.gptContextPaths = this.getSelectedPaths();
+    this.cache.gptFolderNames = this.getSelectedFolders();
+    loadContext();
+    writeData();
+    contentEl.empty();
+    titleEl.empty();
+  }
+  createContextList(parentDiv) {
+    const filePathTree = this.tree;
+    if (!filePathTree) {
+      return;
+    }
+    const contextUnorderedList = parentDiv.createEl("ul");
+    contextUnorderedList.addClasses(["context-list"]);
+    contextUnorderedList.id = "parentFileUL";
+    this.createContextDirectory(contextUnorderedList, filePathTree);
+  }
+  /*
+  	This will recursively set 'checked' of each of the checkboxes in the node's children to @param checked
+  */
+  selectChildren(node, checked) {
+    if (!node.children.length)
+      return;
+    this.folderCheckBoxes[node.name].checked = checked;
+    for (let i = 0; i < node.children.length; i++) {
+      const checkbox = this.fileCheckBoxes[node.children[i].file.path];
+      if (!checkbox) {
+        console.error(`couldn't find checkbox for ${node.file.path}`);
+        continue;
+      }
+      checkbox.checked = checked;
+      if (node.children[i].children.length) {
+        this.selectChildren(node.children[i], checked);
+      }
+    }
+  }
+  createContextDirectory(parentUL, directory) {
+    var _a, _b;
+    const contextListItem = parentUL.createEl("li");
+    contextListItem.addClasses(["context-list-item"]);
+    const contextParentDiv = contextListItem.createEl("div");
+    contextParentDiv.addClasses(["context-list-div"]);
+    const contextListItemHeader = contextParentDiv.createEl("span");
+    contextListItemHeader.addClasses(["context-list-span"]);
+    contextListItemHeader.setText(
+      directory.name === "" ? "Select All" : directory.name.replace(/\.md$/, "")
+    );
+    contextListItemHeader.title = `Preview '${directory.name.replace(
+      /\.md$/,
+      ""
+    )}'`;
+    const selectBox = contextParentDiv.createEl("input", {
+      type: "checkbox"
+    });
+    selectBox.addClasses(["context-list-checkbox"]);
+    selectBox.title = `Add '${directory.name.replace(/\.md$/, "")}' to context`;
+    if (directory.name === "") {
+      selectBox.addClasses(["hidden"]);
+    }
+    if (directory.children.length) {
+      if (((_a = this.folderCheckBoxes[directory.name]) == null ? void 0 : _a.checked) || this.cache.gptFolderNames.includes(directory.name)) {
+        selectBox.checked = true;
+      }
+      this.folderCheckBoxes[directory.name] = selectBox;
+    } else {
+      if (((_b = this.fileCheckBoxes[directory.file.path]) == null ? void 0 : _b.checked) || this.cache.gptContextPaths.includes(directory.file.path)) {
+        selectBox.checked = true;
+      }
+      this.fileCheckBoxes[directory.file.path] = selectBox;
+    }
+    selectBox.checked ? selectBox.title = `Remove '${directory.name.replace(
+      /\.md$/,
+      ""
+      // eslint-disable-next-line no-mixed-spaces-and-tabs
+    )}' to context` : selectBox.title = `Add '${directory.name.replace(
+      /\.md$/,
+      ""
+      // eslint-disable-next-line no-mixed-spaces-and-tabs
+    )}' to context`;
+    if (directory.name === "") {
+      selectBox.checked ? contextListItemHeader.setText("Deselect All") : contextListItemHeader.setText("Select All");
+      selectBox.checked ? contextListItemHeader.title = `Remove vault from context` : contextListItemHeader.title = `Add vault to context`;
+    }
+    selectBox.onchange = () => {
+      if (directory.children.length) {
+        this.selectChildren(directory, selectBox.checked);
+      }
+      selectBox.checked ? selectBox.title = `Remove '${directory.name.replace(
+        /\.md$/,
+        ""
+        // eslint-disable-next-line no-mixed-spaces-and-tabs
+      )}' to context` : selectBox.title = `Add '${directory.name.replace(
+        /\.md$/,
+        ""
+        // eslint-disable-next-line no-mixed-spaces-and-tabs
+      )}' to context`;
+    };
+    if (!directory.children.length) {
+      contextListItemHeader.addEventListener("click", (e) => {
+        this.handleShowPreview({
+          file: directory.file,
+          previewTitle: this.contextTitle,
+          previewElement: this.contextPreview
+        });
+        e.stopPropagation();
+      });
+      return;
+    }
+    const contextListItemChildren = contextListItem.createEl("ul");
+    contextListItemChildren.addClasses(["nested"]);
+    if (directory.name !== "") {
+      contextListItemHeader.addClasses(["caret"]);
+      contextListItemHeader.addEventListener("click", (e) => {
+        var _a2, _b2;
+        ((_b2 = (_a2 = contextListItemHeader.parentElement) == null ? void 0 : _a2.parentElement) == null ? void 0 : _b2.lastChild).classList.toggle("active");
+        contextListItemHeader.classList.toggle("caret-down");
+        e.stopPropagation();
+      });
+    } else {
+      contextParentDiv.addClasses(["context-root"]);
+      contextListItemChildren.addClasses(["nested", "active", "context-hide"]);
+      contextListItemHeader.addEventListener("click", (e) => {
+        selectBox.checked = !selectBox.checked;
+        selectBox.checked ? contextListItemHeader.setText("Deselect All") : contextListItemHeader.setText("Select All");
+        selectBox.checked ? contextListItemHeader.title = `Remove vault from context` : contextListItemHeader.title = `Add vault to context`;
+        if (directory.children.length) {
+          this.selectChildren(directory, selectBox.checked);
+        }
+        e.stopPropagation();
+      });
+    }
+    directory.children.forEach((child) => {
+      this.createContextDirectory(contextListItemChildren, child);
+    });
+  }
+};
+var buildDefaultPreview = (parentDiv) => {
+  const previewDiv = parentDiv.createEl("div");
+  previewDiv.addClasses(["context-preview-default"]);
+  const previewTitle = previewDiv.createEl("h3");
+  previewTitle.innerText = "No Context Selected";
+  const previewText = previewDiv.createEl("p");
+  previewText.innerText = "Please select a file from the left to preview it here.";
+};
+
 // src/ui/views/create_gpt_view.ts
-var config7 = ConnectorSingleton.getInstance();
-(0, import_obsidian14.addIcon)("aiSVG", Constants.AI_ICON);
-(0, import_obsidian14.addIcon)("userSVG", Constants.USER_ICON);
-(0, import_obsidian14.addIcon)("sendSVG", Constants.SEND_ICON);
+var config8 = ConnectorSingleton.getInstance();
+(0, import_obsidian16.addIcon)("aiSVG", Constants.AI_ICON);
+(0, import_obsidian16.addIcon)("userSVG", Constants.USER_ICON);
+(0, import_obsidian16.addIcon)("sendSVG", Constants.SEND_ICON);
 var userSVG = null;
 var cancelled = true;
 var parentContainer;
@@ -23436,6 +25270,10 @@ var redrawGpt = () => {
   if (!parent) {
     return;
   }
+  cancelled = true;
+  currentConversation = [];
+  conversationArray = [];
+  generatingResults = false;
   createGPTView({ containerVar: parent, newInstance: true });
 };
 var getProfile = async () => {
@@ -23445,11 +25283,8 @@ var getProfile = async () => {
   let user;
   let profilePic;
   try {
-    user = (await config7.userApi.userSnapshot()).user;
-    if (!user) {
-      user = await config7.osApi.signIntoOS();
-    }
-    profilePic = user.picture;
+    user = (await config8.userApi.userSnapshot()).user;
+    profilePic = user == null ? void 0 : user.picture;
   } catch (e) {
   }
   if (profilePic) {
@@ -23457,12 +25292,13 @@ var getProfile = async () => {
     img.src = profilePic;
     userSVG = img;
   } else {
-    userSVG = (0, import_obsidian14.getIcon)("userSVG");
+    userSVG = (0, import_obsidian16.getIcon)("userSVG");
   }
 };
 var currentConversation = [];
 var conversationArray = [];
 var generatingResults = false;
+var contextModal = new ContextModal(app);
 var createGPTView = async ({
   containerVar: containerVar2,
   newInstance = false
@@ -23475,6 +25311,13 @@ var createGPTView = async ({
   containerDiv.addClasses(["gpt-col"]);
   const textDiv = containerDiv.createEl("div");
   textDiv.addClasses(["gpt-row", "gpt-text-div"]);
+  const contextSpan = textDiv.createDiv();
+  contextSpan.addClasses(["gpt-context"]);
+  contextSpan.title = "Select context";
+  (0, import_obsidian16.setIcon)(contextSpan, "settings");
+  contextSpan.addEventListener("mouseup", async () => {
+    contextModal.open();
+  });
   const textContent = textDiv.createEl("div");
   textContent.addClasses(["gpt-col", "gpt-text-content"]);
   let introText;
@@ -23497,12 +25340,12 @@ var createGPTView = async ({
     ]);
     introTextTitle.innerText = "Copilot Chat";
     const introTextSub = introText.createEl("p");
-    introTextSub.innerText = !versionValid ? "POS is not up-to-date, please update to use Copilot." : fetchFailed ? "Error connecting to POS! To use Copilot, please make sure Pieces OS is installed updated, and running." : "Ask Copilot a question about your vault";
+    introTextSub.innerText = !versionValid ? "Pieces OS is not up-to-date, please update to use Copilot." : fetchFailed ? "Error connecting to Pieces OS! To use Copilot, please make sure Pieces OS is installed updated, and running." : "Ask Copilot a question about your vault";
     introTextSub.addClasses(["gpt-text-intro-content"]);
   }
-  const filesRow = textDiv.createEl("div");
-  filesRow.addClass("gpt-row");
-  filesRow.id = "gpt-files-container";
+  const notesRow = textDiv.createEl("div");
+  notesRow.addClass("gpt-row");
+  notesRow.id = "gpt-notes-container";
   const hintRow = textDiv.createEl("div");
   hintRow.addClass("gpt-row");
   hintRow.id = "gpt-hints-container";
@@ -23523,13 +25366,17 @@ var createGPTView = async ({
   });
   const inputDiv = containerDiv.createEl("div");
   inputDiv.addClasses(["gpt-row", "gpt-input"]);
+  if (!(theme === "dark")) {
+    textDiv.addClass("gpt-text-div-light");
+    inputDiv.addClass("gpt-text-div-light");
+  }
   const inputText = inputDiv.createEl("span");
   inputText.addClasses(["gpt-input-textarea"]);
-  inputText.title = !versionValid ? "POS is not up-to-date, please update to use Copilot." : fetchFailed ? "POS not detected, please launch POS to use Copilot." : "Ask a question about your vault";
+  inputText.title = !versionValid ? "Pieces OS is not up-to-date, please update to use Copilot." : fetchFailed ? "Pieces OS not detected, please launch Pieces OS to use Copilot." : "Ask a question about your vault";
   inputText.contentEditable = !versionValid || fetchFailed ? "false" : "true";
   inputText.spellcheck = true;
   const sendDiv = inputDiv.createEl("div");
-  (0, import_obsidian14.setIcon)(sendDiv, "sendSVG");
+  (0, import_obsidian16.setIcon)(sendDiv, "sendSVG");
   sendDiv.addClasses(["gpt-img-small"]);
   const sendSVG = sendDiv.firstChild;
   sendSVG.addClass("gpt-send-unactive");
@@ -23537,7 +25384,7 @@ var createGPTView = async ({
     if (inputText.innerText === "") {
       return;
     }
-    hintRow.innerHTML = filesRow.innerHTML = "";
+    hintRow.innerHTML = notesRow.innerHTML = "";
     cancelled = false;
     await handleChat({
       inputText,
@@ -23562,7 +25409,7 @@ var createGPTView = async ({
     }
     sendSVG.removeClass("gpt-send-active");
     sendSVG.addClass("gpt-send-unactive");
-    hintRow.innerHTML = filesRow.innerHTML = "";
+    hintRow.innerHTML = notesRow.innerHTML = "";
     cancelled = false;
     await handleChat({
       inputText,
@@ -23584,11 +25431,11 @@ var handleChat = async ({
   var _a;
   if (generatingResults) {
     Notifications.getInstance().error({
-      message: "Already generating a message! Please wait a bit."
+      message: "Already generating a message! Please wait a few seconds and try again."
     });
     return;
   }
-  document.getElementById("gpt-files-container").innerHTML = "";
+  document.getElementById("gpt-notes-container").innerHTML = "";
   generatingResults = true;
   if (currentConversation2.length == 0) {
     textAreaDiv.empty();
@@ -23614,14 +25461,14 @@ var handleChat = async ({
     userSVG.addClasses(["gpt-user-image"]);
     userDiv.appendChild(userSVG.cloneNode(true));
   } else {
-    (0, import_obsidian14.setIcon)(userDiv, "userSVG");
+    (0, import_obsidian16.setIcon)(userDiv, "userSVG");
   }
   userDiv.addClasses(["gpt-img"]);
   textAreaDiv.prepend(queryDiv);
   const answerDiv = document.createElement("div");
   answerDiv.addClasses(["gpt-row", "gpt-left-align"]);
   const aiDiv = answerDiv.createEl("div");
-  (0, import_obsidian14.setIcon)(aiDiv, "aiSVG");
+  (0, import_obsidian16.setIcon)(aiDiv, "aiSVG");
   aiDiv.addClasses(["gpt-img"]);
   const answerEl = answerDiv.createEl("p");
   answerEl.addClasses(["gpt-text-response", "gpt-response", "gpt-col"]);
@@ -23649,7 +25496,7 @@ var handleChat = async ({
       result = repromptResponse.result;
     }
   } catch (e) {
-    answerEl.innerText = "Sorry, something went wrong with that request.";
+    answerEl.innerText = "Sorry, something went wrong with that request. Please wait a few seconds and try again, or contact support@pieces.app.";
     generatingResults = false;
     return;
   }
@@ -23679,7 +25526,7 @@ var handleChat = async ({
       );
     }
     if (relevant.iterable) {
-      renderSuggestedFiles(relevant.iterable, answerEl);
+      renderSuggestedNotes(relevant.iterable, answerEl);
       hints({
         query: curQuery,
         relevant,
@@ -23753,14 +25600,14 @@ var buildCurrentConversation = (textAreaDiv) => {
       userSVG.addClasses(["gpt-user-image"]);
       userDiv.appendChild(userSVG.cloneNode(true));
     } else {
-      (0, import_obsidian14.setIcon)(userDiv, "userSVG");
+      (0, import_obsidian16.setIcon)(userDiv, "userSVG");
     }
     userDiv.addClasses(["gpt-img"]);
     textAreaDiv.prepend(queryDiv);
     const answerDiv = document.createElement("div");
     answerDiv.addClasses(["gpt-row", "gpt-left-align"]);
     const aiDiv = answerDiv.createEl("div");
-    (0, import_obsidian14.setIcon)(aiDiv, "aiSVG");
+    (0, import_obsidian16.setIcon)(aiDiv, "aiSVG");
     aiDiv.addClasses(["gpt-img"]);
     const answerEl = answerDiv.createEl("p");
     answerEl.addClasses(["gpt-text-response", "gpt-response", "gpt-col"]);
@@ -23783,7 +25630,7 @@ var renderHints = ({
   const hintTitle = hintTitleRow.createEl("p", {
     text: "Suggested Queries: "
   });
-  hintTitle.addClass("hint-title", "hint-title-file");
+  hintTitle.addClass("hint-title", "hint-title-note");
   const hintListRow = hintCol.createDiv();
   hintListRow.addClasses(["gpt-row", "hint-list"]);
   const hintList = hintListRow.createDiv();
@@ -23813,73 +25660,73 @@ var renderHints = ({
     hintButtonText.textContent = hints2.answers.iterable[i].text;
     const hintIcon = hintButton.createEl("div");
     hintIcon.addClasses(["gpt-icon", "gpt-icon-drift"]);
-    (0, import_obsidian14.addIcon)("sendSVG2", Constants.SEND_ICON);
-    (0, import_obsidian14.setIcon)(hintIcon, "sendSVG2");
+    (0, import_obsidian16.addIcon)("sendSVG2", Constants.SEND_ICON);
+    (0, import_obsidian16.setIcon)(hintIcon, "sendSVG2");
   }
 };
-var deleteIdenticalElements = (files) => {
+var deleteIdenticalElements = (notes) => {
   const result = [];
   const paths = {};
-  files.forEach((file) => {
-    if (!paths[file.path]) {
-      paths[file.path] = true;
-      result.push(file);
+  notes.forEach((note) => {
+    if (!paths[note.path]) {
+      paths[note.path] = true;
+      result.push(note);
     }
   });
   return result;
 };
-var renderSuggestedFiles = (files, answerEl) => {
-  files = deleteIdenticalElements(files);
-  const fileRow = answerEl;
-  if (files.length == 0) {
+var renderSuggestedNotes = (notes, answerEl) => {
+  notes = deleteIdenticalElements(notes);
+  const noteRow = answerEl;
+  if (notes.length == 0) {
     return;
   }
-  const fileCol = fileRow.createDiv();
-  fileCol.addClass("gpt-col");
-  const fileTitleRow = fileCol.createDiv();
-  fileTitleRow.addClass("gpt-row");
-  const fileTitle = fileTitleRow.createEl("p", {
-    text: "Relevant Files: "
+  const noteCol = noteRow.createDiv();
+  noteCol.addClass("gpt-col");
+  const noteTitleRow = noteCol.createDiv();
+  noteTitleRow.addClass("gpt-row");
+  const noteTitle = noteTitleRow.createEl("p", {
+    text: "Relevant Notes: "
   });
-  fileTitle.addClass("hint-title-file");
-  const fileListRowDiv = fileCol.createDiv();
-  fileListRowDiv.addClasses(["gpt-row", "hint-list-file"]);
-  const fileListCol = fileListRowDiv.createDiv();
-  fileListCol.addClasses(["gpt-col"]);
-  const fileListRow = fileListCol.createDiv();
-  fileListRow.addClasses(["gpt-row", "gpt-rel-wrap"]);
-  for (let i = 0; i < files.length; i++) {
-    createFilePill(files[i], fileListRow);
+  noteTitle.addClass("hint-title-note");
+  const noteListRowDiv = noteCol.createDiv();
+  noteListRowDiv.addClasses(["gpt-row", "hint-list-note"]);
+  const noteListCol = noteListRowDiv.createDiv();
+  noteListCol.addClasses(["gpt-col"]);
+  const noteListRow = noteListCol.createDiv();
+  noteListRow.addClasses(["gpt-row", "gpt-rel-wrap"]);
+  for (let i = 0; i < notes.length; i++) {
+    createNotePill(notes[i], noteListRow);
   }
 };
-var createFilePill = (file, fileListRow) => {
+var createNotePill = (note, noteListRow) => {
   var _a;
-  const fileList = fileListRow.createDiv();
-  fileList.addClasses(["gpt-col-small"]);
-  const filePath = file.path;
-  const fileName = ((_a = filePath == null ? void 0 : filePath.substring(filePath.lastIndexOf("/") + 1)) != null ? _a : "").split(".")[0];
-  const fileButton = fileList.createEl("button");
-  fileButton.title = `Open '${fileName}' in a new tab`;
-  fileButton.addClasses(["hint-btn-file"]);
-  fileButton.onclick = () => {
-    if (!filePath) {
+  const noteList = noteListRow.createDiv();
+  noteList.addClasses(["gpt-col-small"]);
+  const notePath = note.path;
+  const noteName = ((_a = notePath == null ? void 0 : notePath.substring(notePath.lastIndexOf("/") + 1)) != null ? _a : "").split(".")[0];
+  const noteButton = noteList.createEl("button");
+  noteButton.title = `Open '${noteName}' in a new tab`;
+  noteButton.addClasses(["hint-btn-note"]);
+  noteButton.onclick = () => {
+    if (!notePath) {
       return;
     }
-    openVaultFile(filePath);
+    openVaultNote(notePath);
   };
-  const fileButtonText = fileButton.createEl("p");
-  fileButtonText.addClass("hint-btn-text");
-  fileButtonText.textContent = fileName != null ? fileName : "";
-  const fileButtonIcon = fileButton.createEl("div");
-  fileButtonIcon.addClass("gpt-icon", "gpt-icon-file");
-  (0, import_obsidian14.addIcon)("openFile", Constants.OPEN_ICON);
-  (0, import_obsidian14.setIcon)(fileButtonIcon, "openFile");
+  const noteButtonText = noteButton.createEl("p");
+  noteButtonText.addClass("hint-btn-text");
+  noteButtonText.textContent = noteName != null ? noteName : "";
+  const noteButtonIcon = noteButton.createEl("div");
+  noteButtonIcon.addClass("gpt-icon", "gpt-icon-note");
+  (0, import_obsidian16.addIcon)("openNote", Constants.OPEN_ICON);
+  (0, import_obsidian16.setIcon)(noteButtonIcon, "openNote");
 };
 
 // src/ui/views/pieces-snippet-list-view.ts
 var containerVar;
 var currentTab;
-var PiecesSnippetListView = class extends import_obsidian15.ItemView {
+var PiecesSnippetListView = class extends import_obsidian17.ItemView {
   constructor(leaf, workspace) {
     super(leaf);
     this.storage = PiecesCacheSingleton.getInstance();
@@ -23919,9 +25766,7 @@ var PiecesSnippetListView = class extends import_obsidian15.ItemView {
   async onOpen() {
     containerVar = this.containerEl.children[1];
     containerVar.empty();
-    const { snippets } = await processAssets({
-      assets: this.storage.assets
-    });
+    const snippets = this.storage.assets;
     const wrapper = renderNavBar({ containerVar });
     this.navTab = wrapper.children[0];
     currentTab = this.navTab.children[1];
@@ -23940,12 +25785,12 @@ var PiecesSnippetListView = class extends import_obsidian15.ItemView {
       );
     });
     if (this.navTab.children[0].checked) {
-      createSnippetListView(
-        this.snippetsTab,
+      createSnippetListView({
+        containerVar: this.snippetsTab,
         snippets,
-        "newest",
-        this.workspace
-      );
+        viewType: "newest" /* RECENT */,
+        workspace: this.workspace
+      });
       createGPTView({
         containerVar: this.gptTab,
         newInstance: true
@@ -23957,12 +25802,12 @@ var PiecesSnippetListView = class extends import_obsidian15.ItemView {
         containerVar: this.gptTab,
         newInstance: true
       });
-      createSnippetListView(
-        this.snippetsTab,
+      createSnippetListView({
+        containerVar: this.snippetsTab,
         snippets,
-        "newest",
-        this.workspace
-      );
+        viewType: "newest" /* RECENT */,
+        workspace: this.workspace
+      });
       this.snippetsTab.style.display = "none";
     }
   }
@@ -23984,56 +25829,6 @@ var PiecesSnippetListView = class extends import_obsidian15.ItemView {
 var import_view2 = require("@codemirror/view");
 var import_state = require("@codemirror/state");
 var import_language = require("@codemirror/language");
-
-// node_modules/uuid/dist/esm-browser/rng.js
-var getRandomValues;
-var rnds8 = new Uint8Array(16);
-function rng() {
-  if (!getRandomValues) {
-    getRandomValues = typeof crypto !== "undefined" && crypto.getRandomValues && crypto.getRandomValues.bind(crypto);
-    if (!getRandomValues) {
-      throw new Error("crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported");
-    }
-  }
-  return getRandomValues(rnds8);
-}
-
-// node_modules/uuid/dist/esm-browser/stringify.js
-var byteToHex = [];
-for (let i = 0; i < 256; ++i) {
-  byteToHex.push((i + 256).toString(16).slice(1));
-}
-function unsafeStringify(arr, offset = 0) {
-  return (byteToHex[arr[offset + 0]] + byteToHex[arr[offset + 1]] + byteToHex[arr[offset + 2]] + byteToHex[arr[offset + 3]] + "-" + byteToHex[arr[offset + 4]] + byteToHex[arr[offset + 5]] + "-" + byteToHex[arr[offset + 6]] + byteToHex[arr[offset + 7]] + "-" + byteToHex[arr[offset + 8]] + byteToHex[arr[offset + 9]] + "-" + byteToHex[arr[offset + 10]] + byteToHex[arr[offset + 11]] + byteToHex[arr[offset + 12]] + byteToHex[arr[offset + 13]] + byteToHex[arr[offset + 14]] + byteToHex[arr[offset + 15]]).toLowerCase();
-}
-
-// node_modules/uuid/dist/esm-browser/native.js
-var randomUUID = typeof crypto !== "undefined" && crypto.randomUUID && crypto.randomUUID.bind(crypto);
-var native_default = {
-  randomUUID
-};
-
-// node_modules/uuid/dist/esm-browser/v4.js
-function v4(options2, buf, offset) {
-  if (native_default.randomUUID && !buf && !options2) {
-    return native_default.randomUUID();
-  }
-  options2 = options2 || {};
-  const rnds = options2.random || (options2.rng || rng)();
-  rnds[6] = rnds[6] & 15 | 64;
-  rnds[8] = rnds[8] & 63 | 128;
-  if (buf) {
-    offset = offset || 0;
-    for (let i = 0; i < 16; ++i) {
-      buf[offset + i] = rnds[i];
-    }
-    return buf;
-  }
-  return unsafeStringify(rnds);
-}
-var v4_default = v4;
-
-// src/ui/plugins/CodeDetectionPlugin.ts
 var connection = ConnectorSingleton.getInstance();
 var CodeDetectionPlugin = class {
   constructor(view) {
@@ -24068,10 +25863,7 @@ var CodeDetectionPlugin = class {
             codeText += view.state.sliceDoc(node.from, node.to) + "\n";
           }
           if (node.type.name.includes("codeblock-begin")) {
-            const langText = view.state.sliceDoc(
-              node.from,
-              node.to
-            );
+            const langText = view.state.sliceDoc(node.from, node.to);
             let lang = langText.slice(3);
             lang = lang.split(":");
             codeViewProps.id = void 0;
@@ -24102,7 +25894,7 @@ var CodeDetectionPlugin = class {
                       format: {
                         fragment: {
                           string: {
-                            raw: spanButton.innerText
+                            raw: codeText
                           },
                           metadata: {
                             ext: SearchLangToClassificationEnum[spanButton.innerText]
@@ -24130,7 +25922,7 @@ var CodeDetectionPlugin = class {
             const listCharFrom = node.from;
             codeViewProps.inCode = false;
             builder.add(
-              listCharFrom,
+              listCharFrom + 3,
               listCharFrom + 3,
               import_view2.Decoration.widget({
                 widget: new SaveToPiecesWidget({
@@ -24174,6 +25966,7 @@ var RIGHT_CLICK_SAVE = "https://storage.googleapis.com/pieces_multimedia/PROMOTI
 var EMBEDDED_BUTTON_SAVE = "https://storage.googleapis.com/pieces_multimedia/PROMOTIONAL/PIECES_FOR_DEVELOPERS/OBSIDIAN/MACOS/EMBEDDED_BUTTON_SAVE/16X9/PIECES_FOR_DEVELOPERS-OBSIDIAN-EMBEDDED_BUTTON_SAVE-MACOS-16X9-6_22_2023.gif";
 var SEARCH = "https://storage.googleapis.com/pieces_multimedia/PROMOTIONAL/PIECES_FOR_DEVELOPERS/OBSIDIAN/MACOS/SEARCH/16X9/PIECES_FOR_DEVELOPERS-OBSIDIAN-SEARCH-MACOS-16X9-6_22_2023.gif";
 var SHARE = "https://storage.googleapis.com/pieces_multimedia/PROMOTIONAL/PIECES_FOR_DEVELOPERS/OBSIDIAN/MACOS/SHARE/16X9/PIECES_FOR_DEVELOPERS-OBSIDIAN-SHARE-MACOS-16X9-6_22_2023.gif";
+var DISCOVERY = "https://storage.googleapis.com/pieces_multimedia/PROMOTIONAL/PIECES_FOR_DEVELOPERS/OBSIDIAN/MACOS/DISCOVERY/16X9/PIECES_FOR_DEVELOPERS-OBSIDIAN-DISCOVERY-MACOS-16X9-7_17_2023.png";
 var onboardingMD = `<a href="https://docs.pieces.app/extensions-plugins/obsidian" style="display: inline-block; text-decoration: none; border-radius: 4px;">Docs</a>		<a href="https://pieces.app" style="display: inline-block; text-decoration: none; border-radius: 4px;">Learn More</a>
 
 ### Elevate your Obsidian experience with Pieces
@@ -24197,13 +25990,18 @@ var onboardingMD = `<a href="https://docs.pieces.app/extensions-plugins/obsidian
 
 
 #### 2. Find & use your snippets
-- To access your saved snippets, click on the Pieces icon in your left sidebar.
+- To access your saved snippets, click on the Pieces icon in your left sidebar
 ![Search Your Pieces](${SEARCH})
 
 
 #### 3. Share your Snippets
-- Collaborate with others with ease using shareable links for your snippetst
+- Collaborate with others with ease using shareable links for your snippets
 ![Share you Snippets](${SHARE})
+
+
+#### 4. Discover new Snippets
+- Automatically find highly relevant and reuable snippets
+![Share you Snippets](${DISCOVERY})
 
 
 ### Maximize productivity with our Flagship Desktop App
@@ -24235,26 +26033,22 @@ var DedupeAssetQueue = class {
       this.doFetch();
   }
   async doFetch() {
-    const cache3 = PiecesCacheSingleton.getInstance();
-    const config8 = ConnectorSingleton.getInstance();
+    const cache5 = PiecesCacheSingleton.getInstance();
+    const config9 = ConnectorSingleton.getInstance();
     this.inFetch = true;
     let IDs = Object.keys(this.idMap);
     while (IDs.length) {
       for (let i = 0; i < IDs.length; i += this.batchSize) {
         const batch = IDs.slice(i, i + this.batchSize).map((id) => {
           delete this.idMap[id];
-          return config8.assetApi.assetSnapshot({
+          return config9.assetApi.assetSnapshot({
             asset: id,
             transferables: false
           });
         });
         const assets = await Promise.all(batch).catch((e) => {
           console.error(
-            `Error fetching asset: ${JSON.stringify(
-              e,
-              void 0,
-              2
-            )}`
+            `Error fetching asset: ${JSON.stringify(e, void 0, 2)}`
           );
           return null;
         });
@@ -24264,33 +26058,29 @@ var DedupeAssetQueue = class {
           var _a;
           return (_a = asset.formats.iterable) != null ? _a : [];
         }).flat().map(
-          (format) => config8.formatApi.formatSnapshot({
+          (format) => config9.formatApi.formatSnapshot({
             format: format.id,
             transferable: true
           })
         );
         const formats = await Promise.all(formatRequests).catch((e) => {
           console.error(
-            `Error fetching format: ${JSON.stringify(
-              e,
-              void 0,
-              2
-            )}`
+            `Error fetching format: ${JSON.stringify(e, void 0, 2)}`
           );
           return null;
         });
         if (!formats)
           continue;
         formats.forEach((format) => {
-          cache3.fetchedFormats[format.id] = new Date();
-          cache3.formatTransferables[format.id] = {
+          cache5.fetchedFormats[format.id] = new Date();
+          cache5.formatTransferables[format.id] = {
             file: format.file,
             fragment: format.fragment
           };
         });
         const mergedAssets = mergeAssetsWithTransferables({
           assets: { iterable: assets },
-          references: cache3.formatTransferables
+          references: cache5.formatTransferables
         });
         renderFetched({ assets: mergedAssets });
       }
@@ -24300,64 +26090,80 @@ var DedupeAssetQueue = class {
   }
 };
 
+// src/connection/CheckVersionAndConnection.ts
+var CheckVersionAndConnection = class {
+  constructor() {
+  }
+  static run() {
+    if (this.promise === void 0) {
+      this.promise = this._run();
+    }
+    return this.promise;
+  }
+  /*
+         This will recursively call itself until BOTH POS is open AND POS has a proper version
+          - also makes sure to update ui when fetchFailed changes
+     */
+  static async _run() {
+    const posOpen = await loadConnect();
+    await versionCheck({});
+    if (posOpen && versionValid) {
+      this.promise = void 0;
+      return;
+    }
+    if (posOpen === fetchFailed) {
+      setFetchFailed(!posOpen);
+      await triggerUIRedraw(false, void 0, void 0, false);
+    }
+    await sleep(waitTimer);
+    setStreamOpen(false);
+    return this._run();
+  }
+};
+CheckVersionAndConnection.promise = void 0;
+
 // src/connection/stream_assets.ts
 var identifierWs;
-var cache2 = PiecesCacheSingleton.getInstance();
+var cache4 = PiecesCacheSingleton.getInstance();
 var fetchQueue = new DedupeAssetQueue();
 var streamOpen = false;
+var setStreamOpen = (val) => {
+  streamOpen = val;
+};
 var waitTimer = 1e4;
 var stream = async () => {
-  closeStreams();
   streamIdentifiers();
 };
+var streamEnd = false;
 var streamIdentifiers = async () => {
   if (streamOpen) {
     return;
   }
   streamOpen = true;
+  streamEnd = false;
   if ((identifierWs == null ? void 0 : identifierWs.readyState) === (identifierWs == null ? void 0 : identifierWs.OPEN)) {
     identifierWs == null ? void 0 : identifierWs.close();
   }
-  const posOpen = await loadConnect();
-  await versionCheck({});
-  if (posOpen && fetchFailed) {
-    setFetchFailed(false);
-    await triggerUIRedraw(false, void 0, void 0, false);
-    await sleep(waitTimer);
-    streamOpen = false;
-    return streamIdentifiers();
-  } else if (!posOpen && !fetchFailed) {
-    setFetchFailed(true);
-    await triggerUIRedraw(false, void 0, void 0, false);
-    await sleep(waitTimer);
-    streamOpen = false;
-    return streamIdentifiers();
-  } else if (!posOpen) {
-    await sleep(waitTimer);
-    streamOpen = false;
-    return streamIdentifiers();
-  }
-  if (!versionValid) {
-    await sleep(waitTimer);
-    streamOpen = false;
-    return streamIdentifiers();
-  }
-  identifierWs = new WebSocket(
-    "ws://localhost:1000/assets/stream/identifiers"
-  );
+  identifierWs = new WebSocket("ws://localhost:1000/assets/stream/identifiers");
   identifierWs.onclose = async () => {
-    if (!fetchFailed && versionValid) {
-      setFetchFailed(true);
+    if (streamEnd) {
+      return;
+    }
+    setFetchFailed(true);
+    triggerUIRedraw(false, void 0, void 0, false);
+    redrawGpt();
+    streamOpen = false;
+    await sleep(15e3);
+    CheckVersionAndConnection.run().then(() => {
+      streamIdentifiers();
+    });
+  };
+  identifierWs.onopen = () => {
+    if (fetchFailed) {
+      setFetchFailed(false);
       triggerUIRedraw(false, void 0, void 0, false);
       redrawGpt();
     }
-    await sleep(15e3);
-    streamIdentifiers();
-  };
-  identifierWs.onopen = () => {
-    setFetchFailed(false);
-    triggerUIRedraw(false, void 0, void 0, false);
-    redrawGpt();
     clearStaleIds();
   };
   identifierWs.onmessage = async (event) => {
@@ -24365,37 +26171,32 @@ var streamIdentifiers = async () => {
     let asset;
     for (let i = 0; i < assets.iterable.length; i++) {
       asset = assets.iterable[i];
-      const snippetEl = document.getElementById(
-        `list-view-${asset.asset.id}`
-      );
+      const snippetEl = document.getElementById(`list-view-${asset.asset.id}`);
       if (asset.deleted) {
         snippetEl == null ? void 0 : snippetEl.remove();
-        const removedAsset = processAsset({
-          asset: cache2.mappedAssets[asset.asset.id]
-        });
-        const removalMap = cache2.snippetMap.get(removedAsset.language);
+        const removedAsset = cache4.mappedAssets[asset.asset.id];
+        const removalMap = cache4.snippetMap.get(removedAsset.language);
         if (removalMap !== void 0) {
           if (removalMap.length !== 0) {
             removalMap.forEach((snippetId) => {
               if (snippetId === removedAsset.id) {
-                removalMap.splice(
-                  removalMap.indexOf(snippetId),
-                  1
-                );
+                removalMap.splice(removalMap.indexOf(snippetId), 1);
               }
             });
           }
           if (removalMap.length === 0) {
-            cache2.snippetMap.delete(removedAsset.language);
+            cache4.snippetMap.delete(removedAsset.language);
           } else {
-            cache2.snippetMap.set(removedAsset.language, removalMap);
+            cache4.snippetMap.set(removedAsset.language, removalMap);
           }
         }
-        delete cache2.mappedAssets[asset.asset.id];
-        cache2.assets = Object.values(cache2.mappedAssets);
-        writeData(cache2.assets);
-        if (!cache2.assets.length) {
-          setDefaultView("newest");
+        delete cache4.mappedAssets[asset.asset.id];
+        cache4.assets = Object.values(cache4.mappedAssets);
+        writeData();
+        if (!cache4.assets.length) {
+          if (defaultView !== "discovery" /* DISCOVERY */) {
+            setDefaultView("newest" /* RECENT */);
+          }
           triggerUIRedraw(false, void 0, void 0, false);
         } else if (defaultView === "language") {
           langReset();
@@ -24408,9 +26209,11 @@ var streamIdentifiers = async () => {
 };
 var renderFetched = async ({ assets }) => {
   const loadingDivs = document.querySelectorAll(".loading-div");
-  loadingDivs.forEach((loadingDiv) => {
-    loadingDiv.remove();
-  });
+  if (defaultView !== "discovery" /* DISCOVERY */) {
+    loadingDivs.forEach((loadingDiv) => {
+      loadingDiv.remove();
+    });
+  }
   const newDivs = document.querySelectorAll(".new-div");
   newDivs.forEach((newDiv) => {
     newDiv.remove();
@@ -24421,82 +26224,63 @@ var renderFetched = async ({ assets }) => {
       el.remove();
     });
   }
-  const sortedAssets = cache2.assets.sort(
-    (a, b) => b.created.value.getTime() - a.created.value.getTime()
-  );
   assets.iterable.forEach(async (element) => {
-    var _a, _b, _c, _d, _e;
-    const cachedAsset = cache2.mappedAssets[element.id];
+    var _a, _b;
+    const cachedAsset = cache4.mappedAssets[element.id];
     if (!cachedAsset) {
-      cache2.prependAsset({ asset: element });
+      cache4.prependAsset({ asset: element });
       const processed = processAsset({ asset: element });
-      const newMap = cache2.snippetMap.get(processed.language);
+      const newMap = cache4.snippetMap.get(processed.language);
       if (!newMap) {
-        cache2.snippetMap.set(processed.language, [processed.id]);
+        cache4.snippetMap.set(processed.language, [processed.id]);
       } else {
         newMap.unshift(processed.id);
-        cache2.snippetMap.set(processed.language, newMap);
+        cache4.snippetMap.set(processed.language, newMap);
       }
-      if (defaultView === "newest") {
+      if (defaultView === "newest" /* RECENT */) {
         const parentEl = document.getElementById(
           "pieces-snippet-container"
         );
         const processed2 = processAsset({ asset: element });
+        const sortedAssets = cache4.assets.sort(
+          (a, b) => b.created.getTime() - a.created.getTime()
+        );
         const newIndex = sortedAssets.findIndex(
-          (asset) => asset.created.value.getTime() < processed2.created.getTime()
+          (asset) => asset.created.getTime() < processed2.created.getTime()
         );
-        const newElement = renderListView(
-          parentEl,
-          processed2.title,
-          (_a = processed2.raw) != null ? _a : "unable to unpack snippet",
-          processed2.id,
-          processed2.language,
-          processed2.description,
-          processed2.created,
-          processed2.share
-        );
+        const newElement = renderListView({
+          contentEl: parentEl,
+          snippetObject: processed2
+        });
         if (newIndex === -1) {
           parentEl.appendChild(newElement);
         } else {
-          parentEl.insertBefore(
-            newElement,
-            parentEl.children[newIndex - 1]
-          );
+          parentEl.insertBefore(newElement, parentEl.children[newIndex - 1]);
         }
-      } else if (defaultView === "language") {
+      } else if (defaultView === "language" /* LANGUAGE */) {
         langReset();
       }
-    } else if (new Date(cachedAsset == null ? void 0 : cachedAsset.updated.value).getTime() < new Date(element.updated.value).getTime()) {
+    } else if (new Date(cachedAsset == null ? void 0 : cachedAsset.updated).getTime() < new Date(element.updated.value).getTime()) {
       const processed = processAsset({ asset: element });
-      const originalSnippet = processAsset({
-        asset: cache2.mappedAssets[element.id]
-      });
+      const originalSnippet = cache4.mappedAssets[element.id];
       if (processed.description === originalSnippet.description && processed.raw === originalSnippet.raw && processed.title === originalSnippet.title && processed.language === originalSnippet.language && processed.share === originalSnippet.share) {
         return;
       }
-      const oldMapKeyValues = cache2.snippetMap.get(
-        originalSnippet.language
-      );
+      const oldMapKeyValues = cache4.snippetMap.get(originalSnippet.language);
       if (oldMapKeyValues) {
         oldMapKeyValues.forEach((snippetId) => {
           if (snippetId === element.id) {
-            oldMapKeyValues.splice(
-              oldMapKeyValues.indexOf(snippetId),
-              1
-            );
+            oldMapKeyValues.splice(oldMapKeyValues.indexOf(snippetId), 1);
           }
         });
         if (oldMapKeyValues.length === 0) {
-          cache2.snippetMap.delete(originalSnippet.language);
+          cache4.snippetMap.delete(originalSnippet.language);
         } else {
-          cache2.snippetMap.set(
-            originalSnippet.language,
-            oldMapKeyValues
-          );
+          cache4.snippetMap.set(originalSnippet.language, oldMapKeyValues);
         }
       }
       let inLangMap = false;
-      const newMapkeyValues = cache2.snippetMap.get(processed.language);
+      const newMapkeyValues = cache4.snippetMap.get(processed.language);
       if (newMapkeyValues) {
         newMapkeyValues.forEach((snippetId) => {
           if (snippetId === processed.id) {
@@ -24505,54 +26289,38 @@ var renderFetched = async ({ assets }) => {
         });
         if (!inLangMap) {
           newMapkeyValues.unshift(processed.id);
-          cache2.snippetMap.set(processed.language, newMapkeyValues);
+          cache4.snippetMap.set(processed.language, newMapkeyValues);
         }
       } else {
-        cache2.snippetMap.set(processed.language, [processed.id]);
+        cache4.snippetMap.set(processed.language, [processed.id]);
       }
-      cache2.updateAsset({ asset: element });
-      if (defaultView === "newest") {
+      cache4.updateAsset({ asset: element });
+      if (defaultView === "newest" /* RECENT */) {
         const parentEl = document.getElementById(
           "pieces-snippet-container"
         );
-        const snippetEl = document.getElementById(
-          `list-view-${element.id}`
-        );
-        const opened = (_b = snippetEl == null ? void 0 : snippetEl.children[0].lastChild) == null ? void 0 : _b.checked;
+        const snippetEl = document.getElementById(`list-view-${element.id}`);
+        const opened = (_a = snippetEl == null ? void 0 : snippetEl.children[0].lastChild) == null ? void 0 : _a.checked;
         snippetEl == null ? void 0 : snippetEl.replaceWith(
-          renderListView(
-            parentEl,
-            processed.title,
-            (_c = processed.raw) != null ? _c : "unable to unpack snippet",
-            processed.id,
-            processed.language,
-            processed.description,
-            processed.created,
-            processed.share,
+          renderListView({
+            contentEl: parentEl,
+            snippetObject: processed,
             opened
-          )
+          })
         );
-      } else if (defaultView === "language") {
+      } else if (defaultView === "language" /* LANGUAGE */) {
         if ((processed.description !== originalSnippet.description || processed.raw !== originalSnippet.raw || processed.title !== originalSnippet.title) && processed.language === originalSnippet.language) {
           const parentEl = document.getElementById(
             "code-view-" + searchLangSpecificEnum[processed.language]
           ).lastChild;
-          const snippetEl = document.getElementById(
-            `list-view-${element.id}`
-          );
-          const opened = (_d = snippetEl == null ? void 0 : snippetEl.children[0].lastChild) == null ? void 0 : _d.checked;
+          const snippetEl = document.getElementById(`list-view-${element.id}`);
+          const opened = (_b = snippetEl == null ? void 0 : snippetEl.children[0].lastChild) == null ? void 0 : _b.checked;
           snippetEl == null ? void 0 : snippetEl.replaceWith(
-            renderListView(
-              parentEl,
-              processed.title,
-              (_e = processed.raw) != null ? _e : "unable to unpack snippet",
-              processed.id,
-              processed.language,
-              processed.description,
-              processed.created,
-              processed.share,
+            renderListView({
+              contentEl: parentEl,
+              snippetObject: processed,
               opened
-            )
+            })
           );
           return;
         }
@@ -24560,9 +26328,10 @@ var renderFetched = async ({ assets }) => {
       }
     }
   });
-  writeData(cache2.assets);
+  writeData();
 };
 var closeStreams = async () => {
+  streamEnd = true;
   identifierWs == null ? void 0 : identifierWs.close();
 };
 var langReset = async () => {
@@ -24577,26 +26346,95 @@ var langReset = async () => {
       openLangs.push(desiredLang);
     }
   });
-  const { snippets } = await processAssets({
-    assets: cache2.assets
-  });
-  createSnippetListView(
-    document.getElementById("snippets-tab"),
+  const snippets = cache4.assets;
+  createSnippetListView({
+    containerVar: document.getElementById("snippets-tab"),
     snippets,
-    "language",
-    app.workspace
-  );
+    viewType: "language" /* LANGUAGE */,
+    workspace: app.workspace
+  });
   openLangs.forEach((lang) => {
     try {
-      const snippetContentParent = document.getElementById(
-        "input-" + lang
-      );
+      const snippetContentParent = document.getElementById("input-" + lang);
       snippetContentParent.checked = true;
       const clickEvent = new Event("click");
       snippetContentParent == null ? void 0 : snippetContentParent.dispatchEvent(clickEvent);
     } catch (e) {
     }
   });
+};
+
+// src/ui/utils/levenshteinMethods.ts
+var truncateAfterNewline = (str) => {
+  const newlineIndex = str.indexOf("\n");
+  if (newlineIndex !== -1) {
+    return str.substring(0, newlineIndex);
+  } else {
+    return str;
+  }
+};
+var calculateLevenshteinDistance = (str1, str2) => {
+  const m = str1.length;
+  const n = str2.length;
+  if (Math.abs(m - n) > 2) {
+    return Infinity;
+  }
+  const dp = [];
+  for (let i = 0; i <= m; i++) {
+    dp[i] = [i];
+  }
+  for (let j = 1; j <= n; j++) {
+    dp[0][j] = j;
+  }
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      if (str1[i - 1] === str2[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1];
+      } else {
+        dp[i][j] = Math.min(
+          dp[i - 1][j] + 1,
+          // deletion
+          dp[i][j - 1] + 1,
+          // insertion
+          dp[i - 1][j - 1] + 1
+          // substitution
+        );
+      }
+    }
+  }
+  return dp[m][n];
+};
+var findSimilarity = async (codeBlock) => {
+  const config9 = ConnectorSingleton.getInstance();
+  const storage4 = PiecesCacheSingleton.getInstance();
+  let comparisonScore = Infinity;
+  let comparisonID = "";
+  const rawCode = {
+    query: truncateAfterNewline(codeBlock)
+  };
+  const result = config9.searchApi.fullTextSearch(rawCode);
+  const assetArray = [];
+  await result.then(async (res) => {
+    res.iterable.forEach((element) => {
+      assetArray.push(storage4.mappedAssets[element.identifier]);
+    });
+    const returnedSnippets = assetArray;
+    returnedSnippets.forEach((element) => {
+      try {
+        const currentCompScore = calculateLevenshteinDistance(
+          codeBlock,
+          element.raw
+        );
+        if (currentCompScore < comparisonScore) {
+          comparisonScore = currentCompScore;
+          comparisonID = element.id;
+        }
+      } catch (e) {
+        console.log("Error in calculating similarity score");
+      }
+    });
+  });
+  return { similarity: comparisonScore, comparisonID };
 };
 
 // main.ts
@@ -24614,7 +26452,7 @@ var expandId = {
   codeID: "",
   codeRaw: ""
 };
-var PiecesPlugin = class extends import_obsidian16.Plugin {
+var PiecesPlugin = class extends import_obsidian18.Plugin {
   constructor() {
     super(...arguments);
     this.notifications = Notifications.getInstance();
@@ -24629,7 +26467,7 @@ var PiecesPlugin = class extends import_obsidian16.Plugin {
   async saveSelectionToPieces(getSimilarity) {
     var _a, _b;
     const markdownView = this.app.workspace.activeEditor;
-    if (markdownView instanceof import_obsidian16.MarkdownView) {
+    if (markdownView instanceof import_obsidian18.MarkdownView) {
       const editor = markdownView.editor;
       const selection = editor.getSelection();
       if (selection.length < 5) {
@@ -24644,7 +26482,7 @@ var PiecesPlugin = class extends import_obsidian16.Plugin {
         const file = (_b = (_a = this.app.workspace.activeEditor) == null ? void 0 : _a.file) == null ? void 0 : _b.name;
         const line = editor.getCursor().line;
         const description = `This snippet came from ${file} on line ${line}`;
-        return await createAsset(selection, false, description);
+        return await createAsset({ selection, description });
       } catch (e) {
         this.notifications.error({ message: Constants.SAVE_FAIL });
       }
@@ -24664,30 +26502,30 @@ var PiecesPlugin = class extends import_obsidian16.Plugin {
     }
   }
   async onload() {
-    await versionCheck({}).then((val) => {
+    versionCheck({}).then((val) => {
       if (val === false) {
         this.notifications.error({ message: Constants.UPDATE_OS });
       }
     });
-    loadConnect().then((val) => {
-      setFetchFailed(!val);
-      triggerUIRedraw(false, void 0, void 0, false);
-      redrawGpt();
-    });
     app = this.app;
-    Prism = await (0, import_obsidian16.loadPrism)();
+    Prism = await (0, import_obsidian18.loadPrism)();
     theme = document.body.classList.contains("theme-dark") ? "dark" : "light";
     document.body.addEventListener("change", () => {
       this.themeChange();
     });
     await this.loadSettings();
     pluginSettings = this.settings;
-    (0, import_obsidian16.addIcon)("pieces_logo", Constants.PIECES_LOGO);
-    (0, import_obsidian16.addIcon)("sparkles", Constants.ENRICH_ICON);
+    loadConnect().then((val) => {
+      setFetchFailed(!val);
+      triggerUIRedraw(false, void 0, void 0, false);
+      redrawGpt();
+    });
+    (0, import_obsidian18.addIcon)("pieces_logo", Constants.PIECES_LOGO);
+    (0, import_obsidian18.addIcon)("sparkles", Constants.ENRICH_ICON);
     updateConnectionType(this.settings);
-    ConnectorSingleton.checkConnection({});
     document.body.addEventListener("paste", (e) => {
-      this.suggestion(e);
+      this.suggestion(e).catch(() => {
+      });
     });
     this.registerView(
       Constants.PIECES_SNIPPET_LIST_VIEW_TYPE,
@@ -24718,18 +26556,37 @@ var PiecesPlugin = class extends import_obsidian16.Plugin {
       this.showOnboarding();
     }
     getData().then((data) => {
-      if (data && data.length && !snippetsFetched) {
-        this.cache.store({ assets: data });
+      var _a, _b, _c;
+      if (data && data.assets.length && !snippetsFetched) {
+        if (!((_a = data.assets[0]) == null ? void 0 : _a.schema)) {
+          this.cache.store({ assets: data.assets });
+        }
+      }
+      if (data && ((_b = data.gptContexts) == null ? void 0 : _b.length)) {
+        this.cache.gptContextPaths = data.gptContexts;
+      }
+      if (data && ((_c = data.gptFolderNames) == null ? void 0 : _c.length)) {
+        this.cache.gptFolderNames = data.gptFolderNames;
+      }
+      if (data && !data.gptContexts) {
+        allFilesAsContext();
       }
     }).catch((e) => {
       console.log(
         "Pieces: Something went wrong fetching assets from piecesdb.json ",
         e
       );
+      allFilesAsContext();
     }).finally(async () => {
       setSnippetsLoaded(true);
       triggerUIRedraw(false, void 0, void 0, false);
-      stream();
+      CheckVersionAndConnection.run().then(() => {
+        AutoLinker.findCode();
+        stream();
+        loadContext();
+        if (pluginSettings.autoDiscover)
+          discoverSnippets();
+      });
     });
     this.registerEvent(
       this.app.workspace.on("editor-menu", (menu, file) => {
@@ -24783,7 +26640,9 @@ var PiecesPlugin = class extends import_obsidian16.Plugin {
       name: "Share via Pieces",
       hotkeys: [],
       editorCallback: async () => {
-        const { similarity, comparisonID } = await this.saveSelectionToPieces(true);
+        const { similarity, comparisonID } = await this.saveSelectionToPieces(
+          true
+        );
         if (similarity < 2) {
           if (typeof comparisonID === "string") {
             const link = await this.linkService.generate({
@@ -24807,9 +26666,7 @@ var PiecesPlugin = class extends import_obsidian16.Plugin {
         if (!leaf.length) {
           await this.activateView();
         }
-        const navTab = document.getElementById(
-          "piecesTabs"
-        );
+        const navTab = document.getElementById("piecesTabs");
         if (navTab.children[0].checked) {
           navTab.children[3].click();
         } else if (navTab.children[2].checked) {
@@ -24821,7 +26678,6 @@ var PiecesPlugin = class extends import_obsidian16.Plugin {
     this.registerEditorExtension([codeDetectionPlugin]);
   }
   onunload() {
-    writeData(this.cache.assets);
     closeStreams();
     document.body.removeEventListener("paste", (e) => {
       this.suggestion(e);
@@ -24832,11 +26688,7 @@ var PiecesPlugin = class extends import_obsidian16.Plugin {
   }
   // This function loads and merges default settings with user-defined settings.
   async loadSettings() {
-    this.settings = Object.assign(
-      {},
-      DEFAULT_SETTINGS,
-      await this.loadData()
-    );
+    this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
   }
   // This function saves the settings data using the saveData function.
   async saveSettings() {
@@ -24872,11 +26724,14 @@ var PiecesPlugin = class extends import_obsidian16.Plugin {
       active: true
     });
   }
-  suggestion(e) {
+  async suggestion(e) {
     try {
       const clipboard = e.clipboardData;
       if (clipboard) {
-        const clipboardData = clipboard.getData("text/plain");
+        const clipboardData = clipboard.getData("text/plain").trim();
+        if (!clipboardData.length) {
+          return;
+        }
         const suggestion = {
           application: this.connection.context.application.id,
           seededConnectorCreation: {
@@ -24891,7 +26746,7 @@ var PiecesPlugin = class extends import_obsidian16.Plugin {
             }
           }
         };
-        this.connection.api.suggest(suggestion).then((res) => {
+        await this.connection.api.suggest(suggestion).then((res) => {
         }).catch((e2) => {
         });
       }

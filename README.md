@@ -9,12 +9,12 @@ translating, and enhancing code snippets.
 
 ## Getting started
 
-To get started, it is **required** to download Pieces OS* from pieces.app/install.
+To get started, it is **required** to download Pieces OS\* from pieces.app/install.
 
 This enables Pieces products to run locally on your machine and manages connections to Pieces plugins. **This plugin
 will not work properly without Pieces OS installed and running.**
 
-*_The Pieces OS install includes the Pieces for Developers Desktop App where you can also view and manage your
+\*_The Pieces OS install includes the Pieces for Developers Desktop App where you can also view and manage your
 snippets._
 
 ## Install Instructions
@@ -44,12 +44,17 @@ snippet and its related context - tags, descriptions, where it’s from and more
 
 ## Thoughtfully designed by fellow developers
 
-* **Runs locally** on your machine with the option to connect to the Cloud for backup, sync and sharing
-* **Deeply embedded into Obsidian** - save, search, and share your snippets entirely from the Pieces for Developers
-	Obsidian Plugin
-* Keyboard **shortcuts-enabled**
+- **Runs locally** on your machine with the option to connect to the Cloud for backup, sync and sharing
+- **Deeply embedded into Obsidian** - save, search, and share your snippets entirely from the Pieces for Developers
+  Obsidian Plugin
+- Keyboard **shortcuts-enabled**
 
 ![Save with Button](./assets/readme/gifs/OBSIDIAN_SAVE.gif)
+
+## Discover new snippets
+
+Automatically discovers new highly relevant and reusable snippets from your vault for you to save
+![Snippet Discovery](./assets/readme/pngs/OBSIDIAN_DISCOVER.png)
 
 ### Commands
 
@@ -57,26 +62,26 @@ To use a Pieces command, simply highlight code in your editor or hover a snippet
 
 _Hotkeys aren't set by default, but here are our recommended layouts._
 
-| Command        | macOS       | Windows      |
-|----------------|-------------|--------------|
-| Save a snippet | CMD+Shift+P | Ctrl+Shift+P |
-| Share a snippet | CMD+Shift+L | CMD+Shift+L |
+| Command         | macOS       | Windows      |
+| --------------- | ----------- | ------------ |
+| Save a snippet  | CMD+Shift+P | Ctrl+Shift+P |
+| Share a snippet | CMD+Shift+L | CMD+Shift+L  |
 
 ### Other Products from the Pieces Team
 
-| Product                | Description                                                                                             | Requires Pieces OS |
-|------------------------|---------------------------------------------------------------------------------------------------------|--------------------|
-| Pieces for Jetbrains   | Save & share snippets from around the web with a single-click                                           | ✅                  |
-| Pieces for Chrome      | Save & share snippets from around the web with a single-click                                           | ✅                  |
-| Pieces for VS Code     | Save, share, & access snippets from within VS Code                                                      | ✅                  |
-| Pieces CLI             | A command line tool for Pieces to use in your terminal                                                  | ✅                  |
-| Code++ for Jetbrains   | Copy & Paste Snippets 10x Better with Context from IDEA                                                 | ⬜                  |
-| Code++ for Chrome      | Enrich code you find online to enable better search and reuse by offering more context and metadata     | ⬜                  |
-| Code++ For VS Code     | Copy & Paste Snippets 10x Better with Context in your VSCode                                            | ⬜                  |
-| Code++ for Slack       | Automatically format, highlight and tag code snippets in any channel in Slack                           | ⬜                  |
-| CodeFromScreenshot.com | Extract code from a screenshot                                                                          | ⬜                  |
-| TextFromScreenshot.com | Extract text from a screenshot                                                                          | ⬜                  |
-| Runtime.dev            | Technical Language Processing (TLP) APIs                                                                | ⬜                  |
+| Product                | Description                                                                                         | Requires Pieces OS |
+| ---------------------- | --------------------------------------------------------------------------------------------------- | ------------------ |
+| Pieces for Jetbrains   | Save & share snippets from around the web with a single-click                                       | ✅                 |
+| Pieces for Chrome      | Save & share snippets from around the web with a single-click                                       | ✅                 |
+| Pieces for VS Code     | Save, share, & access snippets from within VS Code                                                  | ✅                 |
+| Pieces CLI             | A command line tool for Pieces to use in your terminal                                              | ✅                 |
+| Code++ for Jetbrains   | Copy & Paste Snippets 10x Better with Context from IDEA                                             | ⬜                 |
+| Code++ for Chrome      | Enrich code you find online to enable better search and reuse by offering more context and metadata | ⬜                 |
+| Code++ For VS Code     | Copy & Paste Snippets 10x Better with Context in your VSCode                                        | ⬜                 |
+| Code++ for Slack       | Automatically format, highlight and tag code snippets in any channel in Slack                       | ⬜                 |
+| CodeFromScreenshot.com | Extract code from a screenshot                                                                      | ⬜                 |
+| TextFromScreenshot.com | Extract text from a screenshot                                                                      | ⬜                 |
+| Runtime.dev            | Technical Language Processing (TLP) APIs                                                            | ⬜                 |
 
 ## Obsidian Community Disclosure
 
@@ -87,13 +92,13 @@ privacy and data security.
 The Pieces For Developers Obsidian Plugin is intended to enhance the functionality and user experience of the Obsidian
 application, while adhering strictly to the developer policies of Obsidian, notably:
 
-* We do not obfuscate our code to hide its purpose.
-* We do not insert dynamic ads or static ads outside the Pieces For Developers Obsidian Plugin interface.
-* We do not include client-side telemetry.
-* We temporarily leverage ChatGPT API endpoints.
-* We respect Obsidian's trademark policy.
-* For any issues, feature requests, or policy violations, please feel free to open an issue in this repository. In the
-	case of severe issues or policy violations, please also contact the Obsidian team.
+- We do not obfuscate our code to hide its purpose.
+- We do not insert dynamic ads or static ads outside the Pieces For Developers Obsidian Plugin interface.
+- We do not include client-side telemetry.
+- We temporarily leverage ChatGPT API endpoints.
+- We respect Obsidian's trademark policy.
+- For any issues, feature requests, or policy violations, please feel free to open an issue in this repository. In the
+  case of severe issues or policy violations, please also contact the Obsidian team.
 
 [Pieces Privacy Policy](https://docs.pieces.app/privacy-policy)
 
