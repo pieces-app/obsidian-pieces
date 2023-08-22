@@ -18738,7 +18738,7 @@ var WellKnownApi = class extends BaseAPI2 {
 };
 
 // package.json
-var version = "1.2.0";
+var version = "1.2.1";
 
 // src/connection/notification_handler.ts
 var import_obsidian = require("obsidian");
@@ -26048,7 +26048,7 @@ var SaveToPiecesWidget = class extends import_view.WidgetType {
     };
     this.enrichButton = (container, holderDiv) => {
       const enrichBtn = new import_obsidian16.ButtonComponent(container).onClick(async () => {
-        var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j;
+        var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k;
         const cache2 = PiecesCacheSingleton.getInstance();
         if (cache2.getIsEnriched(this.codeBlock) && pluginSettings.enrich_confirmation) {
           const enrichedModal = new EnrichedModal(
@@ -26075,14 +26075,14 @@ var SaveToPiecesWidget = class extends import_view.WidgetType {
         )) == null ? void 0 : _a.parentElement;
         const descParent = holderDiv.parentElement;
         const name = (_c = (_b = draft_seed.asset) == null ? void 0 : _b.metadata) == null ? void 0 : _c.name;
-        const desc = (_e = (_d = draft_seed.asset) == null ? void 0 : _d.metadata) == null ? void 0 : _e.annotations;
+        const desc = (_f = (_e = (_d = draft_seed.asset) == null ? void 0 : _d.metadata) == null ? void 0 : _e.annotations) == null ? void 0 : _f.map((el) => el.text).join("\n");
         titleParent == null ? void 0 : titleParent.insertAdjacentHTML(
           "beforebegin",
           `<div><h1>**${name}**</h1></div>`
         );
         let fileLinks = 0;
         for (let i = 0; i < linksArray.length; i++) {
-          if (((_g = (_f = app.workspace.activeEditor) == null ? void 0 : _f.file) == null ? void 0 : _g.path) === linksArray[i].path) {
+          if (((_h = (_g = app.workspace.activeEditor) == null ? void 0 : _g.file) == null ? void 0 : _h.path) === linksArray[i].path) {
             continue;
           }
           descParent == null ? void 0 : descParent.insertAdjacentHTML(
@@ -26103,7 +26103,7 @@ var SaveToPiecesWidget = class extends import_view.WidgetType {
         );
         descParent == null ? void 0 : descParent.insertAdjacentHTML(
           "afterend",
-          `<div>${(_j = (_i = (_h = draft_seed.asset) == null ? void 0 : _h.metadata) == null ? void 0 : _i.tags) == null ? void 0 : _j.slice(0, 5).map((tag) => {
+          `<div>${(_k = (_j = (_i = draft_seed.asset) == null ? void 0 : _i.metadata) == null ? void 0 : _j.tags) == null ? void 0 : _k.slice(0, 5).map((tag) => {
             return `<span>#${tag.text.trim().replace(/ /g, "-")}</span>`;
           }).join(" ")}</div><br>`
         );
@@ -26742,10 +26742,6 @@ GPTController.createGPTView = async ({
     textContent.style.display = "none";
     introText = textDiv.createDiv();
     introText.addClasses(["gpt-text-intro", "gpt-col"]);
-    const imageHolder = introText.createEl("img");
-    theme === "dark" ? imageHolder.setAttr("src", piecesCopilotW_default) : imageHolder.setAttr("src", piecesCopilotB_default);
-    imageHolder.setAttr("alt", "Using Pieces GPT");
-    imageHolder.addClasses(["gpt-img-logo"]);
     const titleDiv = introText.createEl("div");
     titleDiv.addClasses(["gpt-row", "gpt-text-intro-title-div"]);
     const introTextTitle = titleDiv.createEl("p");
@@ -26754,6 +26750,10 @@ GPTController.createGPTView = async ({
       "gpt-text-intro-title"
     ]);
     introTextTitle.innerText = "Copilot Chat";
+    const imageHolder = introText.createEl("img");
+    theme === "dark" ? imageHolder.setAttr("src", piecesCopilotW_default) : imageHolder.setAttr("src", piecesCopilotB_default);
+    imageHolder.setAttr("alt", "Using Pieces GPT");
+    imageHolder.addClasses(["gpt-img-logo"]);
     const introTextSub = introText.createEl("p");
     introTextSub.innerText = !versionValid ? "Pieces OS is not up-to-date, please update to use Copilot." : DisplayController.fetchFailed ? "Error connecting to Pieces OS! To use Copilot, please make sure Pieces OS is installed updated, and running." : "Ask Copilot a question about your vault";
     introTextSub.addClasses(["gpt-text-intro-content"]);
