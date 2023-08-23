@@ -18738,7 +18738,7 @@ var WellKnownApi = class extends BaseAPI2 {
 };
 
 // package.json
-var version = "1.2.1";
+var version = "1.2.2";
 
 // src/connection/notification_handler.ts
 var import_obsidian = require("obsidian");
@@ -27588,7 +27588,9 @@ var streamIdentifiers = async () => {
   if ((identifierWs == null ? void 0 : identifierWs.readyState) === (identifierWs == null ? void 0 : identifierWs.OPEN)) {
     identifierWs == null ? void 0 : identifierWs.close();
   }
-  identifierWs = new WebSocket("ws://localhost:1000/assets/stream/identifiers");
+  identifierWs = new WebSocket(
+    `ws://localhost:${portNumber}/assets/stream/identifiers`
+  );
   identifierWs.onclose = async () => {
     if (streamEnd) {
       return;
@@ -27978,7 +27980,8 @@ var AskQGPTModal = class extends import_obsidian21.Modal {
     if (selectionCol.children[0].children[0])
       selectionCol.children[0].children[0].scrollTop = 0;
   }
-  handleQuery() {
+  async handleQuery() {
+    await PiecesPlugin.activateView();
     const query = this.inputText.innerText;
     if (!query) {
       new import_obsidian21.Notice("Please enter a question for the Copilot!");
@@ -28007,7 +28010,7 @@ ${this.text.trim()}`
 var pluginSettings;
 var theme = "dark";
 var Prism;
-var PiecesPlugin = class extends import_obsidian22.Plugin {
+var _PiecesPlugin = class extends import_obsidian22.Plugin {
   constructor() {
     super(...arguments);
     this.notifications = Notifications.getInstance();
@@ -28182,7 +28185,7 @@ var PiecesPlugin = class extends import_obsidian22.Plugin {
                   Constants.PIECES_SNIPPET_LIST_VIEW_TYPE
                 );
                 if (!leaf.length) {
-                  this.activateView();
+                  _PiecesPlugin.activateView();
                 }
               }
             });
@@ -28286,7 +28289,7 @@ var PiecesPlugin = class extends import_obsidian22.Plugin {
             Constants.PIECES_SNIPPET_LIST_VIEW_TYPE
           );
           if (!leaf.length) {
-            await this.activateView();
+            await _PiecesPlugin.activateView();
           }
           const navTab = document.getElementById("piecesTabs");
           if (navTab.children[0].checked) {
@@ -28324,16 +28327,8 @@ var PiecesPlugin = class extends import_obsidian22.Plugin {
           Constants.PIECES_SNIPPET_LIST_VIEW_TYPE
         );
       } else {
-        this.activateView();
+        _PiecesPlugin.activateView();
       }
-    };
-    this.activateView = async () => {
-      const PiecesLeaf = this.app.workspace.getRightLeaf(false);
-      PiecesLeaf.setViewState({
-        type: Constants.PIECES_SNIPPET_LIST_VIEW_TYPE,
-        active: true
-      });
-      this.app.workspace.revealLeaf(PiecesLeaf);
     };
     this.showOnboarding = async () => {
       const leaf = await this.app.workspace.getLeaf(true);
@@ -28372,4 +28367,20 @@ var PiecesPlugin = class extends import_obsidian22.Plugin {
       (0, import_obsidian22.addIcon)("sendSVG2", Constants.SEND_ICON);
     };
   }
+};
+var PiecesPlugin = _PiecesPlugin;
+PiecesPlugin.activateView = async () => {
+  const piecesLeaves = app.workspace.getLeavesOfType(
+    Constants.PIECES_SNIPPET_LIST_VIEW_TYPE
+  );
+  if (piecesLeaves[0]) {
+    app.workspace.revealLeaf(piecesLeaves[0]);
+    return;
+  }
+  const rightLeaf = app.workspace.getRightLeaf(false);
+  await rightLeaf.setViewState({
+    type: Constants.PIECES_SNIPPET_LIST_VIEW_TYPE,
+    active: true
+  });
+  app.workspace.revealLeaf(rightLeaf);
 };
