@@ -2713,6 +2713,7 @@ var main_exports = {};
 __export(main_exports, {
   Prism: () => Prism,
   default: () => PiecesPlugin,
+  migration: () => migration,
   pluginSettings: () => pluginSettings,
   theme: () => theme
 });
@@ -5680,7 +5681,8 @@ function ModelFromJSONTyped4(json, ignoreDiscriminator) {
     "unique": !exists(json, "unique") ? void 0 : json["unique"],
     "parameters": !exists(json, "parameters") ? void 0 : json["parameters"],
     "provider": !exists(json, "provider") ? void 0 : ExternalMLProviderEnumFromJSON(json["provider"]),
-    "cpu": !exists(json, "cpu") ? void 0 : json["cpu"]
+    "cpu": !exists(json, "cpu") ? void 0 : json["cpu"],
+    "downloading": !exists(json, "downloading") ? void 0 : json["downloading"]
   };
 }
 function ModelToJSON(value) {
@@ -5709,7 +5711,8 @@ function ModelToJSON(value) {
     "unique": value.unique,
     "parameters": value.parameters,
     "provider": ExternalMLProviderEnumToJSON(value.provider),
-    "cpu": value.cpu
+    "cpu": value.cpu,
+    "downloading": value.downloading
   };
 }
 
@@ -5934,7 +5937,8 @@ function PersonModelFromJSONTyped3(json, ignoreDiscriminator) {
   return {
     "asset": !exists(json, "asset") ? void 0 : ReferencedAssetFromJSON(json["asset"]),
     "model": !exists(json, "model") ? void 0 : ReferencedModelFromJSON(json["model"]),
-    "deleted": !exists(json, "deleted") ? void 0 : GroupedTimestampFromJSON(json["deleted"])
+    "deleted": !exists(json, "deleted") ? void 0 : GroupedTimestampFromJSON(json["deleted"]),
+    "explanation": !exists(json, "explanation") ? void 0 : ReferencedAnnotationFromJSON(json["explanation"])
   };
 }
 function PersonModelToJSON(value) {
@@ -5947,7 +5951,8 @@ function PersonModelToJSON(value) {
   return {
     "asset": ReferencedAssetToJSON(value.asset),
     "model": ReferencedModelToJSON(value.model),
-    "deleted": GroupedTimestampToJSON(value.deleted)
+    "deleted": GroupedTimestampToJSON(value.deleted),
+    "explanation": ReferencedAnnotationToJSON(value.explanation)
   };
 }
 
@@ -6103,9 +6108,9 @@ function ReferencedActivityToJSON(value) {
 
 // PiecesSDK/connector/models/ReferencedAnnotation.ts
 function ReferencedAnnotationFromJSON(json) {
-  return ReferencedAnnotationFromJSONTyped2(json, false);
+  return ReferencedAnnotationFromJSONTyped3(json, false);
 }
-function ReferencedAnnotationFromJSONTyped2(json, ignoreDiscriminator) {
+function ReferencedAnnotationFromJSONTyped3(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -12967,7 +12972,8 @@ function ModelFromJSONTyped9(json, ignoreDiscriminator) {
     "unique": !exists2(json, "unique") ? void 0 : json["unique"],
     "parameters": !exists2(json, "parameters") ? void 0 : json["parameters"],
     "provider": !exists2(json, "provider") ? void 0 : ExternalMLProviderEnumFromJSON2(json["provider"]),
-    "cpu": !exists2(json, "cpu") ? void 0 : json["cpu"]
+    "cpu": !exists2(json, "cpu") ? void 0 : json["cpu"],
+    "downloading": !exists2(json, "downloading") ? void 0 : json["downloading"]
   };
 }
 function ModelToJSON2(value) {
@@ -12996,7 +13002,8 @@ function ModelToJSON2(value) {
     "unique": value.unique,
     "parameters": value.parameters,
     "provider": ExternalMLProviderEnumToJSON2(value.provider),
-    "cpu": value.cpu
+    "cpu": value.cpu,
+    "downloading": value.downloading
   };
 }
 
@@ -13282,7 +13289,8 @@ function PersonModelFromJSONTyped7(json, ignoreDiscriminator) {
   return {
     "asset": !exists2(json, "asset") ? void 0 : ReferencedAssetFromJSON2(json["asset"]),
     "model": !exists2(json, "model") ? void 0 : ReferencedModelFromJSON2(json["model"]),
-    "deleted": !exists2(json, "deleted") ? void 0 : GroupedTimestampFromJSON2(json["deleted"])
+    "deleted": !exists2(json, "deleted") ? void 0 : GroupedTimestampFromJSON2(json["deleted"]),
+    "explanation": !exists2(json, "explanation") ? void 0 : ReferencedAnnotationFromJSON2(json["explanation"])
   };
 }
 function PersonModelToJSON2(value) {
@@ -13295,7 +13303,8 @@ function PersonModelToJSON2(value) {
   return {
     "asset": ReferencedAssetToJSON2(value.asset),
     "model": ReferencedModelToJSON2(value.model),
-    "deleted": GroupedTimestampToJSON2(value.deleted)
+    "deleted": GroupedTimestampToJSON2(value.deleted),
+    "explanation": ReferencedAnnotationToJSON2(value.explanation)
   };
 }
 
@@ -13738,9 +13747,9 @@ function ReferencedActivityToJSON2(value) {
 
 // PiecesSDK/core/models/ReferencedAnnotation.ts
 function ReferencedAnnotationFromJSON2(json) {
-  return ReferencedAnnotationFromJSONTyped5(json, false);
+  return ReferencedAnnotationFromJSONTyped7(json, false);
 }
-function ReferencedAnnotationFromJSONTyped5(json, ignoreDiscriminator) {
+function ReferencedAnnotationFromJSONTyped7(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -14014,6 +14023,21 @@ function ReferencedTagToJSON2(value) {
   };
 }
 
+// PiecesSDK/core/models/ReferencedUser.ts
+function ReferencedUserToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON2(value.schema),
+    "id": value.id,
+    "reference": FlattenedUserProfileToJSON2(value.reference)
+  };
+}
+
 // PiecesSDK/core/models/ReferencedWebsite.ts
 function ReferencedWebsiteFromJSON2(json) {
   return ReferencedWebsiteFromJSONTyped5(json, false);
@@ -14273,6 +14297,24 @@ function SeededAccessorToJSON(value) {
     "os": value.os,
     "user": FlattenedUserProfileToJSON2(value.user),
     "share": value.share
+  };
+}
+
+// PiecesSDK/core/models/SeededActivity.ts
+function SeededActivityToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "event": SeededConnectorTrackingToJSON2(value.event),
+    "application": ApplicationToJSON2(value.application),
+    "asset": ReferencedAssetToJSON2(value.asset),
+    "user": ReferencedUserToJSON(value.user),
+    "format": ReferencedFormatToJSON2(value.format),
+    "mechanism": MechanismEnumToJSON2(value.mechanism)
   };
 }
 
@@ -17240,6 +17282,182 @@ function WebsitesToJSON2(value) {
   };
 }
 
+// PiecesSDK/core/apis/ActivitiesApi.ts
+var ActivitiesApi = class extends BaseAPI2 {
+  /**
+   * This will create a new Activity.
+   * /activities/create [POST]
+   */
+  async activitiesCreateNewActivityRaw(requestParameters) {
+    const queryParameters = {};
+    if (requestParameters.transferables !== void 0) {
+      queryParameters["transferables"] = requestParameters.transferables;
+    }
+    const headerParameters = {};
+    headerParameters["Content-Type"] = "application/json";
+    const response = await this.request({
+      path: `/activities/create`,
+      method: "POST",
+      headers: headerParameters,
+      query: queryParameters,
+      body: SeededActivityToJSON(requestParameters.seededActivity)
+    });
+    return new JSONApiResponse2(response, (jsonValue) => ActivityFromJSON2(jsonValue));
+  }
+  /**
+   * This will create a new Activity.
+   * /activities/create [POST]
+   */
+  async activitiesCreateNewActivity(requestParameters) {
+    const response = await this.activitiesCreateNewActivityRaw(requestParameters);
+    return await response.value();
+  }
+  /**
+   * This will delete a specific activity.  important note: if we delete an activity: that is going to be a generic or a specific/ we will also delete its counter part i.e the specific. and vise versa, this ensures that the references are always cleaned.
+   * /activities/{activity}/delete [POST]
+   */
+  async activitiesDeleteSpecificActivityRaw(requestParameters) {
+    if (requestParameters.activity === null || requestParameters.activity === void 0) {
+      throw new RequiredError2("activity", "Required parameter requestParameters.activity was null or undefined when calling activitiesDeleteSpecificActivity.");
+    }
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/activities/{activity}/delete`.replace(`{${"activity"}}`, encodeURIComponent(String(requestParameters.activity))),
+      method: "POST",
+      headers: headerParameters,
+      query: queryParameters
+    });
+    return new VoidApiResponse(response);
+  }
+  /**
+   * This will delete a specific activity.  important note: if we delete an activity: that is going to be a generic or a specific/ we will also delete its counter part i.e the specific. and vise versa, this ensures that the references are always cleaned.
+   * /activities/{activity}/delete [POST]
+   */
+  async activitiesDeleteSpecificActivity(requestParameters) {
+    await this.activitiesDeleteSpecificActivityRaw(requestParameters);
+  }
+  /**
+   * This will get a snapshot of all of the activities
+   * /activities [GET]
+   */
+  async activitiesSnapshotRaw(requestParameters) {
+    const queryParameters = {};
+    if (requestParameters.transferables !== void 0) {
+      queryParameters["transferables"] = requestParameters.transferables;
+    }
+    if (requestParameters.pseudo !== void 0) {
+      queryParameters["pseudo"] = requestParameters.pseudo;
+    }
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/activities`,
+      method: "GET",
+      headers: headerParameters,
+      query: queryParameters
+    });
+    return new JSONApiResponse2(response, (jsonValue) => ActivitiesFromJSON2(jsonValue));
+  }
+  /**
+   * This will get a snapshot of all of the activities
+   * /activities [GET]
+   */
+  async activitiesSnapshot(requestParameters) {
+    const response = await this.activitiesSnapshotRaw(requestParameters);
+    return await response.value();
+  }
+};
+
+// PiecesSDK/core/apis/ActivityApi.ts
+var ActivityApi = class extends BaseAPI2 {
+  /**
+   * This will attempt to get a specific activity.
+   * /activity/{activity} [GET]
+   */
+  async activitiesSpecificActivitySnapshotRaw(requestParameters) {
+    if (requestParameters.activity === null || requestParameters.activity === void 0) {
+      throw new RequiredError2("activity", "Required parameter requestParameters.activity was null or undefined when calling activitiesSpecificActivitySnapshot.");
+    }
+    const queryParameters = {};
+    if (requestParameters.transferables !== void 0) {
+      queryParameters["transferables"] = requestParameters.transferables;
+    }
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/activity/{activity}`.replace(`{${"activity"}}`, encodeURIComponent(String(requestParameters.activity))),
+      method: "GET",
+      headers: headerParameters,
+      query: queryParameters
+    });
+    return new JSONApiResponse2(response, (jsonValue) => ActivityFromJSON2(jsonValue));
+  }
+  /**
+   * This will attempt to get a specific activity.
+   * /activity/{activity} [GET]
+   */
+  async activitiesSpecificActivitySnapshot(requestParameters) {
+    const response = await this.activitiesSpecificActivitySnapshotRaw(requestParameters);
+    return await response.value();
+  }
+  /**
+   * This is going to return all the identifiers of the activity event in order of most recent -> oldest.
+   * /activity/identifiers [GET]
+   */
+  async activityIdentifiersSnapshotRaw(requestParameters) {
+    const queryParameters = {};
+    if (requestParameters.pseudo !== void 0) {
+      queryParameters["pseudo"] = requestParameters.pseudo;
+    }
+    if (requestParameters.activityFilterEnum !== void 0) {
+      queryParameters["activity_filter_enum"] = requestParameters.activityFilterEnum;
+    }
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/activity/identifiers`,
+      method: "GET",
+      headers: headerParameters,
+      query: queryParameters
+    });
+    return new JSONApiResponse2(response, (jsonValue) => FlattenedActivitiesFromJSON2(jsonValue));
+  }
+  /**
+   * This is going to return all the identifiers of the activity event in order of most recent -> oldest.
+   * /activity/identifiers [GET]
+   */
+  async activityIdentifiersSnapshot(requestParameters) {
+    const response = await this.activityIdentifiersSnapshotRaw(requestParameters);
+    return await response.value();
+  }
+  /**
+   * this will update a specific activity.
+   * /activity/update [POST]
+   */
+  async activityUpdateRaw(requestParameters) {
+    const queryParameters = {};
+    if (requestParameters.transferables !== void 0) {
+      queryParameters["transferables"] = requestParameters.transferables;
+    }
+    const headerParameters = {};
+    headerParameters["Content-Type"] = "application/json";
+    const response = await this.request({
+      path: `/activity/update`,
+      method: "POST",
+      headers: headerParameters,
+      query: queryParameters,
+      body: ActivityToJSON2(requestParameters.activity)
+    });
+    return new JSONApiResponse2(response, (jsonValue) => ActivityFromJSON2(jsonValue));
+  }
+  /**
+   * this will update a specific activity.
+   * /activity/update [POST]
+   */
+  async activityUpdate(requestParameters) {
+    const response = await this.activityUpdateRaw(requestParameters);
+    return await response.value();
+  }
+};
+
 // PiecesSDK/core/apis/AllocationsApi.ts
 var AllocationsApi = class extends BaseAPI2 {
   /**
@@ -18510,6 +18728,32 @@ var ModelApi = class extends BaseAPI2 {
     return await response.value();
   }
   /**
+   * This will cancel a specific model download in progress.
+   * /model/{model}/download/cancel [POST]
+   */
+  async modelSpecificModelDownloadCancelRaw(requestParameters) {
+    if (requestParameters.model === null || requestParameters.model === void 0) {
+      throw new RequiredError2("model", "Required parameter requestParameters.model was null or undefined when calling modelSpecificModelDownloadCancel.");
+    }
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/model/{model}/download/cancel`.replace(`{${"model"}}`, encodeURIComponent(String(requestParameters.model))),
+      method: "POST",
+      headers: headerParameters,
+      query: queryParameters
+    });
+    return new JSONApiResponse2(response, (jsonValue) => ModelFromJSON2(jsonValue));
+  }
+  /**
+   * This will cancel a specific model download in progress.
+   * /model/{model}/download/cancel [POST]
+   */
+  async modelSpecificModelDownloadCancel(requestParameters) {
+    const response = await this.modelSpecificModelDownloadCancelRaw(requestParameters);
+    return await response.value();
+  }
+  /**
    * This is a Websocket Connection, to get the progress of the downloading of a specific model.
    * /model/{model}/download/progress [WS]
    */
@@ -19293,7 +19537,7 @@ var WellKnownApi = class extends BaseAPI2 {
 };
 
 // package.json
-var version = "1.4.0";
+var version = "1.5.0";
 
 // src/connection/notification_handler.ts
 var import_obsidian = require("obsidian");
@@ -19378,6 +19622,12 @@ var ConnectorSingleton = class {
     this.annotationApi = new AnnotationApi(
       new Configuration2({ fetchApi: fetch, basePath: this.parameters.basePath })
     );
+    this.activityApi = new ActivityApi(
+      new Configuration2({ fetchApi: fetch, basePath: this.parameters.basePath })
+    );
+    this.activitiesApi = new ActivitiesApi(
+      new Configuration2({ fetchApi: fetch, basePath: this.parameters.basePath })
+    );
     this.application = {
       name: "OBSIDIAN" /* Obsidian */,
       version,
@@ -19409,21 +19659,6 @@ var ConnectorSingleton = class {
       return false;
     }
   }
-  async track(event) {
-    const { context, api } = this;
-    if (!context) {
-      throw new Error("Application context could not be found when calling");
-    }
-    const seededConnectorTracking = { ...event };
-    const seed = {
-      application: context.application.id,
-      seededConnectorTracking
-    };
-    return api.track(seed).then((_) => true).catch((error) => {
-      console.log(`Error from api.track Error: ${error}`);
-      return false;
-    });
-  }
 };
 
 // src/connection/version_check.ts
@@ -19443,7 +19678,7 @@ var launchRuntime = async (wait) => {
 
 // src/connection/version_check.ts
 var config = ConnectorSingleton.getInstance();
-var currentMinVersion = "6.0.0";
+var currentMinVersion = "6.2.0";
 var currentMaxVersion = "7.0.0";
 var versionValid = false;
 var versionCheck = async ({
@@ -19487,6 +19722,20 @@ Constants.ENRICH_ICON = '<svg xmlns="http://www.w3.org/2000/svg" width="100" hei
 Constants.CODE_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-braces"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"/><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/></svg>`;
 Constants.OPEN_ICON = '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-panel-right-open"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="15" x2="15" y1="3" y2="21"/><path d="m10 15-3-3 3-3"/></svg>';
 Constants.SAVE_ALL_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-save-all"><path d="M6 4a2 2 0 0 1 2-2h10l4 4v10.2a2 2 0 0 1-2 1.8H8a2 2 0 0 1-2-2Z"/><path d="M10 2v4h6"/><path d="M18 18v-7h-8v7"/><path d="M18 22H4a2 2 0 0 1-2-2V6"/></svg>`;
+Constants.META_SVG = '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 287.56 191"><defs><style>.cls-1{fill:#0081fb;}.cls-2{fill:url(#linear-gradient);}.cls-3{fill:url(#linear-gradient-2);}</style><linearGradient id="linear-gradient" x1="62.34" y1="101.45" x2="260.34" y2="91.45" gradientTransform="matrix(1, 0, 0, -1, 0, 192)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#0064e1"/><stop offset="0.4" stop-color="#0064e1"/><stop offset="0.83" stop-color="#0073ee"/><stop offset="1" stop-color="#0082fb"/></linearGradient><linearGradient id="linear-gradient-2" x1="41.42" y1="53" x2="41.42" y2="126" gradientTransform="matrix(1, 0, 0, -1, 0, 192)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#0082fb"/><stop offset="1" stop-color="#0064e0"/></linearGradient></defs><title>facebook-meta</title><path class="cls-1" d="M31.06,126c0,11,2.41,19.41,5.56,24.51A19,19,0,0,0,53.19,160c8.1,0,15.51-2,29.79-21.76,11.44-15.83,24.92-38,34-52l15.36-23.6c10.67-16.39,23-34.61,37.18-47C181.07,5.6,193.54,0,206.09,0c21.07,0,41.14,12.21,56.5,35.11,16.81,25.08,25,56.67,25,89.27,0,19.38-3.82,33.62-10.32,44.87C271,180.13,258.72,191,238.13,191V160c17.63,0,22-16.2,22-34.74,0-26.42-6.16-55.74-19.73-76.69-9.63-14.86-22.11-23.94-35.84-23.94-14.85,0-26.8,11.2-40.23,31.17-7.14,10.61-14.47,23.54-22.7,38.13l-9.06,16c-18.2,32.27-22.81,39.62-31.91,51.75C84.74,183,71.12,191,53.19,191c-21.27,0-34.72-9.21-43-23.09C3.34,156.6,0,141.76,0,124.85Z"/><path class="cls-2" d="M24.49,37.3C38.73,15.35,59.28,0,82.85,0c13.65,0,27.22,4,41.39,15.61,15.5,12.65,32,33.48,52.63,67.81l7.39,12.32c17.84,29.72,28,45,33.93,52.22,7.64,9.26,13,12,19.94,12,17.63,0,22-16.2,22-34.74l27.4-.86c0,19.38-3.82,33.62-10.32,44.87C271,180.13,258.72,191,238.13,191c-12.8,0-24.14-2.78-36.68-14.61-9.64-9.08-20.91-25.21-29.58-39.71L146.08,93.6c-12.94-21.62-24.81-37.74-31.68-45C107,40.71,97.51,31.23,82.35,31.23c-12.27,0-22.69,8.61-31.41,21.78Z"/><path class="cls-3" d="M82.35,31.23c-12.27,0-22.69,8.61-31.41,21.78C38.61,71.62,31.06,99.34,31.06,126c0,11,2.41,19.41,5.56,24.51L10.14,167.91C3.34,156.6,0,141.76,0,124.85,0,94.1,8.44,62.05,24.49,37.3,38.73,15.35,59.28,0,82.85,0Z"/></svg>';
+Constants.OPENAI_SVG = `<?xml version="1.0" encoding="UTF-8"?>
+  <svg width="256px" height="260px" viewBox="0 0 256 260" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
+      <title>OpenAI</title>
+      <g>
+          <path d="M239.183914,106.202783 C245.054304,88.5242096 243.02228,69.1733805 233.607599,53.0998864 C219.451678,28.4588021 190.999703,15.7836129 163.213007,21.739505 C147.554077,4.32145883 123.794909,-3.42398554 100.87901,1.41873898 C77.9631105,6.26146349 59.3690093,22.9572536 52.0959621,45.2214219 C33.8436494,48.9644867 18.0901721,60.392749 8.86672513,76.5818033 C-5.443491,101.182962 -2.19544431,132.215255 16.8986662,153.320094 C11.0060865,170.990656 13.0197283,190.343991 22.4238231,206.422991 C36.5975553,231.072344 65.0680342,243.746566 92.8695738,237.783372 C105.235639,251.708249 123.001113,259.630942 141.623968,259.52692 C170.105359,259.552169 195.337611,241.165718 204.037777,214.045661 C222.28734,210.296356 238.038489,198.869783 247.267014,182.68528 C261.404453,158.127515 258.142494,127.262775 239.183914,106.202783 L239.183914,106.202783 Z M141.623968,242.541207 C130.255682,242.559177 119.243876,238.574642 110.519381,231.286197 L112.054146,230.416496 L163.724595,200.590881 C166.340648,199.056444 167.954321,196.256818 167.970781,193.224005 L167.970781,120.373788 L189.815614,133.010026 C190.034132,133.121423 190.186235,133.330564 190.224885,133.572774 L190.224885,193.940229 C190.168603,220.758427 168.442166,242.484864 141.623968,242.541207 Z M37.1575749,197.93062 C31.456498,188.086359 29.4094818,176.546984 31.3766237,165.342426 L32.9113895,166.263285 L84.6329973,196.088901 C87.2389349,197.618207 90.4682717,197.618207 93.0742093,196.088901 L156.255402,159.663793 L156.255402,184.885111 C156.243557,185.149771 156.111725,185.394602 155.89729,185.550176 L103.561776,215.733903 C80.3054953,229.131632 50.5924954,221.165435 37.1575749,197.93062 Z M23.5493181,85.3811273 C29.2899861,75.4733097 38.3511911,67.9162648 49.1287482,64.0478825 L49.1287482,125.438515 C49.0891492,128.459425 50.6965386,131.262556 53.3237748,132.754232 L116.198014,169.025864 L94.3531808,181.662102 C94.1132325,181.789434 93.8257461,181.789434 93.5857979,181.662102 L41.3526015,151.529534 C18.1419426,138.076098 10.1817681,108.385562 23.5493181,85.125333 L23.5493181,85.3811273 Z M203.0146,127.075598 L139.935725,90.4458545 L161.7294,77.8607748 C161.969348,77.7334434 162.256834,77.7334434 162.496783,77.8607748 L214.729979,108.044502 C231.032329,117.451747 240.437294,135.426109 238.871504,154.182739 C237.305714,172.939368 225.050719,189.105572 207.414262,195.67963 L207.414262,134.288998 C207.322521,131.276867 205.650697,128.535853 203.0146,127.075598 Z M224.757116,94.3850867 L223.22235,93.4642272 L171.60306,63.3828173 C168.981293,61.8443751 165.732456,61.8443751 163.110689,63.3828173 L99.9806554,99.8079259 L99.9806554,74.5866077 C99.9533004,74.3254088 100.071095,74.0701869 100.287609,73.9215426 L152.520805,43.7889738 C168.863098,34.3743518 189.174256,35.2529043 204.642579,46.0434841 C220.110903,56.8340638 227.949269,75.5923959 224.757116,94.1804513 L224.757116,94.3850867 Z M88.0606409,139.097931 L66.2158076,126.512851 C65.9950399,126.379091 65.8450965,126.154176 65.8065367,125.898945 L65.8065367,65.684966 C65.8314495,46.8285367 76.7500605,29.6846032 93.8270852,21.6883055 C110.90411,13.6920079 131.063833,16.2835462 145.5632,28.338998 L144.028434,29.2086986 L92.3579852,59.0343142 C89.7419327,60.5687513 88.1282597,63.3683767 88.1117998,66.4011901 L88.0606409,139.097931 Z M99.9294965,113.5185 L128.06687,97.3011417 L156.255402,113.5185 L156.255402,145.953218 L128.169187,162.170577 L99.9806554,145.953218 L99.9294965,113.5185 Z" fill="currentColor"></path>
+      </g>
+  </svg>
+  `;
+Constants.CHECK_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><polyline points="20 6 9 17 4 12"/></svg>`;
+Constants.CLOUD_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cloud"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>';
+Constants.LAPTOP_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-laptop"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/></svg>';
+Constants.DOWNLOAD_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>';
+Constants.PLUG_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plug"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/></svg>';
 /*
        -------------
        |   Views   |
@@ -21644,6 +21893,73 @@ var AnnotationsModal = class extends import_obsidian6.Modal {
   }
 };
 
+// src/actions/activities.ts
+var ActivitySingleton = class {
+  constructor() {
+  }
+  static getInstance() {
+    var _a;
+    return (_a = this.instance) != null ? _a : this.instance = new ActivitySingleton();
+  }
+  async referenced(id, query, copied = false) {
+    const config2 = ConnectorSingleton.getInstance();
+    const seededActivity = {
+      application: config2.context.application,
+      mechanism: "AUTOMATIC" /* Automatic */,
+      asset: {
+        id
+      },
+      event: {
+        asset: {
+          asset: {
+            id
+          },
+          identifierDescriptionPair: {
+            assetReferenced: "an_asset_was_referenced_by_the_user" /* AnAssetWasReferencedByTheUser */
+          }
+        }
+      }
+    };
+    if (copied) {
+      seededActivity.event.asset.identifierDescriptionPair = {
+        assetFormatCopied: "an_asset_preview_format_was_copied" /* AnAssetPreviewFormatWasCopied */
+      };
+    }
+    if (query) {
+      seededActivity.event.asset.metadata = {
+        search: {
+          query
+        }
+      };
+      seededActivity.event.asset.identifierDescriptionPair = {
+        searchedAssetReferenced: "a_searched_asset_was_referenced_by_the_user" /* ASearchedAssetWasReferencedByTheUser */
+      };
+    }
+    return config2.activitiesApi.activitiesCreateNewActivity({
+      transferables: false,
+      seededActivity
+    }).catch();
+  }
+  async installed() {
+    const config2 = ConnectorSingleton.getInstance();
+    const seededActivity = {
+      application: config2.context.application,
+      mechanism: "AUTOMATIC" /* Automatic */,
+      event: {
+        adoption: {
+          identifierDescriptionPair: {
+            adoptionInstall: "the_user_has_installed_a_pieces_application" /* TheUserHasInstalledAPiecesApplication */
+          }
+        }
+      }
+    };
+    return config2.activitiesApi.activitiesCreateNewActivity({
+      transferables: false,
+      seededActivity
+    }).catch();
+  }
+};
+
 // src/ui/render/renderSnippet.ts
 function renderSnippet({
   contentEl,
@@ -21666,10 +21982,13 @@ function renderSnippet({
     expandIconImg.setAttr("alt", "Expand icon");
     expandIconImg.addClass("expand-icon");
     expandIconImg.title = "Expand snippet view";
-    expandIconImg.onclick = async () => await DisplayController.createExpandedView({
-      snippetId: snippetObject.id,
-      snippetTitle: snippetObject.title
-    });
+    expandIconImg.onclick = async () => {
+      DisplayController.createExpandedView({
+        snippetId: snippetObject.id,
+        snippetTitle: snippetObject.title
+      });
+      ActivitySingleton.getInstance().referenced(snippetObject.id);
+    };
   }
   const lineNumDiv = snippetDiv.createEl("div");
   lineNumDiv.addClass("lineNums");
@@ -21723,6 +22042,11 @@ function renderSnippet({
   new import_obsidian8.ButtonComponent(buttonDiv).setButtonText("Copy Snippet").onClick(async () => {
     await copyToClipboard(snippetFormatted);
     new import_obsidian8.Notice("Snippet copied to clipboard!");
+    ActivitySingleton.getInstance().referenced(
+      snippetObject.id,
+      void 0,
+      true
+    );
   }).setIcon("copy").setTooltip("Copy snippet to clipboard").setClass("button_copy");
   buttonDiv.createEl("div").addClass("vertBreak");
   if (!newSnippet && !discovery) {
@@ -21786,213 +22110,6 @@ function renderSnippet({
   }
   return snippet;
 }
-
-// src/ui/render/renderListView.ts
-var renderListView = ({
-  contentEl,
-  snippetObject,
-  opened = false,
-  newAsset = false,
-  discovery = false
-}) => {
-  var _a, _b, _c, _d, _e, _f;
-  const _annotationHandler = AnnotationHandler.getInstance();
-  const ListView = contentEl.createEl("div");
-  ListView.addClass("list-view");
-  ListView.id = `list-view-${snippetObject.id}`;
-  if (DisplayController.defaultView === "discovery" /* DISCOVERY */) {
-    const discoveryDiv = ListView.createEl("div");
-    discoveryDiv.addClass("discovery-div-parent");
-    const selectAllCheckbox = discoveryDiv.createEl("input", {
-      type: "checkbox"
-    });
-    selectAllCheckbox.addClasses(["discovery-checkbox"]);
-    DisplayController.appendDiscovery({
-      snippetCheckBox: selectAllCheckbox,
-      snippetObject
-    });
-  }
-  const snippetContentDiv = ListView.createEl("div");
-  snippetContentDiv.addClass("snippet-content-parent");
-  const titleDiv = snippetContentDiv.createEl("div");
-  titleDiv.addClass("list-title-div");
-  const titleWrapper = titleDiv.createDiv();
-  titleWrapper.addClass("list-title-wrapper");
-  if (DisplayController.defaultView === "discovery" /* DISCOVERY */) {
-    const seperator = titleWrapper.createEl("span");
-    seperator.addClass("discovery-seperator");
-    seperator.innerText = " ";
-  }
-  const imageLang = titleWrapper.createEl("img");
-  imageLang.setAttr("src", getIcon(snippetObject.language));
-  imageLang.setAttr("alt", "Pieces language logo");
-  imageLang.addClass("list-title-div");
-  imageLang.setAttr("width", "20px");
-  imageLang.setAttr("height", "20px");
-  const title = titleWrapper.createEl("h4");
-  title.addClass("list-title-div");
-  title.innerText = snippetObject.title;
-  const body = snippetContentDiv.createEl("div");
-  body.addClass("list-body");
-  let annotationText = _annotationHandler.getFavorited((_a = snippetObject.annotations) != null ? _a : []).map((el) => el.text).join("\n");
-  if (annotationText.length === 0)
-    annotationText = (_d = (_c = _annotationHandler.sortAnnotationsByUpdated({
-      annotations: (_b = snippetObject.annotations) != null ? _b : []
-    })[0]) == null ? void 0 : _c.text.replace(/\n/g, " ")) != null ? _d : "";
-  body.innerText = annotationText;
-  const buttonContainer = snippetContentDiv.createEl("div");
-  buttonContainer.addClass("list-button-container");
-  let newSnippet;
-  if (newAsset) {
-    const seperatedRaw = (_e = snippetObject.raw) == null ? void 0 : _e.split("\n");
-    newSnippet = renderSnippet({
-      contentEl: ListView,
-      snippetObject,
-      seperatedRaw: seperatedRaw || [],
-      newSnippet: newAsset,
-      discovery
-    });
-    ListView.appendChild(newSnippet);
-    return ListView;
-  }
-  const buttonInput = snippetContentDiv.createEl("input", {
-    attr: { type: "checkbox" }
-  });
-  buttonInput.addClass("list-button-input");
-  buttonInput.disabled = true;
-  const buttonContentOpen = buttonContainer.createEl("span");
-  buttonContentOpen.innerText = "View Code \u25BC";
-  buttonContentOpen.addClass("list-button-content");
-  const buttonContentClosed = buttonContainer.createEl("span");
-  buttonContentClosed.innerText = "View Code \u25B6";
-  buttonContentClosed.addClass("list-button-content");
-  if (buttonInput.checked) {
-    buttonContainer.removeChild(buttonContentClosed);
-  } else {
-    buttonContainer.removeChild(buttonContentOpen);
-  }
-  if (opened) {
-    buttonInput.checked = true;
-    const seperatedRaw = (_f = snippetObject.raw) == null ? void 0 : _f.split("\n");
-    newSnippet = renderSnippet({
-      contentEl: ListView,
-      snippetObject,
-      seperatedRaw: seperatedRaw || [],
-      discovery
-    });
-    buttonContainer.replaceChild(buttonContentOpen, buttonContentClosed);
-    ListView.appendChild(newSnippet);
-  }
-  let clickTimer = null;
-  snippetContentDiv.onclick = async () => {
-    if (clickTimer === null) {
-      clickTimer = setTimeout(() => {
-        var _a2;
-        buttonInput.checked = !buttonInput.checked;
-        if (buttonInput.checked) {
-          const seperatedRaw = (_a2 = snippetObject.raw) == null ? void 0 : _a2.split("\n");
-          newSnippet = renderSnippet({
-            contentEl: ListView,
-            snippetObject,
-            seperatedRaw: seperatedRaw || [],
-            discovery
-          });
-          buttonContainer.replaceChild(buttonContentOpen, buttonContentClosed);
-          ListView.appendChild(newSnippet);
-        } else {
-          buttonContainer.replaceChild(buttonContentClosed, buttonContentOpen);
-          newSnippet.empty();
-          ListView.removeChild(newSnippet);
-        }
-        clickTimer = null;
-      }, 140);
-    } else {
-      clearTimeout(clickTimer);
-      clickTimer = null;
-      if (DisplayController.defaultView !== "discovery" /* DISCOVERY */) {
-        await DisplayController.createExpandedView({
-          snippetId: snippetObject.id,
-          snippetTitle: snippetObject.title
-        });
-      }
-    }
-  };
-  return ListView;
-};
-
-// src/ui/render/renderLanguageView.ts
-var renderLanguageView = ({
-  containerVar
-}) => {
-  const cache2 = PiecesCacheSingleton.getInstance();
-  const snippetContainer = containerVar.createEl("div");
-  snippetContainer.addClass("snippet-container");
-  snippetContainer.id = "language-snippet-container";
-  const sortedArray = Array.from(cache2.snippetMap.entries());
-  sortedArray.sort((a, b) => a[0].localeCompare(b[0]));
-  cache2.snippetMap = new Map(sortedArray);
-  for (const [key, value] of cache2.snippetMap) {
-    let snippetsInRange = value;
-    const CodeView = snippetContainer.createEl("div");
-    CodeView.addClass("code-view");
-    CodeView.id = "code-view-" + searchLangSpecificEnum[key];
-    const titleDiv = CodeView.createEl("div");
-    titleDiv.addClass("code-title-div");
-    const imageLang = titleDiv.createEl("img");
-    const iconImage = getIcon(key);
-    imageLang.setAttr("src", iconImage);
-    imageLang.setAttr("alt", "Code language logo");
-    imageLang.addClass("code-title-div");
-    const title = titleDiv.createEl("h1");
-    title.innerText = searchLangSpecificEnum[key];
-    title.addClass("code-title-div");
-    const buttonContentOpen = titleDiv.createEl("span");
-    buttonContentOpen.innerText = "\u2304";
-    buttonContentOpen.addClass("code-title-div");
-    const buttonContentClosed = titleDiv.createEl("span");
-    buttonContentClosed.innerText = "\u203A";
-    buttonContentClosed.addClass("code-title-div");
-    const buttonInput = titleDiv.createEl("input", {
-      attr: { type: "checkbox" }
-    });
-    buttonInput.addClass("code-button-input");
-    buttonInput.id = "input-" + searchLangSpecificEnum[key];
-    if (buttonInput.checked) {
-      titleDiv.removeChild(buttonContentClosed);
-    } else {
-      titleDiv.removeChild(buttonContentOpen);
-    }
-    let newCodeView;
-    buttonInput.onclick = () => {
-      var _a;
-      if (buttonInput.checked) {
-        snippetsInRange = (_a = cache2.snippetMap.get(key)) != null ? _a : [];
-        for (let i = 0; i < snippetsInRange.length; i++) {
-          if (!cache2.mappedAssets[snippetsInRange[i]]) {
-            snippetsInRange.splice(i, 1);
-          }
-        }
-        const assetsInRange = snippetsInRange.map((snippetId) => {
-          return cache2.mappedAssets[snippetId];
-        });
-        newCodeView = DisplayController.createListView({
-          containerVar,
-          snippets: assetsInRange.sort(
-            (a, b) => b.created.getTime() - a.created.getTime()
-          )
-        });
-        CodeView.appendChild(newCodeView);
-        titleDiv.removeChild(buttonContentClosed);
-        titleDiv.appendChild(buttonContentOpen);
-      } else {
-        newCodeView.empty();
-        CodeView.removeChild(newCodeView);
-        titleDiv.removeChild(buttonContentOpen);
-        titleDiv.appendChild(buttonContentClosed);
-      }
-    };
-  }
-};
 
 // src/ui/render/renderSearchBox.ts
 var import_obsidian10 = require("obsidian");
@@ -22326,6 +22443,220 @@ var renderNavBar = ({
     slider.addClass("glider-light");
   }
   return wrapperDiv;
+};
+
+// src/ui/render/renderListView.ts
+var renderListView = ({
+  contentEl,
+  snippetObject,
+  opened = false,
+  newAsset = false,
+  discovery = false
+}) => {
+  var _a, _b, _c, _d, _e, _f;
+  const _annotationHandler = AnnotationHandler.getInstance();
+  const ListView = contentEl.createEl("div");
+  ListView.addClass("list-view");
+  ListView.id = `list-view-${snippetObject.id}`;
+  if (DisplayController.defaultView === "discovery" /* DISCOVERY */) {
+    const discoveryDiv = ListView.createEl("div");
+    discoveryDiv.addClass("discovery-div-parent");
+    const selectAllCheckbox = discoveryDiv.createEl("input", {
+      type: "checkbox"
+    });
+    selectAllCheckbox.addClasses(["discovery-checkbox"]);
+    DisplayController.appendDiscovery({
+      snippetCheckBox: selectAllCheckbox,
+      snippetObject
+    });
+  }
+  const snippetContentDiv = ListView.createEl("div");
+  snippetContentDiv.addClass("snippet-content-parent");
+  const titleDiv = snippetContentDiv.createEl("div");
+  titleDiv.addClass("list-title-div");
+  const titleWrapper = titleDiv.createDiv();
+  titleWrapper.addClass("list-title-wrapper");
+  if (DisplayController.defaultView === "discovery" /* DISCOVERY */) {
+    const seperator = titleWrapper.createEl("span");
+    seperator.addClass("discovery-seperator");
+    seperator.innerText = " ";
+  }
+  const imageLang = titleWrapper.createEl("img");
+  imageLang.setAttr("src", getIcon(snippetObject.language));
+  imageLang.setAttr("alt", "Pieces language logo");
+  imageLang.addClass("list-title-div");
+  imageLang.setAttr("width", "20px");
+  imageLang.setAttr("height", "20px");
+  const title = titleWrapper.createEl("h4");
+  title.addClass("list-title-div");
+  title.innerText = snippetObject.title;
+  const body = snippetContentDiv.createEl("div");
+  body.addClass("list-body");
+  let annotationText = _annotationHandler.getFavorited((_a = snippetObject.annotations) != null ? _a : []).map((el) => el.text).join("\n");
+  if (annotationText.length === 0)
+    annotationText = (_d = (_c = _annotationHandler.sortAnnotationsByUpdated({
+      annotations: (_b = snippetObject.annotations) != null ? _b : []
+    })[0]) == null ? void 0 : _c.text.replace(/\n/g, " ")) != null ? _d : "";
+  body.innerText = annotationText;
+  const buttonContainer = snippetContentDiv.createEl("div");
+  buttonContainer.addClass("list-button-container");
+  let newSnippet;
+  if (newAsset) {
+    const seperatedRaw = (_e = snippetObject.raw) == null ? void 0 : _e.split("\n");
+    newSnippet = renderSnippet({
+      contentEl: ListView,
+      snippetObject,
+      seperatedRaw: seperatedRaw || [],
+      newSnippet: newAsset,
+      discovery
+    });
+    ListView.appendChild(newSnippet);
+    return ListView;
+  }
+  const buttonInput = snippetContentDiv.createEl("input", {
+    attr: { type: "checkbox" }
+  });
+  buttonInput.addClass("list-button-input");
+  buttonInput.disabled = true;
+  const buttonContentOpen = buttonContainer.createEl("span");
+  buttonContentOpen.innerText = "View Code \u25BC";
+  buttonContentOpen.addClass("list-button-content");
+  const buttonContentClosed = buttonContainer.createEl("span");
+  buttonContentClosed.innerText = "View Code \u25B6";
+  buttonContentClosed.addClass("list-button-content");
+  if (buttonInput.checked) {
+    buttonContainer.removeChild(buttonContentClosed);
+  } else {
+    buttonContainer.removeChild(buttonContentOpen);
+  }
+  if (opened) {
+    buttonInput.checked = true;
+    const seperatedRaw = (_f = snippetObject.raw) == null ? void 0 : _f.split("\n");
+    newSnippet = renderSnippet({
+      contentEl: ListView,
+      snippetObject,
+      seperatedRaw: seperatedRaw || [],
+      discovery
+    });
+    buttonContainer.replaceChild(buttonContentOpen, buttonContentClosed);
+    ListView.appendChild(newSnippet);
+  }
+  let clickTimer = null;
+  snippetContentDiv.onclick = async () => {
+    if (clickTimer === null) {
+      clickTimer = setTimeout(() => {
+        var _a2;
+        buttonInput.checked = !buttonInput.checked;
+        if (buttonInput.checked) {
+          const seperatedRaw = (_a2 = snippetObject.raw) == null ? void 0 : _a2.split("\n");
+          newSnippet = renderSnippet({
+            contentEl: ListView,
+            snippetObject,
+            seperatedRaw: seperatedRaw || [],
+            discovery
+          });
+          buttonContainer.replaceChild(buttonContentOpen, buttonContentClosed);
+          ListView.appendChild(newSnippet);
+        } else {
+          buttonContainer.replaceChild(buttonContentClosed, buttonContentOpen);
+          newSnippet.empty();
+          ListView.removeChild(newSnippet);
+        }
+        clickTimer = null;
+        if (defaultSearchQuery !== "" && buttonInput.checked) {
+          ActivitySingleton.getInstance().referenced(
+            snippetObject.id,
+            defaultSearchQuery
+          );
+        }
+      }, 140);
+    } else {
+      clearTimeout(clickTimer);
+      clickTimer = null;
+      if (DisplayController.defaultView !== "discovery" /* DISCOVERY */) {
+        DisplayController.createExpandedView({
+          snippetId: snippetObject.id,
+          snippetTitle: snippetObject.title
+        });
+        ActivitySingleton.getInstance().referenced(snippetObject.id);
+      }
+    }
+  };
+  return ListView;
+};
+
+// src/ui/render/renderLanguageView.ts
+var renderLanguageView = ({
+  containerVar
+}) => {
+  const cache2 = PiecesCacheSingleton.getInstance();
+  const snippetContainer = containerVar.createEl("div");
+  snippetContainer.addClass("snippet-container");
+  snippetContainer.id = "language-snippet-container";
+  const sortedArray = Array.from(cache2.snippetMap.entries());
+  sortedArray.sort((a, b) => a[0].localeCompare(b[0]));
+  cache2.snippetMap = new Map(sortedArray);
+  for (const [key, value] of cache2.snippetMap) {
+    let snippetsInRange = value;
+    const CodeView = snippetContainer.createEl("div");
+    CodeView.addClass("code-view");
+    CodeView.id = "code-view-" + searchLangSpecificEnum[key];
+    const titleDiv = CodeView.createEl("div");
+    titleDiv.addClass("code-title-div");
+    const imageLang = titleDiv.createEl("img");
+    const iconImage = getIcon(key);
+    imageLang.setAttr("src", iconImage);
+    imageLang.setAttr("alt", "Code language logo");
+    imageLang.addClass("code-title-div");
+    const title = titleDiv.createEl("h1");
+    title.innerText = searchLangSpecificEnum[key];
+    title.addClass("code-title-div");
+    const buttonContentOpen = titleDiv.createEl("span");
+    buttonContentOpen.innerText = "\u2304";
+    buttonContentOpen.addClass("code-title-div");
+    const buttonContentClosed = titleDiv.createEl("span");
+    buttonContentClosed.innerText = "\u203A";
+    buttonContentClosed.addClass("code-title-div");
+    const buttonInput = titleDiv.createEl("input", {
+      attr: { type: "checkbox" }
+    });
+    buttonInput.addClass("code-button-input");
+    buttonInput.id = "input-" + searchLangSpecificEnum[key];
+    if (buttonInput.checked) {
+      titleDiv.removeChild(buttonContentClosed);
+    } else {
+      titleDiv.removeChild(buttonContentOpen);
+    }
+    let newCodeView;
+    buttonInput.onclick = () => {
+      var _a;
+      if (buttonInput.checked) {
+        snippetsInRange = (_a = cache2.snippetMap.get(key)) != null ? _a : [];
+        for (let i = 0; i < snippetsInRange.length; i++) {
+          if (!cache2.mappedAssets[snippetsInRange[i]]) {
+            snippetsInRange.splice(i, 1);
+          }
+        }
+        const assetsInRange = snippetsInRange.map((snippetId) => {
+          return cache2.mappedAssets[snippetId];
+        });
+        newCodeView = DisplayController.createListView({
+          containerVar,
+          snippets: assetsInRange.sort(
+            (a, b) => b.created.getTime() - a.created.getTime()
+          )
+        });
+        CodeView.appendChild(newCodeView);
+        titleDiv.removeChild(buttonContentClosed);
+        titleDiv.appendChild(buttonContentOpen);
+      } else {
+        newCodeView.empty();
+        CodeView.removeChild(newCodeView);
+        titleDiv.removeChild(buttonContentOpen);
+        titleDiv.appendChild(buttonContentClosed);
+      }
+    };
+  }
 };
 
 // src/actions/search.ts
@@ -23758,7 +24089,7 @@ DisplayController.createExpandedView = async ({
     }
   }
   expandedSnippetMD = lines.join("\n");
-  await displayPiecesView({
+  displayPiecesView({
     leaf,
     type: Constants.PIECES_EXPANDED_SNIPPET_VIEW_TYPE,
     markdown: expandedSnippetMD,
@@ -23769,6 +24100,123 @@ DisplayController.createExpandedView = async ({
 
 // src/ui/modals/qgpt-llm-config-modal.ts
 var import_obsidian14 = require("obsidian");
+
+// src/connection/ModelProgressController.ts
+var ModelProgressController = class {
+  // model id -> its download socket
+  /**
+   * Initializes the sockets
+   */
+  constructor() {
+    this.modelDownloadStatus = /* @__PURE__ */ new Map();
+    // models snapshot
+    this.callbacks = new Array();
+    // all callbacks to be ran from a websocket event
+    this.sockets = {};
+    const config2 = ConnectorSingleton.getInstance();
+    this.models = config2.modelsApi.modelsSnapshot();
+    this.models.then((models) => {
+      this.initSockets(
+        models.iterable.filter(
+          (el) => el.foundation === "LLAMA_2_7B" /* Llama27B */ && el.unique !== "llama-2-7b-chat.ggmlv3.q4_K_M"
+        )
+      );
+    });
+  }
+  /**
+   * Registering a callback here will allow that callback to be executed during stream events
+   * i.e refresh the LLMConfigModal once a download finishes
+   * @param cb call back to be registered
+   */
+  registerCallback(cb) {
+    this.callbacks.push(cb);
+  }
+  /**
+   * This will remove the callback from the list of registered callbacks
+   * @param cb the call back to be deregistered
+   */
+  deregisterCallback(cb) {
+    this.callbacks = this.callbacks.filter((el) => el != cb);
+  }
+  /**
+   * Cleanup function to close all sockets
+   */
+  closeSockets() {
+    for (const socket of Object.values(this.sockets)) {
+      socket.close();
+    }
+  }
+  /**
+   * Opens all sockets for models that currently don't have a socket open
+   * This is used to refresh sockets that had an error in connection
+   * @param models all of the models to open a socket for progress
+   */
+  openSockets(models) {
+    for (const model of models) {
+      if (!this.sockets[model.id]) {
+        this.connect(model);
+      }
+    }
+  }
+  /**
+   * This opens all sockets via the constructor
+   * @param models all models to initialize the sockets
+   */
+  initSockets(models) {
+    for (const model of models) {
+      this.connect(model);
+    }
+  }
+  /**
+   * This opens a socket, and handles all messaging / error handling needs for that model's socket
+   * @param model The model to connect a socket
+   */
+  connect(model) {
+    const ws = new WebSocket(
+      `ws://localhost:${portNumber}/model/${model.id}/download/progress`
+    );
+    this.sockets[model.id] = ws;
+    ws.onmessage = (evt) => {
+      var _a;
+      const event = ModelDownloadProgressFromJSON(JSON.parse(evt.data));
+      const oldStatus = this.modelDownloadStatus.get(model.id);
+      this.modelDownloadStatus.set(
+        model.id,
+        (_a = event.status) != null ? _a : "FAILED" /* Failed */
+      );
+      if (oldStatus === event.status || oldStatus === void 0 || event.status === void 0)
+        return;
+      if (event.status !== "COMPLETED")
+        return;
+      if (event.status === "COMPLETED") {
+        model.downloaded = true;
+        Notifications.getInstance().information({
+          message: "Model download success!"
+        });
+      }
+      for (const cb of this.callbacks) {
+        cb();
+      }
+    };
+    const handleLostConnection = () => {
+      delete this.sockets[model.id];
+      if (ws.readyState !== ws.CLOSED && ws.readyState !== ws.CLOSING) {
+        ws.close();
+      }
+    };
+    ws.onerror = handleLostConnection;
+    ws.onclose = handleLostConnection;
+  }
+  static getInstance() {
+    var _a;
+    return (_a = this.instance) != null ? _a : this.instance = new ModelProgressController();
+  }
+};
+
+// src/utils/timeoutPromise.ts
+var timeoutPromise = (duration) => new Promise((resolver) => setTimeout(resolver, duration));
+
+// src/ui/modals/qgpt-llm-config-modal.ts
 var gpt35Model = {
   id: "",
   // leave this id as empty!
@@ -23784,196 +24232,477 @@ var gpt35Model = {
   usage: "CODE_GENERATION" /* CodeGeneration */
 };
 var _CopilotLLMConfigModal = class extends import_obsidian14.Modal {
-  constructor(app2) {
-    super(app2);
+  constructor() {
+    super(...arguments);
+    this.modelButtons = [];
+    this.createModelBox = (type, container, models) => {
+      const modelBox = container.createDiv();
+      modelBox.classList.add(
+        "border-solid",
+        "border-[var(--text-faint)]",
+        "rounded-md",
+        "flex",
+        "flex-col",
+        "cursor-pointer",
+        "p-2",
+        "border",
+        "gap-2"
+      );
+      const modelTitle = modelBox.createDiv();
+      modelTitle.classList.add("flex-row", "flex", "items-center");
+      const modelTitleText = modelTitle.createEl("div");
+      modelTitleText.classList.add(
+        "m-0",
+        "flex",
+        "flex-row",
+        "gap-2",
+        "items-center"
+      );
+      const svgBox = modelTitleText.createDiv();
+      svgBox.classList.add("h-3", "svg-box");
+      svgBox.innerHTML = this.getModelSvg(type);
+      const modelTitleTextType = modelTitleText.createEl("p");
+      modelTitleTextType.classList.add("m-0");
+      modelTitleTextType.innerText = type;
+      const modelExpand = modelTitle.createDiv();
+      modelExpand.classList.add("ml-auto", "text-xs", "font-semibold");
+      modelExpand.innerHTML = "\u25BC";
+      const modelDesc = modelBox.createEl("p");
+      modelDesc.classList.add("text-xs", "text-[var(--text-faint)]", "m-0");
+      modelDesc.innerText = this.getOrgDesc(type);
+      const modelElements = modelBox.createDiv();
+      modelElements.classList.add("hidden", "gap-2", "flex", "flex-col");
+      const modelElementsText = modelElements.createEl("p");
+      modelElementsText.classList.add(
+        "m-0",
+        "font-light",
+        "text-xs",
+        "text-[var(--text-faint)]",
+        "pt-1"
+      );
+      modelElementsText.innerText = "SELECT MODEL";
+      this.buildModelElements(modelElements, models);
+      modelBox.onclick = () => {
+        const expanded = modelExpand.innerHTML === "\u25BC";
+        modelExpand.innerHTML = expanded ? "&times;" : "\u25BC";
+        modelElements.classList.toggle("hidden");
+      };
+    };
+    this.setModelButtonsColor = () => {
+      for (const btn of this.modelButtons) {
+        if (btn.selected) {
+          btn.btn.innerHTML = Constants.PLUG_SVG;
+          btn.selected = false;
+        }
+        btn.btn.style.color = "";
+      }
+    };
+    this.getOrgDesc = (type) => {
+      if (type === "Llama2" /* LLaMa2 */) {
+        return "Meta's fastest model in the Llama 2 family optimized to run on your device for a fast, air-gapped experience.";
+      }
+      if (type === "CodeLlama" /* CodeLlaMa */) {
+        return "Meta's model trained on top of Llama 2 fine-tuned for code-related tasks, optimized to run on your device.";
+      }
+      return "OpenAI's most capable and cost effective models. Includes up to 4,096 max tokens and has training data up until September 2021.";
+    };
+    this.getModelRequirements = (model) => {
+      if (model.cpu && model.foundation === "LLAMA_2_7B" /* Llama27B */)
+        return "- requires at least 5.6GB RAM";
+      if (!model.cpu && model.foundation === "LLAMA_2_7B" /* Llama27B */)
+        return "- requires at least 5.6GB VRAM (GPU RAM)";
+      return "No local device requirements, runs solely in the cloud";
+    };
+    this.getModelTitle = (model) => {
+      if (model.cpu && model.foundation === "LLAMA_2_7B" /* Llama27B */ && !model.name.includes("CodeLlama"))
+        return "7B";
+      if (!model.cpu && model.foundation === "LLAMA_2_7B" /* Llama27B */ && !model.name.includes("CodeLlama"))
+        return "7B GPU";
+      if (model.cpu && model.name.includes("CodeLlama"))
+        return "7B";
+      if (!model.cpu && model.name.includes("CodeLlama"))
+        return "7B GPU";
+      return "GPT 3.5 Turbo";
+    };
+    this.getModelName = (model) => {
+      const svgBox = document.createElement("div");
+      svgBox.classList.add("h-4", "w-auto", "svg-box");
+      const textBox = document.createElement("p");
+      textBox.classList.add("m-0");
+      if (model.cpu && model.foundation === "LLAMA_2_7B" /* Llama27B */ && !model.name.includes("CodeLlama")) {
+        svgBox.innerHTML = Constants.META_SVG;
+        textBox.innerText = "Llama2 7B CPU";
+        return svgBox.outerHTML + textBox.outerHTML;
+      }
+      if (!model.cpu && model.foundation === "LLAMA_2_7B" /* Llama27B */ && !model.name.includes("CodeLlama")) {
+        svgBox.innerHTML = Constants.META_SVG;
+        textBox.innerText = "Llama2 7B GPU";
+        return svgBox.outerHTML + textBox.outerHTML;
+      }
+      if (model.cpu && model.name.includes("CodeLlama")) {
+        svgBox.innerHTML = Constants.META_SVG;
+        textBox.innerText = "CodeLlama 7B CPU";
+        return svgBox.outerHTML + textBox.outerHTML;
+      }
+      if (!model.cpu && model.name.includes("CodeLlama")) {
+        svgBox.innerHTML = Constants.META_SVG;
+        textBox.innerText = "CodeLlama 7B GPU";
+        return svgBox.outerHTML + textBox.outerHTML;
+      }
+      svgBox.innerHTML = Constants.OPENAI_SVG;
+      textBox.innerText = "GPT 3.5 Turbo";
+      return svgBox.outerHTML + textBox.outerHTML;
+    };
+    this.refresh = () => {
+      this.close();
+      this.open();
+    };
   }
-  onOpen() {
-    this.titleEl.innerText = "LLM Configuration";
-    const configContainer = this.contentEl.createDiv();
-    configContainer.classList.add("llm-config-container");
-    const disclaimerRow = configContainer.createDiv();
-    disclaimerRow.classList.add("llm-config-box", "llm-disclaimer");
-    const disclaimerCol = disclaimerRow.createDiv();
-    disclaimerCol.classList.add("llm-config-col");
-    const disclaimerTitle = disclaimerCol.createDiv();
-    disclaimerTitle.classList.add("llm-config-title");
-    disclaimerTitle.innerText = "DISCLAIMER";
-    const disclaimerBodyRow = disclaimerCol.createDiv();
-    disclaimerBodyRow.classList.add("llm-disclaimer-body-row");
-    const disclaimerBodyText = disclaimerBodyRow.createDiv();
-    disclaimerBodyText.classList.add("llm-config-body");
-    disclaimerBodyText.innerText = Constants.LLMDisclaimer;
-    this.buildModelElements(configContainer);
-  }
-  async buildModelElements(containerEl) {
-    const config2 = ConnectorSingleton.getInstance();
-    const snapshot = await config2.modelsApi.modelsSnapshot();
-    const relevantModels = snapshot.iterable.filter(
-      (el) => el.foundation === "LLAMA_2_7B" /* Llama27B */ && el.unique !== "llama-2-7b-chat.ggmlv3.q4_K_M"
+  async onOpen() {
+    var _a;
+    this.modelButtons = [];
+    const modelProgress = ModelProgressController.getInstance();
+    modelProgress.registerCallback(this.refresh);
+    const models = await modelProgress.models;
+    modelProgress.openSockets(
+      models.iterable.filter(
+        (el) => el.foundation === "LLAMA_2_7B" /* Llama27B */ && el.unique !== "llama-2-7b-chat.ggmlv3.q4_K_M"
+      )
     );
-    for (let i = 0; i < relevantModels.length; i++) {
-      this.buildModelElement(relevantModels[i], containerEl);
+    this.titleEl.innerText = "Copilot Runtime";
+    const titleDesc = this.titleEl.createEl("p");
+    titleDesc.classList.add(
+      "m-0",
+      "text-xs",
+      "font-normal",
+      "text-[var(--text-faint)]"
+    );
+    titleDesc.innerText = "Choose between different LLM's and runtime types";
+    this.contentEl.empty();
+    this.contentEl.classList.add("min-h-[50vh]", "!flex", "flex-col");
+    const container = this.contentEl.createDiv();
+    container.classList.add(
+      "flex",
+      "flex-col",
+      "w-full",
+      "h-full",
+      "flex-grow"
+    );
+    const tabs = container.createDiv();
+    tabs.classList.add("flex-row", "justify-around", "flex", "py-3");
+    const cloudModels = container.createDiv();
+    cloudModels.classList.add(
+      "hidden",
+      "flex",
+      "w-full",
+      "h-full",
+      "flex-col",
+      "gap-3",
+      "flex-grow"
+    );
+    const localModels = container.createDiv();
+    localModels.classList.add(
+      "flex",
+      "w-full",
+      "h-full",
+      "flex-col",
+      "gap-3",
+      "flex-grow"
+    );
+    const localRecommendation = localModels.createDiv();
+    localRecommendation.classList.add(
+      "flex",
+      "flex-col",
+      "rounded-md",
+      "p-2",
+      "bg-[var(--background-modifier-border)]",
+      "gap-2",
+      "cursor-pointer",
+      "hover:bg-[var(--background-modifier-border-hover)]"
+    );
+    const recommendationTitleRow = localRecommendation.createDiv();
+    recommendationTitleRow.classList.add(
+      "flex",
+      "flex-row",
+      "justify-between",
+      "items-center",
+      "px-[2px]"
+    );
+    const recommendationTitle = recommendationTitleRow.createEl("p");
+    recommendationTitle.classList.add(
+      "font-light",
+      "text-[var(--text-faint)]",
+      "m-0",
+      "text-xs"
+    );
+    recommendationTitle.innerText = "MODEL RECOMMENDATIONS";
+    const recommendationCaret = recommendationTitleRow.createEl("p");
+    recommendationCaret.classList.add("m-0", "text-xs", "font-semibold");
+    recommendationCaret.innerHTML = "\u25BC";
+    const recommendationExpandContainer = localRecommendation.createDiv();
+    recommendationExpandContainer.classList.add("hidden");
+    localRecommendation.onclick = (e) => {
+      recommendationExpandContainer.classList.toggle("hidden");
+      recommendationCaret.innerHTML = recommendationExpandContainer.classList.contains("hidden") ? "\u25BC" : "&times;";
+      e.stopPropagation();
+    };
+    const recommendationDesc = recommendationExpandContainer.createEl("p");
+    recommendationDesc.classList.add(
+      "m-0",
+      "text-[var(--text-muted)]",
+      "text-sm"
+    );
+    recommendationDesc.innerText = "Local LLM's are not recommended for low power or older machines, to ensure a good experience please follow the recommended practices for choosing a model.";
+    const recommendationList = recommendationExpandContainer.createEl("ul");
+    recommendationList.classList.add(
+      "text-xs",
+      "!list-disc",
+      "text-[var(--text-faint)]",
+      "pl-3",
+      "gap-1",
+      "flex",
+      "flex-col"
+    );
+    const gpuRecommendation = recommendationList.createEl("li");
+    gpuRecommendation.innerHTML = "<strong>GPU</strong> LLM's are designed for machines with a modern, dedicated graphics chip (i.e: ARM Mac, NVIDIA GPU with 6gb VRAM or more)";
+    const cpuRecommendation = recommendationList.createEl("li");
+    cpuRecommendation.innerHTML = "<strong>CPU</strong> models are recommended if you do not have a strong enough graphics card for the GPU LLM's. Be aware this model will be as slow or as fast as your machine specs allow.";
+    const cloudRecommendation = recommendationList.createEl("li");
+    cloudRecommendation.innerHTML = "<strong>CLOUD</strong> models are recommended if performance issues arise while using the local models (for older or lower powered machines).";
+    this.createModelBox(
+      "Llama2" /* LLaMa2 */,
+      localModels,
+      models.iterable.filter(
+        (el) => el.foundation === "LLAMA_2_7B" /* Llama27B */ && !el.name.includes("CodeLlama")
+      )
+    );
+    this.createModelBox(
+      "CodeLlama" /* CodeLlaMa */,
+      localModels,
+      models.iterable.filter((el) => el.name.includes("CodeLlama"))
+    );
+    this.createModelBox("Open AI" /* OpenAi */, cloudModels, [gpt35Model]);
+    const localTab = tabs.createDiv();
+    const cloudTab = tabs.createDiv();
+    const localSvgBox = localTab.createDiv();
+    localSvgBox.classList.add("h-4", "svg-box");
+    localSvgBox.innerHTML = Constants.LAPTOP_SVG;
+    const localTabText = localTab.createEl("p");
+    localTabText.classList.add("m-0");
+    localTabText.innerText = "On-Device";
+    localTab.classList.add(
+      "cursor-pointer",
+      "underline",
+      "flex",
+      "flex-row",
+      "gap-1",
+      "items-center"
+    );
+    localTab.onclick = () => {
+      localTab.classList.add("underline");
+      cloudTab.classList.remove("underline");
+      localModels.classList.remove("hidden");
+      cloudModels.classList.add("hidden");
+    };
+    const cloudSvgBox = cloudTab.createDiv();
+    cloudSvgBox.classList.add("svg-box", "h-4");
+    cloudSvgBox.innerHTML = Constants.CLOUD_SVG;
+    const cloudTabText = cloudTab.createEl("p");
+    cloudTabText.classList.add("m-0");
+    cloudTabText.innerText = "Cloud";
+    cloudTab.classList.add(
+      "cursor-pointer",
+      "flex",
+      "flex-row",
+      "gap-1",
+      "items-center"
+    );
+    cloudTab.onclick = () => {
+      cloudTab.classList.add("underline");
+      localTab.classList.remove("underline");
+      localModels.classList.add("hidden");
+      cloudModels.classList.remove("hidden");
+    };
+    const activeModel = this.contentEl.createDiv();
+    activeModel.classList.add("flex", "flex-col", "h-full", "gap-2");
+    const activeModelText = activeModel.createEl("p");
+    activeModelText.classList.add("text-xs", "text-[var(--text-faint)]", "m-0");
+    activeModelText.innerText = "ACTIVE MODEL";
+    const activeModelPill = activeModel.createDiv();
+    activeModelPill.classList.add(
+      "border-solid",
+      "border",
+      "rounded-lg",
+      "p-2",
+      "w-fit",
+      "border-[var(--text-faint)]",
+      "flex-row",
+      "flex",
+      "gap-2",
+      "items-center"
+    );
+    const selectedModel = (_a = models.iterable.find(
+      (el) => el.id === _CopilotLLMConfigModal.selectedModel
+    )) != null ? _a : gpt35Model;
+    activeModelPill.innerHTML = this.getModelName(selectedModel);
+    this.activeModelPill = activeModelPill;
+  }
+  async buildModelElements(containerEl, models) {
+    for (let i = 0; i < models.length; i++) {
+      this.buildModelElement(models[i], containerEl);
     }
-    this.buildModelElement(gpt35Model, containerEl);
   }
   buildModelElement(model, containerEl) {
-    var _a;
-    const modelBox = containerEl.createDiv();
-    modelBox.classList.add("llm-config-box");
-    const modelElementContainer = modelBox.createDiv();
-    modelElementContainer.classList.add("llm-config-col");
-    const modelHeaderRow = modelElementContainer.createDiv();
-    modelHeaderRow.classList.add("llm-config-row");
-    const modelTitleCol = modelHeaderRow.createDiv();
-    modelTitleCol.classList.add("llm-config-col");
-    const modelTitleRow = modelTitleCol.createDiv();
-    modelTitleRow.classList.add("llm-config-row");
-    const modelTitleEl = modelTitleRow.createDiv();
-    modelTitleEl.classList.add("model-title");
-    modelTitleEl.innerText = model.name.includes("Code") ? "Code_" + model.foundation : model.foundation;
-    const modelTypeCol = modelTitleRow.createDiv();
-    modelTypeCol.innerText = `${model.cloud ? "CLOUD" : model.cpu ? "CPU" : "GPU"}`;
-    modelTypeCol.classList.add("model-type");
-    const modelDescRow = modelTitleCol.createDiv();
-    modelDescRow.classList.add(
-      "llm-config-row",
-      "llm-config-body",
-      "small-text"
+    const modelElement = containerEl.createDiv();
+    modelElement.classList.add(
+      "flex",
+      "flex-col",
+      "rounded-md",
+      "p-2",
+      "bg-[var(--background-modifier-border)]",
+      "gap-2"
     );
-    modelDescRow.innerText = (_a = model.description) != null ? _a : this.getModelDescription(model);
-    const modelMetaRow = modelTitleCol.createDiv();
-    modelMetaRow.classList.add(
-      "llm-config-body",
-      "llm-config-row",
-      "small-text"
+    const modelTitleRow = modelElement.createDiv();
+    modelTitleRow.classList.add(
+      "flex",
+      "flex-row",
+      "justify-between",
+      "items-center"
     );
-    modelMetaRow.innerText = this.getModelMetadata(model);
-    const modelActionsCol = modelHeaderRow.createDiv();
-    modelActionsCol.classList.add("llm-config-col", "col-fit");
-    const modelDownloadRow = modelActionsCol.createDiv();
-    modelDownloadRow.classList.add("llm-config-row");
-    if (!_CopilotLLMConfigModal.isDownloading.get(model.id)) {
-      const modelDownloadButton = modelDownloadRow.createDiv();
-      modelDownloadButton.onclick = () => {
-        if (model.id === _CopilotLLMConfigModal.selectedModel)
-          return;
-        const notifications = Notifications.getInstance();
-        if (_CopilotLLMConfigModal.isDownloading.get(model.id)) {
-          notifications.error({
-            message: "This model is downloading! Please wait."
-          });
-          return;
-        }
-        modelDownloadButton.classList.add("hidden");
-        const confirmDiv = modelDownloadRow.createDiv();
-        confirmDiv.classList.add("ml-auto", "llm-config-row", "small-text");
-        const confirmText = confirmDiv.createEl("div");
-        confirmText.setText("Confirm:");
-        confirmText.classList.add("mx-2");
-        const yesEl = confirmDiv.createDiv();
-        yesEl.addClass("confirm-btn");
-        yesEl.innerText = "Yes";
-        yesEl.onclick = () => {
-          modelDownloadButton.classList.remove("hidden");
-          confirmDiv.remove();
-          this.handleDownloadSelect(model, progressBar);
-        };
-        const slash = confirmDiv.createDiv();
-        slash.textContent = "/";
-        slash.classList.add("mx-1");
-        const noEl = confirmDiv.createDiv();
-        noEl.classList.add("confirm-btn");
-        noEl.innerText = "No";
-        noEl.onclick = () => {
-          confirmDiv.remove();
-          modelDownloadButton.classList.remove("hidden");
-        };
-      };
-      modelDownloadButton.innerHTML = model.downloaded ? (0, import_obsidian14.getIcon)("plug").outerHTML : (0, import_obsidian14.getIcon)("download").outerHTML;
-      modelDownloadButton.title = model.downloaded ? "Select model" : "Download Model";
-      modelDownloadButton.style.color = model.id === _CopilotLLMConfigModal.selectedModel ? "var(--text-accent)" : "white";
-      modelDownloadButton.classList.add("ml-auto", "cursor-pointer");
+    const modelTitle = modelTitleRow.createEl("p");
+    modelTitle.innerText = this.getModelTitle(model);
+    modelTitle.classList.add("m-0");
+    const modelButton = modelTitleRow.createDiv();
+    this.modelButtons.push({
+      btn: modelButton,
+      selected: _CopilotLLMConfigModal.selectedModel === model.id,
+      model: model.id
+    });
+    modelButton.classList.add(
+      "cursor-pointer",
+      "hover:text-[var(--text-accent)]",
+      "flex",
+      "items-center",
+      "text-xs"
+    );
+    const status = ModelProgressController.getInstance().modelDownloadStatus.get(model.id);
+    if (model.name.includes("CodeLlama")) {
+      modelButton.innerHTML = "Coming Soon";
+    } else if (model.downloaded) {
+      modelButton.innerHTML = Constants.PLUG_SVG;
+      modelButton.title = `Select ${modelTitle.innerText}`;
+    } else if (status === "IN-PROGRESS" /* InProgress */ || status === "INITIALIZED" /* Initialized */) {
+      modelButton.innerHTML = "&times;";
+      modelButton.title = `Cancel ${modelTitle.innerText} download`;
+    } else {
+      modelButton.innerHTML = Constants.DOWNLOAD_SVG;
+      modelButton.title = `Download ${modelTitle.innerText}`;
     }
-    const progressRow = modelElementContainer.createDiv();
-    progressRow.classList.add("llm-config-row", "mb-0");
+    if (_CopilotLLMConfigModal.selectedModel === model.id) {
+      modelButton.style.color = "var(--text-accent)";
+    }
+    const modelRequirementsButton = modelElement.createDiv();
+    modelRequirementsButton.classList.add(
+      "cursor-pointer",
+      "text-xs",
+      "text-[var(--text-faint)]"
+    );
+    modelRequirementsButton.innerText = "System Requirements  \u25BC";
+    const modelRequirements = modelElement.createEl("p");
+    modelRequirements.classList.add(
+      "hidden",
+      "text-xs",
+      "pt-1",
+      "text-[var(--text-faint)]",
+      "m-0"
+    );
+    modelRequirements.innerText = this.getModelRequirements(model);
+    modelRequirementsButton.onclick = (e) => {
+      modelRequirementsButton.innerText = modelRequirements.classList.contains(
+        "hidden"
+      ) ? "System Requirements  \u25B2" : "System Requirements  \u25BC";
+      modelRequirements.classList.toggle("hidden");
+      e.stopPropagation();
+    };
     const progressBar = new ProgressBar({
       current: 0,
       end: 100,
-      contentEl: progressRow,
+      contentEl: modelElement,
       source: "LLM_CONFIG" /* LLM_CONFIG */
     });
-    if (!_CopilotLLMConfigModal.isDownloading.get(model.id)) {
+    if (status === "IN-PROGRESS" /* InProgress */ || status === "INITIALIZED" /* Initialized */) {
+      progressBar.bounce();
+    } else {
       progressBar.hide();
     }
-    progressBar.bounce();
-  }
-  getModelDescription(model) {
-    const codeLlamaStr = model.name.includes("CodeLlama") ? ", optimized for code generation." : "";
-    if (model.foundation === "LLAMA_2_7B" /* Llama27B */) {
-      if (model.cpu) {
-        return "Locally executed CPU based LLM" + codeLlamaStr;
+    modelButton.onclick = (e) => {
+      e.stopPropagation();
+      if (model.name.includes("CodeLlama")) {
+        Notifications.getInstance().information({
+          message: "The CodeLlama models are not quite ready for production, but are coming soon!"
+        });
+        return;
       }
-      return "Locally executed GPU based LLM" + codeLlamaStr;
-    }
-    return "Cloud executed LLM";
+      this.handleDownloadSelectCancel(model);
+      timeoutPromise(200).then(() => {
+        const newStatus = ModelProgressController.getInstance().modelDownloadStatus.get(
+          model.id
+        );
+        if (model.downloaded) {
+          this.setModelButtonsColor();
+          modelButton.innerHTML = Constants.CHECK_SVG;
+          modelButton.title = `Select ${modelTitle.innerText}`;
+          const buttonObj = this.modelButtons.find(
+            (el) => el.model === model.id
+          );
+          if (buttonObj)
+            buttonObj.selected = true;
+          modelButton.style.color = "var(--text-accent)";
+          this.activeModelPill.innerHTML = this.getModelName(model);
+        } else if (newStatus === "IN-PROGRESS" /* InProgress */ || newStatus === "INITIALIZED" /* Initialized */) {
+          modelButton.innerHTML = "&times;";
+          modelButton.title = `Cancel ${modelTitle.innerText} download`;
+          progressBar.show();
+          progressBar.bounce();
+        } else {
+          modelButton.innerHTML = Constants.DOWNLOAD_SVG;
+          modelButton.title = `Download ${modelTitle.innerText}`;
+          progressBar.hide();
+        }
+      });
+    };
   }
-  getModelMetadata(model) {
-    if (model.foundation === "LLAMA_2_7B" /* Llama27B */) {
-      if (model.cpu) {
-        return "7B parameter model, utilizes 6GB of RAM and multiple CPU cores.";
-      }
-      return "7B parameter model, utilizes 6GB of VRAM and all GPU cores.";
+  getModelSvg(type) {
+    if (type === "CodeLlama" /* CodeLlaMa */ || type === "Llama2" /* LLaMa2 */) {
+      return Constants.META_SVG;
     }
-    return "No hardware requirements, operates in the cloud.";
+    return Constants.OPENAI_SVG;
   }
-  handleDownloadSelect(model, progressBar) {
+  handleDownloadSelectCancel(model) {
+    const status = ModelProgressController.getInstance().modelDownloadStatus.get(model.id);
     const config2 = ConnectorSingleton.getInstance();
-    if (model.downloaded) {
+    if (status === "IN-PROGRESS" /* InProgress */ || status === "INITIALIZED" /* Initialized */) {
+      config2.modelApi.modelSpecificModelDownloadCancel({ model: model.id });
+    } else if (model.downloaded) {
       _CopilotLLMConfigModal.selectedModel = model.id;
       _CopilotLLMConfigModal.selectedRuntime = model.cloud ? "CLOUD" : model.cpu ? "CPU" : "GPU";
+      PiecesDatabase.writeData();
       Notifications.getInstance().information({
         message: `${model.foundation} ${model.cloud ? "CLOUD" : model.cpu ? "CPU" : "GPU"} selected!`
       });
-      this.close();
-      this.open();
-      PiecesDatabase.writeData();
-      return;
-    }
-    config2.modelApi.modelSpecificModelDownload({ model: model.id }).then(() => {
-      _CopilotLLMConfigModal.isDownloading.set(model.id, true);
-      const notifications = Notifications.getInstance();
-      this.close();
-      this.open();
-      progressBar.show();
-      const ws = new WebSocket(
-        `ws://localhost:${portNumber}/model/${model.id}/download/progress`
+    } else {
+      config2.modelApi.modelSpecificModelDownload({ model: model.id });
+      ModelProgressController.getInstance().modelDownloadStatus.set(
+        model.id,
+        "IN-PROGRESS" /* InProgress */
       );
-      ws.onmessage = (evt) => {
-        const event = JSON.parse(evt.data);
-        if (event.status === "COMPLETED") {
-          notifications.information({ message: "Model download success!" });
-        }
-        if (event.status === "FAILED") {
-          notifications.error({
-            message: "Model download failure. Please make sure that Pieces OS is installed, updated, and running. If the issue persists, please contact support@pieces.app"
-          });
-        }
-        if (event.status === "COMPLETED" || event.status === "FAILED") {
-          progressBar.hide();
-          _CopilotLLMConfigModal.isDownloading.set(model.id, false);
-          ws.close();
-          this.close();
-          this.open();
-        }
-      };
-    });
+    }
   }
   onClose() {
-    this.contentEl.empty();
+    ModelProgressController.getInstance().deregisterCallback(this.refresh);
   }
 };
 var CopilotLLMConfigModal = _CopilotLLMConfigModal;
-CopilotLLMConfigModal.isDownloading = /* @__PURE__ */ new Map();
 CopilotLLMConfigModal.selectedRuntime = "CLOUD";
 CopilotLLMConfigModal.selectedModel = "";
 
@@ -24007,9 +24736,9 @@ var PiecesDatabase = class {
       fileData.gptFolderNames = cache2.gptFolderNames;
       fileData.enrichedCode = cache2.getAllIsEnriched();
       fileData.llmModelId = CopilotLLMConfigModal.selectedModel;
-      fileData.llmRuntime = CopilotLLMConfigModal.selectedRuntime;
+      fileData.migration = migration;
       vault.modify(dataFile, JSON.stringify(fileData));
-    }, 15e3);
+    }, 5e3);
   }
   static async loadFile(retries = 0) {
     const { vault } = app;
@@ -27379,7 +28108,7 @@ var SaveToPiecesWidget = class extends import_view.WidgetType {
         });
       }
     };
-    this.enrichButton = (container, holderDiv) => {
+    this.enrichButton = (container, holderDiv, id) => {
       const enrichBtn = new import_obsidian18.ButtonComponent(container).onClick(async () => {
         var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k;
         const cache2 = PiecesCacheSingleton.getInstance();
@@ -27442,6 +28171,8 @@ var SaveToPiecesWidget = class extends import_view.WidgetType {
         );
         cache2.setIsEnriched(this.codeBlock);
         container.replaceChild(enrichBtn.buttonEl, loading);
+        if (id)
+          ActivitySingleton.getInstance().referenced(id);
       }).setTooltip("Enrich code snippet").setClass("save-to-pieces-btn").setIcon("sparkles");
     };
     this.expandButton = (container, ID) => {
@@ -27452,10 +28183,11 @@ var SaveToPiecesWidget = class extends import_view.WidgetType {
           });
           return;
         }
-        await DisplayController.createExpandedView({
+        DisplayController.createExpandedView({
           snippetId: ID,
           snippetTitle: this.cache.mappedAssets[ID != null ? ID : ""].title || ""
         });
+        ActivitySingleton.getInstance().referenced(ID);
       }).setTooltip("Expand via Pieces").setClass("save-to-pieces-btn").setIcon("expand");
       return expandButton;
     };
@@ -27504,7 +28236,7 @@ var SaveToPiecesWidget = class extends import_view.WidgetType {
       }).setTooltip("Share via Pieces").setClass("save-to-pieces-btn").setIcon("share-2");
       return shareButton;
     };
-    this.copyButton = (container) => {
+    this.copyButton = (container, id) => {
       const copyButton = new import_obsidian18.ButtonComponent(container).onClick(async () => {
         var _a;
         if (this.lang && this.codeBlock && this.codeBlock.substring(0, 3) !== "```\n") {
@@ -27512,6 +28244,8 @@ var SaveToPiecesWidget = class extends import_view.WidgetType {
         }
         copyToClipboard((_a = this.codeBlock) != null ? _a : this.codeRaw);
         new import_obsidian18.Notice("Snippet copied to clipboard!");
+        if (id)
+          ActivitySingleton.getInstance().referenced(id, void 0, true);
       }).setTooltip("Copy code to clipboard").setClass("save-to-pieces-btn").setIcon("copy");
       return copyButton;
     };
@@ -27592,9 +28326,13 @@ var SaveToPiecesWidget = class extends import_view.WidgetType {
       clearTimeout(this.tempCollapseTimer);
       if (collapsedHolder.classList.contains("collapsed")) {
         if (!this.piecesPreview) {
-          this.copyButton(collapsedHolder);
+          this.copyButton(collapsedHolder, id != null ? id : this.identifier);
           if (!this.disableEnrichment) {
-            this.enrichButton(collapsedHolder, holderDiv);
+            this.enrichButton(
+              collapsedHolder,
+              holderDiv,
+              id != null ? id : this.identifier
+            );
           }
           if (id && this.cache.mappedAssets[id]) {
             this.expandButton(collapsedHolder, id);
@@ -27606,7 +28344,7 @@ var SaveToPiecesWidget = class extends import_view.WidgetType {
             this.saveButton(collapsedHolder, holderDiv);
           }
         } else {
-          this.copyButton(collapsedHolder);
+          this.copyButton(collapsedHolder, id != null ? id : this.identifier);
           this.editButton(collapsedHolder, id != null ? id : this.identifier);
           this.annotationsButton(collapsedHolder, id != null ? id : this.identifier);
         }
@@ -28052,7 +28790,6 @@ var CopilotStreamController = class {
     this.hasScrolled = false;
     // whether or not the user has used their mousewheel
     this.ws = null;
-    // the qgpt websocket
     this.answerEl = null;
     // the current answer element to be updated from socket events
     // this will resolve the current promise that is created by this.handleMessage
@@ -28124,8 +28861,7 @@ var CopilotStreamController = class {
           query,
           paths,
           options: {
-            question: true,
-            database: true
+            question: true
           },
           model: CopilotLLMConfigModal.selectedModel ? CopilotLLMConfigModal.selectedModel : void 0
         }
@@ -28183,25 +28919,34 @@ var CopilotStreamController = class {
         this.forceScroll(this.answerEl);
       }
     };
-    this.ws.onerror = (error) => {
-      console.error(error);
+    const refreshSockets = (error) => {
+      if (error)
+        console.error(error);
       totalMessage = "";
       relevantSnippets = [];
       if (this.messageRejector)
         this.messageRejector(error);
       this.ws = null;
     };
+    this.ws.onerror = refreshSockets;
+    this.ws.onclose = refreshSockets;
+    this.connectionPromise = new Promise((res) => {
+      if (!this.ws)
+        return;
+      this.ws.onopen = () => res();
+    });
   }
   /**
    *
    * @param param0 the input into the websocket, and the answer element to be updated.
    * @returns a promise that is resolved when the chat is complete, or rejected on an error.
    */
-  handleMessages({
+  async handleMessages({
     input,
     answerEl
   }) {
     var _a;
+    await this.connectionPromise;
     this.answerEl = answerEl;
     answerEl.parentElement.parentElement.scrollTop = answerEl.parentElement.parentElement.scrollHeight;
     const loader = document.createElement("div");
@@ -28438,6 +29183,13 @@ GPTController.createGPTView = async ({
   hintRow.id = "gpt-hints-container";
   const btnRow = textDiv.createDiv();
   btnRow.addClass("gpt-row", "w-full");
+  const llmConfigSpan = btnRow.createEl("span");
+  llmConfigSpan.addClass("gpt-llm");
+  llmConfigSpan.classList.add("hover:text-[var(--text-accent)]");
+  llmConfigSpan.innerText = "Copilot Runtime";
+  llmConfigSpan.onmouseup = async () => {
+    new CopilotLLMConfigModal(app).open();
+  };
   const cancelSpan = btnRow.createEl("span");
   cancelSpan.addClasses(["gpt-cancel", "hover:text-red-600"]);
   cancelSpan.innerText = "Clear Chat";
@@ -29687,6 +30439,8 @@ var AskQGPTModal = class extends import_obsidian23.Modal {
 var pluginSettings;
 var theme = "dark";
 var Prism;
+var migration;
+var schemaNumber = 1;
 var _PiecesPlugin = class extends import_obsidian24.Plugin {
   constructor() {
     super(...arguments);
@@ -29781,6 +30535,7 @@ var _PiecesPlugin = class extends import_obsidian24.Plugin {
         pluginSettings.hasLoaded = true;
         await this.saveSettings();
         this.showOnboarding();
+        ActivitySingleton.getInstance().installed();
       }
       PiecesDatabase.getData().then((data) => {
         this.handleLoadData(data);
@@ -29839,7 +30594,8 @@ var _PiecesPlugin = class extends import_obsidian24.Plugin {
         this.cache.setAllIsEnriched(data.enrichedCode);
       }
       if (data && !data.gptContexts) {
-        QGPT.allFilesAsContext();
+        this.cache.gptContextPaths = [];
+        this.cache.gptFolderNames = [];
       }
       if (data && data.llmRuntime && data.llmModelId) {
         CopilotLLMConfigModal.selectedModel = data.llmModelId;
@@ -29850,6 +30606,16 @@ var _PiecesPlugin = class extends import_obsidian24.Plugin {
           PiecesDatabase.writeData();
         });
       }
+      let dataMigration = data == null ? void 0 : data.migration;
+      if (dataMigration === schemaNumber)
+        return;
+      switch (dataMigration) {
+        case void 0:
+          dataMigration = 1;
+          this.cache.gptContextPaths = [];
+          this.cache.gptFolderNames = [];
+      }
+      migration = dataMigration;
     };
     this.onunload = async () => {
       closeStreams();
