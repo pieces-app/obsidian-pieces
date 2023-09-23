@@ -19537,7 +19537,7 @@ var WellKnownApi = class extends BaseAPI2 {
 };
 
 // package.json
-var version = "1.5.0";
+var version = "1.5.1";
 
 // src/connection/notification_handler.ts
 var import_obsidian = require("obsidian");
@@ -24600,6 +24600,7 @@ var _CopilotLLMConfigModal = class extends import_obsidian14.Modal {
     }
     if (_CopilotLLMConfigModal.selectedModel === model.id) {
       modelButton.style.color = "var(--text-accent)";
+      modelButton.innerHTML = Constants.CHECK_SVG;
     }
     const modelRequirementsButton = modelElement.createDiv();
     modelRequirementsButton.classList.add(
@@ -24730,14 +24731,15 @@ var PiecesDatabase = class {
       const cache2 = PiecesCacheSingleton.getInstance();
       const { vault } = app;
       const dataFile = await this.loadFile();
-      const fileData = JSON.parse(await vault.read(dataFile));
-      fileData.assets = cache2.assets;
-      fileData.gptContexts = cache2.gptContextPaths;
-      fileData.gptFolderNames = cache2.gptFolderNames;
-      fileData.enrichedCode = cache2.getAllIsEnriched();
-      fileData.llmModelId = CopilotLLMConfigModal.selectedModel;
-      fileData.migration = migration;
-      vault.modify(dataFile, JSON.stringify(fileData));
+      const newDb = {
+        assets: cache2.assets,
+        gptContexts: cache2.gptContextPaths,
+        gptFolderNames: cache2.gptFolderNames,
+        enrichedCode: cache2.getAllIsEnriched(),
+        llmModelId: CopilotLLMConfigModal.selectedModel,
+        migration
+      };
+      vault.modify(dataFile, JSON.stringify(newDb));
     }, 5e3);
   }
   static async loadFile(retries = 0) {
@@ -28250,22 +28252,20 @@ var SaveToPiecesWidget = class extends import_view.WidgetType {
       return copyButton;
     };
     this.editButton = (container, id) => {
-      const editBtn = new import_obsidian18.ButtonComponent(container).setIcon("pencil").setTooltip("Edit snippet").onClick(async () => {
+      new import_obsidian18.ButtonComponent(container).setIcon("pencil").setTooltip("Edit snippet").onClick(async () => {
         new EditModal(
           app,
           PiecesCacheSingleton.getInstance().mappedAssets[id]
         ).open();
       }).setClass("button");
-      editBtn.buttonEl.classList.add("mr-1");
     };
     this.annotationsButton = (container, id) => {
-      const annotationButton = new import_obsidian18.ButtonComponent(container).setIcon("sticky-note").setTooltip("Edit annotations").onClick(async () => {
+      new import_obsidian18.ButtonComponent(container).setIcon("sticky-note").setTooltip("Edit annotations").onClick(async () => {
         new AnnotationsModal(
           app,
           PiecesCacheSingleton.getInstance().mappedAssets[id]
         ).open();
       }).setClass("button");
-      annotationButton.buttonEl.classList.add("mr-1");
     };
     this.saveButton = (container, holderDiv) => {
       const saveButton = new import_obsidian18.ButtonComponent(container).onClick(async () => {
@@ -28300,7 +28300,7 @@ var SaveToPiecesWidget = class extends import_view.WidgetType {
           this.identifier = id;
         } else {
           loading.remove();
-          const computedWidth = (5 + 42) * container.childElementCount;
+          const computedWidth = 46 * container.childElementCount;
           container.style.width = computedWidth + "px";
         }
       }).setTooltip("Save code to Pieces").setClass("save-to-pieces-btn").setIcon("save");
@@ -28350,7 +28350,7 @@ var SaveToPiecesWidget = class extends import_view.WidgetType {
         }
         this.shareButton(collapsedHolder, holderDiv);
         collapsedHolder.classList.remove("collapsed");
-        const computedWidth = 47 * collapsedHolder.childElementCount;
+        const computedWidth = 46 * collapsedHolder.childElementCount;
         collapsedHolder.style.width = computedWidth + "px";
         this.tempCollapseTimer = setTimeout(() => {
           this.tempCollapseTimer = void 0;
@@ -30597,9 +30597,8 @@ var _PiecesPlugin = class extends import_obsidian24.Plugin {
         this.cache.gptContextPaths = [];
         this.cache.gptFolderNames = [];
       }
-      if (data && data.llmRuntime && data.llmModelId) {
+      if (data && data.llmModelId) {
         CopilotLLMConfigModal.selectedModel = data.llmModelId;
-        CopilotLLMConfigModal.selectedRuntime = data.llmRuntime;
         const config2 = ConnectorSingleton.getInstance();
         config2.modelApi.modelsSpecificModelSnapshot({ model: data.llmModelId }).catch(() => {
           CopilotLLMConfigModal.selectedModel = "";
@@ -30607,8 +30606,10 @@ var _PiecesPlugin = class extends import_obsidian24.Plugin {
         });
       }
       let dataMigration = data == null ? void 0 : data.migration;
-      if (dataMigration === schemaNumber)
+      if (dataMigration === schemaNumber) {
+        migration = dataMigration;
         return;
+      }
       switch (dataMigration) {
         case void 0:
           dataMigration = 1;
