@@ -19537,7 +19537,7 @@ var WellKnownApi = class extends BaseAPI2 {
 };
 
 // package.json
-var version = "1.5.1";
+var version = "1.5.2";
 
 // src/connection/notification_handler.ts
 var import_obsidian = require("obsidian");
@@ -24217,20 +24217,6 @@ var ModelProgressController = class {
 var timeoutPromise = (duration) => new Promise((resolver) => setTimeout(resolver, duration));
 
 // src/ui/modals/qgpt-llm-config-modal.ts
-var gpt35Model = {
-  id: "",
-  // leave this id as empty!
-  foundation: "GPT_3.5" /* Gpt35 */,
-  cloud: true,
-  downloaded: true,
-  version: "n/a",
-  created: {
-    value: new Date()
-  },
-  name: "GPT 3.5 Turbo",
-  type: "SPEED" /* Speed */,
-  usage: "CODE_GENERATION" /* CodeGeneration */
-};
 var _CopilotLLMConfigModal = class extends import_obsidian14.Modal {
   constructor() {
     super(...arguments);
@@ -24322,6 +24308,10 @@ var _CopilotLLMConfigModal = class extends import_obsidian14.Modal {
         return "7B";
       if (!model.cpu && model.name.includes("CodeLlama"))
         return "7B GPU";
+      if (model.foundation === "GPT_4" /* Gpt4 */)
+        return "GPT 4";
+      if (model.name.includes("16k"))
+        return "GPT 3.5 16k";
       return "GPT 3.5 Turbo";
     };
     this.getModelName = (model) => {
@@ -24349,6 +24339,16 @@ var _CopilotLLMConfigModal = class extends import_obsidian14.Modal {
         textBox.innerText = "CodeLlama 7B GPU";
         return svgBox.outerHTML + textBox.outerHTML;
       }
+      if (model.name.includes("16k")) {
+        svgBox.innerHTML = Constants.OPENAI_SVG;
+        textBox.innerText = "GPT 3.5 16k";
+        return svgBox.outerHTML + textBox.outerHTML;
+      }
+      if (model.foundation === "GPT_4" /* Gpt4 */) {
+        svgBox.innerHTML = Constants.OPENAI_SVG;
+        textBox.innerText = "GPT 4";
+        return svgBox.outerHTML + textBox.outerHTML;
+      }
       svgBox.innerHTML = Constants.OPENAI_SVG;
       textBox.innerText = "GPT 3.5 Turbo";
       return svgBox.outerHTML + textBox.outerHTML;
@@ -24369,6 +24369,11 @@ var _CopilotLLMConfigModal = class extends import_obsidian14.Modal {
         (el) => el.foundation === "LLAMA_2_7B" /* Llama27B */ && el.unique !== "llama-2-7b-chat.ggmlv3.q4_K_M"
       )
     );
+    if (!_CopilotLLMConfigModal.selectedModel) {
+      _CopilotLLMConfigModal.selectedModel = models.iterable.find(
+        (el) => el.unique === "gpt-3.5-turbo"
+      ).id;
+    }
     this.titleEl.innerText = "Copilot Runtime";
     const titleDesc = this.titleEl.createEl("p");
     titleDesc.classList.add(
@@ -24481,7 +24486,13 @@ var _CopilotLLMConfigModal = class extends import_obsidian14.Modal {
       localModels,
       models.iterable.filter((el) => el.name.includes("CodeLlama"))
     );
-    this.createModelBox("Open AI" /* OpenAi */, cloudModels, [gpt35Model]);
+    this.createModelBox(
+      "Open AI" /* OpenAi */,
+      cloudModels,
+      models.iterable.filter(
+        (el) => el.foundation === "GPT_3.5" /* Gpt35 */ || el.foundation === "GPT_4" /* Gpt4 */
+      )
+    );
     const localTab = tabs.createDiv();
     const cloudTab = tabs.createDiv();
     const localSvgBox = localTab.createDiv();
@@ -24543,7 +24554,7 @@ var _CopilotLLMConfigModal = class extends import_obsidian14.Modal {
     );
     const selectedModel = (_a = models.iterable.find(
       (el) => el.id === _CopilotLLMConfigModal.selectedModel
-    )) != null ? _a : gpt35Model;
+    )) != null ? _a : models.iterable.find((el) => el.unique === "gpt-3.5-turbo");
     activeModelPill.innerHTML = this.getModelName(selectedModel);
     this.activeModelPill = activeModelPill;
   }
@@ -24553,6 +24564,8 @@ var _CopilotLLMConfigModal = class extends import_obsidian14.Modal {
     }
   }
   buildModelElement(model, containerEl) {
+    if (model.cloud)
+      model.downloaded = true;
     const modelElement = containerEl.createDiv();
     modelElement.classList.add(
       "flex",
