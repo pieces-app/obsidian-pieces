@@ -19537,7 +19537,7 @@ var WellKnownApi = class extends BaseAPI2 {
 };
 
 // package.json
-var version = "1.5.2";
+var version = "1.5.3";
 
 // src/connection/notification_handler.ts
 var import_obsidian = require("obsidian");
@@ -19710,14 +19710,14 @@ var Constants = class {
 Constants.PIECES_LOGO = `<path fill='currentColor' stroke:none fill-rule:nonzero fill-opacity:1 d='M 41 1.601562 C 30.199219 4.601562 21.101562 12.101562 16.199219 22 L 13.5 27.5 L 13.199219 54.699219 L 12.898438 82 L 15.699219 87.199219 C 25.5 105.101562 51.101562 102.800781 57.300781 83.300781 C 58.199219 80.699219 59 77.398438 59.199219 76.101562 C 59.398438 74.398438 60.601562 73.300781 63.699219 72.101562 C 77.898438 66.601562 87 53.101562 87 37.5 C 87 28.699219 84.898438 22.398438 79.601562 15.199219 C 71.199219 3.699219 54.601562 -2.199219 41 1.601562 Z M 62.699219 11.800781 C 83.199219 22.300781 84.101562 51.5 64.199219 62.300781 L 59.199219 65 L 58.800781 52.5 C 58.398438 39 57.699219 37.101562 51.699219 32.601562 C 48 29.898438 40.199219 30 36.199219 32.898438 C 31.300781 36.300781 29.699219 41.101562 30.199219 50.398438 C 30.898438 62.898438 35.5 69.898438 45.601562 73.300781 C 48.800781 74.398438 49.5 75.199219 49.800781 77.601562 C 50.101562 81.300781 47 86.398438 42.800781 89.101562 C 40.300781 90.601562 38.300781 91 34.898438 90.699219 C 29.398438 90.199219 25.898438 87.898438 23 82.699219 C 20.898438 79 20.800781 78 21.199219 54.699219 C 21.5 31.699219 21.601562 30.300781 23.800781 25.800781 C 26.699219 20 34.601562 12.699219 40.300781 10.601562 C 46.199219 8.398438 57.199219 9 62.699219 11.800781 Z M 49 40.898438 C 50.101562 43.101562 50.398438 66 49.300781 66 C 47.5 66 42 61.898438 40.398438 59.5 C 38.199219 56.199219 37.800781 43.101562 39.898438 40.699219 C 41.800781 38.300781 47.699219 38.5 49 40.898438 Z M 49 40.898438 '/>`;
 Constants.PIECES_LOGO_ALT = "M 8.199219 0.320312 C 6.039062 0.921875 4.21875 2.421875 3.238281 4.398438 L 2.699219 5.5 L 2.640625 10.941406 L 2.578125 16.398438 L 3.140625 17.441406 C 5.101562 21.019531 10.21875 20.558594 11.460938 16.660156 C 11.640625 16.140625 11.800781 15.480469 11.839844 15.21875 C 11.878906 14.878906 12.121094 14.660156 12.738281 14.421875 C 15.578125 13.320312 17.398438 10.621094 17.398438 7.5 C 17.398438 5.738281 16.980469 4.480469 15.921875 3.039062 C 14.238281 0.738281 10.921875 -0.441406 8.199219 0.320312 Z M 12.539062 2.359375 C 16.640625 4.460938 16.820312 10.300781 12.839844 12.460938 L 11.839844 13 L 11.761719 10.5 C 11.679688 7.800781 11.539062 7.421875 10.339844 6.519531 C 9.601562 5.980469 8.039062 6 7.238281 6.578125 C 6.261719 7.261719 5.941406 8.21875 6.039062 10.078125 C 6.179688 12.578125 7.101562 13.980469 9.121094 14.660156 C 9.761719 14.878906 9.898438 15.039062 9.960938 15.519531 C 10.019531 16.261719 9.398438 17.28125 8.558594 17.820312 C 8.058594 18.121094 7.660156 18.199219 6.980469 18.140625 C 5.878906 18.039062 5.179688 17.578125 4.601562 16.539062 C 4.179688 15.800781 4.160156 15.601562 4.238281 10.941406 C 4.300781 6.339844 4.320312 6.058594 4.761719 5.160156 C 5.339844 4 6.921875 2.539062 8.058594 2.121094 C 9.238281 1.679688 11.441406 1.800781 12.539062 2.359375 Z M 9.800781 8.179688 C 10.019531 8.621094 10.078125 13.199219 9.859375 13.199219 C 9.5 13.199219 8.398438 12.378906 8.078125 11.898438 C 7.640625 11.238281 7.558594 8.621094 7.980469 8.140625 C 8.359375 7.660156 9.539062 7.699219 9.800781 8.179688 Z M 9.800781 8.179688";
 Constants.USER_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle-2"><path d="M18 20a6 6 0 0 0-12 0"/><circle cx="12" cy="10" r="4"/><circle cx="12" cy="12" r="10"/></svg>`;
-Constants.AI_ICON = `<svg width="90" height="100" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M11.452 12.4675C11.4704 12.0122 11.2159 11.6322 10.8836 11.6188C10.5514 11.6054 10.2671 11.9636 10.2487 12.419C10.2304 12.8743 10.4848 13.2543 10.8171 13.2677C11.1493 13.2811 11.4336 12.9229 11.452 12.4675Z" fill="#6B6B6B"/>
-<path d="M14.7595 10.9541C14.7779 10.4988 14.5234 10.1188 14.1911 10.1054C13.8589 10.092 13.5746 10.4502 13.5562 10.9055C13.5379 11.3609 13.7923 11.7409 14.1246 11.7543C14.4568 11.7677 14.7411 11.4094 14.7595 10.9541Z" fill="#6B6B6B"/>
-<path d="M16.6069 5.5297C16.6069 5.5297 16.5846 5.5297 16.5846 5.5074L11.0319 2.69758C10.6305 2.49688 10.1176 2.51918 9.76079 2.80908C9.56008 2.96518 9.35938 3.09898 9.11408 3.16588C9.35938 4.61539 9.69389 6.46631 9.78309 6.82311C9.82769 7.02381 9.84999 7.22451 9.84999 7.44751C9.84999 8.47332 9.24788 9.12003 8.48968 9.12003C7.73147 9.12003 7.12936 8.45102 7.12936 7.44751C7.12936 7.22451 7.15167 7.00151 7.21857 6.82311C7.30777 6.51091 7.61997 4.66 7.88757 3.18818C7.66457 3.09898 7.44157 2.98748 7.24087 2.83138C6.88406 2.54148 6.39346 2.49688 5.96976 2.71988L0.417017 5.5297C0.417017 5.5297 0.394716 5.5297 0.394716 5.552C0.238614 5.6412 0.149414 5.7973 0.149414 5.9534V13.201C0.149414 13.3794 0.238614 13.5355 0.394716 13.6247L8.26667 17.9955C8.28897 18.0178 8.31128 18.0178 8.33358 18.0178C8.35588 18.0178 8.35588 18.0401 8.37818 18.0401C8.42278 18.0401 8.46738 18.0624 8.48968 18.0624C8.53428 18.0624 8.57888 18.0624 8.60118 18.0401C8.62348 18.0401 8.62348 18.0401 8.64578 18.0178C8.66808 18.0178 8.69038 17.9955 8.71268 17.9955L16.5846 13.6247C16.7407 13.5355 16.8299 13.3794 16.8299 13.201V5.9534C16.8522 5.775 16.763 5.6189 16.6069 5.5297ZM1.10832 6.75621L8.02137 10.5918V16.7467L1.10832 12.9111V6.75621ZM15.8933 12.9111L8.98028 16.7467V10.5918L15.8933 6.75621V12.9111Z" fill="#6B6B6B"/>
-<path d="M8.48997 2.27462C9.11809 2.27462 9.62728 1.76543 9.62728 1.13731C9.62728 0.50919 9.11809 0 8.48997 0C7.86185 0 7.35266 0.50919 7.35266 1.13731C7.35266 1.76543 7.86185 2.27462 8.48997 2.27462Z" fill="#6B6B6B"/>
-<path d="M15.5803 0.578369H8.82335H8.44425H1.4197C-1.03332 0.578369 -0.00751388 2.56308 2.2225 2.56308C4.56402 2.56308 5.50063 1.55958 7.35154 1.60418C7.84214 1.60418 8.31045 1.60418 8.60035 1.60418C8.80105 1.60418 9.15785 1.60418 9.64846 1.60418C11.5217 1.55958 12.4583 2.56308 14.7775 2.56308C17.0075 2.56308 18.0333 0.578369 15.5803 0.578369Z" fill="#6B6B6B"/>
+Constants.AI_ICON = `<svg width="90" height="100" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.452 12.4675C11.4704 12.0122 11.2159 11.6322 10.8836 11.6188C10.5514 11.6054 10.2671 11.9636 10.2487 12.419C10.2304 12.8743 10.4848 13.2543 10.8171 13.2677C11.1493 13.2811 11.4336 12.9229 11.452 12.4675Z" fill="currentColor"/>
+<path d="M14.7595 10.9541C14.7779 10.4988 14.5234 10.1188 14.1911 10.1054C13.8589 10.092 13.5746 10.4502 13.5562 10.9055C13.5379 11.3609 13.7923 11.7409 14.1246 11.7543C14.4568 11.7677 14.7411 11.4094 14.7595 10.9541Z" fill="currentColor"/>
+<path d="M16.6069 5.5297C16.6069 5.5297 16.5846 5.5297 16.5846 5.5074L11.0319 2.69758C10.6305 2.49688 10.1176 2.51918 9.76079 2.80908C9.56008 2.96518 9.35938 3.09898 9.11408 3.16588C9.35938 4.61539 9.69389 6.46631 9.78309 6.82311C9.82769 7.02381 9.84999 7.22451 9.84999 7.44751C9.84999 8.47332 9.24788 9.12003 8.48968 9.12003C7.73147 9.12003 7.12936 8.45102 7.12936 7.44751C7.12936 7.22451 7.15167 7.00151 7.21857 6.82311C7.30777 6.51091 7.61997 4.66 7.88757 3.18818C7.66457 3.09898 7.44157 2.98748 7.24087 2.83138C6.88406 2.54148 6.39346 2.49688 5.96976 2.71988L0.417017 5.5297C0.417017 5.5297 0.394716 5.5297 0.394716 5.552C0.238614 5.6412 0.149414 5.7973 0.149414 5.9534V13.201C0.149414 13.3794 0.238614 13.5355 0.394716 13.6247L8.26667 17.9955C8.28897 18.0178 8.31128 18.0178 8.33358 18.0178C8.35588 18.0178 8.35588 18.0401 8.37818 18.0401C8.42278 18.0401 8.46738 18.0624 8.48968 18.0624C8.53428 18.0624 8.57888 18.0624 8.60118 18.0401C8.62348 18.0401 8.62348 18.0401 8.64578 18.0178C8.66808 18.0178 8.69038 17.9955 8.71268 17.9955L16.5846 13.6247C16.7407 13.5355 16.8299 13.3794 16.8299 13.201V5.9534C16.8522 5.775 16.763 5.6189 16.6069 5.5297ZM1.10832 6.75621L8.02137 10.5918V16.7467L1.10832 12.9111V6.75621ZM15.8933 12.9111L8.98028 16.7467V10.5918L15.8933 6.75621V12.9111Z" fill="currentColor"/>
+<path d="M8.48997 2.27462C9.11809 2.27462 9.62728 1.76543 9.62728 1.13731C9.62728 0.50919 9.11809 0 8.48997 0C7.86185 0 7.35266 0.50919 7.35266 1.13731C7.35266 1.76543 7.86185 2.27462 8.48997 2.27462Z" fill="currentColor"/>
+<path d="M15.5803 0.578369H8.82335H8.44425H1.4197C-1.03332 0.578369 -0.00751388 2.56308 2.2225 2.56308C4.56402 2.56308 5.50063 1.55958 7.35154 1.60418C7.84214 1.60418 8.31045 1.60418 8.60035 1.60418C8.80105 1.60418 9.15785 1.60418 9.64846 1.60418C11.5217 1.55958 12.4583 2.56308 14.7775 2.56308C17.0075 2.56308 18.0333 0.578369 15.5803 0.578369Z" fill="currentColor"/>
 </svg>`;
-Constants.SEND_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-forward"><polyline points="15 17 20 12 15 7"/><path d="M4 18v-2a4 4 0 0 1 4-4h12"/></svg>`;
+Constants.SEND_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send-horizontal"><path d="m3 3 3 9-3 9 19-9Z"/><path d="M6 12h16"/></svg>`;
 Constants.ENRICH_ICON = '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>';
 Constants.CODE_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-braces"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"/><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/></svg>`;
 Constants.OPEN_ICON = '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-panel-right-open"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="15" x2="15" y1="3" y2="21"/><path d="m10 15-3-3 3-3"/></svg>';
@@ -24535,7 +24535,7 @@ var _CopilotLLMConfigModal = class extends import_obsidian14.Modal {
       cloudModels.classList.remove("hidden");
     };
     const activeModel = this.contentEl.createDiv();
-    activeModel.classList.add("flex", "flex-col", "h-full", "gap-2");
+    activeModel.classList.add("flex", "flex-col", "h-full", "gap-2", "pt-2");
     const activeModelText = activeModel.createEl("p");
     activeModelText.classList.add("text-xs", "text-[var(--text-faint)]", "m-0");
     activeModelText.innerText = "ACTIVE MODEL";
@@ -28528,34 +28528,41 @@ var ContextModal = class extends import_obsidian20.Modal {
   }
   onOpen() {
     this.getFileTree();
-    const contextTitle = this.titleEl.createEl("p");
-    contextTitle.addClasses(["context-title"]);
-    contextTitle.innerText = "Context Selector";
+    this.titleEl.setText("Configure Context");
     const holderDiv = this.contentEl.createDiv();
-    holderDiv.addClasses(["context-col"]);
-    const contextParent = holderDiv.createDiv("context-parent");
-    const contextContainer = contextParent.createDiv("context-list-container");
-    contextContainer.addClasses(["context-col"]);
-    contextContainer.createDiv("context-background");
-    const contextRow = contextContainer.createDiv("context-row");
+    holderDiv.addClasses(["flex", "flex-row", "gap-2"]);
+    const contextRow = holderDiv.createDiv();
     this.createContextList(contextRow);
-    const contextPreviewContainer = contextParent.createDiv(
-      "context-preview-container"
-    );
-    contextPreviewContainer.addClasses(["context-col"]);
-    const contextPreviewTitleDiv = contextPreviewContainer.createDiv();
-    contextPreviewTitleDiv.addClasses([
-      "context-row",
-      "context-preview-title-parent"
+    const contextPreviewContainer = holderDiv.createDiv();
+    contextPreviewContainer.addClasses([
+      "flex",
+      "flex-col",
+      "h-full",
+      "px-4",
+      "shadow-sm",
+      "shadow-[var(--background-modifier-box-shadow)]",
+      "rounded-lg",
+      "py-2",
+      "flex-1",
+      "min-w-[50%]"
     ]);
+    const contextPreviewTitleDiv = contextPreviewContainer.createDiv();
     this.contextTitle = contextPreviewTitleDiv.createEl("h3");
-    this.contextTitle.addClass("context-preview-title");
-    this.contextTitle.textContent = "Preview: ";
-    const contextPreviewDiv = contextPreviewContainer.createEl("div");
-    contextPreviewDiv.addClasses(["context-row", "context-preview"]);
-    this.contextPreview = contextPreviewDiv.createEl("div");
+    this.contextTitle.classList.add("m-0", "pb-2");
+    const contextPreviewScroll = contextPreviewContainer.createDiv();
+    contextPreviewScroll.classList.add("h-[590px]", "w-full", "flex");
+    const contextPreviewDiv = contextPreviewScroll.createEl("div");
+    contextPreviewDiv.classList.add(
+      "flex",
+      "flex-col",
+      "break-words",
+      "word-break",
+      "overflow-y-scroll",
+      "overflow-x-hidden",
+      "scrollbar-hidden"
+    );
+    this.contextPreview = contextPreviewDiv;
     buildDefaultPreview(this.contextPreview);
-    this.contextPreview.addClasses(["context-col", "context-display-width"]);
   }
   async handleShowPreview({
     file,
@@ -28588,7 +28595,7 @@ var ContextModal = class extends import_obsidian20.Modal {
           });
         } catch (e) {
         }
-        codeChild.classList.add("context-shadow");
+        codeChild.classList.add("!bg-[var(--code-background)]");
       });
     }
     const splitPath = file.path.split("/");
@@ -28717,8 +28724,22 @@ var ContextModal = class extends import_obsidian20.Modal {
         e.stopPropagation();
       };
     } else {
-      contextParentDiv.addClasses(["context-root"]);
-      contextListItemChildren.addClasses(["nested", "active", "context-hide"]);
+      contextParentDiv.addClasses([
+        "w-full",
+        "!justify-end",
+        "text-xs",
+        "font-bold",
+        "pb-2",
+        "hover:text-[var(--text-accent)]"
+      ]);
+      contextListItemChildren.addClasses([
+        "nested",
+        "active",
+        "context-hide",
+        "max-h-[590px]",
+        "overflow-y-scroll",
+        "scrollbar-hidden"
+      ]);
       contextListItemHeader.onclick = (e) => {
         selectBox.checked = !selectBox.checked;
         selectBox.checked ? contextListItemHeader.setText("Deselect All") : contextListItemHeader.setText("Select All");
@@ -28736,9 +28757,17 @@ var ContextModal = class extends import_obsidian20.Modal {
 };
 var buildDefaultPreview = (parentDiv) => {
   const previewDiv = parentDiv.createEl("div");
-  previewDiv.addClasses(["context-preview-default"]);
+  previewDiv.classList.add(
+    "text-center",
+    "flex",
+    "flex-col",
+    "gap-2",
+    "pt-12",
+    "h-full"
+  );
   const previewTitle = previewDiv.createEl("h3");
-  previewTitle.innerText = "No Context Selected";
+  previewTitle.classList.add("m-0");
+  previewTitle.innerText = "No File to Preview";
   const previewText = previewDiv.createEl("p");
   previewText.innerText = "Please select a file from the left to preview it here.";
 };
@@ -28927,9 +28956,11 @@ var CopilotStreamController = class {
       if (answer == null ? void 0 : answer.text) {
         totalMessage += answer.text;
       }
+      const isAtBottom = this.isAtBottom(this.answerEl);
       this.handleRender(totalMessage, this.answerEl);
       if (this.answerEl.parentElement.parentElement.scrollHeight > this.answerEl.parentElement.parentElement.clientHeight) {
-        this.forceScroll(this.answerEl);
+        if (isAtBottom || !this.hasScrolled)
+          this.forceScroll(this.answerEl);
       }
     };
     const refreshSockets = (error) => {
@@ -28962,10 +28993,12 @@ var CopilotStreamController = class {
     await this.connectionPromise;
     this.answerEl = answerEl;
     answerEl.parentElement.parentElement.scrollTop = answerEl.parentElement.parentElement.scrollHeight;
+    this.hasScrolled = false;
     const loader = document.createElement("div");
     loader.classList.add("flex", "flex-row", "justify-center");
     loader.appendChild(GPTController.createLoader());
     answerEl.parentElement.insertAdjacentElement("afterend", loader);
+    this.forceScroll(answerEl);
     const promise = new Promise((res, rej) => {
       this.messageResolver = res;
       this.messageRejector = rej;
@@ -28980,6 +29013,27 @@ var CopilotStreamController = class {
       (_a = this.messageRejector) == null ? void 0 : _a.call(this, err);
     }
     return promise;
+  }
+  /**
+   * If the user has not used their mousewheel, scroll their container to the bottom.
+   * @param answerEl The answer element that is being updated
+   * @returns void
+   */
+  forceScroll(answerEl) {
+    answerEl.parentElement.parentElement.onwheel = () => {
+      this.hasScrolled = true;
+    };
+    answerEl.parentElement.parentElement.scrollTop = answerEl.parentElement.parentElement.scrollHeight;
+  }
+  isAtBottom(answerEl) {
+    const element = answerEl.parentElement.parentElement;
+    const scrollHeight = element.scrollHeight;
+    const scrollTop = element.scrollTop;
+    const offsetHeight = element.offsetHeight;
+    if (offsetHeight === 0) {
+      return true;
+    }
+    return scrollTop >= scrollHeight - offsetHeight;
   }
   /**
    * This converts our raw markdown into HTML, then syntax highlights the pre > code blocks, then renders the result.
@@ -28999,20 +29053,6 @@ var CopilotStreamController = class {
     );
     answerEl.innerHTML = div.innerHTML;
   }
-  /**
-   * If the user has not used their mousewheel, scroll their container to the bottom.
-   * @param answerEl The answer element that is being updated
-   * @returns void
-   */
-  forceScroll(answerEl) {
-    if (this.hasScrolled) {
-      return;
-    }
-    answerEl.parentElement.parentElement.onwheel = () => {
-      this.hasScrolled = true;
-    };
-    answerEl.parentElement.parentElement.scrollTop = answerEl.parentElement.parentElement.scrollHeight;
-  }
   static getInstance() {
     var _a;
     return (_a = CopilotStreamController.instance) != null ? _a : CopilotStreamController.instance = new CopilotStreamController();
@@ -29023,7 +29063,7 @@ var CopilotStreamController = class {
 var _GPTController = class {
   constructor() {
   }
-  static doSyntaxHighlighting(element) {
+  static doSyntaxHighlighting(element, button = true) {
     const pChildren = Array.from(element.children);
     const codeChildren = [];
     pChildren.forEach((child) => {
@@ -29048,6 +29088,8 @@ var _GPTController = class {
           });
         } catch (e) {
         }
+        if (!button)
+          return;
         const saveToPieces = new SaveToPiecesWidget({
           codeBlock: codeChild.innerText,
           piecesPreview: false,
@@ -29174,22 +29216,49 @@ GPTController.createGPTView = async ({
     _GPTController.conversationArray = [];
     textContent.style.display = "none";
     introText = textDiv.createDiv();
-    introText.addClasses(["gpt-text-intro", "gpt-col"]);
-    const titleDiv = introText.createEl("div");
-    titleDiv.addClasses(["gpt-row", "gpt-text-intro-title-div"]);
-    const introTextTitle = titleDiv.createEl("p");
-    introTextTitle.addClasses([
-      "gpt-text-intro-content",
-      "gpt-text-intro-title"
-    ]);
-    introTextTitle.innerText = "Copilot Chat";
+    introText.classList.add(
+      "flex",
+      "flex-col",
+      "h-full",
+      "items-center",
+      "text-center",
+      "gap-4",
+      "justify-center",
+      "p-2"
+    );
     const imageHolder = introText.createEl("img");
+    imageHolder.classList.add("h-16");
     theme === "dark" ? imageHolder.setAttr("src", piecesCopilotW_default) : imageHolder.setAttr("src", piecesCopilotB_default);
     imageHolder.setAttr("alt", "Using Pieces GPT");
-    imageHolder.addClasses(["gpt-img-logo"]);
+    const titleDiv = introText.createEl("div");
+    const introTextTitle = titleDiv.createEl("p");
+    introTextTitle.classList.add("m-0", "text-3xl", "font-bold");
+    introTextTitle.innerText = "Pieces Copilot";
     const introTextSub = introText.createEl("p");
-    introTextSub.innerText = !versionValid ? "Pieces OS is not up-to-date, please update to use Copilot." : DisplayController.fetchFailed ? "Error connecting to Pieces OS! To use Copilot, please make sure Pieces OS is installed updated, and running." : "Ask Copilot a question about your vault";
-    introTextSub.addClasses(["gpt-text-intro-content"]);
+    introTextSub.innerText = !versionValid ? "Pieces OS is not up-to-date, please update to use Copilot." : DisplayController.fetchFailed ? "Error connecting to Pieces OS! To use Copilot, please make sure Pieces OS is installed updated, and running." : "Your airgapped, personal AI assistant, contextually grounded by the contents of your vault.";
+    introTextSub.classList.add(
+      "text-center",
+      "text-[color:var(--text-muted)]",
+      "m-0"
+    );
+    const runtimeBtn = introText.createDiv();
+    runtimeBtn.classList.add(
+      "text-[var(--text-accent)]",
+      "cursor-pointer",
+      "py-2"
+    );
+    runtimeBtn.innerText = "Set Copilot Runtime";
+    runtimeBtn.title = "Select which LLM you would like to interact with.";
+    runtimeBtn.onclick = () => {
+      new CopilotLLMConfigModal(app).open();
+    };
+    const contextBtn = introText.createDiv();
+    contextBtn.classList.add("text-[var(--text-accent)]", "cursor-pointer");
+    contextBtn.title = "Select which notes you would like to use as context";
+    contextBtn.innerText = "Set Context";
+    contextBtn.onclick = () => {
+      _GPTController.contextModal.open();
+    };
   }
   const hintRow = textDiv.createEl("div");
   hintRow.addClass("gpt-row");
@@ -29240,14 +29309,13 @@ GPTController.createGPTView = async ({
   inputText.spellcheck = true;
   _GPTController.inputBox = inputText;
   const sendDiv = inputDiv.createEl("div");
-  (0, import_obsidian21.setIcon)(sendDiv, "sendSVG");
-  sendDiv.addClasses(["gpt-img-small", "col-reverse", "justify-between"]);
-  const sendSVG = sendDiv.firstChild;
-  sendSVG.addClass("gpt-send-unactive");
+  sendDiv.classList.add("pr-2", "hidden", "text-[var(--text-accent)]");
+  sendDiv.innerHTML = Constants.SEND_ICON;
   sendDiv.onmouseup = async () => {
     if (inputText.innerText === "") {
       return;
     }
+    sendDiv.classList.add("hidden");
     hintRow.innerHTML = notesRow.innerHTML = "";
     _GPTController.cancelled = false;
     await _GPTController.handleChat({
@@ -29258,21 +29326,17 @@ GPTController.createGPTView = async ({
     });
   };
   inputText.onkeyup = async (evt) => {
-    if (inputText.innerText !== "") {
-      sendSVG.removeClass("gpt-send-unactive");
-      sendSVG.addClass("gpt-send-active");
-    } else {
-      sendSVG.removeClass("gpt-send-active");
-      sendSVG.addClass("gpt-send-unactive");
-    }
+    if (inputText.innerText === "")
+      sendDiv.classList.add("hidden");
+    else
+      sendDiv.classList.remove("hidden");
     if (evt.key !== "Enter" || evt.shiftKey) {
       return;
     }
     if (inputText.innerText === "") {
       return;
     }
-    sendSVG.removeClass("gpt-send-active");
-    sendSVG.addClass("gpt-send-unactive");
+    sendDiv.classList.add("hidden");
     hintRow.innerHTML = notesRow.innerHTML = "";
     _GPTController.cancelled = false;
     await _GPTController.handleChat({
@@ -29287,9 +29351,11 @@ GPTController.createGPTView = async ({
   }
   if (query) {
     _GPTController.relevant = query.relevant;
-    inputText.innerText = `${query.query}
+    inputText.textContent = `${query.query}
 
-${query.relevant}`;
+\`\`\`
+${query.relevant}
+\`\`\``;
     await _GPTController.handleChat({
       inputText,
       textAreaDiv,
@@ -29313,7 +29379,7 @@ GPTController.handleChat = async ({
   introText,
   query
 }) => {
-  var _a;
+  var _a, _b, _c;
   if (_GPTController.generatingResults) {
     Notifications.getInstance().error({
       message: "Already generating a message! Please wait a few seconds and try again."
@@ -29325,7 +29391,7 @@ GPTController.handleChat = async ({
   if (currentConversation.length == 0) {
     textAreaDiv.empty();
   }
-  const curQuery = inputText.innerText.trim();
+  const curQuery = (_b = (_a = inputText.textContent) == null ? void 0 : _a.trim()) != null ? _b : "";
   inputText.innerText = "";
   if (curQuery == "") {
     _GPTController.generatingResults = false;
@@ -29337,8 +29403,14 @@ GPTController.handleChat = async ({
   }
   const queryDiv = document.createElement("div");
   queryDiv.addClasses(["gpt-row", "gpt-right-align"]);
-  const answerQuery = queryDiv.createEl("p");
-  answerQuery.addClasses(["gpt-text-response", "gpt-query"]);
+  const answerQuery = queryDiv.createEl("div");
+  answerQuery.addClasses([
+    "gpt-text-response",
+    "gpt-query",
+    "flex",
+    "flex-col",
+    "overflow-x-hidden"
+  ]);
   answerQuery.innerHTML = marked.parse(curQuery);
   _GPTController.doSyntaxHighlighting(answerQuery);
   const userDiv = queryDiv.createEl("div");
@@ -29348,13 +29420,13 @@ GPTController.handleChat = async ({
   } else {
     (0, import_obsidian21.setIcon)(userDiv, "userSVG");
   }
-  userDiv.addClasses(["gpt-img"]);
+  userDiv.addClasses(["gpt-img", "items-end", "pb-4"]);
   textAreaDiv.append(queryDiv);
   const answerDiv = document.createElement("div");
   answerDiv.addClasses(["gpt-row", "gpt-left-align"]);
   const aiDiv = answerDiv.createEl("div");
   (0, import_obsidian21.setIcon)(aiDiv, "aiSVG");
-  aiDiv.addClasses(["gpt-img"]);
+  aiDiv.addClasses(["gpt-img", "items-end", "pb-1"]);
   const answerEl = answerDiv.createEl("p");
   answerEl.addClasses([
     "gpt-text-response",
@@ -29409,8 +29481,12 @@ GPTController.handleChat = async ({
       role: "ASSISTANT" /* Assistant */,
       timestamp: { value: new Date() }
     });
-    if ((_a = result.relevant) == null ? void 0 : _a.iterable.length) {
+    const controller = CopilotStreamController.getInstance();
+    if ((_c = result.relevant) == null ? void 0 : _c.iterable.length) {
+      let isAtBottom = controller.isAtBottom(answerEl);
       _GPTController.renderSuggestedNotes(result.relevant.iterable, answerEl);
+      if (isAtBottom)
+        controller.forceScroll(answerEl);
       QGPT.hints({
         query: curQuery,
         relevant: result.relevant,
@@ -29419,12 +29495,15 @@ GPTController.handleChat = async ({
         if (_GPTController.cancelled || !hintsRes.answers.iterable.length) {
           return;
         } else {
+          isAtBottom = controller.isAtBottom(answerEl);
           _GPTController.renderHints({
             hints: hintsRes,
             inputText,
             introText,
             textAreaDiv
           });
+          if (isAtBottom)
+            controller.forceScroll(answerEl);
         }
       }).catch(() => {
       });
@@ -29489,17 +29568,20 @@ GPTController.renderHints = ({
   const hintRow = document.getElementById("gpt-hints-container");
   hintRow.innerHTML = "";
   const hintCol = hintRow.createDiv();
-  hintCol.addClasses(["gpt-col", "gpt-hint-col"]);
-  const hintTitleRow = hintCol.createDiv();
-  hintTitleRow.addClasses(["gpt-row", "gpt-hint-row"]);
-  const hintTitle = hintTitleRow.createEl("p", {
+  hintCol.addClasses(["flex", "gap-1", "flex-col", "px-2"]);
+  const hintTitle = hintCol.createEl("p", {
     text: "Suggested Queries: "
   });
-  hintTitle.addClass("hint-title", "hint-title-note");
-  const hintListRow = hintCol.createDiv();
-  hintListRow.addClasses(["gpt-row", "hint-list"]);
-  const hintList = hintListRow.createDiv();
-  hintList.addClasses(["gpt-col"]);
+  hintTitle.addClass("m-0", "text-xs", "text-[var(--text-muted)]", "py-1");
+  const hintList = hintCol.createDiv();
+  hintList.addClasses([
+    "flex",
+    "flex-col",
+    "gap-2",
+    "max-h-20",
+    "overflow-y-scroll",
+    "scrollbar-hidden"
+  ]);
   for (let i = 0; i < hints.answers.iterable.length; i++) {
     if (_GPTController.cancelled) {
       _GPTController.createGPTView({
@@ -29509,7 +29591,15 @@ GPTController.renderHints = ({
     }
     const hintButton = hintList.createEl("button");
     hintButton.title = `Ask copilot: ${hints.answers.iterable[i].text}`;
-    hintButton.addClasses(["hint-btn"]);
+    hintButton.classList.add(
+      "break-words",
+      "cursor-pointer",
+      "whitespace-normal",
+      "text-xs",
+      "py-1",
+      "h-[unset]",
+      "justify-between"
+    );
     hintButton.onclick = () => {
       hintRow.innerHTML = "";
       inputText.innerText = hints.answers.iterable[i].text;
@@ -29521,11 +29611,11 @@ GPTController.renderHints = ({
       });
     };
     const hintButtonText = hintButton.createEl("p");
-    hintButtonText.addClass("hint-btn-text");
+    hintButtonText.addClass("m-0", "px-2", "line-clamp-2", "text-left");
     hintButtonText.textContent = hints.answers.iterable[i].text;
     const hintIcon = hintButton.createEl("div");
-    hintIcon.addClasses(["gpt-icon", "gpt-icon-drift"]);
-    (0, import_obsidian21.setIcon)(hintIcon, "sendSVG");
+    hintIcon.classList.add("hover:text-[var(--text-accent)]");
+    hintIcon.innerHTML = Constants.SEND_ICON;
   }
 };
 /**
@@ -29560,19 +29650,28 @@ GPTController.renderSuggestedNotes = (notes, answerEl) => {
     return;
   }
   const noteCol = noteRow.createDiv();
-  noteCol.addClass("gpt-col");
-  const noteTitleRow = noteCol.createDiv();
-  noteTitleRow.addClass("gpt-row");
-  const noteTitle = noteTitleRow.createEl("p", {
+  noteCol.addClass("flex", "flex-col", "pt-2");
+  const noteTitle = noteCol.createEl("p", {
     text: "Relevant Notes: "
   });
-  noteTitle.addClass("hint-title-note");
-  const noteListRowDiv = noteCol.createDiv();
-  noteListRowDiv.addClasses(["gpt-row", "hint-list-note"]);
-  const noteListCol = noteListRowDiv.createDiv();
-  noteListCol.addClasses(["gpt-col"]);
-  const noteListRow = noteListCol.createDiv();
-  noteListRow.addClasses(["gpt-row", "gpt-rel-wrap"]);
+  noteTitle.addClass(
+    "m-0",
+    "font-normal",
+    "text-xs",
+    "text-[var(--text-muted)]",
+    "pb-1"
+  );
+  const noteListRow = noteCol.createDiv();
+  noteListRow.addClasses([
+    "flex",
+    "flex-row",
+    "flex-wrap",
+    "max-h-16",
+    "gap-2",
+    "overflow-y-scroll",
+    "scrollbar-hidden",
+    "!shadow-none"
+  ]);
   for (let i = 0; i < notes.length; i++) {
     _GPTController.createNotePill(notes[i], noteListRow);
   }
@@ -29586,13 +29685,20 @@ GPTController.renderSuggestedNotes = (notes, answerEl) => {
  */
 GPTController.createNotePill = (note, noteListRow) => {
   var _a;
-  const noteList = noteListRow.createDiv();
-  noteList.addClasses(["gpt-col-small"]);
   const notePath = note.path;
   const noteName = ((_a = notePath == null ? void 0 : notePath.substring(notePath.lastIndexOf("/") + 1)) != null ? _a : "").split(".")[0];
-  const noteButton = noteList.createEl("button");
+  const noteButton = noteListRow.createEl("button");
   noteButton.title = `Open '${noteName}' in a new tab`;
-  noteButton.addClasses(["hint-btn-note"]);
+  noteButton.addClasses([
+    "cursor-pointer",
+    "text-xs",
+    "whitespace-normal",
+    "break-words",
+    "bg-[var(--background-primary)]",
+    "shadow-none",
+    "!bg-[var(--background-primary)]",
+    "h-[unset]"
+  ]);
   noteButton.onclick = () => {
     if (!notePath) {
       return;
@@ -29600,10 +29706,18 @@ GPTController.createNotePill = (note, noteListRow) => {
     openVaultNote(notePath);
   };
   const noteButtonText = noteButton.createEl("p");
-  noteButtonText.addClass("hint-btn-text");
+  noteButtonText.addClass(
+    "m-0",
+    "pr-1",
+    "overflow-hidden",
+    "line-clamp-2",
+    "text-ellipsis",
+    "w-full",
+    "text-left"
+  );
   noteButtonText.textContent = noteName != null ? noteName : "";
   const noteButtonIcon = noteButton.createEl("div");
-  noteButtonIcon.addClass("gpt-icon", "gpt-icon-note");
+  noteButtonIcon.addClass("flex", "w-3", "hover:text-[var(--text-accent)]");
   (0, import_obsidian21.setIcon)(noteButtonIcon, "openNote");
 };
 
@@ -29855,6 +29969,7 @@ var EMBEDDED_BUTTON_SAVE = "https://storage.googleapis.com/pieces_multimedia/PRO
 var SEARCH = "https://storage.googleapis.com/pieces_multimedia/PROMOTIONAL/PIECES_FOR_DEVELOPERS/OBSIDIAN/MACOS/SEARCH/16X9/PIECES_FOR_DEVELOPERS-OBSIDIAN-SEARCH-MACOS-16X9-6_22_2023.gif";
 var SHARE = "https://storage.googleapis.com/pieces_multimedia/PROMOTIONAL/PIECES_FOR_DEVELOPERS/OBSIDIAN/MACOS/SHARE/16X9/PIECES_FOR_DEVELOPERS-OBSIDIAN-SHARE-MACOS-16X9-6_22_2023.gif";
 var DISCOVERY = "https://storage.googleapis.com/pieces_multimedia/PROMOTIONAL/PIECES_FOR_DEVELOPERS/OBSIDIAN/MACOS/DISCOVERY/16X9/PIECES_FOR_DEVELOPERS-OBSIDIAN-DISCOVERY-MACOS-16X9-7_17_2023.png";
+var COPILOT = "https://storage.googleapis.com/pieces_multimedia/PROMOTIONAL/PIECES_FOR_DEVELOPERS/OBSIDIAN/MACOS/COPILOT/16X9/PIECES_FOR_DEVELOPERS-OBSIDIAN-COPILOT-MACOS-16X9-7_17_2023.gif";
 var onboardingMD = `<a href="https://docs.pieces.app/extensions-plugins/obsidian" style="display: inline-block; text-decoration: none; border-radius: 4px;">Docs</a>		<a href="https://pieces.app" style="display: inline-block; text-decoration: none; border-radius: 4px;">Learn More</a>
 
 ### Elevate your Obsidian experience with Pieces
@@ -29891,6 +30006,17 @@ var onboardingMD = `<a href="https://docs.pieces.app/extensions-plugins/obsidian
 - Automatically find highly relevant and reuable snippets
 ![Share you Snippets](${DISCOVERY})
 
+#### 5. Enrich your code blocks
+- Automatically generate tags, titles, descriptions, and links to other similar code snippets with the simple press of a button!
+- Just click on the 'P' button embedded in your code blocks, and click on the enrich icon!
+
+#### 6. Hack your brain with the Copilot
+- Interact with a Copilot grounded on the contents of your vault
+- Select which files you would like to use as context
+- Available in both Cloud and Local LLM runtimes (i.e GPT and Llama2)
+- Suggested queries automatically generated
+- Quickly reach relevant notes
+![Pieces Copilot](${COPILOT})
 
 ### Maximize productivity with our Flagship Desktop App
 Utilize the Pieces [Flagship Desktop App](https://pieces.app) in combination with our Obsidian Plugin to streamline your workflow and enhance your development productivity.
@@ -30371,8 +30497,8 @@ var AskQGPTModal = class extends import_obsidian23.Modal {
     selectionRow.classList.add("ask-row");
     const selectionCol = selectionRow.createDiv();
     selectionCol.classList.add("ask-col");
-    selectionCol.innerHTML = marked.parse(this.text.trim());
-    GPTController.doSyntaxHighlighting(selectionCol);
+    selectionCol.innerHTML = marked.parse("```\n" + this.text.trim() + "\n```");
+    GPTController.doSyntaxHighlighting(selectionCol, false);
     selectionCol.classList.add("ask-selection");
     const inputRow = this.contentEl.createEl("div");
     inputRow.classList.add("ask-row", "ask-input-row");
@@ -30390,11 +30516,15 @@ var AskQGPTModal = class extends import_obsidian23.Modal {
     sendCol.classList.add("ask-col");
     inputCol.classList.add("ask-col", "ask-col-input");
     const sendDiv = sendCol.createEl("div");
-    (0, import_obsidian23.setIcon)(sendDiv, "sendSVG");
+    sendDiv.innerHTML = Constants.SEND_ICON;
     sendDiv.addClasses(["gpt-img", "ask-send-svg"]);
     const sendSVG = sendDiv.firstChild;
     sendSVG.addClass("gpt-send-unactive");
-    sendSVG.addClass("ask-send-svg");
+    sendSVG.addClass(
+      "ask-send-svg",
+      "cursor-pointer",
+      "hover:text-[var(--text-accent)]"
+    );
     sendDiv.onmouseup = async () => {
       if (inputText.innerText.trim() === "") {
         return;
@@ -30440,7 +30570,10 @@ var AskQGPTModal = class extends import_obsidian23.Modal {
     GPTController.createGPTView({
       containerVar: gptTab,
       newInstance: true,
-      query: { query: query.trim(), relevant: this.text.trim() }
+      query: {
+        query: query.trim(),
+        relevant: this.text.trim()
+      }
     });
     this.close();
   }

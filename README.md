@@ -56,6 +56,21 @@ snippet and its related context - tags, descriptions, where it’s from and more
 Automatically discovers new highly relevant and reusable snippets from your vault for you to save
 ![Snippet Discovery](./assets/readme/pngs/OBSIDIAN_DISCOVER.png)
 
+## Enrich your code blocks
+
+- Automatically generate tags, titles, descriptions, and links to other similar code snippets with the simple press of a button!
+- Just click on the 'P' button embedded in your code blocks, and click on the enrich icon!
+
+## Hack your brain with the Copilot
+
+- Interact with a Copilot grounded on the contents of your vault
+- Select which files you would like to use as context
+- Available in both Cloud and Local LLM runtimes (i.e GPT and Llama2)
+- Suggested queries automatically generated
+- Quickly reach relevant notes
+
+  ![Pieces Copilot](https://storage.googleapis.com/pieces_multimedia/PROMOTIONAL/PIECES_FOR_DEVELOPERS/OBSIDIAN/MACOS/COPILOT/16X9/PIECES_FOR_DEVELOPERS-OBSIDIAN-COPILOT-MACOS-16X9-7_17_2023.gif)
+
 ### Commands
 
 To use a Pieces command, simply highlight code in your editor or hover a snippet in your Pieces List.
