@@ -20175,7 +20175,7 @@ var WellKnownApi = class extends BaseAPI2 {
 };
 
 // package.json
-var version = "1.6.0";
+var version = "1.6.1";
 
 // src/connection/notification_handler.ts
 var import_obsidian = require("obsidian");
@@ -23242,7 +23242,7 @@ var renderNavBar = ({
   const wrapperDiv = containerVar.createDiv();
   wrapperDiv.addClass("wrapper");
   const tabsDiv = wrapperDiv.createDiv();
-  tabsDiv.addClass("tabs");
+  tabsDiv.addClass("pieces-tabs");
   tabsDiv.id = "piecesTabs";
   const tabInput1 = tabsDiv.createEl("input");
   tabInput1.setAttr("type", "radio");
@@ -23251,7 +23251,7 @@ var renderNavBar = ({
   tabInput1.checked = true;
   const tabLabel1 = tabsDiv.createEl("label");
   tabLabel1.setAttr("for", "radio-1");
-  tabLabel1.addClass("tab");
+  tabLabel1.addClass("pieces-tab");
   (0, import_obsidian10.setIcon)(tabLabel1, "codeSVG");
   const tabInput2 = tabsDiv.createEl("input");
   tabInput2.setAttr("type", "radio");
@@ -23259,7 +23259,7 @@ var renderNavBar = ({
   tabInput2.setAttr("name", "tabs-2");
   const tabLabel2 = tabsDiv.createEl("label");
   tabLabel2.setAttr("for", "radio-2");
-  tabLabel2.addClass("tab");
+  tabLabel2.addClass("pieces-tab");
   (0, import_obsidian10.setIcon)(tabLabel2, "aiSVG");
   const slider = tabsDiv.createEl("span");
   slider.addClass("glider");
