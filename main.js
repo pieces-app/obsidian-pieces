@@ -20175,7 +20175,7 @@ var WellKnownApi = class extends BaseAPI2 {
 };
 
 // package.json
-var version = "1.6.1";
+var version = "1.6.2";
 
 // src/connection/notification_handler.ts
 var import_obsidian = require("obsidian");
@@ -29115,11 +29115,11 @@ var SaveToPiecesWidget = class extends import_view.WidgetType {
     };
     this.copyButton = (container, id) => {
       const copyButton = new import_obsidian18.ButtonComponent(container).onClick(async () => {
-        var _a;
+        let codeBlock;
         if (this.lang && this.codeBlock && this.codeBlock.substring(0, 3) !== "```\n") {
-          this.codeBlock = "```" + this.lang + "\n" + this.codeBlock + "```";
+          codeBlock = "```" + this.lang + "\n" + this.codeBlock + "```";
         }
-        copyToClipboard((_a = this.codeBlock) != null ? _a : this.codeRaw);
+        copyToClipboard(codeBlock != null ? codeBlock : this.codeRaw);
         new import_obsidian18.Notice("Snippet copied to clipboard!");
         if (id)
           ActivitySingleton.getInstance().referenced(id, void 0, true);
