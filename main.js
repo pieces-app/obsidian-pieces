@@ -95,7 +95,11 @@ var require_debug = __commonJS({
 // node_modules/semver/internal/re.js
 var require_re = __commonJS({
   "node_modules/semver/internal/re.js"(exports, module2) {
-    var { MAX_SAFE_COMPONENT_LENGTH, MAX_SAFE_BUILD_LENGTH } = require_constants();
+    var {
+      MAX_SAFE_COMPONENT_LENGTH,
+      MAX_SAFE_BUILD_LENGTH,
+      MAX_LENGTH
+    } = require_constants();
     var debug = require_debug();
     exports = module2.exports = {};
     var re = exports.re = [];
@@ -106,7 +110,7 @@ var require_re = __commonJS({
     var LETTERDASHNUMBER = "[a-zA-Z0-9-]";
     var safeRegexReplacements = [
       ["\\s", 1],
-      ["\\d", MAX_SAFE_COMPONENT_LENGTH],
+      ["\\d", MAX_LENGTH],
       [LETTERDASHNUMBER, MAX_SAFE_BUILD_LENGTH]
     ];
     var makeSafeRegex = (value) => {
@@ -1478,7 +1482,7 @@ var require_range = __commonJS({
         this.loose = !!options2.loose;
         this.includePrerelease = !!options2.includePrerelease;
         this.raw = range.trim().split(/\s+/).join(" ");
-        this.set = this.raw.split("||").map((r) => this.parseRange(r)).filter((c) => c.length);
+        this.set = this.raw.split("||").map((r) => this.parseRange(r.trim())).filter((c) => c.length);
         if (!this.set.length) {
           throw new TypeError(`Invalid SemVer Range: ${this.raw}`);
         }
@@ -2881,10 +2885,10 @@ var require_runtime = __commonJS({
       }).filter((part) => part.length > 0).join("&");
     }
     exports.querystring = querystring3;
-    function mapValues1002(data, fn) {
+    function mapValues1000(data, fn) {
       return Object.keys(data).reduce((acc, key) => ({ ...acc, [key]: fn(data[key]) }), {});
     }
-    exports.mapValues = mapValues1002;
+    exports.mapValues = mapValues1000;
     function canConsumeForm2(consumes) {
       for (const consume of consumes) {
         if ("multipart/form-data" === consume.contentType) {
@@ -2967,7 +2971,7 @@ var require_Accessor = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AccessorToJSON = exports.AccessorFromJSONTyped = exports.AccessorFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function AccessorFromJSON4(json) {
       return AccessorFromJSONTyped6(json, false);
     }
@@ -2977,12 +2981,12 @@ var require_Accessor = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
         "os": json["os"],
         "share": json["share"],
         "count": json["count"],
-        "user": !(0, runtime_1.exists)(json, "user") ? void 0 : (0, _1.FlattenedUserProfileFromJSON)(json["user"])
+        "user": !(0, runtime_1.exists)(json, "user") ? void 0 : (0, index_1.FlattenedUserProfileFromJSON)(json["user"])
       };
     }
     exports.AccessorFromJSONTyped = AccessorFromJSONTyped6;
@@ -2994,12 +2998,12 @@ var require_Accessor = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
         "os": value.os,
         "share": value.share,
         "count": value.count,
-        "user": (0, _1.FlattenedUserProfileToJSON)(value.user)
+        "user": (0, index_1.FlattenedUserProfileToJSON)(value.user)
       };
     }
     exports.AccessorToJSON = AccessorToJSON4;
@@ -3013,7 +3017,7 @@ var require_Accessors = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AccessorsToJSON = exports.AccessorsFromJSONTyped = exports.AccessorsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function AccessorsFromJSON4(json) {
       return AccessorsFromJSONTyped9(json, false);
     }
@@ -3023,8 +3027,8 @@ var require_Accessors = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.AccessorFromJSON)
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.AccessorFromJSON)
       };
     }
     exports.AccessorsFromJSONTyped = AccessorsFromJSONTyped9;
@@ -3036,8 +3040,8 @@ var require_Accessors = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.AccessorToJSON)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.AccessorToJSON)
       };
     }
     exports.AccessorsToJSON = AccessorsToJSON4;
@@ -3051,7 +3055,7 @@ var require_Activities = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ActivitiesToJSON = exports.ActivitiesFromJSONTyped = exports.ActivitiesFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ActivitiesFromJSON4(json) {
       return ActivitiesFromJSONTyped9(json, false);
     }
@@ -3061,8 +3065,8 @@ var require_Activities = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.ActivityFromJSON)
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.ActivityFromJSON)
       };
     }
     exports.ActivitiesFromJSONTyped = ActivitiesFromJSONTyped9;
@@ -3074,8 +3078,8 @@ var require_Activities = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.ActivityToJSON)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.ActivityToJSON)
       };
     }
     exports.ActivitiesToJSON = ActivitiesToJSON5;
@@ -3089,7 +3093,7 @@ var require_Activity = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ActivityToJSON = exports.ActivityFromJSONTyped = exports.ActivityFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ActivityFromJSON4(json) {
       return ActivityFromJSONTyped6(json, false);
     }
@@ -3099,17 +3103,17 @@ var require_Activity = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "event": (0, _1.SeededConnectorTrackingFromJSON)(json["event"]),
-        "application": (0, _1.ApplicationFromJSON)(json["application"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
-        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, _1.FlattenedAssetFromJSON)(json["asset"]),
-        "user": !(0, runtime_1.exists)(json, "user") ? void 0 : (0, _1.FlattenedUserProfileFromJSON)(json["user"]),
-        "format": !(0, runtime_1.exists)(json, "format") ? void 0 : (0, _1.FlattenedFormatFromJSON)(json["format"]),
-        "mechanism": (0, _1.MechanismEnumFromJSON)(json["mechanism"]),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "event": (0, index_1.SeededConnectorTrackingFromJSON)(json["event"]),
+        "application": (0, index_1.ApplicationFromJSON)(json["application"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
+        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, index_1.FlattenedAssetFromJSON)(json["asset"]),
+        "user": !(0, runtime_1.exists)(json, "user") ? void 0 : (0, index_1.FlattenedUserProfileFromJSON)(json["user"]),
+        "format": !(0, runtime_1.exists)(json, "format") ? void 0 : (0, index_1.FlattenedFormatFromJSON)(json["format"]),
+        "mechanism": (0, index_1.MechanismEnumFromJSON)(json["mechanism"]),
         "rank": !(0, runtime_1.exists)(json, "rank") ? void 0 : json["rank"]
       };
     }
@@ -3122,17 +3126,17 @@ var require_Activity = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "event": (0, _1.SeededConnectorTrackingToJSON)(value.event),
-        "application": (0, _1.ApplicationToJSON)(value.application),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
-        "asset": (0, _1.FlattenedAssetToJSON)(value.asset),
-        "user": (0, _1.FlattenedUserProfileToJSON)(value.user),
-        "format": (0, _1.FlattenedFormatToJSON)(value.format),
-        "mechanism": (0, _1.MechanismEnumToJSON)(value.mechanism),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "event": (0, index_1.SeededConnectorTrackingToJSON)(value.event),
+        "application": (0, index_1.ApplicationToJSON)(value.application),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
+        "asset": (0, index_1.FlattenedAssetToJSON)(value.asset),
+        "user": (0, index_1.FlattenedUserProfileToJSON)(value.user),
+        "format": (0, index_1.FlattenedFormatToJSON)(value.format),
+        "mechanism": (0, index_1.MechanismEnumToJSON)(value.mechanism),
         "rank": value.rank
       };
     }
@@ -3147,7 +3151,7 @@ var require_Aesthetics = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AestheticsToJSON = exports.AestheticsFromJSONTyped = exports.AestheticsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function AestheticsFromJSON4(json) {
       return AestheticsFromJSONTyped6(json, false);
     }
@@ -3157,9 +3161,9 @@ var require_Aesthetics = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "theme": (0, _1.ThemeFromJSON)(json["theme"]),
-        "font": (0, _1.FontFromJSON)(json["font"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "theme": (0, index_1.ThemeFromJSON)(json["theme"]),
+        "font": (0, index_1.FontFromJSON)(json["font"])
       };
     }
     exports.AestheticsFromJSONTyped = AestheticsFromJSONTyped6;
@@ -3171,9 +3175,9 @@ var require_Aesthetics = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "theme": (0, _1.ThemeToJSON)(value.theme),
-        "font": (0, _1.FontToJSON)(value.font)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "theme": (0, index_1.ThemeToJSON)(value.theme),
+        "font": (0, index_1.FontToJSON)(value.font)
       };
     }
     exports.AestheticsToJSON = AestheticsToJSON4;
@@ -3187,7 +3191,7 @@ var require_AllocationCloud = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AllocationCloudToJSON = exports.AllocationCloudFromJSONTyped = exports.AllocationCloudFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function AllocationCloudFromJSON4(json) {
       return AllocationCloudFromJSONTyped8(json, false);
     }
@@ -3197,13 +3201,13 @@ var require_AllocationCloud = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
         "user": json["user"],
-        "urls": (0, _1.AllocationCloudUrlsFromJSON)(json["urls"]),
-        "status": (0, _1.AllocationCloudStatusFromJSON)(json["status"]),
+        "urls": (0, index_1.AllocationCloudUrlsFromJSON)(json["urls"]),
+        "status": (0, index_1.AllocationCloudStatusFromJSON)(json["status"]),
         "project": json["project"],
-        "updated": !(0, runtime_1.exists)(json, "updated") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["updated"]),
+        "updated": !(0, runtime_1.exists)(json, "updated") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
         "version": !(0, runtime_1.exists)(json, "version") ? void 0 : json["version"],
         "region": !(0, runtime_1.exists)(json, "region") ? void 0 : json["region"]
       };
@@ -3217,13 +3221,13 @@ var require_AllocationCloud = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
         "user": value.user,
-        "urls": (0, _1.AllocationCloudUrlsToJSON)(value.urls),
-        "status": (0, _1.AllocationCloudStatusToJSON)(value.status),
+        "urls": (0, index_1.AllocationCloudUrlsToJSON)(value.urls),
+        "status": (0, index_1.AllocationCloudStatusToJSON)(value.status),
         "project": value.project,
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
         "version": value.version,
         "region": value.region
       };
@@ -3239,7 +3243,7 @@ var require_AllocationCloudStatus = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AllocationCloudStatusToJSON = exports.AllocationCloudStatusFromJSONTyped = exports.AllocationCloudStatusFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function AllocationCloudStatusFromJSON4(json) {
       return AllocationCloudStatusFromJSONTyped6(json, false);
     }
@@ -3249,8 +3253,8 @@ var require_AllocationCloudStatus = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "cloud": (0, _1.AllocationStatusEnumFromJSON)(json["cloud"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "cloud": (0, index_1.AllocationStatusEnumFromJSON)(json["cloud"])
       };
     }
     exports.AllocationCloudStatusFromJSONTyped = AllocationCloudStatusFromJSONTyped6;
@@ -3262,8 +3266,8 @@ var require_AllocationCloudStatus = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "cloud": (0, _1.AllocationStatusEnumToJSON)(value.cloud)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "cloud": (0, index_1.AllocationStatusEnumToJSON)(value.cloud)
       };
     }
     exports.AllocationCloudStatusToJSON = AllocationCloudStatusToJSON4;
@@ -3277,7 +3281,7 @@ var require_AllocationCloudUrl = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AllocationCloudUrlToJSON = exports.AllocationCloudUrlFromJSONTyped = exports.AllocationCloudUrlFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function AllocationCloudUrlFromJSON4(json) {
       return AllocationCloudUrlFromJSONTyped6(json, false);
     }
@@ -3287,8 +3291,8 @@ var require_AllocationCloudUrl = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "status": (0, _1.AllocationStatusEnumFromJSON)(json["status"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "status": (0, index_1.AllocationStatusEnumFromJSON)(json["status"]),
         "url": json["url"]
       };
     }
@@ -3301,8 +3305,8 @@ var require_AllocationCloudUrl = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "status": (0, _1.AllocationStatusEnumToJSON)(value.status),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "status": (0, index_1.AllocationStatusEnumToJSON)(value.status),
         "url": value.url
       };
     }
@@ -3388,7 +3392,7 @@ var require_Allocations = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AllocationsToJSON = exports.AllocationsFromJSONTyped = exports.AllocationsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function AllocationsFromJSON2(json) {
       return AllocationsFromJSONTyped2(json, false);
     }
@@ -3398,8 +3402,8 @@ var require_Allocations = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.AllocationCloudFromJSON)
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.AllocationCloudFromJSON)
       };
     }
     exports.AllocationsFromJSONTyped = AllocationsFromJSONTyped2;
@@ -3411,8 +3415,8 @@ var require_Allocations = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.AllocationCloudToJSON)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.AllocationCloudToJSON)
       };
     }
     exports.AllocationsToJSON = AllocationsToJSON2;
@@ -3426,7 +3430,7 @@ var require_Analyses = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AnalysesToJSON = exports.AnalysesFromJSONTyped = exports.AnalysesFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function AnalysesFromJSON2(json) {
       return AnalysesFromJSONTyped(json, false);
     }
@@ -3436,8 +3440,8 @@ var require_Analyses = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.AnalysisFromJSON)
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.AnalysisFromJSON)
       };
     }
     exports.AnalysesFromJSONTyped = AnalysesFromJSONTyped;
@@ -3449,8 +3453,8 @@ var require_Analyses = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.AnalysisToJSON)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.AnalysisToJSON)
       };
     }
     exports.AnalysesToJSON = AnalysesToJSON2;
@@ -3464,7 +3468,7 @@ var require_Analysis = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AnalysisToJSON = exports.AnalysisFromJSONTyped = exports.AnalysisFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function AnalysisFromJSON4(json) {
       return AnalysisFromJSONTyped8(json, false);
     }
@@ -3474,11 +3478,11 @@ var require_Analysis = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "code": !(0, runtime_1.exists)(json, "code") ? void 0 : (0, _1.CodeAnalysisFromJSON)(json["code"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "code": !(0, runtime_1.exists)(json, "code") ? void 0 : (0, index_1.CodeAnalysisFromJSON)(json["code"]),
         "id": json["id"],
         "format": json["format"],
-        "image": !(0, runtime_1.exists)(json, "image") ? void 0 : (0, _1.ImageAnalysisFromJSON)(json["image"])
+        "image": !(0, runtime_1.exists)(json, "image") ? void 0 : (0, index_1.ImageAnalysisFromJSON)(json["image"])
       };
     }
     exports.AnalysisFromJSONTyped = AnalysisFromJSONTyped8;
@@ -3490,11 +3494,11 @@ var require_Analysis = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "code": (0, _1.CodeAnalysisToJSON)(value.code),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "code": (0, index_1.CodeAnalysisToJSON)(value.code),
         "id": value.id,
         "format": value.format,
-        "image": (0, _1.ImageAnalysisToJSON)(value.image)
+        "image": (0, index_1.ImageAnalysisToJSON)(value.image)
       };
     }
     exports.AnalysisToJSON = AnalysisToJSON5;
@@ -3508,7 +3512,7 @@ var require_AnalyticsTrackedAdoptionEventIdentifierDescriptionPairs = __commonJS
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AnalyticsTrackedAdoptionEventIdentifierDescriptionPairsToJSON = exports.AnalyticsTrackedAdoptionEventIdentifierDescriptionPairsFromJSONTyped = exports.AnalyticsTrackedAdoptionEventIdentifierDescriptionPairsFromJSON = exports.AnalyticsTrackedAdoptionEventIdentifierDescriptionPairsAdoptionUninstallEnum = exports.AnalyticsTrackedAdoptionEventIdentifierDescriptionPairsAdoptionInstallEnum = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     var AnalyticsTrackedAdoptionEventIdentifierDescriptionPairsAdoptionInstallEnum2;
     (function(AnalyticsTrackedAdoptionEventIdentifierDescriptionPairsAdoptionInstallEnum3) {
       AnalyticsTrackedAdoptionEventIdentifierDescriptionPairsAdoptionInstallEnum3["TheUserHasInstalledAPiecesApplication"] = "the_user_has_installed_a_pieces_application";
@@ -3526,7 +3530,7 @@ var require_AnalyticsTrackedAdoptionEventIdentifierDescriptionPairs = __commonJS
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "adoptionInstall": !(0, runtime_1.exists)(json, "adoption_install") ? void 0 : json["adoption_install"],
         "adoptionUninstall": !(0, runtime_1.exists)(json, "adoption_uninstall") ? void 0 : json["adoption_uninstall"]
       };
@@ -3540,7 +3544,7 @@ var require_AnalyticsTrackedAdoptionEventIdentifierDescriptionPairs = __commonJS
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "adoption_install": value.adoptionInstall,
         "adoption_uninstall": value.adoptionUninstall
       };
@@ -3556,7 +3560,7 @@ var require_Anchor = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AnchorToJSON = exports.AnchorFromJSONTyped = exports.AnchorFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function AnchorFromJSON4(json) {
       return AnchorFromJSONTyped6(json, false);
     }
@@ -3566,19 +3570,19 @@ var require_Anchor = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
         "name": !(0, runtime_1.exists)(json, "name") ? void 0 : json["name"],
-        "type": (0, _1.AnchorTypeEnumFromJSON)(json["type"]),
+        "type": (0, index_1.AnchorTypeEnumFromJSON)(json["type"]),
         "watch": !(0, runtime_1.exists)(json, "watch") ? void 0 : json["watch"],
-        "points": (0, _1.FlattenedAnchorPointsFromJSON)(json["points"]),
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
-        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, _1.FlattenedAssetsFromJSON)(json["assets"]),
-        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : (0, _1.FlattenedAnnotationsFromJSON)(json["annotations"]),
-        "conversations": !(0, runtime_1.exists)(json, "conversations") ? void 0 : (0, _1.FlattenedConversationsFromJSON)(json["conversations"]),
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "points": (0, index_1.FlattenedAnchorPointsFromJSON)(json["points"]),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
+        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, index_1.FlattenedAssetsFromJSON)(json["assets"]),
+        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : (0, index_1.FlattenedAnnotationsFromJSON)(json["annotations"]),
+        "conversations": !(0, runtime_1.exists)(json, "conversations") ? void 0 : (0, index_1.FlattenedConversationsFromJSON)(json["conversations"]),
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.AnchorFromJSONTyped = AnchorFromJSONTyped6;
@@ -3590,19 +3594,19 @@ var require_Anchor = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
         "name": value.name,
-        "type": (0, _1.AnchorTypeEnumToJSON)(value.type),
+        "type": (0, index_1.AnchorTypeEnumToJSON)(value.type),
         "watch": value.watch,
-        "points": (0, _1.FlattenedAnchorPointsToJSON)(value.points),
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
-        "assets": (0, _1.FlattenedAssetsToJSON)(value.assets),
-        "annotations": (0, _1.FlattenedAnnotationsToJSON)(value.annotations),
-        "conversations": (0, _1.FlattenedConversationsToJSON)(value.conversations),
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "points": (0, index_1.FlattenedAnchorPointsToJSON)(value.points),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
+        "assets": (0, index_1.FlattenedAssetsToJSON)(value.assets),
+        "annotations": (0, index_1.FlattenedAnnotationsToJSON)(value.annotations),
+        "conversations": (0, index_1.FlattenedConversationsToJSON)(value.conversations),
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.AnchorToJSON = AnchorToJSON5;
@@ -3616,7 +3620,7 @@ var require_AnchorPoint = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AnchorPointToJSON = exports.AnchorPointFromJSONTyped = exports.AnchorPointFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function AnchorPointFromJSON3(json) {
       return AnchorPointFromJSONTyped4(json, false);
     }
@@ -3626,16 +3630,16 @@ var require_AnchorPoint = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
         "verified": !(0, runtime_1.exists)(json, "verified") ? void 0 : json["verified"],
         "fullpath": json["fullpath"],
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
-        "platform": !(0, runtime_1.exists)(json, "platform") ? void 0 : (0, _1.PlatformEnumFromJSON)(json["platform"]),
-        "anchor": (0, _1.ReferencedAnchorFromJSON)(json["anchor"]),
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
+        "platform": !(0, runtime_1.exists)(json, "platform") ? void 0 : (0, index_1.PlatformEnumFromJSON)(json["platform"]),
+        "anchor": (0, index_1.ReferencedAnchorFromJSON)(json["anchor"]),
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.AnchorPointFromJSONTyped = AnchorPointFromJSONTyped4;
@@ -3647,16 +3651,16 @@ var require_AnchorPoint = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
         "verified": value.verified,
         "fullpath": value.fullpath,
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
-        "platform": (0, _1.PlatformEnumToJSON)(value.platform),
-        "anchor": (0, _1.ReferencedAnchorToJSON)(value.anchor),
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
+        "platform": (0, index_1.PlatformEnumToJSON)(value.platform),
+        "anchor": (0, index_1.ReferencedAnchorToJSON)(value.anchor),
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.AnchorPointToJSON = AnchorPointToJSON4;
@@ -3670,7 +3674,7 @@ var require_AnchorPoints = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AnchorPointsToJSON = exports.AnchorPointsFromJSONTyped = exports.AnchorPointsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function AnchorPointsFromJSON2(json) {
       return AnchorPointsFromJSONTyped(json, false);
     }
@@ -3680,10 +3684,10 @@ var require_AnchorPoints = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.AnchorPointFromJSON),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.AnchorPointFromJSON),
         "indices": !(0, runtime_1.exists)(json, "indices") ? void 0 : json["indices"],
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.AnchorPointsFromJSONTyped = AnchorPointsFromJSONTyped;
@@ -3695,10 +3699,10 @@ var require_AnchorPoints = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.AnchorPointToJSON),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.AnchorPointToJSON),
         "indices": value.indices,
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.AnchorPointsToJSON = AnchorPointsToJSON2;
@@ -3738,7 +3742,7 @@ var require_Anchors = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AnchorsToJSON = exports.AnchorsFromJSONTyped = exports.AnchorsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function AnchorsFromJSON4(json) {
       return AnchorsFromJSONTyped6(json, false);
     }
@@ -3748,10 +3752,10 @@ var require_Anchors = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.AnchorFromJSON),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.AnchorFromJSON),
         "indices": !(0, runtime_1.exists)(json, "indices") ? void 0 : json["indices"],
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.AnchorsFromJSONTyped = AnchorsFromJSONTyped6;
@@ -3763,10 +3767,10 @@ var require_Anchors = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.AnchorToJSON),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.AnchorToJSON),
         "indices": value.indices,
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.AnchorsToJSON = AnchorsToJSON5;
@@ -3780,7 +3784,7 @@ var require_Annotation = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AnnotationToJSON = exports.AnnotationFromJSONTyped = exports.AnnotationFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function AnnotationFromJSON4(json) {
       return AnnotationFromJSONTyped6(json, false);
     }
@@ -3790,23 +3794,23 @@ var require_Annotation = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
-        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, _1.MechanismEnumFromJSON)(json["mechanism"]),
-        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, _1.ReferencedAssetFromJSON)(json["asset"]),
-        "person": !(0, runtime_1.exists)(json, "person") ? void 0 : (0, _1.ReferencedPersonFromJSON)(json["person"]),
-        "type": (0, _1.AnnotationTypeEnumFromJSON)(json["type"]),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
+        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, index_1.MechanismEnumFromJSON)(json["mechanism"]),
+        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, index_1.ReferencedAssetFromJSON)(json["asset"]),
+        "person": !(0, runtime_1.exists)(json, "person") ? void 0 : (0, index_1.ReferencedPersonFromJSON)(json["person"]),
+        "type": (0, index_1.AnnotationTypeEnumFromJSON)(json["type"]),
         "text": json["text"],
-        "model": !(0, runtime_1.exists)(json, "model") ? void 0 : (0, _1.ReferencedModelFromJSON)(json["model"]),
+        "model": !(0, runtime_1.exists)(json, "model") ? void 0 : (0, index_1.ReferencedModelFromJSON)(json["model"]),
         "pseudo": !(0, runtime_1.exists)(json, "pseudo") ? void 0 : json["pseudo"],
         "favorited": !(0, runtime_1.exists)(json, "favorited") ? void 0 : json["favorited"],
-        "anchor": !(0, runtime_1.exists)(json, "anchor") ? void 0 : (0, _1.ReferencedAnchorFromJSON)(json["anchor"]),
-        "conversation": !(0, runtime_1.exists)(json, "conversation") ? void 0 : (0, _1.ReferencedConversationFromJSON)(json["conversation"]),
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"]),
-        "messages": !(0, runtime_1.exists)(json, "messages") ? void 0 : (0, _1.FlattenedConversationMessagesFromJSON)(json["messages"])
+        "anchor": !(0, runtime_1.exists)(json, "anchor") ? void 0 : (0, index_1.ReferencedAnchorFromJSON)(json["anchor"]),
+        "conversation": !(0, runtime_1.exists)(json, "conversation") ? void 0 : (0, index_1.ReferencedConversationFromJSON)(json["conversation"]),
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"]),
+        "messages": !(0, runtime_1.exists)(json, "messages") ? void 0 : (0, index_1.FlattenedConversationMessagesFromJSON)(json["messages"])
       };
     }
     exports.AnnotationFromJSONTyped = AnnotationFromJSONTyped6;
@@ -3818,23 +3822,23 @@ var require_Annotation = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
-        "mechanism": (0, _1.MechanismEnumToJSON)(value.mechanism),
-        "asset": (0, _1.ReferencedAssetToJSON)(value.asset),
-        "person": (0, _1.ReferencedPersonToJSON)(value.person),
-        "type": (0, _1.AnnotationTypeEnumToJSON)(value.type),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
+        "mechanism": (0, index_1.MechanismEnumToJSON)(value.mechanism),
+        "asset": (0, index_1.ReferencedAssetToJSON)(value.asset),
+        "person": (0, index_1.ReferencedPersonToJSON)(value.person),
+        "type": (0, index_1.AnnotationTypeEnumToJSON)(value.type),
         "text": value.text,
-        "model": (0, _1.ReferencedModelToJSON)(value.model),
+        "model": (0, index_1.ReferencedModelToJSON)(value.model),
         "pseudo": value.pseudo,
         "favorited": value.favorited,
-        "anchor": (0, _1.ReferencedAnchorToJSON)(value.anchor),
-        "conversation": (0, _1.ReferencedConversationToJSON)(value.conversation),
-        "score": (0, _1.ScoreToJSON)(value.score),
-        "messages": (0, _1.FlattenedConversationMessagesToJSON)(value.messages)
+        "anchor": (0, index_1.ReferencedAnchorToJSON)(value.anchor),
+        "conversation": (0, index_1.ReferencedConversationToJSON)(value.conversation),
+        "score": (0, index_1.ScoreToJSON)(value.score),
+        "messages": (0, index_1.FlattenedConversationMessagesToJSON)(value.messages)
       };
     }
     exports.AnnotationToJSON = AnnotationToJSON5;
@@ -3878,7 +3882,7 @@ var require_Annotations = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AnnotationsToJSON = exports.AnnotationsFromJSONTyped = exports.AnnotationsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function AnnotationsFromJSON4(json) {
       return AnnotationsFromJSONTyped6(json, false);
     }
@@ -3888,10 +3892,10 @@ var require_Annotations = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.AnnotationFromJSON),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.AnnotationFromJSON),
         "indices": !(0, runtime_1.exists)(json, "indices") ? void 0 : json["indices"],
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.AnnotationsFromJSONTyped = AnnotationsFromJSONTyped6;
@@ -3903,10 +3907,10 @@ var require_Annotations = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.AnnotationToJSON),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.AnnotationToJSON),
         "indices": value.indices,
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.AnnotationsToJSON = AnnotationsToJSON5;
@@ -3920,7 +3924,7 @@ var require_Application = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ApplicationToJSON = exports.ApplicationFromJSONTyped = exports.ApplicationFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ApplicationFromJSON4(json) {
       return ApplicationFromJSONTyped34(json, false);
     }
@@ -3930,15 +3934,15 @@ var require_Application = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "name": (0, _1.ApplicationNameEnumFromJSON)(json["name"]),
+        "name": (0, index_1.ApplicationNameEnumFromJSON)(json["name"]),
         "version": json["version"],
-        "platform": (0, _1.PlatformEnumFromJSON)(json["platform"]),
+        "platform": (0, index_1.PlatformEnumFromJSON)(json["platform"]),
         "onboarded": json["onboarded"],
-        "privacy": (0, _1.PrivacyEnumFromJSON)(json["privacy"]),
-        "capabilities": !(0, runtime_1.exists)(json, "capabilities") ? void 0 : (0, _1.CapabilitiesEnumFromJSON)(json["capabilities"]),
-        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, _1.MechanismEnumFromJSON)(json["mechanism"]),
+        "privacy": (0, index_1.PrivacyEnumFromJSON)(json["privacy"]),
+        "capabilities": !(0, runtime_1.exists)(json, "capabilities") ? void 0 : (0, index_1.CapabilitiesEnumFromJSON)(json["capabilities"]),
+        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, index_1.MechanismEnumFromJSON)(json["mechanism"]),
         "automaticUnload": !(0, runtime_1.exists)(json, "automaticUnload") ? void 0 : json["automaticUnload"]
       };
     }
@@ -3951,15 +3955,15 @@ var require_Application = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "name": (0, _1.ApplicationNameEnumToJSON)(value.name),
+        "name": (0, index_1.ApplicationNameEnumToJSON)(value.name),
         "version": value.version,
-        "platform": (0, _1.PlatformEnumToJSON)(value.platform),
+        "platform": (0, index_1.PlatformEnumToJSON)(value.platform),
         "onboarded": value.onboarded,
-        "privacy": (0, _1.PrivacyEnumToJSON)(value.privacy),
-        "capabilities": (0, _1.CapabilitiesEnumToJSON)(value.capabilities),
-        "mechanism": (0, _1.MechanismEnumToJSON)(value.mechanism),
+        "privacy": (0, index_1.PrivacyEnumToJSON)(value.privacy),
+        "capabilities": (0, index_1.CapabilitiesEnumToJSON)(value.capabilities),
+        "mechanism": (0, index_1.MechanismEnumToJSON)(value.mechanism),
         "automaticUnload": value.automaticUnload
       };
     }
@@ -3999,6 +4003,9 @@ var require_ApplicationNameEnum = __commonJS({
       ApplicationNameEnum11["Brave"] = "BRAVE";
       ApplicationNameEnum11["GoogleChat"] = "GOOGLE_CHAT";
       ApplicationNameEnum11["Slack"] = "SLACK";
+      ApplicationNameEnum11["AzureDataStudio"] = "AZURE_DATA_STUDIO";
+      ApplicationNameEnum11["OpenSource"] = "OPEN_SOURCE";
+      ApplicationNameEnum11["Unknown"] = "UNKNOWN";
     })(ApplicationNameEnum10 || (exports.ApplicationNameEnum = ApplicationNameEnum10 = {}));
     function ApplicationNameEnumFromJSON4(json) {
       return ApplicationNameEnumFromJSONTyped11(json, false);
@@ -4022,7 +4029,7 @@ var require_Applications = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ApplicationsToJSON = exports.ApplicationsFromJSONTyped = exports.ApplicationsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ApplicationsFromJSON3(json) {
       return ApplicationsFromJSONTyped2(json, false);
     }
@@ -4032,8 +4039,8 @@ var require_Applications = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.ApplicationFromJSON)
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.ApplicationFromJSON)
       };
     }
     exports.ApplicationsFromJSONTyped = ApplicationsFromJSONTyped2;
@@ -4045,8 +4052,8 @@ var require_Applications = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.ApplicationToJSON)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.ApplicationToJSON)
       };
     }
     exports.ApplicationsToJSON = ApplicationsToJSON3;
@@ -4060,7 +4067,7 @@ var require_Asset = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AssetToJSON = exports.AssetFromJSONTyped = exports.AssetFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function AssetFromJSON5(json) {
       return AssetFromJSONTyped15(json, false);
     }
@@ -4070,34 +4077,34 @@ var require_Asset = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
         "name": !(0, runtime_1.exists)(json, "name") ? void 0 : json["name"],
         "creator": json["creator"],
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "synced": !(0, runtime_1.exists)(json, "synced") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["synced"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
-        "formats": (0, _1.AssetFormatsFromJSON)(json["formats"]),
-        "preview": (0, _1.PreviewFromJSON)(json["preview"]),
-        "original": (0, _1.ReferencedFormatFromJSON)(json["original"]),
-        "shares": !(0, runtime_1.exists)(json, "shares") ? void 0 : (0, _1.SharesFromJSON)(json["shares"]),
-        "mechanism": (0, _1.MechanismEnumFromJSON)(json["mechanism"]),
-        "websites": !(0, runtime_1.exists)(json, "websites") ? void 0 : (0, _1.WebsitesFromJSON)(json["websites"]),
-        "interacted": !(0, runtime_1.exists)(json, "interacted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["interacted"]),
-        "tags": !(0, runtime_1.exists)(json, "tags") ? void 0 : (0, _1.TagsFromJSON)(json["tags"]),
-        "sensitives": !(0, runtime_1.exists)(json, "sensitives") ? void 0 : (0, _1.SensitivesFromJSON)(json["sensitives"]),
-        "persons": !(0, runtime_1.exists)(json, "persons") ? void 0 : (0, _1.PersonsFromJSON)(json["persons"]),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "synced": !(0, runtime_1.exists)(json, "synced") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["synced"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
+        "formats": (0, index_1.FormatsFromJSON)(json["formats"]),
+        "preview": (0, index_1.PreviewFromJSON)(json["preview"]),
+        "original": (0, index_1.ReferencedFormatFromJSON)(json["original"]),
+        "shares": !(0, runtime_1.exists)(json, "shares") ? void 0 : (0, index_1.SharesFromJSON)(json["shares"]),
+        "mechanism": (0, index_1.MechanismEnumFromJSON)(json["mechanism"]),
+        "websites": !(0, runtime_1.exists)(json, "websites") ? void 0 : (0, index_1.WebsitesFromJSON)(json["websites"]),
+        "interacted": !(0, runtime_1.exists)(json, "interacted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["interacted"]),
+        "tags": !(0, runtime_1.exists)(json, "tags") ? void 0 : (0, index_1.TagsFromJSON)(json["tags"]),
+        "sensitives": !(0, runtime_1.exists)(json, "sensitives") ? void 0 : (0, index_1.SensitivesFromJSON)(json["sensitives"]),
+        "persons": !(0, runtime_1.exists)(json, "persons") ? void 0 : (0, index_1.PersonsFromJSON)(json["persons"]),
         "curated": !(0, runtime_1.exists)(json, "curated") ? void 0 : json["curated"],
         "discovered": !(0, runtime_1.exists)(json, "discovered") ? void 0 : json["discovered"],
-        "activities": !(0, runtime_1.exists)(json, "activities") ? void 0 : (0, _1.ActivitiesFromJSON)(json["activities"]),
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"]),
+        "activities": !(0, runtime_1.exists)(json, "activities") ? void 0 : (0, index_1.ActivitiesFromJSON)(json["activities"]),
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"]),
         "favorited": !(0, runtime_1.exists)(json, "favorited") ? void 0 : json["favorited"],
         "pseudo": !(0, runtime_1.exists)(json, "pseudo") ? void 0 : json["pseudo"],
-        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : (0, _1.AnnotationsFromJSON)(json["annotations"]),
-        "hints": !(0, runtime_1.exists)(json, "hints") ? void 0 : (0, _1.HintsFromJSON)(json["hints"]),
-        "anchors": !(0, runtime_1.exists)(json, "anchors") ? void 0 : (0, _1.AnchorsFromJSON)(json["anchors"]),
-        "conversations": !(0, runtime_1.exists)(json, "conversations") ? void 0 : (0, _1.ConversationsFromJSON)(json["conversations"])
+        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : (0, index_1.AnnotationsFromJSON)(json["annotations"]),
+        "hints": !(0, runtime_1.exists)(json, "hints") ? void 0 : (0, index_1.HintsFromJSON)(json["hints"]),
+        "anchors": !(0, runtime_1.exists)(json, "anchors") ? void 0 : (0, index_1.AnchorsFromJSON)(json["anchors"]),
+        "conversations": !(0, runtime_1.exists)(json, "conversations") ? void 0 : (0, index_1.ConversationsFromJSON)(json["conversations"])
       };
     }
     exports.AssetFromJSONTyped = AssetFromJSONTyped15;
@@ -4109,34 +4116,34 @@ var require_Asset = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
         "name": value.name,
         "creator": value.creator,
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "synced": (0, _1.GroupedTimestampToJSON)(value.synced),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
-        "formats": (0, _1.AssetFormatsToJSON)(value.formats),
-        "preview": (0, _1.PreviewToJSON)(value.preview),
-        "original": (0, _1.ReferencedFormatToJSON)(value.original),
-        "shares": (0, _1.SharesToJSON)(value.shares),
-        "mechanism": (0, _1.MechanismEnumToJSON)(value.mechanism),
-        "websites": (0, _1.WebsitesToJSON)(value.websites),
-        "interacted": (0, _1.GroupedTimestampToJSON)(value.interacted),
-        "tags": (0, _1.TagsToJSON)(value.tags),
-        "sensitives": (0, _1.SensitivesToJSON)(value.sensitives),
-        "persons": (0, _1.PersonsToJSON)(value.persons),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "synced": (0, index_1.GroupedTimestampToJSON)(value.synced),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
+        "formats": (0, index_1.FormatsToJSON)(value.formats),
+        "preview": (0, index_1.PreviewToJSON)(value.preview),
+        "original": (0, index_1.ReferencedFormatToJSON)(value.original),
+        "shares": (0, index_1.SharesToJSON)(value.shares),
+        "mechanism": (0, index_1.MechanismEnumToJSON)(value.mechanism),
+        "websites": (0, index_1.WebsitesToJSON)(value.websites),
+        "interacted": (0, index_1.GroupedTimestampToJSON)(value.interacted),
+        "tags": (0, index_1.TagsToJSON)(value.tags),
+        "sensitives": (0, index_1.SensitivesToJSON)(value.sensitives),
+        "persons": (0, index_1.PersonsToJSON)(value.persons),
         "curated": value.curated,
         "discovered": value.discovered,
-        "activities": (0, _1.ActivitiesToJSON)(value.activities),
-        "score": (0, _1.ScoreToJSON)(value.score),
+        "activities": (0, index_1.ActivitiesToJSON)(value.activities),
+        "score": (0, index_1.ScoreToJSON)(value.score),
         "favorited": value.favorited,
         "pseudo": value.pseudo,
-        "annotations": (0, _1.AnnotationsToJSON)(value.annotations),
-        "hints": (0, _1.HintsToJSON)(value.hints),
-        "anchors": (0, _1.AnchorsToJSON)(value.anchors),
-        "conversations": (0, _1.ConversationsToJSON)(value.conversations)
+        "annotations": (0, index_1.AnnotationsToJSON)(value.annotations),
+        "hints": (0, index_1.HintsToJSON)(value.hints),
+        "anchors": (0, index_1.AnchorsToJSON)(value.anchors),
+        "conversations": (0, index_1.ConversationsToJSON)(value.conversations)
       };
     }
     exports.AssetToJSON = AssetToJSON7;
@@ -4150,7 +4157,7 @@ var require_AssetFilter = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AssetFilterToJSON = exports.AssetFilterFromJSONTyped = exports.AssetFilterFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function AssetFilterFromJSON3(json) {
       return AssetFilterFromJSONTyped3(json, false);
     }
@@ -4160,15 +4167,15 @@ var require_AssetFilter = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "classification": !(0, runtime_1.exists)(json, "classification") ? void 0 : (0, _1.ClassificationSpecificEnumFromJSON)(json["classification"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "classification": !(0, runtime_1.exists)(json, "classification") ? void 0 : (0, index_1.ClassificationSpecificEnumFromJSON)(json["classification"]),
         "tags": !(0, runtime_1.exists)(json, "tags") ? void 0 : json["tags"],
         "websites": !(0, runtime_1.exists)(json, "websites") ? void 0 : json["websites"],
         "persons": !(0, runtime_1.exists)(json, "persons") ? void 0 : json["persons"],
-        "phrase": !(0, runtime_1.exists)(json, "phrase") ? void 0 : (0, _1.AssetFilterPhraseFromJSON)(json["phrase"]),
-        "created": !(0, runtime_1.exists)(json, "created") ? void 0 : (0, _1.AssetFilterTimestampFromJSON)(json["created"]),
-        "updated": !(0, runtime_1.exists)(json, "updated") ? void 0 : (0, _1.AssetFilterTimestampFromJSON)(json["updated"]),
-        "operations": !(0, runtime_1.exists)(json, "operations") ? void 0 : (0, _1.AssetFiltersFromJSON)(json["operations"])
+        "phrase": !(0, runtime_1.exists)(json, "phrase") ? void 0 : (0, index_1.AssetFilterPhraseFromJSON)(json["phrase"]),
+        "created": !(0, runtime_1.exists)(json, "created") ? void 0 : (0, index_1.AssetFilterTimestampFromJSON)(json["created"]),
+        "updated": !(0, runtime_1.exists)(json, "updated") ? void 0 : (0, index_1.AssetFilterTimestampFromJSON)(json["updated"]),
+        "operations": !(0, runtime_1.exists)(json, "operations") ? void 0 : (0, index_1.AssetFiltersFromJSON)(json["operations"])
       };
     }
     exports.AssetFilterFromJSONTyped = AssetFilterFromJSONTyped3;
@@ -4180,15 +4187,15 @@ var require_AssetFilter = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "classification": (0, _1.ClassificationSpecificEnumToJSON)(value.classification),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "classification": (0, index_1.ClassificationSpecificEnumToJSON)(value.classification),
         "tags": value.tags,
         "websites": value.websites,
         "persons": value.persons,
-        "phrase": (0, _1.AssetFilterPhraseToJSON)(value.phrase),
-        "created": (0, _1.AssetFilterTimestampToJSON)(value.created),
-        "updated": (0, _1.AssetFilterTimestampToJSON)(value.updated),
-        "operations": (0, _1.AssetFiltersToJSON)(value.operations)
+        "phrase": (0, index_1.AssetFilterPhraseToJSON)(value.phrase),
+        "created": (0, index_1.AssetFilterTimestampToJSON)(value.created),
+        "updated": (0, index_1.AssetFilterTimestampToJSON)(value.updated),
+        "operations": (0, index_1.AssetFiltersToJSON)(value.operations)
       };
     }
     exports.AssetFilterToJSON = AssetFilterToJSON3;
@@ -4202,7 +4209,7 @@ var require_AssetFilterPhrase = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AssetFilterPhraseToJSON = exports.AssetFilterPhraseFromJSONTyped = exports.AssetFilterPhraseFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function AssetFilterPhraseFromJSON3(json) {
       return AssetFilterPhraseFromJSONTyped3(json, false);
     }
@@ -4212,12 +4219,12 @@ var require_AssetFilterPhrase = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "value": !(0, runtime_1.exists)(json, "value") ? void 0 : json["value"],
         "annotation": !(0, runtime_1.exists)(json, "annotation") ? void 0 : json["annotation"],
         "title": !(0, runtime_1.exists)(json, "title") ? void 0 : json["title"],
         "content": !(0, runtime_1.exists)(json, "content") ? void 0 : json["content"],
-        "options": !(0, runtime_1.exists)(json, "options") ? void 0 : (0, _1.AssetFilterPhraseOptionsFromJSON)(json["options"])
+        "options": !(0, runtime_1.exists)(json, "options") ? void 0 : (0, index_1.AssetFilterPhraseOptionsFromJSON)(json["options"])
       };
     }
     exports.AssetFilterPhraseFromJSONTyped = AssetFilterPhraseFromJSONTyped3;
@@ -4229,12 +4236,12 @@ var require_AssetFilterPhrase = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "value": value.value,
         "annotation": value.annotation,
         "title": value.title,
         "content": value.content,
-        "options": (0, _1.AssetFilterPhraseOptionsToJSON)(value.options)
+        "options": (0, index_1.AssetFilterPhraseOptionsToJSON)(value.options)
       };
     }
     exports.AssetFilterPhraseToJSON = AssetFilterPhraseToJSON3;
@@ -4248,7 +4255,7 @@ var require_AssetFilterPhraseOptions = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AssetFilterPhraseOptionsToJSON = exports.AssetFilterPhraseOptionsFromJSONTyped = exports.AssetFilterPhraseOptionsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function AssetFilterPhraseOptionsFromJSON3(json) {
       return AssetFilterPhraseOptionsFromJSONTyped3(json, false);
     }
@@ -4258,8 +4265,8 @@ var require_AssetFilterPhraseOptions = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "annotation": !(0, runtime_1.exists)(json, "annotation") ? void 0 : (0, _1.AnnotationTypeEnumFromJSON)(json["annotation"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "annotation": !(0, runtime_1.exists)(json, "annotation") ? void 0 : (0, index_1.AnnotationTypeEnumFromJSON)(json["annotation"])
       };
     }
     exports.AssetFilterPhraseOptionsFromJSONTyped = AssetFilterPhraseOptionsFromJSONTyped3;
@@ -4271,8 +4278,8 @@ var require_AssetFilterPhraseOptions = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "annotation": (0, _1.AnnotationTypeEnumToJSON)(value.annotation)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "annotation": (0, index_1.AnnotationTypeEnumToJSON)(value.annotation)
       };
     }
     exports.AssetFilterPhraseOptionsToJSON = AssetFilterPhraseOptionsToJSON3;
@@ -4286,7 +4293,7 @@ var require_AssetFilterTimestamp = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AssetFilterTimestampToJSON = exports.AssetFilterTimestampFromJSONTyped = exports.AssetFilterTimestampFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function AssetFilterTimestampFromJSON3(json) {
       return AssetFilterTimestampFromJSONTyped3(json, false);
     }
@@ -4296,9 +4303,9 @@ var require_AssetFilterTimestamp = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "from": !(0, runtime_1.exists)(json, "from") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["from"]),
-        "to": !(0, runtime_1.exists)(json, "to") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["to"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "from": !(0, runtime_1.exists)(json, "from") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["from"]),
+        "to": !(0, runtime_1.exists)(json, "to") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["to"]),
         "between": !(0, runtime_1.exists)(json, "between") ? void 0 : json["between"]
       };
     }
@@ -4311,9 +4318,9 @@ var require_AssetFilterTimestamp = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "from": (0, _1.GroupedTimestampToJSON)(value.from),
-        "to": (0, _1.GroupedTimestampToJSON)(value.to),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "from": (0, index_1.GroupedTimestampToJSON)(value.from),
+        "to": (0, index_1.GroupedTimestampToJSON)(value.to),
         "between": value.between
       };
     }
@@ -4328,7 +4335,7 @@ var require_AssetFilters = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AssetFiltersToJSON = exports.AssetFiltersFromJSONTyped = exports.AssetFiltersFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function AssetFiltersFromJSON3(json) {
       return AssetFiltersFromJSONTyped5(json, false);
     }
@@ -4338,9 +4345,9 @@ var require_AssetFilters = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.AssetFilterFromJSON),
-        "type": !(0, runtime_1.exists)(json, "type") ? void 0 : (0, _1.FilterOperationTypeEnumFromJSON)(json["type"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.AssetFilterFromJSON),
+        "type": !(0, runtime_1.exists)(json, "type") ? void 0 : (0, index_1.FilterOperationTypeEnumFromJSON)(json["type"])
       };
     }
     exports.AssetFiltersFromJSONTyped = AssetFiltersFromJSONTyped5;
@@ -4352,52 +4359,12 @@ var require_AssetFilters = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.AssetFilterToJSON),
-        "type": (0, _1.FilterOperationTypeEnumToJSON)(value.type)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.AssetFilterToJSON),
+        "type": (0, index_1.FilterOperationTypeEnumToJSON)(value.type)
       };
     }
     exports.AssetFiltersToJSON = AssetFiltersToJSON3;
-  }
-});
-
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/AssetFormats.js
-var require_AssetFormats = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/AssetFormats.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.AssetFormatsToJSON = exports.AssetFormatsFromJSONTyped = exports.AssetFormatsFromJSON = void 0;
-    var runtime_1 = require_runtime();
-    var _1 = require_models();
-    function AssetFormatsFromJSON4(json) {
-      return AssetFormatsFromJSONTyped6(json, false);
-    }
-    exports.AssetFormatsFromJSON = AssetFormatsFromJSON4;
-    function AssetFormatsFromJSONTyped6(json, ignoreDiscriminator) {
-      if (json === void 0 || json === null) {
-        return json;
-      }
-      return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": !(0, runtime_1.exists)(json, "iterable") ? void 0 : json["iterable"].map(_1.FormatFromJSON),
-        "asset": (0, _1.FlattenedAssetFromJSON)(json["asset"])
-      };
-    }
-    exports.AssetFormatsFromJSONTyped = AssetFormatsFromJSONTyped6;
-    function AssetFormatsToJSON6(value) {
-      if (value === void 0) {
-        return void 0;
-      }
-      if (value === null) {
-        return null;
-      }
-      return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable === void 0 ? void 0 : value.iterable.map(_1.FormatToJSON),
-        "asset": (0, _1.FlattenedAssetToJSON)(value.asset)
-      };
-    }
-    exports.AssetFormatsToJSON = AssetFormatsToJSON6;
   }
 });
 
@@ -4408,7 +4375,7 @@ var require_AssetReclassification = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AssetReclassificationToJSON = exports.AssetReclassificationFromJSONTyped = exports.AssetReclassificationFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function AssetReclassificationFromJSON2(json) {
       return AssetReclassificationFromJSONTyped(json, false);
     }
@@ -4418,9 +4385,9 @@ var require_AssetReclassification = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "ext": (0, _1.ClassificationSpecificEnumFromJSON)(json["ext"]),
-        "asset": (0, _1.AssetFromJSON)(json["asset"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "ext": (0, index_1.ClassificationSpecificEnumFromJSON)(json["ext"]),
+        "asset": (0, index_1.AssetFromJSON)(json["asset"])
       };
     }
     exports.AssetReclassificationFromJSONTyped = AssetReclassificationFromJSONTyped;
@@ -4432,9 +4399,9 @@ var require_AssetReclassification = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "ext": (0, _1.ClassificationSpecificEnumToJSON)(value.ext),
-        "asset": (0, _1.AssetToJSON)(value.asset)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "ext": (0, index_1.ClassificationSpecificEnumToJSON)(value.ext),
+        "asset": (0, index_1.AssetToJSON)(value.asset)
       };
     }
     exports.AssetReclassificationToJSON = AssetReclassificationToJSON2;
@@ -4448,7 +4415,7 @@ var require_AssetSearchSpace = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AssetSearchSpaceToJSON = exports.AssetSearchSpaceFromJSONTyped = exports.AssetSearchSpaceFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function AssetSearchSpaceFromJSON3(json) {
       return AssetSearchSpaceFromJSONTyped3(json, false);
     }
@@ -4458,8 +4425,8 @@ var require_AssetSearchSpace = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "identifers": (0, _1.FlattenedAssetsFromJSON)(json["identifers"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "identifers": (0, index_1.FlattenedAssetsFromJSON)(json["identifers"])
       };
     }
     exports.AssetSearchSpaceFromJSONTyped = AssetSearchSpaceFromJSONTyped3;
@@ -4471,8 +4438,8 @@ var require_AssetSearchSpace = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "identifers": (0, _1.FlattenedAssetsToJSON)(value.identifers)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "identifers": (0, index_1.FlattenedAssetsToJSON)(value.identifers)
       };
     }
     exports.AssetSearchSpaceToJSON = AssetSearchSpaceToJSON3;
@@ -4486,23 +4453,23 @@ var require_Assets = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AssetsToJSON = exports.AssetsFromJSONTyped = exports.AssetsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function AssetsFromJSON5(json) {
-      return AssetsFromJSONTyped13(json, false);
+      return AssetsFromJSONTyped15(json, false);
     }
     exports.AssetsFromJSON = AssetsFromJSON5;
-    function AssetsFromJSONTyped13(json, ignoreDiscriminator) {
+    function AssetsFromJSONTyped15(json, ignoreDiscriminator) {
       if (json === void 0 || json === null) {
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.AssetFromJSON),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.AssetFromJSON),
         "indices": !(0, runtime_1.exists)(json, "indices") ? void 0 : json["indices"],
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
-    exports.AssetsFromJSONTyped = AssetsFromJSONTyped13;
+    exports.AssetsFromJSONTyped = AssetsFromJSONTyped15;
     function AssetsToJSON4(value) {
       if (value === void 0) {
         return void 0;
@@ -4511,10 +4478,10 @@ var require_Assets = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.AssetToJSON),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.AssetToJSON),
         "indices": value.indices,
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.AssetsToJSON = AssetsToJSON4;
@@ -4528,7 +4495,7 @@ var require_AssetsSearchWithFiltersInput = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AssetsSearchWithFiltersInputToJSON = exports.AssetsSearchWithFiltersInputFromJSONTyped = exports.AssetsSearchWithFiltersInputFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function AssetsSearchWithFiltersInputFromJSON2(json) {
       return AssetsSearchWithFiltersInputFromJSONTyped(json, false);
     }
@@ -4538,10 +4505,10 @@ var require_AssetsSearchWithFiltersInput = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "query": !(0, runtime_1.exists)(json, "query") ? void 0 : json["query"],
-        "space": !(0, runtime_1.exists)(json, "space") ? void 0 : (0, _1.AssetSearchSpaceFromJSON)(json["space"]),
-        "filters": !(0, runtime_1.exists)(json, "filters") ? void 0 : (0, _1.AssetFiltersFromJSON)(json["filters"]),
+        "space": !(0, runtime_1.exists)(json, "space") ? void 0 : (0, index_1.AssetSearchSpaceFromJSON)(json["space"]),
+        "filters": !(0, runtime_1.exists)(json, "filters") ? void 0 : (0, index_1.AssetFiltersFromJSON)(json["filters"]),
         "casing": !(0, runtime_1.exists)(json, "casing") ? void 0 : json["casing"]
       };
     }
@@ -4554,10 +4521,10 @@ var require_AssetsSearchWithFiltersInput = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "query": value.query,
-        "space": (0, _1.AssetSearchSpaceToJSON)(value.space),
-        "filters": (0, _1.AssetFiltersToJSON)(value.filters),
+        "space": (0, index_1.AssetSearchSpaceToJSON)(value.space),
+        "filters": (0, index_1.AssetFiltersToJSON)(value.filters),
         "casing": value.casing
       };
     }
@@ -4572,7 +4539,7 @@ var require_AssetsSearchWithFiltersOutput = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AssetsSearchWithFiltersOutputToJSON = exports.AssetsSearchWithFiltersOutputFromJSONTyped = exports.AssetsSearchWithFiltersOutputFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function AssetsSearchWithFiltersOutputFromJSON2(json) {
       return AssetsSearchWithFiltersOutputFromJSONTyped2(json, false);
     }
@@ -4582,8 +4549,8 @@ var require_AssetsSearchWithFiltersOutput = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "results": (0, _1.SearchedAssetsFromJSON)(json["results"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "results": (0, index_1.SearchedAssetsFromJSON)(json["results"])
       };
     }
     exports.AssetsSearchWithFiltersOutputFromJSONTyped = AssetsSearchWithFiltersOutputFromJSONTyped2;
@@ -4595,8 +4562,8 @@ var require_AssetsSearchWithFiltersOutput = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "results": (0, _1.SearchedAssetsToJSON)(value.results)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "results": (0, index_1.SearchedAssetsToJSON)(value.results)
       };
     }
     exports.AssetsSearchWithFiltersOutputToJSON = AssetsSearchWithFiltersOutputToJSON2;
@@ -4610,7 +4577,7 @@ var require_Auth0 = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Auth0ToJSON = exports.Auth0FromJSONTyped = exports.Auth0FromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function Auth0FromJSON3(json) {
       return Auth0FromJSONTyped3(json, false);
     }
@@ -4620,14 +4587,14 @@ var require_Auth0 = __commonJS({
         return json;
       }
       return {
-        "identity": !(0, runtime_1.exists)(json, "identity") ? void 0 : (0, _1.Auth0IdentityFromJSON)(json["identity"]),
-        "user": !(0, runtime_1.exists)(json, "user") ? void 0 : (0, _1.Auth0UserFromJSON)(json["user"]),
-        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, _1.Auth0UserMetadataFromJSON)(json["metadata"]),
+        "identity": !(0, runtime_1.exists)(json, "identity") ? void 0 : (0, index_1.Auth0IdentityFromJSON)(json["identity"]),
+        "user": !(0, runtime_1.exists)(json, "user") ? void 0 : (0, index_1.Auth0UserFromJSON)(json["user"]),
+        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, index_1.Auth0UserMetadataFromJSON)(json["metadata"]),
         "domain": json["domain"],
         "client": json["client"],
         "audience": json["audience"],
-        "redirects": (0, _1.Auth0RedirectsFromJSON)(json["redirects"]),
-        "oAuth": (0, _1.OAuthGroupFromJSON)(json["oAuth"]),
+        "redirects": (0, index_1.Auth0RedirectsFromJSON)(json["redirects"]),
+        "oAuth": (0, index_1.OAuthGroupFromJSON)(json["oAuth"]),
         "namespace": !(0, runtime_1.exists)(json, "namespace") ? void 0 : json["namespace"]
       };
     }
@@ -4640,14 +4607,14 @@ var require_Auth0 = __commonJS({
         return null;
       }
       return {
-        "identity": (0, _1.Auth0IdentityToJSON)(value.identity),
-        "user": (0, _1.Auth0UserToJSON)(value.user),
-        "metadata": (0, _1.Auth0UserMetadataToJSON)(value.metadata),
+        "identity": (0, index_1.Auth0IdentityToJSON)(value.identity),
+        "user": (0, index_1.Auth0UserToJSON)(value.user),
+        "metadata": (0, index_1.Auth0UserMetadataToJSON)(value.metadata),
         "domain": value.domain,
         "client": value.client,
         "audience": value.audience,
-        "redirects": (0, _1.Auth0RedirectsToJSON)(value.redirects),
-        "oAuth": (0, _1.OAuthGroupToJSON)(value.oAuth),
+        "redirects": (0, index_1.Auth0RedirectsToJSON)(value.redirects),
+        "oAuth": (0, index_1.OAuthGroupToJSON)(value.oAuth),
         "namespace": value.namespace
       };
     }
@@ -4744,7 +4711,7 @@ var require_Auth0User = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Auth0UserToJSON = exports.Auth0UserFromJSONTyped = exports.Auth0UserFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function Auth0UserFromJSON4(json) {
       return Auth0UserFromJSONTyped3(json, false);
     }
@@ -4761,11 +4728,11 @@ var require_Auth0User = __commonJS({
         "emailVerified": !(0, runtime_1.exists)(json, "email_verified") ? void 0 : json["email_verified"],
         "familyName": !(0, runtime_1.exists)(json, "family_name") ? void 0 : json["family_name"],
         "givenName": !(0, runtime_1.exists)(json, "given_name") ? void 0 : json["given_name"],
-        "identities": !(0, runtime_1.exists)(json, "identities") ? void 0 : json["identities"].map(_1.Auth0IdentityFromJSON),
+        "identities": !(0, runtime_1.exists)(json, "identities") ? void 0 : json["identities"].map(index_1.Auth0IdentityFromJSON),
         "nickname": !(0, runtime_1.exists)(json, "nickname") ? void 0 : json["nickname"],
         "updatedAt": !(0, runtime_1.exists)(json, "updated_at") ? void 0 : new Date(json["updated_at"]),
         "username": !(0, runtime_1.exists)(json, "username") ? void 0 : json["username"],
-        "userMetadata": !(0, runtime_1.exists)(json, "user_metadata") ? void 0 : (0, _1.Auth0UserMetadataFromJSON)(json["user_metadata"]),
+        "userMetadata": !(0, runtime_1.exists)(json, "user_metadata") ? void 0 : (0, index_1.Auth0UserMetadataFromJSON)(json["user_metadata"]),
         "locale": !(0, runtime_1.exists)(json, "locale") ? void 0 : json["locale"],
         "userId": !(0, runtime_1.exists)(json, "user_id") ? void 0 : json["user_id"],
         "lastIp": !(0, runtime_1.exists)(json, "last_ip") ? void 0 : json["last_ip"],
@@ -4791,11 +4758,11 @@ var require_Auth0User = __commonJS({
         "email_verified": value.emailVerified,
         "family_name": value.familyName,
         "given_name": value.givenName,
-        "identities": value.identities === void 0 ? void 0 : value.identities.map(_1.Auth0IdentityToJSON),
+        "identities": value.identities === void 0 ? void 0 : value.identities.map(index_1.Auth0IdentityToJSON),
         "nickname": value.nickname,
         "updated_at": value.updatedAt === void 0 ? void 0 : value.updatedAt.toISOString(),
         "username": value.username,
-        "user_metadata": (0, _1.Auth0UserMetadataToJSON)(value.userMetadata),
+        "user_metadata": (0, index_1.Auth0UserMetadataToJSON)(value.userMetadata),
         "locale": value.locale,
         "user_id": value.userId,
         "last_ip": value.lastIp,
@@ -4852,7 +4819,7 @@ var require_Auth0UserMetadata = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Auth0UserMetadataToJSON = exports.Auth0UserMetadataFromJSONTyped = exports.Auth0UserMetadataFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function Auth0UserMetadataFromJSON4(json) {
       return Auth0UserMetadataFromJSONTyped10(json, false);
     }
@@ -4862,12 +4829,12 @@ var require_Auth0UserMetadata = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "globalId": json["global_id"],
         "cloudKey": !(0, runtime_1.exists)(json, "cloud_key") ? void 0 : json["cloud_key"],
         "stripeCustomerId": !(0, runtime_1.exists)(json, "stripe_customer_id") ? void 0 : json["stripe_customer_id"],
         "vanityname": !(0, runtime_1.exists)(json, "vanityname") ? void 0 : json["vanityname"],
-        "allocation": !(0, runtime_1.exists)(json, "allocation") ? void 0 : (0, _1.Auth0UserAllocationMetadataFromJSON)(json["allocation"])
+        "allocation": !(0, runtime_1.exists)(json, "allocation") ? void 0 : (0, index_1.Auth0UserAllocationMetadataFromJSON)(json["allocation"])
       };
     }
     exports.Auth0UserMetadataFromJSONTyped = Auth0UserMetadataFromJSONTyped10;
@@ -4879,12 +4846,12 @@ var require_Auth0UserMetadata = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "global_id": value.globalId,
         "cloud_key": value.cloudKey,
         "stripe_customer_id": value.stripeCustomerId,
         "vanityname": value.vanityname,
-        "allocation": (0, _1.Auth0UserAllocationMetadataToJSON)(value.allocation)
+        "allocation": (0, index_1.Auth0UserAllocationMetadataToJSON)(value.allocation)
       };
     }
     exports.Auth0UserMetadataToJSON = Auth0UserMetadataToJSON4;
@@ -4898,7 +4865,7 @@ var require_AvailableFormats = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AvailableFormatsToJSON = exports.AvailableFormatsFromJSONTyped = exports.AvailableFormatsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function AvailableFormatsFromJSON3(json) {
       return AvailableFormatsFromJSONTyped4(json, false);
     }
@@ -4908,8 +4875,8 @@ var require_AvailableFormats = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.ClassificationFromJSON)
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.ClassificationFromJSON)
       };
     }
     exports.AvailableFormatsFromJSONTyped = AvailableFormatsFromJSONTyped4;
@@ -4921,8 +4888,8 @@ var require_AvailableFormats = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.ClassificationToJSON)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.ClassificationToJSON)
       };
     }
     exports.AvailableFormatsToJSON = AvailableFormatsToJSON3;
@@ -4936,7 +4903,7 @@ var require_ByteDescriptor = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ByteDescriptorToJSON = exports.ByteDescriptorFromJSONTyped = exports.ByteDescriptorFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ByteDescriptorFromJSON4(json) {
       return ByteDescriptorFromJSONTyped14(json, false);
     }
@@ -4946,7 +4913,7 @@ var require_ByteDescriptor = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "value": json["value"],
         "readable": json["readable"]
       };
@@ -4960,7 +4927,7 @@ var require_ByteDescriptor = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "value": value.value,
         "readable": value.readable
       };
@@ -5003,7 +4970,7 @@ var require_ChallengedPKCE = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ChallengedPKCEToJSON = exports.ChallengedPKCEFromJSONTyped = exports.ChallengedPKCEFromJSON = exports.ChallengedPKCEMethodEnum = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     var ChallengedPKCEMethodEnum;
     (function(ChallengedPKCEMethodEnum2) {
       ChallengedPKCEMethodEnum2["S256"] = "S256";
@@ -5017,7 +4984,7 @@ var require_ChallengedPKCE = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "state": json["state"],
         "nonce": json["nonce"],
         "challenge": json["challenge"],
@@ -5034,7 +5001,7 @@ var require_ChallengedPKCE = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "state": value.state,
         "nonce": value.nonce,
         "challenge": value.challenge,
@@ -5053,7 +5020,7 @@ var require_Classification = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ClassificationToJSON = exports.ClassificationFromJSONTyped = exports.ClassificationFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ClassificationFromJSON4(json) {
       return ClassificationFromJSONTyped24(json, false);
     }
@@ -5063,10 +5030,10 @@ var require_Classification = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "generic": (0, _1.ClassificationGenericEnumFromJSON)(json["generic"]),
-        "specific": (0, _1.ClassificationSpecificEnumFromJSON)(json["specific"]),
-        "rendering": !(0, runtime_1.exists)(json, "rendering") ? void 0 : (0, _1.ClassificationRenderingEnumFromJSON)(json["rendering"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "generic": (0, index_1.ClassificationGenericEnumFromJSON)(json["generic"]),
+        "specific": (0, index_1.ClassificationSpecificEnumFromJSON)(json["specific"]),
+        "rendering": !(0, runtime_1.exists)(json, "rendering") ? void 0 : (0, index_1.ClassificationRenderingEnumFromJSON)(json["rendering"])
       };
     }
     exports.ClassificationFromJSONTyped = ClassificationFromJSONTyped24;
@@ -5078,10 +5045,10 @@ var require_Classification = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "generic": (0, _1.ClassificationGenericEnumToJSON)(value.generic),
-        "specific": (0, _1.ClassificationSpecificEnumToJSON)(value.specific),
-        "rendering": (0, _1.ClassificationRenderingEnumToJSON)(value.rendering)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "generic": (0, index_1.ClassificationGenericEnumToJSON)(value.generic),
+        "specific": (0, index_1.ClassificationSpecificEnumToJSON)(value.specific),
+        "rendering": (0, index_1.ClassificationRenderingEnumToJSON)(value.rendering)
       };
     }
     exports.ClassificationToJSON = ClassificationToJSON4;
@@ -5643,6 +5610,9 @@ var require_ClassificationSpecificEnum = __commonJS({
       ClassificationSpecificEnum31["Sv"] = "sv";
       ClassificationSpecificEnum31["Asp"] = "asp";
       ClassificationSpecificEnum31["Cfm"] = "cfm";
+      ClassificationSpecificEnum31["Fs"] = "fs";
+      ClassificationSpecificEnum31["Fsi"] = "fsi";
+      ClassificationSpecificEnum31["Fsx"] = "fsx";
     })(ClassificationSpecificEnum30 || (exports.ClassificationSpecificEnum = ClassificationSpecificEnum30 = {}));
     function ClassificationSpecificEnumFromJSON4(json) {
       return ClassificationSpecificEnumFromJSONTyped29(json, false);
@@ -5666,7 +5636,7 @@ var require_CodeAnalyses = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.CodeAnalysesToJSON = exports.CodeAnalysesFromJSONTyped = exports.CodeAnalysesFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function CodeAnalysesFromJSON2(json) {
       return CodeAnalysesFromJSONTyped(json, false);
     }
@@ -5676,8 +5646,8 @@ var require_CodeAnalyses = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.CodeAnalysisFromJSON)
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.CodeAnalysisFromJSON)
       };
     }
     exports.CodeAnalysesFromJSONTyped = CodeAnalysesFromJSONTyped;
@@ -5689,8 +5659,8 @@ var require_CodeAnalyses = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.CodeAnalysisToJSON)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.CodeAnalysisToJSON)
       };
     }
     exports.CodeAnalysesToJSON = CodeAnalysesToJSON2;
@@ -5704,7 +5674,7 @@ var require_CodeAnalysis = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.CodeAnalysisToJSON = exports.CodeAnalysisFromJSONTyped = exports.CodeAnalysisFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function CodeAnalysisFromJSON4(json) {
       return CodeAnalysisFromJSONTyped11(json, false);
     }
@@ -5714,17 +5684,17 @@ var require_CodeAnalysis = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "tokenized": !(0, runtime_1.exists)(json, "tokenized") ? void 0 : json["tokenized"],
         "language": !(0, runtime_1.exists)(json, "language") ? void 0 : json["language"],
-        "type": (0, _1.ClassificationGenericEnumFromJSON)(json["type"]),
+        "type": (0, index_1.ClassificationGenericEnumFromJSON)(json["type"]),
         "prediction": !(0, runtime_1.exists)(json, "prediction") ? void 0 : json["prediction"],
         "similarity": !(0, runtime_1.exists)(json, "similarity") ? void 0 : json["similarity"],
         "top5Colors": !(0, runtime_1.exists)(json, "top5Colors") ? void 0 : json["top5Colors"],
         "top5Sorted": !(0, runtime_1.exists)(json, "top5Sorted") ? void 0 : json["top5Sorted"],
         "id": json["id"],
         "analysis": json["analysis"],
-        "model": (0, _1.ModelFromJSON)(json["model"])
+        "model": (0, index_1.ModelFromJSON)(json["model"])
       };
     }
     exports.CodeAnalysisFromJSONTyped = CodeAnalysisFromJSONTyped11;
@@ -5736,17 +5706,17 @@ var require_CodeAnalysis = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "tokenized": value.tokenized,
         "language": value.language,
-        "type": (0, _1.ClassificationGenericEnumToJSON)(value.type),
+        "type": (0, index_1.ClassificationGenericEnumToJSON)(value.type),
         "prediction": value.prediction,
         "similarity": value.similarity,
         "top5Colors": value.top5Colors,
         "top5Sorted": value.top5Sorted,
         "id": value.id,
         "analysis": value.analysis,
-        "model": (0, _1.ModelToJSON)(value.model)
+        "model": (0, index_1.ModelToJSON)(value.model)
       };
     }
     exports.CodeAnalysisToJSON = CodeAnalysisToJSON4;
@@ -5760,7 +5730,7 @@ var require_Context = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ContextToJSON = exports.ContextFromJSONTyped = exports.ContextFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ContextFromJSON4(json) {
       return ContextFromJSONTyped4(json, false);
     }
@@ -5770,11 +5740,11 @@ var require_Context = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "os": json["os"],
-        "application": (0, _1.ApplicationFromJSON)(json["application"]),
-        "health": (0, _1.HealthFromJSON)(json["health"]),
-        "user": !(0, runtime_1.exists)(json, "user") ? void 0 : (0, _1.UserProfileFromJSON)(json["user"])
+        "application": (0, index_1.ApplicationFromJSON)(json["application"]),
+        "health": (0, index_1.HealthFromJSON)(json["health"]),
+        "user": !(0, runtime_1.exists)(json, "user") ? void 0 : (0, index_1.UserProfileFromJSON)(json["user"])
       };
     }
     exports.ContextFromJSONTyped = ContextFromJSONTyped4;
@@ -5786,11 +5756,11 @@ var require_Context = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "os": value.os,
-        "application": (0, _1.ApplicationToJSON)(value.application),
-        "health": (0, _1.HealthToJSON)(value.health),
-        "user": (0, _1.UserProfileToJSON)(value.user)
+        "application": (0, index_1.ApplicationToJSON)(value.application),
+        "health": (0, index_1.HealthToJSON)(value.health),
+        "user": (0, index_1.UserProfileToJSON)(value.user)
       };
     }
     exports.ContextToJSON = ContextToJSON5;
@@ -5804,7 +5774,7 @@ var require_Conversation = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ConversationToJSON = exports.ConversationFromJSONTyped = exports.ConversationFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ConversationFromJSON4(json) {
       return ConversationFromJSONTyped6(json, false);
     }
@@ -5814,22 +5784,22 @@ var require_Conversation = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
         "name": !(0, runtime_1.exists)(json, "name") ? void 0 : json["name"],
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
         "favorited": !(0, runtime_1.exists)(json, "favorited") ? void 0 : json["favorited"],
-        "application": !(0, runtime_1.exists)(json, "application") ? void 0 : (0, _1.ApplicationFromJSON)(json["application"]),
-        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : (0, _1.FlattenedAnnotationsFromJSON)(json["annotations"]),
-        "messages": (0, _1.FlattenedConversationMessagesFromJSON)(json["messages"]),
-        "model": !(0, runtime_1.exists)(json, "model") ? void 0 : (0, _1.ReferencedModelFromJSON)(json["model"]),
-        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, _1.FlattenedAssetsFromJSON)(json["assets"]),
-        "anchors": !(0, runtime_1.exists)(json, "anchors") ? void 0 : (0, _1.FlattenedAnchorsFromJSON)(json["anchors"]),
-        "type": (0, _1.ConversationTypeEnumFromJSON)(json["type"]),
-        "grounding": !(0, runtime_1.exists)(json, "grounding") ? void 0 : (0, _1.ConversationGroundingFromJSON)(json["grounding"]),
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "application": !(0, runtime_1.exists)(json, "application") ? void 0 : (0, index_1.ApplicationFromJSON)(json["application"]),
+        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : (0, index_1.FlattenedAnnotationsFromJSON)(json["annotations"]),
+        "messages": (0, index_1.FlattenedConversationMessagesFromJSON)(json["messages"]),
+        "model": !(0, runtime_1.exists)(json, "model") ? void 0 : (0, index_1.ReferencedModelFromJSON)(json["model"]),
+        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, index_1.FlattenedAssetsFromJSON)(json["assets"]),
+        "anchors": !(0, runtime_1.exists)(json, "anchors") ? void 0 : (0, index_1.FlattenedAnchorsFromJSON)(json["anchors"]),
+        "type": (0, index_1.ConversationTypeEnumFromJSON)(json["type"]),
+        "grounding": !(0, runtime_1.exists)(json, "grounding") ? void 0 : (0, index_1.ConversationGroundingFromJSON)(json["grounding"]),
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.ConversationFromJSONTyped = ConversationFromJSONTyped6;
@@ -5841,22 +5811,22 @@ var require_Conversation = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
         "name": value.name,
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
         "favorited": value.favorited,
-        "application": (0, _1.ApplicationToJSON)(value.application),
-        "annotations": (0, _1.FlattenedAnnotationsToJSON)(value.annotations),
-        "messages": (0, _1.FlattenedConversationMessagesToJSON)(value.messages),
-        "model": (0, _1.ReferencedModelToJSON)(value.model),
-        "assets": (0, _1.FlattenedAssetsToJSON)(value.assets),
-        "anchors": (0, _1.FlattenedAnchorsToJSON)(value.anchors),
-        "type": (0, _1.ConversationTypeEnumToJSON)(value.type),
-        "grounding": (0, _1.ConversationGroundingToJSON)(value.grounding),
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "application": (0, index_1.ApplicationToJSON)(value.application),
+        "annotations": (0, index_1.FlattenedAnnotationsToJSON)(value.annotations),
+        "messages": (0, index_1.FlattenedConversationMessagesToJSON)(value.messages),
+        "model": (0, index_1.ReferencedModelToJSON)(value.model),
+        "assets": (0, index_1.FlattenedAssetsToJSON)(value.assets),
+        "anchors": (0, index_1.FlattenedAnchorsToJSON)(value.anchors),
+        "type": (0, index_1.ConversationTypeEnumToJSON)(value.type),
+        "grounding": (0, index_1.ConversationGroundingToJSON)(value.grounding),
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.ConversationToJSON = ConversationToJSON5;
@@ -5870,7 +5840,7 @@ var require_ConversationGrounding = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ConversationGroundingToJSON = exports.ConversationGroundingFromJSONTyped = exports.ConversationGroundingFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ConversationGroundingFromJSON4(json) {
       return ConversationGroundingFromJSONTyped9(json, false);
     }
@@ -5880,8 +5850,8 @@ var require_ConversationGrounding = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "messages": !(0, runtime_1.exists)(json, "messages") ? void 0 : (0, _1.FlattenedConversationMessagesFromJSON)(json["messages"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "messages": !(0, runtime_1.exists)(json, "messages") ? void 0 : (0, index_1.FlattenedConversationMessagesFromJSON)(json["messages"])
       };
     }
     exports.ConversationGroundingFromJSONTyped = ConversationGroundingFromJSONTyped9;
@@ -5893,8 +5863,8 @@ var require_ConversationGrounding = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "messages": (0, _1.FlattenedConversationMessagesToJSON)(value.messages)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "messages": (0, index_1.FlattenedConversationMessagesToJSON)(value.messages)
       };
     }
     exports.ConversationGroundingToJSON = ConversationGroundingToJSON4;
@@ -5908,7 +5878,7 @@ var require_ConversationMessage = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ConversationMessageToJSON = exports.ConversationMessageFromJSONTyped = exports.ConversationMessageFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ConversationMessageFromJSON3(json) {
       return ConversationMessageFromJSONTyped4(json, false);
     }
@@ -5918,18 +5888,18 @@ var require_ConversationMessage = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
-        "model": !(0, runtime_1.exists)(json, "model") ? void 0 : (0, _1.ModelFromJSON)(json["model"]),
-        "fragment": !(0, runtime_1.exists)(json, "fragment") ? void 0 : (0, _1.FragmentFormatFromJSON)(json["fragment"]),
-        "conversation": (0, _1.ReferencedConversationFromJSON)(json["conversation"]),
-        "sentiment": !(0, runtime_1.exists)(json, "sentiment") ? void 0 : (0, _1.ConversationMessageSentimentEnumFromJSON)(json["sentiment"]),
-        "role": (0, _1.QGPTConversationMessageRoleEnumFromJSON)(json["role"]),
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"]),
-        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : (0, _1.FlattenedAnnotationsFromJSON)(json["annotations"])
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
+        "model": !(0, runtime_1.exists)(json, "model") ? void 0 : (0, index_1.ModelFromJSON)(json["model"]),
+        "fragment": !(0, runtime_1.exists)(json, "fragment") ? void 0 : (0, index_1.FragmentFormatFromJSON)(json["fragment"]),
+        "conversation": (0, index_1.ReferencedConversationFromJSON)(json["conversation"]),
+        "sentiment": !(0, runtime_1.exists)(json, "sentiment") ? void 0 : (0, index_1.ConversationMessageSentimentEnumFromJSON)(json["sentiment"]),
+        "role": (0, index_1.QGPTConversationMessageRoleEnumFromJSON)(json["role"]),
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"]),
+        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : (0, index_1.FlattenedAnnotationsFromJSON)(json["annotations"])
       };
     }
     exports.ConversationMessageFromJSONTyped = ConversationMessageFromJSONTyped4;
@@ -5941,18 +5911,18 @@ var require_ConversationMessage = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
-        "model": (0, _1.ModelToJSON)(value.model),
-        "fragment": (0, _1.FragmentFormatToJSON)(value.fragment),
-        "conversation": (0, _1.ReferencedConversationToJSON)(value.conversation),
-        "sentiment": (0, _1.ConversationMessageSentimentEnumToJSON)(value.sentiment),
-        "role": (0, _1.QGPTConversationMessageRoleEnumToJSON)(value.role),
-        "score": (0, _1.ScoreToJSON)(value.score),
-        "annotations": (0, _1.FlattenedAnnotationsToJSON)(value.annotations)
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
+        "model": (0, index_1.ModelToJSON)(value.model),
+        "fragment": (0, index_1.FragmentFormatToJSON)(value.fragment),
+        "conversation": (0, index_1.ReferencedConversationToJSON)(value.conversation),
+        "sentiment": (0, index_1.ConversationMessageSentimentEnumToJSON)(value.sentiment),
+        "role": (0, index_1.QGPTConversationMessageRoleEnumToJSON)(value.role),
+        "score": (0, index_1.ScoreToJSON)(value.score),
+        "annotations": (0, index_1.FlattenedAnnotationsToJSON)(value.annotations)
       };
     }
     exports.ConversationMessageToJSON = ConversationMessageToJSON4;
@@ -5993,7 +5963,7 @@ var require_ConversationMessages = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ConversationMessagesToJSON = exports.ConversationMessagesFromJSONTyped = exports.ConversationMessagesFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ConversationMessagesFromJSON2(json) {
       return ConversationMessagesFromJSONTyped2(json, false);
     }
@@ -6003,10 +5973,10 @@ var require_ConversationMessages = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.ConversationMessageFromJSON),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.ConversationMessageFromJSON),
         "indices": !(0, runtime_1.exists)(json, "indices") ? void 0 : json["indices"],
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.ConversationMessagesFromJSONTyped = ConversationMessagesFromJSONTyped2;
@@ -6018,10 +5988,10 @@ var require_ConversationMessages = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.ConversationMessageToJSON),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.ConversationMessageToJSON),
         "indices": value.indices,
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.ConversationMessagesToJSON = ConversationMessagesToJSON3;
@@ -6035,7 +6005,7 @@ var require_ConversationSummarizeInput = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ConversationSummarizeInputToJSON = exports.ConversationSummarizeInputFromJSONTyped = exports.ConversationSummarizeInputFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ConversationSummarizeInputFromJSON2(json) {
       return ConversationSummarizeInputFromJSONTyped(json, false);
     }
@@ -6045,8 +6015,8 @@ var require_ConversationSummarizeInput = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "messages": !(0, runtime_1.exists)(json, "messages") ? void 0 : (0, _1.FlattenedConversationMessagesFromJSON)(json["messages"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "messages": !(0, runtime_1.exists)(json, "messages") ? void 0 : (0, index_1.FlattenedConversationMessagesFromJSON)(json["messages"])
       };
     }
     exports.ConversationSummarizeInputFromJSONTyped = ConversationSummarizeInputFromJSONTyped;
@@ -6058,8 +6028,8 @@ var require_ConversationSummarizeInput = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "messages": (0, _1.FlattenedConversationMessagesToJSON)(value.messages)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "messages": (0, index_1.FlattenedConversationMessagesToJSON)(value.messages)
       };
     }
     exports.ConversationSummarizeInputToJSON = ConversationSummarizeInputToJSON2;
@@ -6073,7 +6043,7 @@ var require_ConversationSummarizeOutput = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ConversationSummarizeOutputToJSON = exports.ConversationSummarizeOutputFromJSONTyped = exports.ConversationSummarizeOutputFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ConversationSummarizeOutputFromJSON2(json) {
       return ConversationSummarizeOutputFromJSONTyped2(json, false);
     }
@@ -6083,9 +6053,9 @@ var require_ConversationSummarizeOutput = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "conversation": (0, _1.ReferencedConversationFromJSON)(json["conversation"]),
-        "annotation": (0, _1.ReferencedAnnotationFromJSON)(json["annotation"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "conversation": (0, index_1.ReferencedConversationFromJSON)(json["conversation"]),
+        "annotation": (0, index_1.ReferencedAnnotationFromJSON)(json["annotation"])
       };
     }
     exports.ConversationSummarizeOutputFromJSONTyped = ConversationSummarizeOutputFromJSONTyped2;
@@ -6097,9 +6067,9 @@ var require_ConversationSummarizeOutput = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "conversation": (0, _1.ReferencedConversationToJSON)(value.conversation),
-        "annotation": (0, _1.ReferencedAnnotationToJSON)(value.annotation)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "conversation": (0, index_1.ReferencedConversationToJSON)(value.conversation),
+        "annotation": (0, index_1.ReferencedAnnotationToJSON)(value.annotation)
       };
     }
     exports.ConversationSummarizeOutputToJSON = ConversationSummarizeOutputToJSON2;
@@ -6138,7 +6108,7 @@ var require_Conversations = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ConversationsToJSON = exports.ConversationsFromJSONTyped = exports.ConversationsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ConversationsFromJSON4(json) {
       return ConversationsFromJSONTyped6(json, false);
     }
@@ -6148,10 +6118,10 @@ var require_Conversations = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.ConversationFromJSON),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.ConversationFromJSON),
         "indices": !(0, runtime_1.exists)(json, "indices") ? void 0 : json["indices"],
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.ConversationsFromJSONTyped = ConversationsFromJSONTyped6;
@@ -6163,10 +6133,10 @@ var require_Conversations = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.ConversationToJSON),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.ConversationToJSON),
         "indices": value.indices,
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.ConversationsToJSON = ConversationsToJSON6;
@@ -6180,7 +6150,7 @@ var require_ConversationsCreateFromAssetOutput = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ConversationsCreateFromAssetOutputToJSON = exports.ConversationsCreateFromAssetOutputFromJSONTyped = exports.ConversationsCreateFromAssetOutputFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ConversationsCreateFromAssetOutputFromJSON2(json) {
       return ConversationsCreateFromAssetOutputFromJSONTyped2(json, false);
     }
@@ -6190,8 +6160,8 @@ var require_ConversationsCreateFromAssetOutput = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "conversation": (0, _1.ReferencedConversationFromJSON)(json["conversation"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "conversation": (0, index_1.ReferencedConversationFromJSON)(json["conversation"])
       };
     }
     exports.ConversationsCreateFromAssetOutputFromJSONTyped = ConversationsCreateFromAssetOutputFromJSONTyped2;
@@ -6203,8 +6173,8 @@ var require_ConversationsCreateFromAssetOutput = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "conversation": (0, _1.ReferencedConversationToJSON)(value.conversation)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "conversation": (0, index_1.ReferencedConversationToJSON)(value.conversation)
       };
     }
     exports.ConversationsCreateFromAssetOutputToJSON = ConversationsCreateFromAssetOutputToJSON2;
@@ -6218,7 +6188,7 @@ var require_DiscoveredAsset = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.DiscoveredAssetToJSON = exports.DiscoveredAssetFromJSONTyped = exports.DiscoveredAssetFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function DiscoveredAssetFromJSON3(json) {
       return DiscoveredAssetFromJSONTyped4(json, false);
     }
@@ -6228,12 +6198,12 @@ var require_DiscoveredAsset = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "file": !(0, runtime_1.exists)(json, "file") ? void 0 : (0, _1.SeededFileFromJSON)(json["file"]),
-        "fragment": !(0, runtime_1.exists)(json, "fragment") ? void 0 : (0, _1.SeededFragmentFromJSON)(json["fragment"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "file": !(0, runtime_1.exists)(json, "file") ? void 0 : (0, index_1.SeededFileFromJSON)(json["file"]),
+        "fragment": !(0, runtime_1.exists)(json, "fragment") ? void 0 : (0, index_1.SeededFragmentFromJSON)(json["fragment"]),
         "directory": !(0, runtime_1.exists)(json, "directory") ? void 0 : json["directory"],
-        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, _1.SeededAssetMetadataFromJSON)(json["metadata"]),
-        "filters": !(0, runtime_1.exists)(json, "filters") ? void 0 : (0, _1.TLPDirectedDiscoveryFiltersFromJSON)(json["filters"])
+        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, index_1.SeededAssetMetadataFromJSON)(json["metadata"]),
+        "filters": !(0, runtime_1.exists)(json, "filters") ? void 0 : (0, index_1.TLPDirectedDiscoveryFiltersFromJSON)(json["filters"])
       };
     }
     exports.DiscoveredAssetFromJSONTyped = DiscoveredAssetFromJSONTyped4;
@@ -6245,12 +6215,12 @@ var require_DiscoveredAsset = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "file": (0, _1.SeededFileToJSON)(value.file),
-        "fragment": (0, _1.SeededFragmentToJSON)(value.fragment),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "file": (0, index_1.SeededFileToJSON)(value.file),
+        "fragment": (0, index_1.SeededFragmentToJSON)(value.fragment),
         "directory": value.directory,
-        "metadata": (0, _1.SeededAssetMetadataToJSON)(value.metadata),
-        "filters": (0, _1.TLPDirectedDiscoveryFiltersToJSON)(value.filters)
+        "metadata": (0, index_1.SeededAssetMetadataToJSON)(value.metadata),
+        "filters": (0, index_1.TLPDirectedDiscoveryFiltersToJSON)(value.filters)
       };
     }
     exports.DiscoveredAssetToJSON = DiscoveredAssetToJSON3;
@@ -6264,7 +6234,7 @@ var require_DiscoveredAssets = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.DiscoveredAssetsToJSON = exports.DiscoveredAssetsFromJSONTyped = exports.DiscoveredAssetsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function DiscoveredAssetsFromJSON3(json) {
       return DiscoveredAssetsFromJSONTyped4(json, false);
     }
@@ -6274,9 +6244,9 @@ var require_DiscoveredAssets = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "application": json["application"],
-        "iterable": json["iterable"].map(_1.DiscoveredAssetFromJSON)
+        "iterable": json["iterable"].map(index_1.DiscoveredAssetFromJSON)
       };
     }
     exports.DiscoveredAssetsFromJSONTyped = DiscoveredAssetsFromJSONTyped4;
@@ -6288,9 +6258,9 @@ var require_DiscoveredAssets = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "application": value.application,
-        "iterable": value.iterable.map(_1.DiscoveredAssetToJSON)
+        "iterable": value.iterable.map(index_1.DiscoveredAssetToJSON)
       };
     }
     exports.DiscoveredAssetsToJSON = DiscoveredAssetsToJSON4;
@@ -6304,7 +6274,7 @@ var require_DiscoveredHtmlWebpage = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.DiscoveredHtmlWebpageToJSON = exports.DiscoveredHtmlWebpageFromJSONTyped = exports.DiscoveredHtmlWebpageFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function DiscoveredHtmlWebpageFromJSON3(json) {
       return DiscoveredHtmlWebpageFromJSONTyped4(json, false);
     }
@@ -6314,8 +6284,8 @@ var require_DiscoveredHtmlWebpage = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "assets": (0, _1.DiscoveredAssetsFromJSON)(json["assets"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "assets": (0, index_1.DiscoveredAssetsFromJSON)(json["assets"]),
         "url": json["url"]
       };
     }
@@ -6328,8 +6298,8 @@ var require_DiscoveredHtmlWebpage = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "assets": (0, _1.DiscoveredAssetsToJSON)(value.assets),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "assets": (0, index_1.DiscoveredAssetsToJSON)(value.assets),
         "url": value.url
       };
     }
@@ -6344,7 +6314,7 @@ var require_DiscoveredHtmlWebpages = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.DiscoveredHtmlWebpagesToJSON = exports.DiscoveredHtmlWebpagesFromJSONTyped = exports.DiscoveredHtmlWebpagesFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function DiscoveredHtmlWebpagesFromJSON2(json) {
       return DiscoveredHtmlWebpagesFromJSONTyped2(json, false);
     }
@@ -6354,8 +6324,8 @@ var require_DiscoveredHtmlWebpages = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.DiscoveredHtmlWebpageFromJSON),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.DiscoveredHtmlWebpageFromJSON),
         "application": json["application"]
       };
     }
@@ -6368,8 +6338,8 @@ var require_DiscoveredHtmlWebpages = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.DiscoveredHtmlWebpageToJSON),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.DiscoveredHtmlWebpageToJSON),
         "application": value.application
       };
     }
@@ -6422,7 +6392,7 @@ var require_DiscoveredRelatedTags = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.DiscoveredRelatedTagsToJSON = exports.DiscoveredRelatedTagsFromJSONTyped = exports.DiscoveredRelatedTagsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function DiscoveredRelatedTagsFromJSON2(json) {
       return DiscoveredRelatedTagsFromJSONTyped2(json, false);
     }
@@ -6432,9 +6402,9 @@ var require_DiscoveredRelatedTags = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "application": json["application"],
-        "iterable": json["iterable"].map(_1.DiscoveredRelatedTagFromJSON)
+        "iterable": json["iterable"].map(index_1.DiscoveredRelatedTagFromJSON)
       };
     }
     exports.DiscoveredRelatedTagsFromJSONTyped = DiscoveredRelatedTagsFromJSONTyped2;
@@ -6446,9 +6416,9 @@ var require_DiscoveredRelatedTags = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "application": value.application,
-        "iterable": value.iterable.map(_1.DiscoveredRelatedTagToJSON)
+        "iterable": value.iterable.map(index_1.DiscoveredRelatedTagToJSON)
       };
     }
     exports.DiscoveredRelatedTagsToJSON = DiscoveredRelatedTagsToJSON2;
@@ -6462,7 +6432,7 @@ var require_DiscoveredSensitive = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.DiscoveredSensitiveToJSON = exports.DiscoveredSensitiveFromJSONTyped = exports.DiscoveredSensitiveFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function DiscoveredSensitiveFromJSON3(json) {
       return DiscoveredSensitiveFromJSONTyped4(json, false);
     }
@@ -6472,8 +6442,8 @@ var require_DiscoveredSensitive = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "seed": (0, _1.SeededSensitiveFromJSON)(json["seed"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "seed": (0, index_1.SeededSensitiveFromJSON)(json["seed"]),
         "text": json["text"]
       };
     }
@@ -6486,8 +6456,8 @@ var require_DiscoveredSensitive = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "seed": (0, _1.SeededSensitiveToJSON)(value.seed),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "seed": (0, index_1.SeededSensitiveToJSON)(value.seed),
         "text": value.text
       };
     }
@@ -6502,7 +6472,7 @@ var require_DiscoveredSensitives = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.DiscoveredSensitivesToJSON = exports.DiscoveredSensitivesFromJSONTyped = exports.DiscoveredSensitivesFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function DiscoveredSensitivesFromJSON2(json) {
       return DiscoveredSensitivesFromJSONTyped2(json, false);
     }
@@ -6512,8 +6482,8 @@ var require_DiscoveredSensitives = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.DiscoveredSensitiveFromJSON),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.DiscoveredSensitiveFromJSON),
         "application": json["application"]
       };
     }
@@ -6526,8 +6496,8 @@ var require_DiscoveredSensitives = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.DiscoveredSensitiveToJSON),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.DiscoveredSensitiveToJSON),
         "application": value.application
       };
     }
@@ -6542,7 +6512,7 @@ var require_Distribution = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.DistributionToJSON = exports.DistributionFromJSONTyped = exports.DistributionFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function DistributionFromJSON4(json) {
       return DistributionFromJSONTyped6(json, false);
     }
@@ -6552,14 +6522,14 @@ var require_Distribution = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "share": (0, _1.FlattenedShareFromJSON)(json["share"]),
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
-        "mailgun": !(0, runtime_1.exists)(json, "mailgun") ? void 0 : (0, _1.MailgunDistributionFromJSON)(json["mailgun"]),
-        "github": !(0, runtime_1.exists)(json, "github") ? void 0 : (0, _1.GitHubDistributionFromJSON)(json["github"])
+        "share": (0, index_1.FlattenedShareFromJSON)(json["share"]),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
+        "mailgun": !(0, runtime_1.exists)(json, "mailgun") ? void 0 : (0, index_1.MailgunDistributionFromJSON)(json["mailgun"]),
+        "github": !(0, runtime_1.exists)(json, "github") ? void 0 : (0, index_1.GitHubDistributionFromJSON)(json["github"])
       };
     }
     exports.DistributionFromJSONTyped = DistributionFromJSONTyped6;
@@ -6571,14 +6541,14 @@ var require_Distribution = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "share": (0, _1.FlattenedShareToJSON)(value.share),
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
-        "mailgun": (0, _1.MailgunDistributionToJSON)(value.mailgun),
-        "github": (0, _1.GitHubDistributionToJSON)(value.github)
+        "share": (0, index_1.FlattenedShareToJSON)(value.share),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
+        "mailgun": (0, index_1.MailgunDistributionToJSON)(value.mailgun),
+        "github": (0, index_1.GitHubDistributionToJSON)(value.github)
       };
     }
     exports.DistributionToJSON = DistributionToJSON5;
@@ -6592,7 +6562,7 @@ var require_Distributions = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.DistributionsToJSON = exports.DistributionsFromJSONTyped = exports.DistributionsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function DistributionsFromJSON4(json) {
       return DistributionsFromJSONTyped6(json, false);
     }
@@ -6602,8 +6572,8 @@ var require_Distributions = __commonJS({
         return json;
       }
       return {
-        "iterable": json["iterable"].map(_1.DistributionFromJSON),
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"])
+        "iterable": json["iterable"].map(index_1.DistributionFromJSON),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"])
       };
     }
     exports.DistributionsFromJSONTyped = DistributionsFromJSONTyped6;
@@ -6615,8 +6585,8 @@ var require_Distributions = __commonJS({
         return null;
       }
       return {
-        "iterable": value.iterable.map(_1.DistributionToJSON),
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema)
+        "iterable": value.iterable.map(index_1.DistributionToJSON),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema)
       };
     }
     exports.DistributionsToJSON = DistributionsToJSON5;
@@ -6629,7 +6599,7 @@ var require_Edges = __commonJS({
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.EdgesToJSON = exports.EdgesFromJSONTyped = exports.EdgesFromJSON = void 0;
-    var _1 = require_models();
+    var index_1 = require_models();
     function EdgesFromJSON4(json) {
       return EdgesFromJSONTyped6(json, false);
     }
@@ -6639,7 +6609,7 @@ var require_Edges = __commonJS({
         return json;
       }
       return {
-        "iterable": json["iterable"].map(_1.NodeFromJSON)
+        "iterable": json["iterable"].map(index_1.NodeFromJSON)
       };
     }
     exports.EdgesFromJSONTyped = EdgesFromJSONTyped6;
@@ -6651,7 +6621,7 @@ var require_Edges = __commonJS({
         return null;
       }
       return {
-        "iterable": value.iterable.map(_1.NodeToJSON)
+        "iterable": value.iterable.map(index_1.NodeToJSON)
       };
     }
     exports.EdgesToJSON = EdgesToJSON4;
@@ -6664,21 +6634,21 @@ var require_EmbeddedModelSchema = __commonJS({
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.EmbeddedModelSchemaToJSON = exports.EmbeddedModelSchemaFromJSONTyped = exports.EmbeddedModelSchemaFromJSON = void 0;
-    var _1 = require_models();
+    var index_1 = require_models();
     function EmbeddedModelSchemaFromJSON6(json) {
-      return EmbeddedModelSchemaFromJSONTyped836(json, false);
+      return EmbeddedModelSchemaFromJSONTyped846(json, false);
     }
     exports.EmbeddedModelSchemaFromJSON = EmbeddedModelSchemaFromJSON6;
-    function EmbeddedModelSchemaFromJSONTyped836(json, ignoreDiscriminator) {
+    function EmbeddedModelSchemaFromJSONTyped846(json, ignoreDiscriminator) {
       if (json === void 0 || json === null) {
         return json;
       }
       return {
         "migration": json["migration"],
-        "semantic": (0, _1.EmbeddedModelSchemaSemanticVersionEnumFromJSON)(json["semantic"])
+        "semantic": (0, index_1.EmbeddedModelSchemaSemanticVersionEnumFromJSON)(json["semantic"])
       };
     }
-    exports.EmbeddedModelSchemaFromJSONTyped = EmbeddedModelSchemaFromJSONTyped836;
+    exports.EmbeddedModelSchemaFromJSONTyped = EmbeddedModelSchemaFromJSONTyped846;
     function EmbeddedModelSchemaToJSON4(value) {
       if (value === void 0) {
         return void 0;
@@ -6688,7 +6658,7 @@ var require_EmbeddedModelSchema = __commonJS({
       }
       return {
         "migration": value.migration,
-        "semantic": (0, _1.EmbeddedModelSchemaSemanticVersionEnumToJSON)(value.semantic)
+        "semantic": (0, index_1.EmbeddedModelSchemaSemanticVersionEnumToJSON)(value.semantic)
       };
     }
     exports.EmbeddedModelSchemaToJSON = EmbeddedModelSchemaToJSON4;
@@ -6727,7 +6697,7 @@ var require_Embedding = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.EmbeddingToJSON = exports.EmbeddingFromJSONTyped = exports.EmbeddingFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function EmbeddingFromJSON4(json) {
       return EmbeddingFromJSONTyped7(json, false);
     }
@@ -6738,10 +6708,10 @@ var require_Embedding = __commonJS({
       }
       return {
         "raw": json["raw"],
-        "model": (0, _1.ModelFromJSON)(json["model"]),
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"])
+        "model": (0, index_1.ModelFromJSON)(json["model"]),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"])
       };
     }
     exports.EmbeddingFromJSONTyped = EmbeddingFromJSONTyped7;
@@ -6754,10 +6724,10 @@ var require_Embedding = __commonJS({
       }
       return {
         "raw": value.raw,
-        "model": (0, _1.ModelToJSON)(value.model),
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted)
+        "model": (0, index_1.ModelToJSON)(value.model),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted)
       };
     }
     exports.EmbeddingToJSON = EmbeddingToJSON4;
@@ -6770,7 +6740,7 @@ var require_Embeddings = __commonJS({
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.EmbeddingsToJSON = exports.EmbeddingsFromJSONTyped = exports.EmbeddingsFromJSON = void 0;
-    var _1 = require_models();
+    var index_1 = require_models();
     function EmbeddingsFromJSON4(json) {
       return EmbeddingsFromJSONTyped6(json, false);
     }
@@ -6780,7 +6750,7 @@ var require_Embeddings = __commonJS({
         return json;
       }
       return {
-        "iterable": json["iterable"].map(_1.EmbeddingFromJSON)
+        "iterable": json["iterable"].map(index_1.EmbeddingFromJSON)
       };
     }
     exports.EmbeddingsFromJSONTyped = EmbeddingsFromJSONTyped6;
@@ -6792,10 +6762,88 @@ var require_Embeddings = __commonJS({
         return null;
       }
       return {
-        "iterable": value.iterable.map(_1.EmbeddingToJSON)
+        "iterable": value.iterable.map(index_1.EmbeddingToJSON)
       };
     }
     exports.EmbeddingsToJSON = EmbeddingsToJSON4;
+  }
+});
+
+// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ExistentMetadata.js
+var require_ExistentMetadata = __commonJS({
+  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ExistentMetadata.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.ExistentMetadataToJSON = exports.ExistentMetadataFromJSONTyped = exports.ExistentMetadataFromJSON = void 0;
+    var runtime_1 = require_runtime();
+    var index_1 = require_models();
+    function ExistentMetadataFromJSON3(json) {
+      return ExistentMetadataFromJSONTyped(json, false);
+    }
+    exports.ExistentMetadataFromJSON = ExistentMetadataFromJSON3;
+    function ExistentMetadataFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "value": json["value"]
+      };
+    }
+    exports.ExistentMetadataFromJSONTyped = ExistentMetadataFromJSONTyped;
+    function ExistentMetadataToJSON2(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "value": value.value
+      };
+    }
+    exports.ExistentMetadataToJSON = ExistentMetadataToJSON2;
+  }
+});
+
+// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ExistingMetadata.js
+var require_ExistingMetadata = __commonJS({
+  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ExistingMetadata.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.ExistingMetadataToJSON = exports.ExistingMetadataFromJSONTyped = exports.ExistingMetadataFromJSON = void 0;
+    var runtime_1 = require_runtime();
+    var index_1 = require_models();
+    function ExistingMetadataFromJSON2(json) {
+      return ExistingMetadataFromJSONTyped(json, false);
+    }
+    exports.ExistingMetadataFromJSON = ExistingMetadataFromJSON2;
+    function ExistingMetadataFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "website": !(0, runtime_1.exists)(json, "website") ? void 0 : (0, index_1.ReferencedWebsiteFromJSON)(json["website"]),
+        "tag": !(0, runtime_1.exists)(json, "tag") ? void 0 : (0, index_1.ReferencedTagFromJSON)(json["tag"])
+      };
+    }
+    exports.ExistingMetadataFromJSONTyped = ExistingMetadataFromJSONTyped;
+    function ExistingMetadataToJSON3(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "website": (0, index_1.ReferencedWebsiteToJSON)(value.website),
+        "tag": (0, index_1.ReferencedTagToJSON)(value.tag)
+      };
+    }
+    exports.ExistingMetadataToJSON = ExistingMetadataToJSON3;
   }
 });
 
@@ -6805,7 +6853,7 @@ var require_ExportedAsset = __commonJS({
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ExportedAssetToJSON = exports.ExportedAssetFromJSONTyped = exports.ExportedAssetFromJSON = void 0;
-    var _1 = require_models();
+    var index_1 = require_models();
     function ExportedAssetFromJSON2(json) {
       return ExportedAssetFromJSONTyped2(json, false);
     }
@@ -6817,8 +6865,8 @@ var require_ExportedAsset = __commonJS({
       return {
         "name": json["name"],
         "description": json["description"],
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "raw": (0, _1.FileFormatFromJSON)(json["raw"])
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "raw": (0, index_1.FileFormatFromJSON)(json["raw"])
       };
     }
     exports.ExportedAssetFromJSONTyped = ExportedAssetFromJSONTyped2;
@@ -6832,8 +6880,8 @@ var require_ExportedAsset = __commonJS({
       return {
         "name": value.name,
         "description": value.description,
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "raw": (0, _1.FileFormatToJSON)(value.raw)
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "raw": (0, index_1.FileFormatToJSON)(value.raw)
       };
     }
     exports.ExportedAssetToJSON = ExportedAssetToJSON2;
@@ -6847,7 +6895,7 @@ var require_ExportedDatabase = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ExportedDatabaseToJSON = exports.ExportedDatabaseFromJSONTyped = exports.ExportedDatabaseFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ExportedDatabaseFromJSON2(json) {
       return ExportedDatabaseFromJSONTyped(json, false);
     }
@@ -6872,9 +6920,9 @@ var require_ExportedDatabase = __commonJS({
         "sensitives": json["sensitives"],
         "tags": json["tags"],
         "websites": json["websites"],
-        "values": (0, _1.ExportedDatabaseFormatsFromJSON)(json["values"]),
+        "values": (0, index_1.ExportedDatabaseFormatsFromJSON)(json["values"]),
         "version": json["version"],
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "relationships": !(0, runtime_1.exists)(json, "relationships") ? void 0 : json["relationships"],
         "activities": !(0, runtime_1.exists)(json, "activities") ? void 0 : json["activities"],
         "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : json["annotations"],
@@ -6883,7 +6931,7 @@ var require_ExportedDatabase = __commonJS({
         "anchorPoints": !(0, runtime_1.exists)(json, "anchorPoints") ? void 0 : json["anchorPoints"],
         "conversations": !(0, runtime_1.exists)(json, "conversations") ? void 0 : json["conversations"],
         "conversationMessages": !(0, runtime_1.exists)(json, "conversationMessages") ? void 0 : json["conversationMessages"],
-        "messageValues": !(0, runtime_1.exists)(json, "messageValues") ? void 0 : (0, _1.ExportedDatabaseFormatsFromJSON)(json["messageValues"])
+        "messageValues": !(0, runtime_1.exists)(json, "messageValues") ? void 0 : (0, index_1.ExportedDatabaseFormatsFromJSON)(json["messageValues"])
       };
     }
     exports.ExportedDatabaseFromJSONTyped = ExportedDatabaseFromJSONTyped;
@@ -6910,9 +6958,9 @@ var require_ExportedDatabase = __commonJS({
         "sensitives": value.sensitives,
         "tags": value.tags,
         "websites": value.websites,
-        "values": (0, _1.ExportedDatabaseFormatsToJSON)(value.values),
+        "values": (0, index_1.ExportedDatabaseFormatsToJSON)(value.values),
         "version": value.version,
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "relationships": value.relationships,
         "activities": value.activities,
         "annotations": value.annotations,
@@ -6921,7 +6969,7 @@ var require_ExportedDatabase = __commonJS({
         "anchorPoints": value.anchorPoints,
         "conversations": value.conversations,
         "conversationMessages": value.conversationMessages,
-        "messageValues": (0, _1.ExportedDatabaseFormatsToJSON)(value.messageValues)
+        "messageValues": (0, index_1.ExportedDatabaseFormatsToJSON)(value.messageValues)
       };
     }
     exports.ExportedDatabaseToJSON = ExportedDatabaseToJSON2;
@@ -6935,7 +6983,7 @@ var require_ExportedDatabaseFormat = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ExportedDatabaseFormatToJSON = exports.ExportedDatabaseFormatFromJSONTyped = exports.ExportedDatabaseFormatFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ExportedDatabaseFormatFromJSON3(json) {
       return ExportedDatabaseFormatFromJSONTyped3(json, false);
     }
@@ -6945,7 +6993,7 @@ var require_ExportedDatabaseFormat = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
         "raw": json["raw"]
       };
@@ -6959,7 +7007,7 @@ var require_ExportedDatabaseFormat = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
         "raw": value.raw
       };
@@ -6975,7 +7023,7 @@ var require_ExportedDatabaseFormats = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ExportedDatabaseFormatsToJSON = exports.ExportedDatabaseFormatsFromJSONTyped = exports.ExportedDatabaseFormatsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ExportedDatabaseFormatsFromJSON3(json) {
       return ExportedDatabaseFormatsFromJSONTyped3(json, false);
     }
@@ -6985,8 +7033,8 @@ var require_ExportedDatabaseFormats = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.ExportedDatabaseFormatFromJSON)
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.ExportedDatabaseFormatFromJSON)
       };
     }
     exports.ExportedDatabaseFormatsFromJSONTyped = ExportedDatabaseFormatsFromJSONTyped3;
@@ -6998,8 +7046,8 @@ var require_ExportedDatabaseFormats = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.ExportedDatabaseFormatToJSON)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.ExportedDatabaseFormatToJSON)
       };
     }
     exports.ExportedDatabaseFormatsToJSON = ExportedDatabaseFormatsToJSON3;
@@ -7035,6 +7083,8 @@ var require_ExternalMLProviderEnum = __commonJS({
       ExternalMLProviderEnum7["Blickdl"] = "BLICKDL";
       ExternalMLProviderEnum7["HongKongBaptistUniversity"] = "HONG_KONG_BAPTIST_UNIVERSITY";
       ExternalMLProviderEnum7["Bigcode"] = "BIGCODE";
+      ExternalMLProviderEnum7["Jina"] = "JINA";
+      ExternalMLProviderEnum7["Pieces"] = "PIECES";
     })(ExternalMLProviderEnum6 || (exports.ExternalMLProviderEnum = ExternalMLProviderEnum6 = {}));
     function ExternalMLProviderEnumFromJSON4(json) {
       return ExternalMLProviderEnumFromJSONTyped8(json, false);
@@ -7058,7 +7108,7 @@ var require_ExternalProvider = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ExternalProviderToJSON = exports.ExternalProviderFromJSONTyped = exports.ExternalProviderFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ExternalProviderFromJSON4(json) {
       return ExternalProviderFromJSONTyped6(json, false);
     }
@@ -7068,14 +7118,14 @@ var require_ExternalProvider = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "type": (0, _1.ExternalProviderTypeEnumFromJSON)(json["type"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "type": (0, index_1.ExternalProviderTypeEnumFromJSON)(json["type"]),
         "userId": json["user_id"],
         "accessToken": !(0, runtime_1.exists)(json, "access_token") ? void 0 : json["access_token"],
         "expiresIn": !(0, runtime_1.exists)(json, "expires_in") ? void 0 : json["expires_in"],
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "profileData": !(0, runtime_1.exists)(json, "profileData") ? void 0 : (0, _1.ExternalProviderProfileDataFromJSON)(json["profileData"]),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "profileData": !(0, runtime_1.exists)(json, "profileData") ? void 0 : (0, index_1.ExternalProviderProfileDataFromJSON)(json["profileData"]),
         "connection": !(0, runtime_1.exists)(json, "connection") ? void 0 : json["connection"],
         "isSocial": !(0, runtime_1.exists)(json, "isSocial") ? void 0 : json["isSocial"]
       };
@@ -7089,14 +7139,14 @@ var require_ExternalProvider = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "type": (0, _1.ExternalProviderTypeEnumToJSON)(value.type),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "type": (0, index_1.ExternalProviderTypeEnumToJSON)(value.type),
         "user_id": value.userId,
         "access_token": value.accessToken,
         "expires_in": value.expiresIn,
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "profileData": (0, _1.ExternalProviderProfileDataToJSON)(value.profileData),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "profileData": (0, index_1.ExternalProviderProfileDataToJSON)(value.profileData),
         "connection": value.connection,
         "isSocial": value.isSocial
       };
@@ -7253,7 +7303,7 @@ var require_ExternalProviders = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ExternalProvidersToJSON = exports.ExternalProvidersFromJSONTyped = exports.ExternalProvidersFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ExternalProvidersFromJSON4(json) {
       return ExternalProvidersFromJSONTyped6(json, false);
     }
@@ -7263,8 +7313,8 @@ var require_ExternalProviders = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.ExternalProviderFromJSON)
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.ExternalProviderFromJSON)
       };
     }
     exports.ExternalProvidersFromJSONTyped = ExternalProvidersFromJSONTyped6;
@@ -7276,8 +7326,8 @@ var require_ExternalProviders = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.ExternalProviderToJSON)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.ExternalProviderToJSON)
       };
     }
     exports.ExternalProvidersToJSON = ExternalProvidersToJSON4;
@@ -7327,7 +7377,7 @@ var require_FileFormat = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FileFormatToJSON = exports.FileFormatFromJSONTyped = exports.FileFormatFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FileFormatFromJSON4(json) {
       return FileFormatFromJSONTyped11(json, false);
     }
@@ -7337,9 +7387,9 @@ var require_FileFormat = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "bytes": !(0, runtime_1.exists)(json, "bytes") ? void 0 : (0, _1.TransferableBytesFromJSON)(json["bytes"]),
-        "string": !(0, runtime_1.exists)(json, "string") ? void 0 : (0, _1.TransferableStringFromJSON)(json["string"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "bytes": !(0, runtime_1.exists)(json, "bytes") ? void 0 : (0, index_1.TransferableBytesFromJSON)(json["bytes"]),
+        "string": !(0, runtime_1.exists)(json, "string") ? void 0 : (0, index_1.TransferableStringFromJSON)(json["string"])
       };
     }
     exports.FileFormatFromJSONTyped = FileFormatFromJSONTyped11;
@@ -7351,9 +7401,9 @@ var require_FileFormat = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "bytes": (0, _1.TransferableBytesToJSON)(value.bytes),
-        "string": (0, _1.TransferableStringToJSON)(value.string)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "bytes": (0, index_1.TransferableBytesToJSON)(value.bytes),
+        "string": (0, index_1.TransferableStringToJSON)(value.string)
       };
     }
     exports.FileFormatToJSON = FileFormatToJSON4;
@@ -7367,7 +7417,7 @@ var require_FileMetadata = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FileMetadataToJSON = exports.FileMetadataFromJSONTyped = exports.FileMetadataFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FileMetadataFromJSON4(json) {
       return FileMetadataFromJSONTyped6(json, false);
     }
@@ -7377,9 +7427,9 @@ var require_FileMetadata = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "name": !(0, runtime_1.exists)(json, "name") ? void 0 : json["name"],
-        "ext": !(0, runtime_1.exists)(json, "ext") ? void 0 : (0, _1.ClassificationSpecificEnumFromJSON)(json["ext"]),
+        "ext": !(0, runtime_1.exists)(json, "ext") ? void 0 : (0, index_1.ClassificationSpecificEnumFromJSON)(json["ext"]),
         "size": !(0, runtime_1.exists)(json, "size") ? void 0 : json["size"]
       };
     }
@@ -7392,9 +7442,9 @@ var require_FileMetadata = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "name": value.name,
-        "ext": (0, _1.ClassificationSpecificEnumToJSON)(value.ext),
+        "ext": (0, index_1.ClassificationSpecificEnumToJSON)(value.ext),
         "size": value.size
       };
     }
@@ -7409,7 +7459,7 @@ var require_FilePickerInput = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FilePickerInputToJSON = exports.FilePickerInputFromJSONTyped = exports.FilePickerInputFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FilePickerInputFromJSON2(json) {
       return FilePickerInputFromJSONTyped(json, false);
     }
@@ -7419,7 +7469,7 @@ var require_FilePickerInput = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "allowedExtensions": !(0, runtime_1.exists)(json, "allowedExtensions") ? void 0 : json["allowedExtensions"]
       };
     }
@@ -7432,7 +7482,7 @@ var require_FilePickerInput = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "allowedExtensions": value.allowedExtensions
       };
     }
@@ -7473,7 +7523,7 @@ var require_FlattenedActivities = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedActivitiesToJSON = exports.FlattenedActivitiesFromJSONTyped = exports.FlattenedActivitiesFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedActivitiesFromJSON4(json) {
       return FlattenedActivitiesFromJSONTyped9(json, false);
     }
@@ -7483,8 +7533,8 @@ var require_FlattenedActivities = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.ReferencedActivityFromJSON)
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.ReferencedActivityFromJSON)
       };
     }
     exports.FlattenedActivitiesFromJSONTyped = FlattenedActivitiesFromJSONTyped9;
@@ -7496,8 +7546,8 @@ var require_FlattenedActivities = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.ReferencedActivityToJSON)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.ReferencedActivityToJSON)
       };
     }
     exports.FlattenedActivitiesToJSON = FlattenedActivitiesToJSON5;
@@ -7569,7 +7619,7 @@ var require_FlattenedAnalysis = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedAnalysisToJSON = exports.FlattenedAnalysisFromJSONTyped = exports.FlattenedAnalysisFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedAnalysisFromJSON4(json) {
       return FlattenedAnalysisFromJSONTyped6(json, false);
     }
@@ -7579,11 +7629,11 @@ var require_FlattenedAnalysis = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "code": !(0, runtime_1.exists)(json, "code") ? void 0 : (0, _1.CodeAnalysisFromJSON)(json["code"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "code": !(0, runtime_1.exists)(json, "code") ? void 0 : (0, index_1.CodeAnalysisFromJSON)(json["code"]),
         "id": json["id"],
         "format": json["format"],
-        "image": !(0, runtime_1.exists)(json, "image") ? void 0 : (0, _1.FlattenedImageAnalysisFromJSON)(json["image"])
+        "image": !(0, runtime_1.exists)(json, "image") ? void 0 : (0, index_1.FlattenedImageAnalysisFromJSON)(json["image"])
       };
     }
     exports.FlattenedAnalysisFromJSONTyped = FlattenedAnalysisFromJSONTyped6;
@@ -7595,11 +7645,11 @@ var require_FlattenedAnalysis = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "code": (0, _1.CodeAnalysisToJSON)(value.code),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "code": (0, index_1.CodeAnalysisToJSON)(value.code),
         "id": value.id,
         "format": value.format,
-        "image": (0, _1.FlattenedImageAnalysisToJSON)(value.image)
+        "image": (0, index_1.FlattenedImageAnalysisToJSON)(value.image)
       };
     }
     exports.FlattenedAnalysisToJSON = FlattenedAnalysisToJSON4;
@@ -7613,7 +7663,7 @@ var require_FlattenedAnchor = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedAnchorToJSON = exports.FlattenedAnchorFromJSONTyped = exports.FlattenedAnchorFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedAnchorFromJSON4(json) {
       return FlattenedAnchorFromJSONTyped6(json, false);
     }
@@ -7623,19 +7673,19 @@ var require_FlattenedAnchor = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "type": (0, _1.AnchorTypeEnumFromJSON)(json["type"]),
+        "type": (0, index_1.AnchorTypeEnumFromJSON)(json["type"]),
         "watch": !(0, runtime_1.exists)(json, "watch") ? void 0 : json["watch"],
-        "points": (0, _1.FlattenedAnchorPointsFromJSON)(json["points"]),
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
-        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, _1.FlattenedAssetsFromJSON)(json["assets"]),
+        "points": (0, index_1.FlattenedAnchorPointsFromJSON)(json["points"]),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
+        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, index_1.FlattenedAssetsFromJSON)(json["assets"]),
         "name": !(0, runtime_1.exists)(json, "name") ? void 0 : json["name"],
-        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : (0, _1.FlattenedAnnotationsFromJSON)(json["annotations"]),
-        "conversations": !(0, runtime_1.exists)(json, "conversations") ? void 0 : (0, _1.FlattenedConversationsFromJSON)(json["conversations"]),
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : (0, index_1.FlattenedAnnotationsFromJSON)(json["annotations"]),
+        "conversations": !(0, runtime_1.exists)(json, "conversations") ? void 0 : (0, index_1.FlattenedConversationsFromJSON)(json["conversations"]),
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.FlattenedAnchorFromJSONTyped = FlattenedAnchorFromJSONTyped6;
@@ -7647,19 +7697,19 @@ var require_FlattenedAnchor = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "type": (0, _1.AnchorTypeEnumToJSON)(value.type),
+        "type": (0, index_1.AnchorTypeEnumToJSON)(value.type),
         "watch": value.watch,
-        "points": (0, _1.FlattenedAnchorPointsToJSON)(value.points),
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
-        "assets": (0, _1.FlattenedAssetsToJSON)(value.assets),
+        "points": (0, index_1.FlattenedAnchorPointsToJSON)(value.points),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
+        "assets": (0, index_1.FlattenedAssetsToJSON)(value.assets),
         "name": value.name,
-        "annotations": (0, _1.FlattenedAnnotationsToJSON)(value.annotations),
-        "conversations": (0, _1.FlattenedConversationsToJSON)(value.conversations),
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "annotations": (0, index_1.FlattenedAnnotationsToJSON)(value.annotations),
+        "conversations": (0, index_1.FlattenedConversationsToJSON)(value.conversations),
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.FlattenedAnchorToJSON = FlattenedAnchorToJSON4;
@@ -7673,7 +7723,7 @@ var require_FlattenedAnchorPoint = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedAnchorPointToJSON = exports.FlattenedAnchorPointFromJSONTyped = exports.FlattenedAnchorPointFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedAnchorPointFromJSON4(json) {
       return FlattenedAnchorPointFromJSONTyped6(json, false);
     }
@@ -7683,16 +7733,16 @@ var require_FlattenedAnchorPoint = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
         "verified": !(0, runtime_1.exists)(json, "verified") ? void 0 : json["verified"],
         "fullpath": json["fullpath"],
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
-        "platform": !(0, runtime_1.exists)(json, "platform") ? void 0 : (0, _1.PlatformEnumFromJSON)(json["platform"]),
-        "anchor": (0, _1.ReferencedAnchorFromJSON)(json["anchor"]),
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
+        "platform": !(0, runtime_1.exists)(json, "platform") ? void 0 : (0, index_1.PlatformEnumFromJSON)(json["platform"]),
+        "anchor": (0, index_1.ReferencedAnchorFromJSON)(json["anchor"]),
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.FlattenedAnchorPointFromJSONTyped = FlattenedAnchorPointFromJSONTyped6;
@@ -7704,16 +7754,16 @@ var require_FlattenedAnchorPoint = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
         "verified": value.verified,
         "fullpath": value.fullpath,
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
-        "platform": (0, _1.PlatformEnumToJSON)(value.platform),
-        "anchor": (0, _1.ReferencedAnchorToJSON)(value.anchor),
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
+        "platform": (0, index_1.PlatformEnumToJSON)(value.platform),
+        "anchor": (0, index_1.ReferencedAnchorToJSON)(value.anchor),
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.FlattenedAnchorPointToJSON = FlattenedAnchorPointToJSON4;
@@ -7727,7 +7777,7 @@ var require_FlattenedAnchorPoints = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedAnchorPointsToJSON = exports.FlattenedAnchorPointsFromJSONTyped = exports.FlattenedAnchorPointsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedAnchorPointsFromJSON4(json) {
       return FlattenedAnchorPointsFromJSONTyped9(json, false);
     }
@@ -7737,10 +7787,10 @@ var require_FlattenedAnchorPoints = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.ReferencedAnchorPointFromJSON),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.ReferencedAnchorPointFromJSON),
         "indices": !(0, runtime_1.exists)(json, "indices") ? void 0 : json["indices"],
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.FlattenedAnchorPointsFromJSONTyped = FlattenedAnchorPointsFromJSONTyped9;
@@ -7752,10 +7802,10 @@ var require_FlattenedAnchorPoints = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.ReferencedAnchorPointToJSON),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.ReferencedAnchorPointToJSON),
         "indices": value.indices,
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.FlattenedAnchorPointsToJSON = FlattenedAnchorPointsToJSON4;
@@ -7769,7 +7819,7 @@ var require_FlattenedAnchors = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedAnchorsToJSON = exports.FlattenedAnchorsFromJSONTyped = exports.FlattenedAnchorsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedAnchorsFromJSON4(json) {
       return FlattenedAnchorsFromJSONTyped12(json, false);
     }
@@ -7779,10 +7829,10 @@ var require_FlattenedAnchors = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.ReferencedAnchorFromJSON),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.ReferencedAnchorFromJSON),
         "indices": !(0, runtime_1.exists)(json, "indices") ? void 0 : json["indices"],
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.FlattenedAnchorsFromJSONTyped = FlattenedAnchorsFromJSONTyped12;
@@ -7794,10 +7844,10 @@ var require_FlattenedAnchors = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.ReferencedAnchorToJSON),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.ReferencedAnchorToJSON),
         "indices": value.indices,
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.FlattenedAnchorsToJSON = FlattenedAnchorsToJSON4;
@@ -7811,7 +7861,7 @@ var require_FlattenedAnnotation = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedAnnotationToJSON = exports.FlattenedAnnotationFromJSONTyped = exports.FlattenedAnnotationFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedAnnotationFromJSON4(json) {
       return FlattenedAnnotationFromJSONTyped6(json, false);
     }
@@ -7821,23 +7871,23 @@ var require_FlattenedAnnotation = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
-        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, _1.MechanismEnumFromJSON)(json["mechanism"]),
-        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, _1.ReferencedAssetFromJSON)(json["asset"]),
-        "person": !(0, runtime_1.exists)(json, "person") ? void 0 : (0, _1.ReferencedPersonFromJSON)(json["person"]),
-        "type": (0, _1.AnnotationTypeEnumFromJSON)(json["type"]),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
+        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, index_1.MechanismEnumFromJSON)(json["mechanism"]),
+        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, index_1.ReferencedAssetFromJSON)(json["asset"]),
+        "person": !(0, runtime_1.exists)(json, "person") ? void 0 : (0, index_1.ReferencedPersonFromJSON)(json["person"]),
+        "type": (0, index_1.AnnotationTypeEnumFromJSON)(json["type"]),
         "text": json["text"],
-        "model": !(0, runtime_1.exists)(json, "model") ? void 0 : (0, _1.ReferencedModelFromJSON)(json["model"]),
+        "model": !(0, runtime_1.exists)(json, "model") ? void 0 : (0, index_1.ReferencedModelFromJSON)(json["model"]),
         "pseudo": !(0, runtime_1.exists)(json, "pseudo") ? void 0 : json["pseudo"],
         "favorited": !(0, runtime_1.exists)(json, "favorited") ? void 0 : json["favorited"],
-        "anchor": !(0, runtime_1.exists)(json, "anchor") ? void 0 : (0, _1.ReferencedAnchorFromJSON)(json["anchor"]),
-        "conversation": !(0, runtime_1.exists)(json, "conversation") ? void 0 : (0, _1.ReferencedConversationFromJSON)(json["conversation"]),
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"]),
-        "messages": !(0, runtime_1.exists)(json, "messages") ? void 0 : (0, _1.FlattenedConversationMessagesFromJSON)(json["messages"])
+        "anchor": !(0, runtime_1.exists)(json, "anchor") ? void 0 : (0, index_1.ReferencedAnchorFromJSON)(json["anchor"]),
+        "conversation": !(0, runtime_1.exists)(json, "conversation") ? void 0 : (0, index_1.ReferencedConversationFromJSON)(json["conversation"]),
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"]),
+        "messages": !(0, runtime_1.exists)(json, "messages") ? void 0 : (0, index_1.FlattenedConversationMessagesFromJSON)(json["messages"])
       };
     }
     exports.FlattenedAnnotationFromJSONTyped = FlattenedAnnotationFromJSONTyped6;
@@ -7849,23 +7899,23 @@ var require_FlattenedAnnotation = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
-        "mechanism": (0, _1.MechanismEnumToJSON)(value.mechanism),
-        "asset": (0, _1.ReferencedAssetToJSON)(value.asset),
-        "person": (0, _1.ReferencedPersonToJSON)(value.person),
-        "type": (0, _1.AnnotationTypeEnumToJSON)(value.type),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
+        "mechanism": (0, index_1.MechanismEnumToJSON)(value.mechanism),
+        "asset": (0, index_1.ReferencedAssetToJSON)(value.asset),
+        "person": (0, index_1.ReferencedPersonToJSON)(value.person),
+        "type": (0, index_1.AnnotationTypeEnumToJSON)(value.type),
         "text": value.text,
-        "model": (0, _1.ReferencedModelToJSON)(value.model),
+        "model": (0, index_1.ReferencedModelToJSON)(value.model),
         "pseudo": value.pseudo,
         "favorited": value.favorited,
-        "anchor": (0, _1.ReferencedAnchorToJSON)(value.anchor),
-        "conversation": (0, _1.ReferencedConversationToJSON)(value.conversation),
-        "score": (0, _1.ScoreToJSON)(value.score),
-        "messages": (0, _1.FlattenedConversationMessagesToJSON)(value.messages)
+        "anchor": (0, index_1.ReferencedAnchorToJSON)(value.anchor),
+        "conversation": (0, index_1.ReferencedConversationToJSON)(value.conversation),
+        "score": (0, index_1.ScoreToJSON)(value.score),
+        "messages": (0, index_1.FlattenedConversationMessagesToJSON)(value.messages)
       };
     }
     exports.FlattenedAnnotationToJSON = FlattenedAnnotationToJSON4;
@@ -7879,7 +7929,7 @@ var require_FlattenedAnnotations = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedAnnotationsToJSON = exports.FlattenedAnnotationsFromJSONTyped = exports.FlattenedAnnotationsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedAnnotationsFromJSON4(json) {
       return FlattenedAnnotationsFromJSONTyped29(json, false);
     }
@@ -7889,10 +7939,10 @@ var require_FlattenedAnnotations = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.ReferencedAnnotationFromJSON),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.ReferencedAnnotationFromJSON),
         "indices": !(0, runtime_1.exists)(json, "indices") ? void 0 : json["indices"],
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.FlattenedAnnotationsFromJSONTyped = FlattenedAnnotationsFromJSONTyped29;
@@ -7904,10 +7954,10 @@ var require_FlattenedAnnotations = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.ReferencedAnnotationToJSON),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.ReferencedAnnotationToJSON),
         "indices": value.indices,
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.FlattenedAnnotationsToJSON = FlattenedAnnotationsToJSON4;
@@ -7921,47 +7971,47 @@ var require_FlattenedAsset = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedAssetToJSON = exports.FlattenedAssetFromJSONTyped = exports.FlattenedAssetFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedAssetFromJSON4(json) {
-      return FlattenedAssetFromJSONTyped27(json, false);
+      return FlattenedAssetFromJSONTyped18(json, false);
     }
     exports.FlattenedAssetFromJSON = FlattenedAssetFromJSON4;
-    function FlattenedAssetFromJSONTyped27(json, ignoreDiscriminator) {
+    function FlattenedAssetFromJSONTyped18(json, ignoreDiscriminator) {
       if (json === void 0 || json === null) {
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
         "name": !(0, runtime_1.exists)(json, "name") ? void 0 : json["name"],
         "creator": json["creator"],
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "synced": !(0, runtime_1.exists)(json, "synced") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["synced"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
-        "formats": (0, _1.FlattenedFormatsFromJSON)(json["formats"]),
-        "preview": (0, _1.FlattenedPreviewFromJSON)(json["preview"]),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "synced": !(0, runtime_1.exists)(json, "synced") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["synced"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
+        "formats": (0, index_1.FlattenedFormatsFromJSON)(json["formats"]),
+        "preview": (0, index_1.FlattenedPreviewFromJSON)(json["preview"]),
         "original": json["original"],
-        "shares": !(0, runtime_1.exists)(json, "shares") ? void 0 : (0, _1.FlattenedSharesFromJSON)(json["shares"]),
-        "mechanism": (0, _1.MechanismEnumFromJSON)(json["mechanism"]),
-        "websites": !(0, runtime_1.exists)(json, "websites") ? void 0 : (0, _1.FlattenedWebsitesFromJSON)(json["websites"]),
-        "interacted": !(0, runtime_1.exists)(json, "interacted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["interacted"]),
-        "tags": !(0, runtime_1.exists)(json, "tags") ? void 0 : (0, _1.FlattenedTagsFromJSON)(json["tags"]),
-        "sensitives": !(0, runtime_1.exists)(json, "sensitives") ? void 0 : (0, _1.FlattenedSensitivesFromJSON)(json["sensitives"]),
-        "persons": !(0, runtime_1.exists)(json, "persons") ? void 0 : (0, _1.FlattenedPersonsFromJSON)(json["persons"]),
+        "shares": !(0, runtime_1.exists)(json, "shares") ? void 0 : (0, index_1.FlattenedSharesFromJSON)(json["shares"]),
+        "mechanism": (0, index_1.MechanismEnumFromJSON)(json["mechanism"]),
+        "websites": !(0, runtime_1.exists)(json, "websites") ? void 0 : (0, index_1.FlattenedWebsitesFromJSON)(json["websites"]),
+        "interacted": !(0, runtime_1.exists)(json, "interacted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["interacted"]),
+        "tags": !(0, runtime_1.exists)(json, "tags") ? void 0 : (0, index_1.FlattenedTagsFromJSON)(json["tags"]),
+        "sensitives": !(0, runtime_1.exists)(json, "sensitives") ? void 0 : (0, index_1.FlattenedSensitivesFromJSON)(json["sensitives"]),
+        "persons": !(0, runtime_1.exists)(json, "persons") ? void 0 : (0, index_1.FlattenedPersonsFromJSON)(json["persons"]),
         "curated": !(0, runtime_1.exists)(json, "curated") ? void 0 : json["curated"],
         "discovered": !(0, runtime_1.exists)(json, "discovered") ? void 0 : json["discovered"],
-        "activities": !(0, runtime_1.exists)(json, "activities") ? void 0 : (0, _1.FlattenedActivitiesFromJSON)(json["activities"]),
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"]),
+        "activities": !(0, runtime_1.exists)(json, "activities") ? void 0 : (0, index_1.FlattenedActivitiesFromJSON)(json["activities"]),
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"]),
         "favorited": !(0, runtime_1.exists)(json, "favorited") ? void 0 : json["favorited"],
         "pseudo": !(0, runtime_1.exists)(json, "pseudo") ? void 0 : json["pseudo"],
-        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : (0, _1.FlattenedAnnotationsFromJSON)(json["annotations"]),
-        "hints": !(0, runtime_1.exists)(json, "hints") ? void 0 : (0, _1.FlattenedHintsFromJSON)(json["hints"]),
-        "anchors": !(0, runtime_1.exists)(json, "anchors") ? void 0 : (0, _1.FlattenedAnchorsFromJSON)(json["anchors"]),
-        "conversations": !(0, runtime_1.exists)(json, "conversations") ? void 0 : (0, _1.FlattenedConversationsFromJSON)(json["conversations"])
+        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : (0, index_1.FlattenedAnnotationsFromJSON)(json["annotations"]),
+        "hints": !(0, runtime_1.exists)(json, "hints") ? void 0 : (0, index_1.FlattenedHintsFromJSON)(json["hints"]),
+        "anchors": !(0, runtime_1.exists)(json, "anchors") ? void 0 : (0, index_1.FlattenedAnchorsFromJSON)(json["anchors"]),
+        "conversations": !(0, runtime_1.exists)(json, "conversations") ? void 0 : (0, index_1.FlattenedConversationsFromJSON)(json["conversations"])
       };
     }
-    exports.FlattenedAssetFromJSONTyped = FlattenedAssetFromJSONTyped27;
+    exports.FlattenedAssetFromJSONTyped = FlattenedAssetFromJSONTyped18;
     function FlattenedAssetToJSON4(value) {
       if (value === void 0) {
         return void 0;
@@ -7970,34 +8020,34 @@ var require_FlattenedAsset = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
         "name": value.name,
         "creator": value.creator,
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "synced": (0, _1.GroupedTimestampToJSON)(value.synced),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
-        "formats": (0, _1.FlattenedFormatsToJSON)(value.formats),
-        "preview": (0, _1.FlattenedPreviewToJSON)(value.preview),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "synced": (0, index_1.GroupedTimestampToJSON)(value.synced),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
+        "formats": (0, index_1.FlattenedFormatsToJSON)(value.formats),
+        "preview": (0, index_1.FlattenedPreviewToJSON)(value.preview),
         "original": value.original,
-        "shares": (0, _1.FlattenedSharesToJSON)(value.shares),
-        "mechanism": (0, _1.MechanismEnumToJSON)(value.mechanism),
-        "websites": (0, _1.FlattenedWebsitesToJSON)(value.websites),
-        "interacted": (0, _1.GroupedTimestampToJSON)(value.interacted),
-        "tags": (0, _1.FlattenedTagsToJSON)(value.tags),
-        "sensitives": (0, _1.FlattenedSensitivesToJSON)(value.sensitives),
-        "persons": (0, _1.FlattenedPersonsToJSON)(value.persons),
+        "shares": (0, index_1.FlattenedSharesToJSON)(value.shares),
+        "mechanism": (0, index_1.MechanismEnumToJSON)(value.mechanism),
+        "websites": (0, index_1.FlattenedWebsitesToJSON)(value.websites),
+        "interacted": (0, index_1.GroupedTimestampToJSON)(value.interacted),
+        "tags": (0, index_1.FlattenedTagsToJSON)(value.tags),
+        "sensitives": (0, index_1.FlattenedSensitivesToJSON)(value.sensitives),
+        "persons": (0, index_1.FlattenedPersonsToJSON)(value.persons),
         "curated": value.curated,
         "discovered": value.discovered,
-        "activities": (0, _1.FlattenedActivitiesToJSON)(value.activities),
-        "score": (0, _1.ScoreToJSON)(value.score),
+        "activities": (0, index_1.FlattenedActivitiesToJSON)(value.activities),
+        "score": (0, index_1.ScoreToJSON)(value.score),
         "favorited": value.favorited,
         "pseudo": value.pseudo,
-        "annotations": (0, _1.FlattenedAnnotationsToJSON)(value.annotations),
-        "hints": (0, _1.FlattenedHintsToJSON)(value.hints),
-        "anchors": (0, _1.FlattenedAnchorsToJSON)(value.anchors),
-        "conversations": (0, _1.FlattenedConversationsToJSON)(value.conversations)
+        "annotations": (0, index_1.FlattenedAnnotationsToJSON)(value.annotations),
+        "hints": (0, index_1.FlattenedHintsToJSON)(value.hints),
+        "anchors": (0, index_1.FlattenedAnchorsToJSON)(value.anchors),
+        "conversations": (0, index_1.FlattenedConversationsToJSON)(value.conversations)
       };
     }
     exports.FlattenedAssetToJSON = FlattenedAssetToJSON4;
@@ -8011,23 +8061,23 @@ var require_FlattenedAssets = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedAssetsToJSON = exports.FlattenedAssetsFromJSONTyped = exports.FlattenedAssetsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedAssetsFromJSON4(json) {
-      return FlattenedAssetsFromJSONTyped38(json, false);
+      return FlattenedAssetsFromJSONTyped50(json, false);
     }
     exports.FlattenedAssetsFromJSON = FlattenedAssetsFromJSON4;
-    function FlattenedAssetsFromJSONTyped38(json, ignoreDiscriminator) {
+    function FlattenedAssetsFromJSONTyped50(json, ignoreDiscriminator) {
       if (json === void 0 || json === null) {
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": !(0, runtime_1.exists)(json, "iterable") ? void 0 : json["iterable"].map(_1.ReferencedAssetFromJSON),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": !(0, runtime_1.exists)(json, "iterable") ? void 0 : json["iterable"].map(index_1.ReferencedAssetFromJSON),
         "indices": !(0, runtime_1.exists)(json, "indices") ? void 0 : json["indices"],
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
-    exports.FlattenedAssetsFromJSONTyped = FlattenedAssetsFromJSONTyped38;
+    exports.FlattenedAssetsFromJSONTyped = FlattenedAssetsFromJSONTyped50;
     function FlattenedAssetsToJSON5(value) {
       if (value === void 0) {
         return void 0;
@@ -8036,10 +8086,10 @@ var require_FlattenedAssets = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable === void 0 ? void 0 : value.iterable.map(_1.ReferencedAssetToJSON),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable === void 0 ? void 0 : value.iterable.map(index_1.ReferencedAssetToJSON),
         "indices": value.indices,
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.FlattenedAssetsToJSON = FlattenedAssetsToJSON5;
@@ -8053,7 +8103,7 @@ var require_FlattenedConversation = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedConversationToJSON = exports.FlattenedConversationFromJSONTyped = exports.FlattenedConversationFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedConversationFromJSON4(json) {
       return FlattenedConversationFromJSONTyped6(json, false);
     }
@@ -8063,22 +8113,22 @@ var require_FlattenedConversation = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
         "name": !(0, runtime_1.exists)(json, "name") ? void 0 : json["name"],
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
         "favorited": !(0, runtime_1.exists)(json, "favorited") ? void 0 : json["favorited"],
-        "application": !(0, runtime_1.exists)(json, "application") ? void 0 : (0, _1.ApplicationFromJSON)(json["application"]),
-        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : (0, _1.FlattenedAnnotationsFromJSON)(json["annotations"]),
-        "messages": (0, _1.FlattenedConversationMessagesFromJSON)(json["messages"]),
-        "model": !(0, runtime_1.exists)(json, "model") ? void 0 : (0, _1.ReferencedModelFromJSON)(json["model"]),
-        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, _1.FlattenedAssetsFromJSON)(json["assets"]),
-        "anchors": !(0, runtime_1.exists)(json, "anchors") ? void 0 : (0, _1.FlattenedAnchorsFromJSON)(json["anchors"]),
-        "type": (0, _1.ConversationTypeEnumFromJSON)(json["type"]),
-        "grounding": !(0, runtime_1.exists)(json, "grounding") ? void 0 : (0, _1.ConversationGroundingFromJSON)(json["grounding"]),
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "application": !(0, runtime_1.exists)(json, "application") ? void 0 : (0, index_1.ApplicationFromJSON)(json["application"]),
+        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : (0, index_1.FlattenedAnnotationsFromJSON)(json["annotations"]),
+        "messages": (0, index_1.FlattenedConversationMessagesFromJSON)(json["messages"]),
+        "model": !(0, runtime_1.exists)(json, "model") ? void 0 : (0, index_1.ReferencedModelFromJSON)(json["model"]),
+        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, index_1.FlattenedAssetsFromJSON)(json["assets"]),
+        "anchors": !(0, runtime_1.exists)(json, "anchors") ? void 0 : (0, index_1.FlattenedAnchorsFromJSON)(json["anchors"]),
+        "type": (0, index_1.ConversationTypeEnumFromJSON)(json["type"]),
+        "grounding": !(0, runtime_1.exists)(json, "grounding") ? void 0 : (0, index_1.ConversationGroundingFromJSON)(json["grounding"]),
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.FlattenedConversationFromJSONTyped = FlattenedConversationFromJSONTyped6;
@@ -8090,22 +8140,22 @@ var require_FlattenedConversation = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
         "name": value.name,
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
         "favorited": value.favorited,
-        "application": (0, _1.ApplicationToJSON)(value.application),
-        "annotations": (0, _1.FlattenedAnnotationsToJSON)(value.annotations),
-        "messages": (0, _1.FlattenedConversationMessagesToJSON)(value.messages),
-        "model": (0, _1.ReferencedModelToJSON)(value.model),
-        "assets": (0, _1.FlattenedAssetsToJSON)(value.assets),
-        "anchors": (0, _1.FlattenedAnchorsToJSON)(value.anchors),
-        "type": (0, _1.ConversationTypeEnumToJSON)(value.type),
-        "grounding": (0, _1.ConversationGroundingToJSON)(value.grounding),
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "application": (0, index_1.ApplicationToJSON)(value.application),
+        "annotations": (0, index_1.FlattenedAnnotationsToJSON)(value.annotations),
+        "messages": (0, index_1.FlattenedConversationMessagesToJSON)(value.messages),
+        "model": (0, index_1.ReferencedModelToJSON)(value.model),
+        "assets": (0, index_1.FlattenedAssetsToJSON)(value.assets),
+        "anchors": (0, index_1.FlattenedAnchorsToJSON)(value.anchors),
+        "type": (0, index_1.ConversationTypeEnumToJSON)(value.type),
+        "grounding": (0, index_1.ConversationGroundingToJSON)(value.grounding),
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.FlattenedConversationToJSON = FlattenedConversationToJSON4;
@@ -8119,7 +8169,7 @@ var require_FlattenedConversationMessage = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedConversationMessageToJSON = exports.FlattenedConversationMessageFromJSONTyped = exports.FlattenedConversationMessageFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedConversationMessageFromJSON4(json) {
       return FlattenedConversationMessageFromJSONTyped6(json, false);
     }
@@ -8129,18 +8179,18 @@ var require_FlattenedConversationMessage = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
-        "model": !(0, runtime_1.exists)(json, "model") ? void 0 : (0, _1.ModelFromJSON)(json["model"]),
-        "fragment": !(0, runtime_1.exists)(json, "fragment") ? void 0 : (0, _1.FragmentFormatFromJSON)(json["fragment"]),
-        "conversation": (0, _1.ReferencedConversationFromJSON)(json["conversation"]),
-        "sentiment": !(0, runtime_1.exists)(json, "sentiment") ? void 0 : (0, _1.ConversationMessageSentimentEnumFromJSON)(json["sentiment"]),
-        "role": (0, _1.QGPTConversationMessageRoleEnumFromJSON)(json["role"]),
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"]),
-        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : (0, _1.FlattenedAnnotationsFromJSON)(json["annotations"])
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
+        "model": !(0, runtime_1.exists)(json, "model") ? void 0 : (0, index_1.ModelFromJSON)(json["model"]),
+        "fragment": !(0, runtime_1.exists)(json, "fragment") ? void 0 : (0, index_1.FragmentFormatFromJSON)(json["fragment"]),
+        "conversation": (0, index_1.ReferencedConversationFromJSON)(json["conversation"]),
+        "sentiment": !(0, runtime_1.exists)(json, "sentiment") ? void 0 : (0, index_1.ConversationMessageSentimentEnumFromJSON)(json["sentiment"]),
+        "role": (0, index_1.QGPTConversationMessageRoleEnumFromJSON)(json["role"]),
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"]),
+        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : (0, index_1.FlattenedAnnotationsFromJSON)(json["annotations"])
       };
     }
     exports.FlattenedConversationMessageFromJSONTyped = FlattenedConversationMessageFromJSONTyped6;
@@ -8152,18 +8202,18 @@ var require_FlattenedConversationMessage = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
-        "model": (0, _1.ModelToJSON)(value.model),
-        "fragment": (0, _1.FragmentFormatToJSON)(value.fragment),
-        "conversation": (0, _1.ReferencedConversationToJSON)(value.conversation),
-        "sentiment": (0, _1.ConversationMessageSentimentEnumToJSON)(value.sentiment),
-        "role": (0, _1.QGPTConversationMessageRoleEnumToJSON)(value.role),
-        "score": (0, _1.ScoreToJSON)(value.score),
-        "annotations": (0, _1.FlattenedAnnotationsToJSON)(value.annotations)
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
+        "model": (0, index_1.ModelToJSON)(value.model),
+        "fragment": (0, index_1.FragmentFormatToJSON)(value.fragment),
+        "conversation": (0, index_1.ReferencedConversationToJSON)(value.conversation),
+        "sentiment": (0, index_1.ConversationMessageSentimentEnumToJSON)(value.sentiment),
+        "role": (0, index_1.QGPTConversationMessageRoleEnumToJSON)(value.role),
+        "score": (0, index_1.ScoreToJSON)(value.score),
+        "annotations": (0, index_1.FlattenedAnnotationsToJSON)(value.annotations)
       };
     }
     exports.FlattenedConversationMessageToJSON = FlattenedConversationMessageToJSON4;
@@ -8177,7 +8227,7 @@ var require_FlattenedConversationMessages = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedConversationMessagesToJSON = exports.FlattenedConversationMessagesFromJSONTyped = exports.FlattenedConversationMessagesFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedConversationMessagesFromJSON4(json) {
       return FlattenedConversationMessagesFromJSONTyped27(json, false);
     }
@@ -8187,10 +8237,10 @@ var require_FlattenedConversationMessages = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.ReferencedConversationMessageFromJSON),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.ReferencedConversationMessageFromJSON),
         "indices": !(0, runtime_1.exists)(json, "indices") ? void 0 : json["indices"],
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.FlattenedConversationMessagesFromJSONTyped = FlattenedConversationMessagesFromJSONTyped27;
@@ -8202,10 +8252,10 @@ var require_FlattenedConversationMessages = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.ReferencedConversationMessageToJSON),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.ReferencedConversationMessageToJSON),
         "indices": value.indices,
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.FlattenedConversationMessagesToJSON = FlattenedConversationMessagesToJSON4;
@@ -8219,7 +8269,7 @@ var require_FlattenedConversations = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedConversationsToJSON = exports.FlattenedConversationsFromJSONTyped = exports.FlattenedConversationsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedConversationsFromJSON4(json) {
       return FlattenedConversationsFromJSONTyped12(json, false);
     }
@@ -8229,10 +8279,10 @@ var require_FlattenedConversations = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.ReferencedConversationFromJSON),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.ReferencedConversationFromJSON),
         "indices": !(0, runtime_1.exists)(json, "indices") ? void 0 : json["indices"],
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.FlattenedConversationsFromJSONTyped = FlattenedConversationsFromJSONTyped12;
@@ -8244,10 +8294,10 @@ var require_FlattenedConversations = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.ReferencedConversationToJSON),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.ReferencedConversationToJSON),
         "indices": value.indices,
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.FlattenedConversationsToJSON = FlattenedConversationsToJSON5;
@@ -8261,7 +8311,7 @@ var require_FlattenedDistribution = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedDistributionToJSON = exports.FlattenedDistributionFromJSONTyped = exports.FlattenedDistributionFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedDistributionFromJSON4(json) {
       return FlattenedDistributionFromJSONTyped6(json, false);
     }
@@ -8271,14 +8321,14 @@ var require_FlattenedDistribution = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
         "share": json["share"],
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
-        "mailgun": !(0, runtime_1.exists)(json, "mailgun") ? void 0 : (0, _1.MailgunDistributionFromJSON)(json["mailgun"]),
-        "github": !(0, runtime_1.exists)(json, "github") ? void 0 : (0, _1.GitHubDistributionFromJSON)(json["github"])
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
+        "mailgun": !(0, runtime_1.exists)(json, "mailgun") ? void 0 : (0, index_1.MailgunDistributionFromJSON)(json["mailgun"]),
+        "github": !(0, runtime_1.exists)(json, "github") ? void 0 : (0, index_1.GitHubDistributionFromJSON)(json["github"])
       };
     }
     exports.FlattenedDistributionFromJSONTyped = FlattenedDistributionFromJSONTyped6;
@@ -8290,14 +8340,14 @@ var require_FlattenedDistribution = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
         "share": value.share,
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
-        "mailgun": (0, _1.MailgunDistributionToJSON)(value.mailgun),
-        "github": (0, _1.GitHubDistributionToJSON)(value.github)
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
+        "mailgun": (0, index_1.MailgunDistributionToJSON)(value.mailgun),
+        "github": (0, index_1.GitHubDistributionToJSON)(value.github)
       };
     }
     exports.FlattenedDistributionToJSON = FlattenedDistributionToJSON4;
@@ -8311,7 +8361,7 @@ var require_FlattenedDistributions = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedDistributionsToJSON = exports.FlattenedDistributionsFromJSONTyped = exports.FlattenedDistributionsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedDistributionsFromJSON4(json) {
       return FlattenedDistributionsFromJSONTyped6(json, false);
     }
@@ -8321,8 +8371,8 @@ var require_FlattenedDistributions = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.ReferencedDistributionFromJSON)
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.ReferencedDistributionFromJSON)
       };
     }
     exports.FlattenedDistributionsFromJSONTyped = FlattenedDistributionsFromJSONTyped6;
@@ -8334,8 +8384,8 @@ var require_FlattenedDistributions = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.ReferencedDistributionToJSON)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.ReferencedDistributionToJSON)
       };
     }
     exports.FlattenedDistributionsToJSON = FlattenedDistributionsToJSON4;
@@ -8349,40 +8399,38 @@ var require_FlattenedFormat = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedFormatToJSON = exports.FlattenedFormatFromJSONTyped = exports.FlattenedFormatFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedFormatFromJSON4(json) {
-      return FlattenedFormatFromJSONTyped15(json, false);
+      return FlattenedFormatFromJSONTyped9(json, false);
     }
     exports.FlattenedFormatFromJSON = FlattenedFormatFromJSON4;
-    function FlattenedFormatFromJSONTyped15(json, ignoreDiscriminator) {
+    function FlattenedFormatFromJSONTyped9(json, ignoreDiscriminator) {
       if (json === void 0 || json === null) {
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
         "creator": json["creator"],
-        "classification": (0, _1.ClassificationFromJSON)(json["classification"]),
+        "classification": (0, index_1.ClassificationFromJSON)(json["classification"]),
         "icon": !(0, runtime_1.exists)(json, "icon") ? void 0 : json["icon"],
-        "role": (0, _1.RoleFromJSON)(json["role"]),
-        "application": (0, _1.ApplicationFromJSON)(json["application"]),
+        "role": (0, index_1.RoleFromJSON)(json["role"]),
+        "application": (0, index_1.ApplicationFromJSON)(json["application"]),
         "asset": json["asset"],
-        "bytes": (0, _1.ByteDescriptorFromJSON)(json["bytes"]),
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
-        "synced": !(0, runtime_1.exists)(json, "synced") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["synced"]),
+        "bytes": (0, index_1.ByteDescriptorFromJSON)(json["bytes"]),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
+        "synced": !(0, runtime_1.exists)(json, "synced") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["synced"]),
         "cloud": !(0, runtime_1.exists)(json, "cloud") ? void 0 : json["cloud"],
-        "fragment": !(0, runtime_1.exists)(json, "fragment") ? void 0 : (0, _1.FragmentFormatFromJSON)(json["fragment"]),
-        "file": !(0, runtime_1.exists)(json, "file") ? void 0 : (0, _1.FileFormatFromJSON)(json["file"]),
-        "analysis": !(0, runtime_1.exists)(json, "analysis") ? void 0 : (0, _1.FlattenedAnalysisFromJSON)(json["analysis"]),
-        "websites": !(0, runtime_1.exists)(json, "websites") ? void 0 : (0, _1.FlattenedWebsitesFromJSON)(json["websites"]),
-        "tags": !(0, runtime_1.exists)(json, "tags") ? void 0 : (0, _1.FlattenedTagsFromJSON)(json["tags"]),
-        "relationship": !(0, runtime_1.exists)(json, "relationship") ? void 0 : (0, _1.RelationshipFromJSON)(json["relationship"]),
-        "activities": !(0, runtime_1.exists)(json, "activities") ? void 0 : (0, _1.FlattenedActivitiesFromJSON)(json["activities"])
+        "fragment": !(0, runtime_1.exists)(json, "fragment") ? void 0 : (0, index_1.FragmentFormatFromJSON)(json["fragment"]),
+        "file": !(0, runtime_1.exists)(json, "file") ? void 0 : (0, index_1.FileFormatFromJSON)(json["file"]),
+        "analysis": !(0, runtime_1.exists)(json, "analysis") ? void 0 : (0, index_1.FlattenedAnalysisFromJSON)(json["analysis"]),
+        "relationship": !(0, runtime_1.exists)(json, "relationship") ? void 0 : (0, index_1.RelationshipFromJSON)(json["relationship"]),
+        "activities": !(0, runtime_1.exists)(json, "activities") ? void 0 : (0, index_1.FlattenedActivitiesFromJSON)(json["activities"])
       };
     }
-    exports.FlattenedFormatFromJSONTyped = FlattenedFormatFromJSONTyped15;
+    exports.FlattenedFormatFromJSONTyped = FlattenedFormatFromJSONTyped9;
     function FlattenedFormatToJSON4(value) {
       if (value === void 0) {
         return void 0;
@@ -8391,27 +8439,25 @@ var require_FlattenedFormat = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
         "creator": value.creator,
-        "classification": (0, _1.ClassificationToJSON)(value.classification),
+        "classification": (0, index_1.ClassificationToJSON)(value.classification),
         "icon": value.icon,
-        "role": (0, _1.RoleToJSON)(value.role),
-        "application": (0, _1.ApplicationToJSON)(value.application),
+        "role": (0, index_1.RoleToJSON)(value.role),
+        "application": (0, index_1.ApplicationToJSON)(value.application),
         "asset": value.asset,
-        "bytes": (0, _1.ByteDescriptorToJSON)(value.bytes),
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
-        "synced": (0, _1.GroupedTimestampToJSON)(value.synced),
+        "bytes": (0, index_1.ByteDescriptorToJSON)(value.bytes),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
+        "synced": (0, index_1.GroupedTimestampToJSON)(value.synced),
         "cloud": value.cloud,
-        "fragment": (0, _1.FragmentFormatToJSON)(value.fragment),
-        "file": (0, _1.FileFormatToJSON)(value.file),
-        "analysis": (0, _1.FlattenedAnalysisToJSON)(value.analysis),
-        "websites": (0, _1.FlattenedWebsitesToJSON)(value.websites),
-        "tags": (0, _1.FlattenedTagsToJSON)(value.tags),
-        "relationship": (0, _1.RelationshipToJSON)(value.relationship),
-        "activities": (0, _1.FlattenedActivitiesToJSON)(value.activities)
+        "fragment": (0, index_1.FragmentFormatToJSON)(value.fragment),
+        "file": (0, index_1.FileFormatToJSON)(value.file),
+        "analysis": (0, index_1.FlattenedAnalysisToJSON)(value.analysis),
+        "relationship": (0, index_1.RelationshipToJSON)(value.relationship),
+        "activities": (0, index_1.FlattenedActivitiesToJSON)(value.activities)
       };
     }
     exports.FlattenedFormatToJSON = FlattenedFormatToJSON4;
@@ -8425,7 +8471,7 @@ var require_FlattenedFormats = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedFormatsToJSON = exports.FlattenedFormatsFromJSONTyped = exports.FlattenedFormatsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedFormatsFromJSON4(json) {
       return FlattenedFormatsFromJSONTyped6(json, false);
     }
@@ -8435,8 +8481,8 @@ var require_FlattenedFormats = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.ReferencedFormatFromJSON)
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.ReferencedFormatFromJSON)
       };
     }
     exports.FlattenedFormatsFromJSONTyped = FlattenedFormatsFromJSONTyped6;
@@ -8448,8 +8494,8 @@ var require_FlattenedFormats = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.ReferencedFormatToJSON)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.ReferencedFormatToJSON)
       };
     }
     exports.FlattenedFormatsToJSON = FlattenedFormatsToJSON4;
@@ -8463,7 +8509,7 @@ var require_FlattenedHint = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedHintToJSON = exports.FlattenedHintFromJSONTyped = exports.FlattenedHintFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedHintFromJSON4(json) {
       return FlattenedHintFromJSONTyped6(json, false);
     }
@@ -8473,17 +8519,17 @@ var require_FlattenedHint = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
-        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, _1.MechanismEnumFromJSON)(json["mechanism"]),
-        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, _1.ReferencedAssetFromJSON)(json["asset"]),
-        "type": (0, _1.HintTypeEnumFromJSON)(json["type"]),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
+        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, index_1.MechanismEnumFromJSON)(json["mechanism"]),
+        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, index_1.ReferencedAssetFromJSON)(json["asset"]),
+        "type": (0, index_1.HintTypeEnumFromJSON)(json["type"]),
         "text": json["text"],
-        "model": !(0, runtime_1.exists)(json, "model") ? void 0 : (0, _1.ReferencedModelFromJSON)(json["model"]),
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "model": !(0, runtime_1.exists)(json, "model") ? void 0 : (0, index_1.ReferencedModelFromJSON)(json["model"]),
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.FlattenedHintFromJSONTyped = FlattenedHintFromJSONTyped6;
@@ -8495,17 +8541,17 @@ var require_FlattenedHint = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
-        "mechanism": (0, _1.MechanismEnumToJSON)(value.mechanism),
-        "asset": (0, _1.ReferencedAssetToJSON)(value.asset),
-        "type": (0, _1.HintTypeEnumToJSON)(value.type),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
+        "mechanism": (0, index_1.MechanismEnumToJSON)(value.mechanism),
+        "asset": (0, index_1.ReferencedAssetToJSON)(value.asset),
+        "type": (0, index_1.HintTypeEnumToJSON)(value.type),
         "text": value.text,
-        "model": (0, _1.ReferencedModelToJSON)(value.model),
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "model": (0, index_1.ReferencedModelToJSON)(value.model),
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.FlattenedHintToJSON = FlattenedHintToJSON4;
@@ -8519,7 +8565,7 @@ var require_FlattenedHints = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedHintsToJSON = exports.FlattenedHintsFromJSONTyped = exports.FlattenedHintsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedHintsFromJSON4(json) {
       return FlattenedHintsFromJSONTyped6(json, false);
     }
@@ -8529,10 +8575,10 @@ var require_FlattenedHints = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.ReferencedHintFromJSON),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.ReferencedHintFromJSON),
         "indices": !(0, runtime_1.exists)(json, "indices") ? void 0 : json["indices"],
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.FlattenedHintsFromJSONTyped = FlattenedHintsFromJSONTyped6;
@@ -8544,10 +8590,10 @@ var require_FlattenedHints = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.ReferencedHintToJSON),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.ReferencedHintToJSON),
         "indices": value.indices,
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.FlattenedHintsToJSON = FlattenedHintsToJSON4;
@@ -8561,7 +8607,7 @@ var require_FlattenedImageAnalysis = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedImageAnalysisToJSON = exports.FlattenedImageAnalysisFromJSONTyped = exports.FlattenedImageAnalysisFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedImageAnalysisFromJSON4(json) {
       return FlattenedImageAnalysisFromJSONTyped6(json, false);
     }
@@ -8571,9 +8617,9 @@ var require_FlattenedImageAnalysis = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "ocr": !(0, runtime_1.exists)(json, "ocr") ? void 0 : (0, _1.FlattenedOCRAnalysisFromJSON)(json["ocr"]),
+        "ocr": !(0, runtime_1.exists)(json, "ocr") ? void 0 : (0, index_1.FlattenedOCRAnalysisFromJSON)(json["ocr"]),
         "analysis": json["analysis"]
       };
     }
@@ -8586,9 +8632,9 @@ var require_FlattenedImageAnalysis = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "ocr": (0, _1.FlattenedOCRAnalysisToJSON)(value.ocr),
+        "ocr": (0, index_1.FlattenedOCRAnalysisToJSON)(value.ocr),
         "analysis": value.analysis
       };
     }
@@ -8603,7 +8649,7 @@ var require_FlattenedOCRAnalysis = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedOCRAnalysisToJSON = exports.FlattenedOCRAnalysisFromJSONTyped = exports.FlattenedOCRAnalysisFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedOCRAnalysisFromJSON4(json) {
       return FlattenedOCRAnalysisFromJSONTyped6(json, false);
     }
@@ -8613,11 +8659,11 @@ var require_FlattenedOCRAnalysis = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "raw": (0, _1.ReferencedFormatFromJSON)(json["raw"]),
-        "hocr": (0, _1.ReferencedFormatFromJSON)(json["hocr"]),
-        "model": (0, _1.ModelFromJSON)(json["model"]),
+        "raw": (0, index_1.ReferencedFormatFromJSON)(json["raw"]),
+        "hocr": (0, index_1.ReferencedFormatFromJSON)(json["hocr"]),
+        "model": (0, index_1.ModelFromJSON)(json["model"]),
         "image": json["image"]
       };
     }
@@ -8630,11 +8676,11 @@ var require_FlattenedOCRAnalysis = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "raw": (0, _1.ReferencedFormatToJSON)(value.raw),
-        "hocr": (0, _1.ReferencedFormatToJSON)(value.hocr),
-        "model": (0, _1.ModelToJSON)(value.model),
+        "raw": (0, index_1.ReferencedFormatToJSON)(value.raw),
+        "hocr": (0, index_1.ReferencedFormatToJSON)(value.hocr),
+        "model": (0, index_1.ModelToJSON)(value.model),
         "image": value.image
       };
     }
@@ -8649,7 +8695,7 @@ var require_FlattenedPerson = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedPersonToJSON = exports.FlattenedPersonFromJSONTyped = exports.FlattenedPersonFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedPersonFromJSON4(json) {
       return FlattenedPersonFromJSONTyped6(json, false);
     }
@@ -8659,21 +8705,21 @@ var require_FlattenedPerson = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
-        "type": (0, _1.PersonTypeFromJSON)(json["type"]),
-        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, _1.FlattenedAssetsFromJSON)(json["assets"]),
-        "mechanisms": !(0, runtime_1.exists)(json, "mechanisms") ? void 0 : (0, runtime_1.mapValues)(json["mechanisms"], _1.MechanismEnumFromJSON),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
+        "type": (0, index_1.PersonTypeFromJSON)(json["type"]),
+        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, index_1.FlattenedAssetsFromJSON)(json["assets"]),
+        "mechanisms": !(0, runtime_1.exists)(json, "mechanisms") ? void 0 : (0, runtime_1.mapValues)(json["mechanisms"], index_1.MechanismEnumFromJSON),
         "interactions": !(0, runtime_1.exists)(json, "interactions") ? void 0 : json["interactions"],
-        "access": !(0, runtime_1.exists)(json, "access") ? void 0 : (0, runtime_1.mapValues)(json["access"], _1.PersonAccessFromJSON),
-        "tags": !(0, runtime_1.exists)(json, "tags") ? void 0 : (0, _1.FlattenedTagsFromJSON)(json["tags"]),
-        "websites": !(0, runtime_1.exists)(json, "websites") ? void 0 : (0, _1.FlattenedWebsitesFromJSON)(json["websites"]),
-        "models": !(0, runtime_1.exists)(json, "models") ? void 0 : (0, runtime_1.mapValues)(json["models"], _1.PersonModelFromJSON),
-        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : (0, _1.FlattenedAnnotationsFromJSON)(json["annotations"]),
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "access": !(0, runtime_1.exists)(json, "access") ? void 0 : (0, runtime_1.mapValues)(json["access"], index_1.PersonAccessFromJSON),
+        "tags": !(0, runtime_1.exists)(json, "tags") ? void 0 : (0, index_1.FlattenedTagsFromJSON)(json["tags"]),
+        "websites": !(0, runtime_1.exists)(json, "websites") ? void 0 : (0, index_1.FlattenedWebsitesFromJSON)(json["websites"]),
+        "models": !(0, runtime_1.exists)(json, "models") ? void 0 : (0, runtime_1.mapValues)(json["models"], index_1.PersonModelFromJSON),
+        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : (0, index_1.FlattenedAnnotationsFromJSON)(json["annotations"]),
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.FlattenedPersonFromJSONTyped = FlattenedPersonFromJSONTyped6;
@@ -8685,21 +8731,21 @@ var require_FlattenedPerson = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
-        "type": (0, _1.PersonTypeToJSON)(value.type),
-        "assets": (0, _1.FlattenedAssetsToJSON)(value.assets),
-        "mechanisms": value.mechanisms === void 0 ? void 0 : (0, runtime_1.mapValues)(value.mechanisms, _1.MechanismEnumToJSON),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
+        "type": (0, index_1.PersonTypeToJSON)(value.type),
+        "assets": (0, index_1.FlattenedAssetsToJSON)(value.assets),
+        "mechanisms": value.mechanisms === void 0 ? void 0 : (0, runtime_1.mapValues)(value.mechanisms, index_1.MechanismEnumToJSON),
         "interactions": value.interactions,
-        "access": value.access === void 0 ? void 0 : (0, runtime_1.mapValues)(value.access, _1.PersonAccessToJSON),
-        "tags": (0, _1.FlattenedTagsToJSON)(value.tags),
-        "websites": (0, _1.FlattenedWebsitesToJSON)(value.websites),
-        "models": value.models === void 0 ? void 0 : (0, runtime_1.mapValues)(value.models, _1.PersonModelToJSON),
-        "annotations": (0, _1.FlattenedAnnotationsToJSON)(value.annotations),
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "access": value.access === void 0 ? void 0 : (0, runtime_1.mapValues)(value.access, index_1.PersonAccessToJSON),
+        "tags": (0, index_1.FlattenedTagsToJSON)(value.tags),
+        "websites": (0, index_1.FlattenedWebsitesToJSON)(value.websites),
+        "models": value.models === void 0 ? void 0 : (0, runtime_1.mapValues)(value.models, index_1.PersonModelToJSON),
+        "annotations": (0, index_1.FlattenedAnnotationsToJSON)(value.annotations),
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.FlattenedPersonToJSON = FlattenedPersonToJSON4;
@@ -8713,7 +8759,7 @@ var require_FlattenedPersons = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedPersonsToJSON = exports.FlattenedPersonsFromJSONTyped = exports.FlattenedPersonsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedPersonsFromJSON4(json) {
       return FlattenedPersonsFromJSONTyped18(json, false);
     }
@@ -8723,10 +8769,10 @@ var require_FlattenedPersons = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.ReferencedPersonFromJSON),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.ReferencedPersonFromJSON),
         "indices": !(0, runtime_1.exists)(json, "indices") ? void 0 : json["indices"],
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.FlattenedPersonsFromJSONTyped = FlattenedPersonsFromJSONTyped18;
@@ -8738,10 +8784,10 @@ var require_FlattenedPersons = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.ReferencedPersonToJSON),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.ReferencedPersonToJSON),
         "indices": value.indices,
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.FlattenedPersonsToJSON = FlattenedPersonsToJSON4;
@@ -8755,7 +8801,7 @@ var require_FlattenedPreview = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedPreviewToJSON = exports.FlattenedPreviewFromJSONTyped = exports.FlattenedPreviewFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedPreviewFromJSON4(json) {
       return FlattenedPreviewFromJSONTyped6(json, false);
     }
@@ -8765,7 +8811,7 @@ var require_FlattenedPreview = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "base": json["base"],
         "overlay": !(0, runtime_1.exists)(json, "overlay") ? void 0 : json["overlay"]
       };
@@ -8779,7 +8825,7 @@ var require_FlattenedPreview = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "base": value.base,
         "overlay": value.overlay
       };
@@ -8795,7 +8841,7 @@ var require_FlattenedSensitive = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedSensitiveToJSON = exports.FlattenedSensitiveFromJSONTyped = exports.FlattenedSensitiveFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedSensitiveFromJSON4(json) {
       return FlattenedSensitiveFromJSONTyped6(json, false);
     }
@@ -8805,21 +8851,21 @@ var require_FlattenedSensitive = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
-        "asset": (0, _1.ReferencedAssetFromJSON)(json["asset"]),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
+        "asset": (0, index_1.ReferencedAssetFromJSON)(json["asset"]),
         "text": json["text"],
-        "mechanism": (0, _1.MechanismEnumFromJSON)(json["mechanism"]),
-        "category": (0, _1.SensitiveCategoryEnumFromJSON)(json["category"]),
-        "severity": (0, _1.SensitiveSeverityEnumFromJSON)(json["severity"]),
+        "mechanism": (0, index_1.MechanismEnumFromJSON)(json["mechanism"]),
+        "category": (0, index_1.SensitiveCategoryEnumFromJSON)(json["category"]),
+        "severity": (0, index_1.SensitiveSeverityEnumFromJSON)(json["severity"]),
         "name": json["name"],
         "description": json["description"],
-        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, _1.SensitiveMetadataFromJSON)(json["metadata"]),
+        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, index_1.SensitiveMetadataFromJSON)(json["metadata"]),
         "interactions": !(0, runtime_1.exists)(json, "interactions") ? void 0 : json["interactions"],
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.FlattenedSensitiveFromJSONTyped = FlattenedSensitiveFromJSONTyped6;
@@ -8831,21 +8877,21 @@ var require_FlattenedSensitive = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
-        "asset": (0, _1.ReferencedAssetToJSON)(value.asset),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
+        "asset": (0, index_1.ReferencedAssetToJSON)(value.asset),
         "text": value.text,
-        "mechanism": (0, _1.MechanismEnumToJSON)(value.mechanism),
-        "category": (0, _1.SensitiveCategoryEnumToJSON)(value.category),
-        "severity": (0, _1.SensitiveSeverityEnumToJSON)(value.severity),
+        "mechanism": (0, index_1.MechanismEnumToJSON)(value.mechanism),
+        "category": (0, index_1.SensitiveCategoryEnumToJSON)(value.category),
+        "severity": (0, index_1.SensitiveSeverityEnumToJSON)(value.severity),
         "name": value.name,
         "description": value.description,
-        "metadata": (0, _1.SensitiveMetadataToJSON)(value.metadata),
+        "metadata": (0, index_1.SensitiveMetadataToJSON)(value.metadata),
         "interactions": value.interactions,
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.FlattenedSensitiveToJSON = FlattenedSensitiveToJSON4;
@@ -8859,7 +8905,7 @@ var require_FlattenedSensitives = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedSensitivesToJSON = exports.FlattenedSensitivesFromJSONTyped = exports.FlattenedSensitivesFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedSensitivesFromJSON4(json) {
       return FlattenedSensitivesFromJSONTyped6(json, false);
     }
@@ -8869,9 +8915,9 @@ var require_FlattenedSensitives = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.ReferencedSensitiveFromJSON),
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.ReferencedSensitiveFromJSON),
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.FlattenedSensitivesFromJSONTyped = FlattenedSensitivesFromJSONTyped6;
@@ -8883,9 +8929,9 @@ var require_FlattenedSensitives = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.ReferencedSensitiveToJSON),
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.ReferencedSensitiveToJSON),
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.FlattenedSensitivesToJSON = FlattenedSensitivesToJSON4;
@@ -8899,7 +8945,7 @@ var require_FlattenedShare = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedShareToJSON = exports.FlattenedShareFromJSONTyped = exports.FlattenedShareFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedShareFromJSON4(json) {
       return FlattenedShareFromJSONTyped12(json, false);
     }
@@ -8909,19 +8955,19 @@ var require_FlattenedShare = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
         "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : json["asset"],
         "user": !(0, runtime_1.exists)(json, "user") ? void 0 : json["user"],
         "link": json["link"],
-        "access": (0, _1.AccessEnumFromJSON)(json["access"]),
-        "accessors": (0, _1.AccessorsFromJSON)(json["accessors"]),
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
+        "access": (0, index_1.AccessEnumFromJSON)(json["access"]),
+        "accessors": (0, index_1.AccessorsFromJSON)(json["accessors"]),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
         "_short": json["short"],
         "name": !(0, runtime_1.exists)(json, "name") ? void 0 : json["name"],
-        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, _1.FlattenedAssetsFromJSON)(json["assets"]),
-        "distributions": !(0, runtime_1.exists)(json, "distributions") ? void 0 : (0, _1.FlattenedDistributionsFromJSON)(json["distributions"]),
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, index_1.FlattenedAssetsFromJSON)(json["assets"]),
+        "distributions": !(0, runtime_1.exists)(json, "distributions") ? void 0 : (0, index_1.FlattenedDistributionsFromJSON)(json["distributions"]),
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.FlattenedShareFromJSONTyped = FlattenedShareFromJSONTyped12;
@@ -8933,19 +8979,19 @@ var require_FlattenedShare = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
         "asset": value.asset,
         "user": value.user,
         "link": value.link,
-        "access": (0, _1.AccessEnumToJSON)(value.access),
-        "accessors": (0, _1.AccessorsToJSON)(value.accessors),
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
+        "access": (0, index_1.AccessEnumToJSON)(value.access),
+        "accessors": (0, index_1.AccessorsToJSON)(value.accessors),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
         "short": value._short,
         "name": value.name,
-        "assets": (0, _1.FlattenedAssetsToJSON)(value.assets),
-        "distributions": (0, _1.FlattenedDistributionsToJSON)(value.distributions),
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "assets": (0, index_1.FlattenedAssetsToJSON)(value.assets),
+        "distributions": (0, index_1.FlattenedDistributionsToJSON)(value.distributions),
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.FlattenedShareToJSON = FlattenedShareToJSON4;
@@ -8959,7 +9005,7 @@ var require_FlattenedShares = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedSharesToJSON = exports.FlattenedSharesFromJSONTyped = exports.FlattenedSharesFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedSharesFromJSON4(json) {
       return FlattenedSharesFromJSONTyped6(json, false);
     }
@@ -8969,9 +9015,9 @@ var require_FlattenedShares = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.FlattenedShareFromJSON),
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.FlattenedShareFromJSON),
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.FlattenedSharesFromJSONTyped = FlattenedSharesFromJSONTyped6;
@@ -8983,9 +9029,9 @@ var require_FlattenedShares = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.FlattenedShareToJSON),
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.FlattenedShareToJSON),
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.FlattenedSharesToJSON = FlattenedSharesToJSON4;
@@ -8999,7 +9045,7 @@ var require_FlattenedTag = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedTagToJSON = exports.FlattenedTagFromJSONTyped = exports.FlattenedTagFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedTagFromJSON4(json) {
       return FlattenedTagFromJSONTyped6(json, false);
     }
@@ -9009,20 +9055,19 @@ var require_FlattenedTag = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
         "text": json["text"],
-        "mechanism": (0, _1.MechanismEnumFromJSON)(json["mechanism"]),
-        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, _1.ReferencedAssetFromJSON)(json["asset"]),
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "format": !(0, runtime_1.exists)(json, "format") ? void 0 : (0, _1.ReferencedFormatFromJSON)(json["format"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
-        "category": (0, _1.TagCategoryEnumFromJSON)(json["category"]),
-        "relationship": !(0, runtime_1.exists)(json, "relationship") ? void 0 : (0, _1.RelationshipFromJSON)(json["relationship"]),
+        "mechanisms": !(0, runtime_1.exists)(json, "mechanisms") ? void 0 : (0, runtime_1.mapValues)(json["mechanisms"], index_1.MechanismEnumFromJSON),
+        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, index_1.FlattenedAssetsFromJSON)(json["assets"]),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
+        "category": (0, index_1.TagCategoryEnumFromJSON)(json["category"]),
+        "relationship": !(0, runtime_1.exists)(json, "relationship") ? void 0 : (0, index_1.RelationshipFromJSON)(json["relationship"]),
         "interactions": !(0, runtime_1.exists)(json, "interactions") ? void 0 : json["interactions"],
-        "persons": !(0, runtime_1.exists)(json, "persons") ? void 0 : (0, _1.FlattenedPersonsFromJSON)(json["persons"]),
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "persons": !(0, runtime_1.exists)(json, "persons") ? void 0 : (0, index_1.FlattenedPersonsFromJSON)(json["persons"]),
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.FlattenedTagFromJSONTyped = FlattenedTagFromJSONTyped6;
@@ -9034,20 +9079,19 @@ var require_FlattenedTag = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
         "text": value.text,
-        "mechanism": (0, _1.MechanismEnumToJSON)(value.mechanism),
-        "asset": (0, _1.ReferencedAssetToJSON)(value.asset),
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "format": (0, _1.ReferencedFormatToJSON)(value.format),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
-        "category": (0, _1.TagCategoryEnumToJSON)(value.category),
-        "relationship": (0, _1.RelationshipToJSON)(value.relationship),
+        "mechanisms": value.mechanisms === void 0 ? void 0 : (0, runtime_1.mapValues)(value.mechanisms, index_1.MechanismEnumToJSON),
+        "assets": (0, index_1.FlattenedAssetsToJSON)(value.assets),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
+        "category": (0, index_1.TagCategoryEnumToJSON)(value.category),
+        "relationship": (0, index_1.RelationshipToJSON)(value.relationship),
         "interactions": value.interactions,
-        "persons": (0, _1.FlattenedPersonsToJSON)(value.persons),
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "persons": (0, index_1.FlattenedPersonsToJSON)(value.persons),
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.FlattenedTagToJSON = FlattenedTagToJSON4;
@@ -9061,23 +9105,23 @@ var require_FlattenedTags = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedTagsToJSON = exports.FlattenedTagsFromJSONTyped = exports.FlattenedTagsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedTagsFromJSON4(json) {
-      return FlattenedTagsFromJSONTyped15(json, false);
+      return FlattenedTagsFromJSONTyped12(json, false);
     }
     exports.FlattenedTagsFromJSON = FlattenedTagsFromJSON4;
-    function FlattenedTagsFromJSONTyped15(json, ignoreDiscriminator) {
+    function FlattenedTagsFromJSONTyped12(json, ignoreDiscriminator) {
       if (json === void 0 || json === null) {
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.ReferencedTagFromJSON),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.ReferencedTagFromJSON),
         "indices": !(0, runtime_1.exists)(json, "indices") ? void 0 : json["indices"],
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
-    exports.FlattenedTagsFromJSONTyped = FlattenedTagsFromJSONTyped15;
+    exports.FlattenedTagsFromJSONTyped = FlattenedTagsFromJSONTyped12;
     function FlattenedTagsToJSON4(value) {
       if (value === void 0) {
         return void 0;
@@ -9086,10 +9130,10 @@ var require_FlattenedTags = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.ReferencedTagToJSON),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.ReferencedTagToJSON),
         "indices": value.indices,
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.FlattenedTagsToJSON = FlattenedTagsToJSON4;
@@ -9103,7 +9147,7 @@ var require_FlattenedUserProfile = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedUserProfileToJSON = exports.FlattenedUserProfileFromJSONTyped = exports.FlattenedUserProfileFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedUserProfileFromJSON4(json) {
       return FlattenedUserProfileFromJSONTyped16(json, false);
     }
@@ -9113,7 +9157,7 @@ var require_FlattenedUserProfile = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
         "email": !(0, runtime_1.exists)(json, "email") ? void 0 : json["email"],
         "name": !(0, runtime_1.exists)(json, "name") ? void 0 : json["name"],
@@ -9131,7 +9175,7 @@ var require_FlattenedUserProfile = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
         "email": value.email,
         "name": value.name,
@@ -9151,7 +9195,7 @@ var require_FlattenedWebsite = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedWebsiteToJSON = exports.FlattenedWebsiteFromJSONTyped = exports.FlattenedWebsiteFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedWebsiteFromJSON4(json) {
       return FlattenedWebsiteFromJSONTyped6(json, false);
     }
@@ -9161,19 +9205,18 @@ var require_FlattenedWebsite = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, _1.ReferencedAssetFromJSON)(json["asset"]),
+        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, index_1.FlattenedAssetsFromJSON)(json["assets"]),
         "name": json["name"],
         "url": json["url"],
-        "format": !(0, runtime_1.exists)(json, "format") ? void 0 : (0, _1.ReferencedFormatFromJSON)(json["format"]),
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
-        "mechanism": (0, _1.MechanismEnumFromJSON)(json["mechanism"]),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
+        "mechanisms": !(0, runtime_1.exists)(json, "mechanisms") ? void 0 : (0, runtime_1.mapValues)(json["mechanisms"], index_1.MechanismEnumFromJSON),
         "interactions": !(0, runtime_1.exists)(json, "interactions") ? void 0 : json["interactions"],
-        "persons": !(0, runtime_1.exists)(json, "persons") ? void 0 : (0, _1.FlattenedPersonsFromJSON)(json["persons"]),
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "persons": !(0, runtime_1.exists)(json, "persons") ? void 0 : (0, index_1.FlattenedPersonsFromJSON)(json["persons"]),
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.FlattenedWebsiteFromJSONTyped = FlattenedWebsiteFromJSONTyped6;
@@ -9185,19 +9228,18 @@ var require_FlattenedWebsite = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "asset": (0, _1.ReferencedAssetToJSON)(value.asset),
+        "assets": (0, index_1.FlattenedAssetsToJSON)(value.assets),
         "name": value.name,
         "url": value.url,
-        "format": (0, _1.ReferencedFormatToJSON)(value.format),
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
-        "mechanism": (0, _1.MechanismEnumToJSON)(value.mechanism),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
+        "mechanisms": value.mechanisms === void 0 ? void 0 : (0, runtime_1.mapValues)(value.mechanisms, index_1.MechanismEnumToJSON),
         "interactions": value.interactions,
-        "persons": (0, _1.FlattenedPersonsToJSON)(value.persons),
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "persons": (0, index_1.FlattenedPersonsToJSON)(value.persons),
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.FlattenedWebsiteToJSON = FlattenedWebsiteToJSON4;
@@ -9211,23 +9253,23 @@ var require_FlattenedWebsites = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedWebsitesToJSON = exports.FlattenedWebsitesFromJSONTyped = exports.FlattenedWebsitesFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FlattenedWebsitesFromJSON4(json) {
-      return FlattenedWebsitesFromJSONTyped15(json, false);
+      return FlattenedWebsitesFromJSONTyped12(json, false);
     }
     exports.FlattenedWebsitesFromJSON = FlattenedWebsitesFromJSON4;
-    function FlattenedWebsitesFromJSONTyped15(json, ignoreDiscriminator) {
+    function FlattenedWebsitesFromJSONTyped12(json, ignoreDiscriminator) {
       if (json === void 0 || json === null) {
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.ReferencedWebsiteFromJSON),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.ReferencedWebsiteFromJSON),
         "indices": !(0, runtime_1.exists)(json, "indices") ? void 0 : json["indices"],
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
-    exports.FlattenedWebsitesFromJSONTyped = FlattenedWebsitesFromJSONTyped15;
+    exports.FlattenedWebsitesFromJSONTyped = FlattenedWebsitesFromJSONTyped12;
     function FlattenedWebsitesToJSON4(value) {
       if (value === void 0) {
         return void 0;
@@ -9236,10 +9278,10 @@ var require_FlattenedWebsites = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.ReferencedWebsiteToJSON),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.ReferencedWebsiteToJSON),
         "indices": value.indices,
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.FlattenedWebsitesToJSON = FlattenedWebsitesToJSON4;
@@ -9253,7 +9295,7 @@ var require_Font = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FontToJSON = exports.FontFromJSONTyped = exports.FontFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FontFromJSON4(json) {
       return FontFromJSONTyped6(json, false);
     }
@@ -9263,7 +9305,7 @@ var require_Font = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "size": json["size"]
       };
     }
@@ -9276,7 +9318,7 @@ var require_Font = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "size": value.size
       };
     }
@@ -9291,40 +9333,38 @@ var require_Format = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FormatToJSON = exports.FormatFromJSONTyped = exports.FormatFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FormatFromJSON4(json) {
-      return FormatFromJSONTyped13(json, false);
+      return FormatFromJSONTyped11(json, false);
     }
     exports.FormatFromJSON = FormatFromJSON4;
-    function FormatFromJSONTyped13(json, ignoreDiscriminator) {
+    function FormatFromJSONTyped11(json, ignoreDiscriminator) {
       if (json === void 0 || json === null) {
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
         "creator": json["creator"],
-        "classification": (0, _1.ClassificationFromJSON)(json["classification"]),
+        "classification": (0, index_1.ClassificationFromJSON)(json["classification"]),
         "icon": !(0, runtime_1.exists)(json, "icon") ? void 0 : json["icon"],
-        "role": (0, _1.RoleFromJSON)(json["role"]),
-        "application": (0, _1.ApplicationFromJSON)(json["application"]),
-        "asset": (0, _1.FlattenedAssetFromJSON)(json["asset"]),
-        "bytes": (0, _1.ByteDescriptorFromJSON)(json["bytes"]),
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
-        "synced": !(0, runtime_1.exists)(json, "synced") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["synced"]),
+        "role": (0, index_1.RoleFromJSON)(json["role"]),
+        "application": (0, index_1.ApplicationFromJSON)(json["application"]),
+        "asset": (0, index_1.FlattenedAssetFromJSON)(json["asset"]),
+        "bytes": (0, index_1.ByteDescriptorFromJSON)(json["bytes"]),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
+        "synced": !(0, runtime_1.exists)(json, "synced") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["synced"]),
         "cloud": !(0, runtime_1.exists)(json, "cloud") ? void 0 : json["cloud"],
-        "fragment": !(0, runtime_1.exists)(json, "fragment") ? void 0 : (0, _1.FragmentFormatFromJSON)(json["fragment"]),
-        "file": !(0, runtime_1.exists)(json, "file") ? void 0 : (0, _1.FileFormatFromJSON)(json["file"]),
-        "analysis": !(0, runtime_1.exists)(json, "analysis") ? void 0 : (0, _1.AnalysisFromJSON)(json["analysis"]),
-        "websites": !(0, runtime_1.exists)(json, "websites") ? void 0 : (0, _1.WebsitesFromJSON)(json["websites"]),
-        "tags": !(0, runtime_1.exists)(json, "tags") ? void 0 : (0, _1.TagsFromJSON)(json["tags"]),
-        "relationship": !(0, runtime_1.exists)(json, "relationship") ? void 0 : (0, _1.RelationshipFromJSON)(json["relationship"]),
-        "activities": !(0, runtime_1.exists)(json, "activities") ? void 0 : (0, _1.ActivitiesFromJSON)(json["activities"])
+        "fragment": !(0, runtime_1.exists)(json, "fragment") ? void 0 : (0, index_1.FragmentFormatFromJSON)(json["fragment"]),
+        "file": !(0, runtime_1.exists)(json, "file") ? void 0 : (0, index_1.FileFormatFromJSON)(json["file"]),
+        "analysis": !(0, runtime_1.exists)(json, "analysis") ? void 0 : (0, index_1.AnalysisFromJSON)(json["analysis"]),
+        "relationship": !(0, runtime_1.exists)(json, "relationship") ? void 0 : (0, index_1.RelationshipFromJSON)(json["relationship"]),
+        "activities": !(0, runtime_1.exists)(json, "activities") ? void 0 : (0, index_1.ActivitiesFromJSON)(json["activities"])
       };
     }
-    exports.FormatFromJSONTyped = FormatFromJSONTyped13;
+    exports.FormatFromJSONTyped = FormatFromJSONTyped11;
     function FormatToJSON5(value) {
       if (value === void 0) {
         return void 0;
@@ -9333,27 +9373,25 @@ var require_Format = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
         "creator": value.creator,
-        "classification": (0, _1.ClassificationToJSON)(value.classification),
+        "classification": (0, index_1.ClassificationToJSON)(value.classification),
         "icon": value.icon,
-        "role": (0, _1.RoleToJSON)(value.role),
-        "application": (0, _1.ApplicationToJSON)(value.application),
-        "asset": (0, _1.FlattenedAssetToJSON)(value.asset),
-        "bytes": (0, _1.ByteDescriptorToJSON)(value.bytes),
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
-        "synced": (0, _1.GroupedTimestampToJSON)(value.synced),
+        "role": (0, index_1.RoleToJSON)(value.role),
+        "application": (0, index_1.ApplicationToJSON)(value.application),
+        "asset": (0, index_1.FlattenedAssetToJSON)(value.asset),
+        "bytes": (0, index_1.ByteDescriptorToJSON)(value.bytes),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
+        "synced": (0, index_1.GroupedTimestampToJSON)(value.synced),
         "cloud": value.cloud,
-        "fragment": (0, _1.FragmentFormatToJSON)(value.fragment),
-        "file": (0, _1.FileFormatToJSON)(value.file),
-        "analysis": (0, _1.AnalysisToJSON)(value.analysis),
-        "websites": (0, _1.WebsitesToJSON)(value.websites),
-        "tags": (0, _1.TagsToJSON)(value.tags),
-        "relationship": (0, _1.RelationshipToJSON)(value.relationship),
-        "activities": (0, _1.ActivitiesToJSON)(value.activities)
+        "fragment": (0, index_1.FragmentFormatToJSON)(value.fragment),
+        "file": (0, index_1.FileFormatToJSON)(value.file),
+        "analysis": (0, index_1.AnalysisToJSON)(value.analysis),
+        "relationship": (0, index_1.RelationshipToJSON)(value.relationship),
+        "activities": (0, index_1.ActivitiesToJSON)(value.activities)
       };
     }
     exports.FormatToJSON = FormatToJSON5;
@@ -9367,7 +9405,7 @@ var require_FormatMetric = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FormatMetricToJSON = exports.FormatMetricFromJSONTyped = exports.FormatMetricFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FormatMetricFromJSON3(json) {
       return FormatMetricFromJSONTyped3(json, false);
     }
@@ -9377,9 +9415,9 @@ var require_FormatMetric = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "generic": (0, _1.ClassificationGenericEnumFromJSON)(json["generic"]),
-        "specific": (0, _1.ClassificationSpecificEnumFromJSON)(json["specific"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "generic": (0, index_1.ClassificationGenericEnumFromJSON)(json["generic"]),
+        "specific": (0, index_1.ClassificationSpecificEnumFromJSON)(json["specific"]),
         "identifiers": json["identifiers"]
       };
     }
@@ -9392,9 +9430,9 @@ var require_FormatMetric = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "generic": (0, _1.ClassificationGenericEnumToJSON)(value.generic),
-        "specific": (0, _1.ClassificationSpecificEnumToJSON)(value.specific),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "generic": (0, index_1.ClassificationGenericEnumToJSON)(value.generic),
+        "specific": (0, index_1.ClassificationSpecificEnumToJSON)(value.specific),
         "identifiers": value.identifiers
       };
     }
@@ -9409,7 +9447,7 @@ var require_FormatReclassification = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FormatReclassificationToJSON = exports.FormatReclassificationFromJSONTyped = exports.FormatReclassificationFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FormatReclassificationFromJSON2(json) {
       return FormatReclassificationFromJSONTyped(json, false);
     }
@@ -9419,9 +9457,9 @@ var require_FormatReclassification = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "ext": (0, _1.ClassificationSpecificEnumFromJSON)(json["ext"]),
-        "format": (0, _1.FormatFromJSON)(json["format"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "ext": (0, index_1.ClassificationSpecificEnumFromJSON)(json["ext"]),
+        "format": (0, index_1.FormatFromJSON)(json["format"])
       };
     }
     exports.FormatReclassificationFromJSONTyped = FormatReclassificationFromJSONTyped;
@@ -9433,9 +9471,9 @@ var require_FormatReclassification = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "ext": (0, _1.ClassificationSpecificEnumToJSON)(value.ext),
-        "format": (0, _1.FormatToJSON)(value.format)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "ext": (0, index_1.ClassificationSpecificEnumToJSON)(value.ext),
+        "format": (0, index_1.FormatToJSON)(value.format)
       };
     }
     exports.FormatReclassificationToJSON = FormatReclassificationToJSON2;
@@ -9449,22 +9487,22 @@ var require_Formats = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FormatsToJSON = exports.FormatsFromJSONTyped = exports.FormatsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
-    function FormatsFromJSON2(json) {
-      return FormatsFromJSONTyped(json, false);
+    var index_1 = require_models();
+    function FormatsFromJSON4(json) {
+      return FormatsFromJSONTyped6(json, false);
     }
-    exports.FormatsFromJSON = FormatsFromJSON2;
-    function FormatsFromJSONTyped(json, ignoreDiscriminator) {
+    exports.FormatsFromJSON = FormatsFromJSON4;
+    function FormatsFromJSONTyped6(json, ignoreDiscriminator) {
       if (json === void 0 || json === null) {
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.FormatFromJSON)
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.FormatFromJSON)
       };
     }
-    exports.FormatsFromJSONTyped = FormatsFromJSONTyped;
-    function FormatsToJSON2(value) {
+    exports.FormatsFromJSONTyped = FormatsFromJSONTyped6;
+    function FormatsToJSON7(value) {
       if (value === void 0) {
         return void 0;
       }
@@ -9472,11 +9510,11 @@ var require_Formats = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.FormatToJSON)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.FormatToJSON)
       };
     }
-    exports.FormatsToJSON = FormatsToJSON2;
+    exports.FormatsToJSON = FormatsToJSON7;
   }
 });
 
@@ -9487,7 +9525,7 @@ var require_FormatsMetrics = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FormatsMetricsToJSON = exports.FormatsMetricsFromJSONTyped = exports.FormatsMetricsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FormatsMetricsFromJSON2(json) {
       return FormatsMetricsFromJSONTyped(json, false);
     }
@@ -9497,8 +9535,8 @@ var require_FormatsMetrics = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.FormatMetricFromJSON)
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.FormatMetricFromJSON)
       };
     }
     exports.FormatsMetricsFromJSONTyped = FormatsMetricsFromJSONTyped;
@@ -9510,8 +9548,8 @@ var require_FormatsMetrics = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.FormatMetricToJSON)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.FormatMetricToJSON)
       };
     }
     exports.FormatsMetricsToJSON = FormatsMetricsToJSON2;
@@ -9525,7 +9563,7 @@ var require_FragmentFormat = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FragmentFormatToJSON = exports.FragmentFormatFromJSONTyped = exports.FragmentFormatFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FragmentFormatFromJSON4(json) {
       return FragmentFormatFromJSONTyped16(json, false);
     }
@@ -9535,10 +9573,10 @@ var require_FragmentFormat = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "string": !(0, runtime_1.exists)(json, "string") ? void 0 : (0, _1.TransferableStringFromJSON)(json["string"]),
-        "bytes": !(0, runtime_1.exists)(json, "bytes") ? void 0 : (0, _1.TransferableBytesFromJSON)(json["bytes"]),
-        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, _1.FragmentMetadataFromJSON)(json["metadata"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "string": !(0, runtime_1.exists)(json, "string") ? void 0 : (0, index_1.TransferableStringFromJSON)(json["string"]),
+        "bytes": !(0, runtime_1.exists)(json, "bytes") ? void 0 : (0, index_1.TransferableBytesFromJSON)(json["bytes"]),
+        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, index_1.FragmentMetadataFromJSON)(json["metadata"])
       };
     }
     exports.FragmentFormatFromJSONTyped = FragmentFormatFromJSONTyped16;
@@ -9550,10 +9588,10 @@ var require_FragmentFormat = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "string": (0, _1.TransferableStringToJSON)(value.string),
-        "bytes": (0, _1.TransferableBytesToJSON)(value.bytes),
-        "metadata": (0, _1.FragmentMetadataToJSON)(value.metadata)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "string": (0, index_1.TransferableStringToJSON)(value.string),
+        "bytes": (0, index_1.TransferableBytesToJSON)(value.bytes),
+        "metadata": (0, index_1.FragmentMetadataToJSON)(value.metadata)
       };
     }
     exports.FragmentFormatToJSON = FragmentFormatToJSON4;
@@ -9567,7 +9605,7 @@ var require_FragmentMetadata = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FragmentMetadataToJSON = exports.FragmentMetadataFromJSONTyped = exports.FragmentMetadataFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function FragmentMetadataFromJSON4(json) {
       return FragmentMetadataFromJSONTyped9(json, false);
     }
@@ -9577,8 +9615,8 @@ var require_FragmentMetadata = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "ext": !(0, runtime_1.exists)(json, "ext") ? void 0 : (0, _1.ClassificationSpecificEnumFromJSON)(json["ext"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "ext": !(0, runtime_1.exists)(json, "ext") ? void 0 : (0, index_1.ClassificationSpecificEnumFromJSON)(json["ext"])
       };
     }
     exports.FragmentMetadataFromJSONTyped = FragmentMetadataFromJSONTyped9;
@@ -9590,8 +9628,8 @@ var require_FragmentMetadata = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "ext": (0, _1.ClassificationSpecificEnumToJSON)(value.ext)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "ext": (0, index_1.ClassificationSpecificEnumToJSON)(value.ext)
       };
     }
     exports.FragmentMetadataToJSON = FragmentMetadataToJSON4;
@@ -9605,7 +9643,7 @@ var require_GitHubDistribution = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.GitHubDistributionToJSON = exports.GitHubDistributionFromJSONTyped = exports.GitHubDistributionFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function GitHubDistributionFromJSON4(json) {
       return GitHubDistributionFromJSONTyped9(json, false);
     }
@@ -9615,8 +9653,8 @@ var require_GitHubDistribution = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "gist": !(0, runtime_1.exists)(json, "gist") ? void 0 : (0, _1.GitHubGistDistributionFromJSON)(json["gist"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "gist": !(0, runtime_1.exists)(json, "gist") ? void 0 : (0, index_1.GitHubGistDistributionFromJSON)(json["gist"])
       };
     }
     exports.GitHubDistributionFromJSONTyped = GitHubDistributionFromJSONTyped9;
@@ -9628,8 +9666,8 @@ var require_GitHubDistribution = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "gist": (0, _1.GitHubGistDistributionToJSON)(value.gist)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "gist": (0, index_1.GitHubGistDistributionToJSON)(value.gist)
       };
     }
     exports.GitHubDistributionToJSON = GitHubDistributionToJSON4;
@@ -9643,7 +9681,7 @@ var require_GitHubGistDistribution = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.GitHubGistDistributionToJSON = exports.GitHubGistDistributionFromJSONTyped = exports.GitHubGistDistributionFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function GitHubGistDistributionFromJSON4(json) {
       return GitHubGistDistributionFromJSONTyped6(json, false);
     }
@@ -9653,14 +9691,14 @@ var require_GitHubGistDistribution = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "recipients": (0, _1.RecipientsFromJSON)(json["recipients"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "recipients": (0, index_1.RecipientsFromJSON)(json["recipients"]),
         "_public": json["public"],
         "description": !(0, runtime_1.exists)(json, "description") ? void 0 : json["description"],
         "name": json["name"],
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
         "githubId": json["github_id"],
         "url": json["url"]
       };
@@ -9674,14 +9712,14 @@ var require_GitHubGistDistribution = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "recipients": (0, _1.RecipientsToJSON)(value.recipients),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "recipients": (0, index_1.RecipientsToJSON)(value.recipients),
         "public": value._public,
         "description": value.description,
         "name": value.name,
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
         "github_id": value.githubId,
         "url": value.url
       };
@@ -9697,7 +9735,7 @@ var require_GraphicalImageDescriptiveStatistics = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.GraphicalImageDescriptiveStatisticsToJSON = exports.GraphicalImageDescriptiveStatisticsFromJSONTyped = exports.GraphicalImageDescriptiveStatisticsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function GraphicalImageDescriptiveStatisticsFromJSON4(json) {
       return GraphicalImageDescriptiveStatisticsFromJSONTyped6(json, false);
     }
@@ -9707,7 +9745,7 @@ var require_GraphicalImageDescriptiveStatistics = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "width": json["width"],
         "height": json["height"],
         "channels": json["channels"],
@@ -9726,7 +9764,7 @@ var require_GraphicalImageDescriptiveStatistics = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "width": value.width,
         "height": value.height,
         "channels": value.channels,
@@ -9747,7 +9785,7 @@ var require_GraphicalImageProcessing = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.GraphicalImageProcessingToJSON = exports.GraphicalImageProcessingFromJSONTyped = exports.GraphicalImageProcessingFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function GraphicalImageProcessingFromJSON4(json) {
       return GraphicalImageProcessingFromJSONTyped6(json, false);
     }
@@ -9757,8 +9795,8 @@ var require_GraphicalImageProcessing = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "statistics": !(0, runtime_1.exists)(json, "statistics") ? void 0 : (0, _1.GraphicalImageStatisticsFromJSON)(json["statistics"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "statistics": !(0, runtime_1.exists)(json, "statistics") ? void 0 : (0, index_1.GraphicalImageStatisticsFromJSON)(json["statistics"])
       };
     }
     exports.GraphicalImageProcessingFromJSONTyped = GraphicalImageProcessingFromJSONTyped6;
@@ -9770,8 +9808,8 @@ var require_GraphicalImageProcessing = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "statistics": (0, _1.GraphicalImageStatisticsToJSON)(value.statistics)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "statistics": (0, index_1.GraphicalImageStatisticsToJSON)(value.statistics)
       };
     }
     exports.GraphicalImageProcessingToJSON = GraphicalImageProcessingToJSON4;
@@ -9785,7 +9823,7 @@ var require_GraphicalImageStatistics = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.GraphicalImageStatisticsToJSON = exports.GraphicalImageStatisticsFromJSONTyped = exports.GraphicalImageStatisticsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function GraphicalImageStatisticsFromJSON4(json) {
       return GraphicalImageStatisticsFromJSONTyped6(json, false);
     }
@@ -9795,8 +9833,8 @@ var require_GraphicalImageStatistics = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "descriptive": !(0, runtime_1.exists)(json, "descriptive") ? void 0 : (0, _1.GraphicalImageDescriptiveStatisticsFromJSON)(json["descriptive"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "descriptive": !(0, runtime_1.exists)(json, "descriptive") ? void 0 : (0, index_1.GraphicalImageDescriptiveStatisticsFromJSON)(json["descriptive"])
       };
     }
     exports.GraphicalImageStatisticsFromJSONTyped = GraphicalImageStatisticsFromJSONTyped6;
@@ -9808,8 +9846,8 @@ var require_GraphicalImageStatistics = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "descriptive": (0, _1.GraphicalImageDescriptiveStatisticsToJSON)(value.descriptive)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "descriptive": (0, index_1.GraphicalImageDescriptiveStatisticsToJSON)(value.descriptive)
       };
     }
     exports.GraphicalImageStatisticsToJSON = GraphicalImageStatisticsToJSON4;
@@ -9823,7 +9861,7 @@ var require_GraphicalMachineLearningProcessingEvent = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.GraphicalMachineLearningProcessingEventToJSON = exports.GraphicalMachineLearningProcessingEventFromJSONTyped = exports.GraphicalMachineLearningProcessingEventFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function GraphicalMachineLearningProcessingEventFromJSON4(json) {
       return GraphicalMachineLearningProcessingEventFromJSONTyped7(json, false);
     }
@@ -9833,10 +9871,10 @@ var require_GraphicalMachineLearningProcessingEvent = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "ocr": !(0, runtime_1.exists)(json, "ocr") ? void 0 : (0, _1.GraphicalOCRProcessingFromJSON)(json["ocr"]),
-        "image": !(0, runtime_1.exists)(json, "image") ? void 0 : (0, _1.GraphicalImageProcessingFromJSON)(json["image"]),
-        "svg": !(0, runtime_1.exists)(json, "svg") ? void 0 : (0, _1.GraphicalSVGStatisticsFromJSON)(json["svg"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "ocr": !(0, runtime_1.exists)(json, "ocr") ? void 0 : (0, index_1.GraphicalOCRProcessingFromJSON)(json["ocr"]),
+        "image": !(0, runtime_1.exists)(json, "image") ? void 0 : (0, index_1.GraphicalImageProcessingFromJSON)(json["image"]),
+        "svg": !(0, runtime_1.exists)(json, "svg") ? void 0 : (0, index_1.GraphicalSVGStatisticsFromJSON)(json["svg"])
       };
     }
     exports.GraphicalMachineLearningProcessingEventFromJSONTyped = GraphicalMachineLearningProcessingEventFromJSONTyped7;
@@ -9848,10 +9886,10 @@ var require_GraphicalMachineLearningProcessingEvent = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "ocr": (0, _1.GraphicalOCRProcessingToJSON)(value.ocr),
-        "image": (0, _1.GraphicalImageProcessingToJSON)(value.image),
-        "svg": (0, _1.GraphicalSVGStatisticsToJSON)(value.svg)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "ocr": (0, index_1.GraphicalOCRProcessingToJSON)(value.ocr),
+        "image": (0, index_1.GraphicalImageProcessingToJSON)(value.image),
+        "svg": (0, index_1.GraphicalSVGStatisticsToJSON)(value.svg)
       };
     }
     exports.GraphicalMachineLearningProcessingEventToJSON = GraphicalMachineLearningProcessingEventToJSON4;
@@ -9865,7 +9903,7 @@ var require_GraphicalOCRDescriptiveStatistics = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.GraphicalOCRDescriptiveStatisticsToJSON = exports.GraphicalOCRDescriptiveStatisticsFromJSONTyped = exports.GraphicalOCRDescriptiveStatisticsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function GraphicalOCRDescriptiveStatisticsFromJSON4(json) {
       return GraphicalOCRDescriptiveStatisticsFromJSONTyped6(json, false);
     }
@@ -9875,13 +9913,13 @@ var require_GraphicalOCRDescriptiveStatistics = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "asset": json["asset"],
         "user": json["user"],
         "model": json["model"],
         "created": json["created"],
         "os": json["os"],
-        "confidence": (0, _1.GraphicalOCRDescriptiveStatisticsConfidenceFromJSON)(json["confidence"]),
+        "confidence": (0, index_1.GraphicalOCRDescriptiveStatisticsConfidenceFromJSON)(json["confidence"]),
         "duration": json["duration"]
       };
     }
@@ -9894,13 +9932,13 @@ var require_GraphicalOCRDescriptiveStatistics = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "asset": value.asset,
         "user": value.user,
         "model": value.model,
         "created": value.created,
         "os": value.os,
-        "confidence": (0, _1.GraphicalOCRDescriptiveStatisticsConfidenceToJSON)(value.confidence),
+        "confidence": (0, index_1.GraphicalOCRDescriptiveStatisticsConfidenceToJSON)(value.confidence),
         "duration": value.duration
       };
     }
@@ -9949,7 +9987,7 @@ var require_GraphicalOCRProcessing = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.GraphicalOCRProcessingToJSON = exports.GraphicalOCRProcessingFromJSONTyped = exports.GraphicalOCRProcessingFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function GraphicalOCRProcessingFromJSON4(json) {
       return GraphicalOCRProcessingFromJSONTyped6(json, false);
     }
@@ -9959,8 +9997,8 @@ var require_GraphicalOCRProcessing = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "statistics": !(0, runtime_1.exists)(json, "statistics") ? void 0 : (0, _1.GraphicalOCRStatisticsFromJSON)(json["statistics"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "statistics": !(0, runtime_1.exists)(json, "statistics") ? void 0 : (0, index_1.GraphicalOCRStatisticsFromJSON)(json["statistics"])
       };
     }
     exports.GraphicalOCRProcessingFromJSONTyped = GraphicalOCRProcessingFromJSONTyped6;
@@ -9972,8 +10010,8 @@ var require_GraphicalOCRProcessing = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "statistics": (0, _1.GraphicalOCRStatisticsToJSON)(value.statistics)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "statistics": (0, index_1.GraphicalOCRStatisticsToJSON)(value.statistics)
       };
     }
     exports.GraphicalOCRProcessingToJSON = GraphicalOCRProcessingToJSON4;
@@ -9987,7 +10025,7 @@ var require_GraphicalOCRStatistics = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.GraphicalOCRStatisticsToJSON = exports.GraphicalOCRStatisticsFromJSONTyped = exports.GraphicalOCRStatisticsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function GraphicalOCRStatisticsFromJSON4(json) {
       return GraphicalOCRStatisticsFromJSONTyped6(json, false);
     }
@@ -9997,8 +10035,8 @@ var require_GraphicalOCRStatistics = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "descriptive": !(0, runtime_1.exists)(json, "descriptive") ? void 0 : (0, _1.GraphicalOCRDescriptiveStatisticsFromJSON)(json["descriptive"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "descriptive": !(0, runtime_1.exists)(json, "descriptive") ? void 0 : (0, index_1.GraphicalOCRDescriptiveStatisticsFromJSON)(json["descriptive"])
       };
     }
     exports.GraphicalOCRStatisticsFromJSONTyped = GraphicalOCRStatisticsFromJSONTyped6;
@@ -10010,8 +10048,8 @@ var require_GraphicalOCRStatistics = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "descriptive": (0, _1.GraphicalOCRDescriptiveStatisticsToJSON)(value.descriptive)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "descriptive": (0, index_1.GraphicalOCRDescriptiveStatisticsToJSON)(value.descriptive)
       };
     }
     exports.GraphicalOCRStatisticsToJSON = GraphicalOCRStatisticsToJSON4;
@@ -10025,7 +10063,7 @@ var require_GraphicalSVGStatistics = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.GraphicalSVGStatisticsToJSON = exports.GraphicalSVGStatisticsFromJSONTyped = exports.GraphicalSVGStatisticsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function GraphicalSVGStatisticsFromJSON4(json) {
       return GraphicalSVGStatisticsFromJSONTyped6(json, false);
     }
@@ -10035,7 +10073,7 @@ var require_GraphicalSVGStatistics = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": !(0, runtime_1.exists)(json, "id") ? void 0 : json["id"]
       };
     }
@@ -10048,7 +10086,7 @@ var require_GraphicalSVGStatistics = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id
       };
     }
@@ -10063,7 +10101,7 @@ var require_GroupedTimestamp = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.GroupedTimestampToJSON = exports.GroupedTimestampFromJSONTyped = exports.GroupedTimestampFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function GroupedTimestampFromJSON4(json) {
       return GroupedTimestampFromJSONTyped136(json, false);
     }
@@ -10073,7 +10111,7 @@ var require_GroupedTimestamp = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "value": new Date(json["value"]),
         "readable": !(0, runtime_1.exists)(json, "readable") ? void 0 : json["readable"]
       };
@@ -10087,7 +10125,7 @@ var require_GroupedTimestamp = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "value": value.value.toISOString(),
         "readable": value.readable
       };
@@ -10103,7 +10141,7 @@ var require_Health = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.HealthToJSON = exports.HealthFromJSONTyped = exports.HealthFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function HealthFromJSON4(json) {
       return HealthFromJSONTyped5(json, false);
     }
@@ -10113,8 +10151,8 @@ var require_Health = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "os": (0, _1.OSHealthFromJSON)(json["os"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "os": (0, index_1.OSHealthFromJSON)(json["os"])
       };
     }
     exports.HealthFromJSONTyped = HealthFromJSONTyped5;
@@ -10126,8 +10164,8 @@ var require_Health = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "os": (0, _1.OSHealthToJSON)(value.os)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "os": (0, index_1.OSHealthToJSON)(value.os)
       };
     }
     exports.HealthToJSON = HealthToJSON4;
@@ -10141,7 +10179,7 @@ var require_Hint = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.HintToJSON = exports.HintFromJSONTyped = exports.HintFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function HintFromJSON4(json) {
       return HintFromJSONTyped6(json, false);
     }
@@ -10151,17 +10189,17 @@ var require_Hint = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
-        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, _1.MechanismEnumFromJSON)(json["mechanism"]),
-        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, _1.ReferencedAssetFromJSON)(json["asset"]),
-        "type": (0, _1.HintTypeEnumFromJSON)(json["type"]),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
+        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, index_1.MechanismEnumFromJSON)(json["mechanism"]),
+        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, index_1.ReferencedAssetFromJSON)(json["asset"]),
+        "type": (0, index_1.HintTypeEnumFromJSON)(json["type"]),
         "text": json["text"],
-        "model": !(0, runtime_1.exists)(json, "model") ? void 0 : (0, _1.ReferencedModelFromJSON)(json["model"]),
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "model": !(0, runtime_1.exists)(json, "model") ? void 0 : (0, index_1.ReferencedModelFromJSON)(json["model"]),
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.HintFromJSONTyped = HintFromJSONTyped6;
@@ -10173,17 +10211,17 @@ var require_Hint = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
-        "mechanism": (0, _1.MechanismEnumToJSON)(value.mechanism),
-        "asset": (0, _1.ReferencedAssetToJSON)(value.asset),
-        "type": (0, _1.HintTypeEnumToJSON)(value.type),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
+        "mechanism": (0, index_1.MechanismEnumToJSON)(value.mechanism),
+        "asset": (0, index_1.ReferencedAssetToJSON)(value.asset),
+        "type": (0, index_1.HintTypeEnumToJSON)(value.type),
         "text": value.text,
-        "model": (0, _1.ReferencedModelToJSON)(value.model),
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "model": (0, index_1.ReferencedModelToJSON)(value.model),
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.HintToJSON = HintToJSON5;
@@ -10223,7 +10261,7 @@ var require_Hints = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.HintsToJSON = exports.HintsFromJSONTyped = exports.HintsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function HintsFromJSON4(json) {
       return HintsFromJSONTyped6(json, false);
     }
@@ -10233,10 +10271,10 @@ var require_Hints = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.HintFromJSON),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.HintFromJSON),
         "indices": !(0, runtime_1.exists)(json, "indices") ? void 0 : json["indices"],
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.HintsFromJSONTyped = HintsFromJSONTyped6;
@@ -10248,10 +10286,10 @@ var require_Hints = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.HintToJSON),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.HintToJSON),
         "indices": value.indices,
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.HintsToJSON = HintsToJSON5;
@@ -10265,7 +10303,7 @@ var require_ImageAnalyses = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ImageAnalysesToJSON = exports.ImageAnalysesFromJSONTyped = exports.ImageAnalysesFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ImageAnalysesFromJSON2(json) {
       return ImageAnalysesFromJSONTyped(json, false);
     }
@@ -10275,8 +10313,8 @@ var require_ImageAnalyses = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.ImageAnalysisFromJSON)
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.ImageAnalysisFromJSON)
       };
     }
     exports.ImageAnalysesFromJSONTyped = ImageAnalysesFromJSONTyped;
@@ -10288,8 +10326,8 @@ var require_ImageAnalyses = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.ImageAnalysisToJSON)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.ImageAnalysisToJSON)
       };
     }
     exports.ImageAnalysesToJSON = ImageAnalysesToJSON2;
@@ -10303,7 +10341,7 @@ var require_ImageAnalysis = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ImageAnalysisToJSON = exports.ImageAnalysisFromJSONTyped = exports.ImageAnalysisFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ImageAnalysisFromJSON4(json) {
       return ImageAnalysisFromJSONTyped8(json, false);
     }
@@ -10313,10 +10351,10 @@ var require_ImageAnalysis = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
         "analysis": json["analysis"],
-        "ocr": !(0, runtime_1.exists)(json, "ocr") ? void 0 : (0, _1.OCRAnalysisFromJSON)(json["ocr"])
+        "ocr": !(0, runtime_1.exists)(json, "ocr") ? void 0 : (0, index_1.OCRAnalysisFromJSON)(json["ocr"])
       };
     }
     exports.ImageAnalysisFromJSONTyped = ImageAnalysisFromJSONTyped8;
@@ -10328,10 +10366,10 @@ var require_ImageAnalysis = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
         "analysis": value.analysis,
-        "ocr": (0, _1.OCRAnalysisToJSON)(value.ocr)
+        "ocr": (0, index_1.OCRAnalysisToJSON)(value.ocr)
       };
     }
     exports.ImageAnalysisToJSON = ImageAnalysisToJSON4;
@@ -10345,7 +10383,7 @@ var require_InteractedAsset = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.InteractedAssetToJSON = exports.InteractedAssetFromJSONTyped = exports.InteractedAssetFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function InteractedAssetFromJSON3(json) {
       return InteractedAssetFromJSONTyped3(json, false);
     }
@@ -10356,7 +10394,7 @@ var require_InteractedAsset = __commonJS({
       }
       return {
         "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : json["asset"],
-        "interactions": !(0, runtime_1.exists)(json, "interactions") ? void 0 : (0, _1.InteractedAssetInteractionsFromJSON)(json["interactions"])
+        "interactions": !(0, runtime_1.exists)(json, "interactions") ? void 0 : (0, index_1.InteractedAssetInteractionsFromJSON)(json["interactions"])
       };
     }
     exports.InteractedAssetFromJSONTyped = InteractedAssetFromJSONTyped3;
@@ -10369,7 +10407,7 @@ var require_InteractedAsset = __commonJS({
       }
       return {
         "asset": value.asset,
-        "interactions": (0, _1.InteractedAssetInteractionsToJSON)(value.interactions)
+        "interactions": (0, index_1.InteractedAssetInteractionsToJSON)(value.interactions)
       };
     }
     exports.InteractedAssetToJSON = InteractedAssetToJSON3;
@@ -10422,7 +10460,7 @@ var require_InteractedAssets = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.InteractedAssetsToJSON = exports.InteractedAssetsFromJSONTyped = exports.InteractedAssetsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function InteractedAssetsFromJSON3(json) {
       return InteractedAssetsFromJSONTyped3(json, false);
     }
@@ -10432,8 +10470,8 @@ var require_InteractedAssets = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.InteractedAssetFromJSON)
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.InteractedAssetFromJSON)
       };
     }
     exports.InteractedAssetsFromJSONTyped = InteractedAssetsFromJSONTyped3;
@@ -10445,8 +10483,8 @@ var require_InteractedAssets = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.InteractedAssetToJSON)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.InteractedAssetToJSON)
       };
     }
     exports.InteractedAssetsToJSON = InteractedAssetsToJSON3;
@@ -10460,7 +10498,7 @@ var require_Linkify = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.LinkifyToJSON = exports.LinkifyFromJSONTyped = exports.LinkifyFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function LinkifyFromJSON2(json) {
       return LinkifyFromJSONTyped(json, false);
     }
@@ -10470,12 +10508,12 @@ var require_Linkify = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "seed": !(0, runtime_1.exists)(json, "seed") ? void 0 : (0, _1.SeedFromJSON)(json["seed"]),
-        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, _1.AssetFromJSON)(json["asset"]),
-        "users": !(0, runtime_1.exists)(json, "users") ? void 0 : json["users"].map(_1.SeededUserFromJSON),
-        "access": (0, _1.AccessEnumFromJSON)(json["access"]),
-        "distributions": !(0, runtime_1.exists)(json, "distributions") ? void 0 : (0, _1.SeededDistributionsFromJSON)(json["distributions"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "seed": !(0, runtime_1.exists)(json, "seed") ? void 0 : (0, index_1.SeedFromJSON)(json["seed"]),
+        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, index_1.AssetFromJSON)(json["asset"]),
+        "users": !(0, runtime_1.exists)(json, "users") ? void 0 : json["users"].map(index_1.SeededUserFromJSON),
+        "access": (0, index_1.AccessEnumFromJSON)(json["access"]),
+        "distributions": !(0, runtime_1.exists)(json, "distributions") ? void 0 : (0, index_1.SeededDistributionsFromJSON)(json["distributions"])
       };
     }
     exports.LinkifyFromJSONTyped = LinkifyFromJSONTyped;
@@ -10487,12 +10525,12 @@ var require_Linkify = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "seed": (0, _1.SeedToJSON)(value.seed),
-        "asset": (0, _1.AssetToJSON)(value.asset),
-        "users": value.users === void 0 ? void 0 : value.users.map(_1.SeededUserToJSON),
-        "access": (0, _1.AccessEnumToJSON)(value.access),
-        "distributions": (0, _1.SeededDistributionsToJSON)(value.distributions)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "seed": (0, index_1.SeedToJSON)(value.seed),
+        "asset": (0, index_1.AssetToJSON)(value.asset),
+        "users": value.users === void 0 ? void 0 : value.users.map(index_1.SeededUserToJSON),
+        "access": (0, index_1.AccessEnumToJSON)(value.access),
+        "distributions": (0, index_1.SeededDistributionsToJSON)(value.distributions)
       };
     }
     exports.LinkifyToJSON = LinkifyToJSON2;
@@ -10506,7 +10544,7 @@ var require_LinkifyMultiple = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.LinkifyMultipleToJSON = exports.LinkifyMultipleFromJSONTyped = exports.LinkifyMultipleFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function LinkifyMultipleFromJSON2(json) {
       return LinkifyMultipleFromJSONTyped(json, false);
     }
@@ -10516,10 +10554,10 @@ var require_LinkifyMultiple = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "assets": json["assets"],
-        "users": !(0, runtime_1.exists)(json, "users") ? void 0 : json["users"].map(_1.SeededUserFromJSON),
-        "access": (0, _1.AccessEnumFromJSON)(json["access"]),
+        "users": !(0, runtime_1.exists)(json, "users") ? void 0 : json["users"].map(index_1.SeededUserFromJSON),
+        "access": (0, index_1.AccessEnumFromJSON)(json["access"]),
         "name": !(0, runtime_1.exists)(json, "name") ? void 0 : json["name"]
       };
     }
@@ -10532,10 +10570,10 @@ var require_LinkifyMultiple = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "assets": value.assets,
-        "users": value.users === void 0 ? void 0 : value.users.map(_1.SeededUserToJSON),
-        "access": (0, _1.AccessEnumToJSON)(value.access),
+        "users": value.users === void 0 ? void 0 : value.users.map(index_1.SeededUserToJSON),
+        "access": (0, index_1.AccessEnumToJSON)(value.access),
         "name": value.name
       };
     }
@@ -10550,7 +10588,7 @@ var require_MailgunDistribution = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.MailgunDistributionToJSON = exports.MailgunDistributionFromJSONTyped = exports.MailgunDistributionFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function MailgunDistributionFromJSON4(json) {
       return MailgunDistributionFromJSONTyped11(json, false);
     }
@@ -10560,8 +10598,8 @@ var require_MailgunDistribution = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "recipients": (0, _1.RecipientsFromJSON)(json["recipients"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "recipients": (0, index_1.RecipientsFromJSON)(json["recipients"])
       };
     }
     exports.MailgunDistributionFromJSONTyped = MailgunDistributionFromJSONTyped11;
@@ -10573,8 +10611,8 @@ var require_MailgunDistribution = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "recipients": (0, _1.RecipientsToJSON)(value.recipients)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "recipients": (0, index_1.RecipientsToJSON)(value.recipients)
       };
     }
     exports.MailgunDistributionToJSON = MailgunDistributionToJSON4;
@@ -10588,7 +10626,7 @@ var require_MailgunMetadata = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.MailgunMetadataToJSON = exports.MailgunMetadataFromJSONTyped = exports.MailgunMetadataFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function MailgunMetadataFromJSON4(json) {
       return MailgunMetadataFromJSONTyped6(json, false);
     }
@@ -10598,7 +10636,7 @@ var require_MailgunMetadata = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "messageId": json["messageId"]
       };
     }
@@ -10611,7 +10649,7 @@ var require_MailgunMetadata = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "messageId": value.messageId
       };
     }
@@ -10625,22 +10663,22 @@ var require_MechanismEnum = __commonJS({
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.MechanismEnumToJSON = exports.MechanismEnumFromJSONTyped = exports.MechanismEnumFromJSON = exports.MechanismEnum = void 0;
-    var MechanismEnum90;
-    (function(MechanismEnum91) {
-      MechanismEnum91["Manual"] = "MANUAL";
-      MechanismEnum91["Recommended"] = "RECOMMENDED";
-      MechanismEnum91["Automatic"] = "AUTOMATIC";
-      MechanismEnum91["Internal"] = "INTERNAL";
-      MechanismEnum91["Deleted"] = "DELETED";
-    })(MechanismEnum90 || (exports.MechanismEnum = MechanismEnum90 = {}));
+    var MechanismEnum88;
+    (function(MechanismEnum89) {
+      MechanismEnum89["Manual"] = "MANUAL";
+      MechanismEnum89["Recommended"] = "RECOMMENDED";
+      MechanismEnum89["Automatic"] = "AUTOMATIC";
+      MechanismEnum89["Internal"] = "INTERNAL";
+      MechanismEnum89["Deleted"] = "DELETED";
+    })(MechanismEnum88 || (exports.MechanismEnum = MechanismEnum88 = {}));
     function MechanismEnumFromJSON4(json) {
-      return MechanismEnumFromJSONTyped91(json, false);
+      return MechanismEnumFromJSONTyped89(json, false);
     }
     exports.MechanismEnumFromJSON = MechanismEnumFromJSON4;
-    function MechanismEnumFromJSONTyped91(json, ignoreDiscriminator) {
+    function MechanismEnumFromJSONTyped89(json, ignoreDiscriminator) {
       return json;
     }
-    exports.MechanismEnumFromJSONTyped = MechanismEnumFromJSONTyped91;
+    exports.MechanismEnumFromJSONTyped = MechanismEnumFromJSONTyped89;
     function MechanismEnumToJSON4(value) {
       return value;
     }
@@ -10655,7 +10693,7 @@ var require_Model = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ModelToJSON = exports.ModelFromJSONTyped = exports.ModelFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ModelFromJSON4(json) {
       return ModelFromJSONTyped24(json, false);
     }
@@ -10665,24 +10703,24 @@ var require_Model = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
         "version": json["version"],
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
         "name": json["name"],
         "description": !(0, runtime_1.exists)(json, "description") ? void 0 : json["description"],
         "cloud": json["cloud"],
-        "type": (0, _1.ModelTypeEnumFromJSON)(json["type"]),
-        "usage": (0, _1.ModelUsageEnumFromJSON)(json["usage"]),
-        "bytes": !(0, runtime_1.exists)(json, "bytes") ? void 0 : (0, _1.ByteDescriptorFromJSON)(json["bytes"]),
-        "ram": !(0, runtime_1.exists)(json, "ram") ? void 0 : (0, _1.ByteDescriptorFromJSON)(json["ram"]),
+        "type": (0, index_1.ModelTypeEnumFromJSON)(json["type"]),
+        "usage": (0, index_1.ModelUsageEnumFromJSON)(json["usage"]),
+        "bytes": !(0, runtime_1.exists)(json, "bytes") ? void 0 : (0, index_1.ByteDescriptorFromJSON)(json["bytes"]),
+        "ram": !(0, runtime_1.exists)(json, "ram") ? void 0 : (0, index_1.ByteDescriptorFromJSON)(json["ram"]),
         "quantization": !(0, runtime_1.exists)(json, "quantization") ? void 0 : json["quantization"],
-        "foundation": !(0, runtime_1.exists)(json, "foundation") ? void 0 : (0, _1.ModelFoundationEnumFromJSON)(json["foundation"]),
+        "foundation": !(0, runtime_1.exists)(json, "foundation") ? void 0 : (0, index_1.ModelFoundationEnumFromJSON)(json["foundation"]),
         "downloaded": !(0, runtime_1.exists)(json, "downloaded") ? void 0 : json["downloaded"],
         "loaded": !(0, runtime_1.exists)(json, "loaded") ? void 0 : json["loaded"],
         "unique": !(0, runtime_1.exists)(json, "unique") ? void 0 : json["unique"],
         "parameters": !(0, runtime_1.exists)(json, "parameters") ? void 0 : json["parameters"],
-        "provider": !(0, runtime_1.exists)(json, "provider") ? void 0 : (0, _1.ExternalMLProviderEnumFromJSON)(json["provider"]),
+        "provider": !(0, runtime_1.exists)(json, "provider") ? void 0 : (0, index_1.ExternalMLProviderEnumFromJSON)(json["provider"]),
         "cpu": !(0, runtime_1.exists)(json, "cpu") ? void 0 : json["cpu"],
         "downloading": !(0, runtime_1.exists)(json, "downloading") ? void 0 : json["downloading"]
       };
@@ -10696,24 +10734,24 @@ var require_Model = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
         "version": value.version,
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
         "name": value.name,
         "description": value.description,
         "cloud": value.cloud,
-        "type": (0, _1.ModelTypeEnumToJSON)(value.type),
-        "usage": (0, _1.ModelUsageEnumToJSON)(value.usage),
-        "bytes": (0, _1.ByteDescriptorToJSON)(value.bytes),
-        "ram": (0, _1.ByteDescriptorToJSON)(value.ram),
+        "type": (0, index_1.ModelTypeEnumToJSON)(value.type),
+        "usage": (0, index_1.ModelUsageEnumToJSON)(value.usage),
+        "bytes": (0, index_1.ByteDescriptorToJSON)(value.bytes),
+        "ram": (0, index_1.ByteDescriptorToJSON)(value.ram),
         "quantization": value.quantization,
-        "foundation": (0, _1.ModelFoundationEnumToJSON)(value.foundation),
+        "foundation": (0, index_1.ModelFoundationEnumToJSON)(value.foundation),
         "downloaded": value.downloaded,
         "loaded": value.loaded,
         "unique": value.unique,
         "parameters": value.parameters,
-        "provider": (0, _1.ExternalMLProviderEnumToJSON)(value.provider),
+        "provider": (0, index_1.ExternalMLProviderEnumToJSON)(value.provider),
         "cpu": value.cpu,
         "downloading": value.downloading
       };
@@ -10729,7 +10767,7 @@ var require_ModelDownloadProgress = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ModelDownloadProgressToJSON = exports.ModelDownloadProgressFromJSONTyped = exports.ModelDownloadProgressFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ModelDownloadProgressFromJSON2(json) {
       return ModelDownloadProgressFromJSONTyped2(json, false);
     }
@@ -10739,8 +10777,8 @@ var require_ModelDownloadProgress = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "status": !(0, runtime_1.exists)(json, "status") ? void 0 : (0, _1.ModelDownloadProgressStatusEnumFromJSON)(json["status"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "status": !(0, runtime_1.exists)(json, "status") ? void 0 : (0, index_1.ModelDownloadProgressStatusEnumFromJSON)(json["status"])
       };
     }
     exports.ModelDownloadProgressFromJSONTyped = ModelDownloadProgressFromJSONTyped2;
@@ -10752,8 +10790,8 @@ var require_ModelDownloadProgress = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "status": (0, _1.ModelDownloadProgressStatusEnumToJSON)(value.status)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "status": (0, index_1.ModelDownloadProgressStatusEnumToJSON)(value.status)
       };
     }
     exports.ModelDownloadProgressToJSON = ModelDownloadProgressToJSON2;
@@ -10803,6 +10841,9 @@ var require_ModelFoundationEnum = __commonJS({
       ModelFoundationEnum7["Llama27B"] = "LLAMA_2_7B";
       ModelFoundationEnum7["Llama213B"] = "LLAMA_2_13B";
       ModelFoundationEnum7["Llama270B"] = "LLAMA_2_70B";
+      ModelFoundationEnum7["CodeLlama27B"] = "CODE_LLAMA_2_7B";
+      ModelFoundationEnum7["CodeLlama213B"] = "CODE_LLAMA_2_13B";
+      ModelFoundationEnum7["CodeLlama270B"] = "CODE_LLAMA_2_70B";
       ModelFoundationEnum7["Bard"] = "BARD";
       ModelFoundationEnum7["Alpaca7B"] = "ALPACA_7B";
       ModelFoundationEnum7["Alpaca13B"] = "ALPACA_13B";
@@ -10866,6 +10907,10 @@ var require_ModelFoundationEnum = __commonJS({
       ModelFoundationEnum7["CodechatBison"] = "CODECHAT_BISON";
       ModelFoundationEnum7["CodeGecko"] = "CODE_GECKO";
       ModelFoundationEnum7["Distilroberta"] = "DISTILROBERTA";
+      ModelFoundationEnum7["Mistral7B"] = "MISTRAL_7B";
+      ModelFoundationEnum7["Gemini"] = "GEMINI";
+      ModelFoundationEnum7["FastText"] = "FAST_TEXT";
+      ModelFoundationEnum7["Unixcoder"] = "UNIXCODER";
     })(ModelFoundationEnum6 || (exports.ModelFoundationEnum = ModelFoundationEnum6 = {}));
     function ModelFoundationEnumFromJSON4(json) {
       return ModelFoundationEnumFromJSONTyped8(json, false);
@@ -10935,6 +10980,9 @@ var require_ModelUsageEnum = __commonJS({
       ModelUsageEnum7["CodeDiscovery"] = "CODE_DISCOVERY";
       ModelUsageEnum7["CodeRelatedPeople"] = "CODE_RELATED_PEOPLE";
       ModelUsageEnum7["CodeFramework"] = "CODE_FRAMEWORK";
+      ModelUsageEnum7["VideoOcr"] = "VIDEO_OCR";
+      ModelUsageEnum7["TextVsCodeSegmentation"] = "TEXT_VS_CODE_SEGMENTATION";
+      ModelUsageEnum7["TextEmbedding"] = "TEXT_EMBEDDING";
     })(ModelUsageEnum6 || (exports.ModelUsageEnum = ModelUsageEnum6 = {}));
     function ModelUsageEnumFromJSON4(json) {
       return ModelUsageEnumFromJSONTyped8(json, false);
@@ -10958,7 +11006,7 @@ var require_Models = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ModelsToJSON = exports.ModelsFromJSONTyped = exports.ModelsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ModelsFromJSON2(json) {
       return ModelsFromJSONTyped2(json, false);
     }
@@ -10968,8 +11016,8 @@ var require_Models = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.ModelFromJSON)
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.ModelFromJSON)
       };
     }
     exports.ModelsFromJSONTyped = ModelsFromJSONTyped2;
@@ -10981,8 +11029,8 @@ var require_Models = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.ModelToJSON)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.ModelToJSON)
       };
     }
     exports.ModelsToJSON = ModelsToJSON2;
@@ -10995,7 +11043,7 @@ var require_Node = __commonJS({
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.NodeToJSON = exports.NodeFromJSONTyped = exports.NodeFromJSON = void 0;
-    var _1 = require_models();
+    var index_1 = require_models();
     function NodeFromJSON4(json) {
       return NodeFromJSONTyped6(json, false);
     }
@@ -11006,9 +11054,9 @@ var require_Node = __commonJS({
       }
       return {
         "id": json["id"],
-        "type": (0, _1.NodeTypeEnumFromJSON)(json["type"]),
+        "type": (0, index_1.NodeTypeEnumFromJSON)(json["type"]),
         "root": json["root"],
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"])
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"])
       };
     }
     exports.NodeFromJSONTyped = NodeFromJSONTyped6;
@@ -11021,9 +11069,9 @@ var require_Node = __commonJS({
       }
       return {
         "id": value.id,
-        "type": (0, _1.NodeTypeEnumToJSON)(value.type),
+        "type": (0, index_1.NodeTypeEnumToJSON)(value.type),
         "root": value.root,
-        "created": (0, _1.GroupedTimestampToJSON)(value.created)
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created)
       };
     }
     exports.NodeToJSON = NodeToJSON4;
@@ -11065,7 +11113,7 @@ var require_Notification = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.NotificationToJSON = exports.NotificationFromJSONTyped = exports.NotificationFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function NotificationFromJSON2(json) {
       return NotificationFromJSONTyped(json, false);
     }
@@ -11075,7 +11123,7 @@ var require_Notification = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
         "title": !(0, runtime_1.exists)(json, "title") ? void 0 : json["title"],
         "message": !(0, runtime_1.exists)(json, "message") ? void 0 : json["message"],
@@ -11091,7 +11139,7 @@ var require_Notification = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
         "title": value.title,
         "message": value.message,
@@ -11159,7 +11207,7 @@ var require_OAuthGroup = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.OAuthGroupToJSON = exports.OAuthGroupFromJSONTyped = exports.OAuthGroupFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function OAuthGroupFromJSON3(json) {
       return OAuthGroupFromJSONTyped3(json, false);
     }
@@ -11169,8 +11217,8 @@ var require_OAuthGroup = __commonJS({
         return json;
       }
       return {
-        "token": !(0, runtime_1.exists)(json, "token") ? void 0 : (0, _1.OAuthTokenFromJSON)(json["token"]),
-        "account": !(0, runtime_1.exists)(json, "account") ? void 0 : (0, _1.OAuthAccountFromJSON)(json["account"])
+        "token": !(0, runtime_1.exists)(json, "token") ? void 0 : (0, index_1.OAuthTokenFromJSON)(json["token"]),
+        "account": !(0, runtime_1.exists)(json, "account") ? void 0 : (0, index_1.OAuthAccountFromJSON)(json["account"])
       };
     }
     exports.OAuthGroupFromJSONTyped = OAuthGroupFromJSONTyped3;
@@ -11182,8 +11230,8 @@ var require_OAuthGroup = __commonJS({
         return null;
       }
       return {
-        "token": (0, _1.OAuthTokenToJSON)(value.token),
-        "account": (0, _1.OAuthAccountToJSON)(value.account)
+        "token": (0, index_1.OAuthTokenToJSON)(value.token),
+        "account": (0, index_1.OAuthAccountToJSON)(value.account)
       };
     }
     exports.OAuthGroupToJSON = OAuthGroupToJSON3;
@@ -11249,7 +11297,7 @@ var require_OCRAnalyses = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.OCRAnalysesToJSON = exports.OCRAnalysesFromJSONTyped = exports.OCRAnalysesFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function OCRAnalysesFromJSON2(json) {
       return OCRAnalysesFromJSONTyped(json, false);
     }
@@ -11259,8 +11307,8 @@ var require_OCRAnalyses = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.OCRAnalysisFromJSON)
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.OCRAnalysisFromJSON)
       };
     }
     exports.OCRAnalysesFromJSONTyped = OCRAnalysesFromJSONTyped;
@@ -11272,8 +11320,8 @@ var require_OCRAnalyses = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.OCRAnalysisToJSON)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.OCRAnalysisToJSON)
       };
     }
     exports.OCRAnalysesToJSON = OCRAnalysesToJSON2;
@@ -11287,7 +11335,7 @@ var require_OCRAnalysis = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.OCRAnalysisToJSON = exports.OCRAnalysisFromJSONTyped = exports.OCRAnalysisFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function OCRAnalysisFromJSON4(json) {
       return OCRAnalysisFromJSONTyped8(json, false);
     }
@@ -11297,12 +11345,12 @@ var require_OCRAnalysis = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "raw": (0, _1.FormatFromJSON)(json["raw"]),
-        "hocr": (0, _1.FormatFromJSON)(json["hocr"]),
+        "raw": (0, index_1.FormatFromJSON)(json["raw"]),
+        "hocr": (0, index_1.FormatFromJSON)(json["hocr"]),
         "image": json["image"],
-        "model": (0, _1.ModelFromJSON)(json["model"])
+        "model": (0, index_1.ModelFromJSON)(json["model"])
       };
     }
     exports.OCRAnalysisFromJSONTyped = OCRAnalysisFromJSONTyped8;
@@ -11314,12 +11362,12 @@ var require_OCRAnalysis = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "raw": (0, _1.FormatToJSON)(value.raw),
-        "hocr": (0, _1.FormatToJSON)(value.hocr),
+        "raw": (0, index_1.FormatToJSON)(value.raw),
+        "hocr": (0, index_1.FormatToJSON)(value.hocr),
         "image": value.image,
-        "model": (0, _1.ModelToJSON)(value.model)
+        "model": (0, index_1.ModelToJSON)(value.model)
       };
     }
     exports.OCRAnalysisToJSON = OCRAnalysisToJSON4;
@@ -11333,7 +11381,7 @@ var require_OSHealth = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.OSHealthToJSON = exports.OSHealthFromJSONTyped = exports.OSHealthFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function OSHealthFromJSON4(json) {
       return OSHealthFromJSONTyped5(json, false);
     }
@@ -11343,7 +11391,7 @@ var require_OSHealth = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
         "version": json["version"]
       };
@@ -11357,7 +11405,7 @@ var require_OSHealth = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
         "version": value.version
       };
@@ -11373,7 +11421,7 @@ var require_OrderedMetrics = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.OrderedMetricsToJSON = exports.OrderedMetricsFromJSONTyped = exports.OrderedMetricsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function OrderedMetricsFromJSON2(json) {
       return OrderedMetricsFromJSONTyped(json, false);
     }
@@ -11383,7 +11431,7 @@ var require_OrderedMetrics = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "ordered": json["ordered"]
       };
     }
@@ -11396,7 +11444,7 @@ var require_OrderedMetrics = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "ordered": value.ordered
       };
     }
@@ -11411,7 +11459,7 @@ var require_PKCE = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.PKCEToJSON = exports.PKCEFromJSONTyped = exports.PKCEFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function PKCEFromJSON2(json) {
       return PKCEFromJSONTyped(json, false);
     }
@@ -11421,13 +11469,13 @@ var require_PKCE = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "result": !(0, runtime_1.exists)(json, "result") ? void 0 : (0, _1.ResultedPKCEFromJSON)(json["result"]),
-        "challenge": !(0, runtime_1.exists)(json, "challenge") ? void 0 : (0, _1.ChallengedPKCEFromJSON)(json["challenge"]),
-        "revocation": !(0, runtime_1.exists)(json, "revocation") ? void 0 : (0, _1.RevokedPKCEFromJSON)(json["revocation"]),
-        "seed": !(0, runtime_1.exists)(json, "seed") ? void 0 : (0, _1.SeededPKCEFromJSON)(json["seed"]),
-        "token": !(0, runtime_1.exists)(json, "token") ? void 0 : (0, _1.TokenizedPKCEFromJSON)(json["token"]),
-        "auth0": !(0, runtime_1.exists)(json, "auth0") ? void 0 : (0, _1.Auth0FromJSON)(json["auth0"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "result": !(0, runtime_1.exists)(json, "result") ? void 0 : (0, index_1.ResultedPKCEFromJSON)(json["result"]),
+        "challenge": !(0, runtime_1.exists)(json, "challenge") ? void 0 : (0, index_1.ChallengedPKCEFromJSON)(json["challenge"]),
+        "revocation": !(0, runtime_1.exists)(json, "revocation") ? void 0 : (0, index_1.RevokedPKCEFromJSON)(json["revocation"]),
+        "seed": !(0, runtime_1.exists)(json, "seed") ? void 0 : (0, index_1.SeededPKCEFromJSON)(json["seed"]),
+        "token": !(0, runtime_1.exists)(json, "token") ? void 0 : (0, index_1.TokenizedPKCEFromJSON)(json["token"]),
+        "auth0": !(0, runtime_1.exists)(json, "auth0") ? void 0 : (0, index_1.Auth0FromJSON)(json["auth0"])
       };
     }
     exports.PKCEFromJSONTyped = PKCEFromJSONTyped;
@@ -11439,13 +11487,13 @@ var require_PKCE = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "result": (0, _1.ResultedPKCEToJSON)(value.result),
-        "challenge": (0, _1.ChallengedPKCEToJSON)(value.challenge),
-        "revocation": (0, _1.RevokedPKCEToJSON)(value.revocation),
-        "seed": (0, _1.SeededPKCEToJSON)(value.seed),
-        "token": (0, _1.TokenizedPKCEToJSON)(value.token),
-        "auth0": (0, _1.Auth0ToJSON)(value.auth0)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "result": (0, index_1.ResultedPKCEToJSON)(value.result),
+        "challenge": (0, index_1.ChallengedPKCEToJSON)(value.challenge),
+        "revocation": (0, index_1.RevokedPKCEToJSON)(value.revocation),
+        "seed": (0, index_1.SeededPKCEToJSON)(value.seed),
+        "token": (0, index_1.TokenizedPKCEToJSON)(value.token),
+        "auth0": (0, index_1.Auth0ToJSON)(value.auth0)
       };
     }
     exports.PKCEToJSON = PKCEToJSON2;
@@ -11459,7 +11507,7 @@ var require_Person = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.PersonToJSON = exports.PersonFromJSONTyped = exports.PersonFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function PersonFromJSON4(json) {
       return PersonFromJSONTyped6(json, false);
     }
@@ -11469,21 +11517,21 @@ var require_Person = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
-        "type": (0, _1.PersonTypeFromJSON)(json["type"]),
-        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, _1.FlattenedAssetsFromJSON)(json["assets"]),
-        "mechanisms": !(0, runtime_1.exists)(json, "mechanisms") ? void 0 : (0, runtime_1.mapValues)(json["mechanisms"], _1.MechanismEnumFromJSON),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
+        "type": (0, index_1.PersonTypeFromJSON)(json["type"]),
+        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, index_1.FlattenedAssetsFromJSON)(json["assets"]),
+        "mechanisms": !(0, runtime_1.exists)(json, "mechanisms") ? void 0 : (0, runtime_1.mapValues)(json["mechanisms"], index_1.MechanismEnumFromJSON),
         "interactions": !(0, runtime_1.exists)(json, "interactions") ? void 0 : json["interactions"],
-        "access": !(0, runtime_1.exists)(json, "access") ? void 0 : (0, runtime_1.mapValues)(json["access"], _1.PersonAccessFromJSON),
-        "tags": !(0, runtime_1.exists)(json, "tags") ? void 0 : (0, _1.FlattenedTagsFromJSON)(json["tags"]),
-        "websites": !(0, runtime_1.exists)(json, "websites") ? void 0 : (0, _1.FlattenedWebsitesFromJSON)(json["websites"]),
-        "models": !(0, runtime_1.exists)(json, "models") ? void 0 : (0, runtime_1.mapValues)(json["models"], _1.PersonModelFromJSON),
-        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : (0, _1.FlattenedAnnotationsFromJSON)(json["annotations"]),
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "access": !(0, runtime_1.exists)(json, "access") ? void 0 : (0, runtime_1.mapValues)(json["access"], index_1.PersonAccessFromJSON),
+        "tags": !(0, runtime_1.exists)(json, "tags") ? void 0 : (0, index_1.FlattenedTagsFromJSON)(json["tags"]),
+        "websites": !(0, runtime_1.exists)(json, "websites") ? void 0 : (0, index_1.FlattenedWebsitesFromJSON)(json["websites"]),
+        "models": !(0, runtime_1.exists)(json, "models") ? void 0 : (0, runtime_1.mapValues)(json["models"], index_1.PersonModelFromJSON),
+        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : (0, index_1.FlattenedAnnotationsFromJSON)(json["annotations"]),
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.PersonFromJSONTyped = PersonFromJSONTyped6;
@@ -11495,21 +11543,21 @@ var require_Person = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
-        "type": (0, _1.PersonTypeToJSON)(value.type),
-        "assets": (0, _1.FlattenedAssetsToJSON)(value.assets),
-        "mechanisms": value.mechanisms === void 0 ? void 0 : (0, runtime_1.mapValues)(value.mechanisms, _1.MechanismEnumToJSON),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
+        "type": (0, index_1.PersonTypeToJSON)(value.type),
+        "assets": (0, index_1.FlattenedAssetsToJSON)(value.assets),
+        "mechanisms": value.mechanisms === void 0 ? void 0 : (0, runtime_1.mapValues)(value.mechanisms, index_1.MechanismEnumToJSON),
         "interactions": value.interactions,
-        "access": value.access === void 0 ? void 0 : (0, runtime_1.mapValues)(value.access, _1.PersonAccessToJSON),
-        "tags": (0, _1.FlattenedTagsToJSON)(value.tags),
-        "websites": (0, _1.FlattenedWebsitesToJSON)(value.websites),
-        "models": value.models === void 0 ? void 0 : (0, runtime_1.mapValues)(value.models, _1.PersonModelToJSON),
-        "annotations": (0, _1.FlattenedAnnotationsToJSON)(value.annotations),
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "access": value.access === void 0 ? void 0 : (0, runtime_1.mapValues)(value.access, index_1.PersonAccessToJSON),
+        "tags": (0, index_1.FlattenedTagsToJSON)(value.tags),
+        "websites": (0, index_1.FlattenedWebsitesToJSON)(value.websites),
+        "models": value.models === void 0 ? void 0 : (0, runtime_1.mapValues)(value.models, index_1.PersonModelToJSON),
+        "annotations": (0, index_1.FlattenedAnnotationsToJSON)(value.annotations),
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.PersonToJSON = PersonToJSON5;
@@ -11523,7 +11571,7 @@ var require_PersonAccess = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.PersonAccessToJSON = exports.PersonAccessFromJSONTyped = exports.PersonAccessFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function PersonAccessFromJSON4(json) {
       return PersonAccessFromJSONTyped12(json, false);
     }
@@ -11533,9 +11581,9 @@ var require_PersonAccess = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "scoped": !(0, runtime_1.exists)(json, "scoped") ? void 0 : (0, _1.PersonAccessScopedEnumFromJSON)(json["scoped"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "scoped": !(0, runtime_1.exists)(json, "scoped") ? void 0 : (0, index_1.PersonAccessScopedEnumFromJSON)(json["scoped"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"])
       };
     }
     exports.PersonAccessFromJSONTyped = PersonAccessFromJSONTyped12;
@@ -11547,9 +11595,9 @@ var require_PersonAccess = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "scoped": (0, _1.PersonAccessScopedEnumToJSON)(value.scoped),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "scoped": (0, index_1.PersonAccessScopedEnumToJSON)(value.scoped),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted)
       };
     }
     exports.PersonAccessToJSON = PersonAccessToJSON4;
@@ -11591,7 +11639,7 @@ var require_PersonBasicType = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.PersonBasicTypeToJSON = exports.PersonBasicTypeFromJSONTyped = exports.PersonBasicTypeFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function PersonBasicTypeFromJSON4(json) {
       return PersonBasicTypeFromJSONTyped9(json, false);
     }
@@ -11601,14 +11649,14 @@ var require_PersonBasicType = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "username": !(0, runtime_1.exists)(json, "username") ? void 0 : json["username"],
         "name": !(0, runtime_1.exists)(json, "name") ? void 0 : json["name"],
         "picture": !(0, runtime_1.exists)(json, "picture") ? void 0 : json["picture"],
         "email": !(0, runtime_1.exists)(json, "email") ? void 0 : json["email"],
-        "sourced": !(0, runtime_1.exists)(json, "sourced") ? void 0 : (0, _1.ExternallySourcedEnumFromJSON)(json["sourced"]),
+        "sourced": !(0, runtime_1.exists)(json, "sourced") ? void 0 : (0, index_1.ExternallySourcedEnumFromJSON)(json["sourced"]),
         "url": !(0, runtime_1.exists)(json, "url") ? void 0 : json["url"],
-        "mailgun": !(0, runtime_1.exists)(json, "mailgun") ? void 0 : (0, _1.MailgunMetadataFromJSON)(json["mailgun"])
+        "mailgun": !(0, runtime_1.exists)(json, "mailgun") ? void 0 : (0, index_1.MailgunMetadataFromJSON)(json["mailgun"])
       };
     }
     exports.PersonBasicTypeFromJSONTyped = PersonBasicTypeFromJSONTyped9;
@@ -11620,14 +11668,14 @@ var require_PersonBasicType = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "username": value.username,
         "name": value.name,
         "picture": value.picture,
         "email": value.email,
-        "sourced": (0, _1.ExternallySourcedEnumToJSON)(value.sourced),
+        "sourced": (0, index_1.ExternallySourcedEnumToJSON)(value.sourced),
         "url": value.url,
-        "mailgun": (0, _1.MailgunMetadataToJSON)(value.mailgun)
+        "mailgun": (0, index_1.MailgunMetadataToJSON)(value.mailgun)
       };
     }
     exports.PersonBasicTypeToJSON = PersonBasicTypeToJSON4;
@@ -11641,7 +11689,7 @@ var require_PersonModel = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.PersonModelToJSON = exports.PersonModelFromJSONTyped = exports.PersonModelFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function PersonModelFromJSON4(json) {
       return PersonModelFromJSONTyped12(json, false);
     }
@@ -11651,10 +11699,10 @@ var require_PersonModel = __commonJS({
         return json;
       }
       return {
-        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, _1.ReferencedAssetFromJSON)(json["asset"]),
-        "model": !(0, runtime_1.exists)(json, "model") ? void 0 : (0, _1.ReferencedModelFromJSON)(json["model"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
-        "explanation": !(0, runtime_1.exists)(json, "explanation") ? void 0 : (0, _1.ReferencedAnnotationFromJSON)(json["explanation"])
+        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, index_1.ReferencedAssetFromJSON)(json["asset"]),
+        "model": !(0, runtime_1.exists)(json, "model") ? void 0 : (0, index_1.ReferencedModelFromJSON)(json["model"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
+        "explanation": !(0, runtime_1.exists)(json, "explanation") ? void 0 : (0, index_1.ReferencedAnnotationFromJSON)(json["explanation"])
       };
     }
     exports.PersonModelFromJSONTyped = PersonModelFromJSONTyped12;
@@ -11666,10 +11714,10 @@ var require_PersonModel = __commonJS({
         return null;
       }
       return {
-        "asset": (0, _1.ReferencedAssetToJSON)(value.asset),
-        "model": (0, _1.ReferencedModelToJSON)(value.model),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
-        "explanation": (0, _1.ReferencedAnnotationToJSON)(value.explanation)
+        "asset": (0, index_1.ReferencedAssetToJSON)(value.asset),
+        "model": (0, index_1.ReferencedModelToJSON)(value.model),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
+        "explanation": (0, index_1.ReferencedAnnotationToJSON)(value.explanation)
       };
     }
     exports.PersonModelToJSON = PersonModelToJSON4;
@@ -11683,7 +11731,7 @@ var require_PersonType = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.PersonTypeToJSON = exports.PersonTypeFromJSONTyped = exports.PersonTypeFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function PersonTypeFromJSON4(json) {
       return PersonTypeFromJSONTyped12(json, false);
     }
@@ -11693,9 +11741,9 @@ var require_PersonType = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "basic": !(0, runtime_1.exists)(json, "basic") ? void 0 : (0, _1.PersonBasicTypeFromJSON)(json["basic"]),
-        "platform": !(0, runtime_1.exists)(json, "platform") ? void 0 : (0, _1.UserProfileFromJSON)(json["platform"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "basic": !(0, runtime_1.exists)(json, "basic") ? void 0 : (0, index_1.PersonBasicTypeFromJSON)(json["basic"]),
+        "platform": !(0, runtime_1.exists)(json, "platform") ? void 0 : (0, index_1.UserProfileFromJSON)(json["platform"])
       };
     }
     exports.PersonTypeFromJSONTyped = PersonTypeFromJSONTyped12;
@@ -11707,9 +11755,9 @@ var require_PersonType = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "basic": (0, _1.PersonBasicTypeToJSON)(value.basic),
-        "platform": (0, _1.UserProfileToJSON)(value.platform)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "basic": (0, index_1.PersonBasicTypeToJSON)(value.basic),
+        "platform": (0, index_1.UserProfileToJSON)(value.platform)
       };
     }
     exports.PersonTypeToJSON = PersonTypeToJSON4;
@@ -11723,24 +11771,24 @@ var require_Persons = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.PersonsToJSON = exports.PersonsFromJSONTyped = exports.PersonsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function PersonsFromJSON4(json) {
-      return PersonsFromJSONTyped6(json, false);
+      return PersonsFromJSONTyped8(json, false);
     }
     exports.PersonsFromJSON = PersonsFromJSON4;
-    function PersonsFromJSONTyped6(json, ignoreDiscriminator) {
+    function PersonsFromJSONTyped8(json, ignoreDiscriminator) {
       if (json === void 0 || json === null) {
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.PersonFromJSON),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.PersonFromJSON),
         "indices": !(0, runtime_1.exists)(json, "indices") ? void 0 : json["indices"],
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
-    exports.PersonsFromJSONTyped = PersonsFromJSONTyped6;
-    function PersonsToJSON6(value) {
+    exports.PersonsFromJSONTyped = PersonsFromJSONTyped8;
+    function PersonsToJSON5(value) {
       if (value === void 0) {
         return void 0;
       }
@@ -11748,13 +11796,13 @@ var require_Persons = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.PersonToJSON),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.PersonToJSON),
         "indices": value.indices,
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
-    exports.PersonsToJSON = PersonsToJSON6;
+    exports.PersonsToJSON = PersonsToJSON5;
   }
 });
 
@@ -11797,7 +11845,7 @@ var require_Preview = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.PreviewToJSON = exports.PreviewFromJSONTyped = exports.PreviewFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function PreviewFromJSON4(json) {
       return PreviewFromJSONTyped6(json, false);
     }
@@ -11807,9 +11855,9 @@ var require_Preview = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "base": (0, _1.ReferencedFormatFromJSON)(json["base"]),
-        "overlay": !(0, runtime_1.exists)(json, "overlay") ? void 0 : (0, _1.ReferencedFormatFromJSON)(json["overlay"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "base": (0, index_1.ReferencedFormatFromJSON)(json["base"]),
+        "overlay": !(0, runtime_1.exists)(json, "overlay") ? void 0 : (0, index_1.ReferencedFormatFromJSON)(json["overlay"])
       };
     }
     exports.PreviewFromJSONTyped = PreviewFromJSONTyped6;
@@ -11821,9 +11869,9 @@ var require_Preview = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "base": (0, _1.ReferencedFormatToJSON)(value.base),
-        "overlay": (0, _1.ReferencedFormatToJSON)(value.overlay)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "base": (0, index_1.ReferencedFormatToJSON)(value.base),
+        "overlay": (0, index_1.ReferencedFormatToJSON)(value.overlay)
       };
     }
     exports.PreviewToJSON = PreviewToJSON4;
@@ -11864,7 +11912,7 @@ var require_PseudoAssets = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.PseudoAssetsToJSON = exports.PseudoAssetsFromJSONTyped = exports.PseudoAssetsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function PseudoAssetsFromJSON2(json) {
       return PseudoAssetsFromJSONTyped2(json, false);
     }
@@ -11874,8 +11922,8 @@ var require_PseudoAssets = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "identifiers": !(0, runtime_1.exists)(json, "identifiers") ? void 0 : (0, _1.FlattenedAssetsFromJSON)(json["identifiers"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "identifiers": !(0, runtime_1.exists)(json, "identifiers") ? void 0 : (0, index_1.FlattenedAssetsFromJSON)(json["identifiers"])
       };
     }
     exports.PseudoAssetsFromJSONTyped = PseudoAssetsFromJSONTyped2;
@@ -11887,8 +11935,8 @@ var require_PseudoAssets = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "identifiers": (0, _1.FlattenedAssetsToJSON)(value.identifiers)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "identifiers": (0, index_1.FlattenedAssetsToJSON)(value.identifiers)
       };
     }
     exports.PseudoAssetsToJSON = PseudoAssetsToJSON2;
@@ -11902,7 +11950,7 @@ var require_QGPTConversation = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTConversationToJSON = exports.QGPTConversationFromJSONTyped = exports.QGPTConversationFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function QGPTConversationFromJSON3(json) {
       return QGPTConversationFromJSONTyped5(json, false);
     }
@@ -11912,8 +11960,8 @@ var require_QGPTConversation = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": !(0, runtime_1.exists)(json, "iterable") ? void 0 : json["iterable"].map(_1.QGPTConversationMessageFromJSON)
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": !(0, runtime_1.exists)(json, "iterable") ? void 0 : json["iterable"].map(index_1.QGPTConversationMessageFromJSON)
       };
     }
     exports.QGPTConversationFromJSONTyped = QGPTConversationFromJSONTyped5;
@@ -11925,8 +11973,8 @@ var require_QGPTConversation = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable === void 0 ? void 0 : value.iterable.map(_1.QGPTConversationMessageToJSON)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable === void 0 ? void 0 : value.iterable.map(index_1.QGPTConversationMessageToJSON)
       };
     }
     exports.QGPTConversationToJSON = QGPTConversationToJSON3;
@@ -11940,7 +11988,7 @@ var require_QGPTConversationMessage = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTConversationMessageToJSON = exports.QGPTConversationMessageFromJSONTyped = exports.QGPTConversationMessageFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function QGPTConversationMessageFromJSON3(json) {
       return QGPTConversationMessageFromJSONTyped3(json, false);
     }
@@ -11950,10 +11998,10 @@ var require_QGPTConversationMessage = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "text": json["text"],
-        "role": (0, _1.QGPTConversationMessageRoleEnumFromJSON)(json["role"]),
-        "timestamp": (0, _1.GroupedTimestampFromJSON)(json["timestamp"])
+        "role": (0, index_1.QGPTConversationMessageRoleEnumFromJSON)(json["role"]),
+        "timestamp": (0, index_1.GroupedTimestampFromJSON)(json["timestamp"])
       };
     }
     exports.QGPTConversationMessageFromJSONTyped = QGPTConversationMessageFromJSONTyped3;
@@ -11965,10 +12013,10 @@ var require_QGPTConversationMessage = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "text": value.text,
-        "role": (0, _1.QGPTConversationMessageRoleEnumToJSON)(value.role),
-        "timestamp": (0, _1.GroupedTimestampToJSON)(value.timestamp)
+        "role": (0, index_1.QGPTConversationMessageRoleEnumToJSON)(value.role),
+        "timestamp": (0, index_1.GroupedTimestampToJSON)(value.timestamp)
       };
     }
     exports.QGPTConversationMessageToJSON = QGPTConversationMessageToJSON3;
@@ -12009,7 +12057,7 @@ var require_QGPTHintsInput = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTHintsInputToJSON = exports.QGPTHintsInputFromJSONTyped = exports.QGPTHintsInputFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function QGPTHintsInputFromJSON2(json) {
       return QGPTHintsInputFromJSONTyped(json, false);
     }
@@ -12020,8 +12068,8 @@ var require_QGPTHintsInput = __commonJS({
       }
       return {
         "query": !(0, runtime_1.exists)(json, "query") ? void 0 : json["query"],
-        "answer": !(0, runtime_1.exists)(json, "answer") ? void 0 : (0, _1.QGPTQuestionAnswerFromJSON)(json["answer"]),
-        "relevant": (0, _1.RelevantQGPTSeedsFromJSON)(json["relevant"]),
+        "answer": !(0, runtime_1.exists)(json, "answer") ? void 0 : (0, index_1.QGPTQuestionAnswerFromJSON)(json["answer"]),
+        "relevant": (0, index_1.RelevantQGPTSeedsFromJSON)(json["relevant"]),
         "application": !(0, runtime_1.exists)(json, "application") ? void 0 : json["application"],
         "model": !(0, runtime_1.exists)(json, "model") ? void 0 : json["model"]
       };
@@ -12036,8 +12084,8 @@ var require_QGPTHintsInput = __commonJS({
       }
       return {
         "query": value.query,
-        "answer": (0, _1.QGPTQuestionAnswerToJSON)(value.answer),
-        "relevant": (0, _1.RelevantQGPTSeedsToJSON)(value.relevant),
+        "answer": (0, index_1.QGPTQuestionAnswerToJSON)(value.answer),
+        "relevant": (0, index_1.RelevantQGPTSeedsToJSON)(value.relevant),
         "application": value.application,
         "model": value.model
       };
@@ -12053,7 +12101,7 @@ var require_QGPTPersonsRelatedInput = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTPersonsRelatedInputToJSON = exports.QGPTPersonsRelatedInputFromJSONTyped = exports.QGPTPersonsRelatedInputFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function QGPTPersonsRelatedInputFromJSON2(json) {
       return QGPTPersonsRelatedInputFromJSONTyped(json, false);
     }
@@ -12063,9 +12111,9 @@ var require_QGPTPersonsRelatedInput = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "seed": !(0, runtime_1.exists)(json, "seed") ? void 0 : (0, _1.SeedFromJSON)(json["seed"]),
-        "conversation": !(0, runtime_1.exists)(json, "conversation") ? void 0 : (0, _1.QGPTConversationFromJSON)(json["conversation"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "seed": !(0, runtime_1.exists)(json, "seed") ? void 0 : (0, index_1.SeedFromJSON)(json["seed"]),
+        "conversation": !(0, runtime_1.exists)(json, "conversation") ? void 0 : (0, index_1.QGPTConversationFromJSON)(json["conversation"]),
         "application": !(0, runtime_1.exists)(json, "application") ? void 0 : json["application"],
         "model": !(0, runtime_1.exists)(json, "model") ? void 0 : json["model"]
       };
@@ -12079,14 +12127,54 @@ var require_QGPTPersonsRelatedInput = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "seed": (0, _1.SeedToJSON)(value.seed),
-        "conversation": (0, _1.QGPTConversationToJSON)(value.conversation),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "seed": (0, index_1.SeedToJSON)(value.seed),
+        "conversation": (0, index_1.QGPTConversationToJSON)(value.conversation),
         "application": value.application,
         "model": value.model
       };
     }
     exports.QGPTPersonsRelatedInputToJSON = QGPTPersonsRelatedInputToJSON2;
+  }
+});
+
+// ../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTPersonsRelatedOutput.js
+var require_QGPTPersonsRelatedOutput = __commonJS({
+  "../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTPersonsRelatedOutput.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.QGPTPersonsRelatedOutputToJSON = exports.QGPTPersonsRelatedOutputFromJSONTyped = exports.QGPTPersonsRelatedOutputFromJSON = void 0;
+    var runtime_1 = require_runtime();
+    var index_1 = require_models();
+    function QGPTPersonsRelatedOutputFromJSON2(json) {
+      return QGPTPersonsRelatedOutputFromJSONTyped2(json, false);
+    }
+    exports.QGPTPersonsRelatedOutputFromJSON = QGPTPersonsRelatedOutputFromJSON2;
+    function QGPTPersonsRelatedOutputFromJSONTyped2(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "persons": (0, index_1.PersonsFromJSON)(json["persons"]),
+        "explanations": !(0, runtime_1.exists)(json, "explanations") ? void 0 : json["explanations"]
+      };
+    }
+    exports.QGPTPersonsRelatedOutputFromJSONTyped = QGPTPersonsRelatedOutputFromJSONTyped2;
+    function QGPTPersonsRelatedOutputToJSON2(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "persons": (0, index_1.PersonsToJSON)(value.persons),
+        "explanations": value.explanations
+      };
+    }
+    exports.QGPTPersonsRelatedOutputToJSON = QGPTPersonsRelatedOutputToJSON2;
   }
 });
 
@@ -12097,7 +12185,7 @@ var require_QGPTQuestionAnswer = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTQuestionAnswerToJSON = exports.QGPTQuestionAnswerFromJSONTyped = exports.QGPTQuestionAnswerFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function QGPTQuestionAnswerFromJSON3(json) {
       return QGPTQuestionAnswerFromJSONTyped6(json, false);
     }
@@ -12107,7 +12195,7 @@ var require_QGPTQuestionAnswer = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "score": json["score"],
         "text": json["text"]
       };
@@ -12121,7 +12209,7 @@ var require_QGPTQuestionAnswer = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "score": value.score,
         "text": value.text
       };
@@ -12137,7 +12225,7 @@ var require_QGPTQuestionAnswers = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTQuestionAnswersToJSON = exports.QGPTQuestionAnswersFromJSONTyped = exports.QGPTQuestionAnswersFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function QGPTQuestionAnswersFromJSON3(json) {
       return QGPTQuestionAnswersFromJSONTyped4(json, false);
     }
@@ -12147,8 +12235,8 @@ var require_QGPTQuestionAnswers = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.QGPTQuestionAnswerFromJSON)
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.QGPTQuestionAnswerFromJSON)
       };
     }
     exports.QGPTQuestionAnswersFromJSONTyped = QGPTQuestionAnswersFromJSONTyped4;
@@ -12160,8 +12248,8 @@ var require_QGPTQuestionAnswers = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.QGPTQuestionAnswerToJSON)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.QGPTQuestionAnswerToJSON)
       };
     }
     exports.QGPTQuestionAnswersToJSON = QGPTQuestionAnswersToJSON3;
@@ -12175,7 +12263,7 @@ var require_QGPTQuestionInput = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTQuestionInputToJSON = exports.QGPTQuestionInputFromJSONTyped = exports.QGPTQuestionInputFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function QGPTQuestionInputFromJSON4(json) {
       return QGPTQuestionInputFromJSONTyped3(json, false);
     }
@@ -12185,12 +12273,12 @@ var require_QGPTQuestionInput = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "relevant": (0, _1.RelevantQGPTSeedsFromJSON)(json["relevant"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "relevant": (0, index_1.RelevantQGPTSeedsFromJSON)(json["relevant"]),
         "query": json["query"],
         "application": !(0, runtime_1.exists)(json, "application") ? void 0 : json["application"],
         "model": !(0, runtime_1.exists)(json, "model") ? void 0 : json["model"],
-        "messages": !(0, runtime_1.exists)(json, "messages") ? void 0 : (0, _1.FlattenedConversationMessagesFromJSON)(json["messages"])
+        "messages": !(0, runtime_1.exists)(json, "messages") ? void 0 : (0, index_1.FlattenedConversationMessagesFromJSON)(json["messages"])
       };
     }
     exports.QGPTQuestionInputFromJSONTyped = QGPTQuestionInputFromJSONTyped3;
@@ -12202,12 +12290,12 @@ var require_QGPTQuestionInput = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "relevant": (0, _1.RelevantQGPTSeedsToJSON)(value.relevant),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "relevant": (0, index_1.RelevantQGPTSeedsToJSON)(value.relevant),
         "query": value.query,
         "application": value.application,
         "model": value.model,
-        "messages": (0, _1.FlattenedConversationMessagesToJSON)(value.messages)
+        "messages": (0, index_1.FlattenedConversationMessagesToJSON)(value.messages)
       };
     }
     exports.QGPTQuestionInputToJSON = QGPTQuestionInputToJSON3;
@@ -12221,7 +12309,7 @@ var require_QGPTQuestionOutput = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTQuestionOutputToJSON = exports.QGPTQuestionOutputFromJSONTyped = exports.QGPTQuestionOutputFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function QGPTQuestionOutputFromJSON3(json) {
       return QGPTQuestionOutputFromJSONTyped6(json, false);
     }
@@ -12231,8 +12319,8 @@ var require_QGPTQuestionOutput = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "answers": (0, _1.QGPTQuestionAnswersFromJSON)(json["answers"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "answers": (0, index_1.QGPTQuestionAnswersFromJSON)(json["answers"])
       };
     }
     exports.QGPTQuestionOutputFromJSONTyped = QGPTQuestionOutputFromJSONTyped6;
@@ -12244,8 +12332,8 @@ var require_QGPTQuestionOutput = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "answers": (0, _1.QGPTQuestionAnswersToJSON)(value.answers)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "answers": (0, index_1.QGPTQuestionAnswersToJSON)(value.answers)
       };
     }
     exports.QGPTQuestionOutputToJSON = QGPTQuestionOutputToJSON4;
@@ -12259,7 +12347,7 @@ var require_QGPTRelevanceInput = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTRelevanceInputToJSON = exports.QGPTRelevanceInputFromJSONTyped = exports.QGPTRelevanceInputFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function QGPTRelevanceInputFromJSON4(json) {
       return QGPTRelevanceInputFromJSONTyped3(json, false);
     }
@@ -12269,13 +12357,13 @@ var require_QGPTRelevanceInput = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "query": json["query"],
         "paths": !(0, runtime_1.exists)(json, "paths") ? void 0 : json["paths"],
-        "seeds": !(0, runtime_1.exists)(json, "seeds") ? void 0 : (0, _1.SeedsFromJSON)(json["seeds"]),
-        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, _1.FlattenedAssetsFromJSON)(json["assets"]),
-        "messages": !(0, runtime_1.exists)(json, "messages") ? void 0 : (0, _1.FlattenedConversationMessagesFromJSON)(json["messages"]),
-        "options": !(0, runtime_1.exists)(json, "options") ? void 0 : (0, _1.QGPTRelevanceInputOptionsFromJSON)(json["options"]),
+        "seeds": !(0, runtime_1.exists)(json, "seeds") ? void 0 : (0, index_1.SeedsFromJSON)(json["seeds"]),
+        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, index_1.FlattenedAssetsFromJSON)(json["assets"]),
+        "messages": !(0, runtime_1.exists)(json, "messages") ? void 0 : (0, index_1.FlattenedConversationMessagesFromJSON)(json["messages"]),
+        "options": !(0, runtime_1.exists)(json, "options") ? void 0 : (0, index_1.QGPTRelevanceInputOptionsFromJSON)(json["options"]),
         "application": !(0, runtime_1.exists)(json, "application") ? void 0 : json["application"],
         "model": !(0, runtime_1.exists)(json, "model") ? void 0 : json["model"]
       };
@@ -12289,13 +12377,13 @@ var require_QGPTRelevanceInput = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "query": value.query,
         "paths": value.paths,
-        "seeds": (0, _1.SeedsToJSON)(value.seeds),
-        "assets": (0, _1.FlattenedAssetsToJSON)(value.assets),
-        "messages": (0, _1.FlattenedConversationMessagesToJSON)(value.messages),
-        "options": (0, _1.QGPTRelevanceInputOptionsToJSON)(value.options),
+        "seeds": (0, index_1.SeedsToJSON)(value.seeds),
+        "assets": (0, index_1.FlattenedAssetsToJSON)(value.assets),
+        "messages": (0, index_1.FlattenedConversationMessagesToJSON)(value.messages),
+        "options": (0, index_1.QGPTRelevanceInputOptionsToJSON)(value.options),
         "application": value.application,
         "model": value.model
       };
@@ -12311,7 +12399,7 @@ var require_QGPTRelevanceInputOptions = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTRelevanceInputOptionsToJSON = exports.QGPTRelevanceInputOptionsFromJSONTyped = exports.QGPTRelevanceInputOptionsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function QGPTRelevanceInputOptionsFromJSON3(json) {
       return QGPTRelevanceInputOptionsFromJSONTyped3(json, false);
     }
@@ -12321,7 +12409,7 @@ var require_QGPTRelevanceInputOptions = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "database": !(0, runtime_1.exists)(json, "database") ? void 0 : json["database"],
         "question": !(0, runtime_1.exists)(json, "question") ? void 0 : json["question"]
       };
@@ -12335,7 +12423,7 @@ var require_QGPTRelevanceInputOptions = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "database": value.database,
         "question": value.question
       };
@@ -12351,7 +12439,7 @@ var require_QGPTRelevanceOutput = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTRelevanceOutputToJSON = exports.QGPTRelevanceOutputFromJSONTyped = exports.QGPTRelevanceOutputFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function QGPTRelevanceOutputFromJSON3(json) {
       return QGPTRelevanceOutputFromJSONTyped4(json, false);
     }
@@ -12361,9 +12449,9 @@ var require_QGPTRelevanceOutput = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "answer": !(0, runtime_1.exists)(json, "answer") ? void 0 : (0, _1.QGPTQuestionOutputFromJSON)(json["answer"]),
-        "relevant": (0, _1.RelevantQGPTSeedsFromJSON)(json["relevant"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "answer": !(0, runtime_1.exists)(json, "answer") ? void 0 : (0, index_1.QGPTQuestionOutputFromJSON)(json["answer"]),
+        "relevant": (0, index_1.RelevantQGPTSeedsFromJSON)(json["relevant"])
       };
     }
     exports.QGPTRelevanceOutputFromJSONTyped = QGPTRelevanceOutputFromJSONTyped4;
@@ -12375,9 +12463,9 @@ var require_QGPTRelevanceOutput = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "answer": (0, _1.QGPTQuestionOutputToJSON)(value.answer),
-        "relevant": (0, _1.RelevantQGPTSeedsToJSON)(value.relevant)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "answer": (0, index_1.QGPTQuestionOutputToJSON)(value.answer),
+        "relevant": (0, index_1.RelevantQGPTSeedsToJSON)(value.relevant)
       };
     }
     exports.QGPTRelevanceOutputToJSON = QGPTRelevanceOutputToJSON4;
@@ -12391,7 +12479,7 @@ var require_QGPTRepromptInput = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTRepromptInputToJSON = exports.QGPTRepromptInputFromJSONTyped = exports.QGPTRepromptInputFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function QGPTRepromptInputFromJSON2(json) {
       return QGPTRepromptInputFromJSONTyped(json, false);
     }
@@ -12401,9 +12489,9 @@ var require_QGPTRepromptInput = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "query": json["query"],
-        "conversation": (0, _1.QGPTConversationFromJSON)(json["conversation"]),
+        "conversation": (0, index_1.QGPTConversationFromJSON)(json["conversation"]),
         "application": !(0, runtime_1.exists)(json, "application") ? void 0 : json["application"],
         "model": !(0, runtime_1.exists)(json, "model") ? void 0 : json["model"]
       };
@@ -12417,9 +12505,9 @@ var require_QGPTRepromptInput = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "query": value.query,
-        "conversation": (0, _1.QGPTConversationToJSON)(value.conversation),
+        "conversation": (0, index_1.QGPTConversationToJSON)(value.conversation),
         "application": value.application,
         "model": value.model
       };
@@ -12435,7 +12523,7 @@ var require_QGPTRepromptOutput = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTRepromptOutputToJSON = exports.QGPTRepromptOutputFromJSONTyped = exports.QGPTRepromptOutputFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function QGPTRepromptOutputFromJSON2(json) {
       return QGPTRepromptOutputFromJSONTyped2(json, false);
     }
@@ -12445,7 +12533,7 @@ var require_QGPTRepromptOutput = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "query": json["query"]
       };
     }
@@ -12458,7 +12546,7 @@ var require_QGPTRepromptOutput = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "query": value.query
       };
     }
@@ -12505,7 +12593,7 @@ var require_QGPTStreamInput = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTStreamInputToJSON = exports.QGPTStreamInputFromJSONTyped = exports.QGPTStreamInputFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function QGPTStreamInputFromJSON2(json) {
       return QGPTStreamInputFromJSONTyped(json, false);
     }
@@ -12515,8 +12603,8 @@ var require_QGPTStreamInput = __commonJS({
         return json;
       }
       return {
-        "relevance": !(0, runtime_1.exists)(json, "relevance") ? void 0 : (0, _1.QGPTRelevanceInputFromJSON)(json["relevance"]),
-        "question": !(0, runtime_1.exists)(json, "question") ? void 0 : (0, _1.QGPTQuestionInputFromJSON)(json["question"]),
+        "relevance": !(0, runtime_1.exists)(json, "relevance") ? void 0 : (0, index_1.QGPTRelevanceInputFromJSON)(json["relevance"]),
+        "question": !(0, runtime_1.exists)(json, "question") ? void 0 : (0, index_1.QGPTQuestionInputFromJSON)(json["question"]),
         "request": !(0, runtime_1.exists)(json, "request") ? void 0 : json["request"],
         "conversation": !(0, runtime_1.exists)(json, "conversation") ? void 0 : json["conversation"],
         "stop": !(0, runtime_1.exists)(json, "stop") ? void 0 : json["stop"]
@@ -12531,8 +12619,8 @@ var require_QGPTStreamInput = __commonJS({
         return null;
       }
       return {
-        "relevance": (0, _1.QGPTRelevanceInputToJSON)(value.relevance),
-        "question": (0, _1.QGPTQuestionInputToJSON)(value.question),
+        "relevance": (0, index_1.QGPTRelevanceInputToJSON)(value.relevance),
+        "question": (0, index_1.QGPTQuestionInputToJSON)(value.question),
         "request": value.request,
         "conversation": value.conversation,
         "stop": value.stop
@@ -12549,7 +12637,7 @@ var require_QGPTStreamOutput = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTStreamOutputToJSON = exports.QGPTStreamOutputFromJSONTyped = exports.QGPTStreamOutputFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function QGPTStreamOutputFromJSON2(json) {
       return QGPTStreamOutputFromJSONTyped2(json, false);
     }
@@ -12560,9 +12648,9 @@ var require_QGPTStreamOutput = __commonJS({
       }
       return {
         "request": !(0, runtime_1.exists)(json, "request") ? void 0 : json["request"],
-        "relevance": !(0, runtime_1.exists)(json, "relevance") ? void 0 : (0, _1.QGPTRelevanceOutputFromJSON)(json["relevance"]),
-        "question": !(0, runtime_1.exists)(json, "question") ? void 0 : (0, _1.QGPTQuestionOutputFromJSON)(json["question"]),
-        "status": !(0, runtime_1.exists)(json, "status") ? void 0 : (0, _1.QGPTStreamEnumFromJSON)(json["status"]),
+        "relevance": !(0, runtime_1.exists)(json, "relevance") ? void 0 : (0, index_1.QGPTRelevanceOutputFromJSON)(json["relevance"]),
+        "question": !(0, runtime_1.exists)(json, "question") ? void 0 : (0, index_1.QGPTQuestionOutputFromJSON)(json["question"]),
+        "status": !(0, runtime_1.exists)(json, "status") ? void 0 : (0, index_1.QGPTStreamEnumFromJSON)(json["status"]),
         "conversation": json["conversation"]
       };
     }
@@ -12576,13 +12664,55 @@ var require_QGPTStreamOutput = __commonJS({
       }
       return {
         "request": value.request,
-        "relevance": (0, _1.QGPTRelevanceOutputToJSON)(value.relevance),
-        "question": (0, _1.QGPTQuestionOutputToJSON)(value.question),
-        "status": (0, _1.QGPTStreamEnumToJSON)(value.status),
+        "relevance": (0, index_1.QGPTRelevanceOutputToJSON)(value.relevance),
+        "question": (0, index_1.QGPTQuestionOutputToJSON)(value.question),
+        "status": (0, index_1.QGPTStreamEnumToJSON)(value.status),
         "conversation": value.conversation
       };
     }
     exports.QGPTStreamOutputToJSON = QGPTStreamOutputToJSON2;
+  }
+});
+
+// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Reaction.js
+var require_Reaction = __commonJS({
+  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Reaction.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.ReactionToJSON = exports.ReactionFromJSONTyped = exports.ReactionFromJSON = void 0;
+    var runtime_1 = require_runtime();
+    var index_1 = require_models();
+    function ReactionFromJSON3(json) {
+      return ReactionFromJSONTyped(json, false);
+    }
+    exports.ReactionFromJSON = ReactionFromJSON3;
+    function ReactionFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "save": json["save"],
+        "reuse": !(0, runtime_1.exists)(json, "reuse") ? void 0 : (0, index_1.ReuseReactionFromJSON)(json["reuse"]),
+        "seed": (0, index_1.SeededConnectorCreationFromJSON)(json["seed"])
+      };
+    }
+    exports.ReactionFromJSONTyped = ReactionFromJSONTyped;
+    function ReactionToJSON3(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "save": value.save,
+        "reuse": (0, index_1.ReuseReactionToJSON)(value.reuse),
+        "seed": (0, index_1.SeededConnectorCreationToJSON)(value.seed)
+      };
+    }
+    exports.ReactionToJSON = ReactionToJSON3;
   }
 });
 
@@ -12593,7 +12723,7 @@ var require_Recipients = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.RecipientsToJSON = exports.RecipientsFromJSONTyped = exports.RecipientsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function RecipientsFromJSON4(json) {
       return RecipientsFromJSONTyped11(json, false);
     }
@@ -12603,8 +12733,8 @@ var require_Recipients = __commonJS({
         return json;
       }
       return {
-        "iterable": json["iterable"].map(_1.PersonBasicTypeFromJSON),
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"])
+        "iterable": json["iterable"].map(index_1.PersonBasicTypeFromJSON),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"])
       };
     }
     exports.RecipientsFromJSONTyped = RecipientsFromJSONTyped11;
@@ -12616,8 +12746,8 @@ var require_Recipients = __commonJS({
         return null;
       }
       return {
-        "iterable": value.iterable.map(_1.PersonBasicTypeToJSON),
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema)
+        "iterable": value.iterable.map(index_1.PersonBasicTypeToJSON),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema)
       };
     }
     exports.RecipientsToJSON = RecipientsToJSON4;
@@ -12631,7 +12761,7 @@ var require_ReferencedActivity = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedActivityToJSON = exports.ReferencedActivityFromJSONTyped = exports.ReferencedActivityFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ReferencedActivityFromJSON4(json) {
       return ReferencedActivityFromJSONTyped6(json, false);
     }
@@ -12641,9 +12771,9 @@ var require_ReferencedActivity = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, _1.FlattenedActivityFromJSON)(json["reference"])
+        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, index_1.FlattenedActivityFromJSON)(json["reference"])
       };
     }
     exports.ReferencedActivityFromJSONTyped = ReferencedActivityFromJSONTyped6;
@@ -12655,9 +12785,9 @@ var require_ReferencedActivity = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "reference": (0, _1.FlattenedActivityToJSON)(value.reference)
+        "reference": (0, index_1.FlattenedActivityToJSON)(value.reference)
       };
     }
     exports.ReferencedActivityToJSON = ReferencedActivityToJSON4;
@@ -12671,7 +12801,7 @@ var require_ReferencedAnchor = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedAnchorToJSON = exports.ReferencedAnchorFromJSONTyped = exports.ReferencedAnchorFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ReferencedAnchorFromJSON4(json) {
       return ReferencedAnchorFromJSONTyped20(json, false);
     }
@@ -12681,9 +12811,9 @@ var require_ReferencedAnchor = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, _1.FlattenedAnchorFromJSON)(json["reference"])
+        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, index_1.FlattenedAnchorFromJSON)(json["reference"])
       };
     }
     exports.ReferencedAnchorFromJSONTyped = ReferencedAnchorFromJSONTyped20;
@@ -12695,9 +12825,9 @@ var require_ReferencedAnchor = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "reference": (0, _1.FlattenedAnchorToJSON)(value.reference)
+        "reference": (0, index_1.FlattenedAnchorToJSON)(value.reference)
       };
     }
     exports.ReferencedAnchorToJSON = ReferencedAnchorToJSON4;
@@ -12711,7 +12841,7 @@ var require_ReferencedAnchorPoint = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedAnchorPointToJSON = exports.ReferencedAnchorPointFromJSONTyped = exports.ReferencedAnchorPointFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ReferencedAnchorPointFromJSON4(json) {
       return ReferencedAnchorPointFromJSONTyped6(json, false);
     }
@@ -12721,9 +12851,9 @@ var require_ReferencedAnchorPoint = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, _1.FlattenedAnchorPointFromJSON)(json["reference"])
+        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, index_1.FlattenedAnchorPointFromJSON)(json["reference"])
       };
     }
     exports.ReferencedAnchorPointFromJSONTyped = ReferencedAnchorPointFromJSONTyped6;
@@ -12735,9 +12865,9 @@ var require_ReferencedAnchorPoint = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "reference": (0, _1.FlattenedAnchorPointToJSON)(value.reference)
+        "reference": (0, index_1.FlattenedAnchorPointToJSON)(value.reference)
       };
     }
     exports.ReferencedAnchorPointToJSON = ReferencedAnchorPointToJSON4;
@@ -12751,7 +12881,7 @@ var require_ReferencedAnnotation = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedAnnotationToJSON = exports.ReferencedAnnotationFromJSONTyped = exports.ReferencedAnnotationFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ReferencedAnnotationFromJSON4(json) {
       return ReferencedAnnotationFromJSONTyped14(json, false);
     }
@@ -12761,9 +12891,9 @@ var require_ReferencedAnnotation = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, _1.FlattenedAnnotationFromJSON)(json["reference"])
+        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, index_1.FlattenedAnnotationFromJSON)(json["reference"])
       };
     }
     exports.ReferencedAnnotationFromJSONTyped = ReferencedAnnotationFromJSONTyped14;
@@ -12775,9 +12905,9 @@ var require_ReferencedAnnotation = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "reference": (0, _1.FlattenedAnnotationToJSON)(value.reference)
+        "reference": (0, index_1.FlattenedAnnotationToJSON)(value.reference)
       };
     }
     exports.ReferencedAnnotationToJSON = ReferencedAnnotationToJSON4;
@@ -12791,22 +12921,22 @@ var require_ReferencedAsset = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedAssetToJSON = exports.ReferencedAssetFromJSONTyped = exports.ReferencedAssetFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ReferencedAssetFromJSON4(json) {
-      return ReferencedAssetFromJSONTyped44(json, false);
+      return ReferencedAssetFromJSONTyped38(json, false);
     }
     exports.ReferencedAssetFromJSON = ReferencedAssetFromJSON4;
-    function ReferencedAssetFromJSONTyped44(json, ignoreDiscriminator) {
+    function ReferencedAssetFromJSONTyped38(json, ignoreDiscriminator) {
       if (json === void 0 || json === null) {
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, _1.FlattenedAssetFromJSON)(json["reference"])
+        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, index_1.FlattenedAssetFromJSON)(json["reference"])
       };
     }
-    exports.ReferencedAssetFromJSONTyped = ReferencedAssetFromJSONTyped44;
+    exports.ReferencedAssetFromJSONTyped = ReferencedAssetFromJSONTyped38;
     function ReferencedAssetToJSON4(value) {
       if (value === void 0) {
         return void 0;
@@ -12815,9 +12945,9 @@ var require_ReferencedAsset = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "reference": (0, _1.FlattenedAssetToJSON)(value.reference)
+        "reference": (0, index_1.FlattenedAssetToJSON)(value.reference)
       };
     }
     exports.ReferencedAssetToJSON = ReferencedAssetToJSON4;
@@ -12831,7 +12961,7 @@ var require_ReferencedConversation = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedConversationToJSON = exports.ReferencedConversationFromJSONTyped = exports.ReferencedConversationFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ReferencedConversationFromJSON4(json) {
       return ReferencedConversationFromJSONTyped25(json, false);
     }
@@ -12841,9 +12971,9 @@ var require_ReferencedConversation = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, _1.FlattenedConversationFromJSON)(json["reference"])
+        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, index_1.FlattenedConversationFromJSON)(json["reference"])
       };
     }
     exports.ReferencedConversationFromJSONTyped = ReferencedConversationFromJSONTyped25;
@@ -12855,9 +12985,9 @@ var require_ReferencedConversation = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "reference": (0, _1.FlattenedConversationToJSON)(value.reference)
+        "reference": (0, index_1.FlattenedConversationToJSON)(value.reference)
       };
     }
     exports.ReferencedConversationToJSON = ReferencedConversationToJSON4;
@@ -12871,7 +13001,7 @@ var require_ReferencedConversationMessage = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedConversationMessageToJSON = exports.ReferencedConversationMessageFromJSONTyped = exports.ReferencedConversationMessageFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ReferencedConversationMessageFromJSON4(json) {
       return ReferencedConversationMessageFromJSONTyped6(json, false);
     }
@@ -12881,9 +13011,9 @@ var require_ReferencedConversationMessage = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, _1.FlattenedConversationMessageFromJSON)(json["reference"])
+        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, index_1.FlattenedConversationMessageFromJSON)(json["reference"])
       };
     }
     exports.ReferencedConversationMessageFromJSONTyped = ReferencedConversationMessageFromJSONTyped6;
@@ -12895,9 +13025,9 @@ var require_ReferencedConversationMessage = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "reference": (0, _1.FlattenedConversationMessageToJSON)(value.reference)
+        "reference": (0, index_1.FlattenedConversationMessageToJSON)(value.reference)
       };
     }
     exports.ReferencedConversationMessageToJSON = ReferencedConversationMessageToJSON4;
@@ -12911,7 +13041,7 @@ var require_ReferencedDistribution = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedDistributionToJSON = exports.ReferencedDistributionFromJSONTyped = exports.ReferencedDistributionFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ReferencedDistributionFromJSON4(json) {
       return ReferencedDistributionFromJSONTyped6(json, false);
     }
@@ -12921,9 +13051,9 @@ var require_ReferencedDistribution = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, _1.FlattenedDistributionFromJSON)(json["reference"])
+        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, index_1.FlattenedDistributionFromJSON)(json["reference"])
       };
     }
     exports.ReferencedDistributionFromJSONTyped = ReferencedDistributionFromJSONTyped6;
@@ -12935,9 +13065,9 @@ var require_ReferencedDistribution = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "reference": (0, _1.FlattenedDistributionToJSON)(value.reference)
+        "reference": (0, index_1.FlattenedDistributionToJSON)(value.reference)
       };
     }
     exports.ReferencedDistributionToJSON = ReferencedDistributionToJSON4;
@@ -12951,22 +13081,22 @@ var require_ReferencedFormat = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedFormatToJSON = exports.ReferencedFormatFromJSONTyped = exports.ReferencedFormatFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ReferencedFormatFromJSON4(json) {
-      return ReferencedFormatFromJSONTyped30(json, false);
+      return ReferencedFormatFromJSONTyped24(json, false);
     }
     exports.ReferencedFormatFromJSON = ReferencedFormatFromJSON4;
-    function ReferencedFormatFromJSONTyped30(json, ignoreDiscriminator) {
+    function ReferencedFormatFromJSONTyped24(json, ignoreDiscriminator) {
       if (json === void 0 || json === null) {
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, _1.FlattenedFormatFromJSON)(json["reference"])
+        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, index_1.FlattenedFormatFromJSON)(json["reference"])
       };
     }
-    exports.ReferencedFormatFromJSONTyped = ReferencedFormatFromJSONTyped30;
+    exports.ReferencedFormatFromJSONTyped = ReferencedFormatFromJSONTyped24;
     function ReferencedFormatToJSON4(value) {
       if (value === void 0) {
         return void 0;
@@ -12975,9 +13105,9 @@ var require_ReferencedFormat = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "reference": (0, _1.FlattenedFormatToJSON)(value.reference)
+        "reference": (0, index_1.FlattenedFormatToJSON)(value.reference)
       };
     }
     exports.ReferencedFormatToJSON = ReferencedFormatToJSON4;
@@ -12991,7 +13121,7 @@ var require_ReferencedHint = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedHintToJSON = exports.ReferencedHintFromJSONTyped = exports.ReferencedHintFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ReferencedHintFromJSON4(json) {
       return ReferencedHintFromJSONTyped9(json, false);
     }
@@ -13001,9 +13131,9 @@ var require_ReferencedHint = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, _1.FlattenedHintFromJSON)(json["reference"])
+        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, index_1.FlattenedHintFromJSON)(json["reference"])
       };
     }
     exports.ReferencedHintFromJSONTyped = ReferencedHintFromJSONTyped9;
@@ -13015,9 +13145,9 @@ var require_ReferencedHint = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "reference": (0, _1.FlattenedHintToJSON)(value.reference)
+        "reference": (0, index_1.FlattenedHintToJSON)(value.reference)
       };
     }
     exports.ReferencedHintToJSON = ReferencedHintToJSON4;
@@ -13031,7 +13161,7 @@ var require_ReferencedModel = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedModelToJSON = exports.ReferencedModelFromJSONTyped = exports.ReferencedModelFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ReferencedModelFromJSON4(json) {
       return ReferencedModelFromJSONTyped26(json, false);
     }
@@ -13041,7 +13171,7 @@ var require_ReferencedModel = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"]
       };
     }
@@ -13054,7 +13184,7 @@ var require_ReferencedModel = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id
       };
     }
@@ -13069,7 +13199,7 @@ var require_ReferencedPerson = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedPersonToJSON = exports.ReferencedPersonFromJSONTyped = exports.ReferencedPersonFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ReferencedPersonFromJSON4(json) {
       return ReferencedPersonFromJSONTyped15(json, false);
     }
@@ -13079,9 +13209,9 @@ var require_ReferencedPerson = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, _1.FlattenedPersonFromJSON)(json["reference"])
+        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, index_1.FlattenedPersonFromJSON)(json["reference"])
       };
     }
     exports.ReferencedPersonFromJSONTyped = ReferencedPersonFromJSONTyped15;
@@ -13093,9 +13223,9 @@ var require_ReferencedPerson = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "reference": (0, _1.FlattenedPersonToJSON)(value.reference)
+        "reference": (0, index_1.FlattenedPersonToJSON)(value.reference)
       };
     }
     exports.ReferencedPersonToJSON = ReferencedPersonToJSON4;
@@ -13109,7 +13239,7 @@ var require_ReferencedSensitive = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedSensitiveToJSON = exports.ReferencedSensitiveFromJSONTyped = exports.ReferencedSensitiveFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ReferencedSensitiveFromJSON4(json) {
       return ReferencedSensitiveFromJSONTyped9(json, false);
     }
@@ -13119,9 +13249,9 @@ var require_ReferencedSensitive = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, _1.FlattenedSensitiveFromJSON)(json["reference"])
+        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, index_1.FlattenedSensitiveFromJSON)(json["reference"])
       };
     }
     exports.ReferencedSensitiveFromJSONTyped = ReferencedSensitiveFromJSONTyped9;
@@ -13133,9 +13263,9 @@ var require_ReferencedSensitive = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "reference": (0, _1.FlattenedSensitiveToJSON)(value.reference)
+        "reference": (0, index_1.FlattenedSensitiveToJSON)(value.reference)
       };
     }
     exports.ReferencedSensitiveToJSON = ReferencedSensitiveToJSON4;
@@ -13149,7 +13279,7 @@ var require_ReferencedShare = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedShareToJSON = exports.ReferencedShareFromJSONTyped = exports.ReferencedShareFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ReferencedShareFromJSON4(json) {
       return ReferencedShareFromJSONTyped6(json, false);
     }
@@ -13159,9 +13289,9 @@ var require_ReferencedShare = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, _1.FlattenedShareFromJSON)(json["reference"])
+        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, index_1.FlattenedShareFromJSON)(json["reference"])
       };
     }
     exports.ReferencedShareFromJSONTyped = ReferencedShareFromJSONTyped6;
@@ -13173,9 +13303,9 @@ var require_ReferencedShare = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "reference": (0, _1.FlattenedShareToJSON)(value.reference)
+        "reference": (0, index_1.FlattenedShareToJSON)(value.reference)
       };
     }
     exports.ReferencedShareToJSON = ReferencedShareToJSON4;
@@ -13189,22 +13319,22 @@ var require_ReferencedTag = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedTagToJSON = exports.ReferencedTagFromJSONTyped = exports.ReferencedTagFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ReferencedTagFromJSON4(json) {
-      return ReferencedTagFromJSONTyped9(json, false);
+      return ReferencedTagFromJSONTyped11(json, false);
     }
     exports.ReferencedTagFromJSON = ReferencedTagFromJSON4;
-    function ReferencedTagFromJSONTyped9(json, ignoreDiscriminator) {
+    function ReferencedTagFromJSONTyped11(json, ignoreDiscriminator) {
       if (json === void 0 || json === null) {
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, _1.FlattenedTagFromJSON)(json["reference"])
+        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, index_1.FlattenedTagFromJSON)(json["reference"])
       };
     }
-    exports.ReferencedTagFromJSONTyped = ReferencedTagFromJSONTyped9;
+    exports.ReferencedTagFromJSONTyped = ReferencedTagFromJSONTyped11;
     function ReferencedTagToJSON4(value) {
       if (value === void 0) {
         return void 0;
@@ -13213,9 +13343,9 @@ var require_ReferencedTag = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "reference": (0, _1.FlattenedTagToJSON)(value.reference)
+        "reference": (0, index_1.FlattenedTagToJSON)(value.reference)
       };
     }
     exports.ReferencedTagToJSON = ReferencedTagToJSON4;
@@ -13229,7 +13359,7 @@ var require_ReferencedUser = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedUserToJSON = exports.ReferencedUserFromJSONTyped = exports.ReferencedUserFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ReferencedUserFromJSON3(json) {
       return ReferencedUserFromJSONTyped3(json, false);
     }
@@ -13239,9 +13369,9 @@ var require_ReferencedUser = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, _1.FlattenedUserProfileFromJSON)(json["reference"])
+        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, index_1.FlattenedUserProfileFromJSON)(json["reference"])
       };
     }
     exports.ReferencedUserFromJSONTyped = ReferencedUserFromJSONTyped3;
@@ -13253,9 +13383,9 @@ var require_ReferencedUser = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "reference": (0, _1.FlattenedUserProfileToJSON)(value.reference)
+        "reference": (0, index_1.FlattenedUserProfileToJSON)(value.reference)
       };
     }
     exports.ReferencedUserToJSON = ReferencedUserToJSON3;
@@ -13269,22 +13399,22 @@ var require_ReferencedWebsite = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedWebsiteToJSON = exports.ReferencedWebsiteFromJSONTyped = exports.ReferencedWebsiteFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ReferencedWebsiteFromJSON4(json) {
-      return ReferencedWebsiteFromJSONTyped9(json, false);
+      return ReferencedWebsiteFromJSONTyped11(json, false);
     }
     exports.ReferencedWebsiteFromJSON = ReferencedWebsiteFromJSON4;
-    function ReferencedWebsiteFromJSONTyped9(json, ignoreDiscriminator) {
+    function ReferencedWebsiteFromJSONTyped11(json, ignoreDiscriminator) {
       if (json === void 0 || json === null) {
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, _1.FlattenedWebsiteFromJSON)(json["reference"])
+        "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : (0, index_1.FlattenedWebsiteFromJSON)(json["reference"])
       };
     }
-    exports.ReferencedWebsiteFromJSONTyped = ReferencedWebsiteFromJSONTyped9;
+    exports.ReferencedWebsiteFromJSONTyped = ReferencedWebsiteFromJSONTyped11;
     function ReferencedWebsiteToJSON4(value) {
       if (value === void 0) {
         return void 0;
@@ -13293,9 +13423,9 @@ var require_ReferencedWebsite = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "reference": (0, _1.FlattenedWebsiteToJSON)(value.reference)
+        "reference": (0, index_1.FlattenedWebsiteToJSON)(value.reference)
       };
     }
     exports.ReferencedWebsiteToJSON = ReferencedWebsiteToJSON4;
@@ -13309,7 +13439,7 @@ var require_Relationship = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.RelationshipToJSON = exports.RelationshipFromJSONTyped = exports.RelationshipFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function RelationshipFromJSON4(json) {
       return RelationshipFromJSONTyped17(json, false);
     }
@@ -13320,12 +13450,12 @@ var require_Relationship = __commonJS({
       }
       return {
         "id": json["id"],
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "embeddings": (0, _1.EmbeddingsFromJSON)(json["embeddings"]),
-        "edges": (0, _1.EdgesFromJSON)(json["edges"]),
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "embeddings": (0, index_1.EmbeddingsFromJSON)(json["embeddings"]),
+        "edges": (0, index_1.EdgesFromJSON)(json["edges"]),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"])
       };
     }
     exports.RelationshipFromJSONTyped = RelationshipFromJSONTyped17;
@@ -13338,12 +13468,12 @@ var require_Relationship = __commonJS({
       }
       return {
         "id": value.id,
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "embeddings": (0, _1.EmbeddingsToJSON)(value.embeddings),
-        "edges": (0, _1.EdgesToJSON)(value.edges),
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "embeddings": (0, index_1.EmbeddingsToJSON)(value.embeddings),
+        "edges": (0, index_1.EdgesToJSON)(value.edges),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted)
       };
     }
     exports.RelationshipToJSON = RelationshipToJSON5;
@@ -13356,7 +13486,7 @@ var require_Relationships = __commonJS({
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.RelationshipsToJSON = exports.RelationshipsFromJSONTyped = exports.RelationshipsFromJSON = void 0;
-    var _1 = require_models();
+    var index_1 = require_models();
     function RelationshipsFromJSON2(json) {
       return RelationshipsFromJSONTyped(json, false);
     }
@@ -13366,7 +13496,7 @@ var require_Relationships = __commonJS({
         return json;
       }
       return {
-        "iterable": json["iterable"].map(_1.RelationshipFromJSON)
+        "iterable": json["iterable"].map(index_1.RelationshipFromJSON)
       };
     }
     exports.RelationshipsFromJSONTyped = RelationshipsFromJSONTyped;
@@ -13378,7 +13508,7 @@ var require_Relationships = __commonJS({
         return null;
       }
       return {
-        "iterable": value.iterable.map(_1.RelationshipToJSON)
+        "iterable": value.iterable.map(index_1.RelationshipToJSON)
       };
     }
     exports.RelationshipsToJSON = RelationshipsToJSON2;
@@ -13392,7 +13522,7 @@ var require_RelevantQGPTSeed = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.RelevantQGPTSeedToJSON = exports.RelevantQGPTSeedFromJSONTyped = exports.RelevantQGPTSeedFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function RelevantQGPTSeedFromJSON3(json) {
       return RelevantQGPTSeedFromJSONTyped4(json, false);
     }
@@ -13402,11 +13532,11 @@ var require_RelevantQGPTSeed = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": !(0, runtime_1.exists)(json, "id") ? void 0 : json["id"],
-        "seed": !(0, runtime_1.exists)(json, "seed") ? void 0 : (0, _1.SeedFromJSON)(json["seed"]),
+        "seed": !(0, runtime_1.exists)(json, "seed") ? void 0 : (0, index_1.SeedFromJSON)(json["seed"]),
         "path": !(0, runtime_1.exists)(json, "path") ? void 0 : json["path"],
-        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, _1.ReferencedAssetFromJSON)(json["asset"])
+        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, index_1.ReferencedAssetFromJSON)(json["asset"])
       };
     }
     exports.RelevantQGPTSeedFromJSONTyped = RelevantQGPTSeedFromJSONTyped4;
@@ -13418,11 +13548,11 @@ var require_RelevantQGPTSeed = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "seed": (0, _1.SeedToJSON)(value.seed),
+        "seed": (0, index_1.SeedToJSON)(value.seed),
         "path": value.path,
-        "asset": (0, _1.ReferencedAssetToJSON)(value.asset)
+        "asset": (0, index_1.ReferencedAssetToJSON)(value.asset)
       };
     }
     exports.RelevantQGPTSeedToJSON = RelevantQGPTSeedToJSON3;
@@ -13436,7 +13566,7 @@ var require_RelevantQGPTSeeds = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.RelevantQGPTSeedsToJSON = exports.RelevantQGPTSeedsFromJSONTyped = exports.RelevantQGPTSeedsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function RelevantQGPTSeedsFromJSON3(json) {
       return RelevantQGPTSeedsFromJSONTyped8(json, false);
     }
@@ -13446,8 +13576,8 @@ var require_RelevantQGPTSeeds = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.RelevantQGPTSeedFromJSON)
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.RelevantQGPTSeedFromJSON)
       };
     }
     exports.RelevantQGPTSeedsFromJSONTyped = RelevantQGPTSeedsFromJSONTyped8;
@@ -13459,8 +13589,8 @@ var require_RelevantQGPTSeeds = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.RelevantQGPTSeedToJSON)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.RelevantQGPTSeedToJSON)
       };
     }
     exports.RelevantQGPTSeedsToJSON = RelevantQGPTSeedsToJSON3;
@@ -13474,7 +13604,7 @@ var require_ResultedPKCE = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ResultedPKCEToJSON = exports.ResultedPKCEFromJSONTyped = exports.ResultedPKCEFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ResultedPKCEFromJSON3(json) {
       return ResultedPKCEFromJSONTyped3(json, false);
     }
@@ -13484,7 +13614,7 @@ var require_ResultedPKCE = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "code": json["code"],
         "state": json["state"]
       };
@@ -13498,7 +13628,7 @@ var require_ResultedPKCE = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "code": value.code,
         "state": value.state
       };
@@ -13514,7 +13644,7 @@ var require_ReturnedUserProfile = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReturnedUserProfileToJSON = exports.ReturnedUserProfileFromJSONTyped = exports.ReturnedUserProfileFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ReturnedUserProfileFromJSON2(json) {
       return ReturnedUserProfileFromJSONTyped2(json, false);
     }
@@ -13524,8 +13654,8 @@ var require_ReturnedUserProfile = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "user": !(0, runtime_1.exists)(json, "user") ? void 0 : (0, _1.UserProfileFromJSON)(json["user"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "user": !(0, runtime_1.exists)(json, "user") ? void 0 : (0, index_1.UserProfileFromJSON)(json["user"])
       };
     }
     exports.ReturnedUserProfileFromJSONTyped = ReturnedUserProfileFromJSONTyped2;
@@ -13537,11 +13667,89 @@ var require_ReturnedUserProfile = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "user": (0, _1.UserProfileToJSON)(value.user)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "user": (0, index_1.UserProfileToJSON)(value.user)
       };
     }
     exports.ReturnedUserProfileToJSON = ReturnedUserProfileToJSON3;
+  }
+});
+
+// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ReuseReaction.js
+var require_ReuseReaction = __commonJS({
+  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ReuseReaction.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.ReuseReactionToJSON = exports.ReuseReactionFromJSONTyped = exports.ReuseReactionFromJSON = void 0;
+    var runtime_1 = require_runtime();
+    var index_1 = require_models();
+    function ReuseReactionFromJSON4(json) {
+      return ReuseReactionFromJSONTyped4(json, false);
+    }
+    exports.ReuseReactionFromJSON = ReuseReactionFromJSON4;
+    function ReuseReactionFromJSONTyped4(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "asset": json["asset"]
+      };
+    }
+    exports.ReuseReactionFromJSONTyped = ReuseReactionFromJSONTyped4;
+    function ReuseReactionToJSON4(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "asset": value.asset
+      };
+    }
+    exports.ReuseReactionToJSON = ReuseReactionToJSON4;
+  }
+});
+
+// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ReuseSuggestion.js
+var require_ReuseSuggestion = __commonJS({
+  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ReuseSuggestion.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.ReuseSuggestionToJSON = exports.ReuseSuggestionFromJSONTyped = exports.ReuseSuggestionFromJSON = void 0;
+    var runtime_1 = require_runtime();
+    var index_1 = require_models();
+    function ReuseSuggestionFromJSON4(json) {
+      return ReuseSuggestionFromJSONTyped5(json, false);
+    }
+    exports.ReuseSuggestionFromJSON = ReuseSuggestionFromJSON4;
+    function ReuseSuggestionFromJSONTyped5(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "suggested": json["suggested"],
+        "assets": (0, index_1.AssetsFromJSON)(json["assets"])
+      };
+    }
+    exports.ReuseSuggestionFromJSONTyped = ReuseSuggestionFromJSONTyped5;
+    function ReuseSuggestionToJSON4(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "suggested": value.suggested,
+        "assets": (0, index_1.AssetsToJSON)(value.assets)
+      };
+    }
+    exports.ReuseSuggestionToJSON = ReuseSuggestionToJSON4;
   }
 });
 
@@ -13552,7 +13760,7 @@ var require_RevokedPKCE = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.RevokedPKCEToJSON = exports.RevokedPKCEFromJSONTyped = exports.RevokedPKCEFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function RevokedPKCEFromJSON3(json) {
       return RevokedPKCEFromJSONTyped3(json, false);
     }
@@ -13562,7 +13770,7 @@ var require_RevokedPKCE = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "clientId": json["client_id"],
         "token": json["token"]
       };
@@ -13576,7 +13784,7 @@ var require_RevokedPKCE = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "client_id": value.clientId,
         "token": value.token
       };
@@ -13613,6 +13821,44 @@ var require_Role = __commonJS({
   }
 });
 
+// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SaveSuggestion.js
+var require_SaveSuggestion = __commonJS({
+  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SaveSuggestion.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.SaveSuggestionToJSON = exports.SaveSuggestionFromJSONTyped = exports.SaveSuggestionFromJSON = void 0;
+    var runtime_1 = require_runtime();
+    var index_1 = require_models();
+    function SaveSuggestionFromJSON4(json) {
+      return SaveSuggestionFromJSONTyped5(json, false);
+    }
+    exports.SaveSuggestionFromJSON = SaveSuggestionFromJSON4;
+    function SaveSuggestionFromJSONTyped5(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "suggested": json["suggested"]
+      };
+    }
+    exports.SaveSuggestionFromJSONTyped = SaveSuggestionFromJSONTyped5;
+    function SaveSuggestionToJSON4(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "suggested": value.suggested
+      };
+    }
+    exports.SaveSuggestionToJSON = SaveSuggestionToJSON4;
+  }
+});
+
 // ../copilot-ts/node_modules/@pieces.app/client/dist/models/Score.js
 var require_Score = __commonJS({
   "../copilot-ts/node_modules/@pieces.app/client/dist/models/Score.js"(exports) {
@@ -13620,7 +13866,7 @@ var require_Score = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ScoreToJSON = exports.ScoreFromJSONTyped = exports.ScoreFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ScoreFromJSON4(json) {
       return ScoreFromJSONTyped143(json, false);
     }
@@ -13630,7 +13876,7 @@ var require_Score = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "manual": json["manual"],
         "automatic": json["automatic"],
         "priority": !(0, runtime_1.exists)(json, "priority") ? void 0 : json["priority"],
@@ -13648,7 +13894,7 @@ var require_Score = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "manual": value.manual,
         "automatic": value.automatic,
         "priority": value.priority,
@@ -13668,7 +13914,7 @@ var require_SearchedAsset = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SearchedAssetToJSON = exports.SearchedAssetFromJSONTyped = exports.SearchedAssetFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SearchedAssetFromJSON4(json) {
       return SearchedAssetFromJSONTyped6(json, false);
     }
@@ -13678,11 +13924,11 @@ var require_SearchedAsset = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, _1.AssetFromJSON)(json["asset"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, index_1.AssetFromJSON)(json["asset"]),
         "exact": json["exact"],
         "score": json["score"],
-        "match": (0, _1.SearchedMatchEnumFromJSON)(json["match"]),
+        "match": (0, index_1.SearchedMatchEnumFromJSON)(json["match"]),
         "identifier": json["identifier"],
         "pseudo": !(0, runtime_1.exists)(json, "pseudo") ? void 0 : json["pseudo"]
       };
@@ -13696,11 +13942,11 @@ var require_SearchedAsset = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "asset": (0, _1.AssetToJSON)(value.asset),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "asset": (0, index_1.AssetToJSON)(value.asset),
         "exact": value.exact,
         "score": value.score,
-        "match": (0, _1.SearchedMatchEnumToJSON)(value.match),
+        "match": (0, index_1.SearchedMatchEnumToJSON)(value.match),
         "identifier": value.identifier,
         "pseudo": value.pseudo
       };
@@ -13716,7 +13962,7 @@ var require_SearchedAssets = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SearchedAssetsToJSON = exports.SearchedAssetsFromJSONTyped = exports.SearchedAssetsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SearchedAssetsFromJSON4(json) {
       return SearchedAssetsFromJSONTyped7(json, false);
     }
@@ -13726,8 +13972,8 @@ var require_SearchedAssets = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.SearchedAssetFromJSON),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.SearchedAssetFromJSON),
         "suggested": json["suggested"],
         "exact": json["exact"]
       };
@@ -13741,8 +13987,8 @@ var require_SearchedAssets = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.SearchedAssetToJSON),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.SearchedAssetToJSON),
         "suggested": value.suggested,
         "exact": value.exact
       };
@@ -13791,7 +14037,7 @@ var require_Seed = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeedToJSON = exports.SeedFromJSONTyped = exports.SeedFromJSON = exports.SeedTypeEnum = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     var SeedTypeEnum2;
     (function(SeedTypeEnum3) {
       SeedTypeEnum3["Format"] = "SEEDED_FORMAT";
@@ -13806,8 +14052,8 @@ var require_Seed = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, _1.SeededAssetFromJSON)(json["asset"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, index_1.SeededAssetFromJSON)(json["asset"]),
         "type": json["type"]
       };
     }
@@ -13820,8 +14066,8 @@ var require_Seed = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "asset": (0, _1.SeededAssetToJSON)(value.asset),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "asset": (0, index_1.SeededAssetToJSON)(value.asset),
         "type": value.type
       };
     }
@@ -13836,7 +14082,7 @@ var require_SeededAccessor = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededAccessorToJSON = exports.SeededAccessorFromJSONTyped = exports.SeededAccessorFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededAccessorFromJSON2(json) {
       return SeededAccessorFromJSONTyped(json, false);
     }
@@ -13846,9 +14092,9 @@ var require_SeededAccessor = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "os": json["os"],
-        "user": !(0, runtime_1.exists)(json, "user") ? void 0 : (0, _1.FlattenedUserProfileFromJSON)(json["user"]),
+        "user": !(0, runtime_1.exists)(json, "user") ? void 0 : (0, index_1.FlattenedUserProfileFromJSON)(json["user"]),
         "share": json["share"]
       };
     }
@@ -13861,9 +14107,9 @@ var require_SeededAccessor = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "os": value.os,
-        "user": (0, _1.FlattenedUserProfileToJSON)(value.user),
+        "user": (0, index_1.FlattenedUserProfileToJSON)(value.user),
         "share": value.share
       };
     }
@@ -13878,7 +14124,7 @@ var require_SeededActivity = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededActivityToJSON = exports.SeededActivityFromJSONTyped = exports.SeededActivityFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededActivityFromJSON2(json) {
       return SeededActivityFromJSONTyped(json, false);
     }
@@ -13888,12 +14134,12 @@ var require_SeededActivity = __commonJS({
         return json;
       }
       return {
-        "event": (0, _1.SeededConnectorTrackingFromJSON)(json["event"]),
-        "application": (0, _1.ApplicationFromJSON)(json["application"]),
-        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, _1.ReferencedAssetFromJSON)(json["asset"]),
-        "user": !(0, runtime_1.exists)(json, "user") ? void 0 : (0, _1.ReferencedUserFromJSON)(json["user"]),
-        "format": !(0, runtime_1.exists)(json, "format") ? void 0 : (0, _1.ReferencedFormatFromJSON)(json["format"]),
-        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, _1.MechanismEnumFromJSON)(json["mechanism"])
+        "event": (0, index_1.SeededConnectorTrackingFromJSON)(json["event"]),
+        "application": (0, index_1.ApplicationFromJSON)(json["application"]),
+        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, index_1.ReferencedAssetFromJSON)(json["asset"]),
+        "user": !(0, runtime_1.exists)(json, "user") ? void 0 : (0, index_1.ReferencedUserFromJSON)(json["user"]),
+        "format": !(0, runtime_1.exists)(json, "format") ? void 0 : (0, index_1.ReferencedFormatFromJSON)(json["format"]),
+        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, index_1.MechanismEnumFromJSON)(json["mechanism"])
       };
     }
     exports.SeededActivityFromJSONTyped = SeededActivityFromJSONTyped;
@@ -13905,12 +14151,12 @@ var require_SeededActivity = __commonJS({
         return null;
       }
       return {
-        "event": (0, _1.SeededConnectorTrackingToJSON)(value.event),
-        "application": (0, _1.ApplicationToJSON)(value.application),
-        "asset": (0, _1.ReferencedAssetToJSON)(value.asset),
-        "user": (0, _1.ReferencedUserToJSON)(value.user),
-        "format": (0, _1.ReferencedFormatToJSON)(value.format),
-        "mechanism": (0, _1.MechanismEnumToJSON)(value.mechanism)
+        "event": (0, index_1.SeededConnectorTrackingToJSON)(value.event),
+        "application": (0, index_1.ApplicationToJSON)(value.application),
+        "asset": (0, index_1.ReferencedAssetToJSON)(value.asset),
+        "user": (0, index_1.ReferencedUserToJSON)(value.user),
+        "format": (0, index_1.ReferencedFormatToJSON)(value.format),
+        "mechanism": (0, index_1.MechanismEnumToJSON)(value.mechanism)
       };
     }
     exports.SeededActivityToJSON = SeededActivityToJSON2;
@@ -13924,7 +14170,7 @@ var require_SeededAnchor = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededAnchorToJSON = exports.SeededAnchorFromJSONTyped = exports.SeededAnchorFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededAnchorFromJSON5(json) {
       return SeededAnchorFromJSONTyped8(json, false);
     }
@@ -13934,14 +14180,14 @@ var require_SeededAnchor = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "type": (0, _1.AnchorTypeEnumFromJSON)(json["type"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "type": (0, index_1.AnchorTypeEnumFromJSON)(json["type"]),
         "watch": !(0, runtime_1.exists)(json, "watch") ? void 0 : json["watch"],
         "fullpath": json["fullpath"],
         "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : json["asset"],
-        "platform": !(0, runtime_1.exists)(json, "platform") ? void 0 : (0, _1.PlatformEnumFromJSON)(json["platform"]),
+        "platform": !(0, runtime_1.exists)(json, "platform") ? void 0 : (0, index_1.PlatformEnumFromJSON)(json["platform"]),
         "name": !(0, runtime_1.exists)(json, "name") ? void 0 : json["name"],
-        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : json["annotations"].map(_1.SeededAnnotationFromJSON),
+        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : json["annotations"].map(index_1.SeededAnnotationFromJSON),
         "conversation": !(0, runtime_1.exists)(json, "conversation") ? void 0 : json["conversation"]
       };
     }
@@ -13954,14 +14200,14 @@ var require_SeededAnchor = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "type": (0, _1.AnchorTypeEnumToJSON)(value.type),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "type": (0, index_1.AnchorTypeEnumToJSON)(value.type),
         "watch": value.watch,
         "fullpath": value.fullpath,
         "asset": value.asset,
-        "platform": (0, _1.PlatformEnumToJSON)(value.platform),
+        "platform": (0, index_1.PlatformEnumToJSON)(value.platform),
         "name": value.name,
-        "annotations": value.annotations === void 0 ? void 0 : value.annotations.map(_1.SeededAnnotationToJSON),
+        "annotations": value.annotations === void 0 ? void 0 : value.annotations.map(index_1.SeededAnnotationToJSON),
         "conversation": value.conversation
       };
     }
@@ -13976,7 +14222,7 @@ var require_SeededAnchorPoint = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededAnchorPointToJSON = exports.SeededAnchorPointFromJSONTyped = exports.SeededAnchorPointFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededAnchorPointFromJSON2(json) {
       return SeededAnchorPointFromJSONTyped(json, false);
     }
@@ -13986,12 +14232,12 @@ var require_SeededAnchorPoint = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "type": (0, _1.AnchorTypeEnumFromJSON)(json["type"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "type": (0, index_1.AnchorTypeEnumFromJSON)(json["type"]),
         "watch": !(0, runtime_1.exists)(json, "watch") ? void 0 : json["watch"],
         "fullpath": json["fullpath"],
         "anchor": json["anchor"],
-        "platform": !(0, runtime_1.exists)(json, "platform") ? void 0 : (0, _1.PlatformEnumFromJSON)(json["platform"])
+        "platform": !(0, runtime_1.exists)(json, "platform") ? void 0 : (0, index_1.PlatformEnumFromJSON)(json["platform"])
       };
     }
     exports.SeededAnchorPointFromJSONTyped = SeededAnchorPointFromJSONTyped;
@@ -14003,12 +14249,12 @@ var require_SeededAnchorPoint = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "type": (0, _1.AnchorTypeEnumToJSON)(value.type),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "type": (0, index_1.AnchorTypeEnumToJSON)(value.type),
         "watch": value.watch,
         "fullpath": value.fullpath,
         "anchor": value.anchor,
-        "platform": (0, _1.PlatformEnumToJSON)(value.platform)
+        "platform": (0, index_1.PlatformEnumToJSON)(value.platform)
       };
     }
     exports.SeededAnchorPointToJSON = SeededAnchorPointToJSON2;
@@ -14022,7 +14268,7 @@ var require_SeededAnnotation = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededAnnotationToJSON = exports.SeededAnnotationFromJSONTyped = exports.SeededAnnotationFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededAnnotationFromJSON5(json) {
       return SeededAnnotationFromJSONTyped14(json, false);
     }
@@ -14032,18 +14278,18 @@ var require_SeededAnnotation = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, _1.MechanismEnumFromJSON)(json["mechanism"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, index_1.MechanismEnumFromJSON)(json["mechanism"]),
         "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : json["asset"],
         "person": !(0, runtime_1.exists)(json, "person") ? void 0 : json["person"],
-        "type": (0, _1.AnnotationTypeEnumFromJSON)(json["type"]),
+        "type": (0, index_1.AnnotationTypeEnumFromJSON)(json["type"]),
         "text": json["text"],
         "model": !(0, runtime_1.exists)(json, "model") ? void 0 : json["model"],
         "pseudo": !(0, runtime_1.exists)(json, "pseudo") ? void 0 : json["pseudo"],
         "favorited": !(0, runtime_1.exists)(json, "favorited") ? void 0 : json["favorited"],
         "anchor": !(0, runtime_1.exists)(json, "anchor") ? void 0 : json["anchor"],
         "conversation": !(0, runtime_1.exists)(json, "conversation") ? void 0 : json["conversation"],
-        "messages": !(0, runtime_1.exists)(json, "messages") ? void 0 : (0, _1.FlattenedConversationMessagesFromJSON)(json["messages"])
+        "messages": !(0, runtime_1.exists)(json, "messages") ? void 0 : (0, index_1.FlattenedConversationMessagesFromJSON)(json["messages"])
       };
     }
     exports.SeededAnnotationFromJSONTyped = SeededAnnotationFromJSONTyped14;
@@ -14055,18 +14301,18 @@ var require_SeededAnnotation = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "mechanism": (0, _1.MechanismEnumToJSON)(value.mechanism),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "mechanism": (0, index_1.MechanismEnumToJSON)(value.mechanism),
         "asset": value.asset,
         "person": value.person,
-        "type": (0, _1.AnnotationTypeEnumToJSON)(value.type),
+        "type": (0, index_1.AnnotationTypeEnumToJSON)(value.type),
         "text": value.text,
         "model": value.model,
         "pseudo": value.pseudo,
         "favorited": value.favorited,
         "anchor": value.anchor,
         "conversation": value.conversation,
-        "messages": (0, _1.FlattenedConversationMessagesToJSON)(value.messages)
+        "messages": (0, index_1.FlattenedConversationMessagesToJSON)(value.messages)
       };
     }
     exports.SeededAnnotationToJSON = SeededAnnotationToJSON4;
@@ -14080,7 +14326,7 @@ var require_SeededAsset = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededAssetToJSON = exports.SeededAssetFromJSONTyped = exports.SeededAssetFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededAssetFromJSON3(json) {
       return SeededAssetFromJSONTyped5(json, false);
     }
@@ -14090,12 +14336,12 @@ var require_SeededAsset = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, _1.SeededAssetMetadataFromJSON)(json["metadata"]),
-        "application": (0, _1.ApplicationFromJSON)(json["application"]),
-        "format": (0, _1.SeededFormatFromJSON)(json["format"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, index_1.SeededAssetMetadataFromJSON)(json["metadata"]),
+        "application": (0, index_1.ApplicationFromJSON)(json["application"]),
+        "format": (0, index_1.SeededFormatFromJSON)(json["format"]),
         "discovered": !(0, runtime_1.exists)(json, "discovered") ? void 0 : json["discovered"],
-        "available": !(0, runtime_1.exists)(json, "available") ? void 0 : (0, _1.AvailableFormatsFromJSON)(json["available"]),
+        "available": !(0, runtime_1.exists)(json, "available") ? void 0 : (0, index_1.AvailableFormatsFromJSON)(json["available"]),
         "pseudo": !(0, runtime_1.exists)(json, "pseudo") ? void 0 : json["pseudo"]
       };
     }
@@ -14108,12 +14354,12 @@ var require_SeededAsset = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "metadata": (0, _1.SeededAssetMetadataToJSON)(value.metadata),
-        "application": (0, _1.ApplicationToJSON)(value.application),
-        "format": (0, _1.SeededFormatToJSON)(value.format),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "metadata": (0, index_1.SeededAssetMetadataToJSON)(value.metadata),
+        "application": (0, index_1.ApplicationToJSON)(value.application),
+        "format": (0, index_1.SeededFormatToJSON)(value.format),
         "discovered": value.discovered,
-        "available": (0, _1.AvailableFormatsToJSON)(value.available),
+        "available": (0, index_1.AvailableFormatsToJSON)(value.available),
         "pseudo": value.pseudo
       };
     }
@@ -14128,29 +14374,29 @@ var require_SeededAssetMetadata = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededAssetMetadataToJSON = exports.SeededAssetMetadataFromJSONTyped = exports.SeededAssetMetadataFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededAssetMetadataFromJSON4(json) {
-      return SeededAssetMetadataFromJSONTyped9(json, false);
+      return SeededAssetMetadataFromJSONTyped10(json, false);
     }
     exports.SeededAssetMetadataFromJSON = SeededAssetMetadataFromJSON4;
-    function SeededAssetMetadataFromJSONTyped9(json, ignoreDiscriminator) {
+    function SeededAssetMetadataFromJSONTyped10(json, ignoreDiscriminator) {
       if (json === void 0 || json === null) {
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "name": !(0, runtime_1.exists)(json, "name") ? void 0 : json["name"],
-        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, _1.MechanismEnumFromJSON)(json["mechanism"]),
-        "tags": !(0, runtime_1.exists)(json, "tags") ? void 0 : json["tags"].map(_1.SeededAssetTagFromJSON),
-        "websites": !(0, runtime_1.exists)(json, "websites") ? void 0 : json["websites"].map(_1.SeededAssetWebsiteFromJSON),
-        "sensitives": !(0, runtime_1.exists)(json, "sensitives") ? void 0 : json["sensitives"].map(_1.SeededAssetSensitiveFromJSON),
-        "persons": !(0, runtime_1.exists)(json, "persons") ? void 0 : json["persons"].map(_1.SeededPersonFromJSON),
-        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : json["annotations"].map(_1.SeededAnnotationFromJSON),
-        "hints": !(0, runtime_1.exists)(json, "hints") ? void 0 : json["hints"].map(_1.SeededHintFromJSON),
-        "anchors": !(0, runtime_1.exists)(json, "anchors") ? void 0 : json["anchors"].map(_1.SeededAnchorFromJSON)
+        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, index_1.MechanismEnumFromJSON)(json["mechanism"]),
+        "tags": !(0, runtime_1.exists)(json, "tags") ? void 0 : json["tags"].map(index_1.SeededAssetTagFromJSON),
+        "websites": !(0, runtime_1.exists)(json, "websites") ? void 0 : json["websites"].map(index_1.SeededAssetWebsiteFromJSON),
+        "sensitives": !(0, runtime_1.exists)(json, "sensitives") ? void 0 : json["sensitives"].map(index_1.SeededAssetSensitiveFromJSON),
+        "persons": !(0, runtime_1.exists)(json, "persons") ? void 0 : json["persons"].map(index_1.SeededPersonFromJSON),
+        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : json["annotations"].map(index_1.SeededAnnotationFromJSON),
+        "hints": !(0, runtime_1.exists)(json, "hints") ? void 0 : json["hints"].map(index_1.SeededHintFromJSON),
+        "anchors": !(0, runtime_1.exists)(json, "anchors") ? void 0 : json["anchors"].map(index_1.SeededAnchorFromJSON)
       };
     }
-    exports.SeededAssetMetadataFromJSONTyped = SeededAssetMetadataFromJSONTyped9;
+    exports.SeededAssetMetadataFromJSONTyped = SeededAssetMetadataFromJSONTyped10;
     function SeededAssetMetadataToJSON4(value) {
       if (value === void 0) {
         return void 0;
@@ -14159,16 +14405,16 @@ var require_SeededAssetMetadata = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "name": value.name,
-        "mechanism": (0, _1.MechanismEnumToJSON)(value.mechanism),
-        "tags": value.tags === void 0 ? void 0 : value.tags.map(_1.SeededAssetTagToJSON),
-        "websites": value.websites === void 0 ? void 0 : value.websites.map(_1.SeededAssetWebsiteToJSON),
-        "sensitives": value.sensitives === void 0 ? void 0 : value.sensitives.map(_1.SeededAssetSensitiveToJSON),
-        "persons": value.persons === void 0 ? void 0 : value.persons.map(_1.SeededPersonToJSON),
-        "annotations": value.annotations === void 0 ? void 0 : value.annotations.map(_1.SeededAnnotationToJSON),
-        "hints": value.hints === void 0 ? void 0 : value.hints.map(_1.SeededHintToJSON),
-        "anchors": value.anchors === void 0 ? void 0 : value.anchors.map(_1.SeededAnchorToJSON)
+        "mechanism": (0, index_1.MechanismEnumToJSON)(value.mechanism),
+        "tags": value.tags === void 0 ? void 0 : value.tags.map(index_1.SeededAssetTagToJSON),
+        "websites": value.websites === void 0 ? void 0 : value.websites.map(index_1.SeededAssetWebsiteToJSON),
+        "sensitives": value.sensitives === void 0 ? void 0 : value.sensitives.map(index_1.SeededAssetSensitiveToJSON),
+        "persons": value.persons === void 0 ? void 0 : value.persons.map(index_1.SeededPersonToJSON),
+        "annotations": value.annotations === void 0 ? void 0 : value.annotations.map(index_1.SeededAnnotationToJSON),
+        "hints": value.hints === void 0 ? void 0 : value.hints.map(index_1.SeededHintToJSON),
+        "anchors": value.anchors === void 0 ? void 0 : value.anchors.map(index_1.SeededAnchorToJSON)
       };
     }
     exports.SeededAssetMetadataToJSON = SeededAssetMetadataToJSON4;
@@ -14182,7 +14428,7 @@ var require_SeededAssetSensitive = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededAssetSensitiveToJSON = exports.SeededAssetSensitiveFromJSONTyped = exports.SeededAssetSensitiveFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededAssetSensitiveFromJSON4(json) {
       return SeededAssetSensitiveFromJSONTyped6(json, false);
     }
@@ -14192,14 +14438,14 @@ var require_SeededAssetSensitive = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "text": json["text"],
-        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, _1.MechanismEnumFromJSON)(json["mechanism"]),
-        "category": (0, _1.SensitiveCategoryEnumFromJSON)(json["category"]),
-        "severity": (0, _1.SensitiveSeverityEnumFromJSON)(json["severity"]),
+        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, index_1.MechanismEnumFromJSON)(json["mechanism"]),
+        "category": (0, index_1.SensitiveCategoryEnumFromJSON)(json["category"]),
+        "severity": (0, index_1.SensitiveSeverityEnumFromJSON)(json["severity"]),
         "name": json["name"],
         "description": json["description"],
-        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, _1.SensitiveMetadataFromJSON)(json["metadata"])
+        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, index_1.SensitiveMetadataFromJSON)(json["metadata"])
       };
     }
     exports.SeededAssetSensitiveFromJSONTyped = SeededAssetSensitiveFromJSONTyped6;
@@ -14211,14 +14457,14 @@ var require_SeededAssetSensitive = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "text": value.text,
-        "mechanism": (0, _1.MechanismEnumToJSON)(value.mechanism),
-        "category": (0, _1.SensitiveCategoryEnumToJSON)(value.category),
-        "severity": (0, _1.SensitiveSeverityEnumToJSON)(value.severity),
+        "mechanism": (0, index_1.MechanismEnumToJSON)(value.mechanism),
+        "category": (0, index_1.SensitiveCategoryEnumToJSON)(value.category),
+        "severity": (0, index_1.SensitiveSeverityEnumToJSON)(value.severity),
         "name": value.name,
         "description": value.description,
-        "metadata": (0, _1.SensitiveMetadataToJSON)(value.metadata)
+        "metadata": (0, index_1.SensitiveMetadataToJSON)(value.metadata)
       };
     }
     exports.SeededAssetSensitiveToJSON = SeededAssetSensitiveToJSON4;
@@ -14232,7 +14478,7 @@ var require_SeededAssetTag = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededAssetTagToJSON = exports.SeededAssetTagFromJSONTyped = exports.SeededAssetTagFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededAssetTagFromJSON4(json) {
       return SeededAssetTagFromJSONTyped8(json, false);
     }
@@ -14242,10 +14488,10 @@ var require_SeededAssetTag = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "text": json["text"],
-        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, _1.MechanismEnumFromJSON)(json["mechanism"]),
-        "category": !(0, runtime_1.exists)(json, "category") ? void 0 : (0, _1.TagCategoryEnumFromJSON)(json["category"])
+        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, index_1.MechanismEnumFromJSON)(json["mechanism"]),
+        "category": !(0, runtime_1.exists)(json, "category") ? void 0 : (0, index_1.TagCategoryEnumFromJSON)(json["category"])
       };
     }
     exports.SeededAssetTagFromJSONTyped = SeededAssetTagFromJSONTyped8;
@@ -14257,10 +14503,10 @@ var require_SeededAssetTag = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "text": value.text,
-        "mechanism": (0, _1.MechanismEnumToJSON)(value.mechanism),
-        "category": (0, _1.TagCategoryEnumToJSON)(value.category)
+        "mechanism": (0, index_1.MechanismEnumToJSON)(value.mechanism),
+        "category": (0, index_1.TagCategoryEnumToJSON)(value.category)
       };
     }
     exports.SeededAssetTagToJSON = SeededAssetTagToJSON4;
@@ -14273,7 +14519,7 @@ var require_SeededAssetTags = __commonJS({
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededAssetTagsToJSON = exports.SeededAssetTagsFromJSONTyped = exports.SeededAssetTagsFromJSON = void 0;
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededAssetTagsFromJSON2(json) {
       return SeededAssetTagsFromJSONTyped(json, false);
     }
@@ -14283,7 +14529,7 @@ var require_SeededAssetTags = __commonJS({
         return json;
       }
       return {
-        "iterable": json["iterable"].map(_1.SeededAssetTagFromJSON)
+        "iterable": json["iterable"].map(index_1.SeededAssetTagFromJSON)
       };
     }
     exports.SeededAssetTagsFromJSONTyped = SeededAssetTagsFromJSONTyped;
@@ -14295,7 +14541,7 @@ var require_SeededAssetTags = __commonJS({
         return null;
       }
       return {
-        "iterable": value.iterable.map(_1.SeededAssetTagToJSON)
+        "iterable": value.iterable.map(index_1.SeededAssetTagToJSON)
       };
     }
     exports.SeededAssetTagsToJSON = SeededAssetTagsToJSON2;
@@ -14309,7 +14555,7 @@ var require_SeededAssetWebsite = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededAssetWebsiteToJSON = exports.SeededAssetWebsiteFromJSONTyped = exports.SeededAssetWebsiteFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededAssetWebsiteFromJSON4(json) {
       return SeededAssetWebsiteFromJSONTyped6(json, false);
     }
@@ -14319,10 +14565,10 @@ var require_SeededAssetWebsite = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "url": json["url"],
         "name": json["name"],
-        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, _1.MechanismEnumFromJSON)(json["mechanism"])
+        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, index_1.MechanismEnumFromJSON)(json["mechanism"])
       };
     }
     exports.SeededAssetWebsiteFromJSONTyped = SeededAssetWebsiteFromJSONTyped6;
@@ -14334,10 +14580,10 @@ var require_SeededAssetWebsite = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "url": value.url,
         "name": value.name,
-        "mechanism": (0, _1.MechanismEnumToJSON)(value.mechanism)
+        "mechanism": (0, index_1.MechanismEnumToJSON)(value.mechanism)
       };
     }
     exports.SeededAssetWebsiteToJSON = SeededAssetWebsiteToJSON4;
@@ -14351,7 +14597,7 @@ var require_SeededAssetsRecommendation = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededAssetsRecommendationToJSON = exports.SeededAssetsRecommendationFromJSONTyped = exports.SeededAssetsRecommendationFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededAssetsRecommendationFromJSON2(json) {
       return SeededAssetsRecommendationFromJSONTyped(json, false);
     }
@@ -14361,9 +14607,9 @@ var require_SeededAssetsRecommendation = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "assets": (0, _1.AssetsFromJSON)(json["assets"]),
-        "interactions": (0, _1.InteractedAssetsFromJSON)(json["interactions"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "assets": (0, index_1.AssetsFromJSON)(json["assets"]),
+        "interactions": (0, index_1.InteractedAssetsFromJSON)(json["interactions"])
       };
     }
     exports.SeededAssetsRecommendationFromJSONTyped = SeededAssetsRecommendationFromJSONTyped;
@@ -14375,9 +14621,9 @@ var require_SeededAssetsRecommendation = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "assets": (0, _1.AssetsToJSON)(value.assets),
-        "interactions": (0, _1.InteractedAssetsToJSON)(value.interactions)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "assets": (0, index_1.AssetsToJSON)(value.assets),
+        "interactions": (0, index_1.InteractedAssetsToJSON)(value.interactions)
       };
     }
     exports.SeededAssetsRecommendationToJSON = SeededAssetsRecommendationToJSON2;
@@ -14391,7 +14637,7 @@ var require_SeededClassification = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededClassificationToJSON = exports.SeededClassificationFromJSONTyped = exports.SeededClassificationFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededClassificationFromJSON4(json) {
       return SeededClassificationFromJSONTyped6(json, false);
     }
@@ -14401,10 +14647,10 @@ var require_SeededClassification = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "generic": !(0, runtime_1.exists)(json, "generic") ? void 0 : (0, _1.ClassificationGenericEnumFromJSON)(json["generic"]),
-        "specific": !(0, runtime_1.exists)(json, "specific") ? void 0 : (0, _1.ClassificationSpecificEnumFromJSON)(json["specific"]),
-        "rendering": !(0, runtime_1.exists)(json, "rendering") ? void 0 : (0, _1.ClassificationRenderingEnumFromJSON)(json["rendering"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "generic": !(0, runtime_1.exists)(json, "generic") ? void 0 : (0, index_1.ClassificationGenericEnumFromJSON)(json["generic"]),
+        "specific": !(0, runtime_1.exists)(json, "specific") ? void 0 : (0, index_1.ClassificationSpecificEnumFromJSON)(json["specific"]),
+        "rendering": !(0, runtime_1.exists)(json, "rendering") ? void 0 : (0, index_1.ClassificationRenderingEnumFromJSON)(json["rendering"])
       };
     }
     exports.SeededClassificationFromJSONTyped = SeededClassificationFromJSONTyped6;
@@ -14416,13 +14662,53 @@ var require_SeededClassification = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "generic": (0, _1.ClassificationGenericEnumToJSON)(value.generic),
-        "specific": (0, _1.ClassificationSpecificEnumToJSON)(value.specific),
-        "rendering": (0, _1.ClassificationRenderingEnumToJSON)(value.rendering)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "generic": (0, index_1.ClassificationGenericEnumToJSON)(value.generic),
+        "specific": (0, index_1.ClassificationSpecificEnumToJSON)(value.specific),
+        "rendering": (0, index_1.ClassificationRenderingEnumToJSON)(value.rendering)
       };
     }
     exports.SeededClassificationToJSON = SeededClassificationToJSON4;
+  }
+});
+
+// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededConnectorAsset.js
+var require_SeededConnectorAsset = __commonJS({
+  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededConnectorAsset.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.SeededConnectorAssetToJSON = exports.SeededConnectorAssetFromJSONTyped = exports.SeededConnectorAssetFromJSON = void 0;
+    var runtime_1 = require_runtime();
+    var index_1 = require_models();
+    function SeededConnectorAssetFromJSON6(json) {
+      return SeededConnectorAssetFromJSONTyped5(json, false);
+    }
+    exports.SeededConnectorAssetFromJSON = SeededConnectorAssetFromJSON6;
+    function SeededConnectorAssetFromJSONTyped5(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, index_1.SeededAssetMetadataFromJSON)(json["metadata"]),
+        "format": (0, index_1.SeededFormatFromJSON)(json["format"])
+      };
+    }
+    exports.SeededConnectorAssetFromJSONTyped = SeededConnectorAssetFromJSONTyped5;
+    function SeededConnectorAssetToJSON4(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "metadata": (0, index_1.SeededAssetMetadataToJSON)(value.metadata),
+        "format": (0, index_1.SeededFormatToJSON)(value.format)
+      };
+    }
+    exports.SeededConnectorAssetToJSON = SeededConnectorAssetToJSON4;
   }
 });
 
@@ -14433,7 +14719,7 @@ var require_SeededConnectorConnection = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededConnectorConnectionToJSON = exports.SeededConnectorConnectionFromJSONTyped = exports.SeededConnectorConnectionFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededConnectorConnectionFromJSON3(json) {
       return SeededConnectorConnectionFromJSONTyped(json, false);
     }
@@ -14443,8 +14729,8 @@ var require_SeededConnectorConnection = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "application": (0, _1.SeededTrackedApplicationFromJSON)(json["application"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "application": (0, index_1.SeededTrackedApplicationFromJSON)(json["application"])
       };
     }
     exports.SeededConnectorConnectionFromJSONTyped = SeededConnectorConnectionFromJSONTyped;
@@ -14456,11 +14742,49 @@ var require_SeededConnectorConnection = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "application": (0, _1.SeededTrackedApplicationToJSON)(value.application)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "application": (0, index_1.SeededTrackedApplicationToJSON)(value.application)
       };
     }
     exports.SeededConnectorConnectionToJSON = SeededConnectorConnectionToJSON3;
+  }
+});
+
+// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededConnectorCreation.js
+var require_SeededConnectorCreation = __commonJS({
+  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededConnectorCreation.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.SeededConnectorCreationToJSON = exports.SeededConnectorCreationFromJSONTyped = exports.SeededConnectorCreationFromJSON = void 0;
+    var runtime_1 = require_runtime();
+    var index_1 = require_models();
+    function SeededConnectorCreationFromJSON6(json) {
+      return SeededConnectorCreationFromJSONTyped8(json, false);
+    }
+    exports.SeededConnectorCreationFromJSON = SeededConnectorCreationFromJSON6;
+    function SeededConnectorCreationFromJSONTyped8(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, index_1.SeededConnectorAssetFromJSON)(json["asset"])
+      };
+    }
+    exports.SeededConnectorCreationFromJSONTyped = SeededConnectorCreationFromJSONTyped8;
+    function SeededConnectorCreationToJSON4(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "asset": (0, index_1.SeededConnectorAssetToJSON)(value.asset)
+      };
+    }
+    exports.SeededConnectorCreationToJSON = SeededConnectorCreationToJSON4;
   }
 });
 
@@ -14471,7 +14795,7 @@ var require_SeededConnectorTracking = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededConnectorTrackingToJSON = exports.SeededConnectorTrackingFromJSONTyped = exports.SeededConnectorTrackingFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededConnectorTrackingFromJSON6(json) {
       return SeededConnectorTrackingFromJSONTyped11(json, false);
     }
@@ -14481,15 +14805,15 @@ var require_SeededConnectorTracking = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "format": !(0, runtime_1.exists)(json, "format") ? void 0 : (0, _1.SeededTrackedFormatEventFromJSON)(json["format"]),
-        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, _1.SeededTrackedAssetEventFromJSON)(json["asset"]),
-        "interaction": !(0, runtime_1.exists)(json, "interaction") ? void 0 : (0, _1.SeededTrackedInteractionEventFromJSON)(json["interaction"]),
-        "keyboard": !(0, runtime_1.exists)(json, "keyboard") ? void 0 : (0, _1.SeededTrackedKeyboardEventFromJSON)(json["keyboard"]),
-        "session": !(0, runtime_1.exists)(json, "session") ? void 0 : (0, _1.SeededTrackedSessionEventFromJSON)(json["session"]),
-        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, _1.SeededTrackedAssetsEventFromJSON)(json["assets"]),
-        "ml": !(0, runtime_1.exists)(json, "ml") ? void 0 : (0, _1.SeededTrackedMachineLearningEventFromJSON)(json["ml"]),
-        "adoption": !(0, runtime_1.exists)(json, "adoption") ? void 0 : (0, _1.SeededTrackedAdoptionEventFromJSON)(json["adoption"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "format": !(0, runtime_1.exists)(json, "format") ? void 0 : (0, index_1.SeededTrackedFormatEventFromJSON)(json["format"]),
+        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, index_1.SeededTrackedAssetEventFromJSON)(json["asset"]),
+        "interaction": !(0, runtime_1.exists)(json, "interaction") ? void 0 : (0, index_1.SeededTrackedInteractionEventFromJSON)(json["interaction"]),
+        "keyboard": !(0, runtime_1.exists)(json, "keyboard") ? void 0 : (0, index_1.SeededTrackedKeyboardEventFromJSON)(json["keyboard"]),
+        "session": !(0, runtime_1.exists)(json, "session") ? void 0 : (0, index_1.SeededTrackedSessionEventFromJSON)(json["session"]),
+        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, index_1.SeededTrackedAssetsEventFromJSON)(json["assets"]),
+        "ml": !(0, runtime_1.exists)(json, "ml") ? void 0 : (0, index_1.SeededTrackedMachineLearningEventFromJSON)(json["ml"]),
+        "adoption": !(0, runtime_1.exists)(json, "adoption") ? void 0 : (0, index_1.SeededTrackedAdoptionEventFromJSON)(json["adoption"])
       };
     }
     exports.SeededConnectorTrackingFromJSONTyped = SeededConnectorTrackingFromJSONTyped11;
@@ -14501,15 +14825,15 @@ var require_SeededConnectorTracking = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "format": (0, _1.SeededTrackedFormatEventToJSON)(value.format),
-        "asset": (0, _1.SeededTrackedAssetEventToJSON)(value.asset),
-        "interaction": (0, _1.SeededTrackedInteractionEventToJSON)(value.interaction),
-        "keyboard": (0, _1.SeededTrackedKeyboardEventToJSON)(value.keyboard),
-        "session": (0, _1.SeededTrackedSessionEventToJSON)(value.session),
-        "assets": (0, _1.SeededTrackedAssetsEventToJSON)(value.assets),
-        "ml": (0, _1.SeededTrackedMachineLearningEventToJSON)(value.ml),
-        "adoption": (0, _1.SeededTrackedAdoptionEventToJSON)(value.adoption)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "format": (0, index_1.SeededTrackedFormatEventToJSON)(value.format),
+        "asset": (0, index_1.SeededTrackedAssetEventToJSON)(value.asset),
+        "interaction": (0, index_1.SeededTrackedInteractionEventToJSON)(value.interaction),
+        "keyboard": (0, index_1.SeededTrackedKeyboardEventToJSON)(value.keyboard),
+        "session": (0, index_1.SeededTrackedSessionEventToJSON)(value.session),
+        "assets": (0, index_1.SeededTrackedAssetsEventToJSON)(value.assets),
+        "ml": (0, index_1.SeededTrackedMachineLearningEventToJSON)(value.ml),
+        "adoption": (0, index_1.SeededTrackedAdoptionEventToJSON)(value.adoption)
       };
     }
     exports.SeededConnectorTrackingToJSON = SeededConnectorTrackingToJSON4;
@@ -14523,7 +14847,7 @@ var require_SeededConversation = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededConversationToJSON = exports.SeededConversationFromJSONTyped = exports.SeededConversationFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededConversationFromJSON2(json) {
       return SeededConversationFromJSONTyped(json, false);
     }
@@ -14533,16 +14857,16 @@ var require_SeededConversation = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "name": !(0, runtime_1.exists)(json, "name") ? void 0 : json["name"],
         "favorited": !(0, runtime_1.exists)(json, "favorited") ? void 0 : json["favorited"],
-        "application": !(0, runtime_1.exists)(json, "application") ? void 0 : (0, _1.ApplicationFromJSON)(json["application"]),
-        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : json["annotations"].map(_1.SeededAnnotationFromJSON),
-        "messages": !(0, runtime_1.exists)(json, "messages") ? void 0 : json["messages"].map(_1.SeededConversationMessageFromJSON),
-        "model": !(0, runtime_1.exists)(json, "model") ? void 0 : (0, _1.ReferencedModelFromJSON)(json["model"]),
-        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, _1.FlattenedAssetsFromJSON)(json["assets"]),
-        "anchors": !(0, runtime_1.exists)(json, "anchors") ? void 0 : json["anchors"].map(_1.SeededAnchorFromJSON),
-        "type": (0, _1.ConversationTypeEnumFromJSON)(json["type"])
+        "application": !(0, runtime_1.exists)(json, "application") ? void 0 : (0, index_1.ApplicationFromJSON)(json["application"]),
+        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : json["annotations"].map(index_1.SeededAnnotationFromJSON),
+        "messages": !(0, runtime_1.exists)(json, "messages") ? void 0 : json["messages"].map(index_1.SeededConversationMessageFromJSON),
+        "model": !(0, runtime_1.exists)(json, "model") ? void 0 : (0, index_1.ReferencedModelFromJSON)(json["model"]),
+        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, index_1.FlattenedAssetsFromJSON)(json["assets"]),
+        "anchors": !(0, runtime_1.exists)(json, "anchors") ? void 0 : json["anchors"].map(index_1.SeededAnchorFromJSON),
+        "type": (0, index_1.ConversationTypeEnumFromJSON)(json["type"])
       };
     }
     exports.SeededConversationFromJSONTyped = SeededConversationFromJSONTyped;
@@ -14554,16 +14878,16 @@ var require_SeededConversation = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "name": value.name,
         "favorited": value.favorited,
-        "application": (0, _1.ApplicationToJSON)(value.application),
-        "annotations": value.annotations === void 0 ? void 0 : value.annotations.map(_1.SeededAnnotationToJSON),
-        "messages": value.messages === void 0 ? void 0 : value.messages.map(_1.SeededConversationMessageToJSON),
-        "model": (0, _1.ReferencedModelToJSON)(value.model),
-        "assets": (0, _1.FlattenedAssetsToJSON)(value.assets),
-        "anchors": value.anchors === void 0 ? void 0 : value.anchors.map(_1.SeededAnchorToJSON),
-        "type": (0, _1.ConversationTypeEnumToJSON)(value.type)
+        "application": (0, index_1.ApplicationToJSON)(value.application),
+        "annotations": value.annotations === void 0 ? void 0 : value.annotations.map(index_1.SeededAnnotationToJSON),
+        "messages": value.messages === void 0 ? void 0 : value.messages.map(index_1.SeededConversationMessageToJSON),
+        "model": (0, index_1.ReferencedModelToJSON)(value.model),
+        "assets": (0, index_1.FlattenedAssetsToJSON)(value.assets),
+        "anchors": value.anchors === void 0 ? void 0 : value.anchors.map(index_1.SeededAnchorToJSON),
+        "type": (0, index_1.ConversationTypeEnumToJSON)(value.type)
       };
     }
     exports.SeededConversationToJSON = SeededConversationToJSON2;
@@ -14577,7 +14901,7 @@ var require_SeededConversationMessage = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededConversationMessageToJSON = exports.SeededConversationMessageFromJSONTyped = exports.SeededConversationMessageFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededConversationMessageFromJSON4(json) {
       return SeededConversationMessageFromJSONTyped3(json, false);
     }
@@ -14587,13 +14911,13 @@ var require_SeededConversationMessage = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "created": !(0, runtime_1.exists)(json, "created") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "model": !(0, runtime_1.exists)(json, "model") ? void 0 : (0, _1.ModelFromJSON)(json["model"]),
-        "fragment": (0, _1.FragmentFormatFromJSON)(json["fragment"]),
-        "conversation": !(0, runtime_1.exists)(json, "conversation") ? void 0 : (0, _1.ReferencedConversationFromJSON)(json["conversation"]),
-        "sentiment": !(0, runtime_1.exists)(json, "sentiment") ? void 0 : (0, _1.ConversationMessageSentimentEnumFromJSON)(json["sentiment"]),
-        "role": (0, _1.QGPTConversationMessageRoleEnumFromJSON)(json["role"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "created": !(0, runtime_1.exists)(json, "created") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "model": !(0, runtime_1.exists)(json, "model") ? void 0 : (0, index_1.ModelFromJSON)(json["model"]),
+        "fragment": (0, index_1.FragmentFormatFromJSON)(json["fragment"]),
+        "conversation": !(0, runtime_1.exists)(json, "conversation") ? void 0 : (0, index_1.ReferencedConversationFromJSON)(json["conversation"]),
+        "sentiment": !(0, runtime_1.exists)(json, "sentiment") ? void 0 : (0, index_1.ConversationMessageSentimentEnumFromJSON)(json["sentiment"]),
+        "role": (0, index_1.QGPTConversationMessageRoleEnumFromJSON)(json["role"])
       };
     }
     exports.SeededConversationMessageFromJSONTyped = SeededConversationMessageFromJSONTyped3;
@@ -14605,13 +14929,13 @@ var require_SeededConversationMessage = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "model": (0, _1.ModelToJSON)(value.model),
-        "fragment": (0, _1.FragmentFormatToJSON)(value.fragment),
-        "conversation": (0, _1.ReferencedConversationToJSON)(value.conversation),
-        "sentiment": (0, _1.ConversationMessageSentimentEnumToJSON)(value.sentiment),
-        "role": (0, _1.QGPTConversationMessageRoleEnumToJSON)(value.role)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "model": (0, index_1.ModelToJSON)(value.model),
+        "fragment": (0, index_1.FragmentFormatToJSON)(value.fragment),
+        "conversation": (0, index_1.ReferencedConversationToJSON)(value.conversation),
+        "sentiment": (0, index_1.ConversationMessageSentimentEnumToJSON)(value.sentiment),
+        "role": (0, index_1.QGPTConversationMessageRoleEnumToJSON)(value.role)
       };
     }
     exports.SeededConversationMessageToJSON = SeededConversationMessageToJSON3;
@@ -14625,7 +14949,7 @@ var require_SeededDiscoverableAsset = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededDiscoverableAssetToJSON = exports.SeededDiscoverableAssetFromJSONTyped = exports.SeededDiscoverableAssetFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededDiscoverableAssetFromJSON3(json) {
       return SeededDiscoverableAssetFromJSONTyped3(json, false);
     }
@@ -14635,11 +14959,11 @@ var require_SeededDiscoverableAsset = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "file": !(0, runtime_1.exists)(json, "file") ? void 0 : (0, _1.SeededFileFromJSON)(json["file"]),
-        "fragment": !(0, runtime_1.exists)(json, "fragment") ? void 0 : (0, _1.SeededFragmentFromJSON)(json["fragment"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "file": !(0, runtime_1.exists)(json, "file") ? void 0 : (0, index_1.SeededFileFromJSON)(json["file"]),
+        "fragment": !(0, runtime_1.exists)(json, "fragment") ? void 0 : (0, index_1.SeededFragmentFromJSON)(json["fragment"]),
         "directory": !(0, runtime_1.exists)(json, "directory") ? void 0 : json["directory"],
-        "filters": !(0, runtime_1.exists)(json, "filters") ? void 0 : (0, _1.TLPDirectedDiscoveryFiltersFromJSON)(json["filters"])
+        "filters": !(0, runtime_1.exists)(json, "filters") ? void 0 : (0, index_1.TLPDirectedDiscoveryFiltersFromJSON)(json["filters"])
       };
     }
     exports.SeededDiscoverableAssetFromJSONTyped = SeededDiscoverableAssetFromJSONTyped3;
@@ -14651,11 +14975,11 @@ var require_SeededDiscoverableAsset = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "file": (0, _1.SeededFileToJSON)(value.file),
-        "fragment": (0, _1.SeededFragmentToJSON)(value.fragment),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "file": (0, index_1.SeededFileToJSON)(value.file),
+        "fragment": (0, index_1.SeededFragmentToJSON)(value.fragment),
         "directory": value.directory,
-        "filters": (0, _1.TLPDirectedDiscoveryFiltersToJSON)(value.filters)
+        "filters": (0, index_1.TLPDirectedDiscoveryFiltersToJSON)(value.filters)
       };
     }
     exports.SeededDiscoverableAssetToJSON = SeededDiscoverableAssetToJSON3;
@@ -14669,7 +14993,7 @@ var require_SeededDiscoverableAssets = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededDiscoverableAssetsToJSON = exports.SeededDiscoverableAssetsFromJSONTyped = exports.SeededDiscoverableAssetsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededDiscoverableAssetsFromJSON2(json) {
       return SeededDiscoverableAssetsFromJSONTyped(json, false);
     }
@@ -14679,10 +15003,10 @@ var require_SeededDiscoverableAssets = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "application": json["application"],
-        "iterable": json["iterable"].map(_1.SeededDiscoverableAssetFromJSON),
-        "filters": !(0, runtime_1.exists)(json, "filters") ? void 0 : (0, _1.TLPDirectedDiscoveryFiltersFromJSON)(json["filters"])
+        "iterable": json["iterable"].map(index_1.SeededDiscoverableAssetFromJSON),
+        "filters": !(0, runtime_1.exists)(json, "filters") ? void 0 : (0, index_1.TLPDirectedDiscoveryFiltersFromJSON)(json["filters"])
       };
     }
     exports.SeededDiscoverableAssetsFromJSONTyped = SeededDiscoverableAssetsFromJSONTyped;
@@ -14694,10 +15018,10 @@ var require_SeededDiscoverableAssets = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "application": value.application,
-        "iterable": value.iterable.map(_1.SeededDiscoverableAssetToJSON),
-        "filters": (0, _1.TLPDirectedDiscoveryFiltersToJSON)(value.filters)
+        "iterable": value.iterable.map(index_1.SeededDiscoverableAssetToJSON),
+        "filters": (0, index_1.TLPDirectedDiscoveryFiltersToJSON)(value.filters)
       };
     }
     exports.SeededDiscoverableAssetsToJSON = SeededDiscoverableAssetsToJSON2;
@@ -14711,7 +15035,7 @@ var require_SeededDiscoverableHtmlWebpage = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededDiscoverableHtmlWebpageToJSON = exports.SeededDiscoverableHtmlWebpageFromJSONTyped = exports.SeededDiscoverableHtmlWebpageFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededDiscoverableHtmlWebpageFromJSON3(json) {
       return SeededDiscoverableHtmlWebpageFromJSONTyped3(json, false);
     }
@@ -14721,7 +15045,7 @@ var require_SeededDiscoverableHtmlWebpage = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "url": json["url"],
         "page": json["page"]
       };
@@ -14735,7 +15059,7 @@ var require_SeededDiscoverableHtmlWebpage = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "url": value.url,
         "page": value.page
       };
@@ -14751,7 +15075,7 @@ var require_SeededDiscoverableHtmlWebpages = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededDiscoverableHtmlWebpagesToJSON = exports.SeededDiscoverableHtmlWebpagesFromJSONTyped = exports.SeededDiscoverableHtmlWebpagesFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededDiscoverableHtmlWebpagesFromJSON2(json) {
       return SeededDiscoverableHtmlWebpagesFromJSONTyped(json, false);
     }
@@ -14761,8 +15085,8 @@ var require_SeededDiscoverableHtmlWebpages = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.SeededDiscoverableHtmlWebpageFromJSON),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.SeededDiscoverableHtmlWebpageFromJSON),
         "application": json["application"]
       };
     }
@@ -14775,8 +15099,8 @@ var require_SeededDiscoverableHtmlWebpages = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.SeededDiscoverableHtmlWebpageToJSON),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.SeededDiscoverableHtmlWebpageToJSON),
         "application": value.application
       };
     }
@@ -14791,7 +15115,7 @@ var require_SeededDiscoverableRelatedTag = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededDiscoverableRelatedTagToJSON = exports.SeededDiscoverableRelatedTagFromJSONTyped = exports.SeededDiscoverableRelatedTagFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededDiscoverableRelatedTagFromJSON3(json) {
       return SeededDiscoverableRelatedTagFromJSONTyped3(json, false);
     }
@@ -14801,12 +15125,12 @@ var require_SeededDiscoverableRelatedTag = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "text": json["text"],
         "asset": json["asset"],
-        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, _1.MechanismEnumFromJSON)(json["mechanism"]),
+        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, index_1.MechanismEnumFromJSON)(json["mechanism"]),
         "format": !(0, runtime_1.exists)(json, "format") ? void 0 : json["format"],
-        "category": !(0, runtime_1.exists)(json, "category") ? void 0 : (0, _1.TagCategoryEnumFromJSON)(json["category"])
+        "category": !(0, runtime_1.exists)(json, "category") ? void 0 : (0, index_1.TagCategoryEnumFromJSON)(json["category"])
       };
     }
     exports.SeededDiscoverableRelatedTagFromJSONTyped = SeededDiscoverableRelatedTagFromJSONTyped3;
@@ -14818,12 +15142,12 @@ var require_SeededDiscoverableRelatedTag = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "text": value.text,
         "asset": value.asset,
-        "mechanism": (0, _1.MechanismEnumToJSON)(value.mechanism),
+        "mechanism": (0, index_1.MechanismEnumToJSON)(value.mechanism),
         "format": value.format,
-        "category": (0, _1.TagCategoryEnumToJSON)(value.category)
+        "category": (0, index_1.TagCategoryEnumToJSON)(value.category)
       };
     }
     exports.SeededDiscoverableRelatedTagToJSON = SeededDiscoverableRelatedTagToJSON3;
@@ -14837,7 +15161,7 @@ var require_SeededDiscoverableRelatedTags = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededDiscoverableRelatedTagsToJSON = exports.SeededDiscoverableRelatedTagsFromJSONTyped = exports.SeededDiscoverableRelatedTagsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededDiscoverableRelatedTagsFromJSON2(json) {
       return SeededDiscoverableRelatedTagsFromJSONTyped(json, false);
     }
@@ -14847,8 +15171,8 @@ var require_SeededDiscoverableRelatedTags = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.SeededDiscoverableRelatedTagFromJSON),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.SeededDiscoverableRelatedTagFromJSON),
         "application": json["application"]
       };
     }
@@ -14861,8 +15185,8 @@ var require_SeededDiscoverableRelatedTags = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.SeededDiscoverableRelatedTagToJSON),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.SeededDiscoverableRelatedTagToJSON),
         "application": value.application
       };
     }
@@ -14877,7 +15201,7 @@ var require_SeededDiscoverableSensitive = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededDiscoverableSensitiveToJSON = exports.SeededDiscoverableSensitiveFromJSONTyped = exports.SeededDiscoverableSensitiveFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededDiscoverableSensitiveFromJSON3(json) {
       return SeededDiscoverableSensitiveFromJSONTyped3(json, false);
     }
@@ -14887,15 +15211,15 @@ var require_SeededDiscoverableSensitive = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "asset": json["asset"],
         "text": json["text"],
-        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, _1.MechanismEnumFromJSON)(json["mechanism"]),
-        "category": !(0, runtime_1.exists)(json, "category") ? void 0 : (0, _1.SensitiveCategoryEnumFromJSON)(json["category"]),
-        "severity": !(0, runtime_1.exists)(json, "severity") ? void 0 : (0, _1.SensitiveSeverityEnumFromJSON)(json["severity"]),
+        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, index_1.MechanismEnumFromJSON)(json["mechanism"]),
+        "category": !(0, runtime_1.exists)(json, "category") ? void 0 : (0, index_1.SensitiveCategoryEnumFromJSON)(json["category"]),
+        "severity": !(0, runtime_1.exists)(json, "severity") ? void 0 : (0, index_1.SensitiveSeverityEnumFromJSON)(json["severity"]),
         "name": !(0, runtime_1.exists)(json, "name") ? void 0 : json["name"],
         "description": !(0, runtime_1.exists)(json, "description") ? void 0 : json["description"],
-        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, _1.SensitiveMetadataFromJSON)(json["metadata"])
+        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, index_1.SensitiveMetadataFromJSON)(json["metadata"])
       };
     }
     exports.SeededDiscoverableSensitiveFromJSONTyped = SeededDiscoverableSensitiveFromJSONTyped3;
@@ -14907,15 +15231,15 @@ var require_SeededDiscoverableSensitive = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "asset": value.asset,
         "text": value.text,
-        "mechanism": (0, _1.MechanismEnumToJSON)(value.mechanism),
-        "category": (0, _1.SensitiveCategoryEnumToJSON)(value.category),
-        "severity": (0, _1.SensitiveSeverityEnumToJSON)(value.severity),
+        "mechanism": (0, index_1.MechanismEnumToJSON)(value.mechanism),
+        "category": (0, index_1.SensitiveCategoryEnumToJSON)(value.category),
+        "severity": (0, index_1.SensitiveSeverityEnumToJSON)(value.severity),
         "name": value.name,
         "description": value.description,
-        "metadata": (0, _1.SensitiveMetadataToJSON)(value.metadata)
+        "metadata": (0, index_1.SensitiveMetadataToJSON)(value.metadata)
       };
     }
     exports.SeededDiscoverableSensitiveToJSON = SeededDiscoverableSensitiveToJSON3;
@@ -14929,7 +15253,7 @@ var require_SeededDiscoverableSensitives = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededDiscoverableSensitivesToJSON = exports.SeededDiscoverableSensitivesFromJSONTyped = exports.SeededDiscoverableSensitivesFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededDiscoverableSensitivesFromJSON2(json) {
       return SeededDiscoverableSensitivesFromJSONTyped(json, false);
     }
@@ -14939,8 +15263,8 @@ var require_SeededDiscoverableSensitives = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.SeededDiscoverableSensitiveFromJSON),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.SeededDiscoverableSensitiveFromJSON),
         "application": json["application"]
       };
     }
@@ -14953,8 +15277,8 @@ var require_SeededDiscoverableSensitives = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.SeededDiscoverableSensitiveToJSON),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.SeededDiscoverableSensitiveToJSON),
         "application": value.application
       };
     }
@@ -14969,7 +15293,7 @@ var require_SeededDistribution = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededDistributionToJSON = exports.SeededDistributionFromJSONTyped = exports.SeededDistributionFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededDistributionFromJSON4(json) {
       return SeededDistributionFromJSONTyped3(json, false);
     }
@@ -14979,9 +15303,9 @@ var require_SeededDistribution = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "mailgun": !(0, runtime_1.exists)(json, "mailgun") ? void 0 : (0, _1.MailgunDistributionFromJSON)(json["mailgun"]),
-        "github": !(0, runtime_1.exists)(json, "github") ? void 0 : (0, _1.SeededGitHubDistributionFromJSON)(json["github"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "mailgun": !(0, runtime_1.exists)(json, "mailgun") ? void 0 : (0, index_1.MailgunDistributionFromJSON)(json["mailgun"]),
+        "github": !(0, runtime_1.exists)(json, "github") ? void 0 : (0, index_1.SeededGitHubDistributionFromJSON)(json["github"])
       };
     }
     exports.SeededDistributionFromJSONTyped = SeededDistributionFromJSONTyped3;
@@ -14993,9 +15317,9 @@ var require_SeededDistribution = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "mailgun": (0, _1.MailgunDistributionToJSON)(value.mailgun),
-        "github": (0, _1.SeededGitHubDistributionToJSON)(value.github)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "mailgun": (0, index_1.MailgunDistributionToJSON)(value.mailgun),
+        "github": (0, index_1.SeededGitHubDistributionToJSON)(value.github)
       };
     }
     exports.SeededDistributionToJSON = SeededDistributionToJSON3;
@@ -15009,7 +15333,7 @@ var require_SeededDistributions = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededDistributionsToJSON = exports.SeededDistributionsFromJSONTyped = exports.SeededDistributionsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededDistributionsFromJSON3(json) {
       return SeededDistributionsFromJSONTyped3(json, false);
     }
@@ -15019,8 +15343,8 @@ var require_SeededDistributions = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.SeededDistributionFromJSON)
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.SeededDistributionFromJSON)
       };
     }
     exports.SeededDistributionsFromJSONTyped = SeededDistributionsFromJSONTyped3;
@@ -15032,8 +15356,8 @@ var require_SeededDistributions = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.SeededDistributionToJSON)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.SeededDistributionToJSON)
       };
     }
     exports.SeededDistributionsToJSON = SeededDistributionsToJSON3;
@@ -15046,7 +15370,7 @@ var require_SeededExternalProvider = __commonJS({
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededExternalProviderToJSON = exports.SeededExternalProviderFromJSONTyped = exports.SeededExternalProviderFromJSON = void 0;
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededExternalProviderFromJSON2(json) {
       return SeededExternalProviderFromJSONTyped(json, false);
     }
@@ -15056,7 +15380,7 @@ var require_SeededExternalProvider = __commonJS({
         return json;
       }
       return {
-        "type": (0, _1.ExternalProviderTypeEnumFromJSON)(json["type"])
+        "type": (0, index_1.ExternalProviderTypeEnumFromJSON)(json["type"])
       };
     }
     exports.SeededExternalProviderFromJSONTyped = SeededExternalProviderFromJSONTyped;
@@ -15068,7 +15392,7 @@ var require_SeededExternalProvider = __commonJS({
         return null;
       }
       return {
-        "type": (0, _1.ExternalProviderTypeEnumToJSON)(value.type)
+        "type": (0, index_1.ExternalProviderTypeEnumToJSON)(value.type)
       };
     }
     exports.SeededExternalProviderToJSON = SeededExternalProviderToJSON2;
@@ -15082,7 +15406,7 @@ var require_SeededFile = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededFileToJSON = exports.SeededFileFromJSONTyped = exports.SeededFileFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededFileFromJSON4(json) {
       return SeededFileFromJSONTyped10(json, false);
     }
@@ -15092,10 +15416,10 @@ var require_SeededFile = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "bytes": !(0, runtime_1.exists)(json, "bytes") ? void 0 : (0, _1.TransferableBytesFromJSON)(json["bytes"]),
-        "string": !(0, runtime_1.exists)(json, "string") ? void 0 : (0, _1.TransferableStringFromJSON)(json["string"]),
-        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, _1.FileMetadataFromJSON)(json["metadata"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "bytes": !(0, runtime_1.exists)(json, "bytes") ? void 0 : (0, index_1.TransferableBytesFromJSON)(json["bytes"]),
+        "string": !(0, runtime_1.exists)(json, "string") ? void 0 : (0, index_1.TransferableStringFromJSON)(json["string"]),
+        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, index_1.FileMetadataFromJSON)(json["metadata"])
       };
     }
     exports.SeededFileFromJSONTyped = SeededFileFromJSONTyped10;
@@ -15107,10 +15431,10 @@ var require_SeededFile = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "bytes": (0, _1.TransferableBytesToJSON)(value.bytes),
-        "string": (0, _1.TransferableStringToJSON)(value.string),
-        "metadata": (0, _1.FileMetadataToJSON)(value.metadata)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "bytes": (0, index_1.TransferableBytesToJSON)(value.bytes),
+        "string": (0, index_1.TransferableStringToJSON)(value.string),
+        "metadata": (0, index_1.FileMetadataToJSON)(value.metadata)
       };
     }
     exports.SeededFileToJSON = SeededFileToJSON4;
@@ -15124,25 +15448,23 @@ var require_SeededFormat = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededFormatToJSON = exports.SeededFormatFromJSONTyped = exports.SeededFormatFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededFormatFromJSON4(json) {
-      return SeededFormatFromJSONTyped9(json, false);
+      return SeededFormatFromJSONTyped10(json, false);
     }
     exports.SeededFormatFromJSON = SeededFormatFromJSON4;
-    function SeededFormatFromJSONTyped9(json, ignoreDiscriminator) {
+    function SeededFormatFromJSONTyped10(json, ignoreDiscriminator) {
       if (json === void 0 || json === null) {
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "file": !(0, runtime_1.exists)(json, "file") ? void 0 : (0, _1.SeededFileFromJSON)(json["file"]),
-        "fragment": !(0, runtime_1.exists)(json, "fragment") ? void 0 : (0, _1.SeededFragmentFromJSON)(json["fragment"]),
-        "websites": !(0, runtime_1.exists)(json, "websites") ? void 0 : json["websites"].map(_1.SeededWebsiteFromJSON),
-        "classification": !(0, runtime_1.exists)(json, "classification") ? void 0 : (0, _1.SeededClassificationFromJSON)(json["classification"]),
-        "tags": !(0, runtime_1.exists)(json, "tags") ? void 0 : json["tags"].map(_1.SeededTagFromJSON)
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "file": !(0, runtime_1.exists)(json, "file") ? void 0 : (0, index_1.SeededFileFromJSON)(json["file"]),
+        "fragment": !(0, runtime_1.exists)(json, "fragment") ? void 0 : (0, index_1.SeededFragmentFromJSON)(json["fragment"]),
+        "classification": !(0, runtime_1.exists)(json, "classification") ? void 0 : (0, index_1.SeededClassificationFromJSON)(json["classification"])
       };
     }
-    exports.SeededFormatFromJSONTyped = SeededFormatFromJSONTyped9;
+    exports.SeededFormatFromJSONTyped = SeededFormatFromJSONTyped10;
     function SeededFormatToJSON4(value) {
       if (value === void 0) {
         return void 0;
@@ -15151,12 +15473,10 @@ var require_SeededFormat = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "file": (0, _1.SeededFileToJSON)(value.file),
-        "fragment": (0, _1.SeededFragmentToJSON)(value.fragment),
-        "websites": value.websites === void 0 ? void 0 : value.websites.map(_1.SeededWebsiteToJSON),
-        "classification": (0, _1.SeededClassificationToJSON)(value.classification),
-        "tags": value.tags === void 0 ? void 0 : value.tags.map(_1.SeededTagToJSON)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "file": (0, index_1.SeededFileToJSON)(value.file),
+        "fragment": (0, index_1.SeededFragmentToJSON)(value.fragment),
+        "classification": (0, index_1.SeededClassificationToJSON)(value.classification)
       };
     }
     exports.SeededFormatToJSON = SeededFormatToJSON4;
@@ -15170,7 +15490,7 @@ var require_SeededFragment = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededFragmentToJSON = exports.SeededFragmentFromJSONTyped = exports.SeededFragmentFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededFragmentFromJSON4(json) {
       return SeededFragmentFromJSONTyped10(json, false);
     }
@@ -15180,10 +15500,10 @@ var require_SeededFragment = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "string": !(0, runtime_1.exists)(json, "string") ? void 0 : (0, _1.TransferableStringFromJSON)(json["string"]),
-        "bytes": !(0, runtime_1.exists)(json, "bytes") ? void 0 : (0, _1.TransferableBytesFromJSON)(json["bytes"]),
-        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, _1.FragmentMetadataFromJSON)(json["metadata"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "string": !(0, runtime_1.exists)(json, "string") ? void 0 : (0, index_1.TransferableStringFromJSON)(json["string"]),
+        "bytes": !(0, runtime_1.exists)(json, "bytes") ? void 0 : (0, index_1.TransferableBytesFromJSON)(json["bytes"]),
+        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, index_1.FragmentMetadataFromJSON)(json["metadata"])
       };
     }
     exports.SeededFragmentFromJSONTyped = SeededFragmentFromJSONTyped10;
@@ -15195,10 +15515,10 @@ var require_SeededFragment = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "string": (0, _1.TransferableStringToJSON)(value.string),
-        "bytes": (0, _1.TransferableBytesToJSON)(value.bytes),
-        "metadata": (0, _1.FragmentMetadataToJSON)(value.metadata)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "string": (0, index_1.TransferableStringToJSON)(value.string),
+        "bytes": (0, index_1.TransferableBytesToJSON)(value.bytes),
+        "metadata": (0, index_1.FragmentMetadataToJSON)(value.metadata)
       };
     }
     exports.SeededFragmentToJSON = SeededFragmentToJSON4;
@@ -15212,7 +15532,7 @@ var require_SeededGitHubDistribution = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededGitHubDistributionToJSON = exports.SeededGitHubDistributionFromJSONTyped = exports.SeededGitHubDistributionFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededGitHubDistributionFromJSON3(json) {
       return SeededGitHubDistributionFromJSONTyped3(json, false);
     }
@@ -15222,8 +15542,8 @@ var require_SeededGitHubDistribution = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "gist": !(0, runtime_1.exists)(json, "gist") ? void 0 : (0, _1.SeededGitHubGistDistributionFromJSON)(json["gist"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "gist": !(0, runtime_1.exists)(json, "gist") ? void 0 : (0, index_1.SeededGitHubGistDistributionFromJSON)(json["gist"])
       };
     }
     exports.SeededGitHubDistributionFromJSONTyped = SeededGitHubDistributionFromJSONTyped3;
@@ -15235,8 +15555,8 @@ var require_SeededGitHubDistribution = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "gist": (0, _1.SeededGitHubGistDistributionToJSON)(value.gist)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "gist": (0, index_1.SeededGitHubGistDistributionToJSON)(value.gist)
       };
     }
     exports.SeededGitHubDistributionToJSON = SeededGitHubDistributionToJSON3;
@@ -15250,7 +15570,7 @@ var require_SeededGitHubGistDistribution = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededGitHubGistDistributionToJSON = exports.SeededGitHubGistDistributionFromJSONTyped = exports.SeededGitHubGistDistributionFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededGitHubGistDistributionFromJSON3(json) {
       return SeededGitHubGistDistributionFromJSONTyped3(json, false);
     }
@@ -15260,8 +15580,8 @@ var require_SeededGitHubGistDistribution = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "recipients": !(0, runtime_1.exists)(json, "recipients") ? void 0 : (0, _1.RecipientsFromJSON)(json["recipients"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "recipients": !(0, runtime_1.exists)(json, "recipients") ? void 0 : (0, index_1.RecipientsFromJSON)(json["recipients"]),
         "_public": !(0, runtime_1.exists)(json, "public") ? void 0 : json["public"],
         "description": !(0, runtime_1.exists)(json, "description") ? void 0 : json["description"],
         "name": json["name"]
@@ -15276,8 +15596,8 @@ var require_SeededGitHubGistDistribution = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "recipients": (0, _1.RecipientsToJSON)(value.recipients),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "recipients": (0, index_1.RecipientsToJSON)(value.recipients),
         "public": value._public,
         "description": value.description,
         "name": value.name
@@ -15294,7 +15614,7 @@ var require_SeededGithubGistsImport = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededGithubGistsImportToJSON = exports.SeededGithubGistsImportFromJSONTyped = exports.SeededGithubGistsImportFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededGithubGistsImportFromJSON2(json) {
       return SeededGithubGistsImportFromJSONTyped(json, false);
     }
@@ -15304,7 +15624,7 @@ var require_SeededGithubGistsImport = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "application": json["application"],
         "_public": !(0, runtime_1.exists)(json, "public") ? void 0 : json["public"]
       };
@@ -15318,7 +15638,7 @@ var require_SeededGithubGistsImport = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "application": value.application,
         "public": value._public
       };
@@ -15334,7 +15654,7 @@ var require_SeededHint = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededHintToJSON = exports.SeededHintFromJSONTyped = exports.SeededHintFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededHintFromJSON5(json) {
       return SeededHintFromJSONTyped6(json, false);
     }
@@ -15344,10 +15664,10 @@ var require_SeededHint = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, _1.MechanismEnumFromJSON)(json["mechanism"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, index_1.MechanismEnumFromJSON)(json["mechanism"]),
         "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : json["asset"],
-        "type": (0, _1.HintTypeEnumFromJSON)(json["type"]),
+        "type": (0, index_1.HintTypeEnumFromJSON)(json["type"]),
         "text": json["text"],
         "model": !(0, runtime_1.exists)(json, "model") ? void 0 : json["model"]
       };
@@ -15361,10 +15681,10 @@ var require_SeededHint = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "mechanism": (0, _1.MechanismEnumToJSON)(value.mechanism),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "mechanism": (0, index_1.MechanismEnumToJSON)(value.mechanism),
         "asset": value.asset,
-        "type": (0, _1.HintTypeEnumToJSON)(value.type),
+        "type": (0, index_1.HintTypeEnumToJSON)(value.type),
         "text": value.text,
         "model": value.model
       };
@@ -15380,7 +15700,7 @@ var require_SeededMacOSAsset = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededMacOSAssetToJSON = exports.SeededMacOSAssetFromJSONTyped = exports.SeededMacOSAssetFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededMacOSAssetFromJSON2(json) {
       return SeededMacOSAssetFromJSONTyped(json, false);
     }
@@ -15390,8 +15710,8 @@ var require_SeededMacOSAsset = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "application": !(0, runtime_1.exists)(json, "application") ? void 0 : (0, _1.ApplicationFromJSON)(json["application"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "application": !(0, runtime_1.exists)(json, "application") ? void 0 : (0, index_1.ApplicationFromJSON)(json["application"]),
         "value": json["value"]
       };
     }
@@ -15404,8 +15724,8 @@ var require_SeededMacOSAsset = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "application": (0, _1.ApplicationToJSON)(value.application),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "application": (0, index_1.ApplicationToJSON)(value.application),
         "value": value.value
       };
     }
@@ -15420,7 +15740,7 @@ var require_SeededModel = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededModelToJSON = exports.SeededModelFromJSONTyped = exports.SeededModelFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededModelFromJSON2(json) {
       return SeededModelFromJSONTyped(json, false);
     }
@@ -15430,22 +15750,22 @@ var require_SeededModel = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "version": json["version"],
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
         "name": json["name"],
         "description": !(0, runtime_1.exists)(json, "description") ? void 0 : json["description"],
         "cloud": json["cloud"],
-        "type": (0, _1.ModelTypeEnumFromJSON)(json["type"]),
-        "usage": (0, _1.ModelUsageEnumFromJSON)(json["usage"]),
-        "bytes": !(0, runtime_1.exists)(json, "bytes") ? void 0 : (0, _1.ByteDescriptorFromJSON)(json["bytes"]),
-        "ram": !(0, runtime_1.exists)(json, "ram") ? void 0 : (0, _1.ByteDescriptorFromJSON)(json["ram"]),
+        "type": (0, index_1.ModelTypeEnumFromJSON)(json["type"]),
+        "usage": (0, index_1.ModelUsageEnumFromJSON)(json["usage"]),
+        "bytes": !(0, runtime_1.exists)(json, "bytes") ? void 0 : (0, index_1.ByteDescriptorFromJSON)(json["bytes"]),
+        "ram": !(0, runtime_1.exists)(json, "ram") ? void 0 : (0, index_1.ByteDescriptorFromJSON)(json["ram"]),
         "quantization": !(0, runtime_1.exists)(json, "quantization") ? void 0 : json["quantization"],
-        "foundation": !(0, runtime_1.exists)(json, "foundation") ? void 0 : (0, _1.ModelFoundationEnumFromJSON)(json["foundation"]),
+        "foundation": !(0, runtime_1.exists)(json, "foundation") ? void 0 : (0, index_1.ModelFoundationEnumFromJSON)(json["foundation"]),
         "downloaded": !(0, runtime_1.exists)(json, "downloaded") ? void 0 : json["downloaded"],
         "unique": !(0, runtime_1.exists)(json, "unique") ? void 0 : json["unique"],
         "parameters": !(0, runtime_1.exists)(json, "parameters") ? void 0 : json["parameters"],
-        "provider": !(0, runtime_1.exists)(json, "provider") ? void 0 : (0, _1.ExternalMLProviderEnumFromJSON)(json["provider"]),
+        "provider": !(0, runtime_1.exists)(json, "provider") ? void 0 : (0, index_1.ExternalMLProviderEnumFromJSON)(json["provider"]),
         "cpu": !(0, runtime_1.exists)(json, "cpu") ? void 0 : json["cpu"]
       };
     }
@@ -15458,22 +15778,22 @@ var require_SeededModel = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "version": value.version,
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
         "name": value.name,
         "description": value.description,
         "cloud": value.cloud,
-        "type": (0, _1.ModelTypeEnumToJSON)(value.type),
-        "usage": (0, _1.ModelUsageEnumToJSON)(value.usage),
-        "bytes": (0, _1.ByteDescriptorToJSON)(value.bytes),
-        "ram": (0, _1.ByteDescriptorToJSON)(value.ram),
+        "type": (0, index_1.ModelTypeEnumToJSON)(value.type),
+        "usage": (0, index_1.ModelUsageEnumToJSON)(value.usage),
+        "bytes": (0, index_1.ByteDescriptorToJSON)(value.bytes),
+        "ram": (0, index_1.ByteDescriptorToJSON)(value.ram),
         "quantization": value.quantization,
-        "foundation": (0, _1.ModelFoundationEnumToJSON)(value.foundation),
+        "foundation": (0, index_1.ModelFoundationEnumToJSON)(value.foundation),
         "downloaded": value.downloaded,
         "unique": value.unique,
         "parameters": value.parameters,
-        "provider": (0, _1.ExternalMLProviderEnumToJSON)(value.provider),
+        "provider": (0, index_1.ExternalMLProviderEnumToJSON)(value.provider),
         "cpu": value.cpu
       };
     }
@@ -15488,7 +15808,7 @@ var require_SeededPKCE = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededPKCEToJSON = exports.SeededPKCEFromJSONTyped = exports.SeededPKCEFromJSON = exports.SeededPKCEResponseModeEnum = exports.SeededPKCEScopeEnum = exports.SeededPKCEPromptEnum = exports.SeededPKCEScreenHintEnum = exports.SeededPKCECodeChallengeMethodEnum = exports.SeededPKCEResponseTypeEnum = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     var SeededPKCEResponseTypeEnum;
     (function(SeededPKCEResponseTypeEnum2) {
       SeededPKCEResponseTypeEnum2["Code"] = "code";
@@ -15531,7 +15851,7 @@ var require_SeededPKCE = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "responseType": json["response_type"],
         "state": json["state"],
         "nonce": json["nonce"],
@@ -15546,7 +15866,7 @@ var require_SeededPKCE = __commonJS({
         "invitation": !(0, runtime_1.exists)(json, "invitation") ? void 0 : json["invitation"],
         "scope": json["scope"],
         "clientId": json["client_id"],
-        "aDDITIONALPARAMETERS": !(0, runtime_1.exists)(json, "ADDITIONAL_PARAMETERS") ? void 0 : (0, _1.SeededPKCEADDITIONALPARAMETERSFromJSON)(json["ADDITIONAL_PARAMETERS"]),
+        "aDDITIONALPARAMETERS": !(0, runtime_1.exists)(json, "ADDITIONAL_PARAMETERS") ? void 0 : (0, index_1.SeededPKCEADDITIONALPARAMETERSFromJSON)(json["ADDITIONAL_PARAMETERS"]),
         "responseMode": !(0, runtime_1.exists)(json, "response_mode") ? void 0 : json["response_mode"]
       };
     }
@@ -15559,7 +15879,7 @@ var require_SeededPKCE = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "response_type": value.responseType,
         "state": value.state,
         "nonce": value.nonce,
@@ -15574,7 +15894,7 @@ var require_SeededPKCE = __commonJS({
         "invitation": value.invitation,
         "scope": value.scope,
         "client_id": value.clientId,
-        "ADDITIONAL_PARAMETERS": (0, _1.SeededPKCEADDITIONALPARAMETERSToJSON)(value.aDDITIONALPARAMETERS),
+        "ADDITIONAL_PARAMETERS": (0, index_1.SeededPKCEADDITIONALPARAMETERSToJSON)(value.aDDITIONALPARAMETERS),
         "response_mode": value.responseMode
       };
     }
@@ -15634,7 +15954,7 @@ var require_SeededPerson = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededPersonToJSON = exports.SeededPersonFromJSONTyped = exports.SeededPersonFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededPersonFromJSON5(json) {
       return SeededPersonFromJSONTyped6(json, false);
     }
@@ -15644,13 +15964,13 @@ var require_SeededPerson = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : json["asset"],
-        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, _1.MechanismEnumFromJSON)(json["mechanism"]),
-        "access": !(0, runtime_1.exists)(json, "access") ? void 0 : (0, _1.PersonAccessFromJSON)(json["access"]),
-        "type": (0, _1.PersonTypeFromJSON)(json["type"]),
-        "model": !(0, runtime_1.exists)(json, "model") ? void 0 : (0, _1.PersonModelFromJSON)(json["model"]),
-        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : json["annotations"].map(_1.SeededAnnotationFromJSON)
+        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, index_1.MechanismEnumFromJSON)(json["mechanism"]),
+        "access": !(0, runtime_1.exists)(json, "access") ? void 0 : (0, index_1.PersonAccessFromJSON)(json["access"]),
+        "type": (0, index_1.PersonTypeFromJSON)(json["type"]),
+        "model": !(0, runtime_1.exists)(json, "model") ? void 0 : (0, index_1.PersonModelFromJSON)(json["model"]),
+        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : json["annotations"].map(index_1.SeededAnnotationFromJSON)
       };
     }
     exports.SeededPersonFromJSONTyped = SeededPersonFromJSONTyped6;
@@ -15662,13 +15982,13 @@ var require_SeededPerson = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "asset": value.asset,
-        "mechanism": (0, _1.MechanismEnumToJSON)(value.mechanism),
-        "access": (0, _1.PersonAccessToJSON)(value.access),
-        "type": (0, _1.PersonTypeToJSON)(value.type),
-        "model": (0, _1.PersonModelToJSON)(value.model),
-        "annotations": value.annotations === void 0 ? void 0 : value.annotations.map(_1.SeededAnnotationToJSON)
+        "mechanism": (0, index_1.MechanismEnumToJSON)(value.mechanism),
+        "access": (0, index_1.PersonAccessToJSON)(value.access),
+        "type": (0, index_1.PersonTypeToJSON)(value.type),
+        "model": (0, index_1.PersonModelToJSON)(value.model),
+        "annotations": value.annotations === void 0 ? void 0 : value.annotations.map(index_1.SeededAnnotationToJSON)
       };
     }
     exports.SeededPersonToJSON = SeededPersonToJSON4;
@@ -15682,7 +16002,7 @@ var require_SeededScore = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededScoreToJSON = exports.SeededScoreFromJSONTyped = exports.SeededScoreFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededScoreFromJSON3(json) {
       return SeededScoreFromJSONTyped3(json, false);
     }
@@ -15692,7 +16012,7 @@ var require_SeededScore = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "reuse": !(0, runtime_1.exists)(json, "reuse") ? void 0 : json["reuse"],
         "update": !(0, runtime_1.exists)(json, "update") ? void 0 : json["update"],
         "reference": !(0, runtime_1.exists)(json, "reference") ? void 0 : json["reference"],
@@ -15708,7 +16028,7 @@ var require_SeededScore = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "reuse": value.reuse,
         "update": value.update,
         "reference": value.reference,
@@ -15726,7 +16046,7 @@ var require_SeededScoreIncrement = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededScoreIncrementToJSON = exports.SeededScoreIncrementFromJSONTyped = exports.SeededScoreIncrementFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededScoreIncrementFromJSON13(json) {
       return SeededScoreIncrementFromJSONTyped(json, false);
     }
@@ -15736,31 +16056,31 @@ var require_SeededScoreIncrement = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, _1.SeededScoreFromJSON)(json["asset"]),
-        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, _1.SeededScoreFromJSON)(json["assets"]),
-        "website": !(0, runtime_1.exists)(json, "website") ? void 0 : (0, _1.SeededScoreFromJSON)(json["website"]),
-        "websites": !(0, runtime_1.exists)(json, "websites") ? void 0 : (0, _1.SeededScoreFromJSON)(json["websites"]),
-        "anchor": !(0, runtime_1.exists)(json, "anchor") ? void 0 : (0, _1.SeededScoreFromJSON)(json["anchor"]),
-        "anchors": !(0, runtime_1.exists)(json, "anchors") ? void 0 : (0, _1.SeededScoreFromJSON)(json["anchors"]),
-        "anchorPoint": !(0, runtime_1.exists)(json, "anchorPoint") ? void 0 : (0, _1.SeededScoreFromJSON)(json["anchorPoint"]),
-        "anchorPoints": !(0, runtime_1.exists)(json, "anchorPoints") ? void 0 : (0, _1.SeededScoreFromJSON)(json["anchorPoints"]),
-        "annotation": !(0, runtime_1.exists)(json, "annotation") ? void 0 : (0, _1.SeededScoreFromJSON)(json["annotation"]),
-        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : (0, _1.SeededScoreFromJSON)(json["annotations"]),
-        "conversation": !(0, runtime_1.exists)(json, "conversation") ? void 0 : (0, _1.SeededScoreFromJSON)(json["conversation"]),
-        "conversations": !(0, runtime_1.exists)(json, "conversations") ? void 0 : (0, _1.SeededScoreFromJSON)(json["conversations"]),
-        "conversationMessage": !(0, runtime_1.exists)(json, "conversationMessage") ? void 0 : (0, _1.SeededScoreFromJSON)(json["conversationMessage"]),
-        "conversationMessages": !(0, runtime_1.exists)(json, "conversationMessages") ? void 0 : (0, _1.SeededScoreFromJSON)(json["conversationMessages"]),
-        "share": !(0, runtime_1.exists)(json, "share") ? void 0 : (0, _1.SeededScoreFromJSON)(json["share"]),
-        "shares": !(0, runtime_1.exists)(json, "shares") ? void 0 : (0, _1.SeededScoreFromJSON)(json["shares"]),
-        "sensitive": !(0, runtime_1.exists)(json, "sensitive") ? void 0 : (0, _1.SeededScoreFromJSON)(json["sensitive"]),
-        "sensitives": !(0, runtime_1.exists)(json, "sensitives") ? void 0 : (0, _1.SeededScoreFromJSON)(json["sensitives"]),
-        "hint": !(0, runtime_1.exists)(json, "hint") ? void 0 : (0, _1.SeededScoreFromJSON)(json["hint"]),
-        "hints": !(0, runtime_1.exists)(json, "hints") ? void 0 : (0, _1.SeededScoreFromJSON)(json["hints"]),
-        "person": !(0, runtime_1.exists)(json, "person") ? void 0 : (0, _1.SeededScoreFromJSON)(json["person"]),
-        "persons": !(0, runtime_1.exists)(json, "persons") ? void 0 : (0, _1.SeededScoreFromJSON)(json["persons"]),
-        "tag": !(0, runtime_1.exists)(json, "tag") ? void 0 : (0, _1.SeededScoreFromJSON)(json["tag"]),
-        "tags": !(0, runtime_1.exists)(json, "tags") ? void 0 : (0, _1.SeededScoreFromJSON)(json["tags"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, index_1.SeededScoreFromJSON)(json["asset"]),
+        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, index_1.SeededScoreFromJSON)(json["assets"]),
+        "website": !(0, runtime_1.exists)(json, "website") ? void 0 : (0, index_1.SeededScoreFromJSON)(json["website"]),
+        "websites": !(0, runtime_1.exists)(json, "websites") ? void 0 : (0, index_1.SeededScoreFromJSON)(json["websites"]),
+        "anchor": !(0, runtime_1.exists)(json, "anchor") ? void 0 : (0, index_1.SeededScoreFromJSON)(json["anchor"]),
+        "anchors": !(0, runtime_1.exists)(json, "anchors") ? void 0 : (0, index_1.SeededScoreFromJSON)(json["anchors"]),
+        "anchorPoint": !(0, runtime_1.exists)(json, "anchorPoint") ? void 0 : (0, index_1.SeededScoreFromJSON)(json["anchorPoint"]),
+        "anchorPoints": !(0, runtime_1.exists)(json, "anchorPoints") ? void 0 : (0, index_1.SeededScoreFromJSON)(json["anchorPoints"]),
+        "annotation": !(0, runtime_1.exists)(json, "annotation") ? void 0 : (0, index_1.SeededScoreFromJSON)(json["annotation"]),
+        "annotations": !(0, runtime_1.exists)(json, "annotations") ? void 0 : (0, index_1.SeededScoreFromJSON)(json["annotations"]),
+        "conversation": !(0, runtime_1.exists)(json, "conversation") ? void 0 : (0, index_1.SeededScoreFromJSON)(json["conversation"]),
+        "conversations": !(0, runtime_1.exists)(json, "conversations") ? void 0 : (0, index_1.SeededScoreFromJSON)(json["conversations"]),
+        "conversationMessage": !(0, runtime_1.exists)(json, "conversationMessage") ? void 0 : (0, index_1.SeededScoreFromJSON)(json["conversationMessage"]),
+        "conversationMessages": !(0, runtime_1.exists)(json, "conversationMessages") ? void 0 : (0, index_1.SeededScoreFromJSON)(json["conversationMessages"]),
+        "share": !(0, runtime_1.exists)(json, "share") ? void 0 : (0, index_1.SeededScoreFromJSON)(json["share"]),
+        "shares": !(0, runtime_1.exists)(json, "shares") ? void 0 : (0, index_1.SeededScoreFromJSON)(json["shares"]),
+        "sensitive": !(0, runtime_1.exists)(json, "sensitive") ? void 0 : (0, index_1.SeededScoreFromJSON)(json["sensitive"]),
+        "sensitives": !(0, runtime_1.exists)(json, "sensitives") ? void 0 : (0, index_1.SeededScoreFromJSON)(json["sensitives"]),
+        "hint": !(0, runtime_1.exists)(json, "hint") ? void 0 : (0, index_1.SeededScoreFromJSON)(json["hint"]),
+        "hints": !(0, runtime_1.exists)(json, "hints") ? void 0 : (0, index_1.SeededScoreFromJSON)(json["hints"]),
+        "person": !(0, runtime_1.exists)(json, "person") ? void 0 : (0, index_1.SeededScoreFromJSON)(json["person"]),
+        "persons": !(0, runtime_1.exists)(json, "persons") ? void 0 : (0, index_1.SeededScoreFromJSON)(json["persons"]),
+        "tag": !(0, runtime_1.exists)(json, "tag") ? void 0 : (0, index_1.SeededScoreFromJSON)(json["tag"]),
+        "tags": !(0, runtime_1.exists)(json, "tags") ? void 0 : (0, index_1.SeededScoreFromJSON)(json["tags"])
       };
     }
     exports.SeededScoreIncrementFromJSONTyped = SeededScoreIncrementFromJSONTyped;
@@ -15772,31 +16092,31 @@ var require_SeededScoreIncrement = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "asset": (0, _1.SeededScoreToJSON)(value.asset),
-        "assets": (0, _1.SeededScoreToJSON)(value.assets),
-        "website": (0, _1.SeededScoreToJSON)(value.website),
-        "websites": (0, _1.SeededScoreToJSON)(value.websites),
-        "anchor": (0, _1.SeededScoreToJSON)(value.anchor),
-        "anchors": (0, _1.SeededScoreToJSON)(value.anchors),
-        "anchorPoint": (0, _1.SeededScoreToJSON)(value.anchorPoint),
-        "anchorPoints": (0, _1.SeededScoreToJSON)(value.anchorPoints),
-        "annotation": (0, _1.SeededScoreToJSON)(value.annotation),
-        "annotations": (0, _1.SeededScoreToJSON)(value.annotations),
-        "conversation": (0, _1.SeededScoreToJSON)(value.conversation),
-        "conversations": (0, _1.SeededScoreToJSON)(value.conversations),
-        "conversationMessage": (0, _1.SeededScoreToJSON)(value.conversationMessage),
-        "conversationMessages": (0, _1.SeededScoreToJSON)(value.conversationMessages),
-        "share": (0, _1.SeededScoreToJSON)(value.share),
-        "shares": (0, _1.SeededScoreToJSON)(value.shares),
-        "sensitive": (0, _1.SeededScoreToJSON)(value.sensitive),
-        "sensitives": (0, _1.SeededScoreToJSON)(value.sensitives),
-        "hint": (0, _1.SeededScoreToJSON)(value.hint),
-        "hints": (0, _1.SeededScoreToJSON)(value.hints),
-        "person": (0, _1.SeededScoreToJSON)(value.person),
-        "persons": (0, _1.SeededScoreToJSON)(value.persons),
-        "tag": (0, _1.SeededScoreToJSON)(value.tag),
-        "tags": (0, _1.SeededScoreToJSON)(value.tags)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "asset": (0, index_1.SeededScoreToJSON)(value.asset),
+        "assets": (0, index_1.SeededScoreToJSON)(value.assets),
+        "website": (0, index_1.SeededScoreToJSON)(value.website),
+        "websites": (0, index_1.SeededScoreToJSON)(value.websites),
+        "anchor": (0, index_1.SeededScoreToJSON)(value.anchor),
+        "anchors": (0, index_1.SeededScoreToJSON)(value.anchors),
+        "anchorPoint": (0, index_1.SeededScoreToJSON)(value.anchorPoint),
+        "anchorPoints": (0, index_1.SeededScoreToJSON)(value.anchorPoints),
+        "annotation": (0, index_1.SeededScoreToJSON)(value.annotation),
+        "annotations": (0, index_1.SeededScoreToJSON)(value.annotations),
+        "conversation": (0, index_1.SeededScoreToJSON)(value.conversation),
+        "conversations": (0, index_1.SeededScoreToJSON)(value.conversations),
+        "conversationMessage": (0, index_1.SeededScoreToJSON)(value.conversationMessage),
+        "conversationMessages": (0, index_1.SeededScoreToJSON)(value.conversationMessages),
+        "share": (0, index_1.SeededScoreToJSON)(value.share),
+        "shares": (0, index_1.SeededScoreToJSON)(value.shares),
+        "sensitive": (0, index_1.SeededScoreToJSON)(value.sensitive),
+        "sensitives": (0, index_1.SeededScoreToJSON)(value.sensitives),
+        "hint": (0, index_1.SeededScoreToJSON)(value.hint),
+        "hints": (0, index_1.SeededScoreToJSON)(value.hints),
+        "person": (0, index_1.SeededScoreToJSON)(value.person),
+        "persons": (0, index_1.SeededScoreToJSON)(value.persons),
+        "tag": (0, index_1.SeededScoreToJSON)(value.tag),
+        "tags": (0, index_1.SeededScoreToJSON)(value.tags)
       };
     }
     exports.SeededScoreIncrementToJSON = SeededScoreIncrementToJSON2;
@@ -15810,7 +16130,7 @@ var require_SeededSensitive = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededSensitiveToJSON = exports.SeededSensitiveFromJSONTyped = exports.SeededSensitiveFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededSensitiveFromJSON4(json) {
       return SeededSensitiveFromJSONTyped4(json, false);
     }
@@ -15820,15 +16140,15 @@ var require_SeededSensitive = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "asset": json["asset"],
         "text": json["text"],
-        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, _1.MechanismEnumFromJSON)(json["mechanism"]),
-        "category": (0, _1.SensitiveCategoryEnumFromJSON)(json["category"]),
-        "severity": (0, _1.SensitiveSeverityEnumFromJSON)(json["severity"]),
+        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, index_1.MechanismEnumFromJSON)(json["mechanism"]),
+        "category": (0, index_1.SensitiveCategoryEnumFromJSON)(json["category"]),
+        "severity": (0, index_1.SensitiveSeverityEnumFromJSON)(json["severity"]),
         "name": json["name"],
         "description": json["description"],
-        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, _1.SensitiveMetadataFromJSON)(json["metadata"])
+        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, index_1.SensitiveMetadataFromJSON)(json["metadata"])
       };
     }
     exports.SeededSensitiveFromJSONTyped = SeededSensitiveFromJSONTyped4;
@@ -15840,15 +16160,15 @@ var require_SeededSensitive = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "asset": value.asset,
         "text": value.text,
-        "mechanism": (0, _1.MechanismEnumToJSON)(value.mechanism),
-        "category": (0, _1.SensitiveCategoryEnumToJSON)(value.category),
-        "severity": (0, _1.SensitiveSeverityEnumToJSON)(value.severity),
+        "mechanism": (0, index_1.MechanismEnumToJSON)(value.mechanism),
+        "category": (0, index_1.SensitiveCategoryEnumToJSON)(value.category),
+        "severity": (0, index_1.SensitiveSeverityEnumToJSON)(value.severity),
         "name": value.name,
         "description": value.description,
-        "metadata": (0, _1.SensitiveMetadataToJSON)(value.metadata)
+        "metadata": (0, index_1.SensitiveMetadataToJSON)(value.metadata)
       };
     }
     exports.SeededSensitiveToJSON = SeededSensitiveToJSON3;
@@ -15908,27 +16228,26 @@ var require_SeededTag = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededTagToJSON = exports.SeededTagFromJSONTyped = exports.SeededTagFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
-    function SeededTagFromJSON5(json) {
-      return SeededTagFromJSONTyped8(json, false);
+    var index_1 = require_models();
+    function SeededTagFromJSON4(json) {
+      return SeededTagFromJSONTyped4(json, false);
     }
-    exports.SeededTagFromJSON = SeededTagFromJSON5;
-    function SeededTagFromJSONTyped8(json, ignoreDiscriminator) {
+    exports.SeededTagFromJSON = SeededTagFromJSON4;
+    function SeededTagFromJSONTyped4(json, ignoreDiscriminator) {
       if (json === void 0 || json === null) {
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "text": json["text"],
         "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : json["asset"],
-        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, _1.MechanismEnumFromJSON)(json["mechanism"]),
-        "format": !(0, runtime_1.exists)(json, "format") ? void 0 : json["format"],
-        "category": !(0, runtime_1.exists)(json, "category") ? void 0 : (0, _1.TagCategoryEnumFromJSON)(json["category"]),
+        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, index_1.MechanismEnumFromJSON)(json["mechanism"]),
+        "category": !(0, runtime_1.exists)(json, "category") ? void 0 : (0, index_1.TagCategoryEnumFromJSON)(json["category"]),
         "person": !(0, runtime_1.exists)(json, "person") ? void 0 : json["person"]
       };
     }
-    exports.SeededTagFromJSONTyped = SeededTagFromJSONTyped8;
-    function SeededTagToJSON4(value) {
+    exports.SeededTagFromJSONTyped = SeededTagFromJSONTyped4;
+    function SeededTagToJSON3(value) {
       if (value === void 0) {
         return void 0;
       }
@@ -15936,16 +16255,15 @@ var require_SeededTag = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "text": value.text,
         "asset": value.asset,
-        "mechanism": (0, _1.MechanismEnumToJSON)(value.mechanism),
-        "format": value.format,
-        "category": (0, _1.TagCategoryEnumToJSON)(value.category),
+        "mechanism": (0, index_1.MechanismEnumToJSON)(value.mechanism),
+        "category": (0, index_1.TagCategoryEnumToJSON)(value.category),
         "person": value.person
       };
     }
-    exports.SeededTagToJSON = SeededTagToJSON4;
+    exports.SeededTagToJSON = SeededTagToJSON3;
   }
 });
 
@@ -15956,7 +16274,7 @@ var require_SeededTrackedAdoptionEvent = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededTrackedAdoptionEventToJSON = exports.SeededTrackedAdoptionEventFromJSONTyped = exports.SeededTrackedAdoptionEventFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededTrackedAdoptionEventFromJSON4(json) {
       return SeededTrackedAdoptionEventFromJSONTyped6(json, false);
     }
@@ -15966,8 +16284,8 @@ var require_SeededTrackedAdoptionEvent = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "identifierDescriptionPair": !(0, runtime_1.exists)(json, "identifier_description_pair") ? void 0 : (0, _1.AnalyticsTrackedAdoptionEventIdentifierDescriptionPairsFromJSON)(json["identifier_description_pair"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "identifierDescriptionPair": !(0, runtime_1.exists)(json, "identifier_description_pair") ? void 0 : (0, index_1.AnalyticsTrackedAdoptionEventIdentifierDescriptionPairsFromJSON)(json["identifier_description_pair"])
       };
     }
     exports.SeededTrackedAdoptionEventFromJSONTyped = SeededTrackedAdoptionEventFromJSONTyped6;
@@ -15979,8 +16297,8 @@ var require_SeededTrackedAdoptionEvent = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "identifier_description_pair": (0, _1.AnalyticsTrackedAdoptionEventIdentifierDescriptionPairsToJSON)(value.identifierDescriptionPair)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "identifier_description_pair": (0, index_1.AnalyticsTrackedAdoptionEventIdentifierDescriptionPairsToJSON)(value.identifierDescriptionPair)
       };
     }
     exports.SeededTrackedAdoptionEventToJSON = SeededTrackedAdoptionEventToJSON4;
@@ -15994,7 +16312,7 @@ var require_SeededTrackedApplication = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededTrackedApplicationToJSON = exports.SeededTrackedApplicationFromJSONTyped = exports.SeededTrackedApplicationFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededTrackedApplicationFromJSON4(json) {
       return SeededTrackedApplicationFromJSONTyped4(json, false);
     }
@@ -16004,12 +16322,12 @@ var require_SeededTrackedApplication = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "name": (0, _1.ApplicationNameEnumFromJSON)(json["name"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "name": (0, index_1.ApplicationNameEnumFromJSON)(json["name"]),
         "version": json["version"],
-        "platform": (0, _1.PlatformEnumFromJSON)(json["platform"]),
-        "capabilities": !(0, runtime_1.exists)(json, "capabilities") ? void 0 : (0, _1.CapabilitiesEnumFromJSON)(json["capabilities"]),
-        "privacy": !(0, runtime_1.exists)(json, "privacy") ? void 0 : (0, _1.PrivacyEnumFromJSON)(json["privacy"]),
+        "platform": (0, index_1.PlatformEnumFromJSON)(json["platform"]),
+        "capabilities": !(0, runtime_1.exists)(json, "capabilities") ? void 0 : (0, index_1.CapabilitiesEnumFromJSON)(json["capabilities"]),
+        "privacy": !(0, runtime_1.exists)(json, "privacy") ? void 0 : (0, index_1.PrivacyEnumFromJSON)(json["privacy"]),
         "automaticUnload": !(0, runtime_1.exists)(json, "automaticUnload") ? void 0 : json["automaticUnload"]
       };
     }
@@ -16022,12 +16340,12 @@ var require_SeededTrackedApplication = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "name": (0, _1.ApplicationNameEnumToJSON)(value.name),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "name": (0, index_1.ApplicationNameEnumToJSON)(value.name),
         "version": value.version,
-        "platform": (0, _1.PlatformEnumToJSON)(value.platform),
-        "capabilities": (0, _1.CapabilitiesEnumToJSON)(value.capabilities),
-        "privacy": (0, _1.PrivacyEnumToJSON)(value.privacy),
+        "platform": (0, index_1.PlatformEnumToJSON)(value.platform),
+        "capabilities": (0, index_1.CapabilitiesEnumToJSON)(value.capabilities),
+        "privacy": (0, index_1.PrivacyEnumToJSON)(value.privacy),
         "automaticUnload": value.automaticUnload
       };
     }
@@ -16042,7 +16360,7 @@ var require_SeededTrackedAssetEvent = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededTrackedAssetEventToJSON = exports.SeededTrackedAssetEventFromJSONTyped = exports.SeededTrackedAssetEventFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededTrackedAssetEventFromJSON4(json) {
       return SeededTrackedAssetEventFromJSONTyped6(json, false);
     }
@@ -16052,10 +16370,10 @@ var require_SeededTrackedAssetEvent = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "asset": (0, _1.ReferencedAssetFromJSON)(json["asset"]),
-        "identifierDescriptionPair": (0, _1.TrackedAssetEventIdentifierDescriptionPairsFromJSON)(json["identifier_description_pair"]),
-        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, _1.TrackedAssetEventMetadataFromJSON)(json["metadata"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "asset": (0, index_1.ReferencedAssetFromJSON)(json["asset"]),
+        "identifierDescriptionPair": (0, index_1.TrackedAssetEventIdentifierDescriptionPairsFromJSON)(json["identifier_description_pair"]),
+        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, index_1.TrackedAssetEventMetadataFromJSON)(json["metadata"])
       };
     }
     exports.SeededTrackedAssetEventFromJSONTyped = SeededTrackedAssetEventFromJSONTyped6;
@@ -16067,10 +16385,10 @@ var require_SeededTrackedAssetEvent = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "asset": (0, _1.ReferencedAssetToJSON)(value.asset),
-        "identifier_description_pair": (0, _1.TrackedAssetEventIdentifierDescriptionPairsToJSON)(value.identifierDescriptionPair),
-        "metadata": (0, _1.TrackedAssetEventMetadataToJSON)(value.metadata)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "asset": (0, index_1.ReferencedAssetToJSON)(value.asset),
+        "identifier_description_pair": (0, index_1.TrackedAssetEventIdentifierDescriptionPairsToJSON)(value.identifierDescriptionPair),
+        "metadata": (0, index_1.TrackedAssetEventMetadataToJSON)(value.metadata)
       };
     }
     exports.SeededTrackedAssetEventToJSON = SeededTrackedAssetEventToJSON4;
@@ -16084,7 +16402,7 @@ var require_SeededTrackedAssetsEvent = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededTrackedAssetsEventToJSON = exports.SeededTrackedAssetsEventFromJSONTyped = exports.SeededTrackedAssetsEventFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededTrackedAssetsEventFromJSON4(json) {
       return SeededTrackedAssetsEventFromJSONTyped6(json, false);
     }
@@ -16094,9 +16412,9 @@ var require_SeededTrackedAssetsEvent = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "identifierDescriptionPair": !(0, runtime_1.exists)(json, "identifier_description_pair") ? void 0 : (0, _1.TrackedAssetsEventIdentifierDescriptionPairsFromJSON)(json["identifier_description_pair"]),
-        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, _1.SeededTrackedAssetsEventMetadataFromJSON)(json["metadata"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "identifierDescriptionPair": !(0, runtime_1.exists)(json, "identifier_description_pair") ? void 0 : (0, index_1.TrackedAssetsEventIdentifierDescriptionPairsFromJSON)(json["identifier_description_pair"]),
+        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, index_1.SeededTrackedAssetsEventMetadataFromJSON)(json["metadata"])
       };
     }
     exports.SeededTrackedAssetsEventFromJSONTyped = SeededTrackedAssetsEventFromJSONTyped6;
@@ -16108,9 +16426,9 @@ var require_SeededTrackedAssetsEvent = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "identifier_description_pair": (0, _1.TrackedAssetsEventIdentifierDescriptionPairsToJSON)(value.identifierDescriptionPair),
-        "metadata": (0, _1.SeededTrackedAssetsEventMetadataToJSON)(value.metadata)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "identifier_description_pair": (0, index_1.TrackedAssetsEventIdentifierDescriptionPairsToJSON)(value.identifierDescriptionPair),
+        "metadata": (0, index_1.SeededTrackedAssetsEventMetadataToJSON)(value.metadata)
       };
     }
     exports.SeededTrackedAssetsEventToJSON = SeededTrackedAssetsEventToJSON4;
@@ -16124,7 +16442,7 @@ var require_SeededTrackedAssetsEventMetadata = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededTrackedAssetsEventMetadataToJSON = exports.SeededTrackedAssetsEventMetadataFromJSONTyped = exports.SeededTrackedAssetsEventMetadataFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededTrackedAssetsEventMetadataFromJSON4(json) {
       return SeededTrackedAssetsEventMetadataFromJSONTyped6(json, false);
     }
@@ -16134,7 +16452,7 @@ var require_SeededTrackedAssetsEventMetadata = __commonJS({
         return json;
       }
       return {
-        "search": !(0, runtime_1.exists)(json, "search") ? void 0 : (0, _1.TrackedAssetsEventSearchMetadataFromJSON)(json["search"])
+        "search": !(0, runtime_1.exists)(json, "search") ? void 0 : (0, index_1.TrackedAssetsEventSearchMetadataFromJSON)(json["search"])
       };
     }
     exports.SeededTrackedAssetsEventMetadataFromJSONTyped = SeededTrackedAssetsEventMetadataFromJSONTyped6;
@@ -16146,7 +16464,7 @@ var require_SeededTrackedAssetsEventMetadata = __commonJS({
         return null;
       }
       return {
-        "search": (0, _1.TrackedAssetsEventSearchMetadataToJSON)(value.search)
+        "search": (0, index_1.TrackedAssetsEventSearchMetadataToJSON)(value.search)
       };
     }
     exports.SeededTrackedAssetsEventMetadataToJSON = SeededTrackedAssetsEventMetadataToJSON4;
@@ -16160,7 +16478,7 @@ var require_SeededTrackedFormatEvent = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededTrackedFormatEventToJSON = exports.SeededTrackedFormatEventFromJSONTyped = exports.SeededTrackedFormatEventFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededTrackedFormatEventFromJSON5(json) {
       return SeededTrackedFormatEventFromJSONTyped6(json, false);
     }
@@ -16170,10 +16488,10 @@ var require_SeededTrackedFormatEvent = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "identifierDescriptionPair": (0, _1.TrackedFormatEventIdentifierDescriptionPairsFromJSON)(json["identifier_description_pair"]),
-        "format": (0, _1.ReferencedFormatFromJSON)(json["format"]),
-        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, _1.TrackedFormatEventMetadataFromJSON)(json["metadata"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "identifierDescriptionPair": (0, index_1.TrackedFormatEventIdentifierDescriptionPairsFromJSON)(json["identifier_description_pair"]),
+        "format": (0, index_1.ReferencedFormatFromJSON)(json["format"]),
+        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, index_1.TrackedFormatEventMetadataFromJSON)(json["metadata"])
       };
     }
     exports.SeededTrackedFormatEventFromJSONTyped = SeededTrackedFormatEventFromJSONTyped6;
@@ -16185,10 +16503,10 @@ var require_SeededTrackedFormatEvent = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "identifier_description_pair": (0, _1.TrackedFormatEventIdentifierDescriptionPairsToJSON)(value.identifierDescriptionPair),
-        "format": (0, _1.ReferencedFormatToJSON)(value.format),
-        "metadata": (0, _1.TrackedFormatEventMetadataToJSON)(value.metadata)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "identifier_description_pair": (0, index_1.TrackedFormatEventIdentifierDescriptionPairsToJSON)(value.identifierDescriptionPair),
+        "format": (0, index_1.ReferencedFormatToJSON)(value.format),
+        "metadata": (0, index_1.TrackedFormatEventMetadataToJSON)(value.metadata)
       };
     }
     exports.SeededTrackedFormatEventToJSON = SeededTrackedFormatEventToJSON4;
@@ -16202,7 +16520,7 @@ var require_SeededTrackedInteractionEvent = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededTrackedInteractionEventToJSON = exports.SeededTrackedInteractionEventFromJSONTyped = exports.SeededTrackedInteractionEventFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededTrackedInteractionEventFromJSON5(json) {
       return SeededTrackedInteractionEventFromJSONTyped6(json, false);
     }
@@ -16212,10 +16530,10 @@ var require_SeededTrackedInteractionEvent = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "description": json["description"],
         "element": !(0, runtime_1.exists)(json, "element") ? void 0 : json["element"],
-        "identifierDescriptionPair": !(0, runtime_1.exists)(json, "identifier_description_pair") ? void 0 : (0, _1.SeededTrackedInteractionEventIdentifierDescriptionPairsFromJSON)(json["identifier_description_pair"])
+        "identifierDescriptionPair": !(0, runtime_1.exists)(json, "identifier_description_pair") ? void 0 : (0, index_1.SeededTrackedInteractionEventIdentifierDescriptionPairsFromJSON)(json["identifier_description_pair"])
       };
     }
     exports.SeededTrackedInteractionEventFromJSONTyped = SeededTrackedInteractionEventFromJSONTyped6;
@@ -16227,10 +16545,10 @@ var require_SeededTrackedInteractionEvent = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "description": value.description,
         "element": value.element,
-        "identifier_description_pair": (0, _1.SeededTrackedInteractionEventIdentifierDescriptionPairsToJSON)(value.identifierDescriptionPair)
+        "identifier_description_pair": (0, index_1.SeededTrackedInteractionEventIdentifierDescriptionPairsToJSON)(value.identifierDescriptionPair)
       };
     }
     exports.SeededTrackedInteractionEventToJSON = SeededTrackedInteractionEventToJSON4;
@@ -16244,7 +16562,7 @@ var require_SeededTrackedInteractionEventIdentifierDescriptionPairs = __commonJS
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededTrackedInteractionEventIdentifierDescriptionPairsToJSON = exports.SeededTrackedInteractionEventIdentifierDescriptionPairsFromJSONTyped = exports.SeededTrackedInteractionEventIdentifierDescriptionPairsFromJSON = exports.SeededTrackedInteractionEventIdentifierDescriptionPairsAssetsListRefreshedEnum = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     var SeededTrackedInteractionEventIdentifierDescriptionPairsAssetsListRefreshedEnum;
     (function(SeededTrackedInteractionEventIdentifierDescriptionPairsAssetsListRefreshedEnum2) {
       SeededTrackedInteractionEventIdentifierDescriptionPairsAssetsListRefreshedEnum2["TheAssetsListWasRefreshedThroughUiElement"] = "the_assets_list_was_refreshed_through_ui_element";
@@ -16258,7 +16576,7 @@ var require_SeededTrackedInteractionEventIdentifierDescriptionPairs = __commonJS
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "assetsListRefreshed": !(0, runtime_1.exists)(json, "assets_list_refreshed") ? void 0 : json["assets_list_refreshed"]
       };
     }
@@ -16271,7 +16589,7 @@ var require_SeededTrackedInteractionEventIdentifierDescriptionPairs = __commonJS
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "assets_list_refreshed": value.assetsListRefreshed
       };
     }
@@ -16286,7 +16604,7 @@ var require_SeededTrackedKeyboardEvent = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededTrackedKeyboardEventToJSON = exports.SeededTrackedKeyboardEventFromJSONTyped = exports.SeededTrackedKeyboardEventFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededTrackedKeyboardEventFromJSON5(json) {
       return SeededTrackedKeyboardEventFromJSONTyped6(json, false);
     }
@@ -16296,10 +16614,10 @@ var require_SeededTrackedKeyboardEvent = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "description": json["description"],
         "shortcut": json["shortcut"],
-        "identifierDescriptionPair": !(0, runtime_1.exists)(json, "identifier_description_pair") ? void 0 : (0, _1.SeededTrackedKeyboardEventIdentifierDescriptionPairsFromJSON)(json["identifier_description_pair"])
+        "identifierDescriptionPair": !(0, runtime_1.exists)(json, "identifier_description_pair") ? void 0 : (0, index_1.SeededTrackedKeyboardEventIdentifierDescriptionPairsFromJSON)(json["identifier_description_pair"])
       };
     }
     exports.SeededTrackedKeyboardEventFromJSONTyped = SeededTrackedKeyboardEventFromJSONTyped6;
@@ -16311,10 +16629,10 @@ var require_SeededTrackedKeyboardEvent = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "description": value.description,
         "shortcut": value.shortcut,
-        "identifier_description_pair": (0, _1.SeededTrackedKeyboardEventIdentifierDescriptionPairsToJSON)(value.identifierDescriptionPair)
+        "identifier_description_pair": (0, index_1.SeededTrackedKeyboardEventIdentifierDescriptionPairsToJSON)(value.identifierDescriptionPair)
       };
     }
     exports.SeededTrackedKeyboardEventToJSON = SeededTrackedKeyboardEventToJSON4;
@@ -16328,7 +16646,7 @@ var require_SeededTrackedKeyboardEventIdentifierDescriptionPairs = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededTrackedKeyboardEventIdentifierDescriptionPairsToJSON = exports.SeededTrackedKeyboardEventIdentifierDescriptionPairsFromJSONTyped = exports.SeededTrackedKeyboardEventIdentifierDescriptionPairsFromJSON = exports.SeededTrackedKeyboardEventIdentifierDescriptionPairsAssetsListRefreshedEnum = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     var SeededTrackedKeyboardEventIdentifierDescriptionPairsAssetsListRefreshedEnum;
     (function(SeededTrackedKeyboardEventIdentifierDescriptionPairsAssetsListRefreshedEnum2) {
       SeededTrackedKeyboardEventIdentifierDescriptionPairsAssetsListRefreshedEnum2["TheAssetsListWasRefreshedThroughAKeyboardShortcut"] = "the_assets_list_was_refreshed_through_a_keyboard_shortcut";
@@ -16342,7 +16660,7 @@ var require_SeededTrackedKeyboardEventIdentifierDescriptionPairs = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "assetsListRefreshed": !(0, runtime_1.exists)(json, "assets_list_refreshed") ? void 0 : json["assets_list_refreshed"]
       };
     }
@@ -16355,7 +16673,7 @@ var require_SeededTrackedKeyboardEventIdentifierDescriptionPairs = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "assets_list_refreshed": value.assetsListRefreshed
       };
     }
@@ -16370,7 +16688,7 @@ var require_SeededTrackedMachineLearningEvent = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededTrackedMachineLearningEventToJSON = exports.SeededTrackedMachineLearningEventFromJSONTyped = exports.SeededTrackedMachineLearningEventFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededTrackedMachineLearningEventFromJSON4(json) {
       return SeededTrackedMachineLearningEventFromJSONTyped6(json, false);
     }
@@ -16380,9 +16698,9 @@ var require_SeededTrackedMachineLearningEvent = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "tlp": !(0, runtime_1.exists)(json, "tlp") ? void 0 : (0, _1.TLPMachineLearningProcessingEventFromJSON)(json["tlp"]),
-        "graphical": !(0, runtime_1.exists)(json, "graphical") ? void 0 : (0, _1.GraphicalMachineLearningProcessingEventFromJSON)(json["graphical"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "tlp": !(0, runtime_1.exists)(json, "tlp") ? void 0 : (0, index_1.TLPMachineLearningProcessingEventFromJSON)(json["tlp"]),
+        "graphical": !(0, runtime_1.exists)(json, "graphical") ? void 0 : (0, index_1.GraphicalMachineLearningProcessingEventFromJSON)(json["graphical"])
       };
     }
     exports.SeededTrackedMachineLearningEventFromJSONTyped = SeededTrackedMachineLearningEventFromJSONTyped6;
@@ -16394,9 +16712,9 @@ var require_SeededTrackedMachineLearningEvent = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "tlp": (0, _1.TLPMachineLearningProcessingEventToJSON)(value.tlp),
-        "graphical": (0, _1.GraphicalMachineLearningProcessingEventToJSON)(value.graphical)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "tlp": (0, index_1.TLPMachineLearningProcessingEventToJSON)(value.tlp),
+        "graphical": (0, index_1.GraphicalMachineLearningProcessingEventToJSON)(value.graphical)
       };
     }
     exports.SeededTrackedMachineLearningEventToJSON = SeededTrackedMachineLearningEventToJSON4;
@@ -16410,7 +16728,7 @@ var require_SeededTrackedSessionEvent = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededTrackedSessionEventToJSON = exports.SeededTrackedSessionEventFromJSONTyped = exports.SeededTrackedSessionEventFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededTrackedSessionEventFromJSON4(json) {
       return SeededTrackedSessionEventFromJSONTyped6(json, false);
     }
@@ -16420,8 +16738,8 @@ var require_SeededTrackedSessionEvent = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "identifierDescriptionPair": (0, _1.TrackedSessionEventIdentifierDescriptionPairsFromJSON)(json["identifier_description_pair"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "identifierDescriptionPair": (0, index_1.TrackedSessionEventIdentifierDescriptionPairsFromJSON)(json["identifier_description_pair"])
       };
     }
     exports.SeededTrackedSessionEventFromJSONTyped = SeededTrackedSessionEventFromJSONTyped6;
@@ -16433,8 +16751,8 @@ var require_SeededTrackedSessionEvent = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "identifier_description_pair": (0, _1.TrackedSessionEventIdentifierDescriptionPairsToJSON)(value.identifierDescriptionPair)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "identifier_description_pair": (0, index_1.TrackedSessionEventIdentifierDescriptionPairsToJSON)(value.identifierDescriptionPair)
       };
     }
     exports.SeededTrackedSessionEventToJSON = SeededTrackedSessionEventToJSON4;
@@ -16448,7 +16766,7 @@ var require_SeededUltraSuiteAsset = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededUltraSuiteAssetToJSON = exports.SeededUltraSuiteAssetFromJSONTyped = exports.SeededUltraSuiteAssetFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededUltraSuiteAssetFromJSON2(json) {
       return SeededUltraSuiteAssetFromJSONTyped(json, false);
     }
@@ -16458,10 +16776,10 @@ var require_SeededUltraSuiteAsset = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "name": !(0, runtime_1.exists)(json, "name") ? void 0 : json["name"],
-        "ext": !(0, runtime_1.exists)(json, "ext") ? void 0 : (0, _1.ClassificationSpecificEnumFromJSON)(json["ext"]),
-        "format": (0, _1.SeededFormatFromJSON)(json["format"]),
+        "ext": !(0, runtime_1.exists)(json, "ext") ? void 0 : (0, index_1.ClassificationSpecificEnumFromJSON)(json["ext"]),
+        "format": (0, index_1.SeededFormatFromJSON)(json["format"]),
         "description": !(0, runtime_1.exists)(json, "description") ? void 0 : json["description"]
       };
     }
@@ -16474,10 +16792,10 @@ var require_SeededUltraSuiteAsset = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "name": value.name,
-        "ext": (0, _1.ClassificationSpecificEnumToJSON)(value.ext),
-        "format": (0, _1.SeededFormatToJSON)(value.format),
+        "ext": (0, index_1.ClassificationSpecificEnumToJSON)(value.ext),
+        "format": (0, index_1.SeededFormatToJSON)(value.format),
         "description": value.description
       };
     }
@@ -16492,7 +16810,7 @@ var require_SeededUser = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededUserToJSON = exports.SeededUserFromJSONTyped = exports.SeededUserFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeededUserFromJSON3(json) {
       return SeededUserFromJSONTyped7(json, false);
     }
@@ -16502,7 +16820,7 @@ var require_SeededUser = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "emails": json["emails"]
       };
     }
@@ -16515,7 +16833,7 @@ var require_SeededUser = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "emails": value.emails
       };
     }
@@ -16530,27 +16848,26 @@ var require_SeededWebsite = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededWebsiteToJSON = exports.SeededWebsiteFromJSONTyped = exports.SeededWebsiteFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
-    function SeededWebsiteFromJSON5(json) {
-      return SeededWebsiteFromJSONTyped6(json, false);
+    var index_1 = require_models();
+    function SeededWebsiteFromJSON2(json) {
+      return SeededWebsiteFromJSONTyped(json, false);
     }
-    exports.SeededWebsiteFromJSON = SeededWebsiteFromJSON5;
-    function SeededWebsiteFromJSONTyped6(json, ignoreDiscriminator) {
+    exports.SeededWebsiteFromJSON = SeededWebsiteFromJSON2;
+    function SeededWebsiteFromJSONTyped(json, ignoreDiscriminator) {
       if (json === void 0 || json === null) {
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : json["asset"],
         "url": json["url"],
         "name": json["name"],
-        "format": !(0, runtime_1.exists)(json, "format") ? void 0 : json["format"],
-        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, _1.MechanismEnumFromJSON)(json["mechanism"]),
+        "mechanism": !(0, runtime_1.exists)(json, "mechanism") ? void 0 : (0, index_1.MechanismEnumFromJSON)(json["mechanism"]),
         "person": !(0, runtime_1.exists)(json, "person") ? void 0 : json["person"]
       };
     }
-    exports.SeededWebsiteFromJSONTyped = SeededWebsiteFromJSONTyped6;
-    function SeededWebsiteToJSON4(value) {
+    exports.SeededWebsiteFromJSONTyped = SeededWebsiteFromJSONTyped;
+    function SeededWebsiteToJSON2(value) {
       if (value === void 0) {
         return void 0;
       }
@@ -16558,16 +16875,15 @@ var require_SeededWebsite = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "asset": value.asset,
         "url": value.url,
         "name": value.name,
-        "format": value.format,
-        "mechanism": (0, _1.MechanismEnumToJSON)(value.mechanism),
+        "mechanism": (0, index_1.MechanismEnumToJSON)(value.mechanism),
         "person": value.person
       };
     }
-    exports.SeededWebsiteToJSON = SeededWebsiteToJSON4;
+    exports.SeededWebsiteToJSON = SeededWebsiteToJSON2;
   }
 });
 
@@ -16578,7 +16894,7 @@ var require_Seeds = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeedsToJSON = exports.SeedsFromJSONTyped = exports.SeedsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SeedsFromJSON3(json) {
       return SeedsFromJSONTyped3(json, false);
     }
@@ -16588,8 +16904,8 @@ var require_Seeds = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.SeedFromJSON)
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.SeedFromJSON)
       };
     }
     exports.SeedsFromJSONTyped = SeedsFromJSONTyped3;
@@ -16601,8 +16917,8 @@ var require_Seeds = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.SeedToJSON)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.SeedToJSON)
       };
     }
     exports.SeedsToJSON = SeedsToJSON4;
@@ -16616,7 +16932,7 @@ var require_Sensitive = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SensitiveToJSON = exports.SensitiveFromJSONTyped = exports.SensitiveFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SensitiveFromJSON4(json) {
       return SensitiveFromJSONTyped6(json, false);
     }
@@ -16626,21 +16942,21 @@ var require_Sensitive = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
-        "asset": (0, _1.FlattenedAssetFromJSON)(json["asset"]),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
+        "asset": (0, index_1.FlattenedAssetFromJSON)(json["asset"]),
         "text": json["text"],
-        "mechanism": (0, _1.MechanismEnumFromJSON)(json["mechanism"]),
-        "category": (0, _1.SensitiveCategoryEnumFromJSON)(json["category"]),
-        "severity": (0, _1.SensitiveSeverityEnumFromJSON)(json["severity"]),
+        "mechanism": (0, index_1.MechanismEnumFromJSON)(json["mechanism"]),
+        "category": (0, index_1.SensitiveCategoryEnumFromJSON)(json["category"]),
+        "severity": (0, index_1.SensitiveSeverityEnumFromJSON)(json["severity"]),
         "name": json["name"],
         "description": json["description"],
-        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, _1.SensitiveMetadataFromJSON)(json["metadata"]),
+        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, index_1.SensitiveMetadataFromJSON)(json["metadata"]),
         "interactions": !(0, runtime_1.exists)(json, "interactions") ? void 0 : json["interactions"],
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.SensitiveFromJSONTyped = SensitiveFromJSONTyped6;
@@ -16652,21 +16968,21 @@ var require_Sensitive = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
-        "asset": (0, _1.FlattenedAssetToJSON)(value.asset),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
+        "asset": (0, index_1.FlattenedAssetToJSON)(value.asset),
         "text": value.text,
-        "mechanism": (0, _1.MechanismEnumToJSON)(value.mechanism),
-        "category": (0, _1.SensitiveCategoryEnumToJSON)(value.category),
-        "severity": (0, _1.SensitiveSeverityEnumToJSON)(value.severity),
+        "mechanism": (0, index_1.MechanismEnumToJSON)(value.mechanism),
+        "category": (0, index_1.SensitiveCategoryEnumToJSON)(value.category),
+        "severity": (0, index_1.SensitiveSeverityEnumToJSON)(value.severity),
         "name": value.name,
         "description": value.description,
-        "metadata": (0, _1.SensitiveMetadataToJSON)(value.metadata),
+        "metadata": (0, index_1.SensitiveMetadataToJSON)(value.metadata),
         "interactions": value.interactions,
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.SensitiveToJSON = SensitiveToJSON5;
@@ -16717,7 +17033,7 @@ var require_SensitiveMetadata = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SensitiveMetadataToJSON = exports.SensitiveMetadataFromJSONTyped = exports.SensitiveMetadataFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SensitiveMetadataFromJSON4(json) {
       return SensitiveMetadataFromJSONTyped16(json, false);
     }
@@ -16727,8 +17043,8 @@ var require_SensitiveMetadata = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "match": !(0, runtime_1.exists)(json, "match") ? void 0 : (0, _1.TextMatchFromJSON)(json["match"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "match": !(0, runtime_1.exists)(json, "match") ? void 0 : (0, index_1.TextMatchFromJSON)(json["match"]),
         "entropy": !(0, runtime_1.exists)(json, "entropy") ? void 0 : json["entropy"]
       };
     }
@@ -16741,8 +17057,8 @@ var require_SensitiveMetadata = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "match": (0, _1.TextMatchToJSON)(value.match),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "match": (0, index_1.TextMatchToJSON)(value.match),
         "entropy": value.entropy
       };
     }
@@ -16784,7 +17100,7 @@ var require_Sensitives = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SensitivesToJSON = exports.SensitivesFromJSONTyped = exports.SensitivesFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SensitivesFromJSON4(json) {
       return SensitivesFromJSONTyped6(json, false);
     }
@@ -16794,9 +17110,9 @@ var require_Sensitives = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.SensitiveFromJSON),
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.SensitiveFromJSON),
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.SensitivesFromJSONTyped = SensitivesFromJSONTyped6;
@@ -16808,9 +17124,9 @@ var require_Sensitives = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.SensitiveToJSON),
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.SensitiveToJSON),
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.SensitivesToJSON = SensitivesToJSON5;
@@ -16824,7 +17140,7 @@ var require_Session = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SessionToJSON = exports.SessionFromJSONTyped = exports.SessionFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SessionFromJSON2(json) {
       return SessionFromJSONTyped(json, false);
     }
@@ -16835,8 +17151,8 @@ var require_Session = __commonJS({
       }
       return {
         "id": json["id"],
-        "opened": (0, _1.GroupedTimestampFromJSON)(json["opened"]),
-        "closed": !(0, runtime_1.exists)(json, "closed") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["closed"])
+        "opened": (0, index_1.GroupedTimestampFromJSON)(json["opened"]),
+        "closed": !(0, runtime_1.exists)(json, "closed") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["closed"])
       };
     }
     exports.SessionFromJSONTyped = SessionFromJSONTyped;
@@ -16849,8 +17165,8 @@ var require_Session = __commonJS({
       }
       return {
         "id": value.id,
-        "opened": (0, _1.GroupedTimestampToJSON)(value.opened),
-        "closed": (0, _1.GroupedTimestampToJSON)(value.closed)
+        "opened": (0, index_1.GroupedTimestampToJSON)(value.opened),
+        "closed": (0, index_1.GroupedTimestampToJSON)(value.closed)
       };
     }
     exports.SessionToJSON = SessionToJSON2;
@@ -16864,7 +17180,7 @@ var require_Share = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ShareToJSON = exports.ShareFromJSONTyped = exports.ShareFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ShareFromJSON4(json) {
       return ShareFromJSONTyped6(json, false);
     }
@@ -16874,19 +17190,19 @@ var require_Share = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
         "user": !(0, runtime_1.exists)(json, "user") ? void 0 : json["user"],
-        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, _1.FlattenedAssetFromJSON)(json["asset"]),
-        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, _1.FlattenedAssetsFromJSON)(json["assets"]),
+        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, index_1.FlattenedAssetFromJSON)(json["asset"]),
+        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, index_1.FlattenedAssetsFromJSON)(json["assets"]),
         "link": json["link"],
-        "access": (0, _1.AccessEnumFromJSON)(json["access"]),
-        "accessors": (0, _1.AccessorsFromJSON)(json["accessors"]),
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
+        "access": (0, index_1.AccessEnumFromJSON)(json["access"]),
+        "accessors": (0, index_1.AccessorsFromJSON)(json["accessors"]),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
         "_short": json["short"],
         "name": !(0, runtime_1.exists)(json, "name") ? void 0 : json["name"],
-        "distributions": !(0, runtime_1.exists)(json, "distributions") ? void 0 : (0, _1.DistributionsFromJSON)(json["distributions"]),
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "distributions": !(0, runtime_1.exists)(json, "distributions") ? void 0 : (0, index_1.DistributionsFromJSON)(json["distributions"]),
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.ShareFromJSONTyped = ShareFromJSONTyped6;
@@ -16898,19 +17214,19 @@ var require_Share = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
         "user": value.user,
-        "asset": (0, _1.FlattenedAssetToJSON)(value.asset),
-        "assets": (0, _1.FlattenedAssetsToJSON)(value.assets),
+        "asset": (0, index_1.FlattenedAssetToJSON)(value.asset),
+        "assets": (0, index_1.FlattenedAssetsToJSON)(value.assets),
         "link": value.link,
-        "access": (0, _1.AccessEnumToJSON)(value.access),
-        "accessors": (0, _1.AccessorsToJSON)(value.accessors),
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
+        "access": (0, index_1.AccessEnumToJSON)(value.access),
+        "accessors": (0, index_1.AccessorsToJSON)(value.accessors),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
         "short": value._short,
         "name": value.name,
-        "distributions": (0, _1.DistributionsToJSON)(value.distributions),
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "distributions": (0, index_1.DistributionsToJSON)(value.distributions),
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.ShareToJSON = ShareToJSON5;
@@ -16924,7 +17240,7 @@ var require_Shares = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SharesToJSON = exports.SharesFromJSONTyped = exports.SharesFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function SharesFromJSON4(json) {
       return SharesFromJSONTyped6(json, false);
     }
@@ -16934,9 +17250,9 @@ var require_Shares = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.ShareFromJSON),
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.ShareFromJSON),
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.SharesFromJSONTyped = SharesFromJSONTyped6;
@@ -16948,9 +17264,9 @@ var require_Shares = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.ShareToJSON),
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.ShareToJSON),
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.SharesToJSON = SharesToJSON6;
@@ -17001,7 +17317,7 @@ var require_StreamedIdentifier = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.StreamedIdentifierToJSON = exports.StreamedIdentifierFromJSONTyped = exports.StreamedIdentifierFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function StreamedIdentifierFromJSON3(json) {
       return StreamedIdentifierFromJSONTyped4(json, false);
     }
@@ -17011,8 +17327,8 @@ var require_StreamedIdentifier = __commonJS({
         return json;
       }
       return {
-        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, _1.ReferencedAssetFromJSON)(json["asset"]),
-        "conversation": !(0, runtime_1.exists)(json, "conversation") ? void 0 : (0, _1.ReferencedConversationFromJSON)(json["conversation"]),
+        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, index_1.ReferencedAssetFromJSON)(json["asset"]),
+        "conversation": !(0, runtime_1.exists)(json, "conversation") ? void 0 : (0, index_1.ReferencedConversationFromJSON)(json["conversation"]),
         "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : json["deleted"]
       };
     }
@@ -17025,8 +17341,8 @@ var require_StreamedIdentifier = __commonJS({
         return null;
       }
       return {
-        "asset": (0, _1.ReferencedAssetToJSON)(value.asset),
-        "conversation": (0, _1.ReferencedConversationToJSON)(value.conversation),
+        "asset": (0, index_1.ReferencedAssetToJSON)(value.asset),
+        "conversation": (0, index_1.ReferencedConversationToJSON)(value.conversation),
         "deleted": value.deleted
       };
     }
@@ -17041,7 +17357,7 @@ var require_StreamedIdentifiers = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.StreamedIdentifiersToJSON = exports.StreamedIdentifiersFromJSONTyped = exports.StreamedIdentifiersFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function StreamedIdentifiersFromJSON2(json) {
       return StreamedIdentifiersFromJSONTyped2(json, false);
     }
@@ -17051,8 +17367,8 @@ var require_StreamedIdentifiers = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.StreamedIdentifierFromJSON)
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.StreamedIdentifierFromJSON)
       };
     }
     exports.StreamedIdentifiersFromJSONTyped = StreamedIdentifiersFromJSONTyped2;
@@ -17064,11 +17380,97 @@ var require_StreamedIdentifiers = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.StreamedIdentifierToJSON)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.StreamedIdentifierToJSON)
       };
     }
     exports.StreamedIdentifiersToJSON = StreamedIdentifiersToJSON2;
+  }
+});
+
+// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Suggestion.js
+var require_Suggestion = __commonJS({
+  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Suggestion.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.SuggestionToJSON = exports.SuggestionFromJSONTyped = exports.SuggestionFromJSON = void 0;
+    var runtime_1 = require_runtime();
+    var index_1 = require_models();
+    function SuggestionFromJSON3(json) {
+      return SuggestionFromJSONTyped2(json, false);
+    }
+    exports.SuggestionFromJSON = SuggestionFromJSON3;
+    function SuggestionFromJSONTyped2(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "reuse": (0, index_1.ReuseSuggestionFromJSON)(json["reuse"]),
+        "save": (0, index_1.SaveSuggestionFromJSON)(json["save"]),
+        "target": (0, index_1.SuggestionTargetFromJSON)(json["target"]),
+        "assets": (0, index_1.AssetsFromJSON)(json["assets"]),
+        "distribution": !(0, runtime_1.exists)(json, "distribution") ? void 0 : json["distribution"]
+      };
+    }
+    exports.SuggestionFromJSONTyped = SuggestionFromJSONTyped2;
+    function SuggestionToJSON3(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "reuse": (0, index_1.ReuseSuggestionToJSON)(value.reuse),
+        "save": (0, index_1.SaveSuggestionToJSON)(value.save),
+        "target": (0, index_1.SuggestionTargetToJSON)(value.target),
+        "assets": (0, index_1.AssetsToJSON)(value.assets),
+        "distribution": value.distribution
+      };
+    }
+    exports.SuggestionToJSON = SuggestionToJSON3;
+  }
+});
+
+// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SuggestionTarget.js
+var require_SuggestionTarget = __commonJS({
+  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SuggestionTarget.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.SuggestionTargetToJSON = exports.SuggestionTargetFromJSONTyped = exports.SuggestionTargetFromJSON = void 0;
+    var runtime_1 = require_runtime();
+    var index_1 = require_models();
+    function SuggestionTargetFromJSON4(json) {
+      return SuggestionTargetFromJSONTyped5(json, false);
+    }
+    exports.SuggestionTargetFromJSON = SuggestionTargetFromJSON4;
+    function SuggestionTargetFromJSONTyped5(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "seed": (0, index_1.SeededConnectorCreationFromJSON)(json["seed"]),
+        "vector": json["vector"]
+      };
+    }
+    exports.SuggestionTargetFromJSONTyped = SuggestionTargetFromJSONTyped5;
+    function SuggestionTargetToJSON4(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "seed": (0, index_1.SeededConnectorCreationToJSON)(value.seed),
+        "vector": value.vector
+      };
+    }
+    exports.SuggestionTargetToJSON = SuggestionTargetToJSON4;
   }
 });
 
@@ -17116,7 +17518,7 @@ var require_SystemExecutionInformation = __commonJS({
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SystemExecutionInformationToJSON = exports.SystemExecutionInformationFromJSONTyped = exports.SystemExecutionInformationFromJSON = void 0;
-    var _1 = require_models();
+    var index_1 = require_models();
     function SystemExecutionInformationFromJSON4(json) {
       return SystemExecutionInformationFromJSONTyped6(json, false);
     }
@@ -17129,7 +17531,7 @@ var require_SystemExecutionInformation = __commonJS({
         "memory": json["memory"],
         "os": json["os"],
         "kernel": json["kernel"],
-        "cpu": (0, _1.SystemExecutionCpuInformationFromJSON)(json["cpu"])
+        "cpu": (0, index_1.SystemExecutionCpuInformationFromJSON)(json["cpu"])
       };
     }
     exports.SystemExecutionInformationFromJSONTyped = SystemExecutionInformationFromJSONTyped6;
@@ -17144,7 +17546,7 @@ var require_SystemExecutionInformation = __commonJS({
         "memory": value.memory,
         "os": value.os,
         "kernel": value.kernel,
-        "cpu": (0, _1.SystemExecutionCpuInformationToJSON)(value.cpu)
+        "cpu": (0, index_1.SystemExecutionCpuInformationToJSON)(value.cpu)
       };
     }
     exports.SystemExecutionInformationToJSON = SystemExecutionInformationToJSON4;
@@ -17158,7 +17560,7 @@ var require_TLPCodeDirectoryAnalytics = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeDirectoryAnalyticsToJSON = exports.TLPCodeDirectoryAnalyticsFromJSONTyped = exports.TLPCodeDirectoryAnalyticsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TLPCodeDirectoryAnalyticsFromJSON4(json) {
       return TLPCodeDirectoryAnalyticsFromJSONTyped6(json, false);
     }
@@ -17168,7 +17570,7 @@ var require_TLPCodeDirectoryAnalytics = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": !(0, runtime_1.exists)(json, "id") ? void 0 : json["id"]
       };
     }
@@ -17181,7 +17583,7 @@ var require_TLPCodeDirectoryAnalytics = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id
       };
     }
@@ -17196,7 +17598,7 @@ var require_TLPCodeFileAnalytics = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeFileAnalyticsToJSON = exports.TLPCodeFileAnalyticsFromJSONTyped = exports.TLPCodeFileAnalyticsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TLPCodeFileAnalyticsFromJSON4(json) {
       return TLPCodeFileAnalyticsFromJSONTyped6(json, false);
     }
@@ -17206,7 +17608,7 @@ var require_TLPCodeFileAnalytics = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": !(0, runtime_1.exists)(json, "id") ? void 0 : json["id"]
       };
     }
@@ -17219,7 +17621,7 @@ var require_TLPCodeFileAnalytics = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id
       };
     }
@@ -17234,7 +17636,7 @@ var require_TLPCodeFragmentClassification = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeFragmentClassificationToJSON = exports.TLPCodeFragmentClassificationFromJSONTyped = exports.TLPCodeFragmentClassificationFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TLPCodeFragmentClassificationFromJSON4(json) {
       return TLPCodeFragmentClassificationFromJSONTyped6(json, false);
     }
@@ -17244,7 +17646,7 @@ var require_TLPCodeFragmentClassification = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "asset": json["asset"],
         "model": json["model"],
         "created": json["created"],
@@ -17252,10 +17654,10 @@ var require_TLPCodeFragmentClassification = __commonJS({
         "probability": json["probability"],
         "context": json["context"],
         "distribution": !(0, runtime_1.exists)(json, "distribution") ? void 0 : json["distribution"],
-        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, _1.TLPCodeFragmentClassificationMetadataFromJSON)(json["metadata"]),
+        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, index_1.TLPCodeFragmentClassificationMetadataFromJSON)(json["metadata"]),
         "user": json["user"],
         "latency": !(0, runtime_1.exists)(json, "latency") ? void 0 : json["latency"],
-        "system": !(0, runtime_1.exists)(json, "system") ? void 0 : (0, _1.SystemExecutionInformationFromJSON)(json["system"])
+        "system": !(0, runtime_1.exists)(json, "system") ? void 0 : (0, index_1.SystemExecutionInformationFromJSON)(json["system"])
       };
     }
     exports.TLPCodeFragmentClassificationFromJSONTyped = TLPCodeFragmentClassificationFromJSONTyped6;
@@ -17267,7 +17669,7 @@ var require_TLPCodeFragmentClassification = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "asset": value.asset,
         "model": value.model,
         "created": value.created,
@@ -17275,10 +17677,10 @@ var require_TLPCodeFragmentClassification = __commonJS({
         "probability": value.probability,
         "context": value.context,
         "distribution": value.distribution,
-        "metadata": (0, _1.TLPCodeFragmentClassificationMetadataToJSON)(value.metadata),
+        "metadata": (0, index_1.TLPCodeFragmentClassificationMetadataToJSON)(value.metadata),
         "user": value.user,
         "latency": value.latency,
-        "system": (0, _1.SystemExecutionInformationToJSON)(value.system)
+        "system": (0, index_1.SystemExecutionInformationToJSON)(value.system)
       };
     }
     exports.TLPCodeFragmentClassificationToJSON = TLPCodeFragmentClassificationToJSON4;
@@ -17292,7 +17694,7 @@ var require_TLPCodeFragmentClassificationMetadata = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeFragmentClassificationMetadataToJSON = exports.TLPCodeFragmentClassificationMetadataFromJSONTyped = exports.TLPCodeFragmentClassificationMetadataFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TLPCodeFragmentClassificationMetadataFromJSON4(json) {
       return TLPCodeFragmentClassificationMetadataFromJSONTyped6(json, false);
     }
@@ -17302,9 +17704,9 @@ var require_TLPCodeFragmentClassificationMetadata = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "context": !(0, runtime_1.exists)(json, "context") ? void 0 : (0, _1.ClassificationFromJSON)(json["context"]),
-        "prior": !(0, runtime_1.exists)(json, "prior") ? void 0 : (0, _1.ClassificationFromJSON)(json["prior"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "context": !(0, runtime_1.exists)(json, "context") ? void 0 : (0, index_1.ClassificationFromJSON)(json["context"]),
+        "prior": !(0, runtime_1.exists)(json, "prior") ? void 0 : (0, index_1.ClassificationFromJSON)(json["prior"])
       };
     }
     exports.TLPCodeFragmentClassificationMetadataFromJSONTyped = TLPCodeFragmentClassificationMetadataFromJSONTyped6;
@@ -17316,9 +17718,9 @@ var require_TLPCodeFragmentClassificationMetadata = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "context": (0, _1.ClassificationToJSON)(value.context),
-        "prior": (0, _1.ClassificationToJSON)(value.prior)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "context": (0, index_1.ClassificationToJSON)(value.context),
+        "prior": (0, index_1.ClassificationToJSON)(value.prior)
       };
     }
     exports.TLPCodeFragmentClassificationMetadataToJSON = TLPCodeFragmentClassificationMetadataToJSON4;
@@ -17381,7 +17783,7 @@ var require_TLPCodeFragmentDescriptiveStatistics = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeFragmentDescriptiveStatisticsToJSON = exports.TLPCodeFragmentDescriptiveStatisticsFromJSONTyped = exports.TLPCodeFragmentDescriptiveStatisticsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TLPCodeFragmentDescriptiveStatisticsFromJSON4(json) {
       return TLPCodeFragmentDescriptiveStatisticsFromJSONTyped6(json, false);
     }
@@ -17391,7 +17793,7 @@ var require_TLPCodeFragmentDescriptiveStatistics = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "user": json["user"],
         "os": json["os"],
         "language": json["language"],
@@ -17412,7 +17814,7 @@ var require_TLPCodeFragmentDescriptiveStatistics = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "user": value.user,
         "os": value.os,
         "language": value.language,
@@ -17435,7 +17837,7 @@ var require_TLPCodeFragmentReclassification = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeFragmentReclassificationToJSON = exports.TLPCodeFragmentReclassificationFromJSONTyped = exports.TLPCodeFragmentReclassificationFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TLPCodeFragmentReclassificationFromJSON4(json) {
       return TLPCodeFragmentReclassificationFromJSONTyped6(json, false);
     }
@@ -17445,11 +17847,11 @@ var require_TLPCodeFragmentReclassification = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "asset": json["asset"],
         "model": json["model"],
         "created": json["created"],
-        "updates": (0, _1.TLPCodeFragmentReclassificationUpdatesFromJSON)(json["updates"]),
+        "updates": (0, index_1.TLPCodeFragmentReclassificationUpdatesFromJSON)(json["updates"]),
         "user": json["user"],
         "context": json["context"]
       };
@@ -17463,11 +17865,11 @@ var require_TLPCodeFragmentReclassification = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "asset": value.asset,
         "model": value.model,
         "created": value.created,
-        "updates": (0, _1.TLPCodeFragmentReclassificationUpdatesToJSON)(value.updates),
+        "updates": (0, index_1.TLPCodeFragmentReclassificationUpdatesToJSON)(value.updates),
         "user": value.user,
         "context": value.context
       };
@@ -17483,7 +17885,7 @@ var require_TLPCodeFragmentReclassificationUpdates = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeFragmentReclassificationUpdatesToJSON = exports.TLPCodeFragmentReclassificationUpdatesFromJSONTyped = exports.TLPCodeFragmentReclassificationUpdatesFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TLPCodeFragmentReclassificationUpdatesFromJSON4(json) {
       return TLPCodeFragmentReclassificationUpdatesFromJSONTyped6(json, false);
     }
@@ -17493,9 +17895,9 @@ var require_TLPCodeFragmentReclassificationUpdates = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "previous": (0, _1.ClassificationFromJSON)(json["previous"]),
-        "current": (0, _1.ClassificationFromJSON)(json["current"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "previous": (0, index_1.ClassificationFromJSON)(json["previous"]),
+        "current": (0, index_1.ClassificationFromJSON)(json["current"])
       };
     }
     exports.TLPCodeFragmentReclassificationUpdatesFromJSONTyped = TLPCodeFragmentReclassificationUpdatesFromJSONTyped6;
@@ -17507,9 +17909,9 @@ var require_TLPCodeFragmentReclassificationUpdates = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "previous": (0, _1.ClassificationToJSON)(value.previous),
-        "current": (0, _1.ClassificationToJSON)(value.current)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "previous": (0, index_1.ClassificationToJSON)(value.previous),
+        "current": (0, index_1.ClassificationToJSON)(value.current)
       };
     }
     exports.TLPCodeFragmentReclassificationUpdatesToJSON = TLPCodeFragmentReclassificationUpdatesToJSON4;
@@ -17523,7 +17925,7 @@ var require_TLPCodeFragmentStatistics = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeFragmentStatisticsToJSON = exports.TLPCodeFragmentStatisticsFromJSONTyped = exports.TLPCodeFragmentStatisticsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TLPCodeFragmentStatisticsFromJSON4(json) {
       return TLPCodeFragmentStatisticsFromJSONTyped6(json, false);
     }
@@ -17533,8 +17935,8 @@ var require_TLPCodeFragmentStatistics = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "descriptive": !(0, runtime_1.exists)(json, "descriptive") ? void 0 : (0, _1.TLPCodeFragmentDescriptiveStatisticsFromJSON)(json["descriptive"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "descriptive": !(0, runtime_1.exists)(json, "descriptive") ? void 0 : (0, index_1.TLPCodeFragmentDescriptiveStatisticsFromJSON)(json["descriptive"])
       };
     }
     exports.TLPCodeFragmentStatisticsFromJSONTyped = TLPCodeFragmentStatisticsFromJSONTyped6;
@@ -17546,8 +17948,8 @@ var require_TLPCodeFragmentStatistics = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "descriptive": (0, _1.TLPCodeFragmentDescriptiveStatisticsToJSON)(value.descriptive)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "descriptive": (0, index_1.TLPCodeFragmentDescriptiveStatisticsToJSON)(value.descriptive)
       };
     }
     exports.TLPCodeFragmentStatisticsToJSON = TLPCodeFragmentStatisticsToJSON4;
@@ -17561,7 +17963,7 @@ var require_TLPCodeFragmentSuggestedReuse = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeFragmentSuggestedReuseToJSON = exports.TLPCodeFragmentSuggestedReuseFromJSONTyped = exports.TLPCodeFragmentSuggestedReuseFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TLPCodeFragmentSuggestedReuseFromJSON4(json) {
       return TLPCodeFragmentSuggestedReuseFromJSONTyped6(json, false);
     }
@@ -17571,7 +17973,7 @@ var require_TLPCodeFragmentSuggestedReuse = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": !(0, runtime_1.exists)(json, "id") ? void 0 : json["id"]
       };
     }
@@ -17584,7 +17986,7 @@ var require_TLPCodeFragmentSuggestedReuse = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id
       };
     }
@@ -17599,7 +18001,7 @@ var require_TLPCodeFragmentSuggestedSave = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeFragmentSuggestedSaveToJSON = exports.TLPCodeFragmentSuggestedSaveFromJSONTyped = exports.TLPCodeFragmentSuggestedSaveFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TLPCodeFragmentSuggestedSaveFromJSON4(json) {
       return TLPCodeFragmentSuggestedSaveFromJSONTyped6(json, false);
     }
@@ -17609,7 +18011,7 @@ var require_TLPCodeFragmentSuggestedSave = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "asset": json["asset"],
         "user": json["user"],
         "model": json["model"],
@@ -17629,7 +18031,7 @@ var require_TLPCodeFragmentSuggestedSave = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "asset": value.asset,
         "user": value.user,
         "model": value.model,
@@ -17651,7 +18053,7 @@ var require_TLPCodeFragmentTagify = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeFragmentTagifyToJSON = exports.TLPCodeFragmentTagifyFromJSONTyped = exports.TLPCodeFragmentTagifyFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TLPCodeFragmentTagifyFromJSON4(json) {
       return TLPCodeFragmentTagifyFromJSONTyped6(json, false);
     }
@@ -17661,8 +18063,8 @@ var require_TLPCodeFragmentTagify = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "code": !(0, runtime_1.exists)(json, "code") ? void 0 : (0, _1.TLPCodeSnippetTagifyCodeFromJSON)(json["code"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "code": !(0, runtime_1.exists)(json, "code") ? void 0 : (0, index_1.TLPCodeSnippetTagifyCodeFromJSON)(json["code"])
       };
     }
     exports.TLPCodeFragmentTagifyFromJSONTyped = TLPCodeFragmentTagifyFromJSONTyped6;
@@ -17674,8 +18076,8 @@ var require_TLPCodeFragmentTagify = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "code": (0, _1.TLPCodeSnippetTagifyCodeToJSON)(value.code)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "code": (0, index_1.TLPCodeSnippetTagifyCodeToJSON)(value.code)
       };
     }
     exports.TLPCodeFragmentTagifyToJSON = TLPCodeFragmentTagifyToJSON4;
@@ -17689,7 +18091,7 @@ var require_TLPCodeProcessing = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeProcessingToJSON = exports.TLPCodeProcessingFromJSONTyped = exports.TLPCodeProcessingFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TLPCodeProcessingFromJSON4(json) {
       return TLPCodeProcessingFromJSONTyped6(json, false);
     }
@@ -17699,11 +18101,11 @@ var require_TLPCodeProcessing = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "fragment": !(0, runtime_1.exists)(json, "fragment") ? void 0 : (0, _1.TLPCodeSnippetAnalyticsFromJSON)(json["fragment"]),
-        "file": !(0, runtime_1.exists)(json, "file") ? void 0 : (0, _1.TLPCodeFileAnalyticsFromJSON)(json["file"]),
-        "directory": !(0, runtime_1.exists)(json, "directory") ? void 0 : (0, _1.TLPCodeDirectoryAnalyticsFromJSON)(json["directory"]),
-        "repository": !(0, runtime_1.exists)(json, "repository") ? void 0 : (0, _1.TLPCodeRepositoryAnalyticsFromJSON)(json["repository"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "fragment": !(0, runtime_1.exists)(json, "fragment") ? void 0 : (0, index_1.TLPCodeSnippetAnalyticsFromJSON)(json["fragment"]),
+        "file": !(0, runtime_1.exists)(json, "file") ? void 0 : (0, index_1.TLPCodeFileAnalyticsFromJSON)(json["file"]),
+        "directory": !(0, runtime_1.exists)(json, "directory") ? void 0 : (0, index_1.TLPCodeDirectoryAnalyticsFromJSON)(json["directory"]),
+        "repository": !(0, runtime_1.exists)(json, "repository") ? void 0 : (0, index_1.TLPCodeRepositoryAnalyticsFromJSON)(json["repository"])
       };
     }
     exports.TLPCodeProcessingFromJSONTyped = TLPCodeProcessingFromJSONTyped6;
@@ -17715,11 +18117,11 @@ var require_TLPCodeProcessing = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "fragment": (0, _1.TLPCodeSnippetAnalyticsToJSON)(value.fragment),
-        "file": (0, _1.TLPCodeFileAnalyticsToJSON)(value.file),
-        "directory": (0, _1.TLPCodeDirectoryAnalyticsToJSON)(value.directory),
-        "repository": (0, _1.TLPCodeRepositoryAnalyticsToJSON)(value.repository)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "fragment": (0, index_1.TLPCodeSnippetAnalyticsToJSON)(value.fragment),
+        "file": (0, index_1.TLPCodeFileAnalyticsToJSON)(value.file),
+        "directory": (0, index_1.TLPCodeDirectoryAnalyticsToJSON)(value.directory),
+        "repository": (0, index_1.TLPCodeRepositoryAnalyticsToJSON)(value.repository)
       };
     }
     exports.TLPCodeProcessingToJSON = TLPCodeProcessingToJSON4;
@@ -17733,7 +18135,7 @@ var require_TLPCodeRepositoryAnalytics = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeRepositoryAnalyticsToJSON = exports.TLPCodeRepositoryAnalyticsFromJSONTyped = exports.TLPCodeRepositoryAnalyticsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TLPCodeRepositoryAnalyticsFromJSON4(json) {
       return TLPCodeRepositoryAnalyticsFromJSONTyped6(json, false);
     }
@@ -17743,7 +18145,7 @@ var require_TLPCodeRepositoryAnalytics = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": !(0, runtime_1.exists)(json, "id") ? void 0 : json["id"]
       };
     }
@@ -17756,7 +18158,7 @@ var require_TLPCodeRepositoryAnalytics = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id
       };
     }
@@ -17771,7 +18173,7 @@ var require_TLPCodeSnippetAnalytics = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeSnippetAnalyticsToJSON = exports.TLPCodeSnippetAnalyticsFromJSONTyped = exports.TLPCodeSnippetAnalyticsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TLPCodeSnippetAnalyticsFromJSON4(json) {
       return TLPCodeSnippetAnalyticsFromJSONTyped6(json, false);
     }
@@ -17781,13 +18183,13 @@ var require_TLPCodeSnippetAnalytics = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "statistics": !(0, runtime_1.exists)(json, "statistics") ? void 0 : (0, _1.TLPCodeFragmentStatisticsFromJSON)(json["statistics"]),
-        "classification": !(0, runtime_1.exists)(json, "classification") ? void 0 : (0, _1.TLPCodeFragmentClassificationFromJSON)(json["classification"]),
-        "reclassification": !(0, runtime_1.exists)(json, "reclassification") ? void 0 : (0, _1.TLPCodeFragmentReclassificationFromJSON)(json["reclassification"]),
-        "suggested": !(0, runtime_1.exists)(json, "suggested") ? void 0 : (0, _1.TLPCodeSnippetSuggestedInteractionsFromJSON)(json["suggested"]),
-        "tagify": !(0, runtime_1.exists)(json, "tagify") ? void 0 : (0, _1.TLPCodeFragmentTagifyFromJSON)(json["tagify"]),
-        "description": !(0, runtime_1.exists)(json, "description") ? void 0 : (0, _1.TLPCodeFragmentDescriptionFromJSON)(json["description"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "statistics": !(0, runtime_1.exists)(json, "statistics") ? void 0 : (0, index_1.TLPCodeFragmentStatisticsFromJSON)(json["statistics"]),
+        "classification": !(0, runtime_1.exists)(json, "classification") ? void 0 : (0, index_1.TLPCodeFragmentClassificationFromJSON)(json["classification"]),
+        "reclassification": !(0, runtime_1.exists)(json, "reclassification") ? void 0 : (0, index_1.TLPCodeFragmentReclassificationFromJSON)(json["reclassification"]),
+        "suggested": !(0, runtime_1.exists)(json, "suggested") ? void 0 : (0, index_1.TLPCodeSnippetSuggestedInteractionsFromJSON)(json["suggested"]),
+        "tagify": !(0, runtime_1.exists)(json, "tagify") ? void 0 : (0, index_1.TLPCodeFragmentTagifyFromJSON)(json["tagify"]),
+        "description": !(0, runtime_1.exists)(json, "description") ? void 0 : (0, index_1.TLPCodeFragmentDescriptionFromJSON)(json["description"])
       };
     }
     exports.TLPCodeSnippetAnalyticsFromJSONTyped = TLPCodeSnippetAnalyticsFromJSONTyped6;
@@ -17799,13 +18201,13 @@ var require_TLPCodeSnippetAnalytics = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "statistics": (0, _1.TLPCodeFragmentStatisticsToJSON)(value.statistics),
-        "classification": (0, _1.TLPCodeFragmentClassificationToJSON)(value.classification),
-        "reclassification": (0, _1.TLPCodeFragmentReclassificationToJSON)(value.reclassification),
-        "suggested": (0, _1.TLPCodeSnippetSuggestedInteractionsToJSON)(value.suggested),
-        "tagify": (0, _1.TLPCodeFragmentTagifyToJSON)(value.tagify),
-        "description": (0, _1.TLPCodeFragmentDescriptionToJSON)(value.description)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "statistics": (0, index_1.TLPCodeFragmentStatisticsToJSON)(value.statistics),
+        "classification": (0, index_1.TLPCodeFragmentClassificationToJSON)(value.classification),
+        "reclassification": (0, index_1.TLPCodeFragmentReclassificationToJSON)(value.reclassification),
+        "suggested": (0, index_1.TLPCodeSnippetSuggestedInteractionsToJSON)(value.suggested),
+        "tagify": (0, index_1.TLPCodeFragmentTagifyToJSON)(value.tagify),
+        "description": (0, index_1.TLPCodeFragmentDescriptionToJSON)(value.description)
       };
     }
     exports.TLPCodeSnippetAnalyticsToJSON = TLPCodeSnippetAnalyticsToJSON4;
@@ -17819,7 +18221,7 @@ var require_TLPCodeSnippetSuggestedInteractions = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeSnippetSuggestedInteractionsToJSON = exports.TLPCodeSnippetSuggestedInteractionsFromJSONTyped = exports.TLPCodeSnippetSuggestedInteractionsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TLPCodeSnippetSuggestedInteractionsFromJSON4(json) {
       return TLPCodeSnippetSuggestedInteractionsFromJSONTyped6(json, false);
     }
@@ -17829,9 +18231,9 @@ var require_TLPCodeSnippetSuggestedInteractions = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "save": !(0, runtime_1.exists)(json, "save") ? void 0 : (0, _1.TLPCodeFragmentSuggestedSaveFromJSON)(json["save"]),
-        "reuse": !(0, runtime_1.exists)(json, "reuse") ? void 0 : (0, _1.TLPCodeFragmentSuggestedReuseFromJSON)(json["reuse"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "save": !(0, runtime_1.exists)(json, "save") ? void 0 : (0, index_1.TLPCodeFragmentSuggestedSaveFromJSON)(json["save"]),
+        "reuse": !(0, runtime_1.exists)(json, "reuse") ? void 0 : (0, index_1.TLPCodeFragmentSuggestedReuseFromJSON)(json["reuse"])
       };
     }
     exports.TLPCodeSnippetSuggestedInteractionsFromJSONTyped = TLPCodeSnippetSuggestedInteractionsFromJSONTyped6;
@@ -17843,9 +18245,9 @@ var require_TLPCodeSnippetSuggestedInteractions = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "save": (0, _1.TLPCodeFragmentSuggestedSaveToJSON)(value.save),
-        "reuse": (0, _1.TLPCodeFragmentSuggestedReuseToJSON)(value.reuse)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "save": (0, index_1.TLPCodeFragmentSuggestedSaveToJSON)(value.save),
+        "reuse": (0, index_1.TLPCodeFragmentSuggestedReuseToJSON)(value.reuse)
       };
     }
     exports.TLPCodeSnippetSuggestedInteractionsToJSON = TLPCodeSnippetSuggestedInteractionsToJSON4;
@@ -17859,7 +18261,7 @@ var require_TLPCodeSnippetTagifyCode = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeSnippetTagifyCodeToJSON = exports.TLPCodeSnippetTagifyCodeFromJSONTyped = exports.TLPCodeSnippetTagifyCodeFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TLPCodeSnippetTagifyCodeFromJSON4(json) {
       return TLPCodeSnippetTagifyCodeFromJSONTyped6(json, false);
     }
@@ -17869,7 +18271,7 @@ var require_TLPCodeSnippetTagifyCode = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "distribution": json["distribution"],
         "inferredDistribution": json["inferred_distribution"],
         "tags": json["tags"],
@@ -17891,7 +18293,7 @@ var require_TLPCodeSnippetTagifyCode = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "distribution": value.distribution,
         "inferred_distribution": value.inferredDistribution,
         "tags": value.tags,
@@ -17914,7 +18316,7 @@ var require_TLPDirectedDiscoveryFilter = __commonJS({
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPDirectedDiscoveryFilterToJSON = exports.TLPDirectedDiscoveryFilterFromJSONTyped = exports.TLPDirectedDiscoveryFilterFromJSON = void 0;
-    var _1 = require_models();
+    var index_1 = require_models();
     function TLPDirectedDiscoveryFilterFromJSON3(json) {
       return TLPDirectedDiscoveryFilterFromJSONTyped4(json, false);
     }
@@ -17924,7 +18326,7 @@ var require_TLPDirectedDiscoveryFilter = __commonJS({
         return json;
       }
       return {
-        "name": (0, _1.TLPDirectedDiscoveryFilterEnumFromJSON)(json["name"])
+        "name": (0, index_1.TLPDirectedDiscoveryFilterEnumFromJSON)(json["name"])
       };
     }
     exports.TLPDirectedDiscoveryFilterFromJSONTyped = TLPDirectedDiscoveryFilterFromJSONTyped4;
@@ -17936,7 +18338,7 @@ var require_TLPDirectedDiscoveryFilter = __commonJS({
         return null;
       }
       return {
-        "name": (0, _1.TLPDirectedDiscoveryFilterEnumToJSON)(value.name)
+        "name": (0, index_1.TLPDirectedDiscoveryFilterEnumToJSON)(value.name)
       };
     }
     exports.TLPDirectedDiscoveryFilterToJSON = TLPDirectedDiscoveryFilterToJSON3;
@@ -17983,7 +18385,7 @@ var require_TLPDirectedDiscoveryFilters = __commonJS({
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPDirectedDiscoveryFiltersToJSON = exports.TLPDirectedDiscoveryFiltersFromJSONTyped = exports.TLPDirectedDiscoveryFiltersFromJSON = void 0;
-    var _1 = require_models();
+    var index_1 = require_models();
     function TLPDirectedDiscoveryFiltersFromJSON3(json) {
       return TLPDirectedDiscoveryFiltersFromJSONTyped8(json, false);
     }
@@ -17993,7 +18395,7 @@ var require_TLPDirectedDiscoveryFilters = __commonJS({
         return json;
       }
       return {
-        "iterable": json["iterable"].map(_1.TLPDirectedDiscoveryFilterFromJSON)
+        "iterable": json["iterable"].map(index_1.TLPDirectedDiscoveryFilterFromJSON)
       };
     }
     exports.TLPDirectedDiscoveryFiltersFromJSONTyped = TLPDirectedDiscoveryFiltersFromJSONTyped8;
@@ -18005,7 +18407,7 @@ var require_TLPDirectedDiscoveryFilters = __commonJS({
         return null;
       }
       return {
-        "iterable": value.iterable.map(_1.TLPDirectedDiscoveryFilterToJSON)
+        "iterable": value.iterable.map(index_1.TLPDirectedDiscoveryFilterToJSON)
       };
     }
     exports.TLPDirectedDiscoveryFiltersToJSON = TLPDirectedDiscoveryFiltersToJSON3;
@@ -18019,7 +18421,7 @@ var require_TLPMachineLearningProcessingEvent = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPMachineLearningProcessingEventToJSON = exports.TLPMachineLearningProcessingEventFromJSONTyped = exports.TLPMachineLearningProcessingEventFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TLPMachineLearningProcessingEventFromJSON4(json) {
       return TLPMachineLearningProcessingEventFromJSONTyped7(json, false);
     }
@@ -18029,8 +18431,8 @@ var require_TLPMachineLearningProcessingEvent = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "code": !(0, runtime_1.exists)(json, "code") ? void 0 : (0, _1.TLPCodeProcessingFromJSON)(json["code"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "code": !(0, runtime_1.exists)(json, "code") ? void 0 : (0, index_1.TLPCodeProcessingFromJSON)(json["code"])
       };
     }
     exports.TLPMachineLearningProcessingEventFromJSONTyped = TLPMachineLearningProcessingEventFromJSONTyped7;
@@ -18042,8 +18444,8 @@ var require_TLPMachineLearningProcessingEvent = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "code": (0, _1.TLPCodeProcessingToJSON)(value.code)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "code": (0, index_1.TLPCodeProcessingToJSON)(value.code)
       };
     }
     exports.TLPMachineLearningProcessingEventToJSON = TLPMachineLearningProcessingEventToJSON4;
@@ -18057,7 +18459,7 @@ var require_Tag = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TagToJSON = exports.TagFromJSONTyped = exports.TagFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TagFromJSON4(json) {
       return TagFromJSONTyped6(json, false);
     }
@@ -18067,20 +18469,19 @@ var require_Tag = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
         "text": json["text"],
-        "mechanism": (0, _1.MechanismEnumFromJSON)(json["mechanism"]),
-        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, _1.FlattenedAssetFromJSON)(json["asset"]),
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "format": !(0, runtime_1.exists)(json, "format") ? void 0 : (0, _1.FlattenedFormatFromJSON)(json["format"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
-        "category": (0, _1.TagCategoryEnumFromJSON)(json["category"]),
-        "relationship": !(0, runtime_1.exists)(json, "relationship") ? void 0 : (0, _1.RelationshipFromJSON)(json["relationship"]),
+        "mechanisms": !(0, runtime_1.exists)(json, "mechanisms") ? void 0 : (0, runtime_1.mapValues)(json["mechanisms"], index_1.MechanismEnumFromJSON),
+        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, index_1.FlattenedAssetsFromJSON)(json["assets"]),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
+        "category": (0, index_1.TagCategoryEnumFromJSON)(json["category"]),
+        "relationship": !(0, runtime_1.exists)(json, "relationship") ? void 0 : (0, index_1.RelationshipFromJSON)(json["relationship"]),
         "interactions": !(0, runtime_1.exists)(json, "interactions") ? void 0 : json["interactions"],
-        "persons": !(0, runtime_1.exists)(json, "persons") ? void 0 : (0, _1.FlattenedPersonsFromJSON)(json["persons"]),
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "persons": !(0, runtime_1.exists)(json, "persons") ? void 0 : (0, index_1.FlattenedPersonsFromJSON)(json["persons"]),
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.TagFromJSONTyped = TagFromJSONTyped6;
@@ -18092,20 +18493,19 @@ var require_Tag = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
         "text": value.text,
-        "mechanism": (0, _1.MechanismEnumToJSON)(value.mechanism),
-        "asset": (0, _1.FlattenedAssetToJSON)(value.asset),
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "format": (0, _1.FlattenedFormatToJSON)(value.format),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
-        "category": (0, _1.TagCategoryEnumToJSON)(value.category),
-        "relationship": (0, _1.RelationshipToJSON)(value.relationship),
+        "mechanisms": value.mechanisms === void 0 ? void 0 : (0, runtime_1.mapValues)(value.mechanisms, index_1.MechanismEnumToJSON),
+        "assets": (0, index_1.FlattenedAssetsToJSON)(value.assets),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
+        "category": (0, index_1.TagCategoryEnumToJSON)(value.category),
+        "relationship": (0, index_1.RelationshipToJSON)(value.relationship),
         "interactions": value.interactions,
-        "persons": (0, _1.FlattenedPersonsToJSON)(value.persons),
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "persons": (0, index_1.FlattenedPersonsToJSON)(value.persons),
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.TagToJSON = TagToJSON5;
@@ -18118,20 +18518,20 @@ var require_TagCategoryEnum = __commonJS({
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TagCategoryEnumToJSON = exports.TagCategoryEnumFromJSONTyped = exports.TagCategoryEnumFromJSON = exports.TagCategoryEnum = void 0;
-    var TagCategoryEnum15;
-    (function(TagCategoryEnum16) {
-      TagCategoryEnum16["Handle"] = "HANDLE";
-      TagCategoryEnum16["Email"] = "EMAIL";
-      TagCategoryEnum16["Unknown"] = "UNKNOWN";
-    })(TagCategoryEnum15 || (exports.TagCategoryEnum = TagCategoryEnum15 = {}));
+    var TagCategoryEnum14;
+    (function(TagCategoryEnum15) {
+      TagCategoryEnum15["Handle"] = "HANDLE";
+      TagCategoryEnum15["Email"] = "EMAIL";
+      TagCategoryEnum15["Unknown"] = "UNKNOWN";
+    })(TagCategoryEnum14 || (exports.TagCategoryEnum = TagCategoryEnum14 = {}));
     function TagCategoryEnumFromJSON4(json) {
-      return TagCategoryEnumFromJSONTyped17(json, false);
+      return TagCategoryEnumFromJSONTyped16(json, false);
     }
     exports.TagCategoryEnumFromJSON = TagCategoryEnumFromJSON4;
-    function TagCategoryEnumFromJSONTyped17(json, ignoreDiscriminator) {
+    function TagCategoryEnumFromJSONTyped16(json, ignoreDiscriminator) {
       return json;
     }
-    exports.TagCategoryEnumFromJSONTyped = TagCategoryEnumFromJSONTyped17;
+    exports.TagCategoryEnumFromJSONTyped = TagCategoryEnumFromJSONTyped16;
     function TagCategoryEnumToJSON4(value) {
       return value;
     }
@@ -18146,23 +18546,23 @@ var require_Tags = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TagsToJSON = exports.TagsFromJSONTyped = exports.TagsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TagsFromJSON4(json) {
-      return TagsFromJSONTyped9(json, false);
+      return TagsFromJSONTyped6(json, false);
     }
     exports.TagsFromJSON = TagsFromJSON4;
-    function TagsFromJSONTyped9(json, ignoreDiscriminator) {
+    function TagsFromJSONTyped6(json, ignoreDiscriminator) {
       if (json === void 0 || json === null) {
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.TagFromJSON),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.TagFromJSON),
         "indices": !(0, runtime_1.exists)(json, "indices") ? void 0 : json["indices"],
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
-    exports.TagsFromJSONTyped = TagsFromJSONTyped9;
+    exports.TagsFromJSONTyped = TagsFromJSONTyped6;
     function TagsToJSON5(value) {
       if (value === void 0) {
         return void 0;
@@ -18171,10 +18571,10 @@ var require_Tags = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.TagToJSON),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.TagToJSON),
         "indices": value.indices,
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.TagsToJSON = TagsToJSON5;
@@ -18188,7 +18588,7 @@ var require_TextLocation = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TextLocationToJSON = exports.TextLocationFromJSONTyped = exports.TextLocationFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TextLocationFromJSON4(json) {
       return TextLocationFromJSONTyped7(json, false);
     }
@@ -18198,7 +18598,7 @@ var require_TextLocation = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "text": json["text"],
         "start": json["start"],
         "end": json["end"]
@@ -18213,7 +18613,7 @@ var require_TextLocation = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "text": value.text,
         "start": value.start,
         "end": value.end
@@ -18230,7 +18630,7 @@ var require_TextMatch = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TextMatchToJSON = exports.TextMatchFromJSONTyped = exports.TextMatchFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TextMatchFromJSON4(json) {
       return TextMatchFromJSONTyped7(json, false);
     }
@@ -18240,9 +18640,9 @@ var require_TextMatch = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "group": (0, _1.TextLocationFromJSON)(json["group"]),
-        "subgroup": !(0, runtime_1.exists)(json, "subgroup") ? void 0 : (0, _1.TextLocationFromJSON)(json["subgroup"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "group": (0, index_1.TextLocationFromJSON)(json["group"]),
+        "subgroup": !(0, runtime_1.exists)(json, "subgroup") ? void 0 : (0, index_1.TextLocationFromJSON)(json["subgroup"])
       };
     }
     exports.TextMatchFromJSONTyped = TextMatchFromJSONTyped7;
@@ -18254,9 +18654,9 @@ var require_TextMatch = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "group": (0, _1.TextLocationToJSON)(value.group),
-        "subgroup": (0, _1.TextLocationToJSON)(value.subgroup)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "group": (0, index_1.TextLocationToJSON)(value.group),
+        "subgroup": (0, index_1.TextLocationToJSON)(value.subgroup)
       };
     }
     exports.TextMatchToJSON = TextMatchToJSON4;
@@ -18270,7 +18670,7 @@ var require_Theme = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ThemeToJSON = exports.ThemeFromJSONTyped = exports.ThemeFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function ThemeFromJSON4(json) {
       return ThemeFromJSONTyped6(json, false);
     }
@@ -18280,7 +18680,7 @@ var require_Theme = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "dark": json["dark"]
       };
     }
@@ -18293,7 +18693,7 @@ var require_Theme = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "dark": value.dark
       };
     }
@@ -18308,7 +18708,7 @@ var require_TokenizedPKCE = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TokenizedPKCEToJSON = exports.TokenizedPKCEFromJSONTyped = exports.TokenizedPKCEFromJSON = exports.TokenizedPKCEGrantTypeEnum = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     var TokenizedPKCEGrantTypeEnum;
     (function(TokenizedPKCEGrantTypeEnum2) {
       TokenizedPKCEGrantTypeEnum2["RefreshToken"] = "refresh_token";
@@ -18323,7 +18723,7 @@ var require_TokenizedPKCE = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "grantType": json["grant_type"],
         "clientId": json["client_id"],
         "code": json["code"],
@@ -18341,7 +18741,7 @@ var require_TokenizedPKCE = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "grant_type": value.grantType,
         "client_id": value.clientId,
         "code": value.code,
@@ -18361,7 +18761,7 @@ var require_TrackedApplication = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedApplicationToJSON = exports.TrackedApplicationFromJSONTyped = exports.TrackedApplicationFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TrackedApplicationFromJSON3(json) {
       return TrackedApplicationFromJSONTyped7(json, false);
     }
@@ -18371,11 +18771,11 @@ var require_TrackedApplication = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "name": (0, _1.ApplicationNameEnumFromJSON)(json["name"]),
+        "name": (0, index_1.ApplicationNameEnumFromJSON)(json["name"]),
         "version": json["version"],
-        "platform": (0, _1.PlatformEnumFromJSON)(json["platform"]),
+        "platform": (0, index_1.PlatformEnumFromJSON)(json["platform"]),
         "automaticUnload": !(0, runtime_1.exists)(json, "automaticUnload") ? void 0 : json["automaticUnload"]
       };
     }
@@ -18388,11 +18788,11 @@ var require_TrackedApplication = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "name": (0, _1.ApplicationNameEnumToJSON)(value.name),
+        "name": (0, index_1.ApplicationNameEnumToJSON)(value.name),
         "version": value.version,
-        "platform": (0, _1.PlatformEnumToJSON)(value.platform),
+        "platform": (0, index_1.PlatformEnumToJSON)(value.platform),
         "automaticUnload": value.automaticUnload
       };
     }
@@ -18407,7 +18807,7 @@ var require_TrackedApplicationInstall = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedApplicationInstallToJSON = exports.TrackedApplicationInstallFromJSONTyped = exports.TrackedApplicationInstallFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TrackedApplicationInstallFromJSON2(json) {
       return TrackedApplicationInstallFromJSONTyped(json, false);
     }
@@ -18417,9 +18817,9 @@ var require_TrackedApplicationInstall = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "application": (0, _1.TrackedApplicationFromJSON)(json["application"]),
-        "user": !(0, runtime_1.exists)(json, "user") ? void 0 : (0, _1.TrackedUserProfileFromJSON)(json["user"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "application": (0, index_1.TrackedApplicationFromJSON)(json["application"]),
+        "user": !(0, runtime_1.exists)(json, "user") ? void 0 : (0, index_1.TrackedUserProfileFromJSON)(json["user"])
       };
     }
     exports.TrackedApplicationInstallFromJSONTyped = TrackedApplicationInstallFromJSONTyped;
@@ -18431,9 +18831,9 @@ var require_TrackedApplicationInstall = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "application": (0, _1.TrackedApplicationToJSON)(value.application),
-        "user": (0, _1.TrackedUserProfileToJSON)(value.user)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "application": (0, index_1.TrackedApplicationToJSON)(value.application),
+        "user": (0, index_1.TrackedUserProfileToJSON)(value.user)
       };
     }
     exports.TrackedApplicationInstallToJSON = TrackedApplicationInstallToJSON2;
@@ -18447,7 +18847,7 @@ var require_TrackedApplicationUpdate = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedApplicationUpdateToJSON = exports.TrackedApplicationUpdateFromJSONTyped = exports.TrackedApplicationUpdateFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TrackedApplicationUpdateFromJSON2(json) {
       return TrackedApplicationUpdateFromJSONTyped(json, false);
     }
@@ -18457,10 +18857,10 @@ var require_TrackedApplicationUpdate = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "current": (0, _1.TrackedApplicationFromJSON)(json["current"]),
-        "previous": !(0, runtime_1.exists)(json, "previous") ? void 0 : (0, _1.TrackedApplicationFromJSON)(json["previous"]),
-        "user": !(0, runtime_1.exists)(json, "user") ? void 0 : (0, _1.TrackedUserProfileFromJSON)(json["user"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "current": (0, index_1.TrackedApplicationFromJSON)(json["current"]),
+        "previous": !(0, runtime_1.exists)(json, "previous") ? void 0 : (0, index_1.TrackedApplicationFromJSON)(json["previous"]),
+        "user": !(0, runtime_1.exists)(json, "user") ? void 0 : (0, index_1.TrackedUserProfileFromJSON)(json["user"])
       };
     }
     exports.TrackedApplicationUpdateFromJSONTyped = TrackedApplicationUpdateFromJSONTyped;
@@ -18472,10 +18872,10 @@ var require_TrackedApplicationUpdate = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "current": (0, _1.TrackedApplicationToJSON)(value.current),
-        "previous": (0, _1.TrackedApplicationToJSON)(value.previous),
-        "user": (0, _1.TrackedUserProfileToJSON)(value.user)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "current": (0, index_1.TrackedApplicationToJSON)(value.current),
+        "previous": (0, index_1.TrackedApplicationToJSON)(value.previous),
+        "user": (0, index_1.TrackedUserProfileToJSON)(value.user)
       };
     }
     exports.TrackedApplicationUpdateToJSON = TrackedApplicationUpdateToJSON2;
@@ -18489,7 +18889,7 @@ var require_TrackedAssetEventCreationMetadata = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedAssetEventCreationMetadataToJSON = exports.TrackedAssetEventCreationMetadataFromJSONTyped = exports.TrackedAssetEventCreationMetadataFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TrackedAssetEventCreationMetadataFromJSON4(json) {
       return TrackedAssetEventCreationMetadataFromJSONTyped6(json, false);
     }
@@ -18499,9 +18899,9 @@ var require_TrackedAssetEventCreationMetadata = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "clipboard": !(0, runtime_1.exists)(json, "clipboard") ? void 0 : (0, _1.TrackedAssetEventCreationMetadataClipboardFromJSON)(json["clipboard"]),
-        "file": !(0, runtime_1.exists)(json, "file") ? void 0 : (0, _1.TrackedAssetEventCreationMetadataFileFromJSON)(json["file"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "clipboard": !(0, runtime_1.exists)(json, "clipboard") ? void 0 : (0, index_1.TrackedAssetEventCreationMetadataClipboardFromJSON)(json["clipboard"]),
+        "file": !(0, runtime_1.exists)(json, "file") ? void 0 : (0, index_1.TrackedAssetEventCreationMetadataFileFromJSON)(json["file"])
       };
     }
     exports.TrackedAssetEventCreationMetadataFromJSONTyped = TrackedAssetEventCreationMetadataFromJSONTyped6;
@@ -18513,9 +18913,9 @@ var require_TrackedAssetEventCreationMetadata = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "clipboard": (0, _1.TrackedAssetEventCreationMetadataClipboardToJSON)(value.clipboard),
-        "file": (0, _1.TrackedAssetEventCreationMetadataFileToJSON)(value.file)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "clipboard": (0, index_1.TrackedAssetEventCreationMetadataClipboardToJSON)(value.clipboard),
+        "file": (0, index_1.TrackedAssetEventCreationMetadataFileToJSON)(value.file)
       };
     }
     exports.TrackedAssetEventCreationMetadataToJSON = TrackedAssetEventCreationMetadataToJSON4;
@@ -18529,7 +18929,7 @@ var require_TrackedAssetEventCreationMetadataClipboard = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedAssetEventCreationMetadataClipboardToJSON = exports.TrackedAssetEventCreationMetadataClipboardFromJSONTyped = exports.TrackedAssetEventCreationMetadataClipboardFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TrackedAssetEventCreationMetadataClipboardFromJSON4(json) {
       return TrackedAssetEventCreationMetadataClipboardFromJSONTyped6(json, false);
     }
@@ -18539,7 +18939,7 @@ var require_TrackedAssetEventCreationMetadataClipboard = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "keyboard": !(0, runtime_1.exists)(json, "keyboard") ? void 0 : json["keyboard"],
         "interaction": !(0, runtime_1.exists)(json, "interaction") ? void 0 : json["interaction"]
       };
@@ -18553,7 +18953,7 @@ var require_TrackedAssetEventCreationMetadataClipboard = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "keyboard": value.keyboard,
         "interaction": value.interaction
       };
@@ -18608,7 +19008,7 @@ var require_TrackedAssetEventFormatReclassificationMetadata = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedAssetEventFormatReclassificationMetadataToJSON = exports.TrackedAssetEventFormatReclassificationMetadataFromJSONTyped = exports.TrackedAssetEventFormatReclassificationMetadataFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TrackedAssetEventFormatReclassificationMetadataFromJSON4(json) {
       return TrackedAssetEventFormatReclassificationMetadataFromJSONTyped9(json, false);
     }
@@ -18618,9 +19018,9 @@ var require_TrackedAssetEventFormatReclassificationMetadata = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "previous": !(0, runtime_1.exists)(json, "previous") ? void 0 : (0, _1.ClassificationFromJSON)(json["previous"]),
-        "current": !(0, runtime_1.exists)(json, "current") ? void 0 : (0, _1.ClassificationFromJSON)(json["current"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "previous": !(0, runtime_1.exists)(json, "previous") ? void 0 : (0, index_1.ClassificationFromJSON)(json["previous"]),
+        "current": !(0, runtime_1.exists)(json, "current") ? void 0 : (0, index_1.ClassificationFromJSON)(json["current"])
       };
     }
     exports.TrackedAssetEventFormatReclassificationMetadataFromJSONTyped = TrackedAssetEventFormatReclassificationMetadataFromJSONTyped9;
@@ -18632,9 +19032,9 @@ var require_TrackedAssetEventFormatReclassificationMetadata = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "previous": (0, _1.ClassificationToJSON)(value.previous),
-        "current": (0, _1.ClassificationToJSON)(value.current)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "previous": (0, index_1.ClassificationToJSON)(value.previous),
+        "current": (0, index_1.ClassificationToJSON)(value.current)
       };
     }
     exports.TrackedAssetEventFormatReclassificationMetadataToJSON = TrackedAssetEventFormatReclassificationMetadataToJSON4;
@@ -18900,7 +19300,7 @@ var require_TrackedAssetEventMetadata = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedAssetEventMetadataToJSON = exports.TrackedAssetEventMetadataFromJSONTyped = exports.TrackedAssetEventMetadataFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TrackedAssetEventMetadataFromJSON4(json) {
       return TrackedAssetEventMetadataFromJSONTyped7(json, false);
     }
@@ -18910,18 +19310,18 @@ var require_TrackedAssetEventMetadata = __commonJS({
         return json;
       }
       return {
-        "reclassification": !(0, runtime_1.exists)(json, "reclassification") ? void 0 : (0, _1.TrackedAssetEventFormatReclassificationMetadataFromJSON)(json["reclassification"]),
-        "creation": !(0, runtime_1.exists)(json, "creation") ? void 0 : (0, _1.TrackedAssetEventCreationMetadataFromJSON)(json["creation"]),
-        "rename": !(0, runtime_1.exists)(json, "rename") ? void 0 : (0, _1.TrackedAssetEventRenameMetadataFromJSON)(json["rename"]),
-        "tag": !(0, runtime_1.exists)(json, "tag") ? void 0 : (0, _1.ReferencedTagFromJSON)(json["tag"]),
-        "website": !(0, runtime_1.exists)(json, "website") ? void 0 : (0, _1.ReferencedWebsiteFromJSON)(json["website"]),
-        "person": !(0, runtime_1.exists)(json, "person") ? void 0 : (0, _1.ReferencedPersonFromJSON)(json["person"]),
-        "sensitive": !(0, runtime_1.exists)(json, "sensitive") ? void 0 : (0, _1.ReferencedSensitiveFromJSON)(json["sensitive"]),
-        "share": !(0, runtime_1.exists)(json, "share") ? void 0 : (0, _1.ReferencedShareFromJSON)(json["share"]),
-        "search": !(0, runtime_1.exists)(json, "search") ? void 0 : (0, _1.TrackedAssetsEventSearchMetadataFromJSON)(json["search"]),
-        "annotation": !(0, runtime_1.exists)(json, "annotation") ? void 0 : (0, _1.ReferencedAnnotationFromJSON)(json["annotation"]),
-        "hint": !(0, runtime_1.exists)(json, "hint") ? void 0 : (0, _1.ReferencedHintFromJSON)(json["hint"]),
-        "anchor": !(0, runtime_1.exists)(json, "anchor") ? void 0 : (0, _1.ReferencedAnchorFromJSON)(json["anchor"])
+        "reclassification": !(0, runtime_1.exists)(json, "reclassification") ? void 0 : (0, index_1.TrackedAssetEventFormatReclassificationMetadataFromJSON)(json["reclassification"]),
+        "creation": !(0, runtime_1.exists)(json, "creation") ? void 0 : (0, index_1.TrackedAssetEventCreationMetadataFromJSON)(json["creation"]),
+        "rename": !(0, runtime_1.exists)(json, "rename") ? void 0 : (0, index_1.TrackedAssetEventRenameMetadataFromJSON)(json["rename"]),
+        "tag": !(0, runtime_1.exists)(json, "tag") ? void 0 : (0, index_1.ReferencedTagFromJSON)(json["tag"]),
+        "website": !(0, runtime_1.exists)(json, "website") ? void 0 : (0, index_1.ReferencedWebsiteFromJSON)(json["website"]),
+        "person": !(0, runtime_1.exists)(json, "person") ? void 0 : (0, index_1.ReferencedPersonFromJSON)(json["person"]),
+        "sensitive": !(0, runtime_1.exists)(json, "sensitive") ? void 0 : (0, index_1.ReferencedSensitiveFromJSON)(json["sensitive"]),
+        "share": !(0, runtime_1.exists)(json, "share") ? void 0 : (0, index_1.ReferencedShareFromJSON)(json["share"]),
+        "search": !(0, runtime_1.exists)(json, "search") ? void 0 : (0, index_1.TrackedAssetsEventSearchMetadataFromJSON)(json["search"]),
+        "annotation": !(0, runtime_1.exists)(json, "annotation") ? void 0 : (0, index_1.ReferencedAnnotationFromJSON)(json["annotation"]),
+        "hint": !(0, runtime_1.exists)(json, "hint") ? void 0 : (0, index_1.ReferencedHintFromJSON)(json["hint"]),
+        "anchor": !(0, runtime_1.exists)(json, "anchor") ? void 0 : (0, index_1.ReferencedAnchorFromJSON)(json["anchor"])
       };
     }
     exports.TrackedAssetEventMetadataFromJSONTyped = TrackedAssetEventMetadataFromJSONTyped7;
@@ -18933,18 +19333,18 @@ var require_TrackedAssetEventMetadata = __commonJS({
         return null;
       }
       return {
-        "reclassification": (0, _1.TrackedAssetEventFormatReclassificationMetadataToJSON)(value.reclassification),
-        "creation": (0, _1.TrackedAssetEventCreationMetadataToJSON)(value.creation),
-        "rename": (0, _1.TrackedAssetEventRenameMetadataToJSON)(value.rename),
-        "tag": (0, _1.ReferencedTagToJSON)(value.tag),
-        "website": (0, _1.ReferencedWebsiteToJSON)(value.website),
-        "person": (0, _1.ReferencedPersonToJSON)(value.person),
-        "sensitive": (0, _1.ReferencedSensitiveToJSON)(value.sensitive),
-        "share": (0, _1.ReferencedShareToJSON)(value.share),
-        "search": (0, _1.TrackedAssetsEventSearchMetadataToJSON)(value.search),
-        "annotation": (0, _1.ReferencedAnnotationToJSON)(value.annotation),
-        "hint": (0, _1.ReferencedHintToJSON)(value.hint),
-        "anchor": (0, _1.ReferencedAnchorToJSON)(value.anchor)
+        "reclassification": (0, index_1.TrackedAssetEventFormatReclassificationMetadataToJSON)(value.reclassification),
+        "creation": (0, index_1.TrackedAssetEventCreationMetadataToJSON)(value.creation),
+        "rename": (0, index_1.TrackedAssetEventRenameMetadataToJSON)(value.rename),
+        "tag": (0, index_1.ReferencedTagToJSON)(value.tag),
+        "website": (0, index_1.ReferencedWebsiteToJSON)(value.website),
+        "person": (0, index_1.ReferencedPersonToJSON)(value.person),
+        "sensitive": (0, index_1.ReferencedSensitiveToJSON)(value.sensitive),
+        "share": (0, index_1.ReferencedShareToJSON)(value.share),
+        "search": (0, index_1.TrackedAssetsEventSearchMetadataToJSON)(value.search),
+        "annotation": (0, index_1.ReferencedAnnotationToJSON)(value.annotation),
+        "hint": (0, index_1.ReferencedHintToJSON)(value.hint),
+        "anchor": (0, index_1.ReferencedAnchorToJSON)(value.anchor)
       };
     }
     exports.TrackedAssetEventMetadataToJSON = TrackedAssetEventMetadataToJSON4;
@@ -18958,7 +19358,7 @@ var require_TrackedAssetEventRenameMetadata = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedAssetEventRenameMetadataToJSON = exports.TrackedAssetEventRenameMetadataFromJSONTyped = exports.TrackedAssetEventRenameMetadataFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TrackedAssetEventRenameMetadataFromJSON4(json) {
       return TrackedAssetEventRenameMetadataFromJSONTyped6(json, false);
     }
@@ -18968,7 +19368,7 @@ var require_TrackedAssetEventRenameMetadata = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "previous": json["previous"],
         "current": json["current"]
       };
@@ -18982,7 +19382,7 @@ var require_TrackedAssetEventRenameMetadata = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "previous": value.previous,
         "current": value.current
       };
@@ -18998,7 +19398,7 @@ var require_TrackedAssetsEventIdentifierDescriptionPairs = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedAssetsEventIdentifierDescriptionPairsToJSON = exports.TrackedAssetsEventIdentifierDescriptionPairsFromJSONTyped = exports.TrackedAssetsEventIdentifierDescriptionPairsFromJSON = exports.TrackedAssetsEventIdentifierDescriptionPairsAssetsSearchedEnum = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     var TrackedAssetsEventIdentifierDescriptionPairsAssetsSearchedEnum;
     (function(TrackedAssetsEventIdentifierDescriptionPairsAssetsSearchedEnum2) {
       TrackedAssetsEventIdentifierDescriptionPairsAssetsSearchedEnum2["AssetsWereSearched"] = "assets_were_searched";
@@ -19012,7 +19412,7 @@ var require_TrackedAssetsEventIdentifierDescriptionPairs = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "assetsSearched": !(0, runtime_1.exists)(json, "assets_searched") ? void 0 : json["assets_searched"]
       };
     }
@@ -19025,7 +19425,7 @@ var require_TrackedAssetsEventIdentifierDescriptionPairs = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "assets_searched": value.assetsSearched
       };
     }
@@ -19040,7 +19440,7 @@ var require_TrackedAssetsEventSearchMetadata = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedAssetsEventSearchMetadataToJSON = exports.TrackedAssetsEventSearchMetadataFromJSONTyped = exports.TrackedAssetsEventSearchMetadataFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TrackedAssetsEventSearchMetadataFromJSON4(json) {
       return TrackedAssetsEventSearchMetadataFromJSONTyped10(json, false);
     }
@@ -19050,9 +19450,9 @@ var require_TrackedAssetsEventSearchMetadata = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "query": !(0, runtime_1.exists)(json, "query") ? void 0 : json["query"],
-        "results": !(0, runtime_1.exists)(json, "results") ? void 0 : (0, _1.TrackedAssetsEventSearchMetadataResultsFromJSON)(json["results"])
+        "results": !(0, runtime_1.exists)(json, "results") ? void 0 : (0, index_1.TrackedAssetsEventSearchMetadataResultsFromJSON)(json["results"])
       };
     }
     exports.TrackedAssetsEventSearchMetadataFromJSONTyped = TrackedAssetsEventSearchMetadataFromJSONTyped10;
@@ -19064,9 +19464,9 @@ var require_TrackedAssetsEventSearchMetadata = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "query": value.query,
-        "results": (0, _1.TrackedAssetsEventSearchMetadataResultsToJSON)(value.results)
+        "results": (0, index_1.TrackedAssetsEventSearchMetadataResultsToJSON)(value.results)
       };
     }
     exports.TrackedAssetsEventSearchMetadataToJSON = TrackedAssetsEventSearchMetadataToJSON4;
@@ -19080,7 +19480,7 @@ var require_TrackedAssetsEventSearchMetadataResults = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedAssetsEventSearchMetadataResultsToJSON = exports.TrackedAssetsEventSearchMetadataResultsFromJSONTyped = exports.TrackedAssetsEventSearchMetadataResultsFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TrackedAssetsEventSearchMetadataResultsFromJSON4(json) {
       return TrackedAssetsEventSearchMetadataResultsFromJSONTyped7(json, false);
     }
@@ -19092,8 +19492,8 @@ var require_TrackedAssetsEventSearchMetadataResults = __commonJS({
       return {
         "fuzzy": !(0, runtime_1.exists)(json, "fuzzy") ? void 0 : json["fuzzy"],
         "exact": !(0, runtime_1.exists)(json, "exact") ? void 0 : json["exact"],
-        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, _1.FlattenedAssetsFromJSON)(json["assets"]),
-        "space": !(0, runtime_1.exists)(json, "space") ? void 0 : (0, _1.SpaceFromJSON)(json["space"])
+        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, index_1.FlattenedAssetsFromJSON)(json["assets"]),
+        "space": !(0, runtime_1.exists)(json, "space") ? void 0 : (0, index_1.SpaceFromJSON)(json["space"])
       };
     }
     exports.TrackedAssetsEventSearchMetadataResultsFromJSONTyped = TrackedAssetsEventSearchMetadataResultsFromJSONTyped7;
@@ -19107,8 +19507,8 @@ var require_TrackedAssetsEventSearchMetadataResults = __commonJS({
       return {
         "fuzzy": value.fuzzy,
         "exact": value.exact,
-        "assets": (0, _1.FlattenedAssetsToJSON)(value.assets),
-        "space": (0, _1.SpaceToJSON)(value.space)
+        "assets": (0, index_1.FlattenedAssetsToJSON)(value.assets),
+        "space": (0, index_1.SpaceToJSON)(value.space)
       };
     }
     exports.TrackedAssetsEventSearchMetadataResultsToJSON = TrackedAssetsEventSearchMetadataResultsToJSON4;
@@ -19122,7 +19522,7 @@ var require_TrackedFormat = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedFormatToJSON = exports.TrackedFormatFromJSONTyped = exports.TrackedFormatFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TrackedFormatFromJSON3(json) {
       return TrackedFormatFromJSONTyped5(json, false);
     }
@@ -19132,10 +19532,10 @@ var require_TrackedFormat = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "classification": (0, _1.ClassificationFromJSON)(json["classification"]),
-        "role": (0, _1.RoleFromJSON)(json["role"]),
+        "classification": (0, index_1.ClassificationFromJSON)(json["classification"]),
+        "role": (0, index_1.RoleFromJSON)(json["role"]),
         "asset": json["asset"],
         "fragment": json["fragment"],
         "file": json["file"]
@@ -19150,10 +19550,10 @@ var require_TrackedFormat = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "classification": (0, _1.ClassificationToJSON)(value.classification),
-        "role": (0, _1.RoleToJSON)(value.role),
+        "classification": (0, index_1.ClassificationToJSON)(value.classification),
+        "role": (0, index_1.RoleToJSON)(value.role),
         "asset": value.asset,
         "fragment": value.fragment,
         "file": value.file
@@ -19170,7 +19570,7 @@ var require_TrackedFormatEvent = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedFormatEventToJSON = exports.TrackedFormatEventFromJSONTyped = exports.TrackedFormatEventFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TrackedFormatEventFromJSON3(json) {
       return TrackedFormatEventFromJSONTyped3(json, false);
     }
@@ -19180,10 +19580,10 @@ var require_TrackedFormatEvent = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "format": (0, _1.TrackedFormatFromJSON)(json[" format"]),
-        "identifierDescriptionPair": (0, _1.TrackedFormatEventIdentifierDescriptionPairsFromJSON)(json["identifier_description_pair"]),
-        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, _1.TrackedFormatEventMetadataFromJSON)(json["metadata"])
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "format": (0, index_1.TrackedFormatFromJSON)(json[" format"]),
+        "identifierDescriptionPair": (0, index_1.TrackedFormatEventIdentifierDescriptionPairsFromJSON)(json["identifier_description_pair"]),
+        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, index_1.TrackedFormatEventMetadataFromJSON)(json["metadata"])
       };
     }
     exports.TrackedFormatEventFromJSONTyped = TrackedFormatEventFromJSONTyped3;
@@ -19195,10 +19595,10 @@ var require_TrackedFormatEvent = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        " format": (0, _1.TrackedFormatToJSON)(value.format),
-        "identifier_description_pair": (0, _1.TrackedFormatEventIdentifierDescriptionPairsToJSON)(value.identifierDescriptionPair),
-        "metadata": (0, _1.TrackedFormatEventMetadataToJSON)(value.metadata)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        " format": (0, index_1.TrackedFormatToJSON)(value.format),
+        "identifier_description_pair": (0, index_1.TrackedFormatEventIdentifierDescriptionPairsToJSON)(value.identifierDescriptionPair),
+        "metadata": (0, index_1.TrackedFormatEventMetadataToJSON)(value.metadata)
       };
     }
     exports.TrackedFormatEventToJSON = TrackedFormatEventToJSON3;
@@ -19212,7 +19612,7 @@ var require_TrackedFormatEventIdentifierDescriptionPairs = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedFormatEventIdentifierDescriptionPairsToJSON = exports.TrackedFormatEventIdentifierDescriptionPairsFromJSONTyped = exports.TrackedFormatEventIdentifierDescriptionPairsFromJSON = exports.TrackedFormatEventIdentifierDescriptionPairsFormatValueEditedEnum = exports.TrackedFormatEventIdentifierDescriptionPairsFormatInsertedEnum = exports.TrackedFormatEventIdentifierDescriptionPairsFormatUpdatedEnum = exports.TrackedFormatEventIdentifierDescriptionPairsFormatSpecificClassificationUpdatedEnum = exports.TrackedFormatEventIdentifierDescriptionPairsFormatGenericClassificationUpdatedEnum = exports.TrackedFormatEventIdentifierDescriptionPairsFormatDeletedEnum = exports.TrackedFormatEventIdentifierDescriptionPairsFormatDownloadedEnum = exports.TrackedFormatEventIdentifierDescriptionPairsFormatPartiallyCopiedEnum = exports.TrackedFormatEventIdentifierDescriptionPairsFormatCopiedEnum = exports.TrackedFormatEventIdentifierDescriptionPairsFormatCreatedEnum = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     var TrackedFormatEventIdentifierDescriptionPairsFormatCreatedEnum;
     (function(TrackedFormatEventIdentifierDescriptionPairsFormatCreatedEnum2) {
       TrackedFormatEventIdentifierDescriptionPairsFormatCreatedEnum2["AFormatWasCreated"] = "a_format_was_created";
@@ -19262,7 +19662,7 @@ var require_TrackedFormatEventIdentifierDescriptionPairs = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "formatCreated": !(0, runtime_1.exists)(json, "format_created") ? void 0 : json["format_created"],
         "formatCopied": !(0, runtime_1.exists)(json, "format_copied") ? void 0 : json["format_copied"],
         "formatPartiallyCopied": !(0, runtime_1.exists)(json, "format_partially_copied") ? void 0 : json["format_partially_copied"],
@@ -19284,7 +19684,7 @@ var require_TrackedFormatEventIdentifierDescriptionPairs = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "format_created": value.formatCreated,
         "format_copied": value.formatCopied,
         "format_partially_copied": value.formatPartiallyCopied,
@@ -19308,7 +19708,7 @@ var require_TrackedFormatEventMetadata = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedFormatEventMetadataToJSON = exports.TrackedFormatEventMetadataFromJSONTyped = exports.TrackedFormatEventMetadataFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TrackedFormatEventMetadataFromJSON4(json) {
       return TrackedFormatEventMetadataFromJSONTyped8(json, false);
     }
@@ -19318,7 +19718,7 @@ var require_TrackedFormatEventMetadata = __commonJS({
         return json;
       }
       return {
-        "reclassification": !(0, runtime_1.exists)(json, "reclassification") ? void 0 : (0, _1.TrackedAssetEventFormatReclassificationMetadataFromJSON)(json["reclassification"])
+        "reclassification": !(0, runtime_1.exists)(json, "reclassification") ? void 0 : (0, index_1.TrackedAssetEventFormatReclassificationMetadataFromJSON)(json["reclassification"])
       };
     }
     exports.TrackedFormatEventMetadataFromJSONTyped = TrackedFormatEventMetadataFromJSONTyped8;
@@ -19330,7 +19730,7 @@ var require_TrackedFormatEventMetadata = __commonJS({
         return null;
       }
       return {
-        "reclassification": (0, _1.TrackedAssetEventFormatReclassificationMetadataToJSON)(value.reclassification)
+        "reclassification": (0, index_1.TrackedAssetEventFormatReclassificationMetadataToJSON)(value.reclassification)
       };
     }
     exports.TrackedFormatEventMetadataToJSON = TrackedFormatEventMetadataToJSON4;
@@ -19344,7 +19744,7 @@ var require_TrackedInteractionEvent = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedInteractionEventToJSON = exports.TrackedInteractionEventFromJSONTyped = exports.TrackedInteractionEventFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TrackedInteractionEventFromJSON3(json) {
       return TrackedInteractionEventFromJSONTyped2(json, false);
     }
@@ -19354,7 +19754,7 @@ var require_TrackedInteractionEvent = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "description": json["description"],
         "element": !(0, runtime_1.exists)(json, "element") ? void 0 : json["element"]
       };
@@ -19368,7 +19768,7 @@ var require_TrackedInteractionEvent = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "description": value.description,
         "element": value.element
       };
@@ -19384,7 +19784,7 @@ var require_TrackedKeyboardEvent = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedKeyboardEventToJSON = exports.TrackedKeyboardEventFromJSONTyped = exports.TrackedKeyboardEventFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TrackedKeyboardEventFromJSON3(json) {
       return TrackedKeyboardEventFromJSONTyped2(json, false);
     }
@@ -19394,7 +19794,7 @@ var require_TrackedKeyboardEvent = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "description": json["description"],
         "shortcut": json["shortcut"]
       };
@@ -19408,7 +19808,7 @@ var require_TrackedKeyboardEvent = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "description": value.description,
         "shortcut": value.shortcut
       };
@@ -19424,7 +19824,7 @@ var require_TrackedSessionEventIdentifierDescriptionPairs = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedSessionEventIdentifierDescriptionPairsToJSON = exports.TrackedSessionEventIdentifierDescriptionPairsFromJSONTyped = exports.TrackedSessionEventIdentifierDescriptionPairsFromJSON = exports.TrackedSessionEventIdentifierDescriptionPairsSessionOnboardingCompletedEnum = exports.TrackedSessionEventIdentifierDescriptionPairsSessionOnboardingInitializedEnum = exports.TrackedSessionEventIdentifierDescriptionPairsSessionUnauthenticatedWithRemindEnum = exports.TrackedSessionEventIdentifierDescriptionPairsSessionUnauthenticatedWithDismissEnum = exports.TrackedSessionEventIdentifierDescriptionPairsSessionUnauthenticatedWithSignOutEnum = exports.TrackedSessionEventIdentifierDescriptionPairsSessionAuthenticatedWithSignInEnum = exports.TrackedSessionEventIdentifierDescriptionPairsSessionTerminatedEnum = exports.TrackedSessionEventIdentifierDescriptionPairsSessionActiveEnum = exports.TrackedSessionEventIdentifierDescriptionPairsSessionInactiveEnum = exports.TrackedSessionEventIdentifierDescriptionPairsSessionLocalConnectionFailedEnum = exports.TrackedSessionEventIdentifierDescriptionPairsSessionLocalConnectionSucceededEnum = exports.TrackedSessionEventIdentifierDescriptionPairsSessionInitializedEnum = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     var TrackedSessionEventIdentifierDescriptionPairsSessionInitializedEnum;
     (function(TrackedSessionEventIdentifierDescriptionPairsSessionInitializedEnum2) {
       TrackedSessionEventIdentifierDescriptionPairsSessionInitializedEnum2["ASessionHasBeenInitializedAndTheApplicationHasBeenOpened"] = "a_session_has_been_initialized_and_the_application_has_been_opened";
@@ -19482,7 +19882,7 @@ var require_TrackedSessionEventIdentifierDescriptionPairs = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "sessionInitialized": !(0, runtime_1.exists)(json, "session_initialized") ? void 0 : json["session_initialized"],
         "sessionLocalConnectionSucceeded": !(0, runtime_1.exists)(json, "session_local_connection_succeeded") ? void 0 : json["session_local_connection_succeeded"],
         "sessionLocalConnectionFailed": !(0, runtime_1.exists)(json, "session_local_connection_failed") ? void 0 : json["session_local_connection_failed"],
@@ -19506,7 +19906,7 @@ var require_TrackedSessionEventIdentifierDescriptionPairs = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "session_initialized": value.sessionInitialized,
         "session_local_connection_succeeded": value.sessionLocalConnectionSucceeded,
         "session_local_connection_failed": value.sessionLocalConnectionFailed,
@@ -19532,7 +19932,7 @@ var require_TrackedUserProfile = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedUserProfileToJSON = exports.TrackedUserProfileFromJSONTyped = exports.TrackedUserProfileFromJSON = exports.TrackedUserProfileGranularityEnum = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     var TrackedUserProfileGranularityEnum;
     (function(TrackedUserProfileGranularityEnum2) {
       TrackedUserProfileGranularityEnum2["Device"] = "DEVICE";
@@ -19548,7 +19948,7 @@ var require_TrackedUserProfile = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
         "username": json["username"],
         "email": !(0, runtime_1.exists)(json, "email") ? void 0 : json["email"],
@@ -19564,7 +19964,7 @@ var require_TrackedUserProfile = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
         "username": value.username,
         "email": value.email,
@@ -19582,7 +19982,7 @@ var require_TransferableBytes = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TransferableBytesToJSON = exports.TransferableBytesFromJSONTyped = exports.TransferableBytesFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TransferableBytesFromJSON4(json) {
       return TransferableBytesFromJSONTyped15(json, false);
     }
@@ -19592,7 +19992,7 @@ var require_TransferableBytes = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "raw": !(0, runtime_1.exists)(json, "raw") ? void 0 : json["raw"],
         "base64": !(0, runtime_1.exists)(json, "base64") ? void 0 : json["base64"],
         "base64Url": !(0, runtime_1.exists)(json, "base64_url") ? void 0 : json["base64_url"],
@@ -19608,7 +20008,7 @@ var require_TransferableBytes = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "raw": value.raw,
         "base64": value.base64,
         "base64_url": value.base64Url,
@@ -19626,7 +20026,7 @@ var require_TransferableString = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TransferableStringToJSON = exports.TransferableStringFromJSONTyped = exports.TransferableStringFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function TransferableStringFromJSON4(json) {
       return TransferableStringFromJSONTyped15(json, false);
     }
@@ -19636,7 +20036,7 @@ var require_TransferableString = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "raw": !(0, runtime_1.exists)(json, "raw") ? void 0 : json["raw"],
         "base64": !(0, runtime_1.exists)(json, "base64") ? void 0 : json["base64"],
         "base64Url": !(0, runtime_1.exists)(json, "base64_url") ? void 0 : json["base64_url"],
@@ -19652,7 +20052,7 @@ var require_TransferableString = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "raw": value.raw,
         "base64": value.base64,
         "base64_url": value.base64Url,
@@ -19670,7 +20070,7 @@ var require_UserProfile = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.UserProfileToJSON = exports.UserProfileFromJSONTyped = exports.UserProfileFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function UserProfileFromJSON5(json) {
       return UserProfileFromJSONTyped14(json, false);
     }
@@ -19680,19 +20080,19 @@ var require_UserProfile = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "picture": !(0, runtime_1.exists)(json, "picture") ? void 0 : json["picture"],
         "email": !(0, runtime_1.exists)(json, "email") ? void 0 : json["email"],
-        "created": !(0, runtime_1.exists)(json, "created") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": !(0, runtime_1.exists)(json, "updated") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["updated"]),
+        "created": !(0, runtime_1.exists)(json, "created") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": !(0, runtime_1.exists)(json, "updated") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
         "username": !(0, runtime_1.exists)(json, "username") ? void 0 : json["username"],
         "id": json["id"],
         "name": !(0, runtime_1.exists)(json, "name") ? void 0 : json["name"],
-        "aesthetics": (0, _1.AestheticsFromJSON)(json["aesthetics"]),
+        "aesthetics": (0, index_1.AestheticsFromJSON)(json["aesthetics"]),
         "vanityname": !(0, runtime_1.exists)(json, "vanityname") ? void 0 : json["vanityname"],
-        "allocation": !(0, runtime_1.exists)(json, "allocation") ? void 0 : (0, _1.AllocationCloudFromJSON)(json["allocation"]),
-        "providers": !(0, runtime_1.exists)(json, "providers") ? void 0 : (0, _1.ExternalProvidersFromJSON)(json["providers"]),
-        "auth0": !(0, runtime_1.exists)(json, "auth0") ? void 0 : (0, _1.Auth0UserMetadataFromJSON)(json["auth0"])
+        "allocation": !(0, runtime_1.exists)(json, "allocation") ? void 0 : (0, index_1.AllocationCloudFromJSON)(json["allocation"]),
+        "providers": !(0, runtime_1.exists)(json, "providers") ? void 0 : (0, index_1.ExternalProvidersFromJSON)(json["providers"]),
+        "auth0": !(0, runtime_1.exists)(json, "auth0") ? void 0 : (0, index_1.Auth0UserMetadataFromJSON)(json["auth0"])
       };
     }
     exports.UserProfileFromJSONTyped = UserProfileFromJSONTyped14;
@@ -19704,19 +20104,19 @@ var require_UserProfile = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "picture": value.picture,
         "email": value.email,
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
         "username": value.username,
         "id": value.id,
         "name": value.name,
-        "aesthetics": (0, _1.AestheticsToJSON)(value.aesthetics),
+        "aesthetics": (0, index_1.AestheticsToJSON)(value.aesthetics),
         "vanityname": value.vanityname,
-        "allocation": (0, _1.AllocationCloudToJSON)(value.allocation),
-        "providers": (0, _1.ExternalProvidersToJSON)(value.providers),
-        "auth0": (0, _1.Auth0UserMetadataToJSON)(value.auth0)
+        "allocation": (0, index_1.AllocationCloudToJSON)(value.allocation),
+        "providers": (0, index_1.ExternalProvidersToJSON)(value.providers),
+        "auth0": (0, index_1.Auth0UserMetadataToJSON)(value.auth0)
       };
     }
     exports.UserProfileToJSON = UserProfileToJSON6;
@@ -19730,7 +20130,7 @@ var require_Users = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.UsersToJSON = exports.UsersFromJSONTyped = exports.UsersFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function UsersFromJSON2(json) {
       return UsersFromJSONTyped2(json, false);
     }
@@ -19740,8 +20140,8 @@ var require_Users = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": !(0, runtime_1.exists)(json, "iterable") ? void 0 : json["iterable"].map(_1.UserProfileFromJSON)
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": !(0, runtime_1.exists)(json, "iterable") ? void 0 : json["iterable"].map(index_1.UserProfileFromJSON)
       };
     }
     exports.UsersFromJSONTyped = UsersFromJSONTyped2;
@@ -19753,8 +20153,8 @@ var require_Users = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable === void 0 ? void 0 : value.iterable.map(_1.UserProfileToJSON)
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable === void 0 ? void 0 : value.iterable.map(index_1.UserProfileToJSON)
       };
     }
     exports.UsersToJSON = UsersToJSON3;
@@ -19768,7 +20168,7 @@ var require_Website = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.WebsiteToJSON = exports.WebsiteFromJSONTyped = exports.WebsiteFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function WebsiteFromJSON4(json) {
       return WebsiteFromJSONTyped6(json, false);
     }
@@ -19778,19 +20178,18 @@ var require_Website = __commonJS({
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
         "id": json["id"],
-        "asset": !(0, runtime_1.exists)(json, "asset") ? void 0 : (0, _1.FlattenedAssetFromJSON)(json["asset"]),
+        "assets": !(0, runtime_1.exists)(json, "assets") ? void 0 : (0, index_1.FlattenedAssetsFromJSON)(json["assets"]),
         "url": json["url"],
         "name": json["name"],
-        "format": !(0, runtime_1.exists)(json, "format") ? void 0 : (0, _1.FlattenedFormatFromJSON)(json["format"]),
-        "created": (0, _1.GroupedTimestampFromJSON)(json["created"]),
-        "updated": (0, _1.GroupedTimestampFromJSON)(json["updated"]),
-        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, _1.GroupedTimestampFromJSON)(json["deleted"]),
-        "mechanism": (0, _1.MechanismEnumFromJSON)(json["mechanism"]),
+        "created": (0, index_1.GroupedTimestampFromJSON)(json["created"]),
+        "updated": (0, index_1.GroupedTimestampFromJSON)(json["updated"]),
+        "deleted": !(0, runtime_1.exists)(json, "deleted") ? void 0 : (0, index_1.GroupedTimestampFromJSON)(json["deleted"]),
+        "mechanisms": !(0, runtime_1.exists)(json, "mechanisms") ? void 0 : (0, runtime_1.mapValues)(json["mechanisms"], index_1.MechanismEnumFromJSON),
         "interactions": !(0, runtime_1.exists)(json, "interactions") ? void 0 : json["interactions"],
-        "persons": !(0, runtime_1.exists)(json, "persons") ? void 0 : (0, _1.FlattenedPersonsFromJSON)(json["persons"]),
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "persons": !(0, runtime_1.exists)(json, "persons") ? void 0 : (0, index_1.FlattenedPersonsFromJSON)(json["persons"]),
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
     exports.WebsiteFromJSONTyped = WebsiteFromJSONTyped6;
@@ -19802,19 +20201,18 @@ var require_Website = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
         "id": value.id,
-        "asset": (0, _1.FlattenedAssetToJSON)(value.asset),
+        "assets": (0, index_1.FlattenedAssetsToJSON)(value.assets),
         "url": value.url,
         "name": value.name,
-        "format": (0, _1.FlattenedFormatToJSON)(value.format),
-        "created": (0, _1.GroupedTimestampToJSON)(value.created),
-        "updated": (0, _1.GroupedTimestampToJSON)(value.updated),
-        "deleted": (0, _1.GroupedTimestampToJSON)(value.deleted),
-        "mechanism": (0, _1.MechanismEnumToJSON)(value.mechanism),
+        "created": (0, index_1.GroupedTimestampToJSON)(value.created),
+        "updated": (0, index_1.GroupedTimestampToJSON)(value.updated),
+        "deleted": (0, index_1.GroupedTimestampToJSON)(value.deleted),
+        "mechanisms": value.mechanisms === void 0 ? void 0 : (0, runtime_1.mapValues)(value.mechanisms, index_1.MechanismEnumToJSON),
         "interactions": value.interactions,
-        "persons": (0, _1.FlattenedPersonsToJSON)(value.persons),
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "persons": (0, index_1.FlattenedPersonsToJSON)(value.persons),
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.WebsiteToJSON = WebsiteToJSON5;
@@ -19828,23 +20226,23 @@ var require_Websites = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.WebsitesToJSON = exports.WebsitesFromJSONTyped = exports.WebsitesFromJSON = void 0;
     var runtime_1 = require_runtime();
-    var _1 = require_models();
+    var index_1 = require_models();
     function WebsitesFromJSON4(json) {
-      return WebsitesFromJSONTyped9(json, false);
+      return WebsitesFromJSONTyped6(json, false);
     }
     exports.WebsitesFromJSON = WebsitesFromJSON4;
-    function WebsitesFromJSONTyped9(json, ignoreDiscriminator) {
+    function WebsitesFromJSONTyped6(json, ignoreDiscriminator) {
       if (json === void 0 || json === null) {
         return json;
       }
       return {
-        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, _1.EmbeddedModelSchemaFromJSON)(json["schema"]),
-        "iterable": json["iterable"].map(_1.WebsiteFromJSON),
+        "schema": !(0, runtime_1.exists)(json, "schema") ? void 0 : (0, index_1.EmbeddedModelSchemaFromJSON)(json["schema"]),
+        "iterable": json["iterable"].map(index_1.WebsiteFromJSON),
         "indices": !(0, runtime_1.exists)(json, "indices") ? void 0 : json["indices"],
-        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, _1.ScoreFromJSON)(json["score"])
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : (0, index_1.ScoreFromJSON)(json["score"])
       };
     }
-    exports.WebsitesFromJSONTyped = WebsitesFromJSONTyped9;
+    exports.WebsitesFromJSONTyped = WebsitesFromJSONTyped6;
     function WebsitesToJSON5(value) {
       if (value === void 0) {
         return void 0;
@@ -19853,10 +20251,10 @@ var require_Websites = __commonJS({
         return null;
       }
       return {
-        "schema": (0, _1.EmbeddedModelSchemaToJSON)(value.schema),
-        "iterable": value.iterable.map(_1.WebsiteToJSON),
+        "schema": (0, index_1.EmbeddedModelSchemaToJSON)(value.schema),
+        "iterable": value.iterable.map(index_1.WebsiteToJSON),
         "indices": value.indices,
-        "score": (0, _1.ScoreToJSON)(value.score)
+        "score": (0, index_1.ScoreToJSON)(value.score)
       };
     }
     exports.WebsitesToJSON = WebsitesToJSON5;
@@ -19920,7 +20318,6 @@ var require_models = __commonJS({
     __exportStar(require_AssetFilterPhraseOptions(), exports);
     __exportStar(require_AssetFilterTimestamp(), exports);
     __exportStar(require_AssetFilters(), exports);
-    __exportStar(require_AssetFormats(), exports);
     __exportStar(require_AssetReclassification(), exports);
     __exportStar(require_AssetSearchSpace(), exports);
     __exportStar(require_Assets(), exports);
@@ -19968,6 +20365,8 @@ var require_models = __commonJS({
     __exportStar(require_EmbeddedModelSchemaSemanticVersionEnum(), exports);
     __exportStar(require_Embedding(), exports);
     __exportStar(require_Embeddings(), exports);
+    __exportStar(require_ExistentMetadata(), exports);
+    __exportStar(require_ExistingMetadata(), exports);
     __exportStar(require_ExportedAsset(), exports);
     __exportStar(require_ExportedDatabase(), exports);
     __exportStar(require_ExportedDatabaseFormat(), exports);
@@ -20085,6 +20484,7 @@ var require_models = __commonJS({
     __exportStar(require_QGPTConversationMessageRoleEnum(), exports);
     __exportStar(require_QGPTHintsInput(), exports);
     __exportStar(require_QGPTPersonsRelatedInput(), exports);
+    __exportStar(require_QGPTPersonsRelatedOutput(), exports);
     __exportStar(require_QGPTQuestionAnswer(), exports);
     __exportStar(require_QGPTQuestionAnswers(), exports);
     __exportStar(require_QGPTQuestionInput(), exports);
@@ -20097,6 +20497,7 @@ var require_models = __commonJS({
     __exportStar(require_QGPTStreamEnum(), exports);
     __exportStar(require_QGPTStreamInput(), exports);
     __exportStar(require_QGPTStreamOutput(), exports);
+    __exportStar(require_Reaction(), exports);
     __exportStar(require_Recipients(), exports);
     __exportStar(require_ReferencedActivity(), exports);
     __exportStar(require_ReferencedAnchor(), exports);
@@ -20121,8 +20522,11 @@ var require_models = __commonJS({
     __exportStar(require_RelevantQGPTSeeds(), exports);
     __exportStar(require_ResultedPKCE(), exports);
     __exportStar(require_ReturnedUserProfile(), exports);
+    __exportStar(require_ReuseReaction(), exports);
+    __exportStar(require_ReuseSuggestion(), exports);
     __exportStar(require_RevokedPKCE(), exports);
     __exportStar(require_Role(), exports);
+    __exportStar(require_SaveSuggestion(), exports);
     __exportStar(require_Score(), exports);
     __exportStar(require_SearchedAsset(), exports);
     __exportStar(require_SearchedAssets(), exports);
@@ -20141,7 +20545,9 @@ var require_models = __commonJS({
     __exportStar(require_SeededAssetWebsite(), exports);
     __exportStar(require_SeededAssetsRecommendation(), exports);
     __exportStar(require_SeededClassification(), exports);
+    __exportStar(require_SeededConnectorAsset(), exports);
     __exportStar(require_SeededConnectorConnection(), exports);
+    __exportStar(require_SeededConnectorCreation(), exports);
     __exportStar(require_SeededConnectorTracking(), exports);
     __exportStar(require_SeededConversation(), exports);
     __exportStar(require_SeededConversationMessage(), exports);
@@ -20200,6 +20606,8 @@ var require_models = __commonJS({
     __exportStar(require_Space(), exports);
     __exportStar(require_StreamedIdentifier(), exports);
     __exportStar(require_StreamedIdentifiers(), exports);
+    __exportStar(require_Suggestion(), exports);
+    __exportStar(require_SuggestionTarget(), exports);
     __exportStar(require_SystemExecutionCpuInformation(), exports);
     __exportStar(require_SystemExecutionInformation(), exports);
     __exportStar(require_TLPCodeDirectoryAnalytics(), exports);
@@ -22117,6 +22525,62 @@ var require_AssetApi = __commonJS({
     var models_1 = require_models();
     var AssetApi2 = class extends runtime.BaseAPI {
       /**
+       * This will associate a tag with a asset. This will do the same thing as the tag equivilant.
+       * /asset/{asset}/tags/associate/{tag} [POST]
+       */
+      async assetAssociateTagRaw(requestParameters) {
+        if (requestParameters.asset === null || requestParameters.asset === void 0) {
+          throw new runtime.RequiredError("asset", "Required parameter requestParameters.asset was null or undefined when calling assetAssociateTag.");
+        }
+        if (requestParameters.tag === null || requestParameters.tag === void 0) {
+          throw new runtime.RequiredError("tag", "Required parameter requestParameters.tag was null or undefined when calling assetAssociateTag.");
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+          path: `/asset/{asset}/tags/associate/{tag}`.replace(`{${"asset"}}`, encodeURIComponent(String(requestParameters.asset))).replace(`{${"tag"}}`, encodeURIComponent(String(requestParameters.tag))),
+          method: "POST",
+          headers: headerParameters,
+          query: queryParameters
+        });
+        return new runtime.VoidApiResponse(response);
+      }
+      /**
+       * This will associate a tag with a asset. This will do the same thing as the tag equivilant.
+       * /asset/{asset}/tags/associate/{tag} [POST]
+       */
+      async assetAssociateTag(requestParameters) {
+        await this.assetAssociateTagRaw(requestParameters);
+      }
+      /**
+       * This will enable us to dissassociate a tag from a asset. This will do the same thing as the tag equivilant.
+       * /asset/{asset}/tags/disassociate/{tag} [POST]
+       */
+      async assetDisassociateTagRaw(requestParameters) {
+        if (requestParameters.tag === null || requestParameters.tag === void 0) {
+          throw new runtime.RequiredError("tag", "Required parameter requestParameters.tag was null or undefined when calling assetDisassociateTag.");
+        }
+        if (requestParameters.asset === null || requestParameters.asset === void 0) {
+          throw new runtime.RequiredError("asset", "Required parameter requestParameters.asset was null or undefined when calling assetDisassociateTag.");
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+          path: `/asset/{asset}/tags/disassociate/{tag}`.replace(`{${"tag"}}`, encodeURIComponent(String(requestParameters.tag))).replace(`{${"asset"}}`, encodeURIComponent(String(requestParameters.asset))),
+          method: "POST",
+          headers: headerParameters,
+          query: queryParameters
+        });
+        return new runtime.VoidApiResponse(response);
+      }
+      /**
+       * This will enable us to dissassociate a tag from a asset. This will do the same thing as the tag equivilant.
+       * /asset/{asset}/tags/disassociate/{tag} [POST]
+       */
+      async assetDisassociateTag(requestParameters) {
+        await this.assetDisassociateTagRaw(requestParameters);
+      }
+      /**
        * Get the formats for a given asset.
        * /asset/{asset}/formats [GET] Scoped To Asset
        */
@@ -22135,7 +22599,7 @@ var require_AssetApi = __commonJS({
           headers: headerParameters,
           query: queryParameters
         });
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, models_1.AssetFormatsFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, models_1.FormatsFromJSON)(jsonValue));
       }
       /**
        * Get the formats for a given asset.
@@ -22348,6 +22812,62 @@ var require_AssetApi = __commonJS({
       async assetUpdate(requestParameters) {
         const response = await this.assetUpdateRaw(requestParameters);
         return await response.value();
+      }
+      /**
+       * This will associate a website with a asset. This will do the same thing as the website equivilant.
+       * /asset/{asset}/websites/associate/{website} [POST]
+       */
+      async associateWebsiteRaw(requestParameters) {
+        if (requestParameters.asset === null || requestParameters.asset === void 0) {
+          throw new runtime.RequiredError("asset", "Required parameter requestParameters.asset was null or undefined when calling associateWebsite.");
+        }
+        if (requestParameters.website === null || requestParameters.website === void 0) {
+          throw new runtime.RequiredError("website", "Required parameter requestParameters.website was null or undefined when calling associateWebsite.");
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+          path: `/asset/{asset}/websites/associate/{website}`.replace(`{${"asset"}}`, encodeURIComponent(String(requestParameters.asset))).replace(`{${"website"}}`, encodeURIComponent(String(requestParameters.website))),
+          method: "POST",
+          headers: headerParameters,
+          query: queryParameters
+        });
+        return new runtime.VoidApiResponse(response);
+      }
+      /**
+       * This will associate a website with a asset. This will do the same thing as the website equivilant.
+       * /asset/{asset}/websites/associate/{website} [POST]
+       */
+      async associateWebsite(requestParameters) {
+        await this.associateWebsiteRaw(requestParameters);
+      }
+      /**
+       * This will enable us to dissassociate a website from a asset. This will do the same thing as the website equivilant.
+       * /asset/{asset}/websites/disassociate/{website} [POST]
+       */
+      async disassociateWebsiteRaw(requestParameters) {
+        if (requestParameters.website === null || requestParameters.website === void 0) {
+          throw new runtime.RequiredError("website", "Required parameter requestParameters.website was null or undefined when calling disassociateWebsite.");
+        }
+        if (requestParameters.asset === null || requestParameters.asset === void 0) {
+          throw new runtime.RequiredError("asset", "Required parameter requestParameters.asset was null or undefined when calling disassociateWebsite.");
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+          path: `/asset/{asset}/websites/disassociate/{website}`.replace(`{${"website"}}`, encodeURIComponent(String(requestParameters.website))).replace(`{${"asset"}}`, encodeURIComponent(String(requestParameters.asset))),
+          method: "POST",
+          headers: headerParameters,
+          query: queryParameters
+        });
+        return new runtime.VoidApiResponse(response);
+      }
+      /**
+       * This will enable us to dissassociate a website from a asset. This will do the same thing as the website equivilant.
+       * /asset/{asset}/websites/disassociate/{website} [POST]
+       */
+      async disassociateWebsite(requestParameters) {
+        await this.disassociateWebsiteRaw(requestParameters);
       }
     };
     exports.AssetApi = AssetApi2;
@@ -22698,7 +23218,7 @@ var require_AssetsApi = __commonJS({
           headers: headerParameters,
           query: queryParameters
         });
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, models_1.AssetFormatsFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, models_1.FormatsFromJSON)(jsonValue));
       }
       /**
        * This will query the formats for agiven asset when provided that asset\'s id.
@@ -23399,6 +23919,118 @@ var require_ConnectorApi = __commonJS({
        */
       async connect(requestParameters) {
         const response = await this.connectRaw(requestParameters);
+        return await response.value();
+      }
+      /**
+       * This can be used to send a SeededAsset over that you may use to compair in the future.
+       * /{application}/intention [POST]
+       */
+      async intentionRaw(requestParameters) {
+        if (requestParameters.application === null || requestParameters.application === void 0) {
+          throw new runtime.RequiredError("application", "Required parameter requestParameters.application was null or undefined when calling intention.");
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters["Content-Type"] = "application/json";
+        const response = await this.request({
+          path: `/{application}/intention`.replace(`{${"application"}}`, encodeURIComponent(String(requestParameters.application))),
+          method: "POST",
+          headers: headerParameters,
+          query: queryParameters,
+          body: (0, models_1.SeededConnectorAssetToJSON)(requestParameters.seededConnectorAsset)
+        });
+        return new runtime.TextApiResponse(response);
+      }
+      /**
+       * This can be used to send a SeededAsset over that you may use to compair in the future.
+       * /{application}/intention [POST]
+       */
+      async intention(requestParameters) {
+        const response = await this.intentionRaw(requestParameters);
+        return await response.value();
+      }
+      /**
+       * A consolidation endpoint to handle the updating of an onboarding process.
+       * /onboarded [POST]
+       */
+      async onboardedRaw(requestParameters) {
+        if (requestParameters.application === null || requestParameters.application === void 0) {
+          throw new runtime.RequiredError("application", "Required parameter requestParameters.application was null or undefined when calling onboarded.");
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters["Content-Type"] = "application/json";
+        const response = await this.request({
+          path: `/{application}/onboarded`.replace(`{${"application"}}`, encodeURIComponent(String(requestParameters.application))),
+          method: "POST",
+          headers: headerParameters,
+          query: queryParameters,
+          body: requestParameters.body
+        });
+        return new runtime.TextApiResponse(response);
+      }
+      /**
+       * A consolidation endpoint to handle the updating of an onboarding process.
+       * /onboarded [POST]
+       */
+      async onboarded(requestParameters) {
+        const response = await this.onboardedRaw(requestParameters);
+        return await response.value();
+      }
+      /**
+       * This will react to the response returned from the /suggest endpoint.
+       * /{application}/reaction [POST]
+       */
+      async reactRaw(requestParameters) {
+        if (requestParameters.application === null || requestParameters.application === void 0) {
+          throw new runtime.RequiredError("application", "Required parameter requestParameters.application was null or undefined when calling react.");
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters["Content-Type"] = "application/json";
+        const response = await this.request({
+          path: `/{application}/reaction`.replace(`{${"application"}}`, encodeURIComponent(String(requestParameters.application))),
+          method: "POST",
+          headers: headerParameters,
+          query: queryParameters,
+          body: (0, models_1.ReactionToJSON)(requestParameters.reaction)
+        });
+        return new runtime.TextApiResponse(response);
+      }
+      /**
+       * This will react to the response returned from the /suggest endpoint.
+       * /{application}/reaction [POST]
+       */
+      async react(requestParameters) {
+        const response = await this.reactRaw(requestParameters);
+        return await response.value();
+      }
+      /**
+       * This can and should be called everytime a snippet is coppied from an integration. IE A Jetbrains user coppies some code, then this end point can get called to weigh if we want to suggest a piece to be reused (if reuse is true we should provide asset that the user may want to use) or saved or neither.   **Note: Could potentially accept a SeededFormat for the request body if we want.  TODO potentially just make this a get endpoint. (because we are trying to retireve data.
+       * /{application}/suggestion [POST]
+       */
+      async suggestRaw(requestParameters) {
+        if (requestParameters.application === null || requestParameters.application === void 0) {
+          throw new runtime.RequiredError("application", "Required parameter requestParameters.application was null or undefined when calling suggest.");
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters["Content-Type"] = "application/json";
+        const response = await this.request({
+          path: `/{application}/suggestion`.replace(`{${"application"}}`, encodeURIComponent(String(requestParameters.application))),
+          method: "POST",
+          headers: headerParameters,
+          query: queryParameters,
+          body: (0, models_1.SeededConnectorCreationToJSON)(requestParameters.seededConnectorCreation)
+        });
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, models_1.SuggestionFromJSON)(jsonValue));
+      }
+      /**
+       * This can and should be called everytime a snippet is coppied from an integration. IE A Jetbrains user coppies some code, then this end point can get called to weigh if we want to suggest a piece to be reused (if reuse is true we should provide asset that the user may want to use) or saved or neither.   **Note: Could potentially accept a SeededFormat for the request body if we want.  TODO potentially just make this a get endpoint. (because we are trying to retireve data.
+       * /{application}/suggestion [POST]
+       */
+      async suggest(requestParameters) {
+        const response = await this.suggestRaw(requestParameters);
         return await response.value();
       }
       /**
@@ -27066,7 +27698,7 @@ var require_QGPTApi = __commonJS({
           query: queryParameters,
           body: (0, models_1.QGPTPersonsRelatedInputToJSON)(requestParameters.qGPTPersonsRelatedInput)
         });
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, models_1.PersonsFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, models_1.QGPTPersonsRelatedOutputFromJSON)(jsonValue));
       }
       /**
        * This Endpoint is used for Who Support.  IE given context like a Seed, or a qgptConversation, who will be able to help out.   Input: - (optional) seed: Seed - ONLY GOING TO SUPPORT fragments.for now. - (optional) conversation: QGPTConversation.  Output: - persons: Persons
@@ -28024,6 +28656,118 @@ var require_TagApi = __commonJS({
     var models_1 = require_models();
     var TagApi = class extends runtime.BaseAPI {
       /**
+       * This will associate a tag with a asset.
+       * /tag/{tag}/assets/associate/{asset} [POST]
+       */
+      async tagAssociateAssetRaw(requestParameters) {
+        if (requestParameters.asset === null || requestParameters.asset === void 0) {
+          throw new runtime.RequiredError("asset", "Required parameter requestParameters.asset was null or undefined when calling tagAssociateAsset.");
+        }
+        if (requestParameters.tag === null || requestParameters.tag === void 0) {
+          throw new runtime.RequiredError("tag", "Required parameter requestParameters.tag was null or undefined when calling tagAssociateAsset.");
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+          path: `/tag/{tag}/assets/associate/{asset}`.replace(`{${"asset"}}`, encodeURIComponent(String(requestParameters.asset))).replace(`{${"tag"}}`, encodeURIComponent(String(requestParameters.tag))),
+          method: "POST",
+          headers: headerParameters,
+          query: queryParameters
+        });
+        return new runtime.VoidApiResponse(response);
+      }
+      /**
+       * This will associate a tag with a asset.
+       * /tag/{tag}/assets/associate/{asset} [POST]
+       */
+      async tagAssociateAsset(requestParameters) {
+        await this.tagAssociateAssetRaw(requestParameters);
+      }
+      /**
+       * This will associate a tag with a person.
+       * /tag/{tag}/persons/associate/{person} [POST]
+       */
+      async tagAssociatePersonRaw(requestParameters) {
+        if (requestParameters.tag === null || requestParameters.tag === void 0) {
+          throw new runtime.RequiredError("tag", "Required parameter requestParameters.tag was null or undefined when calling tagAssociatePerson.");
+        }
+        if (requestParameters.person === null || requestParameters.person === void 0) {
+          throw new runtime.RequiredError("person", "Required parameter requestParameters.person was null or undefined when calling tagAssociatePerson.");
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+          path: `/tag/{tag}/persons/associate/{person}`.replace(`{${"tag"}}`, encodeURIComponent(String(requestParameters.tag))).replace(`{${"person"}}`, encodeURIComponent(String(requestParameters.person))),
+          method: "POST",
+          headers: headerParameters,
+          query: queryParameters
+        });
+        return new runtime.VoidApiResponse(response);
+      }
+      /**
+       * This will associate a tag with a person.
+       * /tag/{tag}/persons/associate/{person} [POST]
+       */
+      async tagAssociatePerson(requestParameters) {
+        await this.tagAssociatePersonRaw(requestParameters);
+      }
+      /**
+       * This will enable us to dissassociate a tag from a asset.
+       * /tag/{tag}/assets/disassociate/{asset} [POST]
+       */
+      async tagDisassociateAssetRaw(requestParameters) {
+        if (requestParameters.tag === null || requestParameters.tag === void 0) {
+          throw new runtime.RequiredError("tag", "Required parameter requestParameters.tag was null or undefined when calling tagDisassociateAsset.");
+        }
+        if (requestParameters.asset === null || requestParameters.asset === void 0) {
+          throw new runtime.RequiredError("asset", "Required parameter requestParameters.asset was null or undefined when calling tagDisassociateAsset.");
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+          path: `/tag/{tag}/assets/disassociate/{asset}`.replace(`{${"tag"}}`, encodeURIComponent(String(requestParameters.tag))).replace(`{${"asset"}}`, encodeURIComponent(String(requestParameters.asset))),
+          method: "POST",
+          headers: headerParameters,
+          query: queryParameters
+        });
+        return new runtime.VoidApiResponse(response);
+      }
+      /**
+       * This will enable us to dissassociate a tag from a asset.
+       * /tag/{tag}/assets/disassociate/{asset} [POST]
+       */
+      async tagDisassociateAsset(requestParameters) {
+        await this.tagDisassociateAssetRaw(requestParameters);
+      }
+      /**
+       * This will enable us to dissassociate a tag from a person.
+       * /tag/{tag}/persons/disassociate/{person} [POST]
+       */
+      async tagDisassociatePersonRaw(requestParameters) {
+        if (requestParameters.tag === null || requestParameters.tag === void 0) {
+          throw new runtime.RequiredError("tag", "Required parameter requestParameters.tag was null or undefined when calling tagDisassociatePerson.");
+        }
+        if (requestParameters.person === null || requestParameters.person === void 0) {
+          throw new runtime.RequiredError("person", "Required parameter requestParameters.person was null or undefined when calling tagDisassociatePerson.");
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+          path: `/tag/{tag}/persons/disassociate/{person}`.replace(`{${"tag"}}`, encodeURIComponent(String(requestParameters.tag))).replace(`{${"person"}}`, encodeURIComponent(String(requestParameters.person))),
+          method: "POST",
+          headers: headerParameters,
+          query: queryParameters
+        });
+        return new runtime.VoidApiResponse(response);
+      }
+      /**
+       * This will enable us to dissassociate a tag from a person.
+       * /tag/{tag}/persons/disassociate/{person} [POST]
+       */
+      async tagDisassociatePerson(requestParameters) {
+        await this.tagDisassociatePersonRaw(requestParameters);
+      }
+      /**
        * This will take in a SeededScoreIncrement and will increment the material relative to the incoming body.
        * \'/tag/{tag}/scores/increment\' [POST]
        */
@@ -28205,6 +28949,31 @@ var require_TagsApi = __commonJS({
        */
       async tagsDeleteSpecificTag(requestParameters) {
         await this.tagsDeleteSpecificTagRaw(requestParameters);
+      }
+      /**
+       * This will check all of the tags in our database to see if this specific provided tag actually exists, if not we will just return a null tag in the output.
+       * /tags/exists [POST]
+       */
+      async tagsExistsRaw(requestParameters) {
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters["Content-Type"] = "application/json";
+        const response = await this.request({
+          path: `/tags/exists`,
+          method: "POST",
+          headers: headerParameters,
+          query: queryParameters,
+          body: (0, models_1.ExistentMetadataToJSON)(requestParameters.existentMetadata)
+        });
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, models_1.ExistingMetadataFromJSON)(jsonValue));
+      }
+      /**
+       * This will check all of the tags in our database to see if this specific provided tag actually exists, if not we will just return a null tag in the output.
+       * /tags/exists [POST]
+       */
+      async tagsExists(requestParameters) {
+        const response = await this.tagsExistsRaw(requestParameters);
+        return await response.value();
       }
       /**
        * This will get a snapshot of all of your tags.
@@ -28750,6 +29519,118 @@ var require_WebsiteApi = __commonJS({
     var models_1 = require_models();
     var WebsiteApi = class extends runtime.BaseAPI {
       /**
+       * This will associate a website with a asset.
+       * /website/{website}/assets/associate/{asset} [POST]
+       */
+      async associateAssetRaw(requestParameters) {
+        if (requestParameters.asset === null || requestParameters.asset === void 0) {
+          throw new runtime.RequiredError("asset", "Required parameter requestParameters.asset was null or undefined when calling associateAsset.");
+        }
+        if (requestParameters.website === null || requestParameters.website === void 0) {
+          throw new runtime.RequiredError("website", "Required parameter requestParameters.website was null or undefined when calling associateAsset.");
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+          path: `/website/{website}/assets/associate/{asset}`.replace(`{${"asset"}}`, encodeURIComponent(String(requestParameters.asset))).replace(`{${"website"}}`, encodeURIComponent(String(requestParameters.website))),
+          method: "POST",
+          headers: headerParameters,
+          query: queryParameters
+        });
+        return new runtime.VoidApiResponse(response);
+      }
+      /**
+       * This will associate a website with a asset.
+       * /website/{website}/assets/associate/{asset} [POST]
+       */
+      async associateAsset(requestParameters) {
+        await this.associateAssetRaw(requestParameters);
+      }
+      /**
+       * This will associate a website with a person.
+       * /website/{website}/persons/associate/{person} [POST]
+       */
+      async associatePersonRaw(requestParameters) {
+        if (requestParameters.website === null || requestParameters.website === void 0) {
+          throw new runtime.RequiredError("website", "Required parameter requestParameters.website was null or undefined when calling associatePerson.");
+        }
+        if (requestParameters.person === null || requestParameters.person === void 0) {
+          throw new runtime.RequiredError("person", "Required parameter requestParameters.person was null or undefined when calling associatePerson.");
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+          path: `/website/{website}/persons/associate/{person}`.replace(`{${"website"}}`, encodeURIComponent(String(requestParameters.website))).replace(`{${"person"}}`, encodeURIComponent(String(requestParameters.person))),
+          method: "POST",
+          headers: headerParameters,
+          query: queryParameters
+        });
+        return new runtime.VoidApiResponse(response);
+      }
+      /**
+       * This will associate a website with a person.
+       * /website/{website}/persons/associate/{person} [POST]
+       */
+      async associatePerson(requestParameters) {
+        await this.associatePersonRaw(requestParameters);
+      }
+      /**
+       * This will enable us to dissassociate a website from a asset.
+       * /website/{website}/assets/disassociate/{asset} [POST]
+       */
+      async disassociateAssetRaw(requestParameters) {
+        if (requestParameters.website === null || requestParameters.website === void 0) {
+          throw new runtime.RequiredError("website", "Required parameter requestParameters.website was null or undefined when calling disassociateAsset.");
+        }
+        if (requestParameters.asset === null || requestParameters.asset === void 0) {
+          throw new runtime.RequiredError("asset", "Required parameter requestParameters.asset was null or undefined when calling disassociateAsset.");
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+          path: `/website/{website}/assets/disassociate/{asset}`.replace(`{${"website"}}`, encodeURIComponent(String(requestParameters.website))).replace(`{${"asset"}}`, encodeURIComponent(String(requestParameters.asset))),
+          method: "POST",
+          headers: headerParameters,
+          query: queryParameters
+        });
+        return new runtime.VoidApiResponse(response);
+      }
+      /**
+       * This will enable us to dissassociate a website from a asset.
+       * /website/{website}/assets/disassociate/{asset} [POST]
+       */
+      async disassociateAsset(requestParameters) {
+        await this.disassociateAssetRaw(requestParameters);
+      }
+      /**
+       * This will enable us to dissassociate a website from a person.
+       * /website/{website}/persons/disassociate/{person} [POST]
+       */
+      async disassociatePersonRaw(requestParameters) {
+        if (requestParameters.website === null || requestParameters.website === void 0) {
+          throw new runtime.RequiredError("website", "Required parameter requestParameters.website was null or undefined when calling disassociatePerson.");
+        }
+        if (requestParameters.person === null || requestParameters.person === void 0) {
+          throw new runtime.RequiredError("person", "Required parameter requestParameters.person was null or undefined when calling disassociatePerson.");
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+          path: `/website/{website}/persons/disassociate/{person}`.replace(`{${"website"}}`, encodeURIComponent(String(requestParameters.website))).replace(`{${"person"}}`, encodeURIComponent(String(requestParameters.person))),
+          method: "POST",
+          headers: headerParameters,
+          query: queryParameters
+        });
+        return new runtime.VoidApiResponse(response);
+      }
+      /**
+       * This will enable us to dissassociate a website from a person.
+       * /website/{website}/persons/disassociate/{person} [POST]
+       */
+      async disassociatePerson(requestParameters) {
+        await this.disassociatePersonRaw(requestParameters);
+      }
+      /**
        * This will take in a SeededScoreIncrement and will increment the material relative to the incoming body.
        * \'/website/{website}/scores/increment\' [POST]
        */
@@ -28931,6 +29812,31 @@ var require_WebsitesApi = __commonJS({
        */
       async websitesDeleteSpecificWebsite(requestParameters) {
         await this.websitesDeleteSpecificWebsiteRaw(requestParameters);
+      }
+      /**
+       * This will check all of the websites in our database to see if this specific provided website actually exists, if not we will just return a null website in the output.
+       * /websites/exists [POST]
+       */
+      async websitesExistsRaw(requestParameters) {
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters["Content-Type"] = "application/json";
+        const response = await this.request({
+          path: `/websites/exists`,
+          method: "POST",
+          headers: headerParameters,
+          query: queryParameters,
+          body: (0, models_1.ExistentMetadataToJSON)(requestParameters.existentMetadata)
+        });
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, models_1.ExistingMetadataFromJSON)(jsonValue));
+      }
+      /**
+       * This will check all of the websites in our database to see if this specific provided website actually exists, if not we will just return a null website in the output.
+       * /websites/exists [POST]
+       */
+      async websitesExists(requestParameters) {
+        const response = await this.websitesExistsRaw(requestParameters);
+        return await response.value();
       }
       /**
        * This will get a snapshot of all your websites.
@@ -33523,6 +34429,7 @@ var require_ConversationBuilder = __commonJS({
             return {
               message: {
                 role: message.role,
+                // `ConversationMessageRoleEnum` is the same as `QGPTConversationMessageRoleEnum`
                 text: messageData !== null && messageData !== void 0 ? messageData : "Unable to fetch message data",
                 timestamp: message.created
               },
@@ -41342,11 +42249,9 @@ ${content}</tr>
         __publicField(this, "parse", __privateMethod(this, _parseMarkdown2, parseMarkdown_fn2).call(this, _Lexer.lex, _Parser.parse));
         __publicField(this, "parseInline", __privateMethod(this, _parseMarkdown2, parseMarkdown_fn2).call(this, _Lexer.lexInline, _Parser.parseInline));
         __publicField(this, "Parser", _Parser);
-        __publicField(this, "parser", _Parser.parse);
         __publicField(this, "Renderer", _Renderer);
         __publicField(this, "TextRenderer", _TextRenderer);
         __publicField(this, "Lexer", _Lexer);
-        __publicField(this, "lexer", _Lexer.lex);
         __publicField(this, "Tokenizer", _Tokenizer);
         __publicField(this, "Hooks", _Hooks);
         this.use(...args);
@@ -41526,6 +42431,12 @@ ${content}</tr>
       setOptions(opt) {
         this.defaults = { ...this.defaults, ...opt };
         return this;
+      }
+      lexer(src, options3) {
+        return _Lexer.lex(src, options3 != null ? options3 : this.defaults);
+      }
+      parser(tokens, options3) {
+        return _Parser.parse(tokens, options3 != null ? options3 : this.defaults);
       }
     };
     _parseMarkdown2 = new WeakSet();
@@ -45410,7 +46321,8 @@ var require_view = __commonJS({
     var ErrorView_1 = require_ErrorView();
     var timeoutPromise_1 = require_timeoutPromise();
     var uuid_1 = require_commonjs_browser();
-    var GPTMinVersion = "6.5.0";
+    var GPTMinVersion = "7.0.0";
+    var MaxVersion = "8.0.0";
     exports.migration = 0;
     var copyToClipboard2 = (text) => __awaiter(void 0, void 0, void 0, function* () {
       try {
@@ -45441,7 +46353,7 @@ var require_view = __commonJS({
         if (versionNum.includes("staging") || versionNum.includes("debug")) {
           versionValid2 = true;
         } else {
-          versionValid2 = (0, semver_1.gte)(versionNum, GPTMinVersion);
+          versionValid2 = (0, semver_1.gte)(versionNum, GPTMinVersion) && (0, semver_1.lt)(versionNum, MaxVersion);
         }
       } else {
         versionValid2 = false;
@@ -46793,7 +47705,7 @@ function AssetFromJSONTyped(json, ignoreDiscriminator) {
     "updated": GroupedTimestampFromJSON(json["updated"]),
     "synced": !exists(json, "synced") ? void 0 : GroupedTimestampFromJSON(json["synced"]),
     "deleted": !exists(json, "deleted") ? void 0 : GroupedTimestampFromJSON(json["deleted"]),
-    "formats": AssetFormatsFromJSON(json["formats"]),
+    "formats": FormatsFromJSON(json["formats"]),
     "preview": PreviewFromJSON(json["preview"]),
     "original": ReferencedFormatFromJSON(json["original"]),
     "shares": !exists(json, "shares") ? void 0 : SharesFromJSON(json["shares"]),
@@ -46813,21 +47725,6 @@ function AssetFromJSONTyped(json, ignoreDiscriminator) {
     "hints": !exists(json, "hints") ? void 0 : HintsFromJSON(json["hints"]),
     "anchors": !exists(json, "anchors") ? void 0 : AnchorsFromJSON(json["anchors"]),
     "conversations": !exists(json, "conversations") ? void 0 : ConversationsFromJSON(json["conversations"])
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/connector/models/AssetFormats.ts
-function AssetFormatsFromJSON(json) {
-  return AssetFormatsFromJSONTyped2(json, false);
-}
-function AssetFormatsFromJSONTyped2(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "iterable": !exists(json, "iterable") ? void 0 : json["iterable"].map(FormatFromJSON),
-    "asset": FlattenedAssetFromJSON(json["asset"])
   };
 }
 
@@ -47237,9 +48134,9 @@ function EdgesToJSON(value) {
 
 // ../generated_runtime/sdk/http/typescript/connector/models/EmbeddedModelSchema.ts
 function EmbeddedModelSchemaFromJSON(json) {
-  return EmbeddedModelSchemaFromJSONTyped31(json, false);
+  return EmbeddedModelSchemaFromJSONTyped30(json, false);
 }
-function EmbeddedModelSchemaFromJSONTyped31(json, ignoreDiscriminator) {
+function EmbeddedModelSchemaFromJSONTyped30(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -47927,9 +48824,9 @@ function FlattenedAnnotationsToJSON(value) {
 
 // ../generated_runtime/sdk/http/typescript/connector/models/FlattenedAsset.ts
 function FlattenedAssetFromJSON(json) {
-  return FlattenedAssetFromJSONTyped3(json, false);
+  return FlattenedAssetFromJSONTyped2(json, false);
 }
-function FlattenedAssetFromJSONTyped3(json, ignoreDiscriminator) {
+function FlattenedAssetFromJSONTyped2(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -48283,8 +49180,6 @@ function FlattenedFormatFromJSONTyped2(json, ignoreDiscriminator) {
     "fragment": !exists(json, "fragment") ? void 0 : FragmentFormatFromJSON(json["fragment"]),
     "file": !exists(json, "file") ? void 0 : FileFormatFromJSON(json["file"]),
     "analysis": !exists(json, "analysis") ? void 0 : FlattenedAnalysisFromJSON(json["analysis"]),
-    "websites": !exists(json, "websites") ? void 0 : FlattenedWebsitesFromJSON(json["websites"]),
-    "tags": !exists(json, "tags") ? void 0 : FlattenedTagsFromJSON(json["tags"]),
     "relationship": !exists(json, "relationship") ? void 0 : RelationshipFromJSON(json["relationship"]),
     "activities": !exists(json, "activities") ? void 0 : FlattenedActivitiesFromJSON(json["activities"])
   };
@@ -48314,8 +49209,6 @@ function FlattenedFormatToJSON(value) {
     "fragment": FragmentFormatToJSON(value.fragment),
     "file": FileFormatToJSON(value.file),
     "analysis": FlattenedAnalysisToJSON(value.analysis),
-    "websites": FlattenedWebsitesToJSON(value.websites),
-    "tags": FlattenedTagsToJSON(value.tags),
     "relationship": RelationshipToJSON(value.relationship),
     "activities": FlattenedActivitiesToJSON(value.activities)
   };
@@ -48763,11 +49656,10 @@ function FlattenedTagFromJSONTyped(json, ignoreDiscriminator) {
     "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
     "id": json["id"],
     "text": json["text"],
-    "mechanism": MechanismEnumFromJSON(json["mechanism"]),
-    "asset": !exists(json, "asset") ? void 0 : ReferencedAssetFromJSON(json["asset"]),
+    "mechanisms": !exists(json, "mechanisms") ? void 0 : mapValues(json["mechanisms"], MechanismEnumFromJSON),
+    "assets": !exists(json, "assets") ? void 0 : FlattenedAssetsFromJSON(json["assets"]),
     "created": GroupedTimestampFromJSON(json["created"]),
     "updated": GroupedTimestampFromJSON(json["updated"]),
-    "format": !exists(json, "format") ? void 0 : ReferencedFormatFromJSON(json["format"]),
     "deleted": !exists(json, "deleted") ? void 0 : GroupedTimestampFromJSON(json["deleted"]),
     "category": TagCategoryEnumFromJSON(json["category"]),
     "relationship": !exists(json, "relationship") ? void 0 : RelationshipFromJSON(json["relationship"]),
@@ -48787,11 +49679,10 @@ function FlattenedTagToJSON(value) {
     "schema": EmbeddedModelSchemaToJSON(value.schema),
     "id": value.id,
     "text": value.text,
-    "mechanism": MechanismEnumToJSON(value.mechanism),
-    "asset": ReferencedAssetToJSON(value.asset),
+    "mechanisms": value.mechanisms === void 0 ? void 0 : mapValues(value.mechanisms, MechanismEnumToJSON),
+    "assets": FlattenedAssetsToJSON(value.assets),
     "created": GroupedTimestampToJSON(value.created),
     "updated": GroupedTimestampToJSON(value.updated),
-    "format": ReferencedFormatToJSON(value.format),
     "deleted": GroupedTimestampToJSON(value.deleted),
     "category": TagCategoryEnumToJSON(value.category),
     "relationship": RelationshipToJSON(value.relationship),
@@ -48803,9 +49694,9 @@ function FlattenedTagToJSON(value) {
 
 // ../generated_runtime/sdk/http/typescript/connector/models/FlattenedTags.ts
 function FlattenedTagsFromJSON(json) {
-  return FlattenedTagsFromJSONTyped4(json, false);
+  return FlattenedTagsFromJSONTyped3(json, false);
 }
-function FlattenedTagsFromJSONTyped4(json, ignoreDiscriminator) {
+function FlattenedTagsFromJSONTyped3(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -48878,14 +49769,13 @@ function FlattenedWebsiteFromJSONTyped(json, ignoreDiscriminator) {
   return {
     "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
     "id": json["id"],
-    "asset": !exists(json, "asset") ? void 0 : ReferencedAssetFromJSON(json["asset"]),
+    "assets": !exists(json, "assets") ? void 0 : FlattenedAssetsFromJSON(json["assets"]),
     "name": json["name"],
     "url": json["url"],
-    "format": !exists(json, "format") ? void 0 : ReferencedFormatFromJSON(json["format"]),
     "created": GroupedTimestampFromJSON(json["created"]),
     "updated": GroupedTimestampFromJSON(json["updated"]),
     "deleted": !exists(json, "deleted") ? void 0 : GroupedTimestampFromJSON(json["deleted"]),
-    "mechanism": MechanismEnumFromJSON(json["mechanism"]),
+    "mechanisms": !exists(json, "mechanisms") ? void 0 : mapValues(json["mechanisms"], MechanismEnumFromJSON),
     "interactions": !exists(json, "interactions") ? void 0 : json["interactions"],
     "persons": !exists(json, "persons") ? void 0 : FlattenedPersonsFromJSON(json["persons"]),
     "score": !exists(json, "score") ? void 0 : ScoreFromJSON(json["score"])
@@ -48901,14 +49791,13 @@ function FlattenedWebsiteToJSON(value) {
   return {
     "schema": EmbeddedModelSchemaToJSON(value.schema),
     "id": value.id,
-    "asset": ReferencedAssetToJSON(value.asset),
+    "assets": FlattenedAssetsToJSON(value.assets),
     "name": value.name,
     "url": value.url,
-    "format": ReferencedFormatToJSON(value.format),
     "created": GroupedTimestampToJSON(value.created),
     "updated": GroupedTimestampToJSON(value.updated),
     "deleted": GroupedTimestampToJSON(value.deleted),
-    "mechanism": MechanismEnumToJSON(value.mechanism),
+    "mechanisms": value.mechanisms === void 0 ? void 0 : mapValues(value.mechanisms, MechanismEnumToJSON),
     "interactions": value.interactions,
     "persons": FlattenedPersonsToJSON(value.persons),
     "score": ScoreToJSON(value.score)
@@ -48917,9 +49806,9 @@ function FlattenedWebsiteToJSON(value) {
 
 // ../generated_runtime/sdk/http/typescript/connector/models/FlattenedWebsites.ts
 function FlattenedWebsitesFromJSON(json) {
-  return FlattenedWebsitesFromJSONTyped4(json, false);
+  return FlattenedWebsitesFromJSONTyped3(json, false);
 }
-function FlattenedWebsitesFromJSONTyped4(json, ignoreDiscriminator) {
+function FlattenedWebsitesFromJSONTyped3(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -48973,9 +49862,9 @@ function FontToJSON(value) {
 
 // ../generated_runtime/sdk/http/typescript/connector/models/Format.ts
 function FormatFromJSON(json) {
-  return FormatFromJSONTyped2(json, false);
+  return FormatFromJSONTyped(json, false);
 }
-function FormatFromJSONTyped2(json, ignoreDiscriminator) {
+function FormatFromJSONTyped(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -48997,10 +49886,22 @@ function FormatFromJSONTyped2(json, ignoreDiscriminator) {
     "fragment": !exists(json, "fragment") ? void 0 : FragmentFormatFromJSON(json["fragment"]),
     "file": !exists(json, "file") ? void 0 : FileFormatFromJSON(json["file"]),
     "analysis": !exists(json, "analysis") ? void 0 : AnalysisFromJSON(json["analysis"]),
-    "websites": !exists(json, "websites") ? void 0 : WebsitesFromJSON(json["websites"]),
-    "tags": !exists(json, "tags") ? void 0 : TagsFromJSON(json["tags"]),
     "relationship": !exists(json, "relationship") ? void 0 : RelationshipFromJSON(json["relationship"]),
     "activities": !exists(json, "activities") ? void 0 : ActivitiesFromJSON(json["activities"])
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/connector/models/Formats.ts
+function FormatsFromJSON(json) {
+  return FormatsFromJSONTyped2(json, false);
+}
+function FormatsFromJSONTyped2(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "iterable": json["iterable"].map(FormatFromJSON)
   };
 }
 
@@ -50110,9 +51011,9 @@ function ReferencedAnnotationToJSON(value) {
 
 // ../generated_runtime/sdk/http/typescript/connector/models/ReferencedAsset.ts
 function ReferencedAssetFromJSON(json) {
-  return ReferencedAssetFromJSONTyped11(json, false);
+  return ReferencedAssetFromJSONTyped9(json, false);
 }
-function ReferencedAssetFromJSONTyped11(json, ignoreDiscriminator) {
+function ReferencedAssetFromJSONTyped9(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -50222,9 +51123,9 @@ function ReferencedDistributionToJSON(value) {
 
 // ../generated_runtime/sdk/http/typescript/connector/models/ReferencedFormat.ts
 function ReferencedFormatFromJSON(json) {
-  return ReferencedFormatFromJSONTyped8(json, false);
+  return ReferencedFormatFromJSONTyped6(json, false);
 }
-function ReferencedFormatFromJSONTyped8(json, ignoreDiscriminator) {
+function ReferencedFormatFromJSONTyped6(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -51031,9 +51932,7 @@ function SeededFormatFromJSONTyped2(json, ignoreDiscriminator) {
     "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
     "file": !exists(json, "file") ? void 0 : SeededFileFromJSON(json["file"]),
     "fragment": !exists(json, "fragment") ? void 0 : SeededFragmentFromJSON(json["fragment"]),
-    "websites": !exists(json, "websites") ? void 0 : json["websites"].map(SeededWebsiteFromJSON),
-    "classification": !exists(json, "classification") ? void 0 : SeededClassificationFromJSON(json["classification"]),
-    "tags": !exists(json, "tags") ? void 0 : json["tags"].map(SeededTagFromJSON)
+    "classification": !exists(json, "classification") ? void 0 : SeededClassificationFromJSON(json["classification"])
   };
 }
 function SeededFormatToJSON(value) {
@@ -51047,9 +51946,7 @@ function SeededFormatToJSON(value) {
     "schema": EmbeddedModelSchemaToJSON(value.schema),
     "file": SeededFileToJSON(value.file),
     "fragment": SeededFragmentToJSON(value.fragment),
-    "websites": value.websites === void 0 ? void 0 : value.websites.map(SeededWebsiteToJSON),
-    "classification": SeededClassificationToJSON(value.classification),
-    "tags": value.tags === void 0 ? void 0 : value.tags.map(SeededTagToJSON)
+    "classification": SeededClassificationToJSON(value.classification)
   };
 }
 
@@ -51150,42 +52047,6 @@ function SeededPersonToJSON(value) {
     "type": PersonTypeToJSON(value.type),
     "model": PersonModelToJSON(value.model),
     "annotations": value.annotations === void 0 ? void 0 : value.annotations.map(SeededAnnotationToJSON)
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/connector/models/SeededTag.ts
-function SeededTagFromJSON(json) {
-  return SeededTagFromJSONTyped2(json, false);
-}
-function SeededTagFromJSONTyped2(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "text": json["text"],
-    "asset": !exists(json, "asset") ? void 0 : json["asset"],
-    "mechanism": !exists(json, "mechanism") ? void 0 : MechanismEnumFromJSON(json["mechanism"]),
-    "format": !exists(json, "format") ? void 0 : json["format"],
-    "category": !exists(json, "category") ? void 0 : TagCategoryEnumFromJSON(json["category"]),
-    "person": !exists(json, "person") ? void 0 : json["person"]
-  };
-}
-function SeededTagToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON(value.schema),
-    "text": value.text,
-    "asset": value.asset,
-    "mechanism": MechanismEnumToJSON(value.mechanism),
-    "format": value.format,
-    "category": TagCategoryEnumToJSON(value.category),
-    "person": value.person
   };
 }
 
@@ -51509,42 +52370,6 @@ function SeededTrackedSessionEventToJSON(value) {
   return {
     "schema": EmbeddedModelSchemaToJSON(value.schema),
     "identifier_description_pair": TrackedSessionEventIdentifierDescriptionPairsToJSON(value.identifierDescriptionPair)
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/connector/models/SeededWebsite.ts
-function SeededWebsiteFromJSON(json) {
-  return SeededWebsiteFromJSONTyped2(json, false);
-}
-function SeededWebsiteFromJSONTyped2(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "asset": !exists(json, "asset") ? void 0 : json["asset"],
-    "url": json["url"],
-    "name": json["name"],
-    "format": !exists(json, "format") ? void 0 : json["format"],
-    "mechanism": !exists(json, "mechanism") ? void 0 : MechanismEnumFromJSON(json["mechanism"]),
-    "person": !exists(json, "person") ? void 0 : json["person"]
-  };
-}
-function SeededWebsiteToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON(value.schema),
-    "asset": value.asset,
-    "url": value.url,
-    "name": value.name,
-    "format": value.format,
-    "mechanism": MechanismEnumToJSON(value.mechanism),
-    "person": value.person
   };
 }
 
@@ -52389,11 +53214,10 @@ function TagFromJSONTyped(json, ignoreDiscriminator) {
     "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
     "id": json["id"],
     "text": json["text"],
-    "mechanism": MechanismEnumFromJSON(json["mechanism"]),
-    "asset": !exists(json, "asset") ? void 0 : FlattenedAssetFromJSON(json["asset"]),
+    "mechanisms": !exists(json, "mechanisms") ? void 0 : mapValues(json["mechanisms"], MechanismEnumFromJSON),
+    "assets": !exists(json, "assets") ? void 0 : FlattenedAssetsFromJSON(json["assets"]),
     "created": GroupedTimestampFromJSON(json["created"]),
     "updated": GroupedTimestampFromJSON(json["updated"]),
-    "format": !exists(json, "format") ? void 0 : FlattenedFormatFromJSON(json["format"]),
     "deleted": !exists(json, "deleted") ? void 0 : GroupedTimestampFromJSON(json["deleted"]),
     "category": TagCategoryEnumFromJSON(json["category"]),
     "relationship": !exists(json, "relationship") ? void 0 : RelationshipFromJSON(json["relationship"]),
@@ -52405,9 +53229,9 @@ function TagFromJSONTyped(json, ignoreDiscriminator) {
 
 // ../generated_runtime/sdk/http/typescript/connector/models/TagCategoryEnum.ts
 function TagCategoryEnumFromJSON(json) {
-  return TagCategoryEnumFromJSONTyped5(json, false);
+  return TagCategoryEnumFromJSONTyped4(json, false);
 }
-function TagCategoryEnumFromJSONTyped5(json, ignoreDiscriminator) {
+function TagCategoryEnumFromJSONTyped4(json, ignoreDiscriminator) {
   return json;
 }
 function TagCategoryEnumToJSON(value) {
@@ -52416,9 +53240,9 @@ function TagCategoryEnumToJSON(value) {
 
 // ../generated_runtime/sdk/http/typescript/connector/models/Tags.ts
 function TagsFromJSON(json) {
-  return TagsFromJSONTyped3(json, false);
+  return TagsFromJSONTyped2(json, false);
 }
-function TagsFromJSONTyped3(json, ignoreDiscriminator) {
+function TagsFromJSONTyped2(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -53119,14 +53943,13 @@ function WebsiteFromJSONTyped(json, ignoreDiscriminator) {
   return {
     "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
     "id": json["id"],
-    "asset": !exists(json, "asset") ? void 0 : FlattenedAssetFromJSON(json["asset"]),
+    "assets": !exists(json, "assets") ? void 0 : FlattenedAssetsFromJSON(json["assets"]),
     "url": json["url"],
     "name": json["name"],
-    "format": !exists(json, "format") ? void 0 : FlattenedFormatFromJSON(json["format"]),
     "created": GroupedTimestampFromJSON(json["created"]),
     "updated": GroupedTimestampFromJSON(json["updated"]),
     "deleted": !exists(json, "deleted") ? void 0 : GroupedTimestampFromJSON(json["deleted"]),
-    "mechanism": MechanismEnumFromJSON(json["mechanism"]),
+    "mechanisms": !exists(json, "mechanisms") ? void 0 : mapValues(json["mechanisms"], MechanismEnumFromJSON),
     "interactions": !exists(json, "interactions") ? void 0 : json["interactions"],
     "persons": !exists(json, "persons") ? void 0 : FlattenedPersonsFromJSON(json["persons"]),
     "score": !exists(json, "score") ? void 0 : ScoreFromJSON(json["score"])
@@ -53135,9 +53958,9 @@ function WebsiteFromJSONTyped(json, ignoreDiscriminator) {
 
 // ../generated_runtime/sdk/http/typescript/connector/models/Websites.ts
 function WebsitesFromJSON(json) {
-  return WebsitesFromJSONTyped3(json, false);
+  return WebsitesFromJSONTyped2(json, false);
 }
-function WebsitesFromJSONTyped3(json, ignoreDiscriminator) {
+function WebsitesFromJSONTyped2(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -53574,7 +54397,7 @@ function querystring2(params, prefix = "") {
     return `${encodeURIComponent(fullKey)}=${encodeURIComponent(String(value))}`;
   }).filter((part) => part.length > 0).join("&");
 }
-function mapValues207(data, fn) {
+function mapValues201(data, fn) {
   return Object.keys(data).reduce(
     (acc, key) => ({ ...acc, [key]: fn(data[key]) }),
     {}
@@ -54293,7 +55116,7 @@ function AssetFromJSONTyped4(json, ignoreDiscriminator) {
     "updated": GroupedTimestampFromJSON2(json["updated"]),
     "synced": !exists2(json, "synced") ? void 0 : GroupedTimestampFromJSON2(json["synced"]),
     "deleted": !exists2(json, "deleted") ? void 0 : GroupedTimestampFromJSON2(json["deleted"]),
-    "formats": AssetFormatsFromJSON2(json["formats"]),
+    "formats": FormatsFromJSON2(json["formats"]),
     "preview": PreviewFromJSON2(json["preview"]),
     "original": ReferencedFormatFromJSON2(json["original"]),
     "shares": !exists2(json, "shares") ? void 0 : SharesFromJSON2(json["shares"]),
@@ -54331,7 +55154,7 @@ function AssetToJSON2(value) {
     "updated": GroupedTimestampToJSON2(value.updated),
     "synced": GroupedTimestampToJSON2(value.synced),
     "deleted": GroupedTimestampToJSON2(value.deleted),
-    "formats": AssetFormatsToJSON2(value.formats),
+    "formats": FormatsToJSON2(value.formats),
     "preview": PreviewToJSON2(value.preview),
     "original": ReferencedFormatToJSON2(value.original),
     "shares": SharesToJSON2(value.shares),
@@ -54435,34 +55258,6 @@ function AssetFiltersToJSON(value) {
     "schema": EmbeddedModelSchemaToJSON2(value.schema),
     "iterable": value.iterable.map(AssetFilterToJSON),
     "type": FilterOperationTypeEnumToJSON(value.type)
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/AssetFormats.ts
-function AssetFormatsFromJSON2(json) {
-  return AssetFormatsFromJSONTyped4(json, false);
-}
-function AssetFormatsFromJSONTyped4(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists2(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON2(json["schema"]),
-    "iterable": !exists2(json, "iterable") ? void 0 : json["iterable"].map(FormatFromJSON2),
-    "asset": FlattenedAssetFromJSON2(json["asset"])
-  };
-}
-function AssetFormatsToJSON2(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON2(value.schema),
-    "iterable": value.iterable === void 0 ? void 0 : value.iterable.map(FormatToJSON2),
-    "asset": FlattenedAssetToJSON2(value.asset)
   };
 }
 
@@ -55147,7 +55942,7 @@ function DiscoveredRelatedTagFromJSONTyped(json, ignoreDiscriminator) {
   }
   return {
     "schema": !exists2(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON2(json["schema"]),
-    "seed": SeededTagFromJSON2(json["seed"])
+    "seed": SeededTagFromJSON(json["seed"])
   };
 }
 
@@ -55286,9 +56081,9 @@ function EdgesToJSON2(value) {
 
 // ../generated_runtime/sdk/http/typescript/core/models/EmbeddedModelSchema.ts
 function EmbeddedModelSchemaFromJSON2(json) {
-  return EmbeddedModelSchemaFromJSONTyped258(json, false);
+  return EmbeddedModelSchemaFromJSONTyped255(json, false);
 }
-function EmbeddedModelSchemaFromJSONTyped258(json, ignoreDiscriminator) {
+function EmbeddedModelSchemaFromJSONTyped255(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -56011,9 +56806,9 @@ function FlattenedAnnotationsToJSON2(value) {
 
 // ../generated_runtime/sdk/http/typescript/core/models/FlattenedAsset.ts
 function FlattenedAssetFromJSON2(json) {
-  return FlattenedAssetFromJSONTyped12(json, false);
+  return FlattenedAssetFromJSONTyped8(json, false);
 }
-function FlattenedAssetFromJSONTyped12(json, ignoreDiscriminator) {
+function FlattenedAssetFromJSONTyped8(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -56089,9 +56884,9 @@ function FlattenedAssetToJSON2(value) {
 
 // ../generated_runtime/sdk/http/typescript/core/models/FlattenedAssets.ts
 function FlattenedAssetsFromJSON2(json) {
-  return FlattenedAssetsFromJSONTyped15(json, false);
+  return FlattenedAssetsFromJSONTyped19(json, false);
 }
-function FlattenedAssetsFromJSONTyped15(json, ignoreDiscriminator) {
+function FlattenedAssetsFromJSONTyped19(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -56343,9 +57138,9 @@ function FlattenedDistributionsToJSON2(value) {
 
 // ../generated_runtime/sdk/http/typescript/core/models/FlattenedFormat.ts
 function FlattenedFormatFromJSON2(json) {
-  return FlattenedFormatFromJSONTyped7(json, false);
+  return FlattenedFormatFromJSONTyped5(json, false);
 }
-function FlattenedFormatFromJSONTyped7(json, ignoreDiscriminator) {
+function FlattenedFormatFromJSONTyped5(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -56367,8 +57162,6 @@ function FlattenedFormatFromJSONTyped7(json, ignoreDiscriminator) {
     "fragment": !exists2(json, "fragment") ? void 0 : FragmentFormatFromJSON2(json["fragment"]),
     "file": !exists2(json, "file") ? void 0 : FileFormatFromJSON2(json["file"]),
     "analysis": !exists2(json, "analysis") ? void 0 : FlattenedAnalysisFromJSON2(json["analysis"]),
-    "websites": !exists2(json, "websites") ? void 0 : FlattenedWebsitesFromJSON2(json["websites"]),
-    "tags": !exists2(json, "tags") ? void 0 : FlattenedTagsFromJSON2(json["tags"]),
     "relationship": !exists2(json, "relationship") ? void 0 : RelationshipFromJSON2(json["relationship"]),
     "activities": !exists2(json, "activities") ? void 0 : FlattenedActivitiesFromJSON2(json["activities"])
   };
@@ -56398,8 +57191,6 @@ function FlattenedFormatToJSON2(value) {
     "fragment": FragmentFormatToJSON2(value.fragment),
     "file": FileFormatToJSON2(value.file),
     "analysis": FlattenedAnalysisToJSON2(value.analysis),
-    "websites": FlattenedWebsitesToJSON2(value.websites),
-    "tags": FlattenedTagsToJSON2(value.tags),
     "relationship": RelationshipToJSON2(value.relationship),
     "activities": FlattenedActivitiesToJSON2(value.activities)
   };
@@ -56585,12 +57376,12 @@ function FlattenedPersonFromJSONTyped3(json, ignoreDiscriminator) {
     "deleted": !exists2(json, "deleted") ? void 0 : GroupedTimestampFromJSON2(json["deleted"]),
     "type": PersonTypeFromJSON2(json["type"]),
     "assets": !exists2(json, "assets") ? void 0 : FlattenedAssetsFromJSON2(json["assets"]),
-    "mechanisms": !exists2(json, "mechanisms") ? void 0 : mapValues207(json["mechanisms"], MechanismEnumFromJSON2),
+    "mechanisms": !exists2(json, "mechanisms") ? void 0 : mapValues201(json["mechanisms"], MechanismEnumFromJSON2),
     "interactions": !exists2(json, "interactions") ? void 0 : json["interactions"],
-    "access": !exists2(json, "access") ? void 0 : mapValues207(json["access"], PersonAccessFromJSON2),
+    "access": !exists2(json, "access") ? void 0 : mapValues201(json["access"], PersonAccessFromJSON2),
     "tags": !exists2(json, "tags") ? void 0 : FlattenedTagsFromJSON2(json["tags"]),
     "websites": !exists2(json, "websites") ? void 0 : FlattenedWebsitesFromJSON2(json["websites"]),
-    "models": !exists2(json, "models") ? void 0 : mapValues207(json["models"], PersonModelFromJSON2),
+    "models": !exists2(json, "models") ? void 0 : mapValues201(json["models"], PersonModelFromJSON2),
     "annotations": !exists2(json, "annotations") ? void 0 : FlattenedAnnotationsFromJSON2(json["annotations"]),
     "score": !exists2(json, "score") ? void 0 : ScoreFromJSON2(json["score"])
   };
@@ -56610,12 +57401,12 @@ function FlattenedPersonToJSON2(value) {
     "deleted": GroupedTimestampToJSON2(value.deleted),
     "type": PersonTypeToJSON2(value.type),
     "assets": FlattenedAssetsToJSON2(value.assets),
-    "mechanisms": value.mechanisms === void 0 ? void 0 : mapValues207(value.mechanisms, MechanismEnumToJSON2),
+    "mechanisms": value.mechanisms === void 0 ? void 0 : mapValues201(value.mechanisms, MechanismEnumToJSON2),
     "interactions": value.interactions,
-    "access": value.access === void 0 ? void 0 : mapValues207(value.access, PersonAccessToJSON2),
+    "access": value.access === void 0 ? void 0 : mapValues201(value.access, PersonAccessToJSON2),
     "tags": FlattenedTagsToJSON2(value.tags),
     "websites": FlattenedWebsitesToJSON2(value.websites),
-    "models": value.models === void 0 ? void 0 : mapValues207(value.models, PersonModelToJSON2),
+    "models": value.models === void 0 ? void 0 : mapValues201(value.models, PersonModelToJSON2),
     "annotations": FlattenedAnnotationsToJSON2(value.annotations),
     "score": ScoreToJSON2(value.score)
   };
@@ -56847,11 +57638,10 @@ function FlattenedTagFromJSONTyped3(json, ignoreDiscriminator) {
     "schema": !exists2(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON2(json["schema"]),
     "id": json["id"],
     "text": json["text"],
-    "mechanism": MechanismEnumFromJSON2(json["mechanism"]),
-    "asset": !exists2(json, "asset") ? void 0 : ReferencedAssetFromJSON2(json["asset"]),
+    "mechanisms": !exists2(json, "mechanisms") ? void 0 : mapValues201(json["mechanisms"], MechanismEnumFromJSON2),
+    "assets": !exists2(json, "assets") ? void 0 : FlattenedAssetsFromJSON2(json["assets"]),
     "created": GroupedTimestampFromJSON2(json["created"]),
     "updated": GroupedTimestampFromJSON2(json["updated"]),
-    "format": !exists2(json, "format") ? void 0 : ReferencedFormatFromJSON2(json["format"]),
     "deleted": !exists2(json, "deleted") ? void 0 : GroupedTimestampFromJSON2(json["deleted"]),
     "category": TagCategoryEnumFromJSON2(json["category"]),
     "relationship": !exists2(json, "relationship") ? void 0 : RelationshipFromJSON2(json["relationship"]),
@@ -56871,11 +57661,10 @@ function FlattenedTagToJSON2(value) {
     "schema": EmbeddedModelSchemaToJSON2(value.schema),
     "id": value.id,
     "text": value.text,
-    "mechanism": MechanismEnumToJSON2(value.mechanism),
-    "asset": ReferencedAssetToJSON2(value.asset),
+    "mechanisms": value.mechanisms === void 0 ? void 0 : mapValues201(value.mechanisms, MechanismEnumToJSON2),
+    "assets": FlattenedAssetsToJSON2(value.assets),
     "created": GroupedTimestampToJSON2(value.created),
     "updated": GroupedTimestampToJSON2(value.updated),
-    "format": ReferencedFormatToJSON2(value.format),
     "deleted": GroupedTimestampToJSON2(value.deleted),
     "category": TagCategoryEnumToJSON2(value.category),
     "relationship": RelationshipToJSON2(value.relationship),
@@ -56887,9 +57676,9 @@ function FlattenedTagToJSON2(value) {
 
 // ../generated_runtime/sdk/http/typescript/core/models/FlattenedTags.ts
 function FlattenedTagsFromJSON2(json) {
-  return FlattenedTagsFromJSONTyped9(json, false);
+  return FlattenedTagsFromJSONTyped7(json, false);
 }
-function FlattenedTagsFromJSONTyped9(json, ignoreDiscriminator) {
+function FlattenedTagsFromJSONTyped7(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -56962,14 +57751,13 @@ function FlattenedWebsiteFromJSONTyped3(json, ignoreDiscriminator) {
   return {
     "schema": !exists2(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON2(json["schema"]),
     "id": json["id"],
-    "asset": !exists2(json, "asset") ? void 0 : ReferencedAssetFromJSON2(json["asset"]),
+    "assets": !exists2(json, "assets") ? void 0 : FlattenedAssetsFromJSON2(json["assets"]),
     "name": json["name"],
     "url": json["url"],
-    "format": !exists2(json, "format") ? void 0 : ReferencedFormatFromJSON2(json["format"]),
     "created": GroupedTimestampFromJSON2(json["created"]),
     "updated": GroupedTimestampFromJSON2(json["updated"]),
     "deleted": !exists2(json, "deleted") ? void 0 : GroupedTimestampFromJSON2(json["deleted"]),
-    "mechanism": MechanismEnumFromJSON2(json["mechanism"]),
+    "mechanisms": !exists2(json, "mechanisms") ? void 0 : mapValues201(json["mechanisms"], MechanismEnumFromJSON2),
     "interactions": !exists2(json, "interactions") ? void 0 : json["interactions"],
     "persons": !exists2(json, "persons") ? void 0 : FlattenedPersonsFromJSON2(json["persons"]),
     "score": !exists2(json, "score") ? void 0 : ScoreFromJSON2(json["score"])
@@ -56985,14 +57773,13 @@ function FlattenedWebsiteToJSON2(value) {
   return {
     "schema": EmbeddedModelSchemaToJSON2(value.schema),
     "id": value.id,
-    "asset": ReferencedAssetToJSON2(value.asset),
+    "assets": FlattenedAssetsToJSON2(value.assets),
     "name": value.name,
     "url": value.url,
-    "format": ReferencedFormatToJSON2(value.format),
     "created": GroupedTimestampToJSON2(value.created),
     "updated": GroupedTimestampToJSON2(value.updated),
     "deleted": GroupedTimestampToJSON2(value.deleted),
-    "mechanism": MechanismEnumToJSON2(value.mechanism),
+    "mechanisms": value.mechanisms === void 0 ? void 0 : mapValues201(value.mechanisms, MechanismEnumToJSON2),
     "interactions": value.interactions,
     "persons": FlattenedPersonsToJSON2(value.persons),
     "score": ScoreToJSON2(value.score)
@@ -57001,9 +57788,9 @@ function FlattenedWebsiteToJSON2(value) {
 
 // ../generated_runtime/sdk/http/typescript/core/models/FlattenedWebsites.ts
 function FlattenedWebsitesFromJSON2(json) {
-  return FlattenedWebsitesFromJSONTyped9(json, false);
+  return FlattenedWebsitesFromJSONTyped7(json, false);
 }
-function FlattenedWebsitesFromJSONTyped9(json, ignoreDiscriminator) {
+function FlattenedWebsitesFromJSONTyped7(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -57057,9 +57844,9 @@ function FontToJSON2(value) {
 
 // ../generated_runtime/sdk/http/typescript/core/models/Format.ts
 function FormatFromJSON2(json) {
-  return FormatFromJSONTyped5(json, false);
+  return FormatFromJSONTyped4(json, false);
 }
-function FormatFromJSONTyped5(json, ignoreDiscriminator) {
+function FormatFromJSONTyped4(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -57081,8 +57868,6 @@ function FormatFromJSONTyped5(json, ignoreDiscriminator) {
     "fragment": !exists2(json, "fragment") ? void 0 : FragmentFormatFromJSON2(json["fragment"]),
     "file": !exists2(json, "file") ? void 0 : FileFormatFromJSON2(json["file"]),
     "analysis": !exists2(json, "analysis") ? void 0 : AnalysisFromJSON2(json["analysis"]),
-    "websites": !exists2(json, "websites") ? void 0 : WebsitesFromJSON2(json["websites"]),
-    "tags": !exists2(json, "tags") ? void 0 : TagsFromJSON2(json["tags"]),
     "relationship": !exists2(json, "relationship") ? void 0 : RelationshipFromJSON2(json["relationship"]),
     "activities": !exists2(json, "activities") ? void 0 : ActivitiesFromJSON2(json["activities"])
   };
@@ -57112,8 +57897,6 @@ function FormatToJSON2(value) {
     "fragment": FragmentFormatToJSON2(value.fragment),
     "file": FileFormatToJSON2(value.file),
     "analysis": AnalysisToJSON2(value.analysis),
-    "websites": WebsitesToJSON2(value.websites),
-    "tags": TagsToJSON2(value.tags),
     "relationship": RelationshipToJSON2(value.relationship),
     "activities": ActivitiesToJSON2(value.activities)
   };
@@ -57131,6 +57914,32 @@ function FormatReclassificationToJSON(value) {
     "schema": EmbeddedModelSchemaToJSON2(value.schema),
     "ext": ClassificationSpecificEnumToJSON2(value.ext),
     "format": FormatToJSON2(value.format)
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/Formats.ts
+function FormatsFromJSON2(json) {
+  return FormatsFromJSONTyped4(json, false);
+}
+function FormatsFromJSONTyped4(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists2(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON2(json["schema"]),
+    "iterable": json["iterable"].map(FormatFromJSON2)
+  };
+}
+function FormatsToJSON2(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON2(value.schema),
+    "iterable": value.iterable.map(FormatToJSON2)
   };
 }
 
@@ -57793,9 +58602,9 @@ function MailgunMetadataToJSON2(value) {
 
 // ../generated_runtime/sdk/http/typescript/core/models/MechanismEnum.ts
 function MechanismEnumFromJSON2(json) {
-  return MechanismEnumFromJSONTyped41(json, false);
+  return MechanismEnumFromJSONTyped39(json, false);
 }
-function MechanismEnumFromJSONTyped41(json, ignoreDiscriminator) {
+function MechanismEnumFromJSONTyped39(json, ignoreDiscriminator) {
   return json;
 }
 function MechanismEnumToJSON2(value) {
@@ -58024,12 +58833,12 @@ function PersonFromJSONTyped3(json, ignoreDiscriminator) {
     "deleted": !exists2(json, "deleted") ? void 0 : GroupedTimestampFromJSON2(json["deleted"]),
     "type": PersonTypeFromJSON2(json["type"]),
     "assets": !exists2(json, "assets") ? void 0 : FlattenedAssetsFromJSON2(json["assets"]),
-    "mechanisms": !exists2(json, "mechanisms") ? void 0 : mapValues207(json["mechanisms"], MechanismEnumFromJSON2),
+    "mechanisms": !exists2(json, "mechanisms") ? void 0 : mapValues201(json["mechanisms"], MechanismEnumFromJSON2),
     "interactions": !exists2(json, "interactions") ? void 0 : json["interactions"],
-    "access": !exists2(json, "access") ? void 0 : mapValues207(json["access"], PersonAccessFromJSON2),
+    "access": !exists2(json, "access") ? void 0 : mapValues201(json["access"], PersonAccessFromJSON2),
     "tags": !exists2(json, "tags") ? void 0 : FlattenedTagsFromJSON2(json["tags"]),
     "websites": !exists2(json, "websites") ? void 0 : FlattenedWebsitesFromJSON2(json["websites"]),
-    "models": !exists2(json, "models") ? void 0 : mapValues207(json["models"], PersonModelFromJSON2),
+    "models": !exists2(json, "models") ? void 0 : mapValues201(json["models"], PersonModelFromJSON2),
     "annotations": !exists2(json, "annotations") ? void 0 : FlattenedAnnotationsFromJSON2(json["annotations"]),
     "score": !exists2(json, "score") ? void 0 : ScoreFromJSON2(json["score"])
   };
@@ -58049,12 +58858,12 @@ function PersonToJSON2(value) {
     "deleted": GroupedTimestampToJSON2(value.deleted),
     "type": PersonTypeToJSON2(value.type),
     "assets": FlattenedAssetsToJSON2(value.assets),
-    "mechanisms": value.mechanisms === void 0 ? void 0 : mapValues207(value.mechanisms, MechanismEnumToJSON2),
+    "mechanisms": value.mechanisms === void 0 ? void 0 : mapValues201(value.mechanisms, MechanismEnumToJSON2),
     "interactions": value.interactions,
-    "access": value.access === void 0 ? void 0 : mapValues207(value.access, PersonAccessToJSON2),
+    "access": value.access === void 0 ? void 0 : mapValues201(value.access, PersonAccessToJSON2),
     "tags": FlattenedTagsToJSON2(value.tags),
     "websites": FlattenedWebsitesToJSON2(value.websites),
-    "models": value.models === void 0 ? void 0 : mapValues207(value.models, PersonModelToJSON2),
+    "models": value.models === void 0 ? void 0 : mapValues201(value.models, PersonModelToJSON2),
     "annotations": FlattenedAnnotationsToJSON2(value.annotations),
     "score": ScoreToJSON2(value.score)
   };
@@ -58361,6 +59170,21 @@ function QGPTPersonsRelatedInputToJSON(value) {
     "conversation": QGPTConversationToJSON(value.conversation),
     "application": value.application,
     "model": value.model
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/QGPTPersonsRelatedOutput.ts
+function QGPTPersonsRelatedOutputFromJSON(json) {
+  return QGPTPersonsRelatedOutputFromJSONTyped(json, false);
+}
+function QGPTPersonsRelatedOutputFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists2(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON2(json["schema"]),
+    "persons": PersonsFromJSON2(json["persons"]),
+    "explanations": !exists2(json, "explanations") ? void 0 : json["explanations"]
   };
 }
 
@@ -58702,9 +59526,9 @@ function ReferencedAnnotationToJSON2(value) {
 
 // ../generated_runtime/sdk/http/typescript/core/models/ReferencedAsset.ts
 function ReferencedAssetFromJSON2(json) {
-  return ReferencedAssetFromJSONTyped23(json, false);
+  return ReferencedAssetFromJSONTyped19(json, false);
 }
-function ReferencedAssetFromJSONTyped23(json, ignoreDiscriminator) {
+function ReferencedAssetFromJSONTyped19(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -58814,9 +59638,9 @@ function ReferencedDistributionToJSON2(value) {
 
 // ../generated_runtime/sdk/http/typescript/core/models/ReferencedFormat.ts
 function ReferencedFormatFromJSON2(json) {
-  return ReferencedFormatFromJSONTyped17(json, false);
+  return ReferencedFormatFromJSONTyped13(json, false);
 }
-function ReferencedFormatFromJSONTyped17(json, ignoreDiscriminator) {
+function ReferencedFormatFromJSONTyped13(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -58980,9 +59804,9 @@ function ReferencedShareToJSON2(value) {
 
 // ../generated_runtime/sdk/http/typescript/core/models/ReferencedTag.ts
 function ReferencedTagFromJSON2(json) {
-  return ReferencedTagFromJSONTyped5(json, false);
+  return ReferencedTagFromJSONTyped6(json, false);
 }
-function ReferencedTagFromJSONTyped5(json, ignoreDiscriminator) {
+function ReferencedTagFromJSONTyped6(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -59023,9 +59847,9 @@ function ReferencedUserToJSON(value) {
 
 // ../generated_runtime/sdk/http/typescript/core/models/ReferencedWebsite.ts
 function ReferencedWebsiteFromJSON2(json) {
-  return ReferencedWebsiteFromJSONTyped5(json, false);
+  return ReferencedWebsiteFromJSONTyped6(json, false);
 }
-function ReferencedWebsiteFromJSONTyped5(json, ignoreDiscriminator) {
+function ReferencedWebsiteFromJSONTyped6(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -59916,9 +60740,9 @@ function SeededFileToJSON2(value) {
 
 // ../generated_runtime/sdk/http/typescript/core/models/SeededFormat.ts
 function SeededFormatFromJSON2(json) {
-  return SeededFormatFromJSONTyped4(json, false);
+  return SeededFormatFromJSONTyped5(json, false);
 }
-function SeededFormatFromJSONTyped4(json, ignoreDiscriminator) {
+function SeededFormatFromJSONTyped5(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -59926,9 +60750,7 @@ function SeededFormatFromJSONTyped4(json, ignoreDiscriminator) {
     "schema": !exists2(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON2(json["schema"]),
     "file": !exists2(json, "file") ? void 0 : SeededFileFromJSON2(json["file"]),
     "fragment": !exists2(json, "fragment") ? void 0 : SeededFragmentFromJSON2(json["fragment"]),
-    "websites": !exists2(json, "websites") ? void 0 : json["websites"].map(SeededWebsiteFromJSON2),
-    "classification": !exists2(json, "classification") ? void 0 : SeededClassificationFromJSON2(json["classification"]),
-    "tags": !exists2(json, "tags") ? void 0 : json["tags"].map(SeededTagFromJSON2)
+    "classification": !exists2(json, "classification") ? void 0 : SeededClassificationFromJSON2(json["classification"])
   };
 }
 function SeededFormatToJSON2(value) {
@@ -59942,9 +60764,7 @@ function SeededFormatToJSON2(value) {
     "schema": EmbeddedModelSchemaToJSON2(value.schema),
     "file": SeededFileToJSON2(value.file),
     "fragment": SeededFragmentToJSON2(value.fragment),
-    "websites": value.websites === void 0 ? void 0 : value.websites.map(SeededWebsiteToJSON2),
-    "classification": SeededClassificationToJSON2(value.classification),
-    "tags": value.tags === void 0 ? void 0 : value.tags.map(SeededTagToJSON2)
+    "classification": SeededClassificationToJSON2(value.classification)
   };
 }
 
@@ -60184,10 +61004,10 @@ function SeededSensitiveFromJSONTyped2(json, ignoreDiscriminator) {
 }
 
 // ../generated_runtime/sdk/http/typescript/core/models/SeededTag.ts
-function SeededTagFromJSON2(json) {
-  return SeededTagFromJSONTyped5(json, false);
+function SeededTagFromJSON(json) {
+  return SeededTagFromJSONTyped2(json, false);
 }
-function SeededTagFromJSONTyped5(json, ignoreDiscriminator) {
+function SeededTagFromJSONTyped2(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -60196,26 +61016,8 @@ function SeededTagFromJSONTyped5(json, ignoreDiscriminator) {
     "text": json["text"],
     "asset": !exists2(json, "asset") ? void 0 : json["asset"],
     "mechanism": !exists2(json, "mechanism") ? void 0 : MechanismEnumFromJSON2(json["mechanism"]),
-    "format": !exists2(json, "format") ? void 0 : json["format"],
     "category": !exists2(json, "category") ? void 0 : TagCategoryEnumFromJSON2(json["category"]),
     "person": !exists2(json, "person") ? void 0 : json["person"]
-  };
-}
-function SeededTagToJSON2(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON2(value.schema),
-    "text": value.text,
-    "asset": value.asset,
-    "mechanism": MechanismEnumToJSON2(value.mechanism),
-    "format": value.format,
-    "category": TagCategoryEnumToJSON2(value.category),
-    "person": value.person
   };
 }
 
@@ -60534,42 +61336,6 @@ function SeededUserToJSON(value) {
   return {
     "schema": EmbeddedModelSchemaToJSON2(value.schema),
     "emails": value.emails
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/SeededWebsite.ts
-function SeededWebsiteFromJSON2(json) {
-  return SeededWebsiteFromJSONTyped4(json, false);
-}
-function SeededWebsiteFromJSONTyped4(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists2(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON2(json["schema"]),
-    "asset": !exists2(json, "asset") ? void 0 : json["asset"],
-    "url": json["url"],
-    "name": json["name"],
-    "format": !exists2(json, "format") ? void 0 : json["format"],
-    "mechanism": !exists2(json, "mechanism") ? void 0 : MechanismEnumFromJSON2(json["mechanism"]),
-    "person": !exists2(json, "person") ? void 0 : json["person"]
-  };
-}
-function SeededWebsiteToJSON2(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON2(value.schema),
-    "asset": value.asset,
-    "url": value.url,
-    "name": value.name,
-    "format": value.format,
-    "mechanism": MechanismEnumToJSON2(value.mechanism),
-    "person": value.person
   };
 }
 
@@ -61557,11 +62323,10 @@ function TagFromJSONTyped3(json, ignoreDiscriminator) {
     "schema": !exists2(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON2(json["schema"]),
     "id": json["id"],
     "text": json["text"],
-    "mechanism": MechanismEnumFromJSON2(json["mechanism"]),
-    "asset": !exists2(json, "asset") ? void 0 : FlattenedAssetFromJSON2(json["asset"]),
+    "mechanisms": !exists2(json, "mechanisms") ? void 0 : mapValues201(json["mechanisms"], MechanismEnumFromJSON2),
+    "assets": !exists2(json, "assets") ? void 0 : FlattenedAssetsFromJSON2(json["assets"]),
     "created": GroupedTimestampFromJSON2(json["created"]),
     "updated": GroupedTimestampFromJSON2(json["updated"]),
-    "format": !exists2(json, "format") ? void 0 : FlattenedFormatFromJSON2(json["format"]),
     "deleted": !exists2(json, "deleted") ? void 0 : GroupedTimestampFromJSON2(json["deleted"]),
     "category": TagCategoryEnumFromJSON2(json["category"]),
     "relationship": !exists2(json, "relationship") ? void 0 : RelationshipFromJSON2(json["relationship"]),
@@ -61581,11 +62346,10 @@ function TagToJSON2(value) {
     "schema": EmbeddedModelSchemaToJSON2(value.schema),
     "id": value.id,
     "text": value.text,
-    "mechanism": MechanismEnumToJSON2(value.mechanism),
-    "asset": FlattenedAssetToJSON2(value.asset),
+    "mechanisms": value.mechanisms === void 0 ? void 0 : mapValues201(value.mechanisms, MechanismEnumToJSON2),
+    "assets": FlattenedAssetsToJSON2(value.assets),
     "created": GroupedTimestampToJSON2(value.created),
     "updated": GroupedTimestampToJSON2(value.updated),
-    "format": FlattenedFormatToJSON2(value.format),
     "deleted": GroupedTimestampToJSON2(value.deleted),
     "category": TagCategoryEnumToJSON2(value.category),
     "relationship": RelationshipToJSON2(value.relationship),
@@ -61597,9 +62361,9 @@ function TagToJSON2(value) {
 
 // ../generated_runtime/sdk/http/typescript/core/models/TagCategoryEnum.ts
 function TagCategoryEnumFromJSON2(json) {
-  return TagCategoryEnumFromJSONTyped11(json, false);
+  return TagCategoryEnumFromJSONTyped10(json, false);
 }
-function TagCategoryEnumFromJSONTyped11(json, ignoreDiscriminator) {
+function TagCategoryEnumFromJSONTyped10(json, ignoreDiscriminator) {
   return json;
 }
 function TagCategoryEnumToJSON2(value) {
@@ -61608,9 +62372,9 @@ function TagCategoryEnumToJSON2(value) {
 
 // ../generated_runtime/sdk/http/typescript/core/models/Tags.ts
 function TagsFromJSON2(json) {
-  return TagsFromJSONTyped6(json, false);
+  return TagsFromJSONTyped4(json, false);
 }
-function TagsFromJSONTyped6(json, ignoreDiscriminator) {
+function TagsFromJSONTyped4(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -62374,14 +63138,13 @@ function WebsiteFromJSONTyped3(json, ignoreDiscriminator) {
   return {
     "schema": !exists2(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON2(json["schema"]),
     "id": json["id"],
-    "asset": !exists2(json, "asset") ? void 0 : FlattenedAssetFromJSON2(json["asset"]),
+    "assets": !exists2(json, "assets") ? void 0 : FlattenedAssetsFromJSON2(json["assets"]),
     "url": json["url"],
     "name": json["name"],
-    "format": !exists2(json, "format") ? void 0 : FlattenedFormatFromJSON2(json["format"]),
     "created": GroupedTimestampFromJSON2(json["created"]),
     "updated": GroupedTimestampFromJSON2(json["updated"]),
     "deleted": !exists2(json, "deleted") ? void 0 : GroupedTimestampFromJSON2(json["deleted"]),
-    "mechanism": MechanismEnumFromJSON2(json["mechanism"]),
+    "mechanisms": !exists2(json, "mechanisms") ? void 0 : mapValues201(json["mechanisms"], MechanismEnumFromJSON2),
     "interactions": !exists2(json, "interactions") ? void 0 : json["interactions"],
     "persons": !exists2(json, "persons") ? void 0 : FlattenedPersonsFromJSON2(json["persons"]),
     "score": !exists2(json, "score") ? void 0 : ScoreFromJSON2(json["score"])
@@ -62397,14 +63160,13 @@ function WebsiteToJSON2(value) {
   return {
     "schema": EmbeddedModelSchemaToJSON2(value.schema),
     "id": value.id,
-    "asset": FlattenedAssetToJSON2(value.asset),
+    "assets": FlattenedAssetsToJSON2(value.assets),
     "url": value.url,
     "name": value.name,
-    "format": FlattenedFormatToJSON2(value.format),
     "created": GroupedTimestampToJSON2(value.created),
     "updated": GroupedTimestampToJSON2(value.updated),
     "deleted": GroupedTimestampToJSON2(value.deleted),
-    "mechanism": MechanismEnumToJSON2(value.mechanism),
+    "mechanisms": value.mechanisms === void 0 ? void 0 : mapValues201(value.mechanisms, MechanismEnumToJSON2),
     "interactions": value.interactions,
     "persons": FlattenedPersonsToJSON2(value.persons),
     "score": ScoreToJSON2(value.score)
@@ -62413,9 +63175,9 @@ function WebsiteToJSON2(value) {
 
 // ../generated_runtime/sdk/http/typescript/core/models/Websites.ts
 function WebsitesFromJSON2(json) {
-  return WebsitesFromJSONTyped6(json, false);
+  return WebsitesFromJSONTyped4(json, false);
 }
-function WebsitesFromJSONTyped6(json, ignoreDiscriminator) {
+function WebsitesFromJSONTyped4(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -63279,6 +64041,62 @@ var ApplicationApi = class extends BaseAPI2 {
 // ../generated_runtime/sdk/http/typescript/core/apis/AssetApi.ts
 var AssetApi = class extends BaseAPI2 {
   /**
+   * This will associate a tag with a asset. This will do the same thing as the tag equivilant.
+   * /asset/{asset}/tags/associate/{tag} [POST]
+   */
+  async assetAssociateTagRaw(requestParameters) {
+    if (requestParameters.asset === null || requestParameters.asset === void 0) {
+      throw new RequiredError2("asset", "Required parameter requestParameters.asset was null or undefined when calling assetAssociateTag.");
+    }
+    if (requestParameters.tag === null || requestParameters.tag === void 0) {
+      throw new RequiredError2("tag", "Required parameter requestParameters.tag was null or undefined when calling assetAssociateTag.");
+    }
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/asset/{asset}/tags/associate/{tag}`.replace(`{${"asset"}}`, encodeURIComponent(String(requestParameters.asset))).replace(`{${"tag"}}`, encodeURIComponent(String(requestParameters.tag))),
+      method: "POST",
+      headers: headerParameters,
+      query: queryParameters
+    });
+    return new VoidApiResponse(response);
+  }
+  /**
+   * This will associate a tag with a asset. This will do the same thing as the tag equivilant.
+   * /asset/{asset}/tags/associate/{tag} [POST]
+   */
+  async assetAssociateTag(requestParameters) {
+    await this.assetAssociateTagRaw(requestParameters);
+  }
+  /**
+   * This will enable us to dissassociate a tag from a asset. This will do the same thing as the tag equivilant.
+   * /asset/{asset}/tags/disassociate/{tag} [POST]
+   */
+  async assetDisassociateTagRaw(requestParameters) {
+    if (requestParameters.tag === null || requestParameters.tag === void 0) {
+      throw new RequiredError2("tag", "Required parameter requestParameters.tag was null or undefined when calling assetDisassociateTag.");
+    }
+    if (requestParameters.asset === null || requestParameters.asset === void 0) {
+      throw new RequiredError2("asset", "Required parameter requestParameters.asset was null or undefined when calling assetDisassociateTag.");
+    }
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/asset/{asset}/tags/disassociate/{tag}`.replace(`{${"tag"}}`, encodeURIComponent(String(requestParameters.tag))).replace(`{${"asset"}}`, encodeURIComponent(String(requestParameters.asset))),
+      method: "POST",
+      headers: headerParameters,
+      query: queryParameters
+    });
+    return new VoidApiResponse(response);
+  }
+  /**
+   * This will enable us to dissassociate a tag from a asset. This will do the same thing as the tag equivilant.
+   * /asset/{asset}/tags/disassociate/{tag} [POST]
+   */
+  async assetDisassociateTag(requestParameters) {
+    await this.assetDisassociateTagRaw(requestParameters);
+  }
+  /**
    * Get the formats for a given asset.
    * /asset/{asset}/formats [GET] Scoped To Asset
    */
@@ -63297,7 +64115,7 @@ var AssetApi = class extends BaseAPI2 {
       headers: headerParameters,
       query: queryParameters
     });
-    return new JSONApiResponse2(response, (jsonValue) => AssetFormatsFromJSON2(jsonValue));
+    return new JSONApiResponse2(response, (jsonValue) => FormatsFromJSON2(jsonValue));
   }
   /**
    * Get the formats for a given asset.
@@ -63510,6 +64328,62 @@ var AssetApi = class extends BaseAPI2 {
   async assetUpdate(requestParameters) {
     const response = await this.assetUpdateRaw(requestParameters);
     return await response.value();
+  }
+  /**
+   * This will associate a website with a asset. This will do the same thing as the website equivilant.
+   * /asset/{asset}/websites/associate/{website} [POST]
+   */
+  async associateWebsiteRaw(requestParameters) {
+    if (requestParameters.asset === null || requestParameters.asset === void 0) {
+      throw new RequiredError2("asset", "Required parameter requestParameters.asset was null or undefined when calling associateWebsite.");
+    }
+    if (requestParameters.website === null || requestParameters.website === void 0) {
+      throw new RequiredError2("website", "Required parameter requestParameters.website was null or undefined when calling associateWebsite.");
+    }
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/asset/{asset}/websites/associate/{website}`.replace(`{${"asset"}}`, encodeURIComponent(String(requestParameters.asset))).replace(`{${"website"}}`, encodeURIComponent(String(requestParameters.website))),
+      method: "POST",
+      headers: headerParameters,
+      query: queryParameters
+    });
+    return new VoidApiResponse(response);
+  }
+  /**
+   * This will associate a website with a asset. This will do the same thing as the website equivilant.
+   * /asset/{asset}/websites/associate/{website} [POST]
+   */
+  async associateWebsite(requestParameters) {
+    await this.associateWebsiteRaw(requestParameters);
+  }
+  /**
+   * This will enable us to dissassociate a website from a asset. This will do the same thing as the website equivilant.
+   * /asset/{asset}/websites/disassociate/{website} [POST]
+   */
+  async disassociateWebsiteRaw(requestParameters) {
+    if (requestParameters.website === null || requestParameters.website === void 0) {
+      throw new RequiredError2("website", "Required parameter requestParameters.website was null or undefined when calling disassociateWebsite.");
+    }
+    if (requestParameters.asset === null || requestParameters.asset === void 0) {
+      throw new RequiredError2("asset", "Required parameter requestParameters.asset was null or undefined when calling disassociateWebsite.");
+    }
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/asset/{asset}/websites/disassociate/{website}`.replace(`{${"website"}}`, encodeURIComponent(String(requestParameters.website))).replace(`{${"asset"}}`, encodeURIComponent(String(requestParameters.asset))),
+      method: "POST",
+      headers: headerParameters,
+      query: queryParameters
+    });
+    return new VoidApiResponse(response);
+  }
+  /**
+   * This will enable us to dissassociate a website from a asset. This will do the same thing as the website equivilant.
+   * /asset/{asset}/websites/disassociate/{website} [POST]
+   */
+  async disassociateWebsite(requestParameters) {
+    await this.disassociateWebsiteRaw(requestParameters);
   }
 };
 
@@ -63813,7 +64687,7 @@ var AssetsApi = class extends BaseAPI2 {
       headers: headerParameters,
       query: queryParameters
     });
-    return new JSONApiResponse2(response, (jsonValue) => AssetFormatsFromJSON2(jsonValue));
+    return new JSONApiResponse2(response, (jsonValue) => FormatsFromJSON2(jsonValue));
   }
   /**
    * This will query the formats for agiven asset when provided that asset\'s id.
@@ -65444,7 +66318,7 @@ var QGPTApi = class extends BaseAPI2 {
       query: queryParameters,
       body: QGPTPersonsRelatedInputToJSON(requestParameters.qGPTPersonsRelatedInput)
     });
-    return new JSONApiResponse2(response, (jsonValue) => PersonsFromJSON2(jsonValue));
+    return new JSONApiResponse2(response, (jsonValue) => QGPTPersonsRelatedOutputFromJSON(jsonValue));
   }
   /**
    * This Endpoint is used for Who Support.  IE given context like a Seed, or a qgptConversation, who will be able to help out.   Input: - (optional) seed: Seed - ONLY GOING TO SUPPORT fragments.for now. - (optional) conversation: QGPTConversation.  Output: - persons: Persons
@@ -65888,7 +66762,7 @@ var WellKnownApi = class extends BaseAPI2 {
 };
 
 // package.json
-var version = "1.8.0";
+var version = "1.8.1";
 
 // src/connection/notification_handler.ts
 var import_obsidian = require("obsidian");
@@ -66050,8 +66924,8 @@ var launchRuntime = async (wait) => {
 
 // src/connection/version_check.ts
 var config = ConnectorSingleton.getInstance();
-var currentMinVersion = "6.5.0";
-var currentMaxVersion = "7.0.0";
+var currentMinVersion = "7.0.0";
+var currentMaxVersion = "8.0.0";
 var versionValid = false;
 var versionCheck = async ({
   retry: retry2,
@@ -66934,7 +67808,7 @@ for (let i = 0; i < 256; ++i) {
   byteToHex.push((i + 256).toString(16).slice(1));
 }
 function unsafeStringify(arr, offset = 0) {
-  return (byteToHex[arr[offset + 0]] + byteToHex[arr[offset + 1]] + byteToHex[arr[offset + 2]] + byteToHex[arr[offset + 3]] + "-" + byteToHex[arr[offset + 4]] + byteToHex[arr[offset + 5]] + "-" + byteToHex[arr[offset + 6]] + byteToHex[arr[offset + 7]] + "-" + byteToHex[arr[offset + 8]] + byteToHex[arr[offset + 9]] + "-" + byteToHex[arr[offset + 10]] + byteToHex[arr[offset + 11]] + byteToHex[arr[offset + 12]] + byteToHex[arr[offset + 13]] + byteToHex[arr[offset + 14]] + byteToHex[arr[offset + 15]]).toLowerCase();
+  return byteToHex[arr[offset + 0]] + byteToHex[arr[offset + 1]] + byteToHex[arr[offset + 2]] + byteToHex[arr[offset + 3]] + "-" + byteToHex[arr[offset + 4]] + byteToHex[arr[offset + 5]] + "-" + byteToHex[arr[offset + 6]] + byteToHex[arr[offset + 7]] + "-" + byteToHex[arr[offset + 8]] + byteToHex[arr[offset + 9]] + "-" + byteToHex[arr[offset + 10]] + byteToHex[arr[offset + 11]] + byteToHex[arr[offset + 12]] + byteToHex[arr[offset + 13]] + byteToHex[arr[offset + 14]] + byteToHex[arr[offset + 15]];
 }
 
 // node_modules/uuid/dist/esm-browser/native.js
@@ -70940,11 +71814,14 @@ var copilotParams = {
         copyToClipboard(link);
       return { id: params.id };
     } else {
+      const application = await getApplication();
+      if (!application)
+        return;
       const asset = await ConnectorSingleton.getInstance().assetsApi.assetsCreateNewAsset({
         seed: {
           type: "SEEDED_ASSET" /* Asset */,
           asset: {
-            application: await getApplication(),
+            application,
             format: {
               fragment: {
                 string: {
@@ -75234,7 +76111,7 @@ parseMarkdown_fn = function(lexer2, parser2) {
 _onError = new WeakSet();
 onError_fn = function(silent, async, callback) {
   return (e) => {
-    e.message += "\nPlease report this to https://github.com/markedjs/this.";
+    e.message += "\nPlease report this to https://github.com/markedjs/marked.";
     if (silent) {
       const msg = "<p>An error occurred:</p><pre>" + escape(e.message + "", true) + "</pre>";
       if (async) {
