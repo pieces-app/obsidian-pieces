@@ -2712,9 +2712,9 @@ var require_retry2 = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/runtime.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/runtime.js
 var require_runtime = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/runtime.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/runtime.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TextApiResponse = exports.BlobApiResponse = exports.VoidApiResponse = exports.JSONApiResponse = exports.canConsumeForm = exports.mapValues = exports.querystring = exports.exists = exports.Configuration = exports.COLLECTION_FORMATS = exports.RequiredError = exports.BaseAPI = exports.BASE_PATH = void 0;
@@ -2885,10 +2885,10 @@ var require_runtime = __commonJS({
       }).filter((part) => part.length > 0).join("&");
     }
     exports.querystring = querystring3;
-    function mapValues1000(data, fn) {
+    function mapValues1038(data, fn) {
       return Object.keys(data).reduce((acc, key) => ({ ...acc, [key]: fn(data[key]) }), {});
     }
-    exports.mapValues = mapValues1000;
+    exports.mapValues = mapValues1038;
     function canConsumeForm2(consumes) {
       for (const consume of consumes) {
         if ("multipart/form-data" === consume.contentType) {
@@ -2938,9 +2938,9 @@ var require_runtime = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/AccessEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AccessEnum.js
 var require_AccessEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/AccessEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AccessEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AccessEnumToJSON = exports.AccessEnumFromJSONTyped = exports.AccessEnumFromJSON = exports.AccessEnum = void 0;
@@ -2964,9 +2964,9 @@ var require_AccessEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Accessor.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Accessor.js
 var require_Accessor = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Accessor.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Accessor.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AccessorToJSON = exports.AccessorFromJSONTyped = exports.AccessorFromJSON = void 0;
@@ -3010,9 +3010,9 @@ var require_Accessor = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Accessors.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Accessors.js
 var require_Accessors = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Accessors.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Accessors.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AccessorsToJSON = exports.AccessorsFromJSONTyped = exports.AccessorsFromJSON = void 0;
@@ -3048,9 +3048,9 @@ var require_Accessors = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Activities.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Activities.js
 var require_Activities = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Activities.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Activities.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ActivitiesToJSON = exports.ActivitiesFromJSONTyped = exports.ActivitiesFromJSON = void 0;
@@ -3086,9 +3086,9 @@ var require_Activities = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Activity.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Activity.js
 var require_Activity = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Activity.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Activity.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ActivityToJSON = exports.ActivityFromJSONTyped = exports.ActivityFromJSON = void 0;
@@ -3144,9 +3144,9 @@ var require_Activity = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Aesthetics.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Aesthetics.js
 var require_Aesthetics = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Aesthetics.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Aesthetics.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AestheticsToJSON = exports.AestheticsFromJSONTyped = exports.AestheticsFromJSON = void 0;
@@ -3184,9 +3184,9 @@ var require_Aesthetics = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/AllocationCloud.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AllocationCloud.js
 var require_AllocationCloud = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/AllocationCloud.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AllocationCloud.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AllocationCloudToJSON = exports.AllocationCloudFromJSONTyped = exports.AllocationCloudFromJSON = void 0;
@@ -3236,9 +3236,9 @@ var require_AllocationCloud = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/AllocationCloudStatus.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AllocationCloudStatus.js
 var require_AllocationCloudStatus = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/AllocationCloudStatus.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AllocationCloudStatus.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AllocationCloudStatusToJSON = exports.AllocationCloudStatusFromJSONTyped = exports.AllocationCloudStatusFromJSON = void 0;
@@ -3274,9 +3274,9 @@ var require_AllocationCloudStatus = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/AllocationCloudUrl.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AllocationCloudUrl.js
 var require_AllocationCloudUrl = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/AllocationCloudUrl.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AllocationCloudUrl.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AllocationCloudUrlToJSON = exports.AllocationCloudUrlFromJSONTyped = exports.AllocationCloudUrlFromJSON = void 0;
@@ -3314,9 +3314,9 @@ var require_AllocationCloudUrl = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/AllocationCloudUrls.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AllocationCloudUrls.js
 var require_AllocationCloudUrls = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/AllocationCloudUrls.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AllocationCloudUrls.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AllocationCloudUrlsToJSON = exports.AllocationCloudUrlsFromJSONTyped = exports.AllocationCloudUrlsFromJSON = void 0;
@@ -3356,9 +3356,9 @@ var require_AllocationCloudUrls = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/AllocationStatusEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AllocationStatusEnum.js
 var require_AllocationStatusEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/AllocationStatusEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AllocationStatusEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AllocationStatusEnumToJSON = exports.AllocationStatusEnumFromJSONTyped = exports.AllocationStatusEnumFromJSON = exports.AllocationStatusEnum = void 0;
@@ -3385,9 +3385,9 @@ var require_AllocationStatusEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Allocations.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Allocations.js
 var require_Allocations = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Allocations.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Allocations.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AllocationsToJSON = exports.AllocationsFromJSONTyped = exports.AllocationsFromJSON = void 0;
@@ -3423,9 +3423,9 @@ var require_Allocations = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Analyses.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Analyses.js
 var require_Analyses = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Analyses.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Analyses.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AnalysesToJSON = exports.AnalysesFromJSONTyped = exports.AnalysesFromJSON = void 0;
@@ -3461,9 +3461,9 @@ var require_Analyses = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Analysis.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Analysis.js
 var require_Analysis = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Analysis.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Analysis.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AnalysisToJSON = exports.AnalysisFromJSONTyped = exports.AnalysisFromJSON = void 0;
@@ -3505,9 +3505,9 @@ var require_Analysis = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/AnalyticsTrackedAdoptionEventIdentifierDescriptionPairs.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AnalyticsTrackedAdoptionEventIdentifierDescriptionPairs.js
 var require_AnalyticsTrackedAdoptionEventIdentifierDescriptionPairs = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/AnalyticsTrackedAdoptionEventIdentifierDescriptionPairs.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AnalyticsTrackedAdoptionEventIdentifierDescriptionPairs.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AnalyticsTrackedAdoptionEventIdentifierDescriptionPairsToJSON = exports.AnalyticsTrackedAdoptionEventIdentifierDescriptionPairsFromJSONTyped = exports.AnalyticsTrackedAdoptionEventIdentifierDescriptionPairsFromJSON = exports.AnalyticsTrackedAdoptionEventIdentifierDescriptionPairsAdoptionUninstallEnum = exports.AnalyticsTrackedAdoptionEventIdentifierDescriptionPairsAdoptionInstallEnum = void 0;
@@ -3553,9 +3553,9 @@ var require_AnalyticsTrackedAdoptionEventIdentifierDescriptionPairs = __commonJS
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Anchor.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Anchor.js
 var require_Anchor = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Anchor.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Anchor.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AnchorToJSON = exports.AnchorFromJSONTyped = exports.AnchorFromJSON = void 0;
@@ -3613,9 +3613,9 @@ var require_Anchor = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/AnchorPoint.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AnchorPoint.js
 var require_AnchorPoint = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/AnchorPoint.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AnchorPoint.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AnchorPointToJSON = exports.AnchorPointFromJSONTyped = exports.AnchorPointFromJSON = void 0;
@@ -3667,9 +3667,9 @@ var require_AnchorPoint = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/AnchorPoints.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AnchorPoints.js
 var require_AnchorPoints = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/AnchorPoints.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AnchorPoints.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AnchorPointsToJSON = exports.AnchorPointsFromJSONTyped = exports.AnchorPointsFromJSON = void 0;
@@ -3709,9 +3709,9 @@ var require_AnchorPoints = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/AnchorTypeEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AnchorTypeEnum.js
 var require_AnchorTypeEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/AnchorTypeEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AnchorTypeEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AnchorTypeEnumToJSON = exports.AnchorTypeEnumFromJSONTyped = exports.AnchorTypeEnumFromJSON = exports.AnchorTypeEnum = void 0;
@@ -3735,9 +3735,9 @@ var require_AnchorTypeEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Anchors.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Anchors.js
 var require_Anchors = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Anchors.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Anchors.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AnchorsToJSON = exports.AnchorsFromJSONTyped = exports.AnchorsFromJSON = void 0;
@@ -3777,9 +3777,9 @@ var require_Anchors = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Annotation.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Annotation.js
 var require_Annotation = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Annotation.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Annotation.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AnnotationToJSON = exports.AnnotationFromJSONTyped = exports.AnnotationFromJSON = void 0;
@@ -3845,9 +3845,9 @@ var require_Annotation = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/AnnotationTypeEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AnnotationTypeEnum.js
 var require_AnnotationTypeEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/AnnotationTypeEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AnnotationTypeEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AnnotationTypeEnumToJSON = exports.AnnotationTypeEnumFromJSONTyped = exports.AnnotationTypeEnumFromJSON = exports.AnnotationTypeEnum = void 0;
@@ -3875,9 +3875,9 @@ var require_AnnotationTypeEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Annotations.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Annotations.js
 var require_Annotations = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Annotations.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Annotations.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AnnotationsToJSON = exports.AnnotationsFromJSONTyped = exports.AnnotationsFromJSON = void 0;
@@ -3917,9 +3917,9 @@ var require_Annotations = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Application.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Application.js
 var require_Application = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Application.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Application.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ApplicationToJSON = exports.ApplicationFromJSONTyped = exports.ApplicationFromJSON = void 0;
@@ -3971,9 +3971,9 @@ var require_Application = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ApplicationNameEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ApplicationNameEnum.js
 var require_ApplicationNameEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ApplicationNameEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ApplicationNameEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ApplicationNameEnumToJSON = exports.ApplicationNameEnumFromJSONTyped = exports.ApplicationNameEnumFromJSON = exports.ApplicationNameEnum = void 0;
@@ -4022,9 +4022,9 @@ var require_ApplicationNameEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Applications.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Applications.js
 var require_Applications = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Applications.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Applications.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ApplicationsToJSON = exports.ApplicationsFromJSONTyped = exports.ApplicationsFromJSON = void 0;
@@ -4060,9 +4060,9 @@ var require_Applications = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Asset.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Asset.js
 var require_Asset = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Asset.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Asset.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AssetToJSON = exports.AssetFromJSONTyped = exports.AssetFromJSON = void 0;
@@ -4150,9 +4150,9 @@ var require_Asset = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/AssetFilter.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AssetFilter.js
 var require_AssetFilter = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/AssetFilter.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AssetFilter.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AssetFilterToJSON = exports.AssetFilterFromJSONTyped = exports.AssetFilterFromJSON = void 0;
@@ -4202,9 +4202,9 @@ var require_AssetFilter = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/AssetFilterPhrase.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AssetFilterPhrase.js
 var require_AssetFilterPhrase = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/AssetFilterPhrase.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AssetFilterPhrase.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AssetFilterPhraseToJSON = exports.AssetFilterPhraseFromJSONTyped = exports.AssetFilterPhraseFromJSON = void 0;
@@ -4248,9 +4248,9 @@ var require_AssetFilterPhrase = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/AssetFilterPhraseOptions.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AssetFilterPhraseOptions.js
 var require_AssetFilterPhraseOptions = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/AssetFilterPhraseOptions.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AssetFilterPhraseOptions.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AssetFilterPhraseOptionsToJSON = exports.AssetFilterPhraseOptionsFromJSONTyped = exports.AssetFilterPhraseOptionsFromJSON = void 0;
@@ -4286,9 +4286,9 @@ var require_AssetFilterPhraseOptions = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/AssetFilterTimestamp.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AssetFilterTimestamp.js
 var require_AssetFilterTimestamp = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/AssetFilterTimestamp.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AssetFilterTimestamp.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AssetFilterTimestampToJSON = exports.AssetFilterTimestampFromJSONTyped = exports.AssetFilterTimestampFromJSON = void 0;
@@ -4328,9 +4328,9 @@ var require_AssetFilterTimestamp = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/AssetFilters.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AssetFilters.js
 var require_AssetFilters = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/AssetFilters.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AssetFilters.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AssetFiltersToJSON = exports.AssetFiltersFromJSONTyped = exports.AssetFiltersFromJSON = void 0;
@@ -4368,9 +4368,9 @@ var require_AssetFilters = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/AssetReclassification.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AssetReclassification.js
 var require_AssetReclassification = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/AssetReclassification.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AssetReclassification.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AssetReclassificationToJSON = exports.AssetReclassificationFromJSONTyped = exports.AssetReclassificationFromJSON = void 0;
@@ -4408,9 +4408,9 @@ var require_AssetReclassification = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/AssetSearchSpace.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AssetSearchSpace.js
 var require_AssetSearchSpace = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/AssetSearchSpace.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AssetSearchSpace.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AssetSearchSpaceToJSON = exports.AssetSearchSpaceFromJSONTyped = exports.AssetSearchSpaceFromJSON = void 0;
@@ -4446,9 +4446,9 @@ var require_AssetSearchSpace = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Assets.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Assets.js
 var require_Assets = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Assets.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Assets.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AssetsToJSON = exports.AssetsFromJSONTyped = exports.AssetsFromJSON = void 0;
@@ -4488,9 +4488,9 @@ var require_Assets = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/AssetsSearchWithFiltersInput.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AssetsSearchWithFiltersInput.js
 var require_AssetsSearchWithFiltersInput = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/AssetsSearchWithFiltersInput.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AssetsSearchWithFiltersInput.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AssetsSearchWithFiltersInputToJSON = exports.AssetsSearchWithFiltersInputFromJSONTyped = exports.AssetsSearchWithFiltersInputFromJSON = void 0;
@@ -4532,9 +4532,9 @@ var require_AssetsSearchWithFiltersInput = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/AssetsSearchWithFiltersOutput.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AssetsSearchWithFiltersOutput.js
 var require_AssetsSearchWithFiltersOutput = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/AssetsSearchWithFiltersOutput.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AssetsSearchWithFiltersOutput.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AssetsSearchWithFiltersOutputToJSON = exports.AssetsSearchWithFiltersOutputFromJSONTyped = exports.AssetsSearchWithFiltersOutputFromJSON = void 0;
@@ -4570,9 +4570,9 @@ var require_AssetsSearchWithFiltersOutput = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Auth0.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Auth0.js
 var require_Auth0 = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Auth0.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Auth0.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Auth0ToJSON = exports.Auth0FromJSONTyped = exports.Auth0FromJSON = void 0;
@@ -4622,9 +4622,9 @@ var require_Auth0 = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Auth0Identity.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Auth0Identity.js
 var require_Auth0Identity = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Auth0Identity.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Auth0Identity.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Auth0IdentityToJSON = exports.Auth0IdentityFromJSONTyped = exports.Auth0IdentityFromJSON = void 0;
@@ -4667,9 +4667,9 @@ var require_Auth0Identity = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Auth0Redirects.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Auth0Redirects.js
 var require_Auth0Redirects = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Auth0Redirects.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Auth0Redirects.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Auth0RedirectsToJSON = exports.Auth0RedirectsFromJSONTyped = exports.Auth0RedirectsFromJSON = void 0;
@@ -4704,9 +4704,9 @@ var require_Auth0Redirects = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Auth0User.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Auth0User.js
 var require_Auth0User = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Auth0User.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Auth0User.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Auth0UserToJSON = exports.Auth0UserFromJSONTyped = exports.Auth0UserFromJSON = void 0;
@@ -4776,9 +4776,9 @@ var require_Auth0User = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Auth0UserAllocationMetadata.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Auth0UserAllocationMetadata.js
 var require_Auth0UserAllocationMetadata = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Auth0UserAllocationMetadata.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Auth0UserAllocationMetadata.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Auth0UserAllocationMetadataToJSON = exports.Auth0UserAllocationMetadataFromJSONTyped = exports.Auth0UserAllocationMetadataFromJSON = void 0;
@@ -4812,19 +4812,19 @@ var require_Auth0UserAllocationMetadata = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Auth0UserMetadata.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Auth0UserMetadata.js
 var require_Auth0UserMetadata = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Auth0UserMetadata.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Auth0UserMetadata.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Auth0UserMetadataToJSON = exports.Auth0UserMetadataFromJSONTyped = exports.Auth0UserMetadataFromJSON = void 0;
     var runtime_1 = require_runtime();
     var index_1 = require_models();
     function Auth0UserMetadataFromJSON4(json) {
-      return Auth0UserMetadataFromJSONTyped10(json, false);
+      return Auth0UserMetadataFromJSONTyped16(json, false);
     }
     exports.Auth0UserMetadataFromJSON = Auth0UserMetadataFromJSON4;
-    function Auth0UserMetadataFromJSONTyped10(json, ignoreDiscriminator) {
+    function Auth0UserMetadataFromJSONTyped16(json, ignoreDiscriminator) {
       if (json === void 0 || json === null) {
         return json;
       }
@@ -4837,7 +4837,7 @@ var require_Auth0UserMetadata = __commonJS({
         "allocation": !(0, runtime_1.exists)(json, "allocation") ? void 0 : (0, index_1.Auth0UserAllocationMetadataFromJSON)(json["allocation"])
       };
     }
-    exports.Auth0UserMetadataFromJSONTyped = Auth0UserMetadataFromJSONTyped10;
+    exports.Auth0UserMetadataFromJSONTyped = Auth0UserMetadataFromJSONTyped16;
     function Auth0UserMetadataToJSON4(value) {
       if (value === void 0) {
         return void 0;
@@ -4858,9 +4858,9 @@ var require_Auth0UserMetadata = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/AvailableFormats.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AvailableFormats.js
 var require_AvailableFormats = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/AvailableFormats.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/AvailableFormats.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AvailableFormatsToJSON = exports.AvailableFormatsFromJSONTyped = exports.AvailableFormatsFromJSON = void 0;
@@ -4896,9 +4896,9 @@ var require_AvailableFormats = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ByteDescriptor.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ByteDescriptor.js
 var require_ByteDescriptor = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ByteDescriptor.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ByteDescriptor.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ByteDescriptorToJSON = exports.ByteDescriptorFromJSONTyped = exports.ByteDescriptorFromJSON = void 0;
@@ -4936,9 +4936,9 @@ var require_ByteDescriptor = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/CapabilitiesEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/CapabilitiesEnum.js
 var require_CapabilitiesEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/CapabilitiesEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/CapabilitiesEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.CapabilitiesEnumToJSON = exports.CapabilitiesEnumFromJSONTyped = exports.CapabilitiesEnumFromJSON = exports.CapabilitiesEnum = void 0;
@@ -4963,9 +4963,9 @@ var require_CapabilitiesEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ChallengedPKCE.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ChallengedPKCE.js
 var require_ChallengedPKCE = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ChallengedPKCE.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ChallengedPKCE.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ChallengedPKCEToJSON = exports.ChallengedPKCEFromJSONTyped = exports.ChallengedPKCEFromJSON = exports.ChallengedPKCEMethodEnum = void 0;
@@ -5013,9 +5013,9 @@ var require_ChallengedPKCE = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Classification.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Classification.js
 var require_Classification = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Classification.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Classification.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ClassificationToJSON = exports.ClassificationFromJSONTyped = exports.ClassificationFromJSON = void 0;
@@ -5055,30 +5055,30 @@ var require_Classification = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ClassificationGenericEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ClassificationGenericEnum.js
 var require_ClassificationGenericEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ClassificationGenericEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ClassificationGenericEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ClassificationGenericEnumToJSON = exports.ClassificationGenericEnumFromJSONTyped = exports.ClassificationGenericEnumFromJSON = exports.ClassificationGenericEnum = void 0;
-    var ClassificationGenericEnum13;
-    (function(ClassificationGenericEnum14) {
-      ClassificationGenericEnum14["Code"] = "CODE";
-      ClassificationGenericEnum14["Text"] = "TEXT";
-      ClassificationGenericEnum14["Image"] = "IMAGE";
-      ClassificationGenericEnum14["Video"] = "VIDEO";
-      ClassificationGenericEnum14["ExternalResourceReference"] = "EXTERNAL_RESOURCE_REFERENCE";
-      ClassificationGenericEnum14["Unknown"] = "UNKNOWN";
-      ClassificationGenericEnum14["File"] = "FILE";
-    })(ClassificationGenericEnum13 || (exports.ClassificationGenericEnum = ClassificationGenericEnum13 = {}));
+    var ClassificationGenericEnum15;
+    (function(ClassificationGenericEnum16) {
+      ClassificationGenericEnum16["Code"] = "CODE";
+      ClassificationGenericEnum16["Text"] = "TEXT";
+      ClassificationGenericEnum16["Image"] = "IMAGE";
+      ClassificationGenericEnum16["Video"] = "VIDEO";
+      ClassificationGenericEnum16["ExternalResourceReference"] = "EXTERNAL_RESOURCE_REFERENCE";
+      ClassificationGenericEnum16["Unknown"] = "UNKNOWN";
+      ClassificationGenericEnum16["File"] = "FILE";
+    })(ClassificationGenericEnum15 || (exports.ClassificationGenericEnum = ClassificationGenericEnum15 = {}));
     function ClassificationGenericEnumFromJSON4(json) {
-      return ClassificationGenericEnumFromJSONTyped14(json, false);
+      return ClassificationGenericEnumFromJSONTyped16(json, false);
     }
     exports.ClassificationGenericEnumFromJSON = ClassificationGenericEnumFromJSON4;
-    function ClassificationGenericEnumFromJSONTyped14(json, ignoreDiscriminator) {
+    function ClassificationGenericEnumFromJSONTyped16(json, ignoreDiscriminator) {
       return json;
     }
-    exports.ClassificationGenericEnumFromJSONTyped = ClassificationGenericEnumFromJSONTyped14;
+    exports.ClassificationGenericEnumFromJSONTyped = ClassificationGenericEnumFromJSONTyped16;
     function ClassificationGenericEnumToJSON4(value) {
       return value;
     }
@@ -5086,9 +5086,9 @@ var require_ClassificationGenericEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ClassificationRenderingEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ClassificationRenderingEnum.js
 var require_ClassificationRenderingEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ClassificationRenderingEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ClassificationRenderingEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ClassificationRenderingEnumToJSON = exports.ClassificationRenderingEnumFromJSONTyped = exports.ClassificationRenderingEnumFromJSON = exports.ClassificationRenderingEnum = void 0;
@@ -5113,515 +5113,515 @@ var require_ClassificationRenderingEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ClassificationSpecificEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ClassificationSpecificEnum.js
 var require_ClassificationSpecificEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ClassificationSpecificEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ClassificationSpecificEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ClassificationSpecificEnumToJSON = exports.ClassificationSpecificEnumFromJSONTyped = exports.ClassificationSpecificEnumFromJSON = exports.ClassificationSpecificEnum = void 0;
-    var ClassificationSpecificEnum30;
-    (function(ClassificationSpecificEnum31) {
-      ClassificationSpecificEnum31["Csx"] = "csx";
-      ClassificationSpecificEnum31["Cs"] = "cs";
-      ClassificationSpecificEnum31["Html"] = "html";
-      ClassificationSpecificEnum31["Htm"] = "htm";
-      ClassificationSpecificEnum31["Shtml"] = "shtml";
-      ClassificationSpecificEnum31["Xhtml"] = "xhtml";
-      ClassificationSpecificEnum31["Hs"] = "hs";
-      ClassificationSpecificEnum31["HsBoot"] = "hs-boot";
-      ClassificationSpecificEnum31["Hsig"] = "hsig";
-      ClassificationSpecificEnum31["Cpp"] = "cpp";
-      ClassificationSpecificEnum31["Cc"] = "cc";
-      ClassificationSpecificEnum31["Cp"] = "cp";
-      ClassificationSpecificEnum31["Cxx"] = "cxx";
-      ClassificationSpecificEnum31["C"] = "c";
-      ClassificationSpecificEnum31["H"] = "h";
-      ClassificationSpecificEnum31["Hh"] = "hh";
-      ClassificationSpecificEnum31["Hpp"] = "hpp";
-      ClassificationSpecificEnum31["Hxx"] = "hxx";
-      ClassificationSpecificEnum31["Inl"] = "inl";
-      ClassificationSpecificEnum31["Ipp"] = "ipp";
-      ClassificationSpecificEnum31["Ixx"] = "ixx";
-      ClassificationSpecificEnum31["Cppm"] = "cppm";
-      ClassificationSpecificEnum31["Csv"] = "csv";
-      ClassificationSpecificEnum31["Doc"] = "doc";
-      ClassificationSpecificEnum31["Docm"] = "docm";
-      ClassificationSpecificEnum31["Docx"] = "docx";
-      ClassificationSpecificEnum31["Exe"] = "exe";
-      ClassificationSpecificEnum31["Gif"] = "gif";
-      ClassificationSpecificEnum31["Ico"] = "ico";
-      ClassificationSpecificEnum31["Jpe"] = "jpe";
-      ClassificationSpecificEnum31["Jpeg"] = "jpeg";
-      ClassificationSpecificEnum31["Jpg"] = "jpg";
-      ClassificationSpecificEnum31["Jpgm"] = "jpgm";
-      ClassificationSpecificEnum31["Jpgv"] = "jpgv";
-      ClassificationSpecificEnum31["Log"] = "log";
-      ClassificationSpecificEnum31["Mp2"] = "mp2";
-      ClassificationSpecificEnum31["Mp2a"] = "mp2a";
-      ClassificationSpecificEnum31["Mp3"] = "mp3";
-      ClassificationSpecificEnum31["Mp4"] = "mp4";
-      ClassificationSpecificEnum31["Mp4a"] = "mp4a";
-      ClassificationSpecificEnum31["Oga"] = "oga";
-      ClassificationSpecificEnum31["Ogg"] = "ogg";
-      ClassificationSpecificEnum31["Ogv"] = "ogv";
-      ClassificationSpecificEnum31["Ogx"] = "ogx";
-      ClassificationSpecificEnum31["Ppt"] = "ppt";
-      ClassificationSpecificEnum31["Pptx"] = "pptx";
-      ClassificationSpecificEnum31["Pptm"] = "pptm";
-      ClassificationSpecificEnum31["Qt"] = "qt";
-      ClassificationSpecificEnum31["Text"] = "text";
-      ClassificationSpecificEnum31["Tif"] = "tif";
-      ClassificationSpecificEnum31["Tiff"] = "tiff";
-      ClassificationSpecificEnum31["Txt"] = "txt";
-      ClassificationSpecificEnum31["Wav"] = "wav";
-      ClassificationSpecificEnum31["Weba"] = "weba";
-      ClassificationSpecificEnum31["Webm"] = "webm";
-      ClassificationSpecificEnum31["Webp"] = "webp";
-      ClassificationSpecificEnum31["Xla"] = "xla";
-      ClassificationSpecificEnum31["Xlam"] = "xlam";
-      ClassificationSpecificEnum31["Xlc"] = "xlc";
-      ClassificationSpecificEnum31["Xlm"] = "xlm";
-      ClassificationSpecificEnum31["Xls"] = "xls";
-      ClassificationSpecificEnum31["Xlsb"] = "xlsb";
-      ClassificationSpecificEnum31["Xlsm"] = "xlsm";
-      ClassificationSpecificEnum31["Xlsx"] = "xlsx";
-      ClassificationSpecificEnum31["Xlt"] = "xlt";
-      ClassificationSpecificEnum31["Xltm"] = "xltm";
-      ClassificationSpecificEnum31["Xltx"] = "xltx";
-      ClassificationSpecificEnum31["Pdf"] = "pdf";
-      ClassificationSpecificEnum31["Png"] = "png";
-      ClassificationSpecificEnum31["Rpm"] = "rpm";
-      ClassificationSpecificEnum31["Zip"] = "zip";
-      ClassificationSpecificEnum31["Woff"] = "woff";
-      ClassificationSpecificEnum31["Woff2"] = "woff2";
-      ClassificationSpecificEnum31["Svgz"] = "svgz";
-      ClassificationSpecificEnum31["Bin"] = "bin";
-      ClassificationSpecificEnum31["Bmp"] = "bmp";
-      ClassificationSpecificEnum31["Eot"] = "eot";
-      ClassificationSpecificEnum31["Gz"] = "gz";
-      ClassificationSpecificEnum31["Jar"] = "jar";
-      ClassificationSpecificEnum31["Mpkg"] = "mpkg";
-      ClassificationSpecificEnum31["Ai"] = "ai";
-      ClassificationSpecificEnum31["Eps"] = "eps";
-      ClassificationSpecificEnum31["Dmg"] = "dmg";
-      ClassificationSpecificEnum31["List"] = "list";
-      ClassificationSpecificEnum31["Rtx"] = "rtx";
-      ClassificationSpecificEnum31["Uri"] = "uri";
-      ClassificationSpecificEnum31["Uris"] = "uris";
-      ClassificationSpecificEnum31["Urls"] = "urls";
-      ClassificationSpecificEnum31["Css"] = "css";
-      ClassificationSpecificEnum31["Dart"] = "dart";
-      ClassificationSpecificEnum31["Java"] = "java";
-      ClassificationSpecificEnum31["Bsh"] = "bsh";
-      ClassificationSpecificEnum31["Js"] = "js";
-      ClassificationSpecificEnum31["Jsx"] = "jsx";
-      ClassificationSpecificEnum31["Mjs"] = "mjs";
-      ClassificationSpecificEnum31["Htc"] = "htc";
-      ClassificationSpecificEnum31["Json"] = "json";
-      ClassificationSpecificEnum31["Ipynb"] = "ipynb";
-      ClassificationSpecificEnum31["Gltf"] = "gltf";
-      ClassificationSpecificEnum31["Jsonml"] = "jsonml";
-      ClassificationSpecificEnum31["Ps"] = "ps";
-      ClassificationSpecificEnum31["Ssml"] = "ssml";
-      ClassificationSpecificEnum31["Wasm"] = "wasm";
-      ClassificationSpecificEnum31["Rtf"] = "rtf";
-      ClassificationSpecificEnum31["Cco"] = "cco";
-      ClassificationSpecificEnum31["Pl"] = "pl";
-      ClassificationSpecificEnum31["Pc"] = "pc";
-      ClassificationSpecificEnum31["Pm"] = "pm";
-      ClassificationSpecificEnum31["Pmc"] = "pmc";
-      ClassificationSpecificEnum31["Pod"] = "pod";
-      ClassificationSpecificEnum31["T"] = "t";
-      ClassificationSpecificEnum31["Xml"] = "xml";
-      ClassificationSpecificEnum31["Tld"] = "tld";
-      ClassificationSpecificEnum31["Dtml"] = "dtml";
-      ClassificationSpecificEnum31["Rng"] = "rng";
-      ClassificationSpecificEnum31["Rss"] = "rss";
-      ClassificationSpecificEnum31["Opml"] = "opml";
-      ClassificationSpecificEnum31["Svg"] = "svg";
-      ClassificationSpecificEnum31["Xaml"] = "xaml";
-      ClassificationSpecificEnum31["SublimeSnippet"] = "sublime-snippet";
-      ClassificationSpecificEnum31["TmLanguage"] = "tmLanguage";
-      ClassificationSpecificEnum31["TmPreferences"] = "tmPreferences";
-      ClassificationSpecificEnum31["TmSnippet"] = "tmSnippet";
-      ClassificationSpecificEnum31["TmTheme"] = "tmTheme";
-      ClassificationSpecificEnum31["Csproj"] = "csproj";
-      ClassificationSpecificEnum31["Fsproj"] = "fsproj";
-      ClassificationSpecificEnum31["Sqlproj"] = "sqlproj";
-      ClassificationSpecificEnum31["Vbproj"] = "vbproj";
-      ClassificationSpecificEnum31["Vcproj"] = "vcproj";
-      ClassificationSpecificEnum31["Vcxproj"] = "vcxproj";
-      ClassificationSpecificEnum31["Dae"] = "dae";
-      ClassificationSpecificEnum31["Props"] = "props";
-      ClassificationSpecificEnum31["Targets"] = "targets";
-      ClassificationSpecificEnum31["Xsd"] = "xsd";
-      ClassificationSpecificEnum31["Xsl"] = "xsl";
-      ClassificationSpecificEnum31["Xslt"] = "xslt";
-      ClassificationSpecificEnum31["Ecma"] = "ecma";
-      ClassificationSpecificEnum31["Node"] = "node";
-      ClassificationSpecificEnum31["Php"] = "php";
-      ClassificationSpecificEnum31["Php3"] = "php3";
-      ClassificationSpecificEnum31["Php4"] = "php4";
-      ClassificationSpecificEnum31["Php5"] = "php5";
-      ClassificationSpecificEnum31["Php7"] = "php7";
-      ClassificationSpecificEnum31["Php8"] = "php8";
-      ClassificationSpecificEnum31["Phps"] = "phps";
-      ClassificationSpecificEnum31["Phpt"] = "phpt";
-      ClassificationSpecificEnum31["Phtml"] = "phtml";
-      ClassificationSpecificEnum31["Py"] = "py";
-      ClassificationSpecificEnum31["Py3"] = "py3";
-      ClassificationSpecificEnum31["Pyw"] = "pyw";
-      ClassificationSpecificEnum31["Pyi"] = "pyi";
-      ClassificationSpecificEnum31["Pyx"] = "pyx";
-      ClassificationSpecificEnum31["PyxIn"] = "pyx.in";
-      ClassificationSpecificEnum31["Pxd"] = "pxd";
-      ClassificationSpecificEnum31["PxdIn"] = "pxd.in";
-      ClassificationSpecificEnum31["Pxi"] = "pxi";
-      ClassificationSpecificEnum31["PxiIn"] = "pxi.in";
-      ClassificationSpecificEnum31["Rpy"] = "rpy";
-      ClassificationSpecificEnum31["Cpy"] = "cpy";
-      ClassificationSpecificEnum31["Gyp"] = "gyp";
-      ClassificationSpecificEnum31["Gypi"] = "gypi";
-      ClassificationSpecificEnum31["Vpy"] = "vpy";
-      ClassificationSpecificEnum31["Smk"] = "smk";
-      ClassificationSpecificEnum31["Wscript"] = "wscript";
-      ClassificationSpecificEnum31["Bazel"] = "bazel";
-      ClassificationSpecificEnum31["Bzl"] = "bzl";
-      ClassificationSpecificEnum31["Pyc"] = "pyc";
-      ClassificationSpecificEnum31["Class"] = "class";
-      ClassificationSpecificEnum31["P"] = "p";
-      ClassificationSpecificEnum31["Pas"] = "pas";
-      ClassificationSpecificEnum31["Curl"] = "curl";
-      ClassificationSpecificEnum31["Mcurl"] = "mcurl";
-      ClassificationSpecificEnum31["Go"] = "go";
-      ClassificationSpecificEnum31["Swift"] = "swift";
-      ClassificationSpecificEnum31["Rs"] = "rs";
-      ClassificationSpecificEnum31["Ts"] = "ts";
-      ClassificationSpecificEnum31["Tsx"] = "tsx";
-      ClassificationSpecificEnum31["Rb"] = "rb";
-      ClassificationSpecificEnum31["Rbi"] = "rbi";
-      ClassificationSpecificEnum31["Rbx"] = "rbx";
-      ClassificationSpecificEnum31["Rjs"] = "rjs";
-      ClassificationSpecificEnum31["Rabl"] = "rabl";
-      ClassificationSpecificEnum31["Rake"] = "rake";
-      ClassificationSpecificEnum31["Capfile"] = "capfile";
-      ClassificationSpecificEnum31["Jbuilder"] = "jbuilder";
-      ClassificationSpecificEnum31["Gemspec"] = "gemspec";
-      ClassificationSpecificEnum31["Podspec"] = "podspec";
-      ClassificationSpecificEnum31["Irbrc"] = "irbrc";
-      ClassificationSpecificEnum31["Pryrc"] = "pryrc";
-      ClassificationSpecificEnum31["Prawn"] = "prawn";
-      ClassificationSpecificEnum31["Thor"] = "thor";
-      ClassificationSpecificEnum31["Appfile"] = "Appfile";
-      ClassificationSpecificEnum31["Appraisals"] = "Appraisals";
-      ClassificationSpecificEnum31["Berksfile"] = "Berksfile";
-      ClassificationSpecificEnum31["Brewfile"] = "Brewfile";
-      ClassificationSpecificEnum31["Cheffile"] = "Cheffile";
-      ClassificationSpecificEnum31["Deliverfile"] = "Deliverfile";
-      ClassificationSpecificEnum31["Fastfile"] = "Fastfile";
-      ClassificationSpecificEnum31["Gemfile"] = "Gemfile";
-      ClassificationSpecificEnum31["Guardfile"] = "Guardfile";
-      ClassificationSpecificEnum31["Podfile"] = "Podfile";
-      ClassificationSpecificEnum31["Rakefile"] = "Rakefile";
-      ClassificationSpecificEnum31["Rantfile"] = "Rantfile";
-      ClassificationSpecificEnum31["Scanfile"] = "Scanfile";
-      ClassificationSpecificEnum31["Simplecov"] = "simplecov";
-      ClassificationSpecificEnum31["Snapfile"] = "Snapfile";
-      ClassificationSpecificEnum31["Thorfile"] = "Thorfile";
-      ClassificationSpecificEnum31["Vagrantfile"] = "Vagrantfile";
-      ClassificationSpecificEnum31["Scala"] = "scala";
-      ClassificationSpecificEnum31["Sbt"] = "sbt";
-      ClassificationSpecificEnum31["Sc"] = "sc";
-      ClassificationSpecificEnum31["Cmd"] = "cmd";
-      ClassificationSpecificEnum31["Bat"] = "bat";
-      ClassificationSpecificEnum31["Coffee"] = "coffee";
-      ClassificationSpecificEnum31["Erl"] = "erl";
-      ClassificationSpecificEnum31["Hrl"] = "hrl";
-      ClassificationSpecificEnum31["Escript"] = "escript";
-      ClassificationSpecificEnum31["Lua"] = "lua";
-      ClassificationSpecificEnum31["Md"] = "md";
-      ClassificationSpecificEnum31["Mdown"] = "mdown";
-      ClassificationSpecificEnum31["Mdwn"] = "mdwn";
-      ClassificationSpecificEnum31["Markdown"] = "markdown";
-      ClassificationSpecificEnum31["Markdn"] = "markdn";
-      ClassificationSpecificEnum31["Matlab"] = "matlab";
-      ClassificationSpecificEnum31["M"] = "m";
-      ClassificationSpecificEnum31["Ps1"] = "ps1";
-      ClassificationSpecificEnum31["Sh"] = "sh";
-      ClassificationSpecificEnum31["Bash"] = "bash";
-      ClassificationSpecificEnum31["Bashrc"] = "bashrc";
-      ClassificationSpecificEnum31["Ash"] = "ash";
-      ClassificationSpecificEnum31["Zsh"] = "zsh";
-      ClassificationSpecificEnum31["BashAliases"] = ".bash_aliases";
-      ClassificationSpecificEnum31["BashCompletions"] = ".bash_completions";
-      ClassificationSpecificEnum31["BashFunctions"] = ".bash_functions";
-      ClassificationSpecificEnum31["BashLogin"] = ".bash_login";
-      ClassificationSpecificEnum31["BashLogout"] = ".bash_logout";
-      ClassificationSpecificEnum31["BashProfile"] = ".bash_profile";
-      ClassificationSpecificEnum31["BashVariables"] = ".bash_variables";
-      ClassificationSpecificEnum31["Profile"] = ".profile";
-      ClassificationSpecificEnum31["TextmateInit"] = ".textmate_init";
-      ClassificationSpecificEnum31["Zlogin"] = ".zlogin";
-      ClassificationSpecificEnum31["Zlogout"] = ".zlogout";
-      ClassificationSpecificEnum31["Zprofile"] = ".zprofile";
-      ClassificationSpecificEnum31["Zshenv"] = ".zshenv";
-      ClassificationSpecificEnum31["Zshrc"] = ".zshrc";
-      ClassificationSpecificEnum31["Pkgbuild"] = "PKGBUILD";
-      ClassificationSpecificEnum31["Ebuild"] = "ebuild";
-      ClassificationSpecificEnum31["Eclass"] = "eclass";
-      ClassificationSpecificEnum31["R"] = "r";
-      ClassificationSpecificEnum31["Sql"] = "sql";
-      ClassificationSpecificEnum31["Ddl"] = "ddl";
-      ClassificationSpecificEnum31["Dml"] = "dml";
-      ClassificationSpecificEnum31["Tex"] = "tex";
-      ClassificationSpecificEnum31["Ltx"] = "ltx";
-      ClassificationSpecificEnum31["Sty"] = "sty";
-      ClassificationSpecificEnum31["Cls"] = "cls";
-      ClassificationSpecificEnum31["Unknown"] = "UNKNOWN";
-      ClassificationSpecificEnum31["Yaml"] = "yaml";
-      ClassificationSpecificEnum31["Yml"] = "yml";
-      ClassificationSpecificEnum31["Toml"] = "toml";
-      ClassificationSpecificEnum31["Tml"] = "tml";
-      ClassificationSpecificEnum31["CargoLock"] = "Cargo.lock";
-      ClassificationSpecificEnum31["GopkgLock"] = "Gopkg.lock";
-      ClassificationSpecificEnum31["Pipfile"] = "Pipfile";
-      ClassificationSpecificEnum31["PoetryLock"] = "poetry.lock";
-      ClassificationSpecificEnum31["UniformResourceLocator"] = "uniform_resource_locator";
-      ClassificationSpecificEnum31["CustomUrlScheme"] = "custom_url_scheme";
-      ClassificationSpecificEnum31["UnixFilePath"] = "unix_file_path";
-      ClassificationSpecificEnum31["WindowsFilePath"] = "windows_file_path";
-      ClassificationSpecificEnum31["UniformResourceIdentifier"] = "uniform_resource_identifier";
-      ClassificationSpecificEnum31["Hljs1c"] = "hljs-1c";
-      ClassificationSpecificEnum31["HljsAbnf"] = "hljs-abnf";
-      ClassificationSpecificEnum31["HljsAccesslog"] = "hljs-accesslog";
-      ClassificationSpecificEnum31["HljsActionscript"] = "hljs-actionscript";
-      ClassificationSpecificEnum31["HljsAda"] = "hljs-ada";
-      ClassificationSpecificEnum31["HljsAngelscript"] = "hljs-angelscript";
-      ClassificationSpecificEnum31["HljsApache"] = "hljs-apache";
-      ClassificationSpecificEnum31["HljsApplescript"] = "hljs-applescript";
-      ClassificationSpecificEnum31["HljsArcade"] = "hljs-arcade";
-      ClassificationSpecificEnum31["HljsArduino"] = "hljs-arduino";
-      ClassificationSpecificEnum31["HljsArmasm"] = "hljs-armasm";
-      ClassificationSpecificEnum31["HljsAsciidoc"] = "hljs-asciidoc";
-      ClassificationSpecificEnum31["HljsAspectj"] = "hljs-aspectj";
-      ClassificationSpecificEnum31["HljsAutohotkey"] = "hljs-autohotkey";
-      ClassificationSpecificEnum31["HljsAutoit"] = "hljs-autoit";
-      ClassificationSpecificEnum31["HljsAvrasm"] = "hljs-avrasm";
-      ClassificationSpecificEnum31["HljsAwk"] = "hljs-awk";
-      ClassificationSpecificEnum31["HljsAxapta"] = "hljs-axapta";
-      ClassificationSpecificEnum31["HljsBash"] = "hljs-bash";
-      ClassificationSpecificEnum31["HljsBasic"] = "hljs-basic";
-      ClassificationSpecificEnum31["HljsBnf"] = "hljs-bnf";
-      ClassificationSpecificEnum31["HljsBrainfuck"] = "hljs-brainfuck";
-      ClassificationSpecificEnum31["HljsCal"] = "hljs-cal";
-      ClassificationSpecificEnum31["HljsCapnproto"] = "hljs-capnproto";
-      ClassificationSpecificEnum31["HljsCeylon"] = "hljs-ceylon";
-      ClassificationSpecificEnum31["HljsClean"] = "hljs-clean";
-      ClassificationSpecificEnum31["HljsClojureRepl"] = "hljs-clojure-repl";
-      ClassificationSpecificEnum31["HljsClojure"] = "hljs-clojure";
-      ClassificationSpecificEnum31["HljsCmake"] = "hljs-cmake";
-      ClassificationSpecificEnum31["HljsCoffeescript"] = "hljs-coffeescript";
-      ClassificationSpecificEnum31["HljsCoq"] = "hljs-coq";
-      ClassificationSpecificEnum31["HljsCos"] = "hljs-cos";
-      ClassificationSpecificEnum31["HljsCpp"] = "hljs-cpp";
-      ClassificationSpecificEnum31["HljsCrmsh"] = "hljs-crmsh";
-      ClassificationSpecificEnum31["HljsCrystal"] = "hljs-crystal";
-      ClassificationSpecificEnum31["HljsC"] = "hljs-c";
-      ClassificationSpecificEnum31["HljsCs"] = "hljs-cs";
-      ClassificationSpecificEnum31["HljsCsp"] = "hljs-csp";
-      ClassificationSpecificEnum31["HljsCss"] = "hljs-css";
-      ClassificationSpecificEnum31["HljsD"] = "hljs-d";
-      ClassificationSpecificEnum31["HljsDart"] = "hljs-dart";
-      ClassificationSpecificEnum31["HljsDelphi"] = "hljs-delphi";
-      ClassificationSpecificEnum31["HljsDiff"] = "hljs-diff";
-      ClassificationSpecificEnum31["HljsDjango"] = "hljs-django";
-      ClassificationSpecificEnum31["HljsDns"] = "hljs-dns";
-      ClassificationSpecificEnum31["HljsDockerfile"] = "hljs-dockerfile";
-      ClassificationSpecificEnum31["HljsDos"] = "hljs-dos";
-      ClassificationSpecificEnum31["HljsDsconfig"] = "hljs-dsconfig";
-      ClassificationSpecificEnum31["HljsDts"] = "hljs-dts";
-      ClassificationSpecificEnum31["HljsDust"] = "hljs-dust";
-      ClassificationSpecificEnum31["HljsEbnf"] = "hljs-ebnf";
-      ClassificationSpecificEnum31["HljsElixir"] = "hljs-elixir";
-      ClassificationSpecificEnum31["HljsElm"] = "hljs-elm";
-      ClassificationSpecificEnum31["HljsErb"] = "hljs-erb";
-      ClassificationSpecificEnum31["HljsErlangRepl"] = "hljs-erlang-repl";
-      ClassificationSpecificEnum31["HljsErlang"] = "hljs-erlang";
-      ClassificationSpecificEnum31["HljsExcel"] = "hljs-excel";
-      ClassificationSpecificEnum31["HljsFix"] = "hljs-fix";
-      ClassificationSpecificEnum31["HljsFlix"] = "hljs-flix";
-      ClassificationSpecificEnum31["HljsFortran"] = "hljs-fortran";
-      ClassificationSpecificEnum31["HljsFsharp"] = "hljs-fsharp";
-      ClassificationSpecificEnum31["HljsGams"] = "hljs-gams";
-      ClassificationSpecificEnum31["HljsGauss"] = "hljs-gauss";
-      ClassificationSpecificEnum31["HljsGcode"] = "hljs-gcode";
-      ClassificationSpecificEnum31["HljsGherkin"] = "hljs-gherkin";
-      ClassificationSpecificEnum31["HljsGlsl"] = "hljs-glsl";
-      ClassificationSpecificEnum31["HljsGml"] = "hljs-gml";
-      ClassificationSpecificEnum31["HljsGo"] = "hljs-go";
-      ClassificationSpecificEnum31["HljsGolo"] = "hljs-golo";
-      ClassificationSpecificEnum31["HljsGradle"] = "hljs-gradle";
-      ClassificationSpecificEnum31["HljsGroovy"] = "hljs-groovy";
-      ClassificationSpecificEnum31["HljsHaml"] = "hljs-haml";
-      ClassificationSpecificEnum31["HljsHandlebars"] = "hljs-handlebars";
-      ClassificationSpecificEnum31["HljsHaskell"] = "hljs-haskell";
-      ClassificationSpecificEnum31["HljsHaxe"] = "hljs-haxe";
-      ClassificationSpecificEnum31["HljsHsp"] = "hljs-hsp";
-      ClassificationSpecificEnum31["HljsHtmlbars"] = "hljs-htmlbars";
-      ClassificationSpecificEnum31["HljsHttp"] = "hljs-http";
-      ClassificationSpecificEnum31["HljsHy"] = "hljs-hy";
-      ClassificationSpecificEnum31["HljsInform7"] = "hljs-inform7";
-      ClassificationSpecificEnum31["HljsIni"] = "hljs-ini";
-      ClassificationSpecificEnum31["HljsIrpf90"] = "hljs-irpf90";
-      ClassificationSpecificEnum31["HljsIsbl"] = "hljs-isbl";
-      ClassificationSpecificEnum31["HljsJava"] = "hljs-java";
-      ClassificationSpecificEnum31["HljsJavascript"] = "hljs-javascript";
-      ClassificationSpecificEnum31["HljsJbossCli"] = "hljs-jboss-cli";
-      ClassificationSpecificEnum31["HljsJson"] = "hljs-json";
-      ClassificationSpecificEnum31["HljsJuliaRepl"] = "hljs-julia-repl";
-      ClassificationSpecificEnum31["HljsJulia"] = "hljs-julia";
-      ClassificationSpecificEnum31["HljsKotlin"] = "hljs-kotlin";
-      ClassificationSpecificEnum31["HljsLasso"] = "hljs-lasso";
-      ClassificationSpecificEnum31["HljsLdif"] = "hljs-ldif";
-      ClassificationSpecificEnum31["HljsLeaf"] = "hljs-leaf";
-      ClassificationSpecificEnum31["HljsLess"] = "hljs-less";
-      ClassificationSpecificEnum31["HljsLisp"] = "hljs-lisp";
-      ClassificationSpecificEnum31["HljsLivecodeserver"] = "hljs-livecodeserver";
-      ClassificationSpecificEnum31["HljsLivescript"] = "hljs-livescript";
-      ClassificationSpecificEnum31["HljsLlvm"] = "hljs-llvm";
-      ClassificationSpecificEnum31["HljsLsl"] = "hljs-lsl";
-      ClassificationSpecificEnum31["HljsLua"] = "hljs-lua";
-      ClassificationSpecificEnum31["HljsMakefile"] = "hljs-makefile";
-      ClassificationSpecificEnum31["HljsMarkdown"] = "hljs-markdown";
-      ClassificationSpecificEnum31["HljsMathematica"] = "hljs-mathematica";
-      ClassificationSpecificEnum31["HljsMatlab"] = "hljs-matlab";
-      ClassificationSpecificEnum31["HljsMaxima"] = "hljs-maxima";
-      ClassificationSpecificEnum31["HljsMel"] = "hljs-mel";
-      ClassificationSpecificEnum31["HljsMercury"] = "hljs-mercury";
-      ClassificationSpecificEnum31["HljsMipsasm"] = "hljs-mipsasm";
-      ClassificationSpecificEnum31["HljsMizar"] = "hljs-mizar";
-      ClassificationSpecificEnum31["HljsMojolicious"] = "hljs-mojolicious";
-      ClassificationSpecificEnum31["HljsMonkey"] = "hljs-monkey";
-      ClassificationSpecificEnum31["HljsMoonscript"] = "hljs-moonscript";
-      ClassificationSpecificEnum31["HljsN1ql"] = "hljs-n1ql";
-      ClassificationSpecificEnum31["HljsNginx"] = "hljs-nginx";
-      ClassificationSpecificEnum31["HljsNimrod"] = "hljs-nimrod";
-      ClassificationSpecificEnum31["HljsNix"] = "hljs-nix";
-      ClassificationSpecificEnum31["HljsNsis"] = "hljs-nsis";
-      ClassificationSpecificEnum31["HljsObjectivec"] = "hljs-objectivec";
-      ClassificationSpecificEnum31["HljsOcaml"] = "hljs-ocaml";
-      ClassificationSpecificEnum31["HljsOpenscad"] = "hljs-openscad";
-      ClassificationSpecificEnum31["HljsOxygene"] = "hljs-oxygene";
-      ClassificationSpecificEnum31["HljsParser3"] = "hljs-parser3";
-      ClassificationSpecificEnum31["HljsPerl"] = "hljs-perl";
-      ClassificationSpecificEnum31["HljsPf"] = "hljs-pf";
-      ClassificationSpecificEnum31["HljsPgsql"] = "hljs-pgsql";
-      ClassificationSpecificEnum31["HljsPhp"] = "hljs-php";
-      ClassificationSpecificEnum31["HljsPlaintext"] = "hljs-plaintext";
-      ClassificationSpecificEnum31["HljsPony"] = "hljs-pony";
-      ClassificationSpecificEnum31["HljsPowershell"] = "hljs-powershell";
-      ClassificationSpecificEnum31["HljsProcessing"] = "hljs-processing";
-      ClassificationSpecificEnum31["HljsProfile"] = "hljs-profile";
-      ClassificationSpecificEnum31["HljsProlog"] = "hljs-prolog";
-      ClassificationSpecificEnum31["HljsProperties"] = "hljs-properties";
-      ClassificationSpecificEnum31["HljsProtobuf"] = "hljs-protobuf";
-      ClassificationSpecificEnum31["HljsPuppet"] = "hljs-puppet";
-      ClassificationSpecificEnum31["HljsPurebasic"] = "hljs-purebasic";
-      ClassificationSpecificEnum31["HljsPython"] = "hljs-python";
-      ClassificationSpecificEnum31["HljsQ"] = "hljs-q";
-      ClassificationSpecificEnum31["HljsQml"] = "hljs-qml";
-      ClassificationSpecificEnum31["HljsR"] = "hljs-r";
-      ClassificationSpecificEnum31["HljsReasonml"] = "hljs-reasonml";
-      ClassificationSpecificEnum31["HljsRib"] = "hljs-rib";
-      ClassificationSpecificEnum31["HljsRoboconf"] = "hljs-roboconf";
-      ClassificationSpecificEnum31["HljsRouteros"] = "hljs-routeros";
-      ClassificationSpecificEnum31["HljsRsl"] = "hljs-rsl";
-      ClassificationSpecificEnum31["HljsRuby"] = "hljs-ruby";
-      ClassificationSpecificEnum31["HljsRuleslanguage"] = "hljs-ruleslanguage";
-      ClassificationSpecificEnum31["HljsRust"] = "hljs-rust";
-      ClassificationSpecificEnum31["HljsSas"] = "hljs-sas";
-      ClassificationSpecificEnum31["HljsScala"] = "hljs-scala";
-      ClassificationSpecificEnum31["HljsScheme"] = "hljs-scheme";
-      ClassificationSpecificEnum31["HljsScilab"] = "hljs-scilab";
-      ClassificationSpecificEnum31["HljsScss"] = "hljs-scss";
-      ClassificationSpecificEnum31["HljsShell"] = "hljs-shell";
-      ClassificationSpecificEnum31["HljsSmali"] = "hljs-smali";
-      ClassificationSpecificEnum31["HljsSmalltalk"] = "hljs-smalltalk";
-      ClassificationSpecificEnum31["HljsSml"] = "hljs-sml";
-      ClassificationSpecificEnum31["HljsSqf"] = "hljs-sqf";
-      ClassificationSpecificEnum31["HljsSql"] = "hljs-sql";
-      ClassificationSpecificEnum31["HljsStan"] = "hljs-stan";
-      ClassificationSpecificEnum31["HljsStata"] = "hljs-stata";
-      ClassificationSpecificEnum31["HljsStep21"] = "hljs-step21";
-      ClassificationSpecificEnum31["HljsStylus"] = "hljs-stylus";
-      ClassificationSpecificEnum31["HljsSubunit"] = "hljs-subunit";
-      ClassificationSpecificEnum31["HljsSwift"] = "hljs-swift";
-      ClassificationSpecificEnum31["HljsTaggerscript"] = "hljs-taggerscript";
-      ClassificationSpecificEnum31["HljsTap"] = "hljs-tap";
-      ClassificationSpecificEnum31["HljsTcl"] = "hljs-tcl";
-      ClassificationSpecificEnum31["HljsTex"] = "hljs-tex";
-      ClassificationSpecificEnum31["HljsThrift"] = "hljs-thrift";
-      ClassificationSpecificEnum31["HljsTp"] = "hljs-tp";
-      ClassificationSpecificEnum31["HljsTwig"] = "hljs-twig";
-      ClassificationSpecificEnum31["HljsTypescript"] = "hljs-typescript";
-      ClassificationSpecificEnum31["HljsVala"] = "hljs-vala";
-      ClassificationSpecificEnum31["HljsVbnet"] = "hljs-vbnet";
-      ClassificationSpecificEnum31["HljsVbscriptHtml"] = "hljs-vbscript-html";
-      ClassificationSpecificEnum31["HljsVbscript"] = "hljs-vbscript";
-      ClassificationSpecificEnum31["HljsVerilog"] = "hljs-verilog";
-      ClassificationSpecificEnum31["HljsVhdl"] = "hljs-vhdl";
-      ClassificationSpecificEnum31["HljsVim"] = "hljs-vim";
-      ClassificationSpecificEnum31["HljsX86asm"] = "hljs-x86asm";
-      ClassificationSpecificEnum31["HljsXl"] = "hljs-xl";
-      ClassificationSpecificEnum31["HljsXml"] = "hljs-xml";
-      ClassificationSpecificEnum31["HljsXquery"] = "hljs-xquery";
-      ClassificationSpecificEnum31["HljsYaml"] = "hljs-yaml";
-      ClassificationSpecificEnum31["HljsToml"] = "hljs-toml";
-      ClassificationSpecificEnum31["HljsZephir"] = "hljs-zephir";
-      ClassificationSpecificEnum31["HljsHtml"] = "hljs-html";
-      ClassificationSpecificEnum31["Groovy"] = "groovy";
-      ClassificationSpecificEnum31["Kt"] = "kt";
-      ClassificationSpecificEnum31["El"] = "el";
-      ClassificationSpecificEnum31["Clj"] = "clj";
-      ClassificationSpecificEnum31["Ex"] = "ex";
-      ClassificationSpecificEnum31["Adb"] = "adb";
-      ClassificationSpecificEnum31["Ads"] = "ads";
-      ClassificationSpecificEnum31["Agda"] = "agda";
-      ClassificationSpecificEnum31["Elm"] = "elm";
-      ClassificationSpecificEnum31["Exs"] = "exs";
-      ClassificationSpecificEnum31["Glsl"] = "glsl";
-      ClassificationSpecificEnum31["Ml"] = "ml";
-      ClassificationSpecificEnum31["Lean"] = "lean";
-      ClassificationSpecificEnum31["Lisp"] = "lisp";
-      ClassificationSpecificEnum31["Rkt"] = "rkt";
-      ClassificationSpecificEnum31["Sparql"] = "sparql";
-      ClassificationSpecificEnum31["Vhdl"] = "vhdl";
-      ClassificationSpecificEnum31["Zig"] = "zig";
-      ClassificationSpecificEnum31["Dockerfile"] = "dockerfile";
-      ClassificationSpecificEnum31["F03"] = "f03";
-      ClassificationSpecificEnum31["F08"] = "f08";
-      ClassificationSpecificEnum31["F18"] = "f18";
-      ClassificationSpecificEnum31["F90"] = "f90";
-      ClassificationSpecificEnum31["F95"] = "f95";
-      ClassificationSpecificEnum31["Jl"] = "jl";
-      ClassificationSpecificEnum31["Mm"] = "mm";
-      ClassificationSpecificEnum31["Scm"] = "scm";
-      ClassificationSpecificEnum31["Sol"] = "sol";
-      ClassificationSpecificEnum31["Sv"] = "sv";
-      ClassificationSpecificEnum31["Asp"] = "asp";
-      ClassificationSpecificEnum31["Cfm"] = "cfm";
-      ClassificationSpecificEnum31["Fs"] = "fs";
-      ClassificationSpecificEnum31["Fsi"] = "fsi";
-      ClassificationSpecificEnum31["Fsx"] = "fsx";
-    })(ClassificationSpecificEnum30 || (exports.ClassificationSpecificEnum = ClassificationSpecificEnum30 = {}));
+    var ClassificationSpecificEnum32;
+    (function(ClassificationSpecificEnum33) {
+      ClassificationSpecificEnum33["Csx"] = "csx";
+      ClassificationSpecificEnum33["Cs"] = "cs";
+      ClassificationSpecificEnum33["Html"] = "html";
+      ClassificationSpecificEnum33["Htm"] = "htm";
+      ClassificationSpecificEnum33["Shtml"] = "shtml";
+      ClassificationSpecificEnum33["Xhtml"] = "xhtml";
+      ClassificationSpecificEnum33["Hs"] = "hs";
+      ClassificationSpecificEnum33["HsBoot"] = "hs-boot";
+      ClassificationSpecificEnum33["Hsig"] = "hsig";
+      ClassificationSpecificEnum33["Cpp"] = "cpp";
+      ClassificationSpecificEnum33["Cc"] = "cc";
+      ClassificationSpecificEnum33["Cp"] = "cp";
+      ClassificationSpecificEnum33["Cxx"] = "cxx";
+      ClassificationSpecificEnum33["C"] = "c";
+      ClassificationSpecificEnum33["H"] = "h";
+      ClassificationSpecificEnum33["Hh"] = "hh";
+      ClassificationSpecificEnum33["Hpp"] = "hpp";
+      ClassificationSpecificEnum33["Hxx"] = "hxx";
+      ClassificationSpecificEnum33["Inl"] = "inl";
+      ClassificationSpecificEnum33["Ipp"] = "ipp";
+      ClassificationSpecificEnum33["Ixx"] = "ixx";
+      ClassificationSpecificEnum33["Cppm"] = "cppm";
+      ClassificationSpecificEnum33["Csv"] = "csv";
+      ClassificationSpecificEnum33["Doc"] = "doc";
+      ClassificationSpecificEnum33["Docm"] = "docm";
+      ClassificationSpecificEnum33["Docx"] = "docx";
+      ClassificationSpecificEnum33["Exe"] = "exe";
+      ClassificationSpecificEnum33["Gif"] = "gif";
+      ClassificationSpecificEnum33["Ico"] = "ico";
+      ClassificationSpecificEnum33["Jpe"] = "jpe";
+      ClassificationSpecificEnum33["Jpeg"] = "jpeg";
+      ClassificationSpecificEnum33["Jpg"] = "jpg";
+      ClassificationSpecificEnum33["Jpgm"] = "jpgm";
+      ClassificationSpecificEnum33["Jpgv"] = "jpgv";
+      ClassificationSpecificEnum33["Log"] = "log";
+      ClassificationSpecificEnum33["Mp2"] = "mp2";
+      ClassificationSpecificEnum33["Mp2a"] = "mp2a";
+      ClassificationSpecificEnum33["Mp3"] = "mp3";
+      ClassificationSpecificEnum33["Mp4"] = "mp4";
+      ClassificationSpecificEnum33["Mp4a"] = "mp4a";
+      ClassificationSpecificEnum33["Oga"] = "oga";
+      ClassificationSpecificEnum33["Ogg"] = "ogg";
+      ClassificationSpecificEnum33["Ogv"] = "ogv";
+      ClassificationSpecificEnum33["Ogx"] = "ogx";
+      ClassificationSpecificEnum33["Ppt"] = "ppt";
+      ClassificationSpecificEnum33["Pptx"] = "pptx";
+      ClassificationSpecificEnum33["Pptm"] = "pptm";
+      ClassificationSpecificEnum33["Qt"] = "qt";
+      ClassificationSpecificEnum33["Text"] = "text";
+      ClassificationSpecificEnum33["Tif"] = "tif";
+      ClassificationSpecificEnum33["Tiff"] = "tiff";
+      ClassificationSpecificEnum33["Txt"] = "txt";
+      ClassificationSpecificEnum33["Wav"] = "wav";
+      ClassificationSpecificEnum33["Weba"] = "weba";
+      ClassificationSpecificEnum33["Webm"] = "webm";
+      ClassificationSpecificEnum33["Webp"] = "webp";
+      ClassificationSpecificEnum33["Xla"] = "xla";
+      ClassificationSpecificEnum33["Xlam"] = "xlam";
+      ClassificationSpecificEnum33["Xlc"] = "xlc";
+      ClassificationSpecificEnum33["Xlm"] = "xlm";
+      ClassificationSpecificEnum33["Xls"] = "xls";
+      ClassificationSpecificEnum33["Xlsb"] = "xlsb";
+      ClassificationSpecificEnum33["Xlsm"] = "xlsm";
+      ClassificationSpecificEnum33["Xlsx"] = "xlsx";
+      ClassificationSpecificEnum33["Xlt"] = "xlt";
+      ClassificationSpecificEnum33["Xltm"] = "xltm";
+      ClassificationSpecificEnum33["Xltx"] = "xltx";
+      ClassificationSpecificEnum33["Pdf"] = "pdf";
+      ClassificationSpecificEnum33["Png"] = "png";
+      ClassificationSpecificEnum33["Rpm"] = "rpm";
+      ClassificationSpecificEnum33["Zip"] = "zip";
+      ClassificationSpecificEnum33["Woff"] = "woff";
+      ClassificationSpecificEnum33["Woff2"] = "woff2";
+      ClassificationSpecificEnum33["Svgz"] = "svgz";
+      ClassificationSpecificEnum33["Bin"] = "bin";
+      ClassificationSpecificEnum33["Bmp"] = "bmp";
+      ClassificationSpecificEnum33["Eot"] = "eot";
+      ClassificationSpecificEnum33["Gz"] = "gz";
+      ClassificationSpecificEnum33["Jar"] = "jar";
+      ClassificationSpecificEnum33["Mpkg"] = "mpkg";
+      ClassificationSpecificEnum33["Ai"] = "ai";
+      ClassificationSpecificEnum33["Eps"] = "eps";
+      ClassificationSpecificEnum33["Dmg"] = "dmg";
+      ClassificationSpecificEnum33["List"] = "list";
+      ClassificationSpecificEnum33["Rtx"] = "rtx";
+      ClassificationSpecificEnum33["Uri"] = "uri";
+      ClassificationSpecificEnum33["Uris"] = "uris";
+      ClassificationSpecificEnum33["Urls"] = "urls";
+      ClassificationSpecificEnum33["Css"] = "css";
+      ClassificationSpecificEnum33["Dart"] = "dart";
+      ClassificationSpecificEnum33["Java"] = "java";
+      ClassificationSpecificEnum33["Bsh"] = "bsh";
+      ClassificationSpecificEnum33["Js"] = "js";
+      ClassificationSpecificEnum33["Jsx"] = "jsx";
+      ClassificationSpecificEnum33["Mjs"] = "mjs";
+      ClassificationSpecificEnum33["Htc"] = "htc";
+      ClassificationSpecificEnum33["Json"] = "json";
+      ClassificationSpecificEnum33["Ipynb"] = "ipynb";
+      ClassificationSpecificEnum33["Gltf"] = "gltf";
+      ClassificationSpecificEnum33["Jsonml"] = "jsonml";
+      ClassificationSpecificEnum33["Ps"] = "ps";
+      ClassificationSpecificEnum33["Ssml"] = "ssml";
+      ClassificationSpecificEnum33["Wasm"] = "wasm";
+      ClassificationSpecificEnum33["Rtf"] = "rtf";
+      ClassificationSpecificEnum33["Cco"] = "cco";
+      ClassificationSpecificEnum33["Pl"] = "pl";
+      ClassificationSpecificEnum33["Pc"] = "pc";
+      ClassificationSpecificEnum33["Pm"] = "pm";
+      ClassificationSpecificEnum33["Pmc"] = "pmc";
+      ClassificationSpecificEnum33["Pod"] = "pod";
+      ClassificationSpecificEnum33["T"] = "t";
+      ClassificationSpecificEnum33["Xml"] = "xml";
+      ClassificationSpecificEnum33["Tld"] = "tld";
+      ClassificationSpecificEnum33["Dtml"] = "dtml";
+      ClassificationSpecificEnum33["Rng"] = "rng";
+      ClassificationSpecificEnum33["Rss"] = "rss";
+      ClassificationSpecificEnum33["Opml"] = "opml";
+      ClassificationSpecificEnum33["Svg"] = "svg";
+      ClassificationSpecificEnum33["Xaml"] = "xaml";
+      ClassificationSpecificEnum33["SublimeSnippet"] = "sublime-snippet";
+      ClassificationSpecificEnum33["TmLanguage"] = "tmLanguage";
+      ClassificationSpecificEnum33["TmPreferences"] = "tmPreferences";
+      ClassificationSpecificEnum33["TmSnippet"] = "tmSnippet";
+      ClassificationSpecificEnum33["TmTheme"] = "tmTheme";
+      ClassificationSpecificEnum33["Csproj"] = "csproj";
+      ClassificationSpecificEnum33["Fsproj"] = "fsproj";
+      ClassificationSpecificEnum33["Sqlproj"] = "sqlproj";
+      ClassificationSpecificEnum33["Vbproj"] = "vbproj";
+      ClassificationSpecificEnum33["Vcproj"] = "vcproj";
+      ClassificationSpecificEnum33["Vcxproj"] = "vcxproj";
+      ClassificationSpecificEnum33["Dae"] = "dae";
+      ClassificationSpecificEnum33["Props"] = "props";
+      ClassificationSpecificEnum33["Targets"] = "targets";
+      ClassificationSpecificEnum33["Xsd"] = "xsd";
+      ClassificationSpecificEnum33["Xsl"] = "xsl";
+      ClassificationSpecificEnum33["Xslt"] = "xslt";
+      ClassificationSpecificEnum33["Ecma"] = "ecma";
+      ClassificationSpecificEnum33["Node"] = "node";
+      ClassificationSpecificEnum33["Php"] = "php";
+      ClassificationSpecificEnum33["Php3"] = "php3";
+      ClassificationSpecificEnum33["Php4"] = "php4";
+      ClassificationSpecificEnum33["Php5"] = "php5";
+      ClassificationSpecificEnum33["Php7"] = "php7";
+      ClassificationSpecificEnum33["Php8"] = "php8";
+      ClassificationSpecificEnum33["Phps"] = "phps";
+      ClassificationSpecificEnum33["Phpt"] = "phpt";
+      ClassificationSpecificEnum33["Phtml"] = "phtml";
+      ClassificationSpecificEnum33["Py"] = "py";
+      ClassificationSpecificEnum33["Py3"] = "py3";
+      ClassificationSpecificEnum33["Pyw"] = "pyw";
+      ClassificationSpecificEnum33["Pyi"] = "pyi";
+      ClassificationSpecificEnum33["Pyx"] = "pyx";
+      ClassificationSpecificEnum33["PyxIn"] = "pyx.in";
+      ClassificationSpecificEnum33["Pxd"] = "pxd";
+      ClassificationSpecificEnum33["PxdIn"] = "pxd.in";
+      ClassificationSpecificEnum33["Pxi"] = "pxi";
+      ClassificationSpecificEnum33["PxiIn"] = "pxi.in";
+      ClassificationSpecificEnum33["Rpy"] = "rpy";
+      ClassificationSpecificEnum33["Cpy"] = "cpy";
+      ClassificationSpecificEnum33["Gyp"] = "gyp";
+      ClassificationSpecificEnum33["Gypi"] = "gypi";
+      ClassificationSpecificEnum33["Vpy"] = "vpy";
+      ClassificationSpecificEnum33["Smk"] = "smk";
+      ClassificationSpecificEnum33["Wscript"] = "wscript";
+      ClassificationSpecificEnum33["Bazel"] = "bazel";
+      ClassificationSpecificEnum33["Bzl"] = "bzl";
+      ClassificationSpecificEnum33["Pyc"] = "pyc";
+      ClassificationSpecificEnum33["Class"] = "class";
+      ClassificationSpecificEnum33["P"] = "p";
+      ClassificationSpecificEnum33["Pas"] = "pas";
+      ClassificationSpecificEnum33["Curl"] = "curl";
+      ClassificationSpecificEnum33["Mcurl"] = "mcurl";
+      ClassificationSpecificEnum33["Go"] = "go";
+      ClassificationSpecificEnum33["Swift"] = "swift";
+      ClassificationSpecificEnum33["Rs"] = "rs";
+      ClassificationSpecificEnum33["Ts"] = "ts";
+      ClassificationSpecificEnum33["Tsx"] = "tsx";
+      ClassificationSpecificEnum33["Rb"] = "rb";
+      ClassificationSpecificEnum33["Rbi"] = "rbi";
+      ClassificationSpecificEnum33["Rbx"] = "rbx";
+      ClassificationSpecificEnum33["Rjs"] = "rjs";
+      ClassificationSpecificEnum33["Rabl"] = "rabl";
+      ClassificationSpecificEnum33["Rake"] = "rake";
+      ClassificationSpecificEnum33["Capfile"] = "capfile";
+      ClassificationSpecificEnum33["Jbuilder"] = "jbuilder";
+      ClassificationSpecificEnum33["Gemspec"] = "gemspec";
+      ClassificationSpecificEnum33["Podspec"] = "podspec";
+      ClassificationSpecificEnum33["Irbrc"] = "irbrc";
+      ClassificationSpecificEnum33["Pryrc"] = "pryrc";
+      ClassificationSpecificEnum33["Prawn"] = "prawn";
+      ClassificationSpecificEnum33["Thor"] = "thor";
+      ClassificationSpecificEnum33["Appfile"] = "Appfile";
+      ClassificationSpecificEnum33["Appraisals"] = "Appraisals";
+      ClassificationSpecificEnum33["Berksfile"] = "Berksfile";
+      ClassificationSpecificEnum33["Brewfile"] = "Brewfile";
+      ClassificationSpecificEnum33["Cheffile"] = "Cheffile";
+      ClassificationSpecificEnum33["Deliverfile"] = "Deliverfile";
+      ClassificationSpecificEnum33["Fastfile"] = "Fastfile";
+      ClassificationSpecificEnum33["Gemfile"] = "Gemfile";
+      ClassificationSpecificEnum33["Guardfile"] = "Guardfile";
+      ClassificationSpecificEnum33["Podfile"] = "Podfile";
+      ClassificationSpecificEnum33["Rakefile"] = "Rakefile";
+      ClassificationSpecificEnum33["Rantfile"] = "Rantfile";
+      ClassificationSpecificEnum33["Scanfile"] = "Scanfile";
+      ClassificationSpecificEnum33["Simplecov"] = "simplecov";
+      ClassificationSpecificEnum33["Snapfile"] = "Snapfile";
+      ClassificationSpecificEnum33["Thorfile"] = "Thorfile";
+      ClassificationSpecificEnum33["Vagrantfile"] = "Vagrantfile";
+      ClassificationSpecificEnum33["Scala"] = "scala";
+      ClassificationSpecificEnum33["Sbt"] = "sbt";
+      ClassificationSpecificEnum33["Sc"] = "sc";
+      ClassificationSpecificEnum33["Cmd"] = "cmd";
+      ClassificationSpecificEnum33["Bat"] = "bat";
+      ClassificationSpecificEnum33["Coffee"] = "coffee";
+      ClassificationSpecificEnum33["Erl"] = "erl";
+      ClassificationSpecificEnum33["Hrl"] = "hrl";
+      ClassificationSpecificEnum33["Escript"] = "escript";
+      ClassificationSpecificEnum33["Lua"] = "lua";
+      ClassificationSpecificEnum33["Md"] = "md";
+      ClassificationSpecificEnum33["Mdown"] = "mdown";
+      ClassificationSpecificEnum33["Mdwn"] = "mdwn";
+      ClassificationSpecificEnum33["Markdown"] = "markdown";
+      ClassificationSpecificEnum33["Markdn"] = "markdn";
+      ClassificationSpecificEnum33["Matlab"] = "matlab";
+      ClassificationSpecificEnum33["M"] = "m";
+      ClassificationSpecificEnum33["Ps1"] = "ps1";
+      ClassificationSpecificEnum33["Sh"] = "sh";
+      ClassificationSpecificEnum33["Bash"] = "bash";
+      ClassificationSpecificEnum33["Bashrc"] = "bashrc";
+      ClassificationSpecificEnum33["Ash"] = "ash";
+      ClassificationSpecificEnum33["Zsh"] = "zsh";
+      ClassificationSpecificEnum33["BashAliases"] = ".bash_aliases";
+      ClassificationSpecificEnum33["BashCompletions"] = ".bash_completions";
+      ClassificationSpecificEnum33["BashFunctions"] = ".bash_functions";
+      ClassificationSpecificEnum33["BashLogin"] = ".bash_login";
+      ClassificationSpecificEnum33["BashLogout"] = ".bash_logout";
+      ClassificationSpecificEnum33["BashProfile"] = ".bash_profile";
+      ClassificationSpecificEnum33["BashVariables"] = ".bash_variables";
+      ClassificationSpecificEnum33["Profile"] = ".profile";
+      ClassificationSpecificEnum33["TextmateInit"] = ".textmate_init";
+      ClassificationSpecificEnum33["Zlogin"] = ".zlogin";
+      ClassificationSpecificEnum33["Zlogout"] = ".zlogout";
+      ClassificationSpecificEnum33["Zprofile"] = ".zprofile";
+      ClassificationSpecificEnum33["Zshenv"] = ".zshenv";
+      ClassificationSpecificEnum33["Zshrc"] = ".zshrc";
+      ClassificationSpecificEnum33["Pkgbuild"] = "PKGBUILD";
+      ClassificationSpecificEnum33["Ebuild"] = "ebuild";
+      ClassificationSpecificEnum33["Eclass"] = "eclass";
+      ClassificationSpecificEnum33["R"] = "r";
+      ClassificationSpecificEnum33["Sql"] = "sql";
+      ClassificationSpecificEnum33["Ddl"] = "ddl";
+      ClassificationSpecificEnum33["Dml"] = "dml";
+      ClassificationSpecificEnum33["Tex"] = "tex";
+      ClassificationSpecificEnum33["Ltx"] = "ltx";
+      ClassificationSpecificEnum33["Sty"] = "sty";
+      ClassificationSpecificEnum33["Cls"] = "cls";
+      ClassificationSpecificEnum33["Unknown"] = "UNKNOWN";
+      ClassificationSpecificEnum33["Yaml"] = "yaml";
+      ClassificationSpecificEnum33["Yml"] = "yml";
+      ClassificationSpecificEnum33["Toml"] = "toml";
+      ClassificationSpecificEnum33["Tml"] = "tml";
+      ClassificationSpecificEnum33["CargoLock"] = "Cargo.lock";
+      ClassificationSpecificEnum33["GopkgLock"] = "Gopkg.lock";
+      ClassificationSpecificEnum33["Pipfile"] = "Pipfile";
+      ClassificationSpecificEnum33["PoetryLock"] = "poetry.lock";
+      ClassificationSpecificEnum33["UniformResourceLocator"] = "uniform_resource_locator";
+      ClassificationSpecificEnum33["CustomUrlScheme"] = "custom_url_scheme";
+      ClassificationSpecificEnum33["UnixFilePath"] = "unix_file_path";
+      ClassificationSpecificEnum33["WindowsFilePath"] = "windows_file_path";
+      ClassificationSpecificEnum33["UniformResourceIdentifier"] = "uniform_resource_identifier";
+      ClassificationSpecificEnum33["Hljs1c"] = "hljs-1c";
+      ClassificationSpecificEnum33["HljsAbnf"] = "hljs-abnf";
+      ClassificationSpecificEnum33["HljsAccesslog"] = "hljs-accesslog";
+      ClassificationSpecificEnum33["HljsActionscript"] = "hljs-actionscript";
+      ClassificationSpecificEnum33["HljsAda"] = "hljs-ada";
+      ClassificationSpecificEnum33["HljsAngelscript"] = "hljs-angelscript";
+      ClassificationSpecificEnum33["HljsApache"] = "hljs-apache";
+      ClassificationSpecificEnum33["HljsApplescript"] = "hljs-applescript";
+      ClassificationSpecificEnum33["HljsArcade"] = "hljs-arcade";
+      ClassificationSpecificEnum33["HljsArduino"] = "hljs-arduino";
+      ClassificationSpecificEnum33["HljsArmasm"] = "hljs-armasm";
+      ClassificationSpecificEnum33["HljsAsciidoc"] = "hljs-asciidoc";
+      ClassificationSpecificEnum33["HljsAspectj"] = "hljs-aspectj";
+      ClassificationSpecificEnum33["HljsAutohotkey"] = "hljs-autohotkey";
+      ClassificationSpecificEnum33["HljsAutoit"] = "hljs-autoit";
+      ClassificationSpecificEnum33["HljsAvrasm"] = "hljs-avrasm";
+      ClassificationSpecificEnum33["HljsAwk"] = "hljs-awk";
+      ClassificationSpecificEnum33["HljsAxapta"] = "hljs-axapta";
+      ClassificationSpecificEnum33["HljsBash"] = "hljs-bash";
+      ClassificationSpecificEnum33["HljsBasic"] = "hljs-basic";
+      ClassificationSpecificEnum33["HljsBnf"] = "hljs-bnf";
+      ClassificationSpecificEnum33["HljsBrainfuck"] = "hljs-brainfuck";
+      ClassificationSpecificEnum33["HljsCal"] = "hljs-cal";
+      ClassificationSpecificEnum33["HljsCapnproto"] = "hljs-capnproto";
+      ClassificationSpecificEnum33["HljsCeylon"] = "hljs-ceylon";
+      ClassificationSpecificEnum33["HljsClean"] = "hljs-clean";
+      ClassificationSpecificEnum33["HljsClojureRepl"] = "hljs-clojure-repl";
+      ClassificationSpecificEnum33["HljsClojure"] = "hljs-clojure";
+      ClassificationSpecificEnum33["HljsCmake"] = "hljs-cmake";
+      ClassificationSpecificEnum33["HljsCoffeescript"] = "hljs-coffeescript";
+      ClassificationSpecificEnum33["HljsCoq"] = "hljs-coq";
+      ClassificationSpecificEnum33["HljsCos"] = "hljs-cos";
+      ClassificationSpecificEnum33["HljsCpp"] = "hljs-cpp";
+      ClassificationSpecificEnum33["HljsCrmsh"] = "hljs-crmsh";
+      ClassificationSpecificEnum33["HljsCrystal"] = "hljs-crystal";
+      ClassificationSpecificEnum33["HljsC"] = "hljs-c";
+      ClassificationSpecificEnum33["HljsCs"] = "hljs-cs";
+      ClassificationSpecificEnum33["HljsCsp"] = "hljs-csp";
+      ClassificationSpecificEnum33["HljsCss"] = "hljs-css";
+      ClassificationSpecificEnum33["HljsD"] = "hljs-d";
+      ClassificationSpecificEnum33["HljsDart"] = "hljs-dart";
+      ClassificationSpecificEnum33["HljsDelphi"] = "hljs-delphi";
+      ClassificationSpecificEnum33["HljsDiff"] = "hljs-diff";
+      ClassificationSpecificEnum33["HljsDjango"] = "hljs-django";
+      ClassificationSpecificEnum33["HljsDns"] = "hljs-dns";
+      ClassificationSpecificEnum33["HljsDockerfile"] = "hljs-dockerfile";
+      ClassificationSpecificEnum33["HljsDos"] = "hljs-dos";
+      ClassificationSpecificEnum33["HljsDsconfig"] = "hljs-dsconfig";
+      ClassificationSpecificEnum33["HljsDts"] = "hljs-dts";
+      ClassificationSpecificEnum33["HljsDust"] = "hljs-dust";
+      ClassificationSpecificEnum33["HljsEbnf"] = "hljs-ebnf";
+      ClassificationSpecificEnum33["HljsElixir"] = "hljs-elixir";
+      ClassificationSpecificEnum33["HljsElm"] = "hljs-elm";
+      ClassificationSpecificEnum33["HljsErb"] = "hljs-erb";
+      ClassificationSpecificEnum33["HljsErlangRepl"] = "hljs-erlang-repl";
+      ClassificationSpecificEnum33["HljsErlang"] = "hljs-erlang";
+      ClassificationSpecificEnum33["HljsExcel"] = "hljs-excel";
+      ClassificationSpecificEnum33["HljsFix"] = "hljs-fix";
+      ClassificationSpecificEnum33["HljsFlix"] = "hljs-flix";
+      ClassificationSpecificEnum33["HljsFortran"] = "hljs-fortran";
+      ClassificationSpecificEnum33["HljsFsharp"] = "hljs-fsharp";
+      ClassificationSpecificEnum33["HljsGams"] = "hljs-gams";
+      ClassificationSpecificEnum33["HljsGauss"] = "hljs-gauss";
+      ClassificationSpecificEnum33["HljsGcode"] = "hljs-gcode";
+      ClassificationSpecificEnum33["HljsGherkin"] = "hljs-gherkin";
+      ClassificationSpecificEnum33["HljsGlsl"] = "hljs-glsl";
+      ClassificationSpecificEnum33["HljsGml"] = "hljs-gml";
+      ClassificationSpecificEnum33["HljsGo"] = "hljs-go";
+      ClassificationSpecificEnum33["HljsGolo"] = "hljs-golo";
+      ClassificationSpecificEnum33["HljsGradle"] = "hljs-gradle";
+      ClassificationSpecificEnum33["HljsGroovy"] = "hljs-groovy";
+      ClassificationSpecificEnum33["HljsHaml"] = "hljs-haml";
+      ClassificationSpecificEnum33["HljsHandlebars"] = "hljs-handlebars";
+      ClassificationSpecificEnum33["HljsHaskell"] = "hljs-haskell";
+      ClassificationSpecificEnum33["HljsHaxe"] = "hljs-haxe";
+      ClassificationSpecificEnum33["HljsHsp"] = "hljs-hsp";
+      ClassificationSpecificEnum33["HljsHtmlbars"] = "hljs-htmlbars";
+      ClassificationSpecificEnum33["HljsHttp"] = "hljs-http";
+      ClassificationSpecificEnum33["HljsHy"] = "hljs-hy";
+      ClassificationSpecificEnum33["HljsInform7"] = "hljs-inform7";
+      ClassificationSpecificEnum33["HljsIni"] = "hljs-ini";
+      ClassificationSpecificEnum33["HljsIrpf90"] = "hljs-irpf90";
+      ClassificationSpecificEnum33["HljsIsbl"] = "hljs-isbl";
+      ClassificationSpecificEnum33["HljsJava"] = "hljs-java";
+      ClassificationSpecificEnum33["HljsJavascript"] = "hljs-javascript";
+      ClassificationSpecificEnum33["HljsJbossCli"] = "hljs-jboss-cli";
+      ClassificationSpecificEnum33["HljsJson"] = "hljs-json";
+      ClassificationSpecificEnum33["HljsJuliaRepl"] = "hljs-julia-repl";
+      ClassificationSpecificEnum33["HljsJulia"] = "hljs-julia";
+      ClassificationSpecificEnum33["HljsKotlin"] = "hljs-kotlin";
+      ClassificationSpecificEnum33["HljsLasso"] = "hljs-lasso";
+      ClassificationSpecificEnum33["HljsLdif"] = "hljs-ldif";
+      ClassificationSpecificEnum33["HljsLeaf"] = "hljs-leaf";
+      ClassificationSpecificEnum33["HljsLess"] = "hljs-less";
+      ClassificationSpecificEnum33["HljsLisp"] = "hljs-lisp";
+      ClassificationSpecificEnum33["HljsLivecodeserver"] = "hljs-livecodeserver";
+      ClassificationSpecificEnum33["HljsLivescript"] = "hljs-livescript";
+      ClassificationSpecificEnum33["HljsLlvm"] = "hljs-llvm";
+      ClassificationSpecificEnum33["HljsLsl"] = "hljs-lsl";
+      ClassificationSpecificEnum33["HljsLua"] = "hljs-lua";
+      ClassificationSpecificEnum33["HljsMakefile"] = "hljs-makefile";
+      ClassificationSpecificEnum33["HljsMarkdown"] = "hljs-markdown";
+      ClassificationSpecificEnum33["HljsMathematica"] = "hljs-mathematica";
+      ClassificationSpecificEnum33["HljsMatlab"] = "hljs-matlab";
+      ClassificationSpecificEnum33["HljsMaxima"] = "hljs-maxima";
+      ClassificationSpecificEnum33["HljsMel"] = "hljs-mel";
+      ClassificationSpecificEnum33["HljsMercury"] = "hljs-mercury";
+      ClassificationSpecificEnum33["HljsMipsasm"] = "hljs-mipsasm";
+      ClassificationSpecificEnum33["HljsMizar"] = "hljs-mizar";
+      ClassificationSpecificEnum33["HljsMojolicious"] = "hljs-mojolicious";
+      ClassificationSpecificEnum33["HljsMonkey"] = "hljs-monkey";
+      ClassificationSpecificEnum33["HljsMoonscript"] = "hljs-moonscript";
+      ClassificationSpecificEnum33["HljsN1ql"] = "hljs-n1ql";
+      ClassificationSpecificEnum33["HljsNginx"] = "hljs-nginx";
+      ClassificationSpecificEnum33["HljsNimrod"] = "hljs-nimrod";
+      ClassificationSpecificEnum33["HljsNix"] = "hljs-nix";
+      ClassificationSpecificEnum33["HljsNsis"] = "hljs-nsis";
+      ClassificationSpecificEnum33["HljsObjectivec"] = "hljs-objectivec";
+      ClassificationSpecificEnum33["HljsOcaml"] = "hljs-ocaml";
+      ClassificationSpecificEnum33["HljsOpenscad"] = "hljs-openscad";
+      ClassificationSpecificEnum33["HljsOxygene"] = "hljs-oxygene";
+      ClassificationSpecificEnum33["HljsParser3"] = "hljs-parser3";
+      ClassificationSpecificEnum33["HljsPerl"] = "hljs-perl";
+      ClassificationSpecificEnum33["HljsPf"] = "hljs-pf";
+      ClassificationSpecificEnum33["HljsPgsql"] = "hljs-pgsql";
+      ClassificationSpecificEnum33["HljsPhp"] = "hljs-php";
+      ClassificationSpecificEnum33["HljsPlaintext"] = "hljs-plaintext";
+      ClassificationSpecificEnum33["HljsPony"] = "hljs-pony";
+      ClassificationSpecificEnum33["HljsPowershell"] = "hljs-powershell";
+      ClassificationSpecificEnum33["HljsProcessing"] = "hljs-processing";
+      ClassificationSpecificEnum33["HljsProfile"] = "hljs-profile";
+      ClassificationSpecificEnum33["HljsProlog"] = "hljs-prolog";
+      ClassificationSpecificEnum33["HljsProperties"] = "hljs-properties";
+      ClassificationSpecificEnum33["HljsProtobuf"] = "hljs-protobuf";
+      ClassificationSpecificEnum33["HljsPuppet"] = "hljs-puppet";
+      ClassificationSpecificEnum33["HljsPurebasic"] = "hljs-purebasic";
+      ClassificationSpecificEnum33["HljsPython"] = "hljs-python";
+      ClassificationSpecificEnum33["HljsQ"] = "hljs-q";
+      ClassificationSpecificEnum33["HljsQml"] = "hljs-qml";
+      ClassificationSpecificEnum33["HljsR"] = "hljs-r";
+      ClassificationSpecificEnum33["HljsReasonml"] = "hljs-reasonml";
+      ClassificationSpecificEnum33["HljsRib"] = "hljs-rib";
+      ClassificationSpecificEnum33["HljsRoboconf"] = "hljs-roboconf";
+      ClassificationSpecificEnum33["HljsRouteros"] = "hljs-routeros";
+      ClassificationSpecificEnum33["HljsRsl"] = "hljs-rsl";
+      ClassificationSpecificEnum33["HljsRuby"] = "hljs-ruby";
+      ClassificationSpecificEnum33["HljsRuleslanguage"] = "hljs-ruleslanguage";
+      ClassificationSpecificEnum33["HljsRust"] = "hljs-rust";
+      ClassificationSpecificEnum33["HljsSas"] = "hljs-sas";
+      ClassificationSpecificEnum33["HljsScala"] = "hljs-scala";
+      ClassificationSpecificEnum33["HljsScheme"] = "hljs-scheme";
+      ClassificationSpecificEnum33["HljsScilab"] = "hljs-scilab";
+      ClassificationSpecificEnum33["HljsScss"] = "hljs-scss";
+      ClassificationSpecificEnum33["HljsShell"] = "hljs-shell";
+      ClassificationSpecificEnum33["HljsSmali"] = "hljs-smali";
+      ClassificationSpecificEnum33["HljsSmalltalk"] = "hljs-smalltalk";
+      ClassificationSpecificEnum33["HljsSml"] = "hljs-sml";
+      ClassificationSpecificEnum33["HljsSqf"] = "hljs-sqf";
+      ClassificationSpecificEnum33["HljsSql"] = "hljs-sql";
+      ClassificationSpecificEnum33["HljsStan"] = "hljs-stan";
+      ClassificationSpecificEnum33["HljsStata"] = "hljs-stata";
+      ClassificationSpecificEnum33["HljsStep21"] = "hljs-step21";
+      ClassificationSpecificEnum33["HljsStylus"] = "hljs-stylus";
+      ClassificationSpecificEnum33["HljsSubunit"] = "hljs-subunit";
+      ClassificationSpecificEnum33["HljsSwift"] = "hljs-swift";
+      ClassificationSpecificEnum33["HljsTaggerscript"] = "hljs-taggerscript";
+      ClassificationSpecificEnum33["HljsTap"] = "hljs-tap";
+      ClassificationSpecificEnum33["HljsTcl"] = "hljs-tcl";
+      ClassificationSpecificEnum33["HljsTex"] = "hljs-tex";
+      ClassificationSpecificEnum33["HljsThrift"] = "hljs-thrift";
+      ClassificationSpecificEnum33["HljsTp"] = "hljs-tp";
+      ClassificationSpecificEnum33["HljsTwig"] = "hljs-twig";
+      ClassificationSpecificEnum33["HljsTypescript"] = "hljs-typescript";
+      ClassificationSpecificEnum33["HljsVala"] = "hljs-vala";
+      ClassificationSpecificEnum33["HljsVbnet"] = "hljs-vbnet";
+      ClassificationSpecificEnum33["HljsVbscriptHtml"] = "hljs-vbscript-html";
+      ClassificationSpecificEnum33["HljsVbscript"] = "hljs-vbscript";
+      ClassificationSpecificEnum33["HljsVerilog"] = "hljs-verilog";
+      ClassificationSpecificEnum33["HljsVhdl"] = "hljs-vhdl";
+      ClassificationSpecificEnum33["HljsVim"] = "hljs-vim";
+      ClassificationSpecificEnum33["HljsX86asm"] = "hljs-x86asm";
+      ClassificationSpecificEnum33["HljsXl"] = "hljs-xl";
+      ClassificationSpecificEnum33["HljsXml"] = "hljs-xml";
+      ClassificationSpecificEnum33["HljsXquery"] = "hljs-xquery";
+      ClassificationSpecificEnum33["HljsYaml"] = "hljs-yaml";
+      ClassificationSpecificEnum33["HljsToml"] = "hljs-toml";
+      ClassificationSpecificEnum33["HljsZephir"] = "hljs-zephir";
+      ClassificationSpecificEnum33["HljsHtml"] = "hljs-html";
+      ClassificationSpecificEnum33["Groovy"] = "groovy";
+      ClassificationSpecificEnum33["Kt"] = "kt";
+      ClassificationSpecificEnum33["El"] = "el";
+      ClassificationSpecificEnum33["Clj"] = "clj";
+      ClassificationSpecificEnum33["Ex"] = "ex";
+      ClassificationSpecificEnum33["Adb"] = "adb";
+      ClassificationSpecificEnum33["Ads"] = "ads";
+      ClassificationSpecificEnum33["Agda"] = "agda";
+      ClassificationSpecificEnum33["Elm"] = "elm";
+      ClassificationSpecificEnum33["Exs"] = "exs";
+      ClassificationSpecificEnum33["Glsl"] = "glsl";
+      ClassificationSpecificEnum33["Ml"] = "ml";
+      ClassificationSpecificEnum33["Lean"] = "lean";
+      ClassificationSpecificEnum33["Lisp"] = "lisp";
+      ClassificationSpecificEnum33["Rkt"] = "rkt";
+      ClassificationSpecificEnum33["Sparql"] = "sparql";
+      ClassificationSpecificEnum33["Vhdl"] = "vhdl";
+      ClassificationSpecificEnum33["Zig"] = "zig";
+      ClassificationSpecificEnum33["Dockerfile"] = "dockerfile";
+      ClassificationSpecificEnum33["F03"] = "f03";
+      ClassificationSpecificEnum33["F08"] = "f08";
+      ClassificationSpecificEnum33["F18"] = "f18";
+      ClassificationSpecificEnum33["F90"] = "f90";
+      ClassificationSpecificEnum33["F95"] = "f95";
+      ClassificationSpecificEnum33["Jl"] = "jl";
+      ClassificationSpecificEnum33["Mm"] = "mm";
+      ClassificationSpecificEnum33["Scm"] = "scm";
+      ClassificationSpecificEnum33["Sol"] = "sol";
+      ClassificationSpecificEnum33["Sv"] = "sv";
+      ClassificationSpecificEnum33["Asp"] = "asp";
+      ClassificationSpecificEnum33["Cfm"] = "cfm";
+      ClassificationSpecificEnum33["Fs"] = "fs";
+      ClassificationSpecificEnum33["Fsi"] = "fsi";
+      ClassificationSpecificEnum33["Fsx"] = "fsx";
+    })(ClassificationSpecificEnum32 || (exports.ClassificationSpecificEnum = ClassificationSpecificEnum32 = {}));
     function ClassificationSpecificEnumFromJSON4(json) {
-      return ClassificationSpecificEnumFromJSONTyped29(json, false);
+      return ClassificationSpecificEnumFromJSONTyped31(json, false);
     }
     exports.ClassificationSpecificEnumFromJSON = ClassificationSpecificEnumFromJSON4;
-    function ClassificationSpecificEnumFromJSONTyped29(json, ignoreDiscriminator) {
+    function ClassificationSpecificEnumFromJSONTyped31(json, ignoreDiscriminator) {
       return json;
     }
-    exports.ClassificationSpecificEnumFromJSONTyped = ClassificationSpecificEnumFromJSONTyped29;
+    exports.ClassificationSpecificEnumFromJSONTyped = ClassificationSpecificEnumFromJSONTyped31;
     function ClassificationSpecificEnumToJSON4(value) {
       return value;
     }
@@ -5629,9 +5629,9 @@ var require_ClassificationSpecificEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/CodeAnalyses.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/CodeAnalyses.js
 var require_CodeAnalyses = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/CodeAnalyses.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/CodeAnalyses.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.CodeAnalysesToJSON = exports.CodeAnalysesFromJSONTyped = exports.CodeAnalysesFromJSON = void 0;
@@ -5667,9 +5667,9 @@ var require_CodeAnalyses = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/CodeAnalysis.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/CodeAnalysis.js
 var require_CodeAnalysis = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/CodeAnalysis.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/CodeAnalysis.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.CodeAnalysisToJSON = exports.CodeAnalysisFromJSONTyped = exports.CodeAnalysisFromJSON = void 0;
@@ -5723,9 +5723,9 @@ var require_CodeAnalysis = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Context.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Context.js
 var require_Context = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Context.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Context.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ContextToJSON = exports.ContextFromJSONTyped = exports.ContextFromJSON = void 0;
@@ -5767,9 +5767,9 @@ var require_Context = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Conversation.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Conversation.js
 var require_Conversation = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Conversation.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Conversation.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ConversationToJSON = exports.ConversationFromJSONTyped = exports.ConversationFromJSON = void 0;
@@ -5833,9 +5833,9 @@ var require_Conversation = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ConversationGrounding.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ConversationGrounding.js
 var require_ConversationGrounding = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ConversationGrounding.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ConversationGrounding.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ConversationGroundingToJSON = exports.ConversationGroundingFromJSONTyped = exports.ConversationGroundingFromJSON = void 0;
@@ -5871,9 +5871,9 @@ var require_ConversationGrounding = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ConversationMessage.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ConversationMessage.js
 var require_ConversationMessage = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ConversationMessage.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ConversationMessage.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ConversationMessageToJSON = exports.ConversationMessageFromJSONTyped = exports.ConversationMessageFromJSON = void 0;
@@ -5929,9 +5929,9 @@ var require_ConversationMessage = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ConversationMessageSentimentEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ConversationMessageSentimentEnum.js
 var require_ConversationMessageSentimentEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ConversationMessageSentimentEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ConversationMessageSentimentEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ConversationMessageSentimentEnumToJSON = exports.ConversationMessageSentimentEnumFromJSONTyped = exports.ConversationMessageSentimentEnumFromJSON = exports.ConversationMessageSentimentEnum = void 0;
@@ -5956,9 +5956,9 @@ var require_ConversationMessageSentimentEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ConversationMessages.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ConversationMessages.js
 var require_ConversationMessages = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ConversationMessages.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ConversationMessages.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ConversationMessagesToJSON = exports.ConversationMessagesFromJSONTyped = exports.ConversationMessagesFromJSON = void 0;
@@ -5998,9 +5998,9 @@ var require_ConversationMessages = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ConversationSummarizeInput.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ConversationSummarizeInput.js
 var require_ConversationSummarizeInput = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ConversationSummarizeInput.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ConversationSummarizeInput.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ConversationSummarizeInputToJSON = exports.ConversationSummarizeInputFromJSONTyped = exports.ConversationSummarizeInputFromJSON = void 0;
@@ -6036,9 +6036,9 @@ var require_ConversationSummarizeInput = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ConversationSummarizeOutput.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ConversationSummarizeOutput.js
 var require_ConversationSummarizeOutput = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ConversationSummarizeOutput.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ConversationSummarizeOutput.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ConversationSummarizeOutputToJSON = exports.ConversationSummarizeOutputFromJSONTyped = exports.ConversationSummarizeOutputFromJSON = void 0;
@@ -6076,9 +6076,9 @@ var require_ConversationSummarizeOutput = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ConversationTypeEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ConversationTypeEnum.js
 var require_ConversationTypeEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ConversationTypeEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ConversationTypeEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ConversationTypeEnumToJSON = exports.ConversationTypeEnumFromJSONTyped = exports.ConversationTypeEnumFromJSON = exports.ConversationTypeEnum = void 0;
@@ -6101,9 +6101,9 @@ var require_ConversationTypeEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Conversations.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Conversations.js
 var require_Conversations = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Conversations.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Conversations.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ConversationsToJSON = exports.ConversationsFromJSONTyped = exports.ConversationsFromJSON = void 0;
@@ -6143,9 +6143,9 @@ var require_Conversations = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ConversationsCreateFromAssetOutput.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ConversationsCreateFromAssetOutput.js
 var require_ConversationsCreateFromAssetOutput = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ConversationsCreateFromAssetOutput.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ConversationsCreateFromAssetOutput.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ConversationsCreateFromAssetOutputToJSON = exports.ConversationsCreateFromAssetOutputFromJSONTyped = exports.ConversationsCreateFromAssetOutputFromJSON = void 0;
@@ -6181,9 +6181,9 @@ var require_ConversationsCreateFromAssetOutput = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/DiscoveredAsset.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/DiscoveredAsset.js
 var require_DiscoveredAsset = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/DiscoveredAsset.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/DiscoveredAsset.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.DiscoveredAssetToJSON = exports.DiscoveredAssetFromJSONTyped = exports.DiscoveredAssetFromJSON = void 0;
@@ -6227,9 +6227,9 @@ var require_DiscoveredAsset = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/DiscoveredAssets.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/DiscoveredAssets.js
 var require_DiscoveredAssets = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/DiscoveredAssets.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/DiscoveredAssets.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.DiscoveredAssetsToJSON = exports.DiscoveredAssetsFromJSONTyped = exports.DiscoveredAssetsFromJSON = void 0;
@@ -6267,9 +6267,9 @@ var require_DiscoveredAssets = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/DiscoveredHtmlWebpage.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/DiscoveredHtmlWebpage.js
 var require_DiscoveredHtmlWebpage = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/DiscoveredHtmlWebpage.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/DiscoveredHtmlWebpage.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.DiscoveredHtmlWebpageToJSON = exports.DiscoveredHtmlWebpageFromJSONTyped = exports.DiscoveredHtmlWebpageFromJSON = void 0;
@@ -6307,9 +6307,9 @@ var require_DiscoveredHtmlWebpage = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/DiscoveredHtmlWebpages.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/DiscoveredHtmlWebpages.js
 var require_DiscoveredHtmlWebpages = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/DiscoveredHtmlWebpages.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/DiscoveredHtmlWebpages.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.DiscoveredHtmlWebpagesToJSON = exports.DiscoveredHtmlWebpagesFromJSONTyped = exports.DiscoveredHtmlWebpagesFromJSON = void 0;
@@ -6347,9 +6347,9 @@ var require_DiscoveredHtmlWebpages = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/DiscoveredRelatedTag.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/DiscoveredRelatedTag.js
 var require_DiscoveredRelatedTag = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/DiscoveredRelatedTag.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/DiscoveredRelatedTag.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.DiscoveredRelatedTagToJSON = exports.DiscoveredRelatedTagFromJSONTyped = exports.DiscoveredRelatedTagFromJSON = void 0;
@@ -6385,9 +6385,9 @@ var require_DiscoveredRelatedTag = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/DiscoveredRelatedTags.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/DiscoveredRelatedTags.js
 var require_DiscoveredRelatedTags = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/DiscoveredRelatedTags.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/DiscoveredRelatedTags.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.DiscoveredRelatedTagsToJSON = exports.DiscoveredRelatedTagsFromJSONTyped = exports.DiscoveredRelatedTagsFromJSON = void 0;
@@ -6425,9 +6425,9 @@ var require_DiscoveredRelatedTags = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/DiscoveredSensitive.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/DiscoveredSensitive.js
 var require_DiscoveredSensitive = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/DiscoveredSensitive.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/DiscoveredSensitive.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.DiscoveredSensitiveToJSON = exports.DiscoveredSensitiveFromJSONTyped = exports.DiscoveredSensitiveFromJSON = void 0;
@@ -6465,9 +6465,9 @@ var require_DiscoveredSensitive = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/DiscoveredSensitives.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/DiscoveredSensitives.js
 var require_DiscoveredSensitives = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/DiscoveredSensitives.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/DiscoveredSensitives.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.DiscoveredSensitivesToJSON = exports.DiscoveredSensitivesFromJSONTyped = exports.DiscoveredSensitivesFromJSON = void 0;
@@ -6505,9 +6505,9 @@ var require_DiscoveredSensitives = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Distribution.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Distribution.js
 var require_Distribution = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Distribution.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Distribution.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.DistributionToJSON = exports.DistributionFromJSONTyped = exports.DistributionFromJSON = void 0;
@@ -6555,9 +6555,9 @@ var require_Distribution = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Distributions.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Distributions.js
 var require_Distributions = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Distributions.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Distributions.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.DistributionsToJSON = exports.DistributionsFromJSONTyped = exports.DistributionsFromJSON = void 0;
@@ -6593,9 +6593,9 @@ var require_Distributions = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Edges.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Edges.js
 var require_Edges = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Edges.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Edges.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.EdgesToJSON = exports.EdgesFromJSONTyped = exports.EdgesFromJSON = void 0;
@@ -6628,18 +6628,18 @@ var require_Edges = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/EmbeddedModelSchema.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/EmbeddedModelSchema.js
 var require_EmbeddedModelSchema = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/EmbeddedModelSchema.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/EmbeddedModelSchema.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.EmbeddedModelSchemaToJSON = exports.EmbeddedModelSchemaFromJSONTyped = exports.EmbeddedModelSchemaFromJSON = void 0;
     var index_1 = require_models();
     function EmbeddedModelSchemaFromJSON6(json) {
-      return EmbeddedModelSchemaFromJSONTyped846(json, false);
+      return EmbeddedModelSchemaFromJSONTyped884(json, false);
     }
     exports.EmbeddedModelSchemaFromJSON = EmbeddedModelSchemaFromJSON6;
-    function EmbeddedModelSchemaFromJSONTyped846(json, ignoreDiscriminator) {
+    function EmbeddedModelSchemaFromJSONTyped884(json, ignoreDiscriminator) {
       if (json === void 0 || json === null) {
         return json;
       }
@@ -6648,7 +6648,7 @@ var require_EmbeddedModelSchema = __commonJS({
         "semantic": (0, index_1.EmbeddedModelSchemaSemanticVersionEnumFromJSON)(json["semantic"])
       };
     }
-    exports.EmbeddedModelSchemaFromJSONTyped = EmbeddedModelSchemaFromJSONTyped846;
+    exports.EmbeddedModelSchemaFromJSONTyped = EmbeddedModelSchemaFromJSONTyped884;
     function EmbeddedModelSchemaToJSON4(value) {
       if (value === void 0) {
         return void 0;
@@ -6665,9 +6665,9 @@ var require_EmbeddedModelSchema = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/EmbeddedModelSchemaSemanticVersionEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/EmbeddedModelSchemaSemanticVersionEnum.js
 var require_EmbeddedModelSchemaSemanticVersionEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/EmbeddedModelSchemaSemanticVersionEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/EmbeddedModelSchemaSemanticVersionEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.EmbeddedModelSchemaSemanticVersionEnumToJSON = exports.EmbeddedModelSchemaSemanticVersionEnumFromJSONTyped = exports.EmbeddedModelSchemaSemanticVersionEnumFromJSON = exports.EmbeddedModelSchemaSemanticVersionEnum = void 0;
@@ -6690,9 +6690,9 @@ var require_EmbeddedModelSchemaSemanticVersionEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Embedding.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Embedding.js
 var require_Embedding = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Embedding.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Embedding.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.EmbeddingToJSON = exports.EmbeddingFromJSONTyped = exports.EmbeddingFromJSON = void 0;
@@ -6734,9 +6734,9 @@ var require_Embedding = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Embeddings.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Embeddings.js
 var require_Embeddings = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Embeddings.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Embeddings.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.EmbeddingsToJSON = exports.EmbeddingsFromJSONTyped = exports.EmbeddingsFromJSON = void 0;
@@ -6769,9 +6769,9 @@ var require_Embeddings = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ExistentMetadata.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ExistentMetadata.js
 var require_ExistentMetadata = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ExistentMetadata.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ExistentMetadata.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ExistentMetadataToJSON = exports.ExistentMetadataFromJSONTyped = exports.ExistentMetadataFromJSON = void 0;
@@ -6807,9 +6807,9 @@ var require_ExistentMetadata = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ExistingMetadata.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ExistingMetadata.js
 var require_ExistingMetadata = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ExistingMetadata.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ExistingMetadata.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ExistingMetadataToJSON = exports.ExistingMetadataFromJSONTyped = exports.ExistingMetadataFromJSON = void 0;
@@ -6847,9 +6847,9 @@ var require_ExistingMetadata = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ExportedAsset.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ExportedAsset.js
 var require_ExportedAsset = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ExportedAsset.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ExportedAsset.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ExportedAssetToJSON = exports.ExportedAssetFromJSONTyped = exports.ExportedAssetFromJSON = void 0;
@@ -6888,9 +6888,9 @@ var require_ExportedAsset = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ExportedDatabase.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ExportedDatabase.js
 var require_ExportedDatabase = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ExportedDatabase.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ExportedDatabase.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ExportedDatabaseToJSON = exports.ExportedDatabaseFromJSONTyped = exports.ExportedDatabaseFromJSON = void 0;
@@ -6976,9 +6976,9 @@ var require_ExportedDatabase = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ExportedDatabaseFormat.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ExportedDatabaseFormat.js
 var require_ExportedDatabaseFormat = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ExportedDatabaseFormat.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ExportedDatabaseFormat.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ExportedDatabaseFormatToJSON = exports.ExportedDatabaseFormatFromJSONTyped = exports.ExportedDatabaseFormatFromJSON = void 0;
@@ -7016,9 +7016,9 @@ var require_ExportedDatabaseFormat = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ExportedDatabaseFormats.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ExportedDatabaseFormats.js
 var require_ExportedDatabaseFormats = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ExportedDatabaseFormats.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ExportedDatabaseFormats.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ExportedDatabaseFormatsToJSON = exports.ExportedDatabaseFormatsFromJSONTyped = exports.ExportedDatabaseFormatsFromJSON = void 0;
@@ -7054,9 +7054,9 @@ var require_ExportedDatabaseFormats = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ExternalMLProviderEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ExternalMLProviderEnum.js
 var require_ExternalMLProviderEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ExternalMLProviderEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ExternalMLProviderEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ExternalMLProviderEnumToJSON = exports.ExternalMLProviderEnumFromJSONTyped = exports.ExternalMLProviderEnumFromJSON = exports.ExternalMLProviderEnum = void 0;
@@ -7101,9 +7101,9 @@ var require_ExternalMLProviderEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ExternalProvider.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ExternalProvider.js
 var require_ExternalProvider = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ExternalProvider.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ExternalProvider.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ExternalProviderToJSON = exports.ExternalProviderFromJSONTyped = exports.ExternalProviderFromJSON = void 0;
@@ -7155,9 +7155,9 @@ var require_ExternalProvider = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ExternalProviderProfileData.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ExternalProviderProfileData.js
 var require_ExternalProviderProfileData = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ExternalProviderProfileData.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ExternalProviderProfileData.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ExternalProviderProfileDataToJSON = exports.ExternalProviderProfileDataFromJSONTyped = exports.ExternalProviderProfileDataFromJSON = void 0;
@@ -7264,9 +7264,9 @@ var require_ExternalProviderProfileData = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ExternalProviderTypeEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ExternalProviderTypeEnum.js
 var require_ExternalProviderTypeEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ExternalProviderTypeEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ExternalProviderTypeEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ExternalProviderTypeEnumToJSON = exports.ExternalProviderTypeEnumFromJSONTyped = exports.ExternalProviderTypeEnumFromJSON = exports.ExternalProviderTypeEnum = void 0;
@@ -7296,9 +7296,9 @@ var require_ExternalProviderTypeEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ExternalProviders.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ExternalProviders.js
 var require_ExternalProviders = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ExternalProviders.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ExternalProviders.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ExternalProvidersToJSON = exports.ExternalProvidersFromJSONTyped = exports.ExternalProvidersFromJSON = void 0;
@@ -7334,9 +7334,9 @@ var require_ExternalProviders = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ExternallySourcedEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ExternallySourcedEnum.js
 var require_ExternallySourcedEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ExternallySourcedEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ExternallySourcedEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ExternallySourcedEnumToJSON = exports.ExternallySourcedEnumFromJSONTyped = exports.ExternallySourcedEnumFromJSON = exports.ExternallySourcedEnum = void 0;
@@ -7370,9 +7370,9 @@ var require_ExternallySourcedEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FileFormat.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FileFormat.js
 var require_FileFormat = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FileFormat.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FileFormat.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FileFormatToJSON = exports.FileFormatFromJSONTyped = exports.FileFormatFromJSON = void 0;
@@ -7410,9 +7410,9 @@ var require_FileFormat = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FileMetadata.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FileMetadata.js
 var require_FileMetadata = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FileMetadata.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FileMetadata.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FileMetadataToJSON = exports.FileMetadataFromJSONTyped = exports.FileMetadataFromJSON = void 0;
@@ -7452,9 +7452,9 @@ var require_FileMetadata = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FilePickerInput.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FilePickerInput.js
 var require_FilePickerInput = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FilePickerInput.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FilePickerInput.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FilePickerInputToJSON = exports.FilePickerInputFromJSONTyped = exports.FilePickerInputFromJSON = void 0;
@@ -7490,9 +7490,9 @@ var require_FilePickerInput = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FilterOperationTypeEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FilterOperationTypeEnum.js
 var require_FilterOperationTypeEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FilterOperationTypeEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FilterOperationTypeEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FilterOperationTypeEnumToJSON = exports.FilterOperationTypeEnumFromJSONTyped = exports.FilterOperationTypeEnumFromJSON = exports.FilterOperationTypeEnum = void 0;
@@ -7516,9 +7516,9 @@ var require_FilterOperationTypeEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedActivities.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedActivities.js
 var require_FlattenedActivities = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedActivities.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedActivities.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedActivitiesToJSON = exports.FlattenedActivitiesFromJSONTyped = exports.FlattenedActivitiesFromJSON = void 0;
@@ -7554,9 +7554,9 @@ var require_FlattenedActivities = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedActivity.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedActivity.js
 var require_FlattenedActivity = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedActivity.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedActivity.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedActivityToJSON = exports.FlattenedActivityFromJSONTyped = exports.FlattenedActivityFromJSON = void 0;
@@ -7612,9 +7612,9 @@ var require_FlattenedActivity = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedAnalysis.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedAnalysis.js
 var require_FlattenedAnalysis = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedAnalysis.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedAnalysis.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedAnalysisToJSON = exports.FlattenedAnalysisFromJSONTyped = exports.FlattenedAnalysisFromJSON = void 0;
@@ -7656,9 +7656,9 @@ var require_FlattenedAnalysis = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedAnchor.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedAnchor.js
 var require_FlattenedAnchor = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedAnchor.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedAnchor.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedAnchorToJSON = exports.FlattenedAnchorFromJSONTyped = exports.FlattenedAnchorFromJSON = void 0;
@@ -7716,9 +7716,9 @@ var require_FlattenedAnchor = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedAnchorPoint.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedAnchorPoint.js
 var require_FlattenedAnchorPoint = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedAnchorPoint.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedAnchorPoint.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedAnchorPointToJSON = exports.FlattenedAnchorPointFromJSONTyped = exports.FlattenedAnchorPointFromJSON = void 0;
@@ -7770,9 +7770,9 @@ var require_FlattenedAnchorPoint = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedAnchorPoints.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedAnchorPoints.js
 var require_FlattenedAnchorPoints = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedAnchorPoints.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedAnchorPoints.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedAnchorPointsToJSON = exports.FlattenedAnchorPointsFromJSONTyped = exports.FlattenedAnchorPointsFromJSON = void 0;
@@ -7812,9 +7812,9 @@ var require_FlattenedAnchorPoints = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedAnchors.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedAnchors.js
 var require_FlattenedAnchors = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedAnchors.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedAnchors.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedAnchorsToJSON = exports.FlattenedAnchorsFromJSONTyped = exports.FlattenedAnchorsFromJSON = void 0;
@@ -7854,9 +7854,9 @@ var require_FlattenedAnchors = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedAnnotation.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedAnnotation.js
 var require_FlattenedAnnotation = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedAnnotation.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedAnnotation.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedAnnotationToJSON = exports.FlattenedAnnotationFromJSONTyped = exports.FlattenedAnnotationFromJSON = void 0;
@@ -7922,9 +7922,9 @@ var require_FlattenedAnnotation = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedAnnotations.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedAnnotations.js
 var require_FlattenedAnnotations = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedAnnotations.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedAnnotations.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedAnnotationsToJSON = exports.FlattenedAnnotationsFromJSONTyped = exports.FlattenedAnnotationsFromJSON = void 0;
@@ -7964,9 +7964,9 @@ var require_FlattenedAnnotations = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedAsset.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedAsset.js
 var require_FlattenedAsset = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedAsset.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedAsset.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedAssetToJSON = exports.FlattenedAssetFromJSONTyped = exports.FlattenedAssetFromJSON = void 0;
@@ -8054,9 +8054,9 @@ var require_FlattenedAsset = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedAssets.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedAssets.js
 var require_FlattenedAssets = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedAssets.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedAssets.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedAssetsToJSON = exports.FlattenedAssetsFromJSONTyped = exports.FlattenedAssetsFromJSON = void 0;
@@ -8096,9 +8096,9 @@ var require_FlattenedAssets = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedConversation.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedConversation.js
 var require_FlattenedConversation = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedConversation.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedConversation.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedConversationToJSON = exports.FlattenedConversationFromJSONTyped = exports.FlattenedConversationFromJSON = void 0;
@@ -8162,9 +8162,9 @@ var require_FlattenedConversation = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedConversationMessage.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedConversationMessage.js
 var require_FlattenedConversationMessage = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedConversationMessage.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedConversationMessage.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedConversationMessageToJSON = exports.FlattenedConversationMessageFromJSONTyped = exports.FlattenedConversationMessageFromJSON = void 0;
@@ -8220,9 +8220,9 @@ var require_FlattenedConversationMessage = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedConversationMessages.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedConversationMessages.js
 var require_FlattenedConversationMessages = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedConversationMessages.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedConversationMessages.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedConversationMessagesToJSON = exports.FlattenedConversationMessagesFromJSONTyped = exports.FlattenedConversationMessagesFromJSON = void 0;
@@ -8262,9 +8262,9 @@ var require_FlattenedConversationMessages = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedConversations.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedConversations.js
 var require_FlattenedConversations = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedConversations.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedConversations.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedConversationsToJSON = exports.FlattenedConversationsFromJSONTyped = exports.FlattenedConversationsFromJSON = void 0;
@@ -8304,9 +8304,9 @@ var require_FlattenedConversations = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedDistribution.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedDistribution.js
 var require_FlattenedDistribution = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedDistribution.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedDistribution.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedDistributionToJSON = exports.FlattenedDistributionFromJSONTyped = exports.FlattenedDistributionFromJSON = void 0;
@@ -8354,9 +8354,9 @@ var require_FlattenedDistribution = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedDistributions.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedDistributions.js
 var require_FlattenedDistributions = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedDistributions.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedDistributions.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedDistributionsToJSON = exports.FlattenedDistributionsFromJSONTyped = exports.FlattenedDistributionsFromJSON = void 0;
@@ -8392,9 +8392,9 @@ var require_FlattenedDistributions = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedFormat.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedFormat.js
 var require_FlattenedFormat = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedFormat.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedFormat.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedFormatToJSON = exports.FlattenedFormatFromJSONTyped = exports.FlattenedFormatFromJSON = void 0;
@@ -8464,9 +8464,9 @@ var require_FlattenedFormat = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedFormats.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedFormats.js
 var require_FlattenedFormats = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedFormats.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedFormats.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedFormatsToJSON = exports.FlattenedFormatsFromJSONTyped = exports.FlattenedFormatsFromJSON = void 0;
@@ -8502,9 +8502,9 @@ var require_FlattenedFormats = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedHint.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedHint.js
 var require_FlattenedHint = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedHint.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedHint.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedHintToJSON = exports.FlattenedHintFromJSONTyped = exports.FlattenedHintFromJSON = void 0;
@@ -8558,9 +8558,9 @@ var require_FlattenedHint = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedHints.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedHints.js
 var require_FlattenedHints = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedHints.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedHints.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedHintsToJSON = exports.FlattenedHintsFromJSONTyped = exports.FlattenedHintsFromJSON = void 0;
@@ -8600,9 +8600,9 @@ var require_FlattenedHints = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedImageAnalysis.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedImageAnalysis.js
 var require_FlattenedImageAnalysis = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedImageAnalysis.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedImageAnalysis.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedImageAnalysisToJSON = exports.FlattenedImageAnalysisFromJSONTyped = exports.FlattenedImageAnalysisFromJSON = void 0;
@@ -8642,9 +8642,9 @@ var require_FlattenedImageAnalysis = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedOCRAnalysis.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedOCRAnalysis.js
 var require_FlattenedOCRAnalysis = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedOCRAnalysis.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedOCRAnalysis.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedOCRAnalysisToJSON = exports.FlattenedOCRAnalysisFromJSONTyped = exports.FlattenedOCRAnalysisFromJSON = void 0;
@@ -8688,9 +8688,9 @@ var require_FlattenedOCRAnalysis = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedPerson.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedPerson.js
 var require_FlattenedPerson = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedPerson.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedPerson.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedPersonToJSON = exports.FlattenedPersonFromJSONTyped = exports.FlattenedPersonFromJSON = void 0;
@@ -8752,9 +8752,9 @@ var require_FlattenedPerson = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedPersons.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedPersons.js
 var require_FlattenedPersons = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedPersons.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedPersons.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedPersonsToJSON = exports.FlattenedPersonsFromJSONTyped = exports.FlattenedPersonsFromJSON = void 0;
@@ -8794,9 +8794,9 @@ var require_FlattenedPersons = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedPreview.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedPreview.js
 var require_FlattenedPreview = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedPreview.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedPreview.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedPreviewToJSON = exports.FlattenedPreviewFromJSONTyped = exports.FlattenedPreviewFromJSON = void 0;
@@ -8834,9 +8834,9 @@ var require_FlattenedPreview = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedSensitive.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedSensitive.js
 var require_FlattenedSensitive = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedSensitive.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedSensitive.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedSensitiveToJSON = exports.FlattenedSensitiveFromJSONTyped = exports.FlattenedSensitiveFromJSON = void 0;
@@ -8898,9 +8898,9 @@ var require_FlattenedSensitive = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedSensitives.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedSensitives.js
 var require_FlattenedSensitives = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedSensitives.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedSensitives.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedSensitivesToJSON = exports.FlattenedSensitivesFromJSONTyped = exports.FlattenedSensitivesFromJSON = void 0;
@@ -8938,9 +8938,9 @@ var require_FlattenedSensitives = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedShare.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedShare.js
 var require_FlattenedShare = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedShare.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedShare.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedShareToJSON = exports.FlattenedShareFromJSONTyped = exports.FlattenedShareFromJSON = void 0;
@@ -8998,9 +8998,9 @@ var require_FlattenedShare = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedShares.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedShares.js
 var require_FlattenedShares = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedShares.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedShares.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedSharesToJSON = exports.FlattenedSharesFromJSONTyped = exports.FlattenedSharesFromJSON = void 0;
@@ -9038,9 +9038,9 @@ var require_FlattenedShares = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedTag.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedTag.js
 var require_FlattenedTag = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedTag.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedTag.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedTagToJSON = exports.FlattenedTagFromJSONTyped = exports.FlattenedTagFromJSON = void 0;
@@ -9098,9 +9098,9 @@ var require_FlattenedTag = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedTags.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedTags.js
 var require_FlattenedTags = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedTags.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedTags.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedTagsToJSON = exports.FlattenedTagsFromJSONTyped = exports.FlattenedTagsFromJSON = void 0;
@@ -9140,9 +9140,9 @@ var require_FlattenedTags = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedUserProfile.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedUserProfile.js
 var require_FlattenedUserProfile = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedUserProfile.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedUserProfile.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedUserProfileToJSON = exports.FlattenedUserProfileFromJSONTyped = exports.FlattenedUserProfileFromJSON = void 0;
@@ -9188,9 +9188,9 @@ var require_FlattenedUserProfile = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedWebsite.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedWebsite.js
 var require_FlattenedWebsite = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedWebsite.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedWebsite.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedWebsiteToJSON = exports.FlattenedWebsiteFromJSONTyped = exports.FlattenedWebsiteFromJSON = void 0;
@@ -9246,9 +9246,9 @@ var require_FlattenedWebsite = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedWebsites.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedWebsites.js
 var require_FlattenedWebsites = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FlattenedWebsites.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FlattenedWebsites.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FlattenedWebsitesToJSON = exports.FlattenedWebsitesFromJSONTyped = exports.FlattenedWebsitesFromJSON = void 0;
@@ -9288,9 +9288,9 @@ var require_FlattenedWebsites = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Font.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Font.js
 var require_Font = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Font.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Font.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FontToJSON = exports.FontFromJSONTyped = exports.FontFromJSON = void 0;
@@ -9326,9 +9326,9 @@ var require_Font = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Format.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Format.js
 var require_Format = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Format.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Format.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FormatToJSON = exports.FormatFromJSONTyped = exports.FormatFromJSON = void 0;
@@ -9398,9 +9398,9 @@ var require_Format = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FormatMetric.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FormatMetric.js
 var require_FormatMetric = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FormatMetric.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FormatMetric.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FormatMetricToJSON = exports.FormatMetricFromJSONTyped = exports.FormatMetricFromJSON = void 0;
@@ -9440,9 +9440,9 @@ var require_FormatMetric = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FormatReclassification.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FormatReclassification.js
 var require_FormatReclassification = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FormatReclassification.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FormatReclassification.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FormatReclassificationToJSON = exports.FormatReclassificationFromJSONTyped = exports.FormatReclassificationFromJSON = void 0;
@@ -9480,9 +9480,9 @@ var require_FormatReclassification = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Formats.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Formats.js
 var require_Formats = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Formats.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Formats.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FormatsToJSON = exports.FormatsFromJSONTyped = exports.FormatsFromJSON = void 0;
@@ -9518,9 +9518,9 @@ var require_Formats = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FormatsMetrics.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FormatsMetrics.js
 var require_FormatsMetrics = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FormatsMetrics.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FormatsMetrics.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FormatsMetricsToJSON = exports.FormatsMetricsFromJSONTyped = exports.FormatsMetricsFromJSON = void 0;
@@ -9556,19 +9556,19 @@ var require_FormatsMetrics = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FragmentFormat.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FragmentFormat.js
 var require_FragmentFormat = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FragmentFormat.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FragmentFormat.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FragmentFormatToJSON = exports.FragmentFormatFromJSONTyped = exports.FragmentFormatFromJSON = void 0;
     var runtime_1 = require_runtime();
     var index_1 = require_models();
     function FragmentFormatFromJSON4(json) {
-      return FragmentFormatFromJSONTyped16(json, false);
+      return FragmentFormatFromJSONTyped18(json, false);
     }
     exports.FragmentFormatFromJSON = FragmentFormatFromJSON4;
-    function FragmentFormatFromJSONTyped16(json, ignoreDiscriminator) {
+    function FragmentFormatFromJSONTyped18(json, ignoreDiscriminator) {
       if (json === void 0 || json === null) {
         return json;
       }
@@ -9579,7 +9579,7 @@ var require_FragmentFormat = __commonJS({
         "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : (0, index_1.FragmentMetadataFromJSON)(json["metadata"])
       };
     }
-    exports.FragmentFormatFromJSONTyped = FragmentFormatFromJSONTyped16;
+    exports.FragmentFormatFromJSONTyped = FragmentFormatFromJSONTyped18;
     function FragmentFormatToJSON4(value) {
       if (value === void 0) {
         return void 0;
@@ -9598,9 +9598,9 @@ var require_FragmentFormat = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/FragmentMetadata.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FragmentMetadata.js
 var require_FragmentMetadata = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/FragmentMetadata.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/FragmentMetadata.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FragmentMetadataToJSON = exports.FragmentMetadataFromJSONTyped = exports.FragmentMetadataFromJSON = void 0;
@@ -9636,9 +9636,9 @@ var require_FragmentMetadata = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/GitHubDistribution.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/GitHubDistribution.js
 var require_GitHubDistribution = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/GitHubDistribution.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/GitHubDistribution.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.GitHubDistributionToJSON = exports.GitHubDistributionFromJSONTyped = exports.GitHubDistributionFromJSON = void 0;
@@ -9674,9 +9674,9 @@ var require_GitHubDistribution = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/GitHubGistDistribution.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/GitHubGistDistribution.js
 var require_GitHubGistDistribution = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/GitHubGistDistribution.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/GitHubGistDistribution.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.GitHubGistDistributionToJSON = exports.GitHubGistDistributionFromJSONTyped = exports.GitHubGistDistributionFromJSON = void 0;
@@ -9728,9 +9728,9 @@ var require_GitHubGistDistribution = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/GraphicalImageDescriptiveStatistics.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/GraphicalImageDescriptiveStatistics.js
 var require_GraphicalImageDescriptiveStatistics = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/GraphicalImageDescriptiveStatistics.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/GraphicalImageDescriptiveStatistics.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.GraphicalImageDescriptiveStatisticsToJSON = exports.GraphicalImageDescriptiveStatisticsFromJSONTyped = exports.GraphicalImageDescriptiveStatisticsFromJSON = void 0;
@@ -9778,9 +9778,9 @@ var require_GraphicalImageDescriptiveStatistics = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/GraphicalImageProcessing.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/GraphicalImageProcessing.js
 var require_GraphicalImageProcessing = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/GraphicalImageProcessing.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/GraphicalImageProcessing.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.GraphicalImageProcessingToJSON = exports.GraphicalImageProcessingFromJSONTyped = exports.GraphicalImageProcessingFromJSON = void 0;
@@ -9816,9 +9816,9 @@ var require_GraphicalImageProcessing = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/GraphicalImageStatistics.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/GraphicalImageStatistics.js
 var require_GraphicalImageStatistics = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/GraphicalImageStatistics.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/GraphicalImageStatistics.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.GraphicalImageStatisticsToJSON = exports.GraphicalImageStatisticsFromJSONTyped = exports.GraphicalImageStatisticsFromJSON = void 0;
@@ -9854,9 +9854,9 @@ var require_GraphicalImageStatistics = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/GraphicalMachineLearningProcessingEvent.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/GraphicalMachineLearningProcessingEvent.js
 var require_GraphicalMachineLearningProcessingEvent = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/GraphicalMachineLearningProcessingEvent.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/GraphicalMachineLearningProcessingEvent.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.GraphicalMachineLearningProcessingEventToJSON = exports.GraphicalMachineLearningProcessingEventFromJSONTyped = exports.GraphicalMachineLearningProcessingEventFromJSON = void 0;
@@ -9896,9 +9896,9 @@ var require_GraphicalMachineLearningProcessingEvent = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/GraphicalOCRDescriptiveStatistics.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/GraphicalOCRDescriptiveStatistics.js
 var require_GraphicalOCRDescriptiveStatistics = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/GraphicalOCRDescriptiveStatistics.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/GraphicalOCRDescriptiveStatistics.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.GraphicalOCRDescriptiveStatisticsToJSON = exports.GraphicalOCRDescriptiveStatisticsFromJSONTyped = exports.GraphicalOCRDescriptiveStatisticsFromJSON = void 0;
@@ -9946,9 +9946,9 @@ var require_GraphicalOCRDescriptiveStatistics = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/GraphicalOCRDescriptiveStatisticsConfidence.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/GraphicalOCRDescriptiveStatisticsConfidence.js
 var require_GraphicalOCRDescriptiveStatisticsConfidence = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/GraphicalOCRDescriptiveStatisticsConfidence.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/GraphicalOCRDescriptiveStatisticsConfidence.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.GraphicalOCRDescriptiveStatisticsConfidenceToJSON = exports.GraphicalOCRDescriptiveStatisticsConfidenceFromJSONTyped = exports.GraphicalOCRDescriptiveStatisticsConfidenceFromJSON = void 0;
@@ -9980,9 +9980,9 @@ var require_GraphicalOCRDescriptiveStatisticsConfidence = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/GraphicalOCRProcessing.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/GraphicalOCRProcessing.js
 var require_GraphicalOCRProcessing = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/GraphicalOCRProcessing.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/GraphicalOCRProcessing.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.GraphicalOCRProcessingToJSON = exports.GraphicalOCRProcessingFromJSONTyped = exports.GraphicalOCRProcessingFromJSON = void 0;
@@ -10018,9 +10018,9 @@ var require_GraphicalOCRProcessing = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/GraphicalOCRStatistics.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/GraphicalOCRStatistics.js
 var require_GraphicalOCRStatistics = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/GraphicalOCRStatistics.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/GraphicalOCRStatistics.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.GraphicalOCRStatisticsToJSON = exports.GraphicalOCRStatisticsFromJSONTyped = exports.GraphicalOCRStatisticsFromJSON = void 0;
@@ -10056,9 +10056,9 @@ var require_GraphicalOCRStatistics = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/GraphicalSVGStatistics.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/GraphicalSVGStatistics.js
 var require_GraphicalSVGStatistics = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/GraphicalSVGStatistics.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/GraphicalSVGStatistics.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.GraphicalSVGStatisticsToJSON = exports.GraphicalSVGStatisticsFromJSONTyped = exports.GraphicalSVGStatisticsFromJSON = void 0;
@@ -10094,9 +10094,9 @@ var require_GraphicalSVGStatistics = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/GroupedTimestamp.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/GroupedTimestamp.js
 var require_GroupedTimestamp = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/GroupedTimestamp.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/GroupedTimestamp.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.GroupedTimestampToJSON = exports.GroupedTimestampFromJSONTyped = exports.GroupedTimestampFromJSON = void 0;
@@ -10134,9 +10134,9 @@ var require_GroupedTimestamp = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Health.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Health.js
 var require_Health = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Health.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Health.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.HealthToJSON = exports.HealthFromJSONTyped = exports.HealthFromJSON = void 0;
@@ -10172,9 +10172,9 @@ var require_Health = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Hint.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Hint.js
 var require_Hint = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Hint.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Hint.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.HintToJSON = exports.HintFromJSONTyped = exports.HintFromJSON = void 0;
@@ -10228,9 +10228,9 @@ var require_Hint = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/HintTypeEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/HintTypeEnum.js
 var require_HintTypeEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/HintTypeEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/HintTypeEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.HintTypeEnumToJSON = exports.HintTypeEnumFromJSONTyped = exports.HintTypeEnumFromJSON = exports.HintTypeEnum = void 0;
@@ -10254,9 +10254,9 @@ var require_HintTypeEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Hints.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Hints.js
 var require_Hints = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Hints.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Hints.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.HintsToJSON = exports.HintsFromJSONTyped = exports.HintsFromJSON = void 0;
@@ -10296,9 +10296,9 @@ var require_Hints = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ImageAnalyses.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ImageAnalyses.js
 var require_ImageAnalyses = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ImageAnalyses.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ImageAnalyses.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ImageAnalysesToJSON = exports.ImageAnalysesFromJSONTyped = exports.ImageAnalysesFromJSON = void 0;
@@ -10334,9 +10334,9 @@ var require_ImageAnalyses = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ImageAnalysis.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ImageAnalysis.js
 var require_ImageAnalysis = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ImageAnalysis.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ImageAnalysis.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ImageAnalysisToJSON = exports.ImageAnalysisFromJSONTyped = exports.ImageAnalysisFromJSON = void 0;
@@ -10376,9 +10376,9 @@ var require_ImageAnalysis = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/InteractedAsset.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/InteractedAsset.js
 var require_InteractedAsset = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/InteractedAsset.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/InteractedAsset.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.InteractedAssetToJSON = exports.InteractedAssetFromJSONTyped = exports.InteractedAssetFromJSON = void 0;
@@ -10414,9 +10414,9 @@ var require_InteractedAsset = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/InteractedAssetInteractions.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/InteractedAssetInteractions.js
 var require_InteractedAssetInteractions = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/InteractedAssetInteractions.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/InteractedAssetInteractions.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.InteractedAssetInteractionsToJSON = exports.InteractedAssetInteractionsFromJSONTyped = exports.InteractedAssetInteractionsFromJSON = void 0;
@@ -10453,9 +10453,9 @@ var require_InteractedAssetInteractions = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/InteractedAssets.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/InteractedAssets.js
 var require_InteractedAssets = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/InteractedAssets.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/InteractedAssets.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.InteractedAssetsToJSON = exports.InteractedAssetsFromJSONTyped = exports.InteractedAssetsFromJSON = void 0;
@@ -10491,9 +10491,9 @@ var require_InteractedAssets = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Linkify.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Linkify.js
 var require_Linkify = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Linkify.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Linkify.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.LinkifyToJSON = exports.LinkifyFromJSONTyped = exports.LinkifyFromJSON = void 0;
@@ -10537,9 +10537,9 @@ var require_Linkify = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/LinkifyMultiple.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/LinkifyMultiple.js
 var require_LinkifyMultiple = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/LinkifyMultiple.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/LinkifyMultiple.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.LinkifyMultipleToJSON = exports.LinkifyMultipleFromJSONTyped = exports.LinkifyMultipleFromJSON = void 0;
@@ -10581,9 +10581,9 @@ var require_LinkifyMultiple = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/MailgunDistribution.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/MailgunDistribution.js
 var require_MailgunDistribution = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/MailgunDistribution.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/MailgunDistribution.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.MailgunDistributionToJSON = exports.MailgunDistributionFromJSONTyped = exports.MailgunDistributionFromJSON = void 0;
@@ -10619,9 +10619,9 @@ var require_MailgunDistribution = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/MailgunMetadata.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/MailgunMetadata.js
 var require_MailgunMetadata = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/MailgunMetadata.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/MailgunMetadata.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.MailgunMetadataToJSON = exports.MailgunMetadataFromJSONTyped = exports.MailgunMetadataFromJSON = void 0;
@@ -10657,9 +10657,9 @@ var require_MailgunMetadata = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/MechanismEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/MechanismEnum.js
 var require_MechanismEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/MechanismEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/MechanismEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.MechanismEnumToJSON = exports.MechanismEnumFromJSONTyped = exports.MechanismEnumFromJSON = exports.MechanismEnum = void 0;
@@ -10686,9 +10686,9 @@ var require_MechanismEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Model.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Model.js
 var require_Model = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Model.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Model.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ModelToJSON = exports.ModelFromJSONTyped = exports.ModelFromJSON = void 0;
@@ -10760,9 +10760,9 @@ var require_Model = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ModelDownloadProgress.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ModelDownloadProgress.js
 var require_ModelDownloadProgress = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ModelDownloadProgress.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ModelDownloadProgress.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ModelDownloadProgressToJSON = exports.ModelDownloadProgressFromJSONTyped = exports.ModelDownloadProgressFromJSON = void 0;
@@ -10798,9 +10798,9 @@ var require_ModelDownloadProgress = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ModelDownloadProgressStatusEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ModelDownloadProgressStatusEnum.js
 var require_ModelDownloadProgressStatusEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ModelDownloadProgressStatusEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ModelDownloadProgressStatusEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ModelDownloadProgressStatusEnumToJSON = exports.ModelDownloadProgressStatusEnumFromJSONTyped = exports.ModelDownloadProgressStatusEnumFromJSON = exports.ModelDownloadProgressStatusEnum = void 0;
@@ -10827,9 +10827,9 @@ var require_ModelDownloadProgressStatusEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ModelFoundationEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ModelFoundationEnum.js
 var require_ModelFoundationEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ModelFoundationEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ModelFoundationEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ModelFoundationEnumToJSON = exports.ModelFoundationEnumFromJSONTyped = exports.ModelFoundationEnumFromJSON = exports.ModelFoundationEnum = void 0;
@@ -10927,9 +10927,9 @@ var require_ModelFoundationEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ModelTypeEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ModelTypeEnum.js
 var require_ModelTypeEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ModelTypeEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ModelTypeEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ModelTypeEnumToJSON = exports.ModelTypeEnumFromJSONTyped = exports.ModelTypeEnumFromJSON = exports.ModelTypeEnum = void 0;
@@ -10954,9 +10954,9 @@ var require_ModelTypeEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ModelUsageEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ModelUsageEnum.js
 var require_ModelUsageEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ModelUsageEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ModelUsageEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ModelUsageEnumToJSON = exports.ModelUsageEnumFromJSONTyped = exports.ModelUsageEnumFromJSON = exports.ModelUsageEnum = void 0;
@@ -10999,9 +10999,9 @@ var require_ModelUsageEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Models.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Models.js
 var require_Models = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Models.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Models.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ModelsToJSON = exports.ModelsFromJSONTyped = exports.ModelsFromJSON = void 0;
@@ -11037,9 +11037,9 @@ var require_Models = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Node.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Node.js
 var require_Node = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Node.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Node.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.NodeToJSON = exports.NodeFromJSONTyped = exports.NodeFromJSON = void 0;
@@ -11078,9 +11078,9 @@ var require_Node = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/NodeTypeEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/NodeTypeEnum.js
 var require_NodeTypeEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/NodeTypeEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/NodeTypeEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.NodeTypeEnumToJSON = exports.NodeTypeEnumFromJSONTyped = exports.NodeTypeEnumFromJSON = exports.NodeTypeEnum = void 0;
@@ -11106,9 +11106,9 @@ var require_NodeTypeEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Notification.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Notification.js
 var require_Notification = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Notification.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Notification.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.NotificationToJSON = exports.NotificationFromJSONTyped = exports.NotificationFromJSON = void 0;
@@ -11150,9 +11150,9 @@ var require_Notification = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/OAuthAccount.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/OAuthAccount.js
 var require_OAuthAccount = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/OAuthAccount.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/OAuthAccount.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.OAuthAccountToJSON = exports.OAuthAccountFromJSONTyped = exports.OAuthAccountFromJSON = void 0;
@@ -11200,9 +11200,9 @@ var require_OAuthAccount = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/OAuthGroup.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/OAuthGroup.js
 var require_OAuthGroup = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/OAuthGroup.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/OAuthGroup.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.OAuthGroupToJSON = exports.OAuthGroupFromJSONTyped = exports.OAuthGroupFromJSON = void 0;
@@ -11238,9 +11238,9 @@ var require_OAuthGroup = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/OAuthToken.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/OAuthToken.js
 var require_OAuthToken = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/OAuthToken.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/OAuthToken.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.OAuthTokenToJSON = exports.OAuthTokenFromJSONTyped = exports.OAuthTokenFromJSON = exports.OAuthTokenTokenTypeEnum = void 0;
@@ -11290,9 +11290,9 @@ var require_OAuthToken = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/OCRAnalyses.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/OCRAnalyses.js
 var require_OCRAnalyses = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/OCRAnalyses.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/OCRAnalyses.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.OCRAnalysesToJSON = exports.OCRAnalysesFromJSONTyped = exports.OCRAnalysesFromJSON = void 0;
@@ -11328,9 +11328,9 @@ var require_OCRAnalyses = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/OCRAnalysis.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/OCRAnalysis.js
 var require_OCRAnalysis = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/OCRAnalysis.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/OCRAnalysis.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.OCRAnalysisToJSON = exports.OCRAnalysisFromJSONTyped = exports.OCRAnalysisFromJSON = void 0;
@@ -11374,9 +11374,9 @@ var require_OCRAnalysis = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/OSHealth.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/OSHealth.js
 var require_OSHealth = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/OSHealth.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/OSHealth.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.OSHealthToJSON = exports.OSHealthFromJSONTyped = exports.OSHealthFromJSON = void 0;
@@ -11414,9 +11414,9 @@ var require_OSHealth = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/OrderedMetrics.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/OrderedMetrics.js
 var require_OrderedMetrics = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/OrderedMetrics.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/OrderedMetrics.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.OrderedMetricsToJSON = exports.OrderedMetricsFromJSONTyped = exports.OrderedMetricsFromJSON = void 0;
@@ -11452,9 +11452,9 @@ var require_OrderedMetrics = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/PKCE.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/PKCE.js
 var require_PKCE = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/PKCE.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/PKCE.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.PKCEToJSON = exports.PKCEFromJSONTyped = exports.PKCEFromJSON = void 0;
@@ -11500,9 +11500,9 @@ var require_PKCE = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Person.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Person.js
 var require_Person = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Person.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Person.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.PersonToJSON = exports.PersonFromJSONTyped = exports.PersonFromJSON = void 0;
@@ -11564,9 +11564,9 @@ var require_Person = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/PersonAccess.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/PersonAccess.js
 var require_PersonAccess = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/PersonAccess.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/PersonAccess.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.PersonAccessToJSON = exports.PersonAccessFromJSONTyped = exports.PersonAccessFromJSON = void 0;
@@ -11604,9 +11604,9 @@ var require_PersonAccess = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/PersonAccessScopedEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/PersonAccessScopedEnum.js
 var require_PersonAccessScopedEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/PersonAccessScopedEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/PersonAccessScopedEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.PersonAccessScopedEnumToJSON = exports.PersonAccessScopedEnumFromJSONTyped = exports.PersonAccessScopedEnumFromJSON = exports.PersonAccessScopedEnum = void 0;
@@ -11632,9 +11632,9 @@ var require_PersonAccessScopedEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/PersonBasicType.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/PersonBasicType.js
 var require_PersonBasicType = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/PersonBasicType.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/PersonBasicType.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.PersonBasicTypeToJSON = exports.PersonBasicTypeFromJSONTyped = exports.PersonBasicTypeFromJSON = void 0;
@@ -11682,9 +11682,9 @@ var require_PersonBasicType = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/PersonModel.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/PersonModel.js
 var require_PersonModel = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/PersonModel.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/PersonModel.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.PersonModelToJSON = exports.PersonModelFromJSONTyped = exports.PersonModelFromJSON = void 0;
@@ -11724,9 +11724,9 @@ var require_PersonModel = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/PersonType.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/PersonType.js
 var require_PersonType = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/PersonType.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/PersonType.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.PersonTypeToJSON = exports.PersonTypeFromJSONTyped = exports.PersonTypeFromJSON = void 0;
@@ -11764,9 +11764,9 @@ var require_PersonType = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Persons.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Persons.js
 var require_Persons = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Persons.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Persons.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.PersonsToJSON = exports.PersonsFromJSONTyped = exports.PersonsFromJSON = void 0;
@@ -11806,9 +11806,9 @@ var require_Persons = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/PlatformEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/PlatformEnum.js
 var require_PlatformEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/PlatformEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/PlatformEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.PlatformEnumToJSON = exports.PlatformEnumFromJSONTyped = exports.PlatformEnumFromJSON = exports.PlatformEnum = void 0;
@@ -11838,9 +11838,9 @@ var require_PlatformEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Preview.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Preview.js
 var require_Preview = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Preview.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Preview.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.PreviewToJSON = exports.PreviewFromJSONTyped = exports.PreviewFromJSON = void 0;
@@ -11878,9 +11878,9 @@ var require_Preview = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/PrivacyEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/PrivacyEnum.js
 var require_PrivacyEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/PrivacyEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/PrivacyEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.PrivacyEnumToJSON = exports.PrivacyEnumFromJSONTyped = exports.PrivacyEnumFromJSON = exports.PrivacyEnum = void 0;
@@ -11905,9 +11905,9 @@ var require_PrivacyEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/PseudoAssets.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/PseudoAssets.js
 var require_PseudoAssets = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/PseudoAssets.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/PseudoAssets.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.PseudoAssetsToJSON = exports.PseudoAssetsFromJSONTyped = exports.PseudoAssetsFromJSON = void 0;
@@ -11943,9 +11943,9 @@ var require_PseudoAssets = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTConversation.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTConversation.js
 var require_QGPTConversation = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTConversation.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTConversation.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTConversationToJSON = exports.QGPTConversationFromJSONTyped = exports.QGPTConversationFromJSON = void 0;
@@ -11981,9 +11981,9 @@ var require_QGPTConversation = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTConversationMessage.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTConversationMessage.js
 var require_QGPTConversationMessage = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTConversationMessage.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTConversationMessage.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTConversationMessageToJSON = exports.QGPTConversationMessageFromJSONTyped = exports.QGPTConversationMessageFromJSON = void 0;
@@ -12023,9 +12023,9 @@ var require_QGPTConversationMessage = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTConversationMessageRoleEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTConversationMessageRoleEnum.js
 var require_QGPTConversationMessageRoleEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTConversationMessageRoleEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTConversationMessageRoleEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTConversationMessageRoleEnumToJSON = exports.QGPTConversationMessageRoleEnumFromJSONTyped = exports.QGPTConversationMessageRoleEnumFromJSON = exports.QGPTConversationMessageRoleEnum = void 0;
@@ -12050,9 +12050,9 @@ var require_QGPTConversationMessageRoleEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTHintsInput.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTHintsInput.js
 var require_QGPTHintsInput = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTHintsInput.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTHintsInput.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTHintsInputToJSON = exports.QGPTHintsInputFromJSONTyped = exports.QGPTHintsInputFromJSON = void 0;
@@ -12094,9 +12094,9 @@ var require_QGPTHintsInput = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTPersonsRelatedInput.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTPersonsRelatedInput.js
 var require_QGPTPersonsRelatedInput = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTPersonsRelatedInput.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTPersonsRelatedInput.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTPersonsRelatedInputToJSON = exports.QGPTPersonsRelatedInputFromJSONTyped = exports.QGPTPersonsRelatedInputFromJSON = void 0;
@@ -12138,9 +12138,9 @@ var require_QGPTPersonsRelatedInput = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTPersonsRelatedOutput.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTPersonsRelatedOutput.js
 var require_QGPTPersonsRelatedOutput = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTPersonsRelatedOutput.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTPersonsRelatedOutput.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTPersonsRelatedOutputToJSON = exports.QGPTPersonsRelatedOutputFromJSONTyped = exports.QGPTPersonsRelatedOutputFromJSON = void 0;
@@ -12178,9 +12178,9 @@ var require_QGPTPersonsRelatedOutput = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTQuestionAnswer.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTQuestionAnswer.js
 var require_QGPTQuestionAnswer = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTQuestionAnswer.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTQuestionAnswer.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTQuestionAnswerToJSON = exports.QGPTQuestionAnswerFromJSONTyped = exports.QGPTQuestionAnswerFromJSON = void 0;
@@ -12218,9 +12218,9 @@ var require_QGPTQuestionAnswer = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTQuestionAnswers.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTQuestionAnswers.js
 var require_QGPTQuestionAnswers = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTQuestionAnswers.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTQuestionAnswers.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTQuestionAnswersToJSON = exports.QGPTQuestionAnswersFromJSONTyped = exports.QGPTQuestionAnswersFromJSON = void 0;
@@ -12256,9 +12256,9 @@ var require_QGPTQuestionAnswers = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTQuestionInput.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTQuestionInput.js
 var require_QGPTQuestionInput = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTQuestionInput.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTQuestionInput.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTQuestionInputToJSON = exports.QGPTQuestionInputFromJSONTyped = exports.QGPTQuestionInputFromJSON = void 0;
@@ -12302,9 +12302,9 @@ var require_QGPTQuestionInput = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTQuestionOutput.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTQuestionOutput.js
 var require_QGPTQuestionOutput = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTQuestionOutput.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTQuestionOutput.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTQuestionOutputToJSON = exports.QGPTQuestionOutputFromJSONTyped = exports.QGPTQuestionOutputFromJSON = void 0;
@@ -12340,9 +12340,9 @@ var require_QGPTQuestionOutput = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTRelevanceInput.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTRelevanceInput.js
 var require_QGPTRelevanceInput = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTRelevanceInput.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTRelevanceInput.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTRelevanceInputToJSON = exports.QGPTRelevanceInputFromJSONTyped = exports.QGPTRelevanceInputFromJSON = void 0;
@@ -12392,9 +12392,9 @@ var require_QGPTRelevanceInput = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTRelevanceInputOptions.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTRelevanceInputOptions.js
 var require_QGPTRelevanceInputOptions = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTRelevanceInputOptions.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTRelevanceInputOptions.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTRelevanceInputOptionsToJSON = exports.QGPTRelevanceInputOptionsFromJSONTyped = exports.QGPTRelevanceInputOptionsFromJSON = void 0;
@@ -12432,9 +12432,9 @@ var require_QGPTRelevanceInputOptions = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTRelevanceOutput.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTRelevanceOutput.js
 var require_QGPTRelevanceOutput = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTRelevanceOutput.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTRelevanceOutput.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTRelevanceOutputToJSON = exports.QGPTRelevanceOutputFromJSONTyped = exports.QGPTRelevanceOutputFromJSON = void 0;
@@ -12472,9 +12472,9 @@ var require_QGPTRelevanceOutput = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTRepromptInput.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTRepromptInput.js
 var require_QGPTRepromptInput = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTRepromptInput.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTRepromptInput.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTRepromptInputToJSON = exports.QGPTRepromptInputFromJSONTyped = exports.QGPTRepromptInputFromJSON = void 0;
@@ -12516,9 +12516,9 @@ var require_QGPTRepromptInput = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTRepromptOutput.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTRepromptOutput.js
 var require_QGPTRepromptOutput = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTRepromptOutput.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTRepromptOutput.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTRepromptOutputToJSON = exports.QGPTRepromptOutputFromJSONTyped = exports.QGPTRepromptOutputFromJSON = void 0;
@@ -12554,9 +12554,9 @@ var require_QGPTRepromptOutput = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTStreamEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTStreamEnum.js
 var require_QGPTStreamEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTStreamEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTStreamEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTStreamEnumToJSON = exports.QGPTStreamEnumFromJSONTyped = exports.QGPTStreamEnumFromJSON = exports.QGPTStreamEnum = void 0;
@@ -12586,9 +12586,9 @@ var require_QGPTStreamEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTStreamInput.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTStreamInput.js
 var require_QGPTStreamInput = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTStreamInput.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTStreamInput.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTStreamInputToJSON = exports.QGPTStreamInputFromJSONTyped = exports.QGPTStreamInputFromJSON = void 0;
@@ -12630,9 +12630,9 @@ var require_QGPTStreamInput = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTStreamOutput.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTStreamOutput.js
 var require_QGPTStreamOutput = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/QGPTStreamOutput.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/QGPTStreamOutput.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QGPTStreamOutputToJSON = exports.QGPTStreamOutputFromJSONTyped = exports.QGPTStreamOutputFromJSON = void 0;
@@ -12674,9 +12674,9 @@ var require_QGPTStreamOutput = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Reaction.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Reaction.js
 var require_Reaction = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Reaction.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Reaction.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReactionToJSON = exports.ReactionFromJSONTyped = exports.ReactionFromJSON = void 0;
@@ -12716,9 +12716,9 @@ var require_Reaction = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Recipients.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Recipients.js
 var require_Recipients = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Recipients.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Recipients.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.RecipientsToJSON = exports.RecipientsFromJSONTyped = exports.RecipientsFromJSON = void 0;
@@ -12754,9 +12754,9 @@ var require_Recipients = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedActivity.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedActivity.js
 var require_ReferencedActivity = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedActivity.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedActivity.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedActivityToJSON = exports.ReferencedActivityFromJSONTyped = exports.ReferencedActivityFromJSON = void 0;
@@ -12794,9 +12794,9 @@ var require_ReferencedActivity = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedAnchor.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedAnchor.js
 var require_ReferencedAnchor = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedAnchor.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedAnchor.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedAnchorToJSON = exports.ReferencedAnchorFromJSONTyped = exports.ReferencedAnchorFromJSON = void 0;
@@ -12834,9 +12834,9 @@ var require_ReferencedAnchor = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedAnchorPoint.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedAnchorPoint.js
 var require_ReferencedAnchorPoint = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedAnchorPoint.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedAnchorPoint.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedAnchorPointToJSON = exports.ReferencedAnchorPointFromJSONTyped = exports.ReferencedAnchorPointFromJSON = void 0;
@@ -12874,9 +12874,9 @@ var require_ReferencedAnchorPoint = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedAnnotation.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedAnnotation.js
 var require_ReferencedAnnotation = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedAnnotation.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedAnnotation.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedAnnotationToJSON = exports.ReferencedAnnotationFromJSONTyped = exports.ReferencedAnnotationFromJSON = void 0;
@@ -12914,9 +12914,9 @@ var require_ReferencedAnnotation = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedAsset.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedAsset.js
 var require_ReferencedAsset = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedAsset.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedAsset.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedAssetToJSON = exports.ReferencedAssetFromJSONTyped = exports.ReferencedAssetFromJSON = void 0;
@@ -12954,9 +12954,9 @@ var require_ReferencedAsset = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedConversation.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedConversation.js
 var require_ReferencedConversation = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedConversation.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedConversation.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedConversationToJSON = exports.ReferencedConversationFromJSONTyped = exports.ReferencedConversationFromJSON = void 0;
@@ -12994,9 +12994,9 @@ var require_ReferencedConversation = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedConversationMessage.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedConversationMessage.js
 var require_ReferencedConversationMessage = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedConversationMessage.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedConversationMessage.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedConversationMessageToJSON = exports.ReferencedConversationMessageFromJSONTyped = exports.ReferencedConversationMessageFromJSON = void 0;
@@ -13034,9 +13034,9 @@ var require_ReferencedConversationMessage = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedDistribution.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedDistribution.js
 var require_ReferencedDistribution = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedDistribution.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedDistribution.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedDistributionToJSON = exports.ReferencedDistributionFromJSONTyped = exports.ReferencedDistributionFromJSON = void 0;
@@ -13074,9 +13074,9 @@ var require_ReferencedDistribution = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedFormat.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedFormat.js
 var require_ReferencedFormat = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedFormat.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedFormat.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedFormatToJSON = exports.ReferencedFormatFromJSONTyped = exports.ReferencedFormatFromJSON = void 0;
@@ -13114,9 +13114,9 @@ var require_ReferencedFormat = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedHint.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedHint.js
 var require_ReferencedHint = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedHint.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedHint.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedHintToJSON = exports.ReferencedHintFromJSONTyped = exports.ReferencedHintFromJSON = void 0;
@@ -13154,19 +13154,19 @@ var require_ReferencedHint = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedModel.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedModel.js
 var require_ReferencedModel = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedModel.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedModel.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedModelToJSON = exports.ReferencedModelFromJSONTyped = exports.ReferencedModelFromJSON = void 0;
     var runtime_1 = require_runtime();
     var index_1 = require_models();
     function ReferencedModelFromJSON4(json) {
-      return ReferencedModelFromJSONTyped26(json, false);
+      return ReferencedModelFromJSONTyped28(json, false);
     }
     exports.ReferencedModelFromJSON = ReferencedModelFromJSON4;
-    function ReferencedModelFromJSONTyped26(json, ignoreDiscriminator) {
+    function ReferencedModelFromJSONTyped28(json, ignoreDiscriminator) {
       if (json === void 0 || json === null) {
         return json;
       }
@@ -13175,7 +13175,7 @@ var require_ReferencedModel = __commonJS({
         "id": json["id"]
       };
     }
-    exports.ReferencedModelFromJSONTyped = ReferencedModelFromJSONTyped26;
+    exports.ReferencedModelFromJSONTyped = ReferencedModelFromJSONTyped28;
     function ReferencedModelToJSON4(value) {
       if (value === void 0) {
         return void 0;
@@ -13192,9 +13192,9 @@ var require_ReferencedModel = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedPerson.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedPerson.js
 var require_ReferencedPerson = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedPerson.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedPerson.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedPersonToJSON = exports.ReferencedPersonFromJSONTyped = exports.ReferencedPersonFromJSON = void 0;
@@ -13232,9 +13232,9 @@ var require_ReferencedPerson = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedSensitive.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedSensitive.js
 var require_ReferencedSensitive = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedSensitive.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedSensitive.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedSensitiveToJSON = exports.ReferencedSensitiveFromJSONTyped = exports.ReferencedSensitiveFromJSON = void 0;
@@ -13272,9 +13272,9 @@ var require_ReferencedSensitive = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedShare.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedShare.js
 var require_ReferencedShare = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedShare.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedShare.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedShareToJSON = exports.ReferencedShareFromJSONTyped = exports.ReferencedShareFromJSON = void 0;
@@ -13312,9 +13312,9 @@ var require_ReferencedShare = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedTag.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedTag.js
 var require_ReferencedTag = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedTag.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedTag.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedTagToJSON = exports.ReferencedTagFromJSONTyped = exports.ReferencedTagFromJSON = void 0;
@@ -13352,9 +13352,9 @@ var require_ReferencedTag = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedUser.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedUser.js
 var require_ReferencedUser = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedUser.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedUser.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedUserToJSON = exports.ReferencedUserFromJSONTyped = exports.ReferencedUserFromJSON = void 0;
@@ -13392,9 +13392,9 @@ var require_ReferencedUser = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedWebsite.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedWebsite.js
 var require_ReferencedWebsite = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ReferencedWebsite.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReferencedWebsite.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReferencedWebsiteToJSON = exports.ReferencedWebsiteFromJSONTyped = exports.ReferencedWebsiteFromJSON = void 0;
@@ -13432,9 +13432,9 @@ var require_ReferencedWebsite = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Relationship.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Relationship.js
 var require_Relationship = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Relationship.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Relationship.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.RelationshipToJSON = exports.RelationshipFromJSONTyped = exports.RelationshipFromJSON = void 0;
@@ -13480,9 +13480,9 @@ var require_Relationship = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Relationships.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Relationships.js
 var require_Relationships = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Relationships.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Relationships.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.RelationshipsToJSON = exports.RelationshipsFromJSONTyped = exports.RelationshipsFromJSON = void 0;
@@ -13515,9 +13515,9 @@ var require_Relationships = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/RelevantQGPTSeed.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/RelevantQGPTSeed.js
 var require_RelevantQGPTSeed = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/RelevantQGPTSeed.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/RelevantQGPTSeed.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.RelevantQGPTSeedToJSON = exports.RelevantQGPTSeedFromJSONTyped = exports.RelevantQGPTSeedFromJSON = void 0;
@@ -13559,9 +13559,9 @@ var require_RelevantQGPTSeed = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/RelevantQGPTSeeds.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/RelevantQGPTSeeds.js
 var require_RelevantQGPTSeeds = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/RelevantQGPTSeeds.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/RelevantQGPTSeeds.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.RelevantQGPTSeedsToJSON = exports.RelevantQGPTSeedsFromJSONTyped = exports.RelevantQGPTSeedsFromJSON = void 0;
@@ -13597,9 +13597,9 @@ var require_RelevantQGPTSeeds = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ResultedPKCE.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ResultedPKCE.js
 var require_ResultedPKCE = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ResultedPKCE.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ResultedPKCE.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ResultedPKCEToJSON = exports.ResultedPKCEFromJSONTyped = exports.ResultedPKCEFromJSON = void 0;
@@ -13637,9 +13637,9 @@ var require_ResultedPKCE = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ReturnedUserProfile.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReturnedUserProfile.js
 var require_ReturnedUserProfile = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ReturnedUserProfile.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReturnedUserProfile.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReturnedUserProfileToJSON = exports.ReturnedUserProfileFromJSONTyped = exports.ReturnedUserProfileFromJSON = void 0;
@@ -13675,9 +13675,9 @@ var require_ReturnedUserProfile = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ReuseReaction.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReuseReaction.js
 var require_ReuseReaction = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ReuseReaction.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReuseReaction.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReuseReactionToJSON = exports.ReuseReactionFromJSONTyped = exports.ReuseReactionFromJSON = void 0;
@@ -13713,9 +13713,9 @@ var require_ReuseReaction = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/ReuseSuggestion.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReuseSuggestion.js
 var require_ReuseSuggestion = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/ReuseSuggestion.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/ReuseSuggestion.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ReuseSuggestionToJSON = exports.ReuseSuggestionFromJSONTyped = exports.ReuseSuggestionFromJSON = void 0;
@@ -13753,9 +13753,9 @@ var require_ReuseSuggestion = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/RevokedPKCE.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/RevokedPKCE.js
 var require_RevokedPKCE = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/RevokedPKCE.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/RevokedPKCE.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.RevokedPKCEToJSON = exports.RevokedPKCEFromJSONTyped = exports.RevokedPKCEFromJSON = void 0;
@@ -13793,9 +13793,9 @@ var require_RevokedPKCE = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Role.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Role.js
 var require_Role = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Role.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Role.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.RoleToJSON = exports.RoleFromJSONTyped = exports.RoleFromJSON = exports.Role = void 0;
@@ -13821,9 +13821,9 @@ var require_Role = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SaveSuggestion.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SaveSuggestion.js
 var require_SaveSuggestion = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SaveSuggestion.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SaveSuggestion.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SaveSuggestionToJSON = exports.SaveSuggestionFromJSONTyped = exports.SaveSuggestionFromJSON = void 0;
@@ -13859,9 +13859,9 @@ var require_SaveSuggestion = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Score.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Score.js
 var require_Score = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Score.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Score.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ScoreToJSON = exports.ScoreFromJSONTyped = exports.ScoreFromJSON = void 0;
@@ -13907,9 +13907,9 @@ var require_Score = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SearchedAsset.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SearchedAsset.js
 var require_SearchedAsset = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SearchedAsset.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SearchedAsset.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SearchedAssetToJSON = exports.SearchedAssetFromJSONTyped = exports.SearchedAssetFromJSON = void 0;
@@ -13955,9 +13955,9 @@ var require_SearchedAsset = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SearchedAssets.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SearchedAssets.js
 var require_SearchedAssets = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SearchedAssets.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SearchedAssets.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SearchedAssetsToJSON = exports.SearchedAssetsFromJSONTyped = exports.SearchedAssetsFromJSON = void 0;
@@ -13997,9 +13997,9 @@ var require_SearchedAssets = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SearchedMatchEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SearchedMatchEnum.js
 var require_SearchedMatchEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SearchedMatchEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SearchedMatchEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SearchedMatchEnumToJSON = exports.SearchedMatchEnumFromJSONTyped = exports.SearchedMatchEnumFromJSON = exports.SearchedMatchEnum = void 0;
@@ -14030,9 +14030,9 @@ var require_SearchedMatchEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Seed.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Seed.js
 var require_Seed = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Seed.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Seed.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeedToJSON = exports.SeedFromJSONTyped = exports.SeedFromJSON = exports.SeedTypeEnum = void 0;
@@ -14075,9 +14075,9 @@ var require_Seed = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededAccessor.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededAccessor.js
 var require_SeededAccessor = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededAccessor.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededAccessor.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededAccessorToJSON = exports.SeededAccessorFromJSONTyped = exports.SeededAccessorFromJSON = void 0;
@@ -14117,9 +14117,9 @@ var require_SeededAccessor = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededActivity.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededActivity.js
 var require_SeededActivity = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededActivity.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededActivity.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededActivityToJSON = exports.SeededActivityFromJSONTyped = exports.SeededActivityFromJSON = void 0;
@@ -14163,9 +14163,9 @@ var require_SeededActivity = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededAnchor.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededAnchor.js
 var require_SeededAnchor = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededAnchor.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededAnchor.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededAnchorToJSON = exports.SeededAnchorFromJSONTyped = exports.SeededAnchorFromJSON = void 0;
@@ -14215,9 +14215,9 @@ var require_SeededAnchor = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededAnchorPoint.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededAnchorPoint.js
 var require_SeededAnchorPoint = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededAnchorPoint.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededAnchorPoint.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededAnchorPointToJSON = exports.SeededAnchorPointFromJSONTyped = exports.SeededAnchorPointFromJSON = void 0;
@@ -14261,9 +14261,9 @@ var require_SeededAnchorPoint = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededAnnotation.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededAnnotation.js
 var require_SeededAnnotation = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededAnnotation.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededAnnotation.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededAnnotationToJSON = exports.SeededAnnotationFromJSONTyped = exports.SeededAnnotationFromJSON = void 0;
@@ -14319,9 +14319,9 @@ var require_SeededAnnotation = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededAsset.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededAsset.js
 var require_SeededAsset = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededAsset.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededAsset.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededAssetToJSON = exports.SeededAssetFromJSONTyped = exports.SeededAssetFromJSON = void 0;
@@ -14367,9 +14367,9 @@ var require_SeededAsset = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededAssetMetadata.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededAssetMetadata.js
 var require_SeededAssetMetadata = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededAssetMetadata.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededAssetMetadata.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededAssetMetadataToJSON = exports.SeededAssetMetadataFromJSONTyped = exports.SeededAssetMetadataFromJSON = void 0;
@@ -14421,9 +14421,9 @@ var require_SeededAssetMetadata = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededAssetSensitive.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededAssetSensitive.js
 var require_SeededAssetSensitive = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededAssetSensitive.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededAssetSensitive.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededAssetSensitiveToJSON = exports.SeededAssetSensitiveFromJSONTyped = exports.SeededAssetSensitiveFromJSON = void 0;
@@ -14471,9 +14471,9 @@ var require_SeededAssetSensitive = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededAssetTag.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededAssetTag.js
 var require_SeededAssetTag = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededAssetTag.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededAssetTag.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededAssetTagToJSON = exports.SeededAssetTagFromJSONTyped = exports.SeededAssetTagFromJSON = void 0;
@@ -14513,9 +14513,9 @@ var require_SeededAssetTag = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededAssetTags.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededAssetTags.js
 var require_SeededAssetTags = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededAssetTags.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededAssetTags.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededAssetTagsToJSON = exports.SeededAssetTagsFromJSONTyped = exports.SeededAssetTagsFromJSON = void 0;
@@ -14548,9 +14548,9 @@ var require_SeededAssetTags = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededAssetWebsite.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededAssetWebsite.js
 var require_SeededAssetWebsite = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededAssetWebsite.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededAssetWebsite.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededAssetWebsiteToJSON = exports.SeededAssetWebsiteFromJSONTyped = exports.SeededAssetWebsiteFromJSON = void 0;
@@ -14590,9 +14590,9 @@ var require_SeededAssetWebsite = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededAssetsRecommendation.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededAssetsRecommendation.js
 var require_SeededAssetsRecommendation = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededAssetsRecommendation.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededAssetsRecommendation.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededAssetsRecommendationToJSON = exports.SeededAssetsRecommendationFromJSONTyped = exports.SeededAssetsRecommendationFromJSON = void 0;
@@ -14630,9 +14630,9 @@ var require_SeededAssetsRecommendation = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededClassification.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededClassification.js
 var require_SeededClassification = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededClassification.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededClassification.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededClassificationToJSON = exports.SeededClassificationFromJSONTyped = exports.SeededClassificationFromJSON = void 0;
@@ -14672,9 +14672,9 @@ var require_SeededClassification = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededConnectorAsset.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededConnectorAsset.js
 var require_SeededConnectorAsset = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededConnectorAsset.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededConnectorAsset.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededConnectorAssetToJSON = exports.SeededConnectorAssetFromJSONTyped = exports.SeededConnectorAssetFromJSON = void 0;
@@ -14712,9 +14712,9 @@ var require_SeededConnectorAsset = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededConnectorConnection.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededConnectorConnection.js
 var require_SeededConnectorConnection = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededConnectorConnection.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededConnectorConnection.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededConnectorConnectionToJSON = exports.SeededConnectorConnectionFromJSONTyped = exports.SeededConnectorConnectionFromJSON = void 0;
@@ -14750,9 +14750,9 @@ var require_SeededConnectorConnection = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededConnectorCreation.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededConnectorCreation.js
 var require_SeededConnectorCreation = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededConnectorCreation.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededConnectorCreation.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededConnectorCreationToJSON = exports.SeededConnectorCreationFromJSONTyped = exports.SeededConnectorCreationFromJSON = void 0;
@@ -14788,9 +14788,9 @@ var require_SeededConnectorCreation = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededConnectorTracking.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededConnectorTracking.js
 var require_SeededConnectorTracking = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededConnectorTracking.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededConnectorTracking.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededConnectorTrackingToJSON = exports.SeededConnectorTrackingFromJSONTyped = exports.SeededConnectorTrackingFromJSON = void 0;
@@ -14840,9 +14840,9 @@ var require_SeededConnectorTracking = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededConversation.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededConversation.js
 var require_SeededConversation = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededConversation.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededConversation.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededConversationToJSON = exports.SeededConversationFromJSONTyped = exports.SeededConversationFromJSON = void 0;
@@ -14894,9 +14894,9 @@ var require_SeededConversation = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededConversationMessage.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededConversationMessage.js
 var require_SeededConversationMessage = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededConversationMessage.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededConversationMessage.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededConversationMessageToJSON = exports.SeededConversationMessageFromJSONTyped = exports.SeededConversationMessageFromJSON = void 0;
@@ -14942,9 +14942,9 @@ var require_SeededConversationMessage = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededDiscoverableAsset.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededDiscoverableAsset.js
 var require_SeededDiscoverableAsset = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededDiscoverableAsset.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededDiscoverableAsset.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededDiscoverableAssetToJSON = exports.SeededDiscoverableAssetFromJSONTyped = exports.SeededDiscoverableAssetFromJSON = void 0;
@@ -14986,9 +14986,9 @@ var require_SeededDiscoverableAsset = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededDiscoverableAssets.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededDiscoverableAssets.js
 var require_SeededDiscoverableAssets = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededDiscoverableAssets.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededDiscoverableAssets.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededDiscoverableAssetsToJSON = exports.SeededDiscoverableAssetsFromJSONTyped = exports.SeededDiscoverableAssetsFromJSON = void 0;
@@ -15028,9 +15028,9 @@ var require_SeededDiscoverableAssets = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededDiscoverableHtmlWebpage.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededDiscoverableHtmlWebpage.js
 var require_SeededDiscoverableHtmlWebpage = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededDiscoverableHtmlWebpage.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededDiscoverableHtmlWebpage.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededDiscoverableHtmlWebpageToJSON = exports.SeededDiscoverableHtmlWebpageFromJSONTyped = exports.SeededDiscoverableHtmlWebpageFromJSON = void 0;
@@ -15068,9 +15068,9 @@ var require_SeededDiscoverableHtmlWebpage = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededDiscoverableHtmlWebpages.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededDiscoverableHtmlWebpages.js
 var require_SeededDiscoverableHtmlWebpages = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededDiscoverableHtmlWebpages.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededDiscoverableHtmlWebpages.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededDiscoverableHtmlWebpagesToJSON = exports.SeededDiscoverableHtmlWebpagesFromJSONTyped = exports.SeededDiscoverableHtmlWebpagesFromJSON = void 0;
@@ -15108,9 +15108,9 @@ var require_SeededDiscoverableHtmlWebpages = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededDiscoverableRelatedTag.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededDiscoverableRelatedTag.js
 var require_SeededDiscoverableRelatedTag = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededDiscoverableRelatedTag.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededDiscoverableRelatedTag.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededDiscoverableRelatedTagToJSON = exports.SeededDiscoverableRelatedTagFromJSONTyped = exports.SeededDiscoverableRelatedTagFromJSON = void 0;
@@ -15154,9 +15154,9 @@ var require_SeededDiscoverableRelatedTag = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededDiscoverableRelatedTags.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededDiscoverableRelatedTags.js
 var require_SeededDiscoverableRelatedTags = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededDiscoverableRelatedTags.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededDiscoverableRelatedTags.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededDiscoverableRelatedTagsToJSON = exports.SeededDiscoverableRelatedTagsFromJSONTyped = exports.SeededDiscoverableRelatedTagsFromJSON = void 0;
@@ -15194,9 +15194,9 @@ var require_SeededDiscoverableRelatedTags = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededDiscoverableSensitive.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededDiscoverableSensitive.js
 var require_SeededDiscoverableSensitive = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededDiscoverableSensitive.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededDiscoverableSensitive.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededDiscoverableSensitiveToJSON = exports.SeededDiscoverableSensitiveFromJSONTyped = exports.SeededDiscoverableSensitiveFromJSON = void 0;
@@ -15246,9 +15246,9 @@ var require_SeededDiscoverableSensitive = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededDiscoverableSensitives.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededDiscoverableSensitives.js
 var require_SeededDiscoverableSensitives = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededDiscoverableSensitives.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededDiscoverableSensitives.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededDiscoverableSensitivesToJSON = exports.SeededDiscoverableSensitivesFromJSONTyped = exports.SeededDiscoverableSensitivesFromJSON = void 0;
@@ -15286,9 +15286,9 @@ var require_SeededDiscoverableSensitives = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededDistribution.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededDistribution.js
 var require_SeededDistribution = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededDistribution.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededDistribution.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededDistributionToJSON = exports.SeededDistributionFromJSONTyped = exports.SeededDistributionFromJSON = void 0;
@@ -15326,9 +15326,9 @@ var require_SeededDistribution = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededDistributions.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededDistributions.js
 var require_SeededDistributions = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededDistributions.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededDistributions.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededDistributionsToJSON = exports.SeededDistributionsFromJSONTyped = exports.SeededDistributionsFromJSON = void 0;
@@ -15364,9 +15364,9 @@ var require_SeededDistributions = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededExternalProvider.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededExternalProvider.js
 var require_SeededExternalProvider = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededExternalProvider.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededExternalProvider.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededExternalProviderToJSON = exports.SeededExternalProviderFromJSONTyped = exports.SeededExternalProviderFromJSON = void 0;
@@ -15399,9 +15399,9 @@ var require_SeededExternalProvider = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededFile.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededFile.js
 var require_SeededFile = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededFile.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededFile.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededFileToJSON = exports.SeededFileFromJSONTyped = exports.SeededFileFromJSON = void 0;
@@ -15441,9 +15441,9 @@ var require_SeededFile = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededFormat.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededFormat.js
 var require_SeededFormat = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededFormat.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededFormat.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededFormatToJSON = exports.SeededFormatFromJSONTyped = exports.SeededFormatFromJSON = void 0;
@@ -15483,9 +15483,9 @@ var require_SeededFormat = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededFragment.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededFragment.js
 var require_SeededFragment = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededFragment.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededFragment.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededFragmentToJSON = exports.SeededFragmentFromJSONTyped = exports.SeededFragmentFromJSON = void 0;
@@ -15525,9 +15525,9 @@ var require_SeededFragment = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededGitHubDistribution.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededGitHubDistribution.js
 var require_SeededGitHubDistribution = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededGitHubDistribution.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededGitHubDistribution.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededGitHubDistributionToJSON = exports.SeededGitHubDistributionFromJSONTyped = exports.SeededGitHubDistributionFromJSON = void 0;
@@ -15563,9 +15563,9 @@ var require_SeededGitHubDistribution = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededGitHubGistDistribution.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededGitHubGistDistribution.js
 var require_SeededGitHubGistDistribution = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededGitHubGistDistribution.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededGitHubGistDistribution.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededGitHubGistDistributionToJSON = exports.SeededGitHubGistDistributionFromJSONTyped = exports.SeededGitHubGistDistributionFromJSON = void 0;
@@ -15607,9 +15607,9 @@ var require_SeededGitHubGistDistribution = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededGithubGistsImport.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededGithubGistsImport.js
 var require_SeededGithubGistsImport = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededGithubGistsImport.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededGithubGistsImport.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededGithubGistsImportToJSON = exports.SeededGithubGistsImportFromJSONTyped = exports.SeededGithubGistsImportFromJSON = void 0;
@@ -15647,9 +15647,9 @@ var require_SeededGithubGistsImport = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededHint.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededHint.js
 var require_SeededHint = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededHint.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededHint.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededHintToJSON = exports.SeededHintFromJSONTyped = exports.SeededHintFromJSON = void 0;
@@ -15693,9 +15693,9 @@ var require_SeededHint = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededMacOSAsset.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededMacOSAsset.js
 var require_SeededMacOSAsset = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededMacOSAsset.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededMacOSAsset.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededMacOSAssetToJSON = exports.SeededMacOSAssetFromJSONTyped = exports.SeededMacOSAssetFromJSON = void 0;
@@ -15733,19 +15733,19 @@ var require_SeededMacOSAsset = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededModel.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededModel.js
 var require_SeededModel = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededModel.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededModel.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededModelToJSON = exports.SeededModelFromJSONTyped = exports.SeededModelFromJSON = void 0;
     var runtime_1 = require_runtime();
     var index_1 = require_models();
-    function SeededModelFromJSON2(json) {
-      return SeededModelFromJSONTyped(json, false);
+    function SeededModelFromJSON4(json) {
+      return SeededModelFromJSONTyped3(json, false);
     }
-    exports.SeededModelFromJSON = SeededModelFromJSON2;
-    function SeededModelFromJSONTyped(json, ignoreDiscriminator) {
+    exports.SeededModelFromJSON = SeededModelFromJSON4;
+    function SeededModelFromJSONTyped3(json, ignoreDiscriminator) {
       if (json === void 0 || json === null) {
         return json;
       }
@@ -15769,8 +15769,8 @@ var require_SeededModel = __commonJS({
         "cpu": !(0, runtime_1.exists)(json, "cpu") ? void 0 : json["cpu"]
       };
     }
-    exports.SeededModelFromJSONTyped = SeededModelFromJSONTyped;
-    function SeededModelToJSON2(value) {
+    exports.SeededModelFromJSONTyped = SeededModelFromJSONTyped3;
+    function SeededModelToJSON3(value) {
       if (value === void 0) {
         return void 0;
       }
@@ -15797,13 +15797,13 @@ var require_SeededModel = __commonJS({
         "cpu": value.cpu
       };
     }
-    exports.SeededModelToJSON = SeededModelToJSON2;
+    exports.SeededModelToJSON = SeededModelToJSON3;
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededPKCE.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededPKCE.js
 var require_SeededPKCE = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededPKCE.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededPKCE.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededPKCEToJSON = exports.SeededPKCEFromJSONTyped = exports.SeededPKCEFromJSON = exports.SeededPKCEResponseModeEnum = exports.SeededPKCEScopeEnum = exports.SeededPKCEPromptEnum = exports.SeededPKCEScreenHintEnum = exports.SeededPKCECodeChallengeMethodEnum = exports.SeededPKCEResponseTypeEnum = void 0;
@@ -15902,9 +15902,9 @@ var require_SeededPKCE = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededPKCEADDITIONALPARAMETERS.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededPKCEADDITIONALPARAMETERS.js
 var require_SeededPKCEADDITIONALPARAMETERS = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededPKCEADDITIONALPARAMETERS.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededPKCEADDITIONALPARAMETERS.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededPKCEADDITIONALPARAMETERSToJSON = exports.SeededPKCEADDITIONALPARAMETERSFromJSONTyped = exports.SeededPKCEADDITIONALPARAMETERSFromJSON = exports.SeededPKCEADDITIONALPARAMETERSDisplayEnum = exports.SeededPKCEADDITIONALPARAMETERSAccessTypeEnum = void 0;
@@ -15947,9 +15947,9 @@ var require_SeededPKCEADDITIONALPARAMETERS = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededPerson.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededPerson.js
 var require_SeededPerson = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededPerson.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededPerson.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededPersonToJSON = exports.SeededPersonFromJSONTyped = exports.SeededPersonFromJSON = void 0;
@@ -15995,9 +15995,9 @@ var require_SeededPerson = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededScore.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededScore.js
 var require_SeededScore = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededScore.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededScore.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededScoreToJSON = exports.SeededScoreFromJSONTyped = exports.SeededScoreFromJSON = void 0;
@@ -16039,9 +16039,9 @@ var require_SeededScore = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededScoreIncrement.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededScoreIncrement.js
 var require_SeededScoreIncrement = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededScoreIncrement.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededScoreIncrement.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededScoreIncrementToJSON = exports.SeededScoreIncrementFromJSONTyped = exports.SeededScoreIncrementFromJSON = void 0;
@@ -16123,9 +16123,9 @@ var require_SeededScoreIncrement = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededSensitive.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededSensitive.js
 var require_SeededSensitive = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededSensitive.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededSensitive.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededSensitiveToJSON = exports.SeededSensitiveFromJSONTyped = exports.SeededSensitiveFromJSON = void 0;
@@ -16175,9 +16175,9 @@ var require_SeededSensitive = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededShare.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededShare.js
 var require_SeededShare = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededShare.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededShare.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededShareToJSON = exports.SeededShareFromJSONTyped = exports.SeededShareFromJSON = void 0;
@@ -16221,9 +16221,9 @@ var require_SeededShare = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededTag.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededTag.js
 var require_SeededTag = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededTag.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededTag.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededTagToJSON = exports.SeededTagFromJSONTyped = exports.SeededTagFromJSON = void 0;
@@ -16267,9 +16267,9 @@ var require_SeededTag = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededTrackedAdoptionEvent.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededTrackedAdoptionEvent.js
 var require_SeededTrackedAdoptionEvent = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededTrackedAdoptionEvent.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededTrackedAdoptionEvent.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededTrackedAdoptionEventToJSON = exports.SeededTrackedAdoptionEventFromJSONTyped = exports.SeededTrackedAdoptionEventFromJSON = void 0;
@@ -16305,9 +16305,9 @@ var require_SeededTrackedAdoptionEvent = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededTrackedApplication.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededTrackedApplication.js
 var require_SeededTrackedApplication = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededTrackedApplication.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededTrackedApplication.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededTrackedApplicationToJSON = exports.SeededTrackedApplicationFromJSONTyped = exports.SeededTrackedApplicationFromJSON = void 0;
@@ -16353,9 +16353,9 @@ var require_SeededTrackedApplication = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededTrackedAssetEvent.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededTrackedAssetEvent.js
 var require_SeededTrackedAssetEvent = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededTrackedAssetEvent.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededTrackedAssetEvent.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededTrackedAssetEventToJSON = exports.SeededTrackedAssetEventFromJSONTyped = exports.SeededTrackedAssetEventFromJSON = void 0;
@@ -16395,9 +16395,9 @@ var require_SeededTrackedAssetEvent = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededTrackedAssetsEvent.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededTrackedAssetsEvent.js
 var require_SeededTrackedAssetsEvent = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededTrackedAssetsEvent.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededTrackedAssetsEvent.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededTrackedAssetsEventToJSON = exports.SeededTrackedAssetsEventFromJSONTyped = exports.SeededTrackedAssetsEventFromJSON = void 0;
@@ -16435,9 +16435,9 @@ var require_SeededTrackedAssetsEvent = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededTrackedAssetsEventMetadata.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededTrackedAssetsEventMetadata.js
 var require_SeededTrackedAssetsEventMetadata = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededTrackedAssetsEventMetadata.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededTrackedAssetsEventMetadata.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededTrackedAssetsEventMetadataToJSON = exports.SeededTrackedAssetsEventMetadataFromJSONTyped = exports.SeededTrackedAssetsEventMetadataFromJSON = void 0;
@@ -16471,9 +16471,9 @@ var require_SeededTrackedAssetsEventMetadata = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededTrackedFormatEvent.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededTrackedFormatEvent.js
 var require_SeededTrackedFormatEvent = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededTrackedFormatEvent.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededTrackedFormatEvent.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededTrackedFormatEventToJSON = exports.SeededTrackedFormatEventFromJSONTyped = exports.SeededTrackedFormatEventFromJSON = void 0;
@@ -16513,9 +16513,9 @@ var require_SeededTrackedFormatEvent = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededTrackedInteractionEvent.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededTrackedInteractionEvent.js
 var require_SeededTrackedInteractionEvent = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededTrackedInteractionEvent.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededTrackedInteractionEvent.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededTrackedInteractionEventToJSON = exports.SeededTrackedInteractionEventFromJSONTyped = exports.SeededTrackedInteractionEventFromJSON = void 0;
@@ -16555,9 +16555,9 @@ var require_SeededTrackedInteractionEvent = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededTrackedInteractionEventIdentifierDescriptionPairs.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededTrackedInteractionEventIdentifierDescriptionPairs.js
 var require_SeededTrackedInteractionEventIdentifierDescriptionPairs = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededTrackedInteractionEventIdentifierDescriptionPairs.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededTrackedInteractionEventIdentifierDescriptionPairs.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededTrackedInteractionEventIdentifierDescriptionPairsToJSON = exports.SeededTrackedInteractionEventIdentifierDescriptionPairsFromJSONTyped = exports.SeededTrackedInteractionEventIdentifierDescriptionPairsFromJSON = exports.SeededTrackedInteractionEventIdentifierDescriptionPairsAssetsListRefreshedEnum = void 0;
@@ -16597,9 +16597,9 @@ var require_SeededTrackedInteractionEventIdentifierDescriptionPairs = __commonJS
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededTrackedKeyboardEvent.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededTrackedKeyboardEvent.js
 var require_SeededTrackedKeyboardEvent = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededTrackedKeyboardEvent.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededTrackedKeyboardEvent.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededTrackedKeyboardEventToJSON = exports.SeededTrackedKeyboardEventFromJSONTyped = exports.SeededTrackedKeyboardEventFromJSON = void 0;
@@ -16639,9 +16639,9 @@ var require_SeededTrackedKeyboardEvent = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededTrackedKeyboardEventIdentifierDescriptionPairs.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededTrackedKeyboardEventIdentifierDescriptionPairs.js
 var require_SeededTrackedKeyboardEventIdentifierDescriptionPairs = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededTrackedKeyboardEventIdentifierDescriptionPairs.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededTrackedKeyboardEventIdentifierDescriptionPairs.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededTrackedKeyboardEventIdentifierDescriptionPairsToJSON = exports.SeededTrackedKeyboardEventIdentifierDescriptionPairsFromJSONTyped = exports.SeededTrackedKeyboardEventIdentifierDescriptionPairsFromJSON = exports.SeededTrackedKeyboardEventIdentifierDescriptionPairsAssetsListRefreshedEnum = void 0;
@@ -16681,9 +16681,9 @@ var require_SeededTrackedKeyboardEventIdentifierDescriptionPairs = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededTrackedMachineLearningEvent.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededTrackedMachineLearningEvent.js
 var require_SeededTrackedMachineLearningEvent = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededTrackedMachineLearningEvent.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededTrackedMachineLearningEvent.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededTrackedMachineLearningEventToJSON = exports.SeededTrackedMachineLearningEventFromJSONTyped = exports.SeededTrackedMachineLearningEventFromJSON = void 0;
@@ -16721,9 +16721,9 @@ var require_SeededTrackedMachineLearningEvent = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededTrackedSessionEvent.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededTrackedSessionEvent.js
 var require_SeededTrackedSessionEvent = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededTrackedSessionEvent.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededTrackedSessionEvent.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededTrackedSessionEventToJSON = exports.SeededTrackedSessionEventFromJSONTyped = exports.SeededTrackedSessionEventFromJSON = void 0;
@@ -16759,9 +16759,9 @@ var require_SeededTrackedSessionEvent = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededUltraSuiteAsset.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededUltraSuiteAsset.js
 var require_SeededUltraSuiteAsset = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededUltraSuiteAsset.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededUltraSuiteAsset.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededUltraSuiteAssetToJSON = exports.SeededUltraSuiteAssetFromJSONTyped = exports.SeededUltraSuiteAssetFromJSON = void 0;
@@ -16803,9 +16803,9 @@ var require_SeededUltraSuiteAsset = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededUser.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededUser.js
 var require_SeededUser = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededUser.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededUser.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededUserToJSON = exports.SeededUserFromJSONTyped = exports.SeededUserFromJSON = void 0;
@@ -16841,9 +16841,9 @@ var require_SeededUser = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededWebsite.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededWebsite.js
 var require_SeededWebsite = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SeededWebsite.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SeededWebsite.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeededWebsiteToJSON = exports.SeededWebsiteFromJSONTyped = exports.SeededWebsiteFromJSON = void 0;
@@ -16887,9 +16887,9 @@ var require_SeededWebsite = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Seeds.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Seeds.js
 var require_Seeds = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Seeds.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Seeds.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SeedsToJSON = exports.SeedsFromJSONTyped = exports.SeedsFromJSON = void 0;
@@ -16925,9 +16925,9 @@ var require_Seeds = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Sensitive.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Sensitive.js
 var require_Sensitive = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Sensitive.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Sensitive.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SensitiveToJSON = exports.SensitiveFromJSONTyped = exports.SensitiveFromJSON = void 0;
@@ -16989,9 +16989,9 @@ var require_Sensitive = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SensitiveCategoryEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SensitiveCategoryEnum.js
 var require_SensitiveCategoryEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SensitiveCategoryEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SensitiveCategoryEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SensitiveCategoryEnumToJSON = exports.SensitiveCategoryEnumFromJSONTyped = exports.SensitiveCategoryEnumFromJSON = exports.SensitiveCategoryEnum = void 0;
@@ -17026,9 +17026,9 @@ var require_SensitiveCategoryEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SensitiveMetadata.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SensitiveMetadata.js
 var require_SensitiveMetadata = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SensitiveMetadata.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SensitiveMetadata.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SensitiveMetadataToJSON = exports.SensitiveMetadataFromJSONTyped = exports.SensitiveMetadataFromJSON = void 0;
@@ -17066,9 +17066,9 @@ var require_SensitiveMetadata = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SensitiveSeverityEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SensitiveSeverityEnum.js
 var require_SensitiveSeverityEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SensitiveSeverityEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SensitiveSeverityEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SensitiveSeverityEnumToJSON = exports.SensitiveSeverityEnumFromJSONTyped = exports.SensitiveSeverityEnumFromJSON = exports.SensitiveSeverityEnum = void 0;
@@ -17093,9 +17093,9 @@ var require_SensitiveSeverityEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Sensitives.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Sensitives.js
 var require_Sensitives = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Sensitives.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Sensitives.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SensitivesToJSON = exports.SensitivesFromJSONTyped = exports.SensitivesFromJSON = void 0;
@@ -17133,9 +17133,9 @@ var require_Sensitives = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Session.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Session.js
 var require_Session = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Session.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Session.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SessionToJSON = exports.SessionFromJSONTyped = exports.SessionFromJSON = void 0;
@@ -17173,9 +17173,9 @@ var require_Session = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Share.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Share.js
 var require_Share = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Share.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Share.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ShareToJSON = exports.ShareFromJSONTyped = exports.ShareFromJSON = void 0;
@@ -17233,9 +17233,9 @@ var require_Share = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Shares.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Shares.js
 var require_Shares = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Shares.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Shares.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SharesToJSON = exports.SharesFromJSONTyped = exports.SharesFromJSON = void 0;
@@ -17273,9 +17273,9 @@ var require_Shares = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Space.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Space.js
 var require_Space = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Space.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Space.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SpaceToJSON = exports.SpaceFromJSONTyped = exports.SpaceFromJSON = void 0;
@@ -17310,9 +17310,9 @@ var require_Space = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/StreamedIdentifier.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/StreamedIdentifier.js
 var require_StreamedIdentifier = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/StreamedIdentifier.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/StreamedIdentifier.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.StreamedIdentifierToJSON = exports.StreamedIdentifierFromJSONTyped = exports.StreamedIdentifierFromJSON = void 0;
@@ -17350,9 +17350,9 @@ var require_StreamedIdentifier = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/StreamedIdentifiers.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/StreamedIdentifiers.js
 var require_StreamedIdentifiers = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/StreamedIdentifiers.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/StreamedIdentifiers.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.StreamedIdentifiersToJSON = exports.StreamedIdentifiersFromJSONTyped = exports.StreamedIdentifiersFromJSON = void 0;
@@ -17388,9 +17388,9 @@ var require_StreamedIdentifiers = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Suggestion.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Suggestion.js
 var require_Suggestion = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Suggestion.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Suggestion.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SuggestionToJSON = exports.SuggestionFromJSONTyped = exports.SuggestionFromJSON = void 0;
@@ -17434,9 +17434,9 @@ var require_Suggestion = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SuggestionTarget.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SuggestionTarget.js
 var require_SuggestionTarget = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SuggestionTarget.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SuggestionTarget.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SuggestionTargetToJSON = exports.SuggestionTargetFromJSONTyped = exports.SuggestionTargetFromJSON = void 0;
@@ -17474,9 +17474,9 @@ var require_SuggestionTarget = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SystemExecutionCpuInformation.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SystemExecutionCpuInformation.js
 var require_SystemExecutionCpuInformation = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SystemExecutionCpuInformation.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SystemExecutionCpuInformation.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SystemExecutionCpuInformationToJSON = exports.SystemExecutionCpuInformationFromJSONTyped = exports.SystemExecutionCpuInformationFromJSON = void 0;
@@ -17512,9 +17512,9 @@ var require_SystemExecutionCpuInformation = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/SystemExecutionInformation.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SystemExecutionInformation.js
 var require_SystemExecutionInformation = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/SystemExecutionInformation.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/SystemExecutionInformation.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SystemExecutionInformationToJSON = exports.SystemExecutionInformationFromJSONTyped = exports.SystemExecutionInformationFromJSON = void 0;
@@ -17553,9 +17553,9 @@ var require_SystemExecutionInformation = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeDirectoryAnalytics.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeDirectoryAnalytics.js
 var require_TLPCodeDirectoryAnalytics = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeDirectoryAnalytics.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeDirectoryAnalytics.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeDirectoryAnalyticsToJSON = exports.TLPCodeDirectoryAnalyticsFromJSONTyped = exports.TLPCodeDirectoryAnalyticsFromJSON = void 0;
@@ -17591,9 +17591,9 @@ var require_TLPCodeDirectoryAnalytics = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeFileAnalytics.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeFileAnalytics.js
 var require_TLPCodeFileAnalytics = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeFileAnalytics.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeFileAnalytics.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeFileAnalyticsToJSON = exports.TLPCodeFileAnalyticsFromJSONTyped = exports.TLPCodeFileAnalyticsFromJSON = void 0;
@@ -17629,9 +17629,9 @@ var require_TLPCodeFileAnalytics = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeFragmentClassification.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeFragmentClassification.js
 var require_TLPCodeFragmentClassification = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeFragmentClassification.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeFragmentClassification.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeFragmentClassificationToJSON = exports.TLPCodeFragmentClassificationFromJSONTyped = exports.TLPCodeFragmentClassificationFromJSON = void 0;
@@ -17687,9 +17687,9 @@ var require_TLPCodeFragmentClassification = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeFragmentClassificationMetadata.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeFragmentClassificationMetadata.js
 var require_TLPCodeFragmentClassificationMetadata = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeFragmentClassificationMetadata.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeFragmentClassificationMetadata.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeFragmentClassificationMetadataToJSON = exports.TLPCodeFragmentClassificationMetadataFromJSONTyped = exports.TLPCodeFragmentClassificationMetadataFromJSON = void 0;
@@ -17727,9 +17727,9 @@ var require_TLPCodeFragmentClassificationMetadata = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeFragmentDescription.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeFragmentDescription.js
 var require_TLPCodeFragmentDescription = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeFragmentDescription.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeFragmentDescription.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeFragmentDescriptionToJSON = exports.TLPCodeFragmentDescriptionFromJSONTyped = exports.TLPCodeFragmentDescriptionFromJSON = void 0;
@@ -17776,9 +17776,9 @@ var require_TLPCodeFragmentDescription = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeFragmentDescriptiveStatistics.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeFragmentDescriptiveStatistics.js
 var require_TLPCodeFragmentDescriptiveStatistics = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeFragmentDescriptiveStatistics.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeFragmentDescriptiveStatistics.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeFragmentDescriptiveStatisticsToJSON = exports.TLPCodeFragmentDescriptiveStatisticsFromJSONTyped = exports.TLPCodeFragmentDescriptiveStatisticsFromJSON = void 0;
@@ -17830,9 +17830,9 @@ var require_TLPCodeFragmentDescriptiveStatistics = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeFragmentReclassification.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeFragmentReclassification.js
 var require_TLPCodeFragmentReclassification = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeFragmentReclassification.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeFragmentReclassification.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeFragmentReclassificationToJSON = exports.TLPCodeFragmentReclassificationFromJSONTyped = exports.TLPCodeFragmentReclassificationFromJSON = void 0;
@@ -17878,9 +17878,9 @@ var require_TLPCodeFragmentReclassification = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeFragmentReclassificationUpdates.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeFragmentReclassificationUpdates.js
 var require_TLPCodeFragmentReclassificationUpdates = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeFragmentReclassificationUpdates.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeFragmentReclassificationUpdates.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeFragmentReclassificationUpdatesToJSON = exports.TLPCodeFragmentReclassificationUpdatesFromJSONTyped = exports.TLPCodeFragmentReclassificationUpdatesFromJSON = void 0;
@@ -17918,9 +17918,9 @@ var require_TLPCodeFragmentReclassificationUpdates = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeFragmentStatistics.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeFragmentStatistics.js
 var require_TLPCodeFragmentStatistics = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeFragmentStatistics.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeFragmentStatistics.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeFragmentStatisticsToJSON = exports.TLPCodeFragmentStatisticsFromJSONTyped = exports.TLPCodeFragmentStatisticsFromJSON = void 0;
@@ -17956,9 +17956,9 @@ var require_TLPCodeFragmentStatistics = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeFragmentSuggestedReuse.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeFragmentSuggestedReuse.js
 var require_TLPCodeFragmentSuggestedReuse = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeFragmentSuggestedReuse.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeFragmentSuggestedReuse.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeFragmentSuggestedReuseToJSON = exports.TLPCodeFragmentSuggestedReuseFromJSONTyped = exports.TLPCodeFragmentSuggestedReuseFromJSON = void 0;
@@ -17994,9 +17994,9 @@ var require_TLPCodeFragmentSuggestedReuse = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeFragmentSuggestedSave.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeFragmentSuggestedSave.js
 var require_TLPCodeFragmentSuggestedSave = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeFragmentSuggestedSave.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeFragmentSuggestedSave.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeFragmentSuggestedSaveToJSON = exports.TLPCodeFragmentSuggestedSaveFromJSONTyped = exports.TLPCodeFragmentSuggestedSaveFromJSON = void 0;
@@ -18046,9 +18046,9 @@ var require_TLPCodeFragmentSuggestedSave = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeFragmentTagify.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeFragmentTagify.js
 var require_TLPCodeFragmentTagify = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeFragmentTagify.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeFragmentTagify.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeFragmentTagifyToJSON = exports.TLPCodeFragmentTagifyFromJSONTyped = exports.TLPCodeFragmentTagifyFromJSON = void 0;
@@ -18084,9 +18084,9 @@ var require_TLPCodeFragmentTagify = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeProcessing.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeProcessing.js
 var require_TLPCodeProcessing = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeProcessing.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeProcessing.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeProcessingToJSON = exports.TLPCodeProcessingFromJSONTyped = exports.TLPCodeProcessingFromJSON = void 0;
@@ -18128,9 +18128,9 @@ var require_TLPCodeProcessing = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeRepositoryAnalytics.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeRepositoryAnalytics.js
 var require_TLPCodeRepositoryAnalytics = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeRepositoryAnalytics.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeRepositoryAnalytics.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeRepositoryAnalyticsToJSON = exports.TLPCodeRepositoryAnalyticsFromJSONTyped = exports.TLPCodeRepositoryAnalyticsFromJSON = void 0;
@@ -18166,9 +18166,9 @@ var require_TLPCodeRepositoryAnalytics = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeSnippetAnalytics.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeSnippetAnalytics.js
 var require_TLPCodeSnippetAnalytics = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeSnippetAnalytics.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeSnippetAnalytics.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeSnippetAnalyticsToJSON = exports.TLPCodeSnippetAnalyticsFromJSONTyped = exports.TLPCodeSnippetAnalyticsFromJSON = void 0;
@@ -18214,9 +18214,9 @@ var require_TLPCodeSnippetAnalytics = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeSnippetSuggestedInteractions.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeSnippetSuggestedInteractions.js
 var require_TLPCodeSnippetSuggestedInteractions = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeSnippetSuggestedInteractions.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeSnippetSuggestedInteractions.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeSnippetSuggestedInteractionsToJSON = exports.TLPCodeSnippetSuggestedInteractionsFromJSONTyped = exports.TLPCodeSnippetSuggestedInteractionsFromJSON = void 0;
@@ -18254,9 +18254,9 @@ var require_TLPCodeSnippetSuggestedInteractions = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeSnippetTagifyCode.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeSnippetTagifyCode.js
 var require_TLPCodeSnippetTagifyCode = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPCodeSnippetTagifyCode.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPCodeSnippetTagifyCode.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPCodeSnippetTagifyCodeToJSON = exports.TLPCodeSnippetTagifyCodeFromJSONTyped = exports.TLPCodeSnippetTagifyCodeFromJSON = void 0;
@@ -18310,9 +18310,9 @@ var require_TLPCodeSnippetTagifyCode = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPDirectedDiscoveryFilter.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPDirectedDiscoveryFilter.js
 var require_TLPDirectedDiscoveryFilter = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPDirectedDiscoveryFilter.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPDirectedDiscoveryFilter.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPDirectedDiscoveryFilterToJSON = exports.TLPDirectedDiscoveryFilterFromJSONTyped = exports.TLPDirectedDiscoveryFilterFromJSON = void 0;
@@ -18345,9 +18345,9 @@ var require_TLPDirectedDiscoveryFilter = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPDirectedDiscoveryFilterEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPDirectedDiscoveryFilterEnum.js
 var require_TLPDirectedDiscoveryFilterEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPDirectedDiscoveryFilterEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPDirectedDiscoveryFilterEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPDirectedDiscoveryFilterEnumToJSON = exports.TLPDirectedDiscoveryFilterEnumFromJSONTyped = exports.TLPDirectedDiscoveryFilterEnumFromJSON = exports.TLPDirectedDiscoveryFilterEnum = void 0;
@@ -18379,9 +18379,9 @@ var require_TLPDirectedDiscoveryFilterEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPDirectedDiscoveryFilters.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPDirectedDiscoveryFilters.js
 var require_TLPDirectedDiscoveryFilters = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPDirectedDiscoveryFilters.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPDirectedDiscoveryFilters.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPDirectedDiscoveryFiltersToJSON = exports.TLPDirectedDiscoveryFiltersFromJSONTyped = exports.TLPDirectedDiscoveryFiltersFromJSON = void 0;
@@ -18414,9 +18414,9 @@ var require_TLPDirectedDiscoveryFilters = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPMachineLearningProcessingEvent.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPMachineLearningProcessingEvent.js
 var require_TLPMachineLearningProcessingEvent = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TLPMachineLearningProcessingEvent.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TLPMachineLearningProcessingEvent.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TLPMachineLearningProcessingEventToJSON = exports.TLPMachineLearningProcessingEventFromJSONTyped = exports.TLPMachineLearningProcessingEventFromJSON = void 0;
@@ -18452,9 +18452,9 @@ var require_TLPMachineLearningProcessingEvent = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Tag.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Tag.js
 var require_Tag = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Tag.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Tag.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TagToJSON = exports.TagFromJSONTyped = exports.TagFromJSON = void 0;
@@ -18512,9 +18512,9 @@ var require_Tag = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TagCategoryEnum.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TagCategoryEnum.js
 var require_TagCategoryEnum = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TagCategoryEnum.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TagCategoryEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TagCategoryEnumToJSON = exports.TagCategoryEnumFromJSONTyped = exports.TagCategoryEnumFromJSON = exports.TagCategoryEnum = void 0;
@@ -18539,9 +18539,9 @@ var require_TagCategoryEnum = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Tags.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Tags.js
 var require_Tags = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Tags.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Tags.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TagsToJSON = exports.TagsFromJSONTyped = exports.TagsFromJSON = void 0;
@@ -18581,9 +18581,9 @@ var require_Tags = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TextLocation.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TextLocation.js
 var require_TextLocation = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TextLocation.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TextLocation.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TextLocationToJSON = exports.TextLocationFromJSONTyped = exports.TextLocationFromJSON = void 0;
@@ -18623,9 +18623,9 @@ var require_TextLocation = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TextMatch.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TextMatch.js
 var require_TextMatch = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TextMatch.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TextMatch.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TextMatchToJSON = exports.TextMatchFromJSONTyped = exports.TextMatchFromJSON = void 0;
@@ -18663,9 +18663,9 @@ var require_TextMatch = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Theme.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Theme.js
 var require_Theme = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Theme.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Theme.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ThemeToJSON = exports.ThemeFromJSONTyped = exports.ThemeFromJSON = void 0;
@@ -18701,9 +18701,9 @@ var require_Theme = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TokenizedPKCE.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TokenizedPKCE.js
 var require_TokenizedPKCE = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TokenizedPKCE.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TokenizedPKCE.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TokenizedPKCEToJSON = exports.TokenizedPKCEFromJSONTyped = exports.TokenizedPKCEFromJSON = exports.TokenizedPKCEGrantTypeEnum = void 0;
@@ -18754,9 +18754,9 @@ var require_TokenizedPKCE = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedApplication.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedApplication.js
 var require_TrackedApplication = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedApplication.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedApplication.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedApplicationToJSON = exports.TrackedApplicationFromJSONTyped = exports.TrackedApplicationFromJSON = void 0;
@@ -18800,9 +18800,9 @@ var require_TrackedApplication = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedApplicationInstall.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedApplicationInstall.js
 var require_TrackedApplicationInstall = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedApplicationInstall.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedApplicationInstall.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedApplicationInstallToJSON = exports.TrackedApplicationInstallFromJSONTyped = exports.TrackedApplicationInstallFromJSON = void 0;
@@ -18840,9 +18840,9 @@ var require_TrackedApplicationInstall = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedApplicationUpdate.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedApplicationUpdate.js
 var require_TrackedApplicationUpdate = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedApplicationUpdate.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedApplicationUpdate.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedApplicationUpdateToJSON = exports.TrackedApplicationUpdateFromJSONTyped = exports.TrackedApplicationUpdateFromJSON = void 0;
@@ -18882,9 +18882,9 @@ var require_TrackedApplicationUpdate = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedAssetEventCreationMetadata.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedAssetEventCreationMetadata.js
 var require_TrackedAssetEventCreationMetadata = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedAssetEventCreationMetadata.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedAssetEventCreationMetadata.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedAssetEventCreationMetadataToJSON = exports.TrackedAssetEventCreationMetadataFromJSONTyped = exports.TrackedAssetEventCreationMetadataFromJSON = void 0;
@@ -18922,9 +18922,9 @@ var require_TrackedAssetEventCreationMetadata = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedAssetEventCreationMetadataClipboard.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedAssetEventCreationMetadataClipboard.js
 var require_TrackedAssetEventCreationMetadataClipboard = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedAssetEventCreationMetadataClipboard.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedAssetEventCreationMetadataClipboard.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedAssetEventCreationMetadataClipboardToJSON = exports.TrackedAssetEventCreationMetadataClipboardFromJSONTyped = exports.TrackedAssetEventCreationMetadataClipboardFromJSON = void 0;
@@ -18962,9 +18962,9 @@ var require_TrackedAssetEventCreationMetadataClipboard = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedAssetEventCreationMetadataFile.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedAssetEventCreationMetadataFile.js
 var require_TrackedAssetEventCreationMetadataFile = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedAssetEventCreationMetadataFile.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedAssetEventCreationMetadataFile.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedAssetEventCreationMetadataFileToJSON = exports.TrackedAssetEventCreationMetadataFileFromJSONTyped = exports.TrackedAssetEventCreationMetadataFileFromJSON = void 0;
@@ -19001,9 +19001,9 @@ var require_TrackedAssetEventCreationMetadataFile = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedAssetEventFormatReclassificationMetadata.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedAssetEventFormatReclassificationMetadata.js
 var require_TrackedAssetEventFormatReclassificationMetadata = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedAssetEventFormatReclassificationMetadata.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedAssetEventFormatReclassificationMetadata.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedAssetEventFormatReclassificationMetadataToJSON = exports.TrackedAssetEventFormatReclassificationMetadataFromJSONTyped = exports.TrackedAssetEventFormatReclassificationMetadataFromJSON = void 0;
@@ -19041,9 +19041,9 @@ var require_TrackedAssetEventFormatReclassificationMetadata = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedAssetEventIdentifierDescriptionPairs.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedAssetEventIdentifierDescriptionPairs.js
 var require_TrackedAssetEventIdentifierDescriptionPairs = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedAssetEventIdentifierDescriptionPairs.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedAssetEventIdentifierDescriptionPairs.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedAssetEventIdentifierDescriptionPairsToJSON = exports.TrackedAssetEventIdentifierDescriptionPairsFromJSONTyped = exports.TrackedAssetEventIdentifierDescriptionPairsFromJSON = exports.TrackedAssetEventIdentifierDescriptionPairsAssetAnchorUpdatedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetAnchorDeletedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetAnchorAddedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetHintUpdatedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetHintDeletedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetHintAddedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetAnnotationUpdatedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetAnnotationDeletedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetAnnotationAddedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsActivityAssetReferencedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetReferencedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsSearchedAssetReferencedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsSuggestedAssetReferencedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetSensitiveDeletedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetSensitiveAddedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetPersonDeletedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetPersonAddedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetLinkRevokedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetFormatUpdatedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetFormatValueEditedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetUpdatedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetTagDeletedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetLinkDeletedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetLinkGeneratedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetLinkAddedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetTagAddedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetCreationFailedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetFormatSpecificClassificationUpdatedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetFormatGenericClassificationUpdatedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetNameUpdatedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetDescriptionUpdatedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetDeletedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetFormatDownloadedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetFormatCopiedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetViewedEnum = exports.TrackedAssetEventIdentifierDescriptionPairsAssetCreatedEnum = void 0;
@@ -19293,9 +19293,9 @@ var require_TrackedAssetEventIdentifierDescriptionPairs = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedAssetEventMetadata.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedAssetEventMetadata.js
 var require_TrackedAssetEventMetadata = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedAssetEventMetadata.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedAssetEventMetadata.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedAssetEventMetadataToJSON = exports.TrackedAssetEventMetadataFromJSONTyped = exports.TrackedAssetEventMetadataFromJSON = void 0;
@@ -19351,9 +19351,9 @@ var require_TrackedAssetEventMetadata = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedAssetEventRenameMetadata.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedAssetEventRenameMetadata.js
 var require_TrackedAssetEventRenameMetadata = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedAssetEventRenameMetadata.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedAssetEventRenameMetadata.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedAssetEventRenameMetadataToJSON = exports.TrackedAssetEventRenameMetadataFromJSONTyped = exports.TrackedAssetEventRenameMetadataFromJSON = void 0;
@@ -19391,9 +19391,9 @@ var require_TrackedAssetEventRenameMetadata = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedAssetsEventIdentifierDescriptionPairs.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedAssetsEventIdentifierDescriptionPairs.js
 var require_TrackedAssetsEventIdentifierDescriptionPairs = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedAssetsEventIdentifierDescriptionPairs.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedAssetsEventIdentifierDescriptionPairs.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedAssetsEventIdentifierDescriptionPairsToJSON = exports.TrackedAssetsEventIdentifierDescriptionPairsFromJSONTyped = exports.TrackedAssetsEventIdentifierDescriptionPairsFromJSON = exports.TrackedAssetsEventIdentifierDescriptionPairsAssetsSearchedEnum = void 0;
@@ -19433,9 +19433,9 @@ var require_TrackedAssetsEventIdentifierDescriptionPairs = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedAssetsEventSearchMetadata.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedAssetsEventSearchMetadata.js
 var require_TrackedAssetsEventSearchMetadata = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedAssetsEventSearchMetadata.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedAssetsEventSearchMetadata.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedAssetsEventSearchMetadataToJSON = exports.TrackedAssetsEventSearchMetadataFromJSONTyped = exports.TrackedAssetsEventSearchMetadataFromJSON = void 0;
@@ -19473,9 +19473,9 @@ var require_TrackedAssetsEventSearchMetadata = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedAssetsEventSearchMetadataResults.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedAssetsEventSearchMetadataResults.js
 var require_TrackedAssetsEventSearchMetadataResults = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedAssetsEventSearchMetadataResults.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedAssetsEventSearchMetadataResults.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedAssetsEventSearchMetadataResultsToJSON = exports.TrackedAssetsEventSearchMetadataResultsFromJSONTyped = exports.TrackedAssetsEventSearchMetadataResultsFromJSON = void 0;
@@ -19515,9 +19515,9 @@ var require_TrackedAssetsEventSearchMetadataResults = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedFormat.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedFormat.js
 var require_TrackedFormat = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedFormat.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedFormat.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedFormatToJSON = exports.TrackedFormatFromJSONTyped = exports.TrackedFormatFromJSON = void 0;
@@ -19563,9 +19563,9 @@ var require_TrackedFormat = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedFormatEvent.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedFormatEvent.js
 var require_TrackedFormatEvent = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedFormatEvent.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedFormatEvent.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedFormatEventToJSON = exports.TrackedFormatEventFromJSONTyped = exports.TrackedFormatEventFromJSON = void 0;
@@ -19605,9 +19605,9 @@ var require_TrackedFormatEvent = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedFormatEventIdentifierDescriptionPairs.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedFormatEventIdentifierDescriptionPairs.js
 var require_TrackedFormatEventIdentifierDescriptionPairs = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedFormatEventIdentifierDescriptionPairs.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedFormatEventIdentifierDescriptionPairs.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedFormatEventIdentifierDescriptionPairsToJSON = exports.TrackedFormatEventIdentifierDescriptionPairsFromJSONTyped = exports.TrackedFormatEventIdentifierDescriptionPairsFromJSON = exports.TrackedFormatEventIdentifierDescriptionPairsFormatValueEditedEnum = exports.TrackedFormatEventIdentifierDescriptionPairsFormatInsertedEnum = exports.TrackedFormatEventIdentifierDescriptionPairsFormatUpdatedEnum = exports.TrackedFormatEventIdentifierDescriptionPairsFormatSpecificClassificationUpdatedEnum = exports.TrackedFormatEventIdentifierDescriptionPairsFormatGenericClassificationUpdatedEnum = exports.TrackedFormatEventIdentifierDescriptionPairsFormatDeletedEnum = exports.TrackedFormatEventIdentifierDescriptionPairsFormatDownloadedEnum = exports.TrackedFormatEventIdentifierDescriptionPairsFormatPartiallyCopiedEnum = exports.TrackedFormatEventIdentifierDescriptionPairsFormatCopiedEnum = exports.TrackedFormatEventIdentifierDescriptionPairsFormatCreatedEnum = void 0;
@@ -19701,9 +19701,9 @@ var require_TrackedFormatEventIdentifierDescriptionPairs = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedFormatEventMetadata.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedFormatEventMetadata.js
 var require_TrackedFormatEventMetadata = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedFormatEventMetadata.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedFormatEventMetadata.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedFormatEventMetadataToJSON = exports.TrackedFormatEventMetadataFromJSONTyped = exports.TrackedFormatEventMetadataFromJSON = void 0;
@@ -19737,9 +19737,9 @@ var require_TrackedFormatEventMetadata = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedInteractionEvent.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedInteractionEvent.js
 var require_TrackedInteractionEvent = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedInteractionEvent.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedInteractionEvent.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedInteractionEventToJSON = exports.TrackedInteractionEventFromJSONTyped = exports.TrackedInteractionEventFromJSON = void 0;
@@ -19777,9 +19777,9 @@ var require_TrackedInteractionEvent = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedKeyboardEvent.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedKeyboardEvent.js
 var require_TrackedKeyboardEvent = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedKeyboardEvent.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedKeyboardEvent.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedKeyboardEventToJSON = exports.TrackedKeyboardEventFromJSONTyped = exports.TrackedKeyboardEventFromJSON = void 0;
@@ -19817,9 +19817,9 @@ var require_TrackedKeyboardEvent = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedSessionEventIdentifierDescriptionPairs.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedSessionEventIdentifierDescriptionPairs.js
 var require_TrackedSessionEventIdentifierDescriptionPairs = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedSessionEventIdentifierDescriptionPairs.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedSessionEventIdentifierDescriptionPairs.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedSessionEventIdentifierDescriptionPairsToJSON = exports.TrackedSessionEventIdentifierDescriptionPairsFromJSONTyped = exports.TrackedSessionEventIdentifierDescriptionPairsFromJSON = exports.TrackedSessionEventIdentifierDescriptionPairsSessionOnboardingCompletedEnum = exports.TrackedSessionEventIdentifierDescriptionPairsSessionOnboardingInitializedEnum = exports.TrackedSessionEventIdentifierDescriptionPairsSessionUnauthenticatedWithRemindEnum = exports.TrackedSessionEventIdentifierDescriptionPairsSessionUnauthenticatedWithDismissEnum = exports.TrackedSessionEventIdentifierDescriptionPairsSessionUnauthenticatedWithSignOutEnum = exports.TrackedSessionEventIdentifierDescriptionPairsSessionAuthenticatedWithSignInEnum = exports.TrackedSessionEventIdentifierDescriptionPairsSessionTerminatedEnum = exports.TrackedSessionEventIdentifierDescriptionPairsSessionActiveEnum = exports.TrackedSessionEventIdentifierDescriptionPairsSessionInactiveEnum = exports.TrackedSessionEventIdentifierDescriptionPairsSessionLocalConnectionFailedEnum = exports.TrackedSessionEventIdentifierDescriptionPairsSessionLocalConnectionSucceededEnum = exports.TrackedSessionEventIdentifierDescriptionPairsSessionInitializedEnum = void 0;
@@ -19925,9 +19925,9 @@ var require_TrackedSessionEventIdentifierDescriptionPairs = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedUserProfile.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedUserProfile.js
 var require_TrackedUserProfile = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TrackedUserProfile.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TrackedUserProfile.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TrackedUserProfileToJSON = exports.TrackedUserProfileFromJSONTyped = exports.TrackedUserProfileFromJSON = exports.TrackedUserProfileGranularityEnum = void 0;
@@ -19975,9 +19975,9 @@ var require_TrackedUserProfile = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TransferableBytes.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TransferableBytes.js
 var require_TransferableBytes = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TransferableBytes.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TransferableBytes.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TransferableBytesToJSON = exports.TransferableBytesFromJSONTyped = exports.TransferableBytesFromJSON = void 0;
@@ -20019,9 +20019,9 @@ var require_TransferableBytes = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/TransferableString.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TransferableString.js
 var require_TransferableString = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/TransferableString.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/TransferableString.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.TransferableStringToJSON = exports.TransferableStringFromJSONTyped = exports.TransferableStringFromJSON = void 0;
@@ -20063,9 +20063,9 @@ var require_TransferableString = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/UserProfile.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/UserProfile.js
 var require_UserProfile = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/UserProfile.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/UserProfile.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.UserProfileToJSON = exports.UserProfileFromJSONTyped = exports.UserProfileFromJSON = void 0;
@@ -20123,9 +20123,9 @@ var require_UserProfile = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Users.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Users.js
 var require_Users = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Users.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Users.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.UsersToJSON = exports.UsersFromJSONTyped = exports.UsersFromJSON = void 0;
@@ -20161,9 +20161,9 @@ var require_Users = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Website.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Website.js
 var require_Website = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Website.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Website.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.WebsiteToJSON = exports.WebsiteFromJSONTyped = exports.WebsiteFromJSON = void 0;
@@ -20219,9 +20219,9 @@ var require_Website = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/Websites.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Websites.js
 var require_Websites = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/Websites.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/Websites.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.WebsitesToJSON = exports.WebsitesFromJSONTyped = exports.WebsitesFromJSON = void 0;
@@ -20261,9 +20261,9 @@ var require_Websites = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/models/index.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/index.js
 var require_models = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/models/index.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/models/index.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -20668,9 +20668,9 @@ var require_models = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/ActivitiesApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/ActivitiesApi.js
 var require_ActivitiesApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/ActivitiesApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/ActivitiesApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -20796,9 +20796,9 @@ var require_ActivitiesApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/ActivityApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/ActivityApi.js
 var require_ActivityApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/ActivityApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/ActivityApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -20935,9 +20935,9 @@ var require_ActivityApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/AllocationApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/AllocationApi.js
 var require_AllocationApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/AllocationApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/AllocationApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -21032,9 +21032,9 @@ var require_AllocationApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/AllocationsApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/AllocationsApi.js
 var require_AllocationsApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/AllocationsApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/AllocationsApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -21226,9 +21226,9 @@ var require_AllocationsApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/AnalysesApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/AnalysesApi.js
 var require_AnalysesApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/AnalysesApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/AnalysesApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -21298,9 +21298,9 @@ var require_AnalysesApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/AnchorApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/AnchorApi.js
 var require_AnchorApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/AnchorApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/AnchorApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -21457,9 +21457,9 @@ var require_AnchorApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/AnchorPointApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/AnchorPointApi.js
 var require_AnchorPointApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/AnchorPointApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/AnchorPointApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -21587,9 +21587,9 @@ var require_AnchorPointApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/AnchorPointsApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/AnchorPointsApi.js
 var require_AnchorPointsApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/AnchorPointsApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/AnchorPointsApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -21712,9 +21712,9 @@ var require_AnchorPointsApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/AnchorsApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/AnchorsApi.js
 var require_AnchorsApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/AnchorsApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/AnchorsApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -21865,9 +21865,9 @@ var require_AnchorsApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/AnnotationApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/AnnotationApi.js
 var require_AnnotationApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/AnnotationApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/AnnotationApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -21989,9 +21989,9 @@ var require_AnnotationApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/AnnotationsApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/AnnotationsApi.js
 var require_AnnotationsApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/AnnotationsApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/AnnotationsApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -22122,9 +22122,9 @@ var require_AnnotationsApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/ApplicationApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/ApplicationApi.js
 var require_ApplicationApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/ApplicationApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/ApplicationApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -22193,9 +22193,9 @@ var require_ApplicationApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/ApplicationsApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/ApplicationsApi.js
 var require_ApplicationsApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/ApplicationsApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/ApplicationsApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -22483,9 +22483,9 @@ var require_ApplicationsApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/AssetApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/AssetApi.js
 var require_AssetApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/AssetApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/AssetApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -22879,9 +22879,9 @@ var require_AssetApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/AssetsApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/AssetsApi.js
 var require_AssetsApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/AssetsApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/AssetsApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -23221,7 +23221,7 @@ var require_AssetsApi = __commonJS({
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, models_1.FormatsFromJSON)(jsonValue));
       }
       /**
-       * This will query the formats for agiven asset when provided that asset\'s id.
+       * This will query the formats for a given asset when provided that asset\'s id.
        * /assets/{asset}/formats [GET] Scoped To Assets
        */
       async assetsSpecificAssetFormatsSnapshot(requestParameters) {
@@ -23331,9 +23331,9 @@ var require_AssetsApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/Auth0Api.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/Auth0Api.js
 var require_Auth0Api = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/Auth0Api.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/Auth0Api.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -23625,9 +23625,9 @@ var require_Auth0Api = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/BackupApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/BackupApi.js
 var require_BackupApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/BackupApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/BackupApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -23715,9 +23715,9 @@ var require_BackupApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/ClassificationApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/ClassificationApi.js
 var require_ClassificationApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/ClassificationApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/ClassificationApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -23786,9 +23786,9 @@ var require_ClassificationApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/CodeAnalysesApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/CodeAnalysesApi.js
 var require_CodeAnalysesApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/CodeAnalysesApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/CodeAnalysesApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -23855,9 +23855,9 @@ var require_CodeAnalysesApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/ConnectorApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/ConnectorApi.js
 var require_ConnectorApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/ConnectorApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/ConnectorApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -24066,9 +24066,9 @@ var require_ConnectorApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/ConversationApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/ConversationApi.js
 var require_ConversationApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/ConversationApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/ConversationApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -24450,9 +24450,9 @@ var require_ConversationApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/ConversationMessageApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/ConversationMessageApi.js
 var require_ConversationMessageApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/ConversationMessageApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/ConversationMessageApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -24636,9 +24636,9 @@ var require_ConversationMessageApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/ConversationMessagesApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/ConversationMessagesApi.js
 var require_ConversationMessagesApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/ConversationMessagesApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/ConversationMessagesApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -24761,9 +24761,9 @@ var require_ConversationMessagesApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/ConversationsApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/ConversationsApi.js
 var require_ConversationsApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/ConversationsApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/ConversationsApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -24957,9 +24957,9 @@ var require_ConversationsApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/DatabaseApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/DatabaseApi.js
 var require_DatabaseApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/DatabaseApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/DatabaseApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -25050,9 +25050,9 @@ var require_DatabaseApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/DiscoveryApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/DiscoveryApi.js
 var require_DiscoveryApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/DiscoveryApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/DiscoveryApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -25208,9 +25208,9 @@ var require_DiscoveryApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/DistributionApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/DistributionApi.js
 var require_DistributionApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/DistributionApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/DistributionApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -25305,9 +25305,9 @@ var require_DistributionApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/DistributionsApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/DistributionsApi.js
 var require_DistributionsApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/DistributionsApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/DistributionsApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -25424,9 +25424,9 @@ var require_DistributionsApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/FormatApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/FormatApi.js
 var require_FormatApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/FormatApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/FormatApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -25606,9 +25606,9 @@ var require_FormatApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/FormatsApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/FormatsApi.js
 var require_FormatsApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/FormatsApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/FormatsApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -25707,9 +25707,9 @@ var require_FormatsApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/GithubApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/GithubApi.js
 var require_GithubApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/GithubApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/GithubApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -25781,9 +25781,9 @@ var require_GithubApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/HintApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/HintApi.js
 var require_HintApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/HintApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/HintApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -25905,9 +25905,9 @@ var require_HintApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/HintsApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/HintsApi.js
 var require_HintsApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/HintsApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/HintsApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -26024,9 +26024,9 @@ var require_HintsApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/ImageAnalysesApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/ImageAnalysesApi.js
 var require_ImageAnalysesApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/ImageAnalysesApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/ImageAnalysesApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -26096,9 +26096,9 @@ var require_ImageAnalysesApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/LinkifyApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/LinkifyApi.js
 var require_LinkifyApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/LinkifyApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/LinkifyApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -26216,9 +26216,9 @@ var require_LinkifyApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/MacOSApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/MacOSApi.js
 var require_MacOSApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/MacOSApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/MacOSApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -26287,9 +26287,9 @@ var require_MacOSApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/MetricsApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/MetricsApi.js
 var require_MetricsApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/MetricsApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/MetricsApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -26379,9 +26379,9 @@ var require_MetricsApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/ModelApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/ModelApi.js
 var require_ModelApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/ModelApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/ModelApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -26602,9 +26602,9 @@ var require_ModelApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/ModelsApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/ModelsApi.js
 var require_ModelsApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/ModelsApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/ModelsApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -26739,9 +26739,9 @@ var require_ModelsApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/NotificationsApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/NotificationsApi.js
 var require_NotificationsApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/NotificationsApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/NotificationsApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -26809,9 +26809,9 @@ var require_NotificationsApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/OCRAnalysesApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/OCRAnalysesApi.js
 var require_OCRAnalysesApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/OCRAnalysesApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/OCRAnalysesApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -26881,9 +26881,9 @@ var require_OCRAnalysesApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/OSApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/OSApi.js
 var require_OSApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/OSApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/OSApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -27066,9 +27066,9 @@ var require_OSApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/PKCEApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/PKCEApi.js
 var require_PKCEApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/PKCEApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/PKCEApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -27257,9 +27257,9 @@ var require_PKCEApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/PersonApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/PersonApi.js
 var require_PersonApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/PersonApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/PersonApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -27387,9 +27387,9 @@ var require_PersonApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/PersonsApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/PersonsApi.js
 var require_PersonsApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/PersonsApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/PersonsApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -27540,9 +27540,9 @@ var require_PersonsApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/PieceApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/PieceApi.js
 var require_PieceApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/PieceApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/PieceApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -27614,9 +27614,9 @@ var require_PieceApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/QGPTApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/QGPTApi.js
 var require_QGPTApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/QGPTApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/QGPTApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -27813,9 +27813,9 @@ var require_QGPTApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/RelationshipApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/RelationshipApi.js
 var require_RelationshipApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/RelationshipApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/RelationshipApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -27885,9 +27885,9 @@ var require_RelationshipApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/RelationshipsApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/RelationshipsApi.js
 var require_RelationshipsApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/RelationshipsApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/RelationshipsApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -27954,9 +27954,9 @@ var require_RelationshipsApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/SearchApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/SearchApi.js
 var require_SearchApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/SearchApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/SearchApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -28086,9 +28086,9 @@ var require_SearchApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/SensitiveApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/SensitiveApi.js
 var require_SensitiveApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/SensitiveApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/SensitiveApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -28210,9 +28210,9 @@ var require_SensitiveApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/SensitivesApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/SensitivesApi.js
 var require_SensitivesApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/SensitivesApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/SensitivesApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -28329,9 +28329,9 @@ var require_SensitivesApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/ShareApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/ShareApi.js
 var require_ShareApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/ShareApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/ShareApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -28459,9 +28459,9 @@ var require_ShareApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/SharesApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/SharesApi.js
 var require_SharesApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/SharesApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/SharesApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -28614,9 +28614,9 @@ var require_SharesApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/TagApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/TagApi.js
 var require_TagApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/TagApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/TagApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -28856,9 +28856,9 @@ var require_TagApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/TagsApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/TagsApi.js
 var require_TagsApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/TagsApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/TagsApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -29006,9 +29006,9 @@ var require_TagsApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/UltraSuiteApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/UltraSuiteApi.js
 var require_UltraSuiteApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/UltraSuiteApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/UltraSuiteApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -29077,9 +29077,9 @@ var require_UltraSuiteApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/UserApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/UserApi.js
 var require_UserApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/UserApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/UserApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -29310,9 +29310,9 @@ var require_UserApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/UsersApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/UsersApi.js
 var require_UsersApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/UsersApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/UsersApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -29477,9 +29477,9 @@ var require_UsersApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/WebsiteApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/WebsiteApi.js
 var require_WebsiteApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/WebsiteApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/WebsiteApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -29719,9 +29719,9 @@ var require_WebsiteApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/WebsitesApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/WebsitesApi.js
 var require_WebsitesApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/WebsitesApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/WebsitesApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -29869,9 +29869,9 @@ var require_WebsitesApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/WellKnownApi.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/WellKnownApi.js
 var require_WellKnownApi = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/WellKnownApi.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/WellKnownApi.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -29960,9 +29960,9 @@ var require_WellKnownApi = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/apis/index.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/index.js
 var require_apis = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/apis/index.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/apis/index.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -30050,9 +30050,9 @@ var require_apis = __commonJS({
   }
 });
 
-// ../copilot-ts/node_modules/@pieces.app/client/dist/index.js
+// ../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/index.js
 var require_dist = __commonJS({
-  "../copilot-ts/node_modules/@pieces.app/client/dist/index.js"(exports) {
+  "../copilot-ts/node_modules/@pieces.app/pieces-os-client/dist/index.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -30086,8 +30086,8 @@ var require_ConnectorSingleton = __commonJS({
   "../copilot-ts/dist/controllers/ConnectorSingleton.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var client_1 = require_dist();
-    var client_2 = require_dist();
+    var pieces_os_client_1 = require_dist();
+    var pieces_os_client_2 = require_dist();
     var view_1 = require_view();
     var ConnectorSingleton2 = class {
       constructor() {
@@ -30095,32 +30095,35 @@ var require_ConnectorSingleton = __commonJS({
           basePath: `http://localhost:${view_1.port}`,
           fetchApi: fetch
         };
-        this.configuration = new client_2.Configuration(this.parameters);
-        this.anchorsApi = new client_1.AnchorsApi(new client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
-        this.conversationMessageApi = new client_1.ConversationMessageApi(new client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
-        this.conversationMessagesApi = new client_1.ConversationMessagesApi(new client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
-        this.anchorApi = new client_1.AnchorApi(new client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
-        this.anchorPointApi = new client_1.AnchorPointApi(new client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
-        this.conversationsApi = new client_1.ConversationsApi(new client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
-        this.conversationApi = new client_1.ConversationApi(new client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
-        this.modelApi = new client_1.ModelApi(new client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
-        this.modelsApi = new client_1.ModelsApi(new client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
-        this.searchApi = new client_1.SearchApi(new client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
-        this.allocationsApi = new client_1.AllocationsApi(new client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
-        this.applicationApi = new client_1.ApplicationApi(new client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
-        this.linkifyApi = new client_1.LinkifyApi(new client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
-        this.assetsApi = new client_1.AssetsApi(new client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
-        this.formatApi = new client_1.FormatApi(new client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
-        this.userApi = new client_1.UserApi(new client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
-        this.osApi = new client_1.OSApi(new client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
-        this.assetApi = new client_1.AssetApi(new client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
-        this.DiscoveryApi = new client_1.DiscoveryApi(new client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
-        this.wellKnownApi = new client_1.WellKnownApi(new client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
-        this.QGPTApi = new client_1.QGPTApi(new client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
-        this.annotationsApi = new client_1.AnnotationsApi(new client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
-        this.annotationApi = new client_1.AnnotationApi(new client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
-        this.activityApi = new client_1.ActivityApi(new client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
-        this.activitiesApi = new client_1.ActivitiesApi(new client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
+        this.configuration = new pieces_os_client_2.Configuration(this.parameters);
+        this.personApi = new pieces_os_client_1.PersonApi(new pieces_os_client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
+        this.personsApi = new pieces_os_client_1.PersonsApi(new pieces_os_client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
+        this.HintsApi = new pieces_os_client_1.HintsApi(new pieces_os_client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
+        this.anchorsApi = new pieces_os_client_1.AnchorsApi(new pieces_os_client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
+        this.conversationMessageApi = new pieces_os_client_1.ConversationMessageApi(new pieces_os_client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
+        this.conversationMessagesApi = new pieces_os_client_1.ConversationMessagesApi(new pieces_os_client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
+        this.anchorApi = new pieces_os_client_1.AnchorApi(new pieces_os_client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
+        this.anchorPointApi = new pieces_os_client_1.AnchorPointApi(new pieces_os_client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
+        this.conversationsApi = new pieces_os_client_1.ConversationsApi(new pieces_os_client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
+        this.conversationApi = new pieces_os_client_1.ConversationApi(new pieces_os_client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
+        this.modelApi = new pieces_os_client_1.ModelApi(new pieces_os_client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
+        this.modelsApi = new pieces_os_client_1.ModelsApi(new pieces_os_client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
+        this.searchApi = new pieces_os_client_1.SearchApi(new pieces_os_client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
+        this.allocationsApi = new pieces_os_client_1.AllocationsApi(new pieces_os_client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
+        this.applicationApi = new pieces_os_client_1.ApplicationApi(new pieces_os_client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
+        this.linkifyApi = new pieces_os_client_1.LinkifyApi(new pieces_os_client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
+        this.assetsApi = new pieces_os_client_1.AssetsApi(new pieces_os_client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
+        this.formatApi = new pieces_os_client_1.FormatApi(new pieces_os_client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
+        this.userApi = new pieces_os_client_1.UserApi(new pieces_os_client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
+        this.osApi = new pieces_os_client_1.OSApi(new pieces_os_client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
+        this.assetApi = new pieces_os_client_1.AssetApi(new pieces_os_client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
+        this.DiscoveryApi = new pieces_os_client_1.DiscoveryApi(new pieces_os_client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
+        this.wellKnownApi = new pieces_os_client_1.WellKnownApi(new pieces_os_client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
+        this.QGPTApi = new pieces_os_client_1.QGPTApi(new pieces_os_client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
+        this.annotationsApi = new pieces_os_client_1.AnnotationsApi(new pieces_os_client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
+        this.annotationApi = new pieces_os_client_1.AnnotationApi(new pieces_os_client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
+        this.activityApi = new pieces_os_client_1.ActivityApi(new pieces_os_client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
+        this.activitiesApi = new pieces_os_client_1.ActivitiesApi(new pieces_os_client_1.Configuration({ fetchApi: fetch, basePath: this.parameters.basePath }));
       }
       static getInstance() {
         if (!ConnectorSingleton2.instance) {
@@ -30139,7 +30142,14 @@ var require_const = __commonJS({
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Constants = void 0;
+    var view_1 = require_view();
     var Constants2 = class {
+      static sendErrorNotification(action) {
+        (0, view_1.sendNotification)({
+          type: "error",
+          message: `Failed to ${action}. Please make sure that Pieces OS is installed, update, and running. If the issue persists, please contact support@pieces.app`
+        });
+      }
     };
     exports.Constants = Constants2;
     Constants2.PLUG_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plug"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/></svg>`;
@@ -30339,7 +30349,53 @@ var require_const = __commonJS({
     Constants2.STICKY_NOTE_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sticky-note"><path d="M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z"/><path d="M15 3v6h6"/></svg>`;
     Constants2.PIN_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pin"><line x1="12" x2="12" y1="17" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"/></svg>`;
     Constants2.SPARKLES_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>`;
+    Constants2.THUMBS_UP_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-thumbs-up"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2h0a3.13 3.13 0 0 1 3 3.88Z"/></svg>`;
+    Constants2.THUMBS_DOWN_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-thumbs-down"><path d="M17 14V2"/><path d="M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22h0a3.13 3.13 0 0 1-3-3.88Z"/></svg>`;
+    Constants2.MESSAGE_CONTEXT_SVG = `<svg width="274" height="274" viewBox="0 0 274 274" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M49 49H225V181H61.87L49 193.87V49ZM49 27C36.9 27 27.11 36.9 27.11 49L27 247L71 203H225C237.1 203 247 193.1 247 181V49C247 36.9 237.1 27 225 27H49Z" fill="currentColor"/>
+  <path d="M163.312 106.375L170.845 89.8035L187.417 82.2709L170.845 74.7384L163.312 58.1667L155.78 74.7384L139.208 82.2709L155.78 89.8035L163.312 106.375Z" fill="currentColor"/>
+  <path d="M163.312 122.532L155.78 139.104L139.208 146.636L155.78 154.169L163.312 170.741L170.845 154.169L187.417 146.636L170.845 139.104L163.312 122.532Z" fill="currentColor"/>
+  <path d="M108.554 77.3802L96.8182 103.198L71 114.934L96.8182 126.67L108.554 152.488L120.289 126.67L146.108 114.934L120.289 103.198L108.554 77.3802Z" fill="currentColor"/>
+  </svg>`;
+    Constants2.MESSAGE_SQUARE_PLUS_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square-plus"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" x2="15" y1="10" y2="10"/><line x1="12" x2="12" y1="7" y2="13"/></svg>`;
+    Constants2.INSERT_CODE_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`;
+    Constants2.ARROW_DOWN_CIRCLE_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-circle"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="m8 12 4 4 4-4"/></svg>`;
     Constants2.LLMDisclaimer = "Running LLM's locally requires a large amount of computer resources. Please thoroughly review your system's hardware to make sure it aligns with the requirements to run the local model(s).";
+    Constants2.IMAGE_PLUS_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-image-plus"><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"/><line x1="16" x2="22" y1="5" y2="5"/><line x1="19" x2="19" y1="2" y2="8"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>`;
+    Constants2.CHEVRON_DOWN_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>`;
+    Constants2.CHEVRON_UP_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-up"><path d="m18 15-6-6-6 6"/></svg>`;
+    Constants2.TERMINAL_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-terminal"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>`;
+    Constants2.COPILOT_HELP_TEXT = `**Hello!** I'm the Pieces for Developers Copilot. I'm here to answer questions about the snippets, files, or folders you are working with. I can use various different LLM runtimes to answer your questions, including local runtimes powered by Llama2 (**you can use them without WiFi**).
+
+  In order to **add files, folders, or snippets as context**, click on the _'Manage Context'_ button in the bottom right of the Copilot view, select one of the tabs, and click on the 'Add' button to personalize your context.
+  
+  To **choose a different LLM runtime**,  click on the icon in the top right that is labelled with your current runtime _(GPT 3.5 turbo by default)_, you will see cloud and local tabs where you can pick specific models. Select a tab, click on a model box, then click on the plug icon to use it. If you are using a local LLM with Llama2, make sure to download the model first by clicking on the download button.
+
+  To **view your past conversations**, click on the _'open left panel'_ icon at the top left of the view. From here, you can revisit a conversation, rename it, delete it, and more by clicking on the three vertical dots.
+
+  I can also execute commands! (You just used one with /help). The commands I'm capable of are as follows:
+  - \`/save\` will save the latest code block to your snippet database
+  - \`/saveall\` will save all the code blocks to your snippet database
+  - \`/modify\` will allow you to give me an explanation of your expected outcome in order to modify the code in the conversation
+  - \`/explain\` will explain the code in the conversation
+  - \`/who\` will answer the question: \u201CWho should I ask about this?\u201D
+  - \`/comment\` will add comments to the code
+  - \`/help\` will send this message
+
+  Utilize directives for a seamless experience personalizing your Copilot's context. **Directives are context shortcuts**. Creating a directive allows you to reuse it in the chat input with @{directive name} in order to utilize that directive's context.
+
+  Example:
+  
+  If you create a directive called 'mydirective' that is associated to a file with the path: '/path/to/myfile.ts', using '@mydirective' in the chat input will then tell the Copilot to use '/path/to/myfile.ts' as context.
+
+  Default Directives:
+
+  - \`@recent\` utilize the recently opened files as context
+  - \`@workspace\` utilize your current workspace as context
+  - \`@new\` create a custom directive
+  - \`@delete\` delete a custom directive
+
+  Happy coding!`;
   }
 });
 
@@ -30372,6 +30428,10 @@ var require_CopilotAnalytics_enum = __commonJS({
       CopilotAnalytics2["LLM_CANCEL_DOWNLOAD"] = "copilot_chat_cancel_llm_download";
       CopilotAnalytics2["LLM_START_DOWNLOAD"] = "copilot_chat_start_llm_download";
       CopilotAnalytics2["SELECT_LLM"] = "copilot_chat_select_llm";
+      CopilotAnalytics2["DIRECTIVE_USED"] = "copilot_chat_directive_used";
+      CopilotAnalytics2["DIRECTIVE_CREATED_SUCCESS"] = "copilot_chat_directive_created_success";
+      CopilotAnalytics2["DIRECTIVE_CREATED_INITIALIZED"] = "copilot_chat_directive_created_initialized";
+      CopilotAnalytics2["DIRECTIVE_DELETED"] = "copilot_chat_directive_deleted";
     })(CopilotAnalytics || (exports.CopilotAnalytics = CopilotAnalytics = {}));
   }
 });
@@ -30526,13 +30586,41 @@ var require_Modal = __commonJS({
 var require_ModelProgressController = __commonJS({
   "../copilot-ts/dist/controllers/ModelProgressController.js"(exports) {
     "use strict";
+    var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
     var __importDefault = exports && exports.__importDefault || function(mod) {
       return mod && mod.__esModule ? mod : { "default": mod };
     };
     Object.defineProperty(exports, "__esModule", { value: true });
-    var client_1 = require_dist();
+    var pieces_os_client_1 = require_dist();
     var view_1 = require_view();
     var ConnectorSingleton_1 = __importDefault(require_ConnectorSingleton());
+    var LLMConfigModal_1 = __importDefault(require_LLMConfigModal());
     var ModelProgressController = class {
       /**
        * Initializes the sockets
@@ -30543,7 +30631,21 @@ var require_ModelProgressController = __commonJS({
         this.sockets = {};
         this.models = ConnectorSingleton_1.default.getInstance().modelsApi.modelsSnapshot();
         this.models.then((models) => {
-          this.initSockets(models.iterable.filter((el) => el.foundation === client_1.ModelFoundationEnum.Llama27B && el.unique !== "llama-2-7b-chat.ggmlv3.q4_K_M"));
+          this.initSockets(models.iterable.filter((el) => el.foundation === pieces_os_client_1.ModelFoundationEnum.Llama27B && el.unique !== "llama-2-7b-chat.ggmlv3.q4_K_M"));
+        });
+      }
+      /**
+       * refresh the model states with a snapshot
+       */
+      refreshWithSnapshot() {
+        return __awaiter(this, void 0, void 0, function* () {
+          const modelsPromise = ConnectorSingleton_1.default.getInstance().modelsApi.modelsSnapshot();
+          this.models = modelsPromise;
+          const models = yield modelsPromise;
+          const selected = models.iterable.find((el) => el.id === LLMConfigModal_1.default.selectedModel);
+          if (selected && selected.foundation === pieces_os_client_1.ModelFoundationEnum.Llama27B && !selected.downloaded) {
+            LLMConfigModal_1.default.selectedModel = "";
+          }
         });
       }
       /**
@@ -30599,12 +30701,10 @@ var require_ModelProgressController = __commonJS({
         this.sockets[model.id] = ws;
         ws.onmessage = (evt) => {
           var _a;
-          const event = (0, client_1.ModelDownloadProgressFromJSON)(JSON.parse(evt.data));
+          const event = (0, pieces_os_client_1.ModelDownloadProgressFromJSON)(JSON.parse(evt.data));
           const oldStatus = this.modelDownloadStatus.get(model.id);
-          this.modelDownloadStatus.set(model.id, (_a = event.status) !== null && _a !== void 0 ? _a : client_1.ModelDownloadProgressStatusEnum.Failed);
-          if (oldStatus === event.status || oldStatus === void 0 || event.status === void 0)
-            return;
-          if (event.status !== "COMPLETED")
+          this.modelDownloadStatus.set(model.id, (_a = event.status) !== null && _a !== void 0 ? _a : pieces_os_client_1.ModelDownloadProgressStatusEnum.Failed);
+          if (oldStatus === event.status || !oldStatus)
             return;
           if (event.status === "COMPLETED") {
             model.downloaded = true;
@@ -30613,6 +30713,8 @@ var require_ModelProgressController = __commonJS({
               message: "Model download success!"
             });
           }
+          if (oldStatus === "INITIALIZED" && event.status === "IN-PROGRESS")
+            return;
           for (const cb of this.callbacks) {
             cb();
           }
@@ -30729,1079 +30831,59 @@ var require_timeoutPromise = __commonJS({
   }
 });
 
-// ../copilot-ts/dist/modals/LLMConfigModal.js
-var require_LLMConfigModal = __commonJS({
-  "../copilot-ts/dist/modals/LLMConfigModal.js"(exports) {
+// ../copilot-ts/dist/controllers/ConversationsStreamController.js
+var require_ConversationsStreamController = __commonJS({
+  "../copilot-ts/dist/controllers/ConversationsStreamController.js"(exports) {
     "use strict";
-    var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
-      function adopt(value) {
-        return value instanceof P ? value : new P(function(resolve) {
-          resolve(value);
-        });
-      }
-      return new (P || (P = Promise))(function(resolve, reject) {
-        function fulfilled(value) {
-          try {
-            step(generator.next(value));
-          } catch (e) {
-            reject(e);
-          }
-        }
-        function rejected(value) {
-          try {
-            step(generator["throw"](value));
-          } catch (e) {
-            reject(e);
-          }
-        }
-        function step(result) {
-          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
-        }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-      });
-    };
     var __importDefault = exports && exports.__importDefault || function(mod) {
       return mod && mod.__esModule ? mod : { "default": mod };
     };
     Object.defineProperty(exports, "__esModule", { value: true });
-    var client_1 = require_dist();
+    var ConversationBuilder_1 = __importDefault(require_ConversationBuilder());
+    var pieces_os_client_1 = require_dist();
     var view_1 = require_view();
-    var ConnectorSingleton_1 = __importDefault(require_ConnectorSingleton());
-    var CopilotAnalytics_enum_1 = require_CopilotAnalytics_enum();
-    var const_1 = require_const();
-    var globals_1 = require_globals();
-    var Modal_1 = __importDefault(require_Modal());
-    var client_2 = require_dist();
-    var ModelProgressController_1 = __importDefault(require_ModelProgressController());
-    var ProgressBar_1 = __importDefault(require_ProgressBar());
-    var QGPTView_1 = __importDefault(require_QGPTView());
-    var timeoutPromise_1 = require_timeoutPromise();
-    var ModelBoxEnum;
-    (function(ModelBoxEnum2) {
-      ModelBoxEnum2["LLaMa2"] = "Llama2";
-      ModelBoxEnum2["CodeLlaMa"] = "CodeLlama";
-      ModelBoxEnum2["OpenAi"] = "Open AI";
-      ModelBoxEnum2["Palm2"] = "PaLM 2";
-    })(ModelBoxEnum || (ModelBoxEnum = {}));
-    var CopilotLLMConfigModal = class extends Modal_1.default {
+    var ConversationStreamController = class {
       constructor() {
-        super(...arguments);
-        this.activeModelPills = [];
-        this.modelButtons = [];
-        this.createModelBox = (type, container, models) => {
-          var _a;
-          const modelBox = (0, globals_1.createDiv)(container);
-          modelBox.classList.add("border-[var(--background-modifier-border)]", "rounded-md", "flex", "border-solid", "flex-col", "cursor-pointer", "p-2", "border", "gap-1");
-          const modelTitle = (0, globals_1.createDiv)(modelBox);
-          modelTitle.classList.add("flex-row", "flex");
-          const modelTitleText = (0, globals_1.createEl)(modelTitle, "div");
-          modelTitleText.classList.add("m-0", "flex", "flex-row", "gap-2", "items-center");
-          const svgBox = (0, globals_1.createDiv)(modelTitleText);
-          svgBox.classList.add("h-3", "svg-box");
-          svgBox.innerHTML = this.getModelSvg(type);
-          const modelTitleTextType = (0, globals_1.createEl)(modelTitleText, "p");
-          modelTitleTextType.classList.add("m-0");
-          modelTitleTextType.innerText = type;
-          const modelExpand = (0, globals_1.createDiv)(modelTitle);
-          modelExpand.classList.add("ml-auto", "font-semibold", "leading-[1]");
-          modelExpand.innerHTML = "\u2335";
-          const modelDesc = (0, globals_1.createEl)(modelBox, "p");
-          modelDesc.classList.add("text-xs", "text-[var(--text-faint)]", "m-0");
-          modelDesc.innerText = (_a = this.getOrgDesc(type)) !== null && _a !== void 0 ? _a : "";
-          const modelElements = (0, globals_1.createDiv)(modelBox);
-          modelElements.classList.add("hidden", "gap-2", "flex", "flex-col");
-          const modelElementsText = (0, globals_1.createEl)(modelElements, "p");
-          modelElementsText.classList.add("font-light", "text-xs", "text-[var(--text-faint)]", "pt-1");
-          modelElementsText.innerText = "SELECT MODEL";
-          this.buildModelElements(modelElements, models);
-          modelBox.onclick = () => {
-            const expanded = modelExpand.innerHTML === "\u2335";
-            modelExpand.innerHTML = expanded ? "&times;" : "\u2335";
-            modelElements.classList.toggle("hidden");
-          };
-        };
-        this.setModelButtonsColor = () => {
-          for (const btn of this.modelButtons) {
-            if (btn.selected) {
-              btn.btn.innerHTML = const_1.Constants.PLUG_SVG;
-              btn.selected = false;
-            }
-            btn.btn.style.color = "";
-          }
-        };
-        this.getOrgDesc = (type) => {
-          if (type === ModelBoxEnum.LLaMa2) {
-            return "Meta's fastest model in the Llama 2 family optimized to run on your device for a fast, air-gapped experience.";
-          }
-          if (type === ModelBoxEnum.CodeLlaMa) {
-            return "Meta's model trained on top of Llama 2 fine-tuned for code-related tasks, optimized to run on your device.";
-          }
-          if (type === ModelBoxEnum.OpenAi) {
-            return "OpenAI's most capable and cost effective models. Includes up to 4,096 max tokens and has training data up until September 2021.";
-          }
-          if (type === ModelBoxEnum.Palm2) {
-            return "PaLM 2 has been optimized for ease of use on key developer use cases and the ability to follow instructions with precision and nuance.";
-          }
-        };
-        this.getModelRequirements = (model) => {
-          if (model.cpu && model.foundation === client_1.ModelFoundationEnum.Llama27B)
-            return "- requires at least 5.6GB RAM";
-          if (!model.cpu && model.foundation === client_1.ModelFoundationEnum.Llama27B)
-            return "- requires at least 5.6GB VRAM (GPU RAM)";
-          return "No local device requirements, runs solely in the cloud";
-        };
-        this.getModelTitle = (model) => {
-          if (model.cpu && model.foundation === client_1.ModelFoundationEnum.Llama27B && !model.name.includes("CodeLlama"))
-            return "7B";
-          if (!model.cpu && model.foundation === client_1.ModelFoundationEnum.Llama27B && !model.name.includes("CodeLlama"))
-            return "7B GPU";
-          if (model.cpu && model.name.includes("CodeLlama"))
-            return "7B";
-          if (!model.cpu && model.name.includes("CodeLlama"))
-            return "7B GPU";
-          if (model.foundation === client_1.ModelFoundationEnum.Gpt4)
-            return "GPT 4";
-          if (model.name.includes("16k"))
-            return "GPT 3.5 16k";
-          if (model.foundation === client_1.ModelFoundationEnum.ChatBison)
-            return "Chat Bison";
-          if (model.foundation === client_1.ModelFoundationEnum.CodechatBison)
-            return "Code Chat Bison";
-          return "GPT 3.5 Turbo";
-        };
-        this.getModelName = (model) => {
-          const svgBox = document.createElement("div");
-          svgBox.classList.add("h-4", "w-auto", "svg-box");
-          const textBox = document.createElement("p");
-          textBox.classList.add("m-0");
-          if (model.cpu && model.foundation === client_1.ModelFoundationEnum.Llama27B && !model.name.includes("CodeLlama")) {
-            svgBox.innerHTML = const_1.Constants.META_SVG;
-            textBox.innerText = "Llama2 7B CPU";
-            return svgBox.outerHTML + textBox.outerHTML;
-          }
-          if (!model.cpu && model.foundation === client_1.ModelFoundationEnum.Llama27B && !model.name.includes("CodeLlama")) {
-            svgBox.innerHTML = const_1.Constants.META_SVG;
-            textBox.innerText = "Llama2 7B GPU";
-            return svgBox.outerHTML + textBox.outerHTML;
-          }
-          if (model.cpu && model.name.includes("CodeLlama")) {
-            svgBox.innerHTML = const_1.Constants.META_SVG;
-            textBox.innerText = "CodeLlama 7B CPU";
-            return svgBox.outerHTML + textBox.outerHTML;
-          }
-          if (!model.cpu && model.name.includes("CodeLlama")) {
-            svgBox.innerHTML = const_1.Constants.META_SVG;
-            textBox.innerText = "CodeLlama 7B GPU";
-            return svgBox.outerHTML + textBox.outerHTML;
-          }
-          if (model.name.includes("16k")) {
-            svgBox.innerHTML = const_1.Constants.OPENAI_SVG;
-            textBox.innerText = "GPT 3.5 16k";
-            return svgBox.outerHTML + textBox.outerHTML;
-          }
-          if (model.foundation === client_1.ModelFoundationEnum.Gpt4) {
-            svgBox.innerHTML = const_1.Constants.OPENAI_SVG;
-            textBox.innerText = "GPT 4";
-            return svgBox.outerHTML + textBox.outerHTML;
-          }
-          if (model.foundation === client_1.ModelFoundationEnum.ChatBison) {
-            svgBox.innerHTML = const_1.Constants.PALM2_SVG;
-            textBox.innerText = "Chat Bison";
-            return svgBox.outerHTML + textBox.outerHTML;
-          }
-          if (model.foundation === client_1.ModelFoundationEnum.CodechatBison) {
-            svgBox.innerHTML = const_1.Constants.PALM2_SVG;
-            textBox.innerText = "Code Chat Bison";
-            return svgBox.outerHTML + textBox.outerHTML;
-          }
-          svgBox.innerHTML = const_1.Constants.OPENAI_SVG;
-          textBox.innerText = "GPT 3.5 Turbo";
-          return svgBox.outerHTML + textBox.outerHTML;
-        };
-        this.refresh = () => {
-          this.close();
-          this.open();
-        };
+        this.conversations = [];
+        this.ws = null;
+        this.connect();
       }
-      onOpen() {
-        return __awaiter(this, void 0, void 0, function* () {
-          this.modelButtons = [];
-          const modelProgress = ModelProgressController_1.default.getInstance();
-          modelProgress.registerCallback(this.refresh);
-          const models = yield modelProgress.models;
-          modelProgress.openSockets(models.iterable.filter(
-            // this will open any socket for a model id that is not currently open
-            (el) => el.foundation === client_1.ModelFoundationEnum.Llama27B && el.unique !== "llama-2-7b-chat.ggmlv3.q4_K_M"
-          ));
-          const defaultModel = models.iterable.find((el) => el.unique === "gpt-3.5-turbo");
-          if (!defaultModel)
-            throw new Error("Default model is broken in LLMConfigModal");
-          if (!CopilotLLMConfigModal.selectedModel) {
-            CopilotLLMConfigModal.selectedModel = defaultModel.id;
-          }
-          this.titleEl.innerText = "Copilot Runtime";
-          const titleDesc = (0, globals_1.createEl)(this.titleEl, "p");
-          titleDesc.classList.add("m-0", "text-xs", "font-normal", "text-[var(--text-faint)]");
-          titleDesc.innerText = "Choose between different LLM's and runtime types";
-          (0, globals_1.emptyEl)(this.contentEl);
-          this.contentEl.classList.add("min-h-[50vh]", "!flex", "flex-col");
-          const container = (0, globals_1.createDiv)(this.contentEl);
-          container.classList.add("flex", "flex-col", "w-full", "h-full", "flex-grow");
-          const tabs = (0, globals_1.createDiv)(container);
-          tabs.classList.add("flex-row", "justify-around", "flex", "py-3");
-          const cloudModels = (0, globals_1.createDiv)(container);
-          cloudModels.classList.add("hidden", "flex", "w-full", "h-full", "flex-col", "gap-3", "flex-grow");
-          const localModels = (0, globals_1.createDiv)(container);
-          localModels.classList.add("flex", "w-full", "h-full", "flex-col", "gap-3", "flex-grow");
-          const localRecommendation = (0, globals_1.createDiv)(localModels);
-          localRecommendation.classList.add("flex", "flex-col", "rounded-md", "p-2", "bg-[var(--background-secondary)]", "gap-2", "cursor-pointer");
-          const recommendationTitleRow = (0, globals_1.createDiv)(localRecommendation);
-          recommendationTitleRow.classList.add("flex", "flex-row", "justify-between", "items-center", "px-[2px]");
-          const recommendationTitle = (0, globals_1.createEl)(recommendationTitleRow, "p");
-          recommendationTitle.classList.add("font-light", "text-[var(--text-muted)]", "m-0", "text-xs");
-          recommendationTitle.innerText = "MODEL RECOMMENDATIONS";
-          const recommendationCaret = (0, globals_1.createEl)(recommendationTitleRow, "p");
-          recommendationCaret.classList.add("m-0", "font-semibold", "-mt-1.5");
-          recommendationCaret.innerHTML = "\u2335";
-          const recommendationExpandContainer = (0, globals_1.createDiv)(localRecommendation);
-          recommendationExpandContainer.classList.add("hidden");
-          localRecommendation.onclick = (e) => {
-            recommendationExpandContainer.classList.toggle("hidden");
-            recommendationCaret.innerHTML = recommendationExpandContainer.classList.contains("hidden") ? "\u2335" : "&times;";
-            e.stopPropagation();
-          };
-          const recommendationDesc = (0, globals_1.createEl)(recommendationExpandContainer, "p");
-          recommendationDesc.classList.add("m-0", "text-[var(--text-muted)]", "text-sm");
-          recommendationDesc.innerText = "Local LLM's are not recommended for low power or older machines, to ensure a good experience please follow the recommended practices for choosing a model.";
-          const recommendationList = (0, globals_1.createEl)(recommendationExpandContainer, "ul");
-          recommendationList.classList.add("text-xs", "!list-disc", "text-[var(--text-muted)]", "pl-2", "gap-1", "flex", "flex-col");
-          const gpuRecommendation = (0, globals_1.createEl)(recommendationList, "li");
-          gpuRecommendation.innerHTML = "<strong>GPU</strong> LLM's are designed for machines with a modern, dedicated graphics chip (i.e: ARM Mac, NVIDIA GPU with 6gb VRAM or more)";
-          const cpuRecommendation = (0, globals_1.createEl)(recommendationList, "li");
-          cpuRecommendation.innerHTML = "<strong>CPU</strong> models are recommended if you do not have a strong enough graphics card for the GPU LLM's. Be aware this model will be as slow or as fast as your machine specs allow.";
-          const cloudRecommendation = (0, globals_1.createEl)(recommendationList, "li");
-          cloudRecommendation.innerHTML = "<strong>CLOUD</strong> models are recommended if performance issues arise while using the local models (for older or lower powered machines).";
-          this.createModelBox(ModelBoxEnum.LLaMa2, localModels, models.iterable.filter((el) => el.foundation === client_1.ModelFoundationEnum.Llama27B && !el.name.includes("CodeLlama")));
-          this.createModelBox(ModelBoxEnum.CodeLlaMa, localModels, models.iterable.filter((el) => el.name.includes("CodeLlama")));
-          this.createModelBox(ModelBoxEnum.OpenAi, cloudModels, models.iterable.filter((el) => el.foundation === client_1.ModelFoundationEnum.Gpt35 || el.foundation === client_1.ModelFoundationEnum.Gpt4));
-          this.createModelBox(ModelBoxEnum.Palm2, cloudModels, models.iterable.filter((el) => el.foundation === client_1.ModelFoundationEnum.CodechatBison || el.foundation === client_1.ModelFoundationEnum.ChatBison));
-          const localTab = (0, globals_1.createDiv)(tabs);
-          const cloudTab = (0, globals_1.createDiv)(tabs);
-          const localSvgBox = (0, globals_1.createDiv)(localTab);
-          localSvgBox.classList.add("h-4", "svg-box");
-          localSvgBox.innerHTML = const_1.Constants.LAPTOP_SVG;
-          const localTabText = (0, globals_1.createEl)(localTab, "p");
-          localTabText.classList.add("m-0");
-          localTabText.innerText = "On-Device";
-          localTab.classList.add("cursor-pointer", "underline", "flex", "flex-row", "gap-1", "items-center");
-          localTab.onclick = () => {
-            localTab.classList.add("underline");
-            cloudTab.classList.remove("underline");
-            localModels.classList.remove("hidden");
-            cloudModels.classList.add("hidden");
-          };
-          const cloudSvgBox = (0, globals_1.createDiv)(cloudTab);
-          cloudSvgBox.classList.add("svg-box", "h-4");
-          cloudSvgBox.innerHTML = const_1.Constants.CLOUD_SVG;
-          const cloudTabText = (0, globals_1.createEl)(cloudTab, "p");
-          cloudTabText.classList.add("m-0");
-          cloudTabText.innerText = "Cloud";
-          cloudTab.classList.add("cursor-pointer", "flex", "flex-row", "gap-1", "items-center");
-          cloudTab.onclick = () => {
-            cloudTab.classList.add("underline");
-            localTab.classList.remove("underline");
-            localModels.classList.add("hidden");
-            cloudModels.classList.remove("hidden");
-          };
-          const activeModel = (0, globals_1.createDiv)(this.contentEl);
-          activeModel.classList.add("flex", "flex-col", "h-full", "gap-2", "pb-2");
-          const activeModelText = (0, globals_1.createEl)(activeModel, "p");
-          activeModelText.classList.add("text-xs", "text-[var(--text-faint)]", "pt-2", "m-0");
-          activeModelText.innerText = "ACTIVE MODEL";
-          this.createActiveModelPill(activeModel, models);
-          (0, view_1.track)(CopilotAnalytics_enum_1.CopilotAnalytics.LLM_CONFIG_BUTTON);
-        });
-      }
-      /**
-       * Creates an active model pill and registers it in the 'activeModels' array to make sure it is up to date with user's selection
-       * @param container the container for the model pill
-       * @param models list of the models (should contain the active model)
-       * @param applyStyles defaults to true, this is whether or not we should apply visual effects such as a border, padding, etc
-       * @returns
-       */
-      createActiveModelPill(container, models, applyStyles = true) {
+      // close the connection
+      closeSocket() {
         var _a;
-        const activeModelPill = (0, globals_1.createDiv)(container);
-        if (applyStyles)
-          activeModelPill.classList.add("border", "rounded-lg", "p-2", "w-fit", "border-solid", "border-[var(--background-modifier-border)]", "flex-row", "flex", "gap-2", "items-center");
-        else
-          activeModelPill.classList.add("flex", "flex-row", "gap-2", "items-center", "hover:text-[var(--text-accent)]");
-        const selectedModel = (_a = models.iterable.find((el) => el.id === CopilotLLMConfigModal.selectedModel)) !== null && _a !== void 0 ? _a : models.iterable.find((el) => el.unique === "gpt-3.5-turbo");
-        activeModelPill.innerHTML = this.getModelName(selectedModel);
-        this.activeModelPills.push(activeModelPill);
-        return activeModelPill;
+        (_a = this.ws) === null || _a === void 0 ? void 0 : _a.close();
+        this.ws = null;
       }
-      buildModelElements(containerEl, models) {
-        return __awaiter(this, void 0, void 0, function* () {
-          for (let i = 0; i < models.length; i++) {
-            this.buildModelElement(models[i], containerEl);
-          }
-        });
-      }
-      // builds the element for each individual model
-      buildModelElement(model, containerEl) {
-        if (model.cloud)
-          model.downloaded = true;
-        const modelElement = (0, globals_1.createDiv)(containerEl);
-        modelElement.classList.add("flex", "flex-col", "rounded-md", "p-2", "bg-[var(--background-secondary)]", "gap-2");
-        const modelTitleRow = (0, globals_1.createDiv)(modelElement);
-        modelTitleRow.classList.add("flex", "flex-row", "justify-between", "items-center");
-        const modelTitle = (0, globals_1.createEl)(modelTitleRow, "p");
-        modelTitle.innerText = this.getModelTitle(model);
-        modelTitle.classList.add("m-0");
-        const modelButton = (0, globals_1.createDiv)(modelTitleRow);
-        this.modelButtons.push({
-          btn: modelButton,
-          selected: CopilotLLMConfigModal.selectedModel === model.id,
-          model: model.id
-        });
-        modelButton.classList.add("cursor-pointer", "hover:text-[var(--text-accent)]", "flex", "items-center", "text-xs");
-        const status = ModelProgressController_1.default.getInstance().modelDownloadStatus.get(model.id);
-        if (model.name.includes("CodeLlama")) {
-          modelButton.innerHTML = "Coming Soon";
-        } else if (model.downloaded) {
-          modelButton.innerHTML = const_1.Constants.PLUG_SVG;
-          modelButton.title = `Select ${modelTitle.innerText}`;
-        } else if (status === client_2.ModelDownloadProgressStatusEnum.InProgress || status === client_2.ModelDownloadProgressStatusEnum.Initialized) {
-          modelButton.innerHTML = "&times;";
-          modelButton.title = `Cancel ${modelTitle.innerText} download`;
-        } else {
-          modelButton.innerHTML = const_1.Constants.DOWNLOAD_SVG;
-          modelButton.title = `Download ${modelTitle.innerText}`;
-        }
-        if (CopilotLLMConfigModal.selectedModel === model.id) {
-          modelButton.innerHTML = const_1.Constants.CHECK_SVG;
-          modelButton.style.color = "var(--text-accent)";
-        }
-        const modelRequirementsButton = (0, globals_1.createDiv)(modelElement);
-        modelRequirementsButton.classList.add("cursor-pointer", "text-xs", "text-[var(--text-faint)]", "flex", "gap-1");
-        modelRequirementsButton.innerHTML = 'System Requirements  <p class="leading-[1] m-0">\u2335</p>';
-        const modelRequirements = (0, globals_1.createEl)(modelElement, "p");
-        modelRequirements.classList.add("hidden", "text-xs", "pt-1", "text-[var(--text-faint)]", "m-0");
-        modelRequirements.innerText = this.getModelRequirements(model);
-        modelRequirementsButton.onclick = (e) => {
-          modelRequirementsButton.innerHTML = modelRequirements.classList.contains("hidden") ? "System Requirements  &times;" : 'System Requirements  <p class="leading-[1] m-0">\u2335</p>';
-          modelRequirements.classList.toggle("hidden");
-          e.stopPropagation();
-        };
-        const progressBar = new ProgressBar_1.default({
-          current: 0,
-          end: 100,
-          contentEl: modelElement
-        });
-        if (status === client_2.ModelDownloadProgressStatusEnum.InProgress || status === client_2.ModelDownloadProgressStatusEnum.Initialized) {
-          progressBar.bounce();
-        } else {
-          progressBar.hide();
-        }
-        modelButton.onclick = (e) => {
-          e.stopPropagation();
-          if (model.name.includes("CodeLlama")) {
-            (0, view_1.sendNotification)({
-              type: "info",
-              message: "The CodeLlama models are not quite ready for production, but are coming soon!"
-            });
-            return;
-          }
-          this.handleDownloadSelectCancel(model);
-          (0, timeoutPromise_1.timeoutPromise)(200).then(() => {
-            const newStatus = ModelProgressController_1.default.getInstance().modelDownloadStatus.get(model.id);
-            if (model.downloaded) {
-              this.setModelButtonsColor();
-              modelButton.innerHTML = const_1.Constants.CHECK_SVG;
-              modelButton.title = `Select ${modelTitle.innerText}`;
-              const buttonObj = this.modelButtons.find((el) => el.model === model.id);
-              if (buttonObj)
-                buttonObj.selected = true;
-              modelButton.style.color = "var(--text-accent)";
-              this.activeModelPills.forEach((el) => el.innerHTML = this.getModelName(model));
-              (0, view_1.track)(CopilotAnalytics_enum_1.CopilotAnalytics.SELECT_LLM);
-            } else if (newStatus === client_2.ModelDownloadProgressStatusEnum.InProgress || newStatus === client_2.ModelDownloadProgressStatusEnum.Initialized) {
-              modelButton.innerHTML = "&times;";
-              modelButton.title = `Cancel ${modelTitle.innerText} download`;
-              progressBar.show();
-              progressBar.bounce();
-              (0, view_1.track)(CopilotAnalytics_enum_1.CopilotAnalytics.LLM_START_DOWNLOAD);
-            } else {
-              modelButton.innerHTML = const_1.Constants.DOWNLOAD_SVG;
-              modelButton.title = `Download ${modelTitle.innerText}`;
-              progressBar.hide();
-              (0, view_1.track)(CopilotAnalytics_enum_1.CopilotAnalytics.LLM_CANCEL_DOWNLOAD);
-            }
-          });
-        };
-      }
-      getModelSvg(type) {
-        if (type === ModelBoxEnum.CodeLlaMa || type === ModelBoxEnum.LLaMa2)
-          return const_1.Constants.META_SVG;
-        if (type === ModelBoxEnum.Palm2)
-          return const_1.Constants.PALM2_SVG;
-        return const_1.Constants.OPENAI_SVG;
-      }
-      handleDownloadSelectCancel(model) {
-        const status = ModelProgressController_1.default.getInstance().modelDownloadStatus.get(model.id);
-        if (status === client_2.ModelDownloadProgressStatusEnum.InProgress || status === client_2.ModelDownloadProgressStatusEnum.Initialized) {
-          ConnectorSingleton_1.default.getInstance().modelApi.modelSpecificModelDownloadCancel({ model: model.id }).then(() => {
-            (0, view_1.sendNotification)({
-              message: "Cancelling model download was a success",
-              type: "info"
-            });
-          }).catch(() => {
-            (0, view_1.sendNotification)({
-              message: "Failed to cancel model download, please make sure that Pieces OS is installed, running, and updated. If the issue persists, please contact support@pieces.app",
-              type: "error"
-            });
-          });
-        } else if (model.downloaded) {
-          CopilotLLMConfigModal.selectedModel = model.id;
-          CopilotLLMConfigModal.selectedRuntime = model.cloud ? "CLOUD" : model.cpu ? "CPU" : "GPU";
-          (0, view_1.saveState)({
-            conversation: QGPTView_1.default.currentConversation,
-            selectedModel: CopilotLLMConfigModal.selectedModel,
-            migration: view_1.migration,
-            conversationId: QGPTView_1.default.conversationId,
-            codeBlocks: QGPTView_1.default.codeBlocks
-          });
-          (0, view_1.sendNotification)({
-            type: "info",
-            message: `${model.foundation} ${model.cloud ? "CLOUD" : model.cpu ? "CPU" : "GPU"} selected!`
-          });
-        } else {
-          ConnectorSingleton_1.default.getInstance().modelApi.modelSpecificModelDownload({ model: model.id }).catch(() => {
-            (0, view_1.sendNotification)({
-              message: "Failed to initiate model download, please make sure that Pieces OS is installed, running, and updated. If the issue persists, please contact support@pieces.app",
-              type: "error"
-            });
-          });
-          ModelProgressController_1.default.getInstance().modelDownloadStatus.set(model.id, client_2.ModelDownloadProgressStatusEnum.InProgress);
-        }
-      }
-      onClose() {
-        ModelProgressController_1.default.getInstance().deregisterCallback(this.refresh);
-      }
-    };
-    CopilotLLMConfigModal.selectedRuntime = "CLOUD";
-    CopilotLLMConfigModal.selectedModel = "";
-    exports.default = CopilotLLMConfigModal;
-  }
-});
-
-// ../copilot-ts/dist/components/Tooltip.js
-var require_Tooltip = __commonJS({
-  "../copilot-ts/dist/components/Tooltip.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    var globals_1 = require_globals();
-    var Tooltip = class {
-      /**
-       *
-       * @param content html string of the inner content for the tooltip
-       * @param triggerElement when the user hovers this element, the tooltip will show
-       */
-      constructor(content, triggerElement) {
-        const tooltip = (0, globals_1.createDiv)(document.body);
-        tooltip.classList.add("cursor-default", "opacity-90", "hidden", "absolute", "bg-[var(--background-modifier-border-hover)]", "p-2", "rounded", "z-[999]");
-        this.container = tooltip;
-        tooltip.innerHTML = content;
-        triggerElement.onmouseenter = (event) => {
-          if (!tooltip.classList.contains("hidden"))
-            return;
-          tooltip.classList.remove("hidden");
-          const tooltipWidth = tooltip.offsetWidth;
-          const tooltipHeight = tooltip.offsetHeight;
-          const windowWidth = window.innerWidth;
-          const windowHeight = window.innerHeight;
-          const rect = triggerElement.getBoundingClientRect();
-          let topPosition = rect.bottom + 8;
-          let leftPosition = event.clientX - tooltipWidth / 2;
-          if (leftPosition + tooltipWidth > windowWidth) {
-            leftPosition = windowWidth - tooltipWidth - 10;
-          }
-          if (leftPosition < 0) {
-            leftPosition = 10;
-          }
-          if (topPosition + tooltipHeight > windowHeight) {
-            topPosition = windowHeight - tooltipHeight - 10;
-          }
-          if (topPosition < 0) {
-            topPosition = 10;
-          }
-          tooltip.style.top = topPosition + "px";
-          tooltip.style.left = leftPosition + "px";
-          const toolTipRect = tooltip.getBoundingClientRect();
-          if (event.clientX > toolTipRect.left && event.clientX < toolTipRect.right && event.clientY < toolTipRect.bottom && event.clientY > toolTipRect.top) {
-            triggerElement.onmouseleave = () => {
-            };
-            tooltip.onmouseleave = () => {
-              tooltip.classList.add("hidden");
-            };
-          } else {
-            tooltip.onmouseleave = () => {
-            };
-            triggerElement.onmouseleave = () => {
-              tooltip.classList.add("hidden");
-            };
-          }
-        };
-      }
-      remove() {
-        this.container.remove();
-      }
-    };
-    exports.default = Tooltip;
-  }
-});
-
-// ../copilot-ts/dist/utils/langReadableToExt.js
-var require_langReadableToExt = __commonJS({
-  "../copilot-ts/dist/utils/langReadableToExt.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    var client_1 = require_dist();
-    var langReadableToExtMap2 = {
-      batch: client_1.ClassificationSpecificEnum.Bat,
-      coffee: client_1.ClassificationSpecificEnum.Coffee,
-      erlang: "erl",
-      haskell: "hs",
-      lua: "lua",
-      markdown: "md",
-      matlab: "matlab",
-      "objective-c": "m",
-      c: "c",
-      "c++": "cpp",
-      "c++ source": "cc",
-      "c++ header": "h",
-      "c++ h-header": "hh",
-      "c#": "cs",
-      css: "css",
-      go: "go",
-      html: "html",
-      htm: "htm",
-      java: "java",
-      javascript: "js",
-      typescript: "ts",
-      dart: "dart",
-      scala: "scala",
-      sql: "sql",
-      perl: "pl",
-      php: "php",
-      python: "py",
-      py: "py",
-      "python-c": "pyc",
-      powershell: "ps1",
-      r: "r",
-      bash: "sh",
-      swift: "swift",
-      ruby: "rb",
-      tex: "tex",
-      plaintextgrammar: "text",
-      rust: "rs",
-      json: "json",
-      yaml: "yml",
-      toml: "toml",
-      xml: "xml",
-      groovy: "groovy",
-      kotlin: "kt",
-      clojure: "clj",
-      lisp: "el",
-      elixir: "ex",
-      asp: "asp",
-      csharp: "cs",
-      coffeescript: "coffee",
-      coldfusion: "cfm",
-      cpp: "cpp",
-      docker: "docker",
-      "emacs-lisp": "el",
-      solidity: "sol",
-      systemverilog: "sv",
-      dockerfile: "docker",
-      latex: "tex"
-    };
-    function langReadableToExt2(readable) {
-      var _a;
-      return (_a = langReadableToExtMap2[readable.toLowerCase()]) !== null && _a !== void 0 ? _a : "ts";
-    }
-    exports.default = langReadableToExt2;
-  }
-});
-
-// ../copilot-ts/dist/utils/getIcon.js
-var require_getIcon = __commonJS({
-  "../copilot-ts/dist/utils/getIcon.js"(exports) {
-    "use strict";
-    var __importDefault = exports && exports.__importDefault || function(mod) {
-      return mod && mod.__esModule ? mod : { "default": mod };
-    };
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.getLanguageIcon = exports.getIcon = void 0;
-    var QGPTView_1 = __importDefault(require_QGPTView());
-    var langReadableToExt_1 = __importDefault(require_langReadableToExt());
-    var getIcon4 = (language) => {
-      const theme2 = QGPTView_1.default.theme;
-      let className = language;
-      switch (language) {
-        case "bat":
-          className = theme2 === "dark" ? "batD" : "batL";
-          break;
-        case "coffee":
-          className = theme2 === "dark" ? "coffeeD" : "coffeeL";
-          break;
-        case "md":
-          className = theme2 === "dark" ? "mdD" : "mdL";
-          break;
-        case "sh":
-          className = theme2 === "dark" ? "shD" : "shL";
-          break;
-        case "yml":
-        case "yaml":
-          className = theme2 === "dark" ? "yamlD" : "yamlL";
-          break;
-        case "tml":
-        case "toml":
-          className = theme2 === "dark" ? "tomlD" : "tomlL";
-          break;
-        default:
-          break;
-      }
-      return className + "-img";
-    };
-    exports.getIcon = getIcon4;
-    var getLanguageIcon = (language) => {
-      const ext = (0, langReadableToExt_1.default)(language);
-      return (0, exports.getIcon)(ext);
-    };
-    exports.getLanguageIcon = getLanguageIcon;
-  }
-});
-
-// ../copilot-ts/dist/utils/getNotDeletedIndicies.js
-var require_getNotDeletedIndicies = __commonJS({
-  "../copilot-ts/dist/utils/getNotDeletedIndicies.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    function getNotDeletedIndicies(indicies) {
-      return Object.entries(indicies !== null && indicies !== void 0 ? indicies : {}).reduce((ids, [id, index]) => {
-        if (index !== -1) {
-          ids.push(id);
-        }
-        return ids;
-      }, []);
-    }
-    exports.default = getNotDeletedIndicies;
-  }
-});
-
-// ../copilot-ts/dist/modals/ContextSelectionModal.js
-var require_ContextSelectionModal = __commonJS({
-  "../copilot-ts/dist/modals/ContextSelectionModal.js"(exports) {
-    "use strict";
-    var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
-      function adopt(value) {
-        return value instanceof P ? value : new P(function(resolve) {
-          resolve(value);
-        });
-      }
-      return new (P || (P = Promise))(function(resolve, reject) {
-        function fulfilled(value) {
-          try {
-            step(generator.next(value));
-          } catch (e) {
-            reject(e);
-          }
-        }
-        function rejected(value) {
-          try {
-            step(generator["throw"](value));
-          } catch (e) {
-            reject(e);
-          }
-        }
-        function step(result) {
-          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
-        }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-      });
-    };
-    var __importDefault = exports && exports.__importDefault || function(mod) {
-      return mod && mod.__esModule ? mod : { "default": mod };
-    };
-    Object.defineProperty(exports, "__esModule", { value: true });
-    var client_1 = require_dist();
-    var view_1 = require_view();
-    var client_2 = require_dist();
-    var ConnectorSingleton_1 = __importDefault(require_ConnectorSingleton());
-    var const_1 = require_const();
-    var LLMConfigModal_1 = __importDefault(require_LLMConfigModal());
-    var Modal_1 = __importDefault(require_Modal());
-    var QGPTView_1 = __importDefault(require_QGPTView());
-    var Tooltip_1 = __importDefault(require_Tooltip());
-    var getIcon_1 = require_getIcon();
-    var getNotDeletedIndicies_1 = __importDefault(require_getNotDeletedIndicies());
-    var globals_1 = require_globals();
-    var ContextSelectionModal = class extends Modal_1.default {
-      constructor() {
-        super();
-        this.tooltip = null;
-        this.paths = [];
-        this.assets = [];
-        this.folderToFileCount = {};
-        this.DEBOUNCE_TIMER_MS = 200;
-        this.resolvers = [];
-        const titleEl = (0, globals_1.createDiv)(this.titleEl);
-        titleEl.innerText = "Manage Context";
-        const subTitle = (0, globals_1.createDiv)(this.titleEl);
-        subTitle.classList.add("text-[var(--text-faint)]", "text-xs");
-        subTitle.innerText = "Configure the files, folders, and snippets the Pieces Copilot should use for this conversation";
-        const tabs = (0, globals_1.createDiv)(this.contentEl);
-        tabs.classList.add("flex", "flex-row", "justify-evenly", "py-3", "flex-wrap", "gap-2");
-        const fileTab = (0, globals_1.createDiv)(tabs);
-        fileTab.classList.add("cursor-pointer", "underline", "flex", "flex-row", "items-center", "gap-1");
-        this.selectedTabEl = fileTab;
-        const fileIcon = (0, globals_1.createDiv)(fileTab);
-        fileIcon.classList.add("svg-box", "h-4");
-        fileIcon.innerHTML = const_1.Constants.FILE_SVG;
-        const fileTabText = (0, globals_1.createEl)(fileTab, "p");
-        fileTabText.innerText = "Files";
-        fileTabText.classList.add("m-0");
-        const folderTab = (0, globals_1.createDiv)(tabs);
-        folderTab.classList.add("cursor-pointer", "flex", "flex-row", "items-center", "gap-1");
-        const folderIcon = (0, globals_1.createDiv)(folderTab);
-        folderIcon.classList.add("svg-box", "h-4");
-        folderIcon.innerHTML = const_1.Constants.OPEN_FILE_SVG;
-        const folderTabText = (0, globals_1.createEl)(folderTab, "p");
-        folderTabText.innerText = "Folders";
-        folderTabText.classList.add("m-0");
-        const snippetTab = (0, globals_1.createDiv)(tabs);
-        snippetTab.classList.add("cursor-pointer", "flex", "flex-row", "items-center", "gap-1");
-        const snippetIcon = (0, globals_1.createDiv)(snippetTab);
-        snippetIcon.classList.add("svg-box", "h-4");
-        snippetIcon.innerHTML = const_1.Constants.SNIPPET_SVG;
-        const snippetTabText = (0, globals_1.createEl)(snippetTab, "p");
-        snippetTabText.innerText = "Snippets";
-        snippetTabText.classList.add("m-0");
-        const fileTabContent = (0, globals_1.createDiv)(this.contentEl);
-        fileTabContent.classList.add("flex", "flex-col", "rounded-lg", "border", "border-solid", "border-[var(--background-modifier-border)]", "p-2", "gap-1");
-        this.selectedTabContentEl = fileTabContent;
-        this.fileTabContentEl = fileTabContent;
-        const folderTabContent = (0, globals_1.createDiv)(this.contentEl);
-        folderTabContent.classList.add("hidden", "flex", "flex-col", "border", "border-solid", "border-[var(--background-modifier-border)]", "p-2", "rounded-lg", "gap-1");
-        this.folderTabContentEl = folderTabContent;
-        const snippetTabContent = (0, globals_1.createDiv)(this.contentEl);
-        snippetTabContent.classList.add("hidden", "flex", "flex-col", "border", "border-solid", "border-[var(--background-modifier-border)]", "p-2", "rounded-lg", "gap-1");
-        this.snippetTabContentEl = snippetTabContent;
-        tabs.onclick = (event) => {
-          this.selectedTabContentEl.classList.add("hidden");
-          this.selectedTabEl.classList.remove("underline");
-          if (snippetTab.contains(event.target)) {
-            this.selectedTabContentEl = snippetTabContent;
-            this.selectedTabEl = snippetTab;
-          }
-          if (folderTab.contains(event.target)) {
-            this.selectedTabContentEl = folderTabContent;
-            this.selectedTabEl = folderTab;
-          }
-          if (fileTab.contains(event.target)) {
-            this.selectedTabContentEl = fileTabContent;
-            this.selectedTabEl = fileTab;
-          }
-          this.selectedTabContentEl.classList.remove("hidden");
-          this.selectedTabEl.classList.add("underline");
-        };
-        this.debouncedConversationChangeHandler(QGPTView_1.default.conversationId);
+      // open the connection if it's closed
+      resetConnection() {
+        if (this.ws)
+          return;
+        this.connect();
       }
       /**
-       * This will add context to a conversation, either an asset or a file path
-       * @param type type of context to be added
+       * Opens a websocket connection, and sets up the onmessage, onclose, and onerror handlers
        */
-      addToContext(type) {
+      connect() {
+        const url = `ws://localhost:${view_1.port}/conversations/stream/identifiers`;
+        this.ws = new WebSocket(url);
+        this.ws.onmessage = (event) => {
+          const conversationIdentifiers = (0, pieces_os_client_1.StreamedIdentifiersFromJSON)(JSON.parse(event.data));
+          ConversationBuilder_1.default.getInstance().debouncedRender(conversationIdentifiers);
+        };
+        const refreshSockets = (error) => {
+          if (error)
+            console.error(error);
+          this.ws = null;
+        };
+        this.ws.onerror = refreshSockets;
+        this.ws.onclose = refreshSockets;
+      }
+      static getInstance() {
         var _a;
-        return __awaiter(this, void 0, void 0, function* () {
-          if (!((_a = QGPTView_1.default.conversationId) === null || _a === void 0 ? void 0 : _a.length)) {
-            const conversation = yield ConnectorSingleton_1.default.getInstance().conversationsApi.conversationsCreateSpecificConversation({
-              transferables: false,
-              seededConversation: { type: client_1.ConversationTypeEnum.Copilot }
-            });
-            QGPTView_1.default.conversationId = conversation.id;
-            (0, view_1.saveState)({
-              conversation: QGPTView_1.default.currentConversation,
-              conversationId: conversation.id,
-              selectedModel: LLMConfigModal_1.default.selectedModel,
-              migration: view_1.migration,
-              codeBlocks: QGPTView_1.default.codeBlocks
-            });
-          }
-          (0, view_1.requestContextPicker)(type, QGPTView_1.default.conversationId);
-        });
-      }
-      // user switched to a new conversation
-      empty() {
-        this.paths = [];
-        this.assets = [];
-        this.buildContentEl("files", this.fileTabContentEl, []);
-        this.buildContentEl("folders", this.folderTabContentEl, []);
-        this.buildContentEl("snippets", this.snippetTabContentEl, []);
-      }
-      /**
-       *
-       * @param type what type of content el we are building
-       * @param container the container element
-       * @param items list of snippets or anchorpoints
-       */
-      buildContentEl(type, container, items) {
-        (0, globals_1.emptyEl)(container);
-        const header = (0, globals_1.createDiv)(container);
-        header.classList.add("flex", "flex-row", "justify-between", "items-center", "pb-1");
-        const title = (0, globals_1.createDiv)(header);
-        title.classList.add("text-sm", "text-[var(--text-muted)]");
-        title.innerText = type.toUpperCase();
-        const addBtn = (0, globals_1.createDiv)(header);
-        addBtn.classList.add("bg-[var(--background-secondary)]", "hover:bg-[var(--background-modifier-border-hover)]", "shadow", "shadow-[var(--background-modifier-box-shadow)]", "px-2", "rounded", "py-1", "cursor-pointer", "text-sm");
-        addBtn.innerText = "Add";
-        addBtn.onclick = () => {
-          this.addToContext(type);
-          this.close();
-        };
-        if (!items.length) {
-          this.buildEmptyContentEl(type, container);
-        } else {
-          if (type === "snippets") {
-            this.buildSnippetListEl(items, container);
-          } else {
-            this.buildAnchorEl(items, container, type);
-          }
-        }
-        if (type === "folders") {
-          const infoRow = (0, globals_1.createDiv)(container);
-          infoRow.classList.add("flex", "flex-row", "justify-end");
-          const shieldBoxContainer = (0, globals_1.createDiv)(infoRow);
-          shieldBoxContainer.classList.add("p-1", "rounded", "hover:bg-[var(--background-secondary)]", "cursor-pointer");
-          const shieldSvgBox = (0, globals_1.createDiv)(shieldBoxContainer);
-          shieldSvgBox.classList.add("h-4", "svg-box");
-          shieldSvgBox.innerHTML = const_1.Constants.SHIELD_CHECK_SVG;
-          const tooltipContent = `
-        <strong>Folders are verified to avoid:</strong>
-        <ul class="list-disc pl-4">
-          <li>.gitignore files if applicable</li>
-          <li>files over 500KB</li>
-          <li>unsupported file extensions</li>
-          <li>hidden files (i.e: .env)</li>
-        </ul>
-      `;
-          this.tooltip = new Tooltip_1.default(tooltipContent, shieldBoxContainer);
-        }
-      }
-      // builds the snippet tab content element
-      buildSnippetListEl(assets, container) {
-        var _a, _b;
-        return __awaiter(this, void 0, void 0, function* () {
-          for (const asset of assets) {
-            const assetRow = (0, globals_1.createDiv)(container);
-            assetRow.classList.add("p-1", "flex", "flex-row", "justify-between", "gap-1");
-            const assetTitle = (0, globals_1.createDiv)(assetRow);
-            assetTitle.classList.add("flex", "flex-row", "items-center", "h-5", "gap-1");
-            const assetImg = (0, globals_1.createEl)(assetTitle, "div");
-            assetImg.classList.add("w-6", "h-6", "bg-cover");
-            const classification = yield this.getAssetClassification(asset);
-            assetImg.classList.add((0, getIcon_1.getIcon)(classification));
-            const assetName = (0, globals_1.createDiv)(assetTitle);
-            assetName.classList.add("text-xs", "line-clamp-2", "text-ellipsis");
-            assetName.innerText = (_a = asset.name) !== null && _a !== void 0 ? _a : "Unnamed Snippet";
-            const removeAssetButton = (0, globals_1.createDiv)(assetRow);
-            removeAssetButton.classList.add("text-sm", "cursor-pointer");
-            removeAssetButton.innerHTML = "&times;";
-            removeAssetButton.onclick = () => {
-              this.removeAssetFromConversation(asset);
-            };
-            removeAssetButton.title = `remove ${(_b = asset.name) !== null && _b !== void 0 ? _b : "Unnamed Asset"} from conversation`;
-          }
-        });
-      }
-      // removes a snippet from a conversation
-      removeAssetFromConversation(asset) {
-        return __awaiter(this, void 0, void 0, function* () {
-          ConnectorSingleton_1.default.getInstance().conversationApi.conversationDeleteAsset({
-            conversation: QGPTView_1.default.conversationId,
-            asset: asset.id
-          }).then(() => {
-            (0, view_1.sendNotification)({
-              type: "info",
-              message: "Removing snippet from conversation was a success"
-            });
-          }).catch(() => {
-            (0, view_1.sendNotification)({
-              type: "error",
-              message: "Failed to remove snippet from conversation, please make sure Pieces OS is installed, running and up to date, if the issue persists please contact support@pieces.app"
-            });
-          });
-        });
-      }
-      // TODO put this in a util
-      // gets the specific classification of an asset
-      getAssetClassification(asset) {
-        var _a, _b, _c, _d, _e, _f;
-        return __awaiter(this, void 0, void 0, function* () {
-          if (((_a = asset.original.reference) === null || _a === void 0 ? void 0 : _a.classification.generic) !== client_1.ClassificationGenericEnum.Image) {
-            return (_c = (_b = asset.original.reference) === null || _b === void 0 ? void 0 : _b.classification.specific) !== null && _c !== void 0 ? _c : client_1.ClassificationSpecificEnum.Ts;
-          }
-          const ocrId = (_f = (_e = (_d = asset.original.reference.analysis) === null || _d === void 0 ? void 0 : _d.image) === null || _e === void 0 ? void 0 : _e.ocr) === null || _f === void 0 ? void 0 : _f.id;
-          if (!ocrId)
-            return client_1.ClassificationSpecificEnum.Ts;
-          const format = yield ConnectorSingleton_1.default.getInstance().formatApi.formatSnapshot({
-            format: ocrId
-          });
-          return format.classification.specific;
-        });
-      }
-      // builds files and folders tab content element
-      buildAnchorEl(anchorPoints, container, type) {
-        var _a, _b, _c;
-        return __awaiter(this, void 0, void 0, function* () {
-          for (const point of anchorPoints) {
-            const pointRow = (0, globals_1.createDiv)(container);
-            pointRow.classList.add("p-1", "flex", "flex-row", "justify-between", "gap-1", "items-center");
-            const pointTitleContainer = (0, globals_1.createDiv)(pointRow);
-            pointTitleContainer.classList.add("flex", "flex-row", "gap-1", "items-center");
-            const pointTitle = (0, globals_1.createDiv)(pointTitleContainer);
-            pointTitle.classList.add("text-xs", "text-ellipsis", "line-clamp-1", "break-all");
-            pointTitle.innerText = `\u2022 ${point.fullpath.replace(/\\/g, "/").split("/").pop()}`;
-            if (type === "folders" && ((_a = yield (0, view_1.getApplication)()) === null || _a === void 0 ? void 0 : _a.name) === client_1.ApplicationNameEnum.VsCode) {
-              const verifiedCountContainer = (0, globals_1.createDiv)(pointTitleContainer);
-              verifiedCountContainer.classList.add("p-0.5", "rounded-lg", "flex", "flex-row", "border", "border-solid", "border-[var(--background-modifier-border)]", "text-xs", "gap-1");
-              verifiedCountContainer.title = `${((_b = this.folderToFileCount[point.fullpath]) !== null && _b !== void 0 ? _b : 0).toString()} verified files`;
-              const verifiedCount = (0, globals_1.createDiv)(verifiedCountContainer);
-              verifiedCount.innerText = ((_c = this.folderToFileCount[point.fullpath]) !== null && _c !== void 0 ? _c : 0).toString();
-              const shieldSvgBox = (0, globals_1.createDiv)(verifiedCountContainer);
-              shieldSvgBox.classList.add("svg-box", "h-4");
-              shieldSvgBox.innerHTML = const_1.Constants.SHIELD_CHECK_SVG;
-            }
-            const removeAnchorButton = (0, globals_1.createDiv)(pointRow);
-            removeAnchorButton.classList.add("cursor-pointer", "text-sm", "leading-[1.13]");
-            removeAnchorButton.innerHTML = "&times;";
-            removeAnchorButton.onclick = () => {
-              this.removeAnchorFromConversation(point, type === "files" ? "file" : "folder");
-            };
-          }
-        });
-      }
-      // removes a file / folder from a conversation
-      removeAnchorFromConversation(anchorPoint, type) {
-        return __awaiter(this, void 0, void 0, function* () {
-          ConnectorSingleton_1.default.getInstance().conversationApi.conversationDeleteAnchor({
-            conversation: QGPTView_1.default.conversationId,
-            anchor: anchorPoint.anchor.id
-          }).then(() => {
-            (0, view_1.sendNotification)({
-              type: "info",
-              message: `Removing ${type} from conversation was a success`
-            });
-          }).catch(() => {
-            (0, view_1.sendNotification)({
-              type: "error",
-              message: `Failed to remove ${type} from conversation, please make sure Pieces OS is installed, running and up to date, if the issue persists please contact support@pieces.app`
-            });
-          });
-        });
-      }
-      // builds the empty tabContentElement, aka there is no context for that tab
-      buildEmptyContentEl(type, container) {
-        const emptyText = (0, globals_1.createDiv)(container);
-        emptyText.classList.add("text-[var(--text-muted)]", "text-sm", "text-center", "px-1");
-        emptyText.innerText = `No ${type} selected, click the 'add' button to use ${type} as context`;
-      }
-      // user switched conversations
-      // debounced to prevent spamming this function via websocket events
-      // this is also called if we get a ws event for the same conversation that is selected
-      // we return a promise here to await the debounced changes
-      debouncedConversationChangeHandler(conversationId) {
-        clearTimeout(this.renderTimeout);
-        return new Promise((resolve) => {
-          this.resolvers.push(resolve);
-          this.renderTimeout = setTimeout(() => __awaiter(this, void 0, void 0, function* () {
-            yield this.handleConversationChange(conversationId);
-            for (const res of this.resolvers) {
-              res();
-            }
-            this.resolvers = [];
-          }), this.DEBOUNCE_TIMER_MS);
-        });
-      }
-      onOpen() {
-        return __awaiter(this, void 0, void 0, function* () {
-          return;
-        });
-      }
-      onClose() {
-        return;
-      }
-      handleConversationChange(conversationId) {
-        var _a, _b, _c, _d;
-        return __awaiter(this, void 0, void 0, function* () {
-          (_a = this.tooltip) === null || _a === void 0 ? void 0 : _a.remove();
-          if (!conversationId) {
-            return this.empty();
-          }
-          const conversation = yield ConnectorSingleton_1.default.getInstance().conversationApi.conversationGetSpecificConversation({
-            conversation: conversationId
-          }).catch(this.empty);
-          if (!conversation)
-            return;
-          const anchorIds = (0, getNotDeletedIndicies_1.default)((_b = conversation.anchors) === null || _b === void 0 ? void 0 : _b.indices);
-          const assetIds = (0, getNotDeletedIndicies_1.default)((_c = conversation.assets) === null || _c === void 0 ? void 0 : _c.indices);
-          if (!anchorIds.length && !assetIds.length)
-            return this.empty();
-          const anchors = yield Promise.all(anchorIds.map((id) => ConnectorSingleton_1.default.getInstance().anchorApi.anchorSpecificAnchorSnapshot({
-            anchor: id,
-            transferables: false
-          })));
-          const assets = yield Promise.all(assetIds.map((id) => ConnectorSingleton_1.default.getInstance().assetApi.assetSnapshot({
-            asset: id,
-            transferables: false
-          })));
-          this.assets = assets;
-          const fileAnchorPointsIds = [];
-          const folderAnchorPointsIds = [];
-          for (const anchor of anchors) {
-            if (anchor.type === client_2.AnchorTypeEnum.File) {
-              fileAnchorPointsIds.push(...(0, getNotDeletedIndicies_1.default)(anchor.points.indices));
-            } else {
-              folderAnchorPointsIds.push(...(0, getNotDeletedIndicies_1.default)(anchor.points.indices));
-            }
-          }
-          const files = (yield Promise.all(fileAnchorPointsIds.map((id) => ConnectorSingleton_1.default.getInstance().anchorPointApi.anchorPointSpecificAnchorPointSnapshot({
-            anchorPoint: id
-          }))).catch(() => [])).filter((anchorPoint) => anchorPoint.platform === view_1.platform);
-          const folders = (yield Promise.all(folderAnchorPointsIds.map((id) => ConnectorSingleton_1.default.getInstance().anchorPointApi.anchorPointSpecificAnchorPointSnapshot({
-            anchorPoint: id
-          }))).catch(() => [])).filter((anchorPoint) => anchorPoint.platform === view_1.platform);
-          this.buildContentEl("files", this.fileTabContentEl, files);
-          this.buildContentEl("snippets", this.snippetTabContentEl, assets);
-          const filteredPaths = yield (0, view_1.filterFolders)(folders.map((el) => el.fullpath));
-          this.folderToFileCount = {};
-          for (const folder of folders) {
-            for (const filePath of filteredPaths) {
-              if (filePath.slice(0, folder.fullpath.length) === folder.fullpath) {
-                this.folderToFileCount[folder.fullpath] = ((_d = this.folderToFileCount[folder.fullpath]) !== null && _d !== void 0 ? _d : 0) + 1;
-              }
-            }
-          }
-          this.buildContentEl("folders", this.folderTabContentEl, folders);
-          this.paths = filteredPaths.concat(files.map((el) => el.fullpath));
-          (0, view_1.loadContext)(this.paths);
-          return;
-        });
+        return (_a = this.instance) !== null && _a !== void 0 ? _a : this.instance = new ConversationStreamController();
       }
     };
-    exports.default = ContextSelectionModal;
+    exports.default = ConversationStreamController;
   }
 });
 
@@ -33578,7 +32660,7 @@ var require_ConversationList = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.createConversationListEl = exports.toggleConversationBox = exports.inSearch = void 0;
     var view_1 = require_view();
-    var client_1 = require_dist();
+    var pieces_os_client_1 = require_dist();
     var globals_1 = require_globals();
     var ConversationBuilder_1 = __importDefault(require_ConversationBuilder());
     var ConversationsStreamController_1 = __importDefault(require_ConversationsStreamController());
@@ -33588,6 +32670,7 @@ var require_ConversationList = __commonJS({
     var ModelProgressController_1 = __importDefault(require_ModelProgressController());
     var QGPTView_1 = __importDefault(require_QGPTView());
     var lunr_1 = __importDefault(require_lunr());
+    var Directives_1 = __importDefault(require_Directives());
     var handleClickOutsideConversationBox = (event) => {
       const container = document.getElementById("pieces-conversation-container");
       if (!container)
@@ -33599,6 +32682,7 @@ var require_ConversationList = __commonJS({
     };
     exports.inSearch = false;
     var toggleConversationBox = () => {
+      ConversationBuilder_1.default.getInstance().highlightSelectedConversation();
       const container = document.getElementById("pieces-conversation-container");
       if (!container)
         throw new Error("Changing the pieces conversation container id is causing issues");
@@ -33614,8 +32698,8 @@ var require_ConversationList = __commonJS({
     var createConversationListEl = () => __awaiter(void 0, void 0, void 0, function* () {
       const application = yield (0, view_1.getApplication)();
       const conversationParent = (0, globals_1.createDiv)(document.getElementById("pieces-parent"));
-      conversationParent.classList.add("rounded-tr-lg", (application === null || application === void 0 ? void 0 : application.name) === client_1.ApplicationNameEnum.JupyterHub ? "left-[-100%]" : "left-[-90%]", "absolute", "top-0", (application === null || application === void 0 ? void 0 : application.name) === client_1.ApplicationNameEnum.JupyterHub ? "h-[calc(100%-60px)]" : "h-full", (application === null || application === void 0 ? void 0 : application.name) === client_1.ApplicationNameEnum.JupyterHub ? "w-[calc(90%-18px)]" : "w-[90%]", "flex", "flex-col", "p-4", "bg-[var(--background-primary)]", "conversation-container", "overflow-hidden", "gap-2", "z-[10]", "max-w-[400px]");
-      if ((application === null || application === void 0 ? void 0 : application.name) !== client_1.ApplicationNameEnum.VsCode)
+      conversationParent.classList.add("rounded-tr-lg", (application === null || application === void 0 ? void 0 : application.name) === pieces_os_client_1.ApplicationNameEnum.JupyterHub ? "left-[-100%]" : "left-[-90%]", "absolute", "top-0", (application === null || application === void 0 ? void 0 : application.name) === pieces_os_client_1.ApplicationNameEnum.JupyterHub ? "h-[calc(100%-60px)]" : "h-full", (application === null || application === void 0 ? void 0 : application.name) === pieces_os_client_1.ApplicationNameEnum.JupyterHub ? "w-[calc(90%-18px)]" : "w-[90%]", "flex", "flex-col", "p-4", "bg-[var(--background-primary)]", "conversation-container", "overflow-hidden", "gap-2", "z-[10]", "max-w-[400px]");
+      if ((application === null || application === void 0 ? void 0 : application.name) !== pieces_os_client_1.ApplicationNameEnum.VsCode)
         conversationParent.classList.add("pt-12", "pb-8");
       conversationParent.id = "pieces-conversation-container";
       const conversationsHeader = (0, globals_1.createDiv)(conversationParent);
@@ -33629,7 +32713,7 @@ var require_ConversationList = __commonJS({
       const searchBox = (0, globals_1.createDiv)(conversationParent);
       searchBox.classList.add("flex", "flex-row", "border", "border-solid", "border-[var(--background-modifier-border)]", "rounded-lg", "p-2", "justify-between", "gap-2", "items-center");
       const searchInput = (0, globals_1.createEl)(searchBox, "input");
-      searchInput.classList.add("bg-[unset]", "w-full", "text-ellipsis", "no-edit-border");
+      searchInput.classList.add("bg-[unset]", "w-full", "text-ellipsis", "no-edit-border", "text-inherit");
       searchInput.type = "text";
       searchInput.placeholder = "Search for a conversation name";
       const searchButton = (0, globals_1.createDiv)(searchBox);
@@ -33694,12 +32778,13 @@ var require_ConversationList = __commonJS({
       actionRow.classList.add("mt-auto", "flex", "flex-row", "justify-between", "pt-2", "cursor-pointer", "w-full", "gap-2");
       actionRow.title = "Change copilot runtime";
       const currentModelPill = QGPTView_1.default.LLMConfigModal.createActiveModelPill(actionRow, yield ModelProgressController_1.default.getInstance().models);
-      currentModelPill.onclick = () => {
+      currentModelPill.onclick = () => __awaiter(void 0, void 0, void 0, function* () {
+        yield ModelProgressController_1.default.getInstance().refreshWithSnapshot();
         QGPTView_1.default.LLMConfigModal.open();
-      };
+      });
       const newChatBtn = (0, globals_1.createDiv)(actionRow);
       newChatBtn.classList.add("p-2", "border", "border-solid", "border-[var(--background-modifier-border)]", "rounded-lg", "cusor-pointer");
-      newChatBtn.innerHTML = "&plus; New Chat";
+      newChatBtn.innerHTML = "&plus; New";
       newChatBtn.onclick = () => {
         var _a;
         (0, exports.toggleConversationBox)();
@@ -33717,7 +32802,8 @@ var require_ConversationList = __commonJS({
           selectedModel: LLMConfigModal_1.default.selectedModel,
           migration: view_1.migration,
           conversationId: (_a = QGPTView_1.default.conversationId) !== null && _a !== void 0 ? _a : "",
-          codeBlocks: QGPTView_1.default.codeBlocks
+          codeBlocks: QGPTView_1.default.codeBlocks,
+          directives: Directives_1.default.getInstance().directiveList
         });
         (0, view_1.track)(CopilotAnalytics_enum_1.CopilotAnalytics.CLEAR_CHAT_BUTTON);
       };
@@ -33813,6 +32899,23 @@ var require_DeleteConversationModal = __commonJS({
       }
     };
     exports.default = DeleteConversationModal;
+  }
+});
+
+// ../copilot-ts/dist/utils/getNotDeletedIndicies.js
+var require_getNotDeletedIndicies = __commonJS({
+  "../copilot-ts/dist/utils/getNotDeletedIndicies.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    function getNotDeletedIndicies(indicies) {
+      return Object.entries(indicies !== null && indicies !== void 0 ? indicies : {}).reduce((ids, [id, index]) => {
+        if (index !== -1) {
+          ids.push(id);
+        }
+        return ids;
+      }, []);
+    }
+    exports.default = getNotDeletedIndicies;
   }
 });
 
@@ -34001,11 +33104,19 @@ var require_ConversationBuilder = __commonJS({
     var QGPTView_1 = __importDefault(require_QGPTView());
     var getNotDeletedIndicies_1 = __importDefault(require_getNotDeletedIndicies());
     var AnnotationsModal_1 = __importDefault(require_AnnotationsModal());
+    var Directives_1 = __importDefault(require_Directives());
     var ConversationBuilder = class {
       constructor() {
         this.debounceMap = /* @__PURE__ */ new Map();
         this.DEBOUNCE_TIMER_MS = 150;
         this.UPDATED_WAIT_TIME_MS = 5e3;
+        this.highlightedConversationId = QGPTView_1.default.conversationId;
+        this.highlightSelectedConversation = () => {
+          var _a, _b;
+          (_a = document.getElementById(`conversation-${this.highlightedConversationId}`)) === null || _a === void 0 ? void 0 : _a.classList.remove("border-[var(--text-accent)]");
+          (_b = document.getElementById(`conversation-${QGPTView_1.default.conversationId}`)) === null || _b === void 0 ? void 0 : _b.classList.add("border-[var(--text-accent)]");
+          this.highlightedConversationId = QGPTView_1.default.conversationId;
+        };
       }
       /**
        * This creates, updates, or deletes a conversation element
@@ -34096,6 +33207,7 @@ var require_ConversationBuilder = __commonJS({
               QGPTView_1.default.currentConversation = [];
               QGPTView_1.default.relevant = void 0;
               (0, view_1.saveState)({
+                directives: Directives_1.default.getInstance().directiveList,
                 conversation: [],
                 selectedModel: LLMConfigModal_1.default.selectedModel,
                 migration: view_1.migration,
@@ -34132,6 +33244,7 @@ var require_ConversationBuilder = __commonJS({
             QGPTView_1.default.createGPTView({
               containerVar: document.getElementById("gpt-tab"),
               state: {
+                directives: Directives_1.default.getInstance().directiveList,
                 conversation: messages.sort((a, b) => a.created.value.getTime() - b.created.value.getTime()).map((message) => {
                   var _a2, _b2, _c2, _d2, _e2, _f2;
                   const messageData = ((_b2 = (_a2 = message.fragment) === null || _a2 === void 0 ? void 0 : _a2.bytes) === null || _b2 === void 0 ? void 0 : _b2.raw) ? `data:image/png;base64,${buffer_1.Buffer.from(message.fragment.bytes.raw).toString("base64")}` : (_d2 = (_c2 = message.fragment) === null || _c2 === void 0 ? void 0 : _c2.string) === null || _d2 === void 0 ? void 0 : _d2.raw;
@@ -34142,7 +33255,8 @@ var require_ConversationBuilder = __commonJS({
                       role: message.role,
                       timestamp: message.created
                     },
-                    image: isImage
+                    image: isImage,
+                    messageId: message.id
                   };
                 }),
                 selectedModel: LLMConfigModal_1.default.selectedModel,
@@ -34410,6 +33524,8 @@ var require_ConversationBuilder = __commonJS({
       selectConversation(id) {
         var _a;
         return __awaiter(this, void 0, void 0, function* () {
+          QGPTView_1.default.conversationId = id;
+          this.highlightSelectedConversation();
           const conversation = yield ConnectorSingleton_1.default.getInstance().conversationApi.conversationGetSpecificConversation({
             conversation: id
           });
@@ -34433,16 +33549,17 @@ var require_ConversationBuilder = __commonJS({
                 text: messageData !== null && messageData !== void 0 ? messageData : "Unable to fetch message data",
                 timestamp: message.created
               },
-              image: isImage
+              image: isImage,
+              messageId: message.id
             };
           });
-          QGPTView_1.default.conversationId = conversation.id;
           yield QGPTView_1.default.contextSelectionModal.debouncedConversationChangeHandler(conversation.id);
           (0, view_1.saveState)({
             conversation: QGPTView_1.default.currentConversation,
             selectedModel: LLMConfigModal_1.default.selectedModel,
             codeBlocks: QGPTView_1.default.codeBlocks,
             migration: view_1.migration,
+            directives: Directives_1.default.getInstance().directiveList,
             conversationId: conversation.id
           });
           QGPTView_1.default.createGPTView({
@@ -34452,7 +33569,8 @@ var require_ConversationBuilder = __commonJS({
               selectedModel: LLMConfigModal_1.default.selectedModel,
               migration: view_1.migration,
               conversationId: conversation.id,
-              codeBlocks: QGPTView_1.default.codeBlocks
+              codeBlocks: QGPTView_1.default.codeBlocks,
+              directives: Directives_1.default.getInstance().directiveList
             }
           });
           (0, ConversationList_1.toggleConversationBox)();
@@ -34469,59 +33587,203 @@ var require_ConversationBuilder = __commonJS({
   }
 });
 
-// ../copilot-ts/dist/controllers/ConversationsStreamController.js
-var require_ConversationsStreamController = __commonJS({
-  "../copilot-ts/dist/controllers/ConversationsStreamController.js"(exports) {
+// ../copilot-ts/dist/modals/CreateDirectiveModal.js
+var require_CreateDirectiveModal = __commonJS({
+  "../copilot-ts/dist/modals/CreateDirectiveModal.js"(exports) {
     "use strict";
+    var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
     var __importDefault = exports && exports.__importDefault || function(mod) {
       return mod && mod.__esModule ? mod : { "default": mod };
     };
     Object.defineProperty(exports, "__esModule", { value: true });
-    var ConversationBuilder_1 = __importDefault(require_ConversationBuilder());
-    var client_1 = require_dist();
+    var pieces_os_client_1 = require_dist();
+    var ConnectorSingleton_1 = __importDefault(require_ConnectorSingleton());
+    var QGPTView_1 = __importDefault(require_QGPTView());
+    var globals_1 = require_globals();
+    var Modal_1 = __importDefault(require_Modal());
+    var getNotDeletedIndicies_1 = __importDefault(require_getNotDeletedIndicies());
+    var Directives_1 = __importDefault(require_Directives());
     var view_1 = require_view();
-    var ConversationStreamController = class {
+    var CopilotAnalytics_enum_1 = require_CopilotAnalytics_enum();
+    var CreateDirectiveModal = class extends Modal_1.default {
       constructor() {
-        this.conversations = [];
-        this.ws = null;
-        this.connect();
-      }
-      // close the connection
-      closeSocket() {
-        var _a;
-        (_a = this.ws) === null || _a === void 0 ? void 0 : _a.close();
-        this.ws = null;
-      }
-      // open the connection if it's closed
-      resetConnection() {
-        if (this.ws)
-          return;
-        this.connect();
+        super();
+        (0, view_1.track)(CopilotAnalytics_enum_1.CopilotAnalytics.DIRECTIVE_CREATED_INITIALIZED);
+        this.done = new Promise((res) => {
+          this.res = res;
+        });
+        this.titleEl.innerText = "Create a Custom Directive";
+        const container = (0, globals_1.createDiv)(this.contentEl);
+        container.classList.add("flex", "flex-col", "gap-3", "pt-2");
+        const aboutDirectives = (0, globals_1.createDiv)(container);
+        aboutDirectives.innerHTML = "<strong>Directives are context shortcuts</strong>. Creating a directive allows you to reuse it in the chat input with @{directive name} in order to utilize that directive's context.";
+        const directivesDetails = (0, globals_1.createEl)(container, "details");
+        const directivesDetailsSummary = (0, globals_1.createEl)(directivesDetails, "summary");
+        directivesDetailsSummary.innerText = "Example";
+        const directiveExplanation = (0, globals_1.createEl)(directivesDetails, "p");
+        directiveExplanation.innerText = "If you create a directive called 'mydirective' that is associated to a file with the path: '/path/to/myfile.ts', using '@mydirective' in the chat input will then tell the Copilot to use '/path/to/myfile.ts' as context.";
+        const inputClasses = [
+          "flex",
+          "flex-row",
+          "justify-between",
+          "gap-2",
+          "no-edit-border",
+          "w-full",
+          "rounded",
+          "bg-[var(--background-secondary)]",
+          "h-8",
+          "px-2",
+          "py-1.5",
+          "items-center",
+          "empty:text-[var(--text-muted)]"
+        ];
+        const nameRow = (0, globals_1.createDiv)(container);
+        nameRow.classList.add(...inputClasses, 'empty:before:content-["Name"]');
+        nameRow.contentEditable = "true";
+        let validationTimeout;
+        const innerValidateName = () => {
+          clearTimeout(validationTimeout);
+          validationTimeout = setTimeout(() => this.validateName(nameRow.innerText), 1e3);
+        };
+        nameRow.onblur = innerValidateName;
+        nameRow.oninput = innerValidateName;
+        const validationEl = (0, globals_1.createDiv)(container);
+        validationEl.classList.add("text-[var(--text-error)]", "hidden");
+        this.validationEl = validationEl;
+        const descRow = (0, globals_1.createDiv)(container);
+        descRow.classList.add(...inputClasses, 'empty:before:content-["Description"]');
+        descRow.contentEditable = "true";
+        const containerClasses = [
+          "flex",
+          "flex-col",
+          "p-2",
+          "border",
+          "border-solid",
+          "border-[var(--background-modifier-border)]",
+          "rounded"
+        ];
+        const snippetsContainer = (0, globals_1.createDiv)(container);
+        snippetsContainer.classList.add(...containerClasses);
+        const filesContainer = (0, globals_1.createDiv)(container);
+        filesContainer.classList.add(...containerClasses);
+        const foldersContainer = (0, globals_1.createDiv)(container);
+        foldersContainer.classList.add(...containerClasses);
+        QGPTView_1.default.contextSelectionModal.snippetTabContentEl.push(snippetsContainer);
+        QGPTView_1.default.contextSelectionModal.folderTabContentEl.push(foldersContainer);
+        QGPTView_1.default.contextSelectionModal.fileTabContentEl.push(filesContainer);
+        this.snippetsContainer = snippetsContainer;
+        this.foldersContainer = foldersContainer;
+        this.filesContainer = filesContainer;
+        const saveContainer = (0, globals_1.createDiv)(container);
+        saveContainer.classList.add("flex", "flex-row", "justify-center");
+        const saveButton = (0, globals_1.createDiv)(saveContainer);
+        saveButton.classList.add("p-2", "justify-self-center", "bg-[var(--background-secondary)]", "rounded", "w-fit", "cursor-pointer");
+        saveButton.innerText = "Save";
+        saveButton.onclick = () => {
+          if (!this.validateName(nameRow.innerText))
+            return;
+          this.save(nameRow.innerText, descRow.innerText);
+        };
+        this.buildContextElements();
       }
       /**
-       * Opens a websocket connection, and sets up the onmessage, onclose, and onerror handlers
+       * This will validate that the name the user has inputted is an acceptable name
+       * @param name the name to validate
+       * @returns
        */
-      connect() {
-        const url = `ws://localhost:${view_1.port}/conversations/stream/identifiers`;
-        this.ws = new WebSocket(url);
-        this.ws.onmessage = (event) => {
-          const conversationIdentifiers = (0, client_1.StreamedIdentifiersFromJSON)(JSON.parse(event.data));
-          ConversationBuilder_1.default.getInstance().debouncedRender(conversationIdentifiers);
-        };
-        const refreshSockets = (error) => {
-          if (error)
-            console.error(error);
-          this.ws = null;
-        };
-        this.ws.onerror = refreshSockets;
-        this.ws.onclose = refreshSockets;
+      validateName(name) {
+        if (!name.length) {
+          this.validationEl.innerText = "Must specify name";
+          this.validationEl.classList.remove("hidden");
+          return false;
+        }
+        if (Directives_1.default.getInstance().set.has(name)) {
+          this.validationEl.innerText = "Name is already taken";
+          this.validationEl.classList.remove("hidden");
+          return false;
+        }
+        if (name.includes(" ")) {
+          this.validationEl.innerText = "Cannot contain spaces";
+          this.validationEl.classList.remove("hidden");
+          return false;
+        }
+        this.validationEl.classList.add("hidden");
+        return true;
       }
-      static getInstance() {
+      /**
+       * This will save a directive
+       * @param name the name of the directive
+       * @param desc the description of the directive
+       */
+      save(name, desc) {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function* () {
+          const conversation = yield ConnectorSingleton_1.default.getInstance().conversationApi.conversationGetSpecificConversation({
+            conversation: QGPTView_1.default.conversationId
+          });
+          const anchors = (0, getNotDeletedIndicies_1.default)((_a = conversation.anchors) === null || _a === void 0 ? void 0 : _a.indices);
+          const snippets = (0, getNotDeletedIndicies_1.default)((_b = conversation.assets) === null || _b === void 0 ? void 0 : _b.indices);
+          const directive = { name, desc, snippets, anchors };
+          Directives_1.default.getInstance().saveDirective(directive);
+          this.close();
+          (0, view_1.track)(CopilotAnalytics_enum_1.CopilotAnalytics.DIRECTIVE_CREATED_SUCCESS);
+        });
+      }
+      /**
+       * this will build the elements for the context
+       */
+      buildContextElements() {
+        return __awaiter(this, void 0, void 0, function* () {
+          if (!QGPTView_1.default.conversationId) {
+            const conversation = yield ConnectorSingleton_1.default.getInstance().conversationsApi.conversationsCreateSpecificConversation({ seededConversation: { type: pieces_os_client_1.ConversationTypeEnum.Copilot } });
+            QGPTView_1.default.conversationId = conversation.id;
+          }
+          QGPTView_1.default.contextSelectionModal.debouncedConversationChangeHandler(QGPTView_1.default.conversationId);
+        });
+      }
+      onOpen() {
+        return __awaiter(this, void 0, void 0, function* () {
+        });
+      }
+      /**
+       * remove the content elements contained in this modal from the list of content elements.
+       */
+      onClose() {
         var _a;
-        return (_a = this.instance) !== null && _a !== void 0 ? _a : this.instance = new ConversationStreamController();
+        const contextModal = QGPTView_1.default.contextSelectionModal;
+        contextModal.fileTabContentEl = contextModal.fileTabContentEl.filter((el) => el !== this.filesContainer);
+        contextModal.snippetTabContentEl = contextModal.snippetTabContentEl.filter((el) => el !== this.snippetsContainer);
+        contextModal.folderTabContentEl = contextModal.folderTabContentEl.filter((el) => el !== this.foldersContainer);
+        (_a = this.res) === null || _a === void 0 ? void 0 : _a.call(this);
       }
     };
-    exports.default = ConversationStreamController;
+    exports.default = CreateDirectiveModal;
   }
 });
 
@@ -34653,122 +33915,196 @@ var require_langExtToClassificationSpecificEnum = __commonJS({
   "../copilot-ts/dist/utils/langExtToClassificationSpecificEnum.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var client_1 = require_dist();
+    var pieces_os_client_1 = require_dist();
     function langExtToClassificationSpecificEnum2(ext) {
       ext = ext.toLowerCase();
       switch (ext) {
         case "batchfile":
         case "bat":
-          return client_1.ClassificationSpecificEnum.Bat;
+          return pieces_os_client_1.ClassificationSpecificEnum.Bat;
         case "c#":
         case "c-sharp":
         case "cs":
-          return client_1.ClassificationSpecificEnum.Cs;
+          return pieces_os_client_1.ClassificationSpecificEnum.Cs;
         case "coffeescript":
         case "coffee":
-          return client_1.ClassificationSpecificEnum.Coffee;
+          return pieces_os_client_1.ClassificationSpecificEnum.Coffee;
         case "clojure":
         case "clj":
-          return client_1.ClassificationSpecificEnum.Clj;
+          return pieces_os_client_1.ClassificationSpecificEnum.Clj;
         case "erlang":
         case "erl":
-          return client_1.ClassificationSpecificEnum.Erl;
+          return pieces_os_client_1.ClassificationSpecificEnum.Erl;
         case "el":
-          return client_1.ClassificationSpecificEnum.El;
+          return pieces_os_client_1.ClassificationSpecificEnum.El;
         case "ex":
-          return client_1.ClassificationSpecificEnum.Ex;
+          return pieces_os_client_1.ClassificationSpecificEnum.Ex;
         case "groovy":
-          return client_1.ClassificationSpecificEnum.Groovy;
+          return pieces_os_client_1.ClassificationSpecificEnum.Groovy;
         case "haskell":
         case "hs":
-          return client_1.ClassificationSpecificEnum.Hs;
+          return pieces_os_client_1.ClassificationSpecificEnum.Hs;
         case "kt":
-          return client_1.ClassificationSpecificEnum.Kt;
+          return pieces_os_client_1.ClassificationSpecificEnum.Kt;
         case "lua":
-          return client_1.ClassificationSpecificEnum.Lua;
+          return pieces_os_client_1.ClassificationSpecificEnum.Lua;
         case "markdown":
         case "md":
-          return client_1.ClassificationSpecificEnum.Md;
+          return pieces_os_client_1.ClassificationSpecificEnum.Md;
         case "matlab":
-          return client_1.ClassificationSpecificEnum.Matlab;
+          return pieces_os_client_1.ClassificationSpecificEnum.Matlab;
         case "objective-c":
         case "objective":
         case "m":
-          return client_1.ClassificationSpecificEnum.M;
+          return pieces_os_client_1.ClassificationSpecificEnum.M;
         case "c":
-          return client_1.ClassificationSpecificEnum.C;
+          return pieces_os_client_1.ClassificationSpecificEnum.C;
         case "cpp":
         case "c++":
         case "cc":
         case "hh":
         case "h":
-          return client_1.ClassificationSpecificEnum.Cpp;
+          return pieces_os_client_1.ClassificationSpecificEnum.Cpp;
         case "css":
-          return client_1.ClassificationSpecificEnum.Css;
+          return pieces_os_client_1.ClassificationSpecificEnum.Css;
         case "go":
-          return client_1.ClassificationSpecificEnum.Go;
+          return pieces_os_client_1.ClassificationSpecificEnum.Go;
         case "html":
-          return client_1.ClassificationSpecificEnum.Html;
+          return pieces_os_client_1.ClassificationSpecificEnum.Html;
         case "htm":
-          return client_1.ClassificationSpecificEnum.Htm;
+          return pieces_os_client_1.ClassificationSpecificEnum.Htm;
         case "java":
-          return client_1.ClassificationSpecificEnum.Java;
+          return pieces_os_client_1.ClassificationSpecificEnum.Java;
         case "javascript":
         case "js":
-          return client_1.ClassificationSpecificEnum.Js;
+          return pieces_os_client_1.ClassificationSpecificEnum.Js;
         case "json":
-          return client_1.ClassificationSpecificEnum.Json;
+          return pieces_os_client_1.ClassificationSpecificEnum.Json;
         case "typescript":
         case "ts":
-          return client_1.ClassificationSpecificEnum.Ts;
+          return pieces_os_client_1.ClassificationSpecificEnum.Ts;
         case "dart":
-          return client_1.ClassificationSpecificEnum.Dart;
+          return pieces_os_client_1.ClassificationSpecificEnum.Dart;
         case "scala":
-          return client_1.ClassificationSpecificEnum.Scala;
+          return pieces_os_client_1.ClassificationSpecificEnum.Scala;
         case "sql":
-          return client_1.ClassificationSpecificEnum.Sql;
+          return pieces_os_client_1.ClassificationSpecificEnum.Sql;
         case "perl":
         case "pl":
-          return client_1.ClassificationSpecificEnum.Pl;
+          return pieces_os_client_1.ClassificationSpecificEnum.Pl;
         case "php":
-          return client_1.ClassificationSpecificEnum.Php;
+          return pieces_os_client_1.ClassificationSpecificEnum.Php;
         case "python":
         case "py":
-          return client_1.ClassificationSpecificEnum.Py;
+          return pieces_os_client_1.ClassificationSpecificEnum.Py;
         case "powershell":
         case "ps1":
-          return client_1.ClassificationSpecificEnum.Ps;
+          return pieces_os_client_1.ClassificationSpecificEnum.Ps;
         case "plaintext":
         case "txt":
         case "text":
-          return client_1.ClassificationSpecificEnum.Text;
+          return pieces_os_client_1.ClassificationSpecificEnum.Text;
         case "r":
-          return client_1.ClassificationSpecificEnum.R;
+          return pieces_os_client_1.ClassificationSpecificEnum.R;
         case "ruby":
         case "rb":
-          return client_1.ClassificationSpecificEnum.Rb;
+          return pieces_os_client_1.ClassificationSpecificEnum.Rb;
         case "shell":
         case "sh":
-          return client_1.ClassificationSpecificEnum.Sh;
+          return pieces_os_client_1.ClassificationSpecificEnum.Sh;
         case "swift":
-          return client_1.ClassificationSpecificEnum.Swift;
+          return pieces_os_client_1.ClassificationSpecificEnum.Swift;
         case "tex":
-          return client_1.ClassificationSpecificEnum.Tex;
+          return pieces_os_client_1.ClassificationSpecificEnum.Tex;
         case "rust":
         case "rs":
-          return client_1.ClassificationSpecificEnum.Rs;
+          return pieces_os_client_1.ClassificationSpecificEnum.Rs;
         case "toml":
-          return client_1.ClassificationSpecificEnum.Toml;
+          return pieces_os_client_1.ClassificationSpecificEnum.Toml;
         case "xml":
-          return client_1.ClassificationSpecificEnum.Xml;
+          return pieces_os_client_1.ClassificationSpecificEnum.Xml;
         case "yaml":
         case "yml":
-          return client_1.ClassificationSpecificEnum.Yaml;
+          return pieces_os_client_1.ClassificationSpecificEnum.Yaml;
         default:
-          return client_1.ClassificationSpecificEnum.Js;
+          return pieces_os_client_1.ClassificationSpecificEnum.Text;
       }
     }
     exports.default = langExtToClassificationSpecificEnum2;
+  }
+});
+
+// ../copilot-ts/dist/utils/langReadableToExt.js
+var require_langReadableToExt = __commonJS({
+  "../copilot-ts/dist/utils/langReadableToExt.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var pieces_os_client_1 = require_dist();
+    var langReadableToExtMap2 = {
+      batch: pieces_os_client_1.ClassificationSpecificEnum.Bat,
+      coffee: pieces_os_client_1.ClassificationSpecificEnum.Coffee,
+      erlang: "erl",
+      haskell: "hs",
+      lua: "lua",
+      markdown: "md",
+      matlab: "matlab",
+      "objective-c": "m",
+      c: "c",
+      "c++": "cpp",
+      "c++ source": "cc",
+      "c++ header": "h",
+      "c++ h-header": "hh",
+      "c#": "cs",
+      css: "css",
+      go: "go",
+      html: "html",
+      htm: "htm",
+      java: "java",
+      javascript: "js",
+      typescript: "ts",
+      dart: "dart",
+      scala: "scala",
+      sql: "sql",
+      perl: "pl",
+      php: "php",
+      python: "py",
+      py: "py",
+      "python-c": "pyc",
+      powershell: "ps1",
+      r: "r",
+      bash: "sh",
+      swift: "swift",
+      ruby: "rb",
+      tex: "tex",
+      plaintextgrammar: "text",
+      rust: "rs",
+      json: "json",
+      yaml: "yml",
+      toml: "toml",
+      xml: "xml",
+      groovy: "groovy",
+      kotlin: "kt",
+      clojure: "clj",
+      lisp: "el",
+      elixir: "ex",
+      asp: "asp",
+      csharp: "cs",
+      coffeescript: "coffee",
+      coldfusion: "cfm",
+      cpp: "cpp",
+      docker: "docker",
+      "emacs-lisp": "el",
+      solidity: "sol",
+      systemverilog: "sv",
+      dockerfile: "docker",
+      latex: "tex",
+      text: "text"
+    };
+    function langReadableToExt2(readable) {
+      var _a;
+      return (_a = langReadableToExtMap2[readable.toLowerCase()]) !== null && _a !== void 0 ? _a : "ts";
+    }
+    exports.default = langReadableToExt2;
   }
 });
 
@@ -34808,15 +34144,15 @@ var require_QGPTComponentBuilder = __commonJS({
     };
     var _a;
     Object.defineProperty(exports, "__esModule", { value: true });
-    var client_1 = require_dist();
+    var pieces_os_client_1 = require_dist();
     var view_1 = require_view();
     var CachedNCS_1 = __importDefault(require_CachedNCS());
     var ConnectorSingleton_1 = __importDefault(require_ConnectorSingleton());
     var CopilotAnalytics_enum_1 = require_CopilotAnalytics_enum();
     var const_1 = require_const();
     var globals_1 = require_globals();
-    var QGPTView_1 = __importDefault(require_QGPTView());
     var langExtToClassificationSpecificEnum_1 = __importDefault(require_langExtToClassificationSpecificEnum());
+    var langReadableToExt_1 = __importDefault(require_langReadableToExt());
     var QGPTComponentBuilder = class {
       static sanitize(input) {
         return input.split("```").map((value, index) => {
@@ -34825,7 +34161,13 @@ var require_QGPTComponentBuilder = __commonJS({
       }
     };
     _a = QGPTComponentBuilder;
-    QGPTComponentBuilder.tempCollapseTimer = void 0;
+    QGPTComponentBuilder.buttonClasses = [
+      "text-[unset]",
+      "svg-box",
+      "h-4",
+      "hover:text-[var(--text-accent)]",
+      "cursor-pointer"
+    ];
     QGPTComponentBuilder.subsanitize = (nonCodeBlockMessage) => nonCodeBlockMessage.split("`").map((value, index) => {
       return index % 2 ? value : value.replace(/([\>\<])/g, (group) => {
         if (group === "<")
@@ -34872,197 +34214,174 @@ var require_QGPTComponentBuilder = __commonJS({
       (0, globals_1.setText)(btnText, textContent.trim());
       const sendIconDiv = document.createElement("div");
       sendIconDiv.innerHTML = const_1.Constants.SEND_SVG;
-      sendIconDiv.classList.add("items-center", "flex", "w-5", "h-5");
+      sendIconDiv.classList.add("items-center", "flex", "w-4", "h-4");
       hintButton.appendChild(sendIconDiv);
       return hintButton;
     };
-    QGPTComponentBuilder.buildButtonHolder = (snippetData, lang, relevant) => __awaiter(void 0, void 0, void 0, function* () {
-      var _b, _c;
-      const buttonDiv = document.createElement("div");
-      buttonDiv.classList.add("absolute", "bottom-1", "right-1");
-      const holderDiv = document.createElement("div");
-      holderDiv.classList.add("flex", "flex-wrap-reverse");
-      const collapsedHolder = document.createElement("div");
-      collapsedHolder.classList.add("collapsed-pieces-holder", "collapsed");
-      const collapseControlButton = document.createElement("button");
-      collapseControlButton.title = "See Pieces actions";
-      collapseControlButton.innerHTML = const_1.Constants.PIECES_SVG;
-      collapseControlButton.classList.add("vs-btn", QGPTView_1.default.theme === "light" ? "vs-btn-light" : "vs-btn-dark");
-      holderDiv.appendChild(collapseControlButton);
-      const similarityRes = yield CachedNCS_1.default.getInstance().ncsSearch(snippetData.textContent);
-      let similarity = (_b = similarityRes === null || similarityRes === void 0 ? void 0 : similarityRes.score) !== null && _b !== void 0 ? _b : 0;
-      let comparisonID = (_c = similarityRes === null || similarityRes === void 0 ? void 0 : similarityRes.identifier) !== null && _c !== void 0 ? _c : "";
-      collapseControlButton.onclick = () => __awaiter(void 0, void 0, void 0, function* () {
-        CachedNCS_1.default.getInstance().ncsSearch(snippetData.textContent).then((data) => {
-          var _b2, _c2;
-          similarity = (_b2 = data === null || data === void 0 ? void 0 : data.score) !== null && _b2 !== void 0 ? _b2 : 0;
-          comparisonID = (_c2 = data === null || data === void 0 ? void 0 : data.identifier) !== null && _c2 !== void 0 ? _c2 : "";
-        });
-        clearTimeout(_a.tempCollapseTimer);
-        if (collapsedHolder.classList.contains("collapsed")) {
-          _a.buildCodeBlockButtons({
-            similarity,
-            comparisonID,
-            collapsedHolder,
-            snippetData,
-            lang,
-            collapseControlButton,
-            relevant
-          });
-        } else {
-          collapseControlButton.disabled = true;
-          collapsedHolder.classList.remove("expanded");
-          collapsedHolder.classList.add("collapsed");
-          collapsedHolder.style.width = "0px";
-          _a.tempCollapseTimer = setTimeout(() => {
-            _a.tempCollapseTimer = void 0;
-            collapsedHolder.innerHTML = "";
-            collapseControlButton.disabled = false;
-          }, 350);
-          collapseControlButton.title = "See Pieces actions";
+    QGPTComponentBuilder.buildButtonHolder = (snippetData, lang, relevant, parent) => {
+      var _b;
+      const container = (0, globals_1.createDiv)(parent);
+      container.classList.add("flex", "flex-row-reverse", "gap-2", "ml-auto", "flex-wrap");
+      const similarityPromise = CachedNCS_1.default.getInstance().ncsSearch((_b = snippetData.textContent) !== null && _b !== void 0 ? _b : "");
+      const visibleButtonRow = (0, globals_1.createDiv)(container);
+      visibleButtonRow.classList.add("flex", "flex-row-reverse", "gap-2");
+      const expandOptionsButton = (0, globals_1.createDiv)(visibleButtonRow);
+      expandOptionsButton.classList.add(..._a.buttonClasses);
+      expandOptionsButton.innerHTML = const_1.Constants.GRIP_VERTICAL_SVG;
+      expandOptionsButton.title = "Expand buttons";
+      const toggledButtonsContainer = (0, globals_1.createDiv)(container);
+      toggledButtonsContainer.classList.add("flex", "flex-row", "hidden", "gap-2");
+      expandOptionsButton.onclick = () => {
+        toggledButtonsContainer.classList.toggle("hidden");
+      };
+      const saveButton = (0, globals_1.createDiv)(toggledButtonsContainer);
+      saveButton.classList.add(..._a.buttonClasses);
+      saveButton.innerHTML = const_1.Constants.SAVE_SVG;
+      saveButton.title = "Save code";
+      saveButton.onclick = () => __awaiter(void 0, void 0, void 0, function* () {
+        var _c, _d;
+        const application = yield (0, view_1.getApplication)();
+        if (!application) {
+          const_1.Constants.sendErrorNotification("save to pieces");
+          return;
         }
-      });
-      holderDiv.appendChild(collapsedHolder);
-      buttonDiv.appendChild(holderDiv);
-      const children = Array.from(holderDiv.children);
-      children.reverse();
-      holderDiv.innerHTML = "";
-      children.forEach((child) => holderDiv.appendChild(child));
-      return buttonDiv;
-    });
-    QGPTComponentBuilder.buildCodeBlockButtons = ({ similarity, comparisonID, collapsedHolder, snippetData, lang, collapseControlButton, relevant }) => __awaiter(void 0, void 0, void 0, function* () {
-      const btnClassList = [
-        "vs-btn",
-        "gpt-button-div",
-        `vs-btn-${QGPTView_1.default.theme}`
-      ];
-      const copyBtn = document.createElement("button");
-      copyBtn.title = "Copy snippet to clipboard";
-      copyBtn.innerHTML = const_1.Constants.COPY_SVG;
-      copyBtn.classList.add(...btnClassList);
-      collapsedHolder.appendChild(copyBtn);
-      copyBtn.onclick = () => __awaiter(void 0, void 0, void 0, function* () {
-        yield (0, view_1.copyToClipboard)(snippetData.textContent);
-        (0, view_1.sendNotification)({
-          title: "Pieces Copilot:",
-          message: "Snippet copied to clipboard!",
-          type: "info"
-        });
-        (0, view_1.track)(CopilotAnalytics_enum_1.CopilotAnalytics.COPY_CODE_BUTTON);
-      });
-      let saveBtn;
-      if (similarity < 0.97) {
-        saveBtn = document.createElement("button");
-        saveBtn.title = "Save snippet to pieces";
-        saveBtn.innerHTML = const_1.Constants.SAVE_SVG;
-        saveBtn.classList.add(...btnClassList);
-        collapsedHolder.appendChild(saveBtn);
-        saveBtn.onclick = () => __awaiter(void 0, void 0, void 0, function* () {
-          const paths = relevant.reduce((res2, el) => {
-            if (el.path) {
-              res2.push(el.path);
-            }
-            return res2;
-          }, []).slice(0, 3);
-          const loading = _a.createLoader();
-          collapsedHolder.replaceChild(loading, saveBtn);
-          const application = yield (0, view_1.getApplication)();
-          if (!application)
-            return;
-          const res = yield ConnectorSingleton_1.default.getInstance().assetsApi.assetsCreateNewAsset({
-            seed: {
-              type: client_1.SeedTypeEnum.Asset,
-              asset: {
-                application,
-                format: {
-                  fragment: {
-                    string: {
-                      raw: snippetData.textContent
-                    },
-                    metadata: {
-                      ext: (0, langExtToClassificationSpecificEnum_1.default)(lang)
-                    }
+        const paths = relevant.reduce((acc, el) => {
+          if (el.path)
+            acc.add(el.path);
+          return acc;
+        }, /* @__PURE__ */ new Set());
+        const asset = yield ConnectorSingleton_1.default.getInstance().assetsApi.assetsCreateNewAsset({
+          seed: {
+            type: pieces_os_client_1.SeedTypeEnum.Asset,
+            asset: {
+              application,
+              format: {
+                fragment: {
+                  string: {
+                    raw: (_c = snippetData.textContent) !== null && _c !== void 0 ? _c : ""
+                  },
+                  metadata: {
+                    ext: (0, langExtToClassificationSpecificEnum_1.default)((0, langReadableToExt_1.default)(lang))
                   }
-                },
-                metadata: {
-                  anchors: paths.map((path) => {
-                    return {
-                      fullpath: path,
-                      type: client_1.AnchorTypeEnum.File
-                    };
-                  })
                 }
+              },
+              metadata: {
+                anchors: Array.from(paths).slice(0, 3).map((el) => ({ fullpath: el, type: pieces_os_client_1.AnchorTypeEnum.File }))
               }
             }
-          }).then((data) => {
-            (0, view_1.sendNotification)({
-              type: "info",
-              message: "Successfully saved to pieces."
-            });
-            return data;
-          }).catch(() => {
-            (0, view_1.sendNotification)({
-              type: "info",
-              message: "Failed to save to Pieces. Please make sure that Pieces OS is installed, updated, and running. If the issue persists please contact support@pieces.app"
-            });
-          });
-          if (res) {
-            similarity = 1;
-            comparisonID = res.id;
-            saveBtn = void 0;
-            CachedNCS_1.default.getInstance().set(snippetData.textContent, res.id);
-            collapsedHolder.removeChild(loading);
-          } else {
-            collapsedHolder.replaceChild(saveBtn, loading);
           }
-          const computedWidth2 = 60 * collapsedHolder.childElementCount;
-          collapsedHolder.style.width = `${computedWidth2}px`;
-          (0, view_1.track)(CopilotAnalytics_enum_1.CopilotAnalytics.SAVE_TO_PIECES_BUTTON);
+        }).catch();
+        if (!asset) {
+          const_1.Constants.sendErrorNotification("save to pieces");
+          return;
+        }
+        (0, view_1.sendNotification)({
+          type: "info",
+          message: "Successfully saved to Pieces."
         });
-      }
-      const shareBtn = document.createElement("button");
-      shareBtn.title = "Copy sharable link to clipboard";
-      shareBtn.innerHTML = const_1.Constants.SHARE_SVG;
-      shareBtn.classList.add(...btnClassList);
-      collapsedHolder.appendChild(shareBtn);
-      shareBtn.onclick = () => __awaiter(void 0, void 0, void 0, function* () {
-        const loading = _a.createLoader();
-        collapsedHolder.replaceChild(loading, shareBtn);
-        let params;
-        if (similarity > 0.97 && comparisonID) {
-          params = {
-            id: comparisonID
-          };
-        } else {
-          params = {
-            raw: snippetData.textContent,
-            ext: lang
-          };
-        }
-        const linkRes = yield (0, view_1.generateShareableLink)(params);
-        const id = linkRes === null || linkRes === void 0 ? void 0 : linkRes.id;
-        if (id) {
-          similarity = 1;
-          comparisonID = id;
-          if (saveBtn) {
-            collapsedHolder.removeChild(saveBtn);
-            const computedWidth2 = 60 * collapsedHolder.childElementCount;
-            collapsedHolder.style.width = computedWidth2 + "px";
-          }
-        }
-        collapsedHolder.replaceChild(shareBtn, loading);
+        saveButton.remove();
+        CachedNCS_1.default.getInstance().set((_d = snippetData.textContent) !== null && _d !== void 0 ? _d : "", asset.id);
       });
-      collapsedHolder.classList.remove("collapsed");
-      const computedWidth = 60 * collapsedHolder.childElementCount;
-      collapsedHolder.style.width = computedWidth + "px";
-      _a.tempCollapseTimer = setTimeout(() => {
-        _a.tempCollapseTimer = void 0;
-        collapsedHolder.classList.add("expanded");
-      }, 350);
-      collapseControlButton.title = "Hide Pieces actions";
-      (0, view_1.track)(CopilotAnalytics_enum_1.CopilotAnalytics.SHARE_VIA_PIECES_BUTTON);
-    });
+      const shareButton = (0, globals_1.createDiv)(toggledButtonsContainer);
+      shareButton.classList.add(..._a.buttonClasses);
+      shareButton.innerHTML = const_1.Constants.SHARE_SVG;
+      shareButton.title = "Share code";
+      shareButton.onclick = () => __awaiter(void 0, void 0, void 0, function* () {
+        var _e;
+        const similarity = yield similarityPromise;
+        if (similarity && (similarity === null || similarity === void 0 ? void 0 : similarity.score) > 0.97) {
+          (0, view_1.generateShareableLink)({ id: similarity.identifier });
+        } else {
+          (0, view_1.generateShareableLink)({
+            raw: (_e = snippetData.textContent) !== null && _e !== void 0 ? _e : "",
+            ext: lang
+          });
+        }
+      });
+      if (view_1.runInTerminal) {
+        const runCodeButton = (0, globals_1.createDiv)(toggledButtonsContainer);
+        runCodeButton.classList.add(..._a.buttonClasses);
+        runCodeButton.innerHTML = const_1.Constants.TERMINAL_SVG;
+        runCodeButton.title = "Run code in terminal";
+        runCodeButton.onclick = () => {
+          var _b2;
+          view_1.runInTerminal((_b2 = snippetData.textContent) !== null && _b2 !== void 0 ? _b2 : "");
+        };
+      }
+      const copyButton = (0, globals_1.createDiv)(visibleButtonRow);
+      copyButton.classList.add(..._a.buttonClasses);
+      copyButton.innerHTML = const_1.Constants.COPY_SVG;
+      copyButton.title = "Copy code";
+      copyButton.onclick = () => {
+        var _b2;
+        (0, view_1.copyToClipboard)((_b2 = snippetData.textContent) !== null && _b2 !== void 0 ? _b2 : "");
+      };
+      const insertCodeButton = (0, globals_1.createDiv)(visibleButtonRow);
+      insertCodeButton.classList.add(..._a.buttonClasses);
+      insertCodeButton.innerHTML = const_1.Constants.INSERT_CODE_SVG;
+      insertCodeButton.title = "Insert at cursor";
+      insertCodeButton.onclick = () => {
+        var _b2;
+        (0, view_1.insertAtCursor)((_b2 = snippetData.textContent) !== null && _b2 !== void 0 ? _b2 : "");
+      };
+      similarityPromise.then((similarity) => {
+        var _b2;
+        if (((_b2 = similarity === null || similarity === void 0 ? void 0 : similarity.score) !== null && _b2 !== void 0 ? _b2 : 0) > 0.97) {
+          saveButton.remove();
+        }
+      });
+      return container;
+    };
     exports.default = QGPTComponentBuilder;
+  }
+});
+
+// ../copilot-ts/dist/utils/getIcon.js
+var require_getIcon = __commonJS({
+  "../copilot-ts/dist/utils/getIcon.js"(exports) {
+    "use strict";
+    var __importDefault = exports && exports.__importDefault || function(mod) {
+      return mod && mod.__esModule ? mod : { "default": mod };
+    };
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.getLanguageIcon = exports.getIcon = void 0;
+    var QGPTView_1 = __importDefault(require_QGPTView());
+    var langReadableToExt_1 = __importDefault(require_langReadableToExt());
+    var getIcon4 = (language) => {
+      const theme2 = QGPTView_1.default.theme;
+      let className = language;
+      switch (language) {
+        case "bat":
+          className = theme2 === "dark" ? "batD" : "batL";
+          break;
+        case "coffee":
+          className = theme2 === "dark" ? "coffeeD" : "coffeeL";
+          break;
+        case "md":
+          className = theme2 === "dark" ? "mdD" : "mdL";
+          break;
+        case "sh":
+          className = theme2 === "dark" ? "shD" : "shL";
+          break;
+        case "yml":
+        case "yaml":
+          className = theme2 === "dark" ? "yamlD" : "yamlL";
+          break;
+        case "tml":
+        case "toml":
+          className = theme2 === "dark" ? "tomlD" : "tomlL";
+          break;
+        default:
+          break;
+      }
+      return className + "-img";
+    };
+    exports.getIcon = getIcon4;
+    var getLanguageIcon = (language) => {
+      const ext = (0, langReadableToExt_1.default)(language);
+      return (0, exports.getIcon)(ext);
+    };
+    exports.getLanguageIcon = getLanguageIcon;
   }
 });
 
@@ -42557,216 +41876,6 @@ ${content}</tr>
   }
 });
 
-// ../copilot-ts/dist/components/QGPTViewBuilder.js
-var require_QGPTViewBuilder = __commonJS({
-  "../copilot-ts/dist/components/QGPTViewBuilder.js"(exports) {
-    "use strict";
-    var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
-      function adopt(value) {
-        return value instanceof P ? value : new P(function(resolve) {
-          resolve(value);
-        });
-      }
-      return new (P || (P = Promise))(function(resolve, reject) {
-        function fulfilled(value) {
-          try {
-            step(generator.next(value));
-          } catch (e) {
-            reject(e);
-          }
-        }
-        function rejected(value) {
-          try {
-            step(generator["throw"](value));
-          } catch (e) {
-            reject(e);
-          }
-        }
-        function step(result) {
-          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
-        }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-      });
-    };
-    var __importDefault = exports && exports.__importDefault || function(mod) {
-      return mod && mod.__esModule ? mod : { "default": mod };
-    };
-    Object.defineProperty(exports, "__esModule", { value: true });
-    var CopilotAnalytics_enum_1 = require_CopilotAnalytics_enum();
-    var const_1 = require_const();
-    var globals_1 = require_globals();
-    var QGPTComponentBuilder_1 = __importDefault(require_QGPTComponentBuilder());
-    var QGPTView_1 = __importDefault(require_QGPTView());
-    var getIcon_1 = require_getIcon();
-    var loadPrism_1 = require_loadPrism();
-    var langReadableToExt_1 = __importDefault(require_langReadableToExt());
-    var marked_1 = require_marked();
-    var view_1 = require_view();
-    var QGPTViewBuilder = class {
-      /**
-       * @param message - The message to build the query element for, can be a string or a QGPTConversationMessage
-       * @returns a styled div containing the query element
-       */
-      static buildQueryElement(message, relevant, image) {
-        const queryDiv = document.createElement("div");
-        queryDiv.classList.add("flex", "flex-row", "justify-end");
-        const answerText = document.createElement("div");
-        answerText.classList.add("gpt-text-response", "gpt-query", "bg-[var(--interactive-accent)]", "overflow-hidden", "rounded-lg", "p-2", "mr-2");
-        if (!image) {
-          answerText.innerHTML = marked_1.marked.parse(QGPTComponentBuilder_1.default.sanitize(typeof message === "string" ? message : message === null || message === void 0 ? void 0 : message.text));
-          this.syntaxHighlight({
-            element: answerText,
-            relevant,
-            askCopilot: false
-          });
-        } else {
-          const queryImg = (0, globals_1.createEl)(answerText, "img");
-          queryImg.src = typeof message === "string" ? message : message === null || message === void 0 ? void 0 : message.text;
-        }
-        queryDiv.appendChild(answerText);
-        const userDiv = document.createElement("div");
-        userDiv.id = "user-img";
-        userDiv.classList.add("!w-6", "justify-center", "items-end", "flex");
-        queryDiv.appendChild(userDiv);
-        const userSvg = QGPTView_1.default.getUserSVG();
-        if (userSvg instanceof HTMLImageElement) {
-          userDiv.appendChild(userSvg.cloneNode(true));
-        } else if (typeof userSvg === "string") {
-          userDiv.innerHTML = userSvg;
-        }
-        return queryDiv;
-      }
-      /**
-       * @param message - The message to build the answer element for, can be a string or a QGPTConversationMessage
-       * @returns a styled div containing the answer element
-       */
-      static buildAnswerElement(message, relevant) {
-        var _a;
-        const answerDiv = document.createElement("div");
-        answerDiv.classList.add("flex", "flex-row", "justify-start");
-        const aiDiv = document.createElement("div");
-        aiDiv.id = "ai-img";
-        aiDiv.innerHTML = const_1.Constants.COPILOT_SVG;
-        aiDiv.classList.add("w-6", "justify-center", "items-end", "flex", "pr-2");
-        answerDiv.appendChild(aiDiv);
-        const answerText = document.createElement("div");
-        answerText.innerHTML = marked_1.marked.parse(QGPTComponentBuilder_1.default.sanitize(typeof message === "string" ? message : message === null || message === void 0 ? void 0 : message.text));
-        this.syntaxHighlight({ element: answerText, relevant, askCopilot: false });
-        answerText.classList.add("gpt-text-response", "gpt-response", "overflow-hidden", "flex", "flex-col", "rounded-lg", "bg-[var(--interactive-normal)]", "p-2");
-        answerDiv.appendChild(answerText);
-        const details = answerText.querySelectorAll("details");
-        for (const element of Array.from(details)) {
-          element.classList.add("rounded", "text-xs", "cursor-pointer", "bg-[var(--background-primary)]", "p-2");
-          element.addEventListener("click", () => {
-            (0, view_1.track)(CopilotAnalytics_enum_1.CopilotAnalytics.ASK_ABOUT_FILE_DETAILS);
-          });
-        }
-        (_a = answerText.querySelector("ul")) === null || _a === void 0 ? void 0 : _a.classList.add("!list-disc", "px-4");
-        return { answerDiv, answerText };
-      }
-      /**
-       * @param files all the files that are relevant to the answer - a {@link RelevantQGPTSeed}[] element
-       * @returns a styled div containing the relevant files element
-       */
-      static buildRelevantElement({ answerDiv, files }) {
-        files = files.filter((el) => el.path);
-        if (!files.length) {
-          return;
-        }
-        answerDiv.children[0].classList.add("hide");
-        const relevantDiv = document.createElement("div");
-        relevantDiv.classList.add("flex", "flex-row", "justify-start");
-        const aiDiv = document.createElement("div");
-        aiDiv.id = "ai-img";
-        aiDiv.innerHTML = const_1.Constants.COPILOT_SVG;
-        aiDiv.classList.add("w-6", "justify-center", "items-end", "flex", "pr-2");
-        relevantDiv.appendChild(aiDiv);
-        const answerText = document.createElement("div");
-        answerText.classList.add("gpt-text-response", "overflow-hidden", "gpt-response", "flex", "flex-col", "bg-[var(--interactive-normal)]", "rounded-lg", "p-2");
-        const filePaths = new Set(files.map((file) => file.path));
-        const fileTitle = (0, globals_1.createEl)(answerText, "p");
-        (0, globals_1.setText)(fileTitle, "Relevant Files:");
-        fileTitle.classList.add("text-[var(--text-muted)]", "text-xs", "pb-2", "m-0");
-        const fileCol = document.createElement("div");
-        fileCol.classList.add("flex", "flex-col", "max-h-[80px]", "overflow-scroll", "scrollbar-hide", "gap-1");
-        answerText.appendChild(fileCol);
-        filePaths.forEach((path) => {
-          QGPTComponentBuilder_1.default.createFilePill(path, fileCol);
-        });
-        relevantDiv.appendChild(answerText);
-        return relevantDiv;
-      }
-      /**
-       *
-       * @param element - The element to syntax highlight, needs to contain a 1code block
-       */
-      // eslint-disable-next-line @typescript-eslint/default-param-last
-      static syntaxHighlight({ element, relevant, askCopilot }) {
-        const codeChildren = Array.from(element.querySelectorAll("pre > code"));
-        this.highlightCodeBlocks(codeChildren);
-        if (!askCopilot)
-          this.buildCodeButtons(codeChildren, relevant);
-      }
-      static highlightCodeBlocks(codeBlocks) {
-        var _a;
-        for (const codeBlock of codeBlocks) {
-          const langClass = codeBlock.classList[0];
-          const lang = langClass && langClass.startsWith("language-") ? langClass.slice("language-".length) : "ts";
-          const codeParent = codeBlock.parentElement;
-          codeParent.classList.add("flex", "flex-row", "m-0", "bg-[var(--background-primary)]", "text-shadow-none");
-          const codeHeader = document.createElement("div");
-          codeHeader.classList.add("flex", "flex-row", "h-7", "items-center", "gap-1");
-          codeParent.insertAdjacentElement("beforebegin", codeHeader);
-          codeHeader.classList.add("px-2", "pt-2", "rounded-t", "text-[var(--text-muted)]", "bg-[var(--background-primary)]", "mt-2", "text-xs");
-          if (langClass === null || langClass === void 0 ? void 0 : langClass.startsWith("language")) {
-            const langImg = (0, globals_1.createEl)(codeHeader, "div");
-            langImg.classList.add("bg-cover", "h-6", "w-6", (0, getIcon_1.getLanguageIcon)(lang));
-            const codeHeaderP = (0, globals_1.createEl)(codeHeader, "p");
-            codeHeaderP.classList.add("m-0", "cursor-pointer", "w-fit");
-            codeHeaderP.innerText = lang;
-            codeHeaderP.onclick = () => {
-              var _a2;
-              (0, view_1.copyToClipboard)((_a2 = codeBlock.textContent) !== null && _a2 !== void 0 ? _a2 : "");
-              codeHeaderP.innerHTML = "copied! &#10003;";
-              setTimeout(() => {
-                codeHeaderP.innerText = lang;
-              }, 3e3);
-            };
-          }
-          const lineNums = document.createElement("div");
-          codeParent.insertBefore(lineNums, codeBlock);
-          lineNums.classList.add("text-[13px]", "flex", "flex-col", "mb-2", "pt-2", "text-right", "pl-3", "pr-1", "rounded-bl", "bg-[var(--background-primary)]", "text-[var(--text-faint)]", "leading-[var(--line-height-normal)]");
-          const lineCount = (((_a = codeBlock.textContent) === null || _a === void 0 ? void 0 : _a.match(/\n/g)) || []).length;
-          for (let i = 0; i < lineCount; i++) {
-            lineNums.append(`${i + 1}
-`);
-          }
-          codeBlock.classList.add("!p-2", "!overflow-x-auto", "shadow-none", "text-shadow-none", "bg-[var(--background-primary)]");
-          codeBlock.innerHTML = (0, loadPrism_1.highlightSnippet)({
-            snippetContent: codeBlock.textContent,
-            snippetLanguage: (0, langReadableToExt_1.default)(lang)
-          });
-        }
-      }
-      static buildCodeButtons(codeBlocks, relevant) {
-        return __awaiter(this, void 0, void 0, function* () {
-          for (const codeBlock of codeBlocks) {
-            const langClass = codeBlock.classList[0];
-            const lang = langClass && langClass.startsWith("language-") ? langClass.slice("language-".length) : "ts";
-            const button = yield QGPTComponentBuilder_1.default.buildButtonHolder(codeBlock, lang, relevant);
-            codeBlock.appendChild(button);
-            QGPTView_1.default.codeBlocks.push({
-              text: codeBlock.textContent,
-              extension: (0, langReadableToExt_1.default)(lang)
-            });
-          }
-        });
-      }
-    };
-    exports.default = QGPTViewBuilder;
-  }
-});
-
 // ../copilot-ts/dist/controllers/CopilotStreamController.js
 var require_CopilotStreamController = __commonJS({
   "../copilot-ts/dist/controllers/CopilotStreamController.js"(exports) {
@@ -42802,8 +41911,8 @@ var require_CopilotStreamController = __commonJS({
       return mod && mod.__esModule ? mod : { "default": mod };
     };
     Object.defineProperty(exports, "__esModule", { value: true });
-    var client_1 = require_dist();
-    var client_2 = require_dist();
+    var pieces_os_client_1 = require_dist();
+    var pieces_os_client_2 = require_dist();
     var view_1 = require_view();
     var ConnectorSingleton_1 = __importDefault(require_ConnectorSingleton());
     var ConversationsStreamController_1 = __importDefault(require_ConversationsStreamController());
@@ -42836,6 +41945,7 @@ var require_CopilotStreamController = __commonJS({
        * @returns a promise which is resolved when we get a 'COMPLETED' status from the socket, or rejected on a socket error.
        */
       askQGPT({ query, answerEl }) {
+        var _a, _b, _c;
         return __awaiter(this, void 0, void 0, function* () {
           if (!this.ws) {
             this.connect();
@@ -42850,14 +41960,15 @@ var require_CopilotStreamController = __commonJS({
             qGPTRelevanceInput: {
               query,
               paths: QGPTView_1.default.contextSelectionModal.paths,
-              assets: { iterable: QGPTView_1.default.contextSelectionModal.assets }
+              assets: { iterable: QGPTView_1.default.contextSelectionModal.assets },
+              messages: { iterable: QGPTView_1.default.contextSelectionModal.grounding }
             }
           };
           const relevanceOutput = yield ConnectorSingleton_1.default.getInstance().QGPTApi.relevance(relevanceInput);
           if (QGPTView_1.default.relevant) {
             relevanceOutput.relevant.iterable.push({
               seed: {
-                type: client_2.SeedTypeEnum.Asset,
+                type: pieces_os_client_2.SeedTypeEnum.Asset,
                 asset: {
                   application,
                   format: {
@@ -42877,7 +41988,7 @@ var require_CopilotStreamController = __commonJS({
           for (const codeBlock of QGPTView_1.default.codeBlocks) {
             relevanceOutput.relevant.iterable.push({
               seed: {
-                type: client_2.SeedTypeEnum.Asset,
+                type: pieces_os_client_2.SeedTypeEnum.Asset,
                 asset: {
                   application,
                   format: {
@@ -42893,6 +42004,16 @@ var require_CopilotStreamController = __commonJS({
                 }
               }
             });
+          }
+          const relevantEl = QGPTViewBuilder_1.default.buildRelevantElement({
+            answerDiv: answerEl.parentElement,
+            files: relevanceOutput.relevant.iterable
+          });
+          if (relevantEl) {
+            const isAtBottom = this.isAtBottom(answerEl);
+            (_c = (_b = (_a = answerEl.parentElement) === null || _a === void 0 ? void 0 : _a.parentElement) === null || _b === void 0 ? void 0 : _b.parentElement) === null || _c === void 0 ? void 0 : _c.appendChild(relevantEl);
+            if (isAtBottom)
+              this.forceScroll(answerEl);
           }
           const input = {
             question: {
@@ -42911,23 +42032,26 @@ var require_CopilotStreamController = __commonJS({
        * @returns void
        */
       forceScroll(answerEl) {
-        answerEl.parentElement.parentElement.onwheel = () => {
+        var _a, _b;
+        if (!((_b = (_a = answerEl.parentElement) === null || _a === void 0 ? void 0 : _a.parentElement) === null || _b === void 0 ? void 0 : _b.parentElement))
+          throw new Error("Change in dom structure broke our autoscroll behavior in the Copilot Stream Controller");
+        answerEl.parentElement.parentElement.parentElement.onscroll = () => {
           this.hasScrolled = true;
         };
-        answerEl.parentElement.parentElement.scrollTop = answerEl.parentElement.parentElement.scrollHeight;
+        answerEl.parentElement.parentElement.parentElement.scrollTop = answerEl.parentElement.parentElement.parentElement.scrollHeight;
       }
       isAtBottom(answerEl) {
-        var _a;
-        if (!((_a = answerEl.parentElement) === null || _a === void 0 ? void 0 : _a.parentElement))
+        var _a, _b;
+        if (!((_b = (_a = answerEl.parentElement) === null || _a === void 0 ? void 0 : _a.parentElement) === null || _b === void 0 ? void 0 : _b.parentElement))
           throw new Error("Change in dom structure broke our autoscroll behavior in the Copilot Stream Controller");
-        const element = answerEl.parentElement.parentElement;
+        const element = answerEl.parentElement.parentElement.parentElement;
         const scrollHeight = element.scrollHeight;
         const scrollTop = element.scrollTop;
         const offsetHeight = element.offsetHeight;
         if (offsetHeight === 0) {
           return true;
         }
-        return scrollTop >= scrollHeight - offsetHeight;
+        return scrollTop >= scrollHeight - offsetHeight - 1;
       }
       /**
        * Connects the websocket, handles all message callbacks, error handling, and rendering.
@@ -42938,7 +42062,7 @@ var require_CopilotStreamController = __commonJS({
         let relevantSnippets = [];
         this.ws.onmessage = (msg) => {
           const json = JSON.parse(msg.data);
-          const result = (0, client_1.QGPTStreamOutputFromJSON)(json);
+          const result = (0, pieces_os_client_1.QGPTStreamOutputFromJSON)(json);
           let answer;
           let relevant;
           if (result.relevance) {
@@ -42956,31 +42080,54 @@ var require_CopilotStreamController = __commonJS({
           } else {
             if (result.status === "COMPLETED") {
               QGPTView_1.default.lastConversationMessage = new Date();
-              QGPTViewBuilder_1.default.buildCodeButtons(Array.from(this.answerEl.querySelectorAll("pre > code")), relevant.iterable);
               if (!totalMessage) {
                 this.answerEl.innerHTML = "I'm sorry, it seems I don't have any relevant context to that question. Please try again \u{1F603}";
               }
-              this.messageResolver({
-                answer: totalMessage,
-                relevant: { iterable: relevantSnippets }
+              let queryIndicie = ["", -1];
+              let answerIndicie = ["", -1];
+              ConnectorSingleton_1.default.getInstance().conversationApi.conversationGetSpecificConversation({
+                conversation: result.conversation
+              }).then((conversation) => {
+                var _a;
+                for (const key in (_a = conversation.messages.indices) !== null && _a !== void 0 ? _a : {}) {
+                  const index = conversation.messages.indices[key];
+                  if (index > answerIndicie[1]) {
+                    queryIndicie = answerIndicie;
+                    answerIndicie = [key, index];
+                  } else if (index > queryIndicie[1]) {
+                    queryIndicie = [key, index];
+                  }
+                }
+              }).finally(() => {
+                const isAtBottom2 = this.isAtBottom(this.answerEl);
+                this.handleRender(totalMessage, this.answerEl, relevantSnippets, true);
+                if (isAtBottom2)
+                  this.forceScroll(this.answerEl);
+                QGPTViewBuilder_1.default.addMessageActions(this.answerEl.parentElement, false, answerIndicie[0]);
+                this.messageResolver({
+                  answer: totalMessage,
+                  relevant: { iterable: relevantSnippets },
+                  answerId: answerIndicie[0],
+                  queryId: queryIndicie[0]
+                });
+                totalMessage = "";
+                relevantSnippets = [];
               });
             } else if (result.status === "FAILED" || result.status === "UNKNOWN") {
               if (this.messageRejector)
                 this.messageRejector(result);
+              totalMessage = "";
+              relevantSnippets = [];
             }
-            totalMessage = "";
-            relevantSnippets = [];
             return;
           }
           if (answer === null || answer === void 0 ? void 0 : answer.text) {
             totalMessage += answer.text;
           }
           const isAtBottom = this.isAtBottom(this.answerEl);
-          this.handleRender(totalMessage, this.answerEl);
-          if (this.answerEl.parentElement.parentElement.scrollHeight > this.answerEl.parentElement.parentElement.clientHeight) {
-            if (isAtBottom || !this.hasScrolled)
-              this.forceScroll(this.answerEl);
-          }
+          this.handleRender(totalMessage, this.answerEl, relevantSnippets);
+          if (isAtBottom)
+            this.forceScroll(this.answerEl);
         };
         const refreshSockets = (error) => {
           if (error)
@@ -43014,21 +42161,13 @@ var require_CopilotStreamController = __commonJS({
           this.answerEl = answerEl;
           answerEl.parentElement.parentElement.scrollTop = answerEl.parentElement.parentElement.scrollHeight;
           this.hasScrolled = false;
-          const loader = document.createElement("div");
-          loader.classList.add("flex", "flex-row", "justify-center");
-          loader.appendChild(QGPTComponentBuilder_1.default.createLoader());
-          answerEl.parentElement.insertAdjacentElement("afterend", loader);
-          this.forceScroll(answerEl);
           const promise = new Promise((res, rej) => {
             this.messageResolver = res;
             this.messageRejector = rej;
           });
-          promise.finally(() => {
-            loader.remove();
-          });
           if (!QGPTView_1.default.conversationId.length) {
             const seededConversation = {
-              type: client_1.ConversationTypeEnum.Copilot
+              type: pieces_os_client_1.ConversationTypeEnum.Copilot
             };
             const conversation = yield ConnectorSingleton_1.default.getInstance().conversationsApi.conversationsCreateSpecificConversation({
               transferables: false,
@@ -43054,13 +42193,15 @@ var require_CopilotStreamController = __commonJS({
        * @param totalMessage The total message to rendre
        * @param answerEl the answer element to update
        */
-      handleRender(totalMessage, answerEl) {
+      handleRender(totalMessage, answerEl, relevant, completed = false) {
         const sanitized = QGPTComponentBuilder_1.default.sanitize(totalMessage);
         const htmlString = marked_1.marked.parse(sanitized);
         const div = document.createElement("div");
         div.innerHTML = htmlString;
-        QGPTViewBuilder_1.default.highlightCodeBlocks(Array.from(div.querySelectorAll("pre > code")));
-        answerEl.innerHTML = div.innerHTML;
+        QGPTViewBuilder_1.default.highlightCodeBlocks(Array.from(div.querySelectorAll("pre > code")), relevant, !completed);
+        div.classList.add(...answerEl.classList);
+        answerEl.replaceWith(div);
+        this.answerEl = div;
       }
       static getInstance() {
         var _a;
@@ -43068,6 +42209,1952 @@ var require_CopilotStreamController = __commonJS({
       }
     };
     exports.default = CopilotStreamController;
+  }
+});
+
+// ../copilot-ts/dist/components/QGPTViewBuilder.js
+var require_QGPTViewBuilder = __commonJS({
+  "../copilot-ts/dist/components/QGPTViewBuilder.js"(exports) {
+    "use strict";
+    var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __importDefault = exports && exports.__importDefault || function(mod) {
+      return mod && mod.__esModule ? mod : { "default": mod };
+    };
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var pieces_os_client_1 = require_dist();
+    var CopilotAnalytics_enum_1 = require_CopilotAnalytics_enum();
+    var const_1 = require_const();
+    var globals_1 = require_globals();
+    var QGPTComponentBuilder_1 = __importDefault(require_QGPTComponentBuilder());
+    var QGPTView_1 = __importDefault(require_QGPTView());
+    var getIcon_1 = require_getIcon();
+    var loadPrism_1 = require_loadPrism();
+    var langReadableToExt_1 = __importDefault(require_langReadableToExt());
+    var marked_1 = require_marked();
+    var view_1 = require_view();
+    var ConnectorSingleton_1 = __importDefault(require_ConnectorSingleton());
+    var buffer_1 = require("buffer");
+    var ConversationBuilder_1 = __importDefault(require_ConversationBuilder());
+    var CopilotStreamController_1 = __importDefault(require_CopilotStreamController());
+    var QGPTViewBuilder = class {
+      /**
+       * This will perform ocr on an image, render answer elements, and create messages in the db for the conversation
+       * @param image the image to perform ocr on
+       * @param textAreaDiv the copilot text container
+       * @returns
+       */
+      static performOcrAction(image, textAreaDiv) {
+        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p;
+        return __awaiter(this, void 0, void 0, function* () {
+          (_a = QGPTView_1.default.introText) === null || _a === void 0 ? void 0 : _a.remove();
+          textAreaDiv.parentElement.style.display = "flex";
+          const queryEl = this.buildQueryElement(`data:image/png;base64,${buffer_1.Buffer.from(image).toString("base64")}`, [], true);
+          textAreaDiv.appendChild(queryEl.queryDiv);
+          const answerEl = this.buildAnswerElement("Analyzing your image...", []);
+          textAreaDiv.appendChild(answerEl.answerDiv);
+          CopilotStreamController_1.default.getInstance().forceScroll(answerEl.answerText);
+          const imageBytesArray = Array.from(buffer_1.Buffer.from(image));
+          const ocrResultPromise = fetch("https://api.runtime.dev/ocr?apikey=YJJsa9HQFMeA0gOixoKiDy28KfvDIXPa63zNGB5uTkGfi0di", {
+            method: "POST",
+            body: JSON.stringify({
+              iterable: [{ value: imageBytesArray }]
+            })
+          }).then((data) => data.json()).catch(() => {
+            answerEl.answerDiv.remove();
+            const errorAnswerEl = this.buildAnswerElement("Failed to extract text. Please make sure that Pieces OS is installed, updated, and running. If the issue persists, please contact support@pieces.app", []);
+            textAreaDiv.appendChild(errorAnswerEl.answerDiv);
+            return;
+          });
+          setTimeout(() => {
+            answerEl.answerText.innerText = "Extracting text from the image...";
+          }, 2e3);
+          setTimeout(() => {
+            answerEl.answerText.innerText = "Analyzing code structure and syntax...";
+          }, 4e3);
+          setTimeout(() => {
+            answerEl.answerText.innerText = "Processing and formatting extracted code...";
+          }, 6e3);
+          setTimeout(() => {
+            answerEl.answerText.innerText = "Detecting programming langauge...";
+          }, 8e3);
+          setTimeout(() => {
+            answerEl.answerText.innerText = "Almost there...";
+          }, 1e4);
+          const application = yield (0, view_1.getApplication)();
+          if ((application === null || application === void 0 ? void 0 : application.capabilities) === pieces_os_client_1.CapabilitiesEnum.Local) {
+            answerEl.answerDiv.remove();
+            const enableBlendedAnswerEl = this.buildAnswerElement("I'm sorry, but this feature currently requires cloud capabilities. Your settings are set to use local capabilities only. You can turn your capabilities to use cloud & local, or wait until we release our local large language model :)", []);
+            textAreaDiv.appendChild(enableBlendedAnswerEl.answerDiv);
+            return;
+          }
+          if (!application) {
+            answerEl.answerDiv.remove();
+            const errorAnswerEl = this.buildAnswerElement("Failed to find a registered application. Please make sure that Pieces OS is installed, updated, and running. If the issue persists, please contact support@pieces.app", []);
+            textAreaDiv.appendChild(errorAnswerEl.answerDiv);
+            return;
+          }
+          const ocrResult = yield ocrResultPromise;
+          if (!ocrResult)
+            return;
+          const text = ocrResult.iterable[0].ocr.text;
+          const draft = yield ConnectorSingleton_1.default.getInstance().assetsApi.assetsDraft({
+            seed: {
+              type: pieces_os_client_1.SeedTypeEnum.Asset,
+              asset: {
+                application,
+                format: {
+                  fragment: {
+                    string: {
+                      raw: text
+                    }
+                  }
+                }
+              }
+            }
+          }).catch(() => {
+            answerEl.answerDiv.remove();
+            const errorAnswerEl = this.buildAnswerElement("Failed to generate metadata. Please make sure that Pieces OS is installed, updated, and running. If the issue persists, please contact support@pieces.app", []);
+            textAreaDiv.appendChild(errorAnswerEl.answerDiv);
+            return;
+          });
+          if (!draft)
+            return;
+          answerEl.answerDiv.remove();
+          const codeAnswerEl = this.buildAnswerElement(`Here is the extracted code:
+
+\`\`\`${(_d = (_c = (_b = draft.asset) === null || _b === void 0 ? void 0 : _b.format.classification) === null || _c === void 0 ? void 0 : _c.specific) !== null && _d !== void 0 ? _d : ""}
+${text}
+\`\`\``, []);
+          textAreaDiv.appendChild(codeAnswerEl.answerDiv);
+          CopilotStreamController_1.default.getInstance().forceScroll(codeAnswerEl.answerText);
+          if (!QGPTView_1.default.conversationId) {
+            const conversation = yield ConnectorSingleton_1.default.getInstance().conversationsApi.conversationsCreateSpecificConversation({
+              transferables: false,
+              seededConversation: {
+                type: pieces_os_client_1.ConversationTypeEnum.Copilot
+              }
+            });
+            QGPTView_1.default.conversationId = conversation.id;
+            ConversationBuilder_1.default.getInstance().highlightSelectedConversation();
+          }
+          QGPTView_1.default.lastConversationMessage = new Date();
+          const userMessage = yield ConnectorSingleton_1.default.getInstance().conversationMessagesApi.messagesCreateSpecificMessage({
+            seededConversationMessage: {
+              role: pieces_os_client_1.QGPTConversationMessageRoleEnum.User,
+              fragment: {
+                bytes: {
+                  raw: imageBytesArray
+                }
+              },
+              conversation: { id: QGPTView_1.default.conversationId }
+            }
+          });
+          QGPTView_1.default.lastConversationMessage = new Date();
+          const assistantMessage = yield ConnectorSingleton_1.default.getInstance().conversationMessagesApi.messagesCreateSpecificMessage({
+            seededConversationMessage: {
+              role: pieces_os_client_1.QGPTConversationMessageRoleEnum.Assistant,
+              fragment: {
+                string: {
+                  raw: `Here is the extracted code:
+
+\`\`\`${(_g = (_f = (_e = draft.asset) === null || _e === void 0 ? void 0 : _e.format.classification) === null || _f === void 0 ? void 0 : _f.specific) !== null && _g !== void 0 ? _g : ""}
+${text}
+\`\`\``
+                }
+              },
+              conversation: { id: QGPTView_1.default.conversationId }
+            }
+          });
+          QGPTView_1.default.currentConversation.push({
+            message: {
+              text: (_l = (_k = (_j = (_h = userMessage.fragment) === null || _h === void 0 ? void 0 : _h.bytes) === null || _j === void 0 ? void 0 : _j.raw) === null || _k === void 0 ? void 0 : _k.toString()) !== null && _l !== void 0 ? _l : "",
+              timestamp: userMessage.created,
+              role: pieces_os_client_1.QGPTConversationMessageRoleEnum.User
+            },
+            image: true,
+            messageId: userMessage.id
+          });
+          QGPTView_1.default.currentConversation.push({
+            message: {
+              text: (_p = (_o = (_m = assistantMessage.fragment) === null || _m === void 0 ? void 0 : _m.string) === null || _o === void 0 ? void 0 : _o.raw) !== null && _p !== void 0 ? _p : "",
+              timestamp: assistantMessage.created,
+              role: pieces_os_client_1.QGPTConversationMessageRoleEnum.Assistant
+            },
+            messageId: assistantMessage.id,
+            image: false
+          });
+        });
+      }
+      /**
+       * This will attach message actions to the message element
+       * @param element the message element
+       * @param user if it's a user message
+       * @param messageId the id of the message
+       */
+      static addMessageActions(element, user, messageId) {
+        return __awaiter(this, void 0, void 0, function* () {
+          const message = yield ConnectorSingleton_1.default.getInstance().conversationMessageApi.messageSpecificMessageSnapshot({ message: messageId });
+          const actionContainer = (0, globals_1.createDiv)(element);
+          actionContainer.classList.add("rounded-lg", "absolute", "gap-1", "-top-3", "flex", "flex-row", "bg-[var(--background-modifier-border)]", "p-1", "hidden", "opacity-60", "hover:opacity-100");
+          element.onmouseenter = () => {
+            actionContainer.classList.remove("hidden");
+          };
+          element.onmouseleave = () => {
+            actionContainer.classList.add("hidden");
+          };
+          if (user) {
+            actionContainer.classList.add("-left-2");
+          } else {
+            actionContainer.classList.add("-right-2");
+          }
+          const copyMessageButton = (0, globals_1.createDiv)(actionContainer);
+          copyMessageButton.classList.add("svg-box", "h-4", "hover:text-[var(--text-accent)]", "cursor-pointer", "leading-[1.25]");
+          copyMessageButton.innerHTML = const_1.Constants.COPY_SVG;
+          copyMessageButton.title = "Copy message";
+          copyMessageButton.onclick = () => __awaiter(this, void 0, void 0, function* () {
+            var _a, _b, _c;
+            if (!message)
+              return;
+            (0, view_1.copyToClipboard)((_c = (_b = (_a = message.fragment) === null || _a === void 0 ? void 0 : _a.string) === null || _b === void 0 ? void 0 : _b.raw) !== null && _c !== void 0 ? _c : "");
+            copyMessageButton.innerHTML = "&check;";
+            setTimeout(() => {
+              copyMessageButton.innerHTML = const_1.Constants.COPY_SVG;
+            }, 1500);
+          });
+          const deleteMessageButton = (0, globals_1.createDiv)(actionContainer);
+          deleteMessageButton.classList.add("svg-box", "h-4", "hover:text-[var(--text-error)]", "cursor-pointer");
+          deleteMessageButton.innerHTML = const_1.Constants.TRASH_SVG;
+          deleteMessageButton.onclick = () => {
+            var _a;
+            QGPTView_1.default.lastConversationMessage = new Date();
+            ConnectorSingleton_1.default.getInstance().conversationMessagesApi.messagesDeleteSpecificMessage({
+              message: messageId
+            }).then(() => {
+              (0, view_1.sendNotification)({
+                type: "info",
+                message: "Successfully deleted message."
+              });
+            }).catch(() => {
+              (0, view_1.sendNotification)({
+                type: "error",
+                message: "Failed to delete message, please make sure that Pieces OS is installed, updated, and running. If the issue persists contact support@pieces.app."
+              });
+            });
+            (_a = element.parentElement) === null || _a === void 0 ? void 0 : _a.remove();
+            QGPTView_1.default.currentConversation = QGPTView_1.default.currentConversation.filter((element2) => element2.messageId !== messageId);
+          };
+          deleteMessageButton.title = "Delete message";
+          if (!user) {
+            const thumbsUpButton = (0, globals_1.createDiv)(actionContainer);
+            thumbsUpButton.classList.add("svg-box", "h-4", "hover:text-[var(--text-accent)]", "cursor-pointer");
+            thumbsUpButton.innerHTML = const_1.Constants.THUMBS_UP_SVG;
+            thumbsUpButton.onclick = () => {
+              message.sentiment = pieces_os_client_1.ConversationMessageSentimentEnum.Like;
+              QGPTView_1.default.lastConversationMessage = new Date();
+              ConnectorSingleton_1.default.getInstance().conversationMessageApi.messageSpecificMessageUpdate({
+                conversationMessage: message
+              }).then(() => {
+                thumbsDownButton.classList.remove("text-[var(--text-accent)]");
+                thumbsUpButton.classList.add("text-[var(--text-accent)]");
+              }).catch(() => {
+                (0, view_1.sendNotification)({
+                  type: "error",
+                  message: "Failed to update message, please make sure that Pieces OS is installed, updated, and running. If the issue persists please contact support@pieces.app."
+                });
+              });
+            };
+            thumbsUpButton.title = "Like message";
+            const thumbsDownButton = (0, globals_1.createDiv)(actionContainer);
+            thumbsDownButton.classList.add("svg-box", "h-4", "hover:text-[var(--text-accent)]", "cursor-pointer");
+            thumbsDownButton.innerHTML = const_1.Constants.THUMBS_DOWN_SVG;
+            thumbsDownButton.onclick = () => {
+              message.sentiment = pieces_os_client_1.ConversationMessageSentimentEnum.Dislike;
+              QGPTView_1.default.lastConversationMessage = new Date();
+              ConnectorSingleton_1.default.getInstance().conversationMessageApi.messageSpecificMessageUpdate({
+                conversationMessage: message
+              }).then(() => {
+                thumbsUpButton.classList.remove("text-[var(--text-accent)]");
+                thumbsDownButton.classList.add("text-[var(--text-accent)]");
+              }).catch(() => {
+                (0, view_1.sendNotification)({
+                  type: "error",
+                  message: "Failed to update message, please make sure that Pieces OS is installed, updated, and running. If the issue persists please contact support@pieces.app."
+                });
+              });
+            };
+            thumbsDownButton.title = "Dislike message";
+            if (message.sentiment === pieces_os_client_1.ConversationMessageSentimentEnum.Like) {
+              thumbsUpButton.classList.add("text-[var(--text-accent)]");
+            } else if (message.sentiment === pieces_os_client_1.ConversationMessageSentimentEnum.Dislike) {
+              thumbsDownButton.classList.add("text-[var(--text-accent)]");
+            }
+          }
+          const conversation = yield ConnectorSingleton_1.default.getInstance().conversationApi.conversationGetSpecificConversation({ conversation: message.conversation.id });
+          let messageInContext = QGPTView_1.default.contextSelectionModal.grounding.some((el) => el.id === messageId);
+          const messageInContextButton = (0, globals_1.createDiv)(actionContainer);
+          messageInContextButton.classList.add("svg-box", "h-4", "hover:text-[var(--text-accent)]", "cursor-pointer", "leading-[1.25]");
+          if (messageInContext)
+            messageInContextButton.classList.add("text-[var(--text-accent)]");
+          messageInContextButton.innerHTML = const_1.Constants.MESSAGE_CONTEXT_SVG;
+          messageInContextButton.title = messageInContext ? "Remove message from context" : "Add message to context";
+          messageInContextButton.onclick = () => {
+            if (messageInContext) {
+              QGPTView_1.default.lastConversationMessage = new Date();
+              ConnectorSingleton_1.default.getInstance().conversationApi.conversationGroundingMessagesDisassociateMessage({
+                conversation: conversation.id,
+                message: message.id
+              }).then(() => {
+                messageInContextButton.classList.remove("text-[var(--text-accent)]");
+                messageInContext = false;
+                messageInContextButton.title = "Add message to context";
+                messageInContextButton.innerHTML = "&check;";
+                setTimeout(() => {
+                  messageInContextButton.innerHTML = const_1.Constants.MESSAGE_CONTEXT_SVG;
+                }, 1500);
+              }).catch(() => {
+                (0, view_1.sendNotification)({
+                  type: "error",
+                  message: "Failed to remove message from context, please make sure that Pieces OS is installed, updated and running if the issue persists please contact support@pieces.app."
+                });
+              });
+            } else {
+              QGPTView_1.default.lastConversationMessage = new Date();
+              ConnectorSingleton_1.default.getInstance().conversationApi.conversationGroundingMessagesAssociateMessage({
+                conversation: conversation.id,
+                message: message.id
+              }).then(() => {
+                messageInContextButton.classList.add("text-[var(--text-accent)]");
+                messageInContext = true;
+                messageInContextButton.title = "Remove message from context";
+                messageInContextButton.innerHTML = "&check;";
+                setTimeout(() => {
+                  messageInContextButton.innerHTML = const_1.Constants.MESSAGE_CONTEXT_SVG;
+                }, 1500);
+              }).catch(() => {
+                (0, view_1.sendNotification)({
+                  type: "error",
+                  message: "Failed to add message to context, please make sure that Pieces OS is installed, updated and running if the issue persists please contact support@pieces.app."
+                });
+              });
+            }
+          };
+        });
+      }
+      /**
+       * @param message - The message to build the query element for, can be a string or a QGPTConversationMessage
+       * @returns a styled div containing the query element
+       */
+      static buildQueryElement(message, relevant, image) {
+        const queryDiv = document.createElement("div");
+        queryDiv.classList.add("flex", "flex-row", "justify-end");
+        const queryTextContainer = (0, globals_1.createDiv)(queryDiv);
+        queryTextContainer.classList.add("relative", "w-[calc(100%-32px)]", "max-w-fit", "overflow-visible");
+        const queryAnswerText = document.createElement("div");
+        queryAnswerText.classList.add("gpt-text-response", "gpt-query", "bg-[var(--interactive-accent)]", "overflow-hidden", "rounded-lg", "p-2", "mr-1", "relative");
+        if (!image) {
+          queryAnswerText.innerHTML = marked_1.marked.parse(QGPTComponentBuilder_1.default.sanitize(typeof message === "string" ? message : message === null || message === void 0 ? void 0 : message.text));
+          this.syntaxHighlight({
+            element: queryAnswerText,
+            relevant,
+            askCopilot: false
+          });
+        } else {
+          const queryImg = (0, globals_1.createEl)(queryAnswerText, "img");
+          queryImg.src = typeof message === "string" ? message : message === null || message === void 0 ? void 0 : message.text;
+        }
+        queryTextContainer.appendChild(queryAnswerText);
+        const userDiv = document.createElement("div");
+        userDiv.id = "user-img";
+        userDiv.classList.add("!h-6", "!w-6", "justify-center", "items-end", "flex", "svg-box", "self-end");
+        queryDiv.appendChild(userDiv);
+        const userSvg = QGPTView_1.default.getUserSVG();
+        if (userSvg instanceof HTMLImageElement) {
+          userDiv.appendChild(userSvg.cloneNode(true));
+        } else if (typeof userSvg === "string") {
+          userDiv.innerHTML = userSvg;
+        }
+        return { queryDiv, queryAnswerText, queryTextContainer };
+      }
+      /**
+       * @param message - The message to build the answer element for, can be a string or a QGPTConversationMessage
+       * @returns a styled div containing the answer element
+       */
+      static buildAnswerElement(message, relevant, people) {
+        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
+        const answerDiv = document.createElement("div");
+        answerDiv.classList.add("flex", "flex-row", "justify-start");
+        (0, view_1.getApplication)().then((application) => (application === null || application === void 0 ? void 0 : application.name) === pieces_os_client_1.ApplicationNameEnum.JupyterHub ? answerDiv.classList.add("mr-2") : "");
+        const aiDiv = document.createElement("div");
+        aiDiv.id = "ai-img";
+        aiDiv.innerHTML = const_1.Constants.COPILOT_SVG;
+        aiDiv.classList.add("w-6", "justify-center", "items-end", "flex", "pr-2");
+        answerDiv.appendChild(aiDiv);
+        const answerText = document.createElement("div");
+        answerText.innerHTML = marked_1.marked.parse(QGPTComponentBuilder_1.default.sanitize(typeof message === "string" ? message : message === null || message === void 0 ? void 0 : message.text));
+        this.syntaxHighlight({ element: answerText, relevant, askCopilot: false });
+        const textContainer = (0, globals_1.createDiv)(answerDiv);
+        textContainer.classList.add("relative", "max-w-fit", "overflow-visible", "w-[calc(100%-32px)]");
+        answerText.classList.add("whitespace-pre-line", "gpt-text-response", "gpt-response", "overflow-hidden", "flex", "flex-col", "rounded-lg", "bg-[var(--interactive-normal)]", "p-2", "relative");
+        if (typeof message === "string" && message.startsWith(`**Hello!** I'm the Pieces for`))
+          answerText.classList.add("gap-2");
+        textContainer.appendChild(answerText);
+        const details = answerText.querySelectorAll("details");
+        for (const element of Array.from(details)) {
+          element.classList.add("rounded", "text-xs", "cursor-pointer", "bg-[var(--background-primary)]", "p-2");
+          element.addEventListener("click", () => {
+            (0, view_1.track)(CopilotAnalytics_enum_1.CopilotAnalytics.ASK_ABOUT_FILE_DETAILS);
+          });
+        }
+        (_a = answerText.querySelector("ul")) === null || _a === void 0 ? void 0 : _a.classList.add("!list-disc", "px-4");
+        for (const person of (_b = people === null || people === void 0 ? void 0 : people.persons.iterable) !== null && _b !== void 0 ? _b : []) {
+          const personContainer = (0, globals_1.createDiv)(answerText);
+          personContainer.classList.add("rounded", "flex", "flex-col", "p-2", "bg-[var(--background-primary)]");
+          const imageSrc = (_d = (_c = person.type.basic) === null || _c === void 0 ? void 0 : _c.picture) !== null && _d !== void 0 ? _d : (_e = person.type.platform) === null || _e === void 0 ? void 0 : _e.picture;
+          if (imageSrc) {
+            const personImage = (0, globals_1.createEl)(personContainer, "img");
+            personImage.classList.add("h-4", "rounded-full", "w-4");
+            personImage.src = imageSrc;
+          } else {
+            const personImage = (0, globals_1.createDiv)(personContainer);
+            personImage.classList.add("svg-box", "h-4");
+            personImage.innerHTML = const_1.Constants.USER_SVG;
+          }
+          const personNameText = (_j = (_g = (_f = person.type.basic) === null || _f === void 0 ? void 0 : _f.name) !== null && _g !== void 0 ? _g : (_h = person.type.platform) === null || _h === void 0 ? void 0 : _h.name) !== null && _j !== void 0 ? _j : "Unable to get users's name";
+          const personName = (0, globals_1.createDiv)(personContainer);
+          personName.classList.add("font-semibold", "text-sm");
+          personName.innerText = personNameText;
+          const personEmailText = (_l = (_k = person.type.basic) === null || _k === void 0 ? void 0 : _k.email) !== null && _l !== void 0 ? _l : (_m = person.type.platform) === null || _m === void 0 ? void 0 : _m.email;
+          if (personEmailText) {
+            const personEmail = (0, globals_1.createDiv)(personContainer);
+            personEmail.classList.add("text-[var(--text-muted)]", "font-semibold", "text-xs");
+            personEmail.innerText = personEmailText;
+          }
+        }
+        return { answerDiv, answerText, textContainer };
+      }
+      /**
+       * @param files all the files that are relevant to the answer - a {@link RelevantQGPTSeed}[] element
+       * @returns a styled div containing the relevant files element
+       */
+      static buildRelevantElement({ answerDiv, files }) {
+        files = files.filter((el) => el.path);
+        if (!files.length) {
+          return;
+        }
+        answerDiv.children[0].classList.add("hide");
+        const relevantDiv = document.createElement("div");
+        relevantDiv.classList.add("flex", "flex-row", "justify-start");
+        const aiDiv = document.createElement("div");
+        aiDiv.id = "ai-img";
+        aiDiv.innerHTML = const_1.Constants.COPILOT_SVG;
+        aiDiv.classList.add("w-6", "justify-center", "items-end", "flex", "pr-2");
+        relevantDiv.appendChild(aiDiv);
+        const answerText = document.createElement("div");
+        answerText.classList.add("gpt-text-response", "overflow-hidden", "gpt-response", "flex", "flex-col", "bg-[var(--interactive-normal)]", "rounded-lg", "p-2");
+        const filePaths = new Set(files.map((file) => file.path));
+        const fileDetails = (0, globals_1.createEl)(answerText, "details");
+        fileDetails.classList.add("cursor-pointer");
+        const fileSummary = (0, globals_1.createEl)(fileDetails, "summary");
+        fileSummary.classList.add("text-[var(--text-muted)]", "text-xs", "m-0");
+        fileSummary.innerText = "Relevant Files";
+        fileSummary.click();
+        const fileCol = document.createElement("div");
+        fileCol.classList.add("flex", "flex-col", "max-h-[80px]", "overflow-scroll", "scrollbar-hide", "gap-1", "pt-2");
+        fileDetails.appendChild(fileCol);
+        const timeOut = setTimeout(() => {
+          fileSummary.click();
+        }, 2e3);
+        fileSummary.onclick = () => {
+          clearTimeout(timeOut);
+        };
+        filePaths.forEach((path) => {
+          QGPTComponentBuilder_1.default.createFilePill(path, fileCol);
+        });
+        relevantDiv.appendChild(answerText);
+        return relevantDiv;
+      }
+      /**
+       *
+       * @param element - The element to syntax highlight, needs to contain a 1code block
+       */
+      // eslint-disable-next-line @typescript-eslint/default-param-last
+      static syntaxHighlight({ element, relevant, askCopilot }) {
+        const codeChildren = Array.from(element.querySelectorAll("pre > code"));
+        this.highlightCodeBlocks(codeChildren, relevant, askCopilot);
+      }
+      static highlightCodeBlocks(codeBlocks, relevant, askCopilot) {
+        var _a;
+        for (const codeBlock of codeBlocks) {
+          const langClass = codeBlock.classList[0];
+          const lang = langClass && langClass.startsWith("language-") ? langClass.slice("language-".length) : "ts";
+          const codeParent = codeBlock.parentElement;
+          codeParent.classList.add("flex", "flex-row", "m-0", "bg-[var(--background-primary)]", "text-shadow-none");
+          const codeHeader = document.createElement("div");
+          codeHeader.classList.add("flex", "flex-row", "items-center", "gap-1");
+          codeParent.insertAdjacentElement("beforebegin", codeHeader);
+          codeHeader.classList.add("px-2", "pt-2", "rounded-t", "bg-[var(--background-primary)]", "mt-2", "text-xs", "flex", "flex-row");
+          if (langClass === null || langClass === void 0 ? void 0 : langClass.startsWith("language")) {
+            const langImg = (0, globals_1.createEl)(codeHeader, "div");
+            langImg.classList.add("bg-cover", "h-5", "w-5", (0, getIcon_1.getLanguageIcon)(lang));
+            const codeHeaderP = (0, globals_1.createEl)(codeHeader, "p");
+            codeHeaderP.classList.add("m-0", "cursor-pointer", "w-fit", "text-[var(--text-muted)]");
+            codeHeaderP.innerText = lang;
+            codeHeaderP.onclick = () => {
+              var _a2;
+              (0, view_1.copyToClipboard)((_a2 = codeBlock.textContent) !== null && _a2 !== void 0 ? _a2 : "");
+              codeHeaderP.innerHTML = "copied! &#10003;";
+              setTimeout(() => {
+                codeHeaderP.innerText = lang;
+              }, 3e3);
+            };
+          }
+          if (!askCopilot) {
+            QGPTComponentBuilder_1.default.buildButtonHolder(codeBlock, lang, relevant, codeHeader);
+            QGPTView_1.default.codeBlocks.push({
+              text: codeBlock.textContent,
+              extension: (0, langReadableToExt_1.default)(lang)
+            });
+          }
+          const lineNums = document.createElement("div");
+          codeParent.insertBefore(lineNums, codeBlock);
+          lineNums.classList.add("text-[13px]", "flex", "flex-col", "mb-2", "pt-2", "text-right", "pl-3", "pr-1", "rounded-bl", "bg-[var(--background-primary)]", "text-[var(--text-faint)]", "leading-[var(--line-height-normal)]");
+          const lineCount = (((_a = codeBlock.textContent) === null || _a === void 0 ? void 0 : _a.match(/\n/g)) || []).length;
+          for (let i = 0; i < lineCount; i++) {
+            lineNums.append(`${i + 1}
+`);
+          }
+          codeBlock.classList.add("!p-2", "!overflow-x-auto", "shadow-none", "text-shadow-none", "bg-[var(--background-primary)]");
+          codeBlock.innerHTML = (0, loadPrism_1.highlightSnippet)({
+            snippetContent: codeBlock.textContent,
+            snippetLanguage: (0, langReadableToExt_1.default)(lang)
+          });
+        }
+      }
+    };
+    exports.default = QGPTViewBuilder;
+  }
+});
+
+// ../copilot-ts/dist/components/Directives.js
+var require_Directives = __commonJS({
+  "../copilot-ts/dist/components/Directives.js"(exports) {
+    "use strict";
+    var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __importDefault = exports && exports.__importDefault || function(mod) {
+      return mod && mod.__esModule ? mod : { "default": mod };
+    };
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var pieces_os_client_1 = require_dist();
+    var view_1 = require_view();
+    var globals_1 = require_globals();
+    var ConnectorSingleton_1 = __importDefault(require_ConnectorSingleton());
+    var QGPTView_1 = __importDefault(require_QGPTView());
+    var ConversationBuilder_1 = __importDefault(require_ConversationBuilder());
+    var CreateDirectiveModal_1 = __importDefault(require_CreateDirectiveModal());
+    var LLMConfigModal_1 = __importDefault(require_LLMConfigModal());
+    var QGPTViewBuilder_1 = __importDefault(require_QGPTViewBuilder());
+    var CopilotAnalytics_enum_1 = require_CopilotAnalytics_enum();
+    var CopilotStreamController_1 = __importDefault(require_CopilotStreamController());
+    var Directives2 = class {
+      constructor() {
+        this.selectedIndex = 0;
+        this.defaultDirectives = /* @__PURE__ */ new Set([
+          // list of default directives, this is necessary to prevent deleting default directives
+          "workspace",
+          "recent",
+          "new",
+          "delete"
+        ]);
+        this.directives = new Set(this.defaultDirectives);
+        this.customDirectiveToContext = {};
+        this.directiveToDescription = {
+          workspace: "Current workspace",
+          recent: "Recently opened files",
+          new: "Create a custom directive, and use it",
+          delete: "Delete a custom directive"
+        };
+        const completionContainer = (0, globals_1.createDiv)(document.getElementById("gpt-tab"));
+        this.containerEl = completionContainer;
+        completionContainer.classList.add("w-11/12", "max-w-xs", "rounded", "bg-[var(--background-secondary)]", "absolute", "bottom-24", "hidden", "flex", "flex-col");
+        (0, view_1.getApplication)().then((application) => {
+          if ((application === null || application === void 0 ? void 0 : application.name) === pieces_os_client_1.ApplicationNameEnum.Obsidian) {
+            completionContainer.classList.remove("bottom-24");
+            completionContainer.classList.add("bottom-28");
+          }
+          if ((application === null || application === void 0 ? void 0 : application.name) === pieces_os_client_1.ApplicationNameEnum.JupyterHub) {
+            this.directives.delete("workspace");
+            this.directives.delete("recent");
+            this.defaultDirectives.delete("workspace");
+            this.defaultDirectives.delete("recent");
+          }
+        });
+        this.buildDirectiveElements(this.directives);
+      }
+      static getInstance() {
+        var _a;
+        return (_a = this.instance) !== null && _a !== void 0 ? _a : this.instance = new Directives2();
+      }
+      /**
+       * This is here because the completion elements are mounted to the container, which gets cleared each time you navigate to a new conversation
+       * so we need to call constructor again and remount
+       * @returns void
+       */
+      refreshInstance() {
+        var _a;
+        (_a = document.getElementById("gpt-tab")) === null || _a === void 0 ? void 0 : _a.appendChild(this.containerEl);
+      }
+      /**
+       * This will delete a directive if it exists and is not a default directive
+       * @param name the directive to delete
+       * @returns
+       */
+      deleteDirective(name) {
+        if (this.defaultDirectives.has(name)) {
+          const answerEl2 = QGPTViewBuilder_1.default.buildAnswerElement("Sorry, but you can't delete a default directive", []);
+          QGPTView_1.default.textAreaDiv.appendChild(answerEl2.answerDiv);
+          CopilotStreamController_1.default.getInstance().forceScroll(answerEl2.answerText);
+          return;
+        }
+        if (!this.directives.has(name)) {
+          const answerEl2 = QGPTViewBuilder_1.default.buildAnswerElement("Sorry, that directive doesn't exist, please specify a directive with `@delete {directive}`", []);
+          QGPTView_1.default.textAreaDiv.appendChild(answerEl2.answerDiv);
+          CopilotStreamController_1.default.getInstance().forceScroll(answerEl2.answerText);
+          return;
+        }
+        this.directives.delete(name);
+        delete this.directiveToDescription[name];
+        delete this.customDirectiveToContext[name];
+        (0, view_1.saveState)({
+          directives: Directives2.getInstance().directiveList,
+          conversation: [],
+          selectedModel: LLMConfigModal_1.default.selectedModel,
+          migration: view_1.migration,
+          conversationId: "",
+          codeBlocks: QGPTView_1.default.codeBlocks
+        });
+        const answerEl = QGPTViewBuilder_1.default.buildAnswerElement(`Successfully deleted directive: ${name}!`, []);
+        CopilotStreamController_1.default.getInstance().forceScroll(answerEl.answerText);
+        QGPTView_1.default.textAreaDiv.appendChild(answerEl.answerDiv);
+        return;
+      }
+      /**
+       * Save a directive
+       * @param directive the directive to save
+       * @param write whether or not we should also write to the db
+       * @param initializer this is true when we are initializing the directives on the first bootup of copilot
+       */
+      saveDirective(directive, write = true, initializer = false) {
+        if (!initializer) {
+          (0, view_1.sendNotification)({
+            type: "info",
+            message: `Successfully created directive named ${directive.name}`
+          });
+        }
+        this.directiveToDescription[directive.name] = directive.desc;
+        this.directives.add(directive.name);
+        this.customDirectiveToContext[directive.name] = {
+          snippets: directive.snippets,
+          anchors: directive.anchors
+        };
+        if (write) {
+          (0, view_1.saveState)({
+            directives: Directives2.getInstance().directiveList,
+            conversation: [],
+            selectedModel: LLMConfigModal_1.default.selectedModel,
+            migration: view_1.migration,
+            conversationId: "",
+            codeBlocks: QGPTView_1.default.codeBlocks
+          });
+        }
+      }
+      /**
+       * This initializes the user's directives on boot
+       * @param directives the directives to initialize
+       */
+      initDirectives(directives) {
+        for (let directive of directives) {
+          this.saveDirective(directive, false, true);
+        }
+      }
+      /**
+       * This will rerender the list of directives
+       * @param directives the directives to show
+       */
+      buildDirectiveElements(directives) {
+        var _a;
+        (0, globals_1.emptyEl)(this.containerEl);
+        this.selectedIndex = 0;
+        let i = 0;
+        for (const directive of directives) {
+          const directiveContainer = (0, globals_1.createDiv)(this.containerEl);
+          if (i === 0) {
+            directiveContainer.classList.add("border-[var(--text-accent)]");
+          }
+          i++;
+          directiveContainer.classList.add("z-10", "first:rounded-t", "first:border-b", "last:rounded-b", "last:border-b", "border-t", "border-x", "border-solid", "bg-[var(--background-primary)]", "border-[var(--background-modifier-border)]", "p-1", "flex", "flex-row", "justify-between", "hover:bg-[var(--background-secondary)]", "cursor-pointer");
+          directiveContainer.onclick = () => {
+            QGPTView_1.default.inputBox.focus();
+            QGPTView_1.default.inputBox.innerText = `@${directive}`;
+            QGPTView_1.default.handleChat({
+              inputText: QGPTView_1.default.inputBox,
+              textAreaDiv: QGPTView_1.default.textAreaDiv,
+              currentConversation: QGPTView_1.default.currentConversation,
+              introText: QGPTView_1.default.introText
+            });
+          };
+          const commandText = (0, globals_1.createDiv)(directiveContainer);
+          commandText.classList.add("font-semibold");
+          commandText.innerText = "@" + directive;
+          const commandDesc = (0, globals_1.createDiv)(directiveContainer);
+          commandDesc.classList.add("text-xs", "text-[var(--text-faint)]");
+          commandDesc.innerText = (_a = this.directiveToDescription[directive]) !== null && _a !== void 0 ? _a : "Undefined";
+        }
+      }
+      /**
+       * This will prase a directive from the prompt
+       * @param prompt the prompt to parse
+       * @returns this will return the directive or an empty string if there is none
+       */
+      parseDirective(prompt) {
+        const trimmed = prompt.trim();
+        let i = 1;
+        if (!trimmed.startsWith("@"))
+          return "";
+        else
+          while (i < prompt.length && trimmed[i] !== " ") {
+            if (i > 1e3)
+              return "";
+            i++;
+          }
+        return prompt.slice(1, i).trim();
+      }
+      /**
+       * This will extract the user's prmopt from a string that contains a command and a prompt
+       * @param command the command that is present in the prompt
+       * @param prompt the prmopt to parse
+       * @returns the parsed prompt
+       */
+      parsePrompt(command, prompt) {
+        return prompt.slice(command.length + 1).trim();
+      }
+      /**
+       * This will search for the relevant commands
+       * @param prompt the prmopt to parse
+       * @returns
+       */
+      performSearch(prompt) {
+        if (!prompt.trim().startsWith("@"))
+          return /* @__PURE__ */ new Set();
+        const query = this.parseDirective(prompt);
+        const results = Array.from(this.directives).reduce((set, el) => {
+          if (el.includes(query)) {
+            set.add(el);
+          }
+          return set;
+        }, /* @__PURE__ */ new Set());
+        return results;
+      }
+      /**
+       * returns the full set of directives
+       */
+      get set() {
+        return this.directives;
+      }
+      /**
+       * returns the list of directives that does not contain the default directives
+       */
+      get directiveList() {
+        return Array.from(this.directives).reduce((acc, el) => {
+          if (el === "workspace" || el === "new" || el === "delete" || el === "recent")
+            return acc;
+          acc.push({
+            name: el,
+            desc: this.directiveToDescription[el],
+            snippets: this.customDirectiveToContext[el].snippets,
+            anchors: this.customDirectiveToContext[el].anchors
+          });
+          return acc;
+        }, []);
+      }
+      /**
+       * This is the handler for up or down arrows
+       * @param up if we are moving up
+       */
+      changeSelection(up, prompt) {
+        var _a, _b, _c, _d;
+        (_b = (_a = this.containerEl.children) === null || _a === void 0 ? void 0 : _a[this.selectedIndex]) === null || _b === void 0 ? void 0 : _b.classList.remove("border-[var(--text-accent)]", "border");
+        const searchSize = this.performSearch(prompt).size - 1;
+        if (up && this.selectedIndex < searchSize) {
+          this.selectedIndex++;
+        } else if (up && this.selectedIndex >= searchSize) {
+          this.selectedIndex = 0;
+        } else if (!up && this.selectedIndex > 0) {
+          this.selectedIndex--;
+        } else if (!up && this.selectedIndex <= 0) {
+          this.selectedIndex = searchSize;
+        }
+        (_d = (_c = this.containerEl.children) === null || _c === void 0 ? void 0 : _c[this.selectedIndex]) === null || _d === void 0 ? void 0 : _d.classList.add("border-[var(--text-accent)]", "border");
+      }
+      /**
+       * This will update the completion box according to the user's prompt
+       * @param prompt the user's prompt
+       */
+      updateWithPrompt(prompt) {
+        this.buildDirectiveElements(this.performSearch(prompt));
+      }
+      /**
+       * Gets the most similar command from the user's prompt
+       * @param prompt the user's prompt
+       * @returns
+       */
+      getCompletion(prompt) {
+        return Array.from(this.performSearch(prompt))[this.selectedIndex];
+      }
+      /**
+       * hide the completion box
+       */
+      hide() {
+        this.containerEl.classList.add("hidden");
+      }
+      /**
+       * show the completion box
+       */
+      show() {
+        this.containerEl.classList.remove("hidden");
+      }
+      /**
+       *
+       * @param prompt the user's prompt
+       * @returns whether or not a directive was executed, and the parsed prompt from the prompt
+       */
+      executeDirective(prompt) {
+        return __awaiter(this, void 0, void 0, function* () {
+          (0, view_1.track)(CopilotAnalytics_enum_1.CopilotAnalytics.DIRECTIVE_USED);
+          const directive = this.parseDirective(prompt);
+          if (directive) {
+            return this.createAndAssociate(directive, prompt);
+          }
+          return { executed: false, prompt };
+        });
+      }
+      createAndAssociate(directive, prompt) {
+        var _a, _b, _c, _d;
+        return __awaiter(this, void 0, void 0, function* () {
+          let seededAnchors = [];
+          if (this.directives.has(directive)) {
+            const answerEl = QGPTViewBuilder_1.default.buildAnswerElement(`Using directive @${directive}`, []);
+            QGPTView_1.default.textAreaDiv.appendChild(answerEl.answerDiv);
+            CopilotStreamController_1.default.getInstance().forceScroll(answerEl.answerText);
+          } else {
+            const answerEl = QGPTViewBuilder_1.default.buildAnswerElement(`Could not find directive @${directive}`, []);
+            QGPTView_1.default.textAreaDiv.appendChild(answerEl.answerDiv);
+            CopilotStreamController_1.default.getInstance().forceScroll(answerEl.answerText);
+            return { executed: false, prompt };
+          }
+          if (directive === "workspace") {
+            const workspacePaths = yield (0, view_1.getWorkspacePaths)();
+            seededAnchors = workspacePaths.paths.map((el) => ({
+              fullpath: el,
+              type: pieces_os_client_1.AnchorTypeEnum.Directory
+            }));
+          }
+          if (directive === "recent") {
+            const recentPaths = yield (0, view_1.getRecentFiles)();
+            seededAnchors = recentPaths.paths.map((el) => ({
+              fullpath: el,
+              type: pieces_os_client_1.AnchorTypeEnum.File
+            }));
+          }
+          if (directive === "new") {
+            const createDirectiveModal = new CreateDirectiveModal_1.default();
+            createDirectiveModal.open();
+            yield createDirectiveModal.done;
+            return { executed: true, prompt: this.parsePrompt(directive, prompt) };
+          }
+          if (directive === "delete") {
+            this.deleteDirective(this.parsePrompt(directive, prompt));
+            (0, view_1.track)(CopilotAnalytics_enum_1.CopilotAnalytics.DIRECTIVE_DELETED);
+            return { executed: true, prompt: "" };
+          }
+          const anchors = yield Promise.all(seededAnchors.map((el) => ConnectorSingleton_1.default.getInstance().anchorsApi.anchorsCreateNewAnchor({
+            seededAnchor: el
+          })));
+          const conversation = QGPTView_1.default.conversationId ? QGPTView_1.default.conversationId : (yield ConnectorSingleton_1.default.getInstance().conversationsApi.conversationsCreateSpecificConversation({ seededConversation: { type: pieces_os_client_1.ConversationTypeEnum.Copilot } })).id;
+          QGPTView_1.default.lastConversationMessage = new Date();
+          yield Promise.all(anchors.map((el) => ConnectorSingleton_1.default.getInstance().conversationApi.conversationAssociateAnchor({ conversation, anchor: el.id })).concat((_b = (_a = this.customDirectiveToContext[directive]) === null || _a === void 0 ? void 0 : _a.anchors.map((id) => ConnectorSingleton_1.default.getInstance().conversationApi.conversationAssociateAnchor({ conversation, anchor: id }))) !== null && _b !== void 0 ? _b : []));
+          QGPTView_1.default.lastConversationMessage = new Date();
+          yield Promise.all((_d = (_c = this.customDirectiveToContext[directive]) === null || _c === void 0 ? void 0 : _c.snippets.map((id) => ConnectorSingleton_1.default.getInstance().conversationApi.conversationAssociateAsset({ conversation, asset: id }))) !== null && _d !== void 0 ? _d : []);
+          QGPTView_1.default.conversationId = conversation;
+          ConversationBuilder_1.default.getInstance().highlightSelectedConversation();
+          yield QGPTView_1.default.contextSelectionModal.debouncedConversationChangeHandler(conversation);
+          return { executed: true, prompt: this.parsePrompt(directive, prompt) };
+        });
+      }
+    };
+    exports.default = Directives2;
+  }
+});
+
+// ../copilot-ts/dist/modals/LLMConfigModal.js
+var require_LLMConfigModal = __commonJS({
+  "../copilot-ts/dist/modals/LLMConfigModal.js"(exports) {
+    "use strict";
+    var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __importDefault = exports && exports.__importDefault || function(mod) {
+      return mod && mod.__esModule ? mod : { "default": mod };
+    };
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var pieces_os_client_1 = require_dist();
+    var view_1 = require_view();
+    var ConnectorSingleton_1 = __importDefault(require_ConnectorSingleton());
+    var CopilotAnalytics_enum_1 = require_CopilotAnalytics_enum();
+    var const_1 = require_const();
+    var globals_1 = require_globals();
+    var Modal_1 = __importDefault(require_Modal());
+    var pieces_os_client_2 = require_dist();
+    var ModelProgressController_1 = __importDefault(require_ModelProgressController());
+    var ProgressBar_1 = __importDefault(require_ProgressBar());
+    var QGPTView_1 = __importDefault(require_QGPTView());
+    var timeoutPromise_1 = require_timeoutPromise();
+    var Directives_1 = __importDefault(require_Directives());
+    var ModelBoxEnum;
+    (function(ModelBoxEnum2) {
+      ModelBoxEnum2["LLaMa2"] = "Llama2";
+      ModelBoxEnum2["CodeLlaMa"] = "CodeLlama";
+      ModelBoxEnum2["OpenAi"] = "Open AI";
+      ModelBoxEnum2["Palm2"] = "PaLM 2";
+    })(ModelBoxEnum || (ModelBoxEnum = {}));
+    var CopilotLLMConfigModal = class extends Modal_1.default {
+      constructor() {
+        super(...arguments);
+        this.activeModelPills = [];
+        this.modelButtons = [];
+        this.createModelBox = (type, container, models) => {
+          var _a;
+          const modelBox = (0, globals_1.createDiv)(container);
+          modelBox.classList.add("border-[var(--background-modifier-border)]", "rounded-md", "flex", "border-solid", "flex-col", "cursor-pointer", "p-2", "border", "gap-1");
+          const modelTitle = (0, globals_1.createDiv)(modelBox);
+          modelTitle.classList.add("flex-row", "flex");
+          const modelTitleText = (0, globals_1.createEl)(modelTitle, "div");
+          modelTitleText.classList.add("m-0", "flex", "flex-row", "gap-2", "items-center");
+          const svgBox = (0, globals_1.createDiv)(modelTitleText);
+          svgBox.classList.add("h-3", "svg-box");
+          svgBox.innerHTML = this.getModelSvg(type);
+          const modelTitleTextType = (0, globals_1.createEl)(modelTitleText, "p");
+          modelTitleTextType.classList.add("m-0");
+          modelTitleTextType.innerText = type;
+          const modelExpand = (0, globals_1.createDiv)(modelTitle);
+          modelExpand.classList.add("ml-auto", "font-semibold", "leading-[1]");
+          modelExpand.innerHTML = "\u2335";
+          const modelDesc = (0, globals_1.createEl)(modelBox, "p");
+          modelDesc.classList.add("text-xs", "text-[var(--text-faint)]", "m-0");
+          modelDesc.innerText = (_a = this.getOrgDesc(type)) !== null && _a !== void 0 ? _a : "";
+          const modelElements = (0, globals_1.createDiv)(modelBox);
+          modelElements.classList.add("hidden", "gap-2", "flex", "flex-col");
+          const modelElementsText = (0, globals_1.createEl)(modelElements, "p");
+          modelElementsText.classList.add("font-light", "text-xs", "text-[var(--text-faint)]", "pt-1");
+          modelElementsText.innerText = "SELECT MODEL";
+          this.buildModelElements(modelElements, models);
+          modelBox.onclick = () => {
+            const expanded = modelExpand.innerHTML === "\u2335";
+            modelExpand.innerHTML = expanded ? "&times;" : "\u2335";
+            modelElements.classList.toggle("hidden");
+          };
+        };
+        this.setModelButtonsColor = () => {
+          for (const btn of this.modelButtons) {
+            if (btn.selected) {
+              btn.btn.innerHTML = const_1.Constants.PLUG_SVG;
+              btn.selected = false;
+            }
+            btn.btn.style.color = "";
+          }
+        };
+        this.getOrgDesc = (type) => {
+          if (type === ModelBoxEnum.LLaMa2) {
+            return "Meta's fastest model in the Llama 2 family optimized to run on your device for a fast, air-gapped experience.";
+          }
+          if (type === ModelBoxEnum.CodeLlaMa) {
+            return "Meta's model trained on top of Llama 2 fine-tuned for code-related tasks, optimized to run on your device.";
+          }
+          if (type === ModelBoxEnum.OpenAi) {
+            return "OpenAI's most capable and cost effective models. Includes up to 4,096 max tokens and has training data up until September 2021.";
+          }
+          if (type === ModelBoxEnum.Palm2) {
+            return "PaLM 2 has been optimized for ease of use on key developer use cases and the ability to follow instructions with precision and nuance.";
+          }
+        };
+        this.getModelRequirements = (model) => {
+          if (model.cpu && model.foundation === pieces_os_client_1.ModelFoundationEnum.Llama27B)
+            return "- requires at least 5.6GB RAM";
+          if (!model.cpu && model.foundation === pieces_os_client_1.ModelFoundationEnum.Llama27B)
+            return "- requires at least 5.6GB VRAM (GPU RAM)";
+          return "No local device requirements, runs solely in the cloud";
+        };
+        this.getModelTitle = (model) => {
+          if (model.cpu && model.foundation === pieces_os_client_1.ModelFoundationEnum.Llama27B && !model.name.includes("CodeLlama"))
+            return "7B";
+          if (!model.cpu && model.foundation === pieces_os_client_1.ModelFoundationEnum.Llama27B && !model.name.includes("CodeLlama"))
+            return "7B GPU";
+          if (model.cpu && model.name.includes("CodeLlama"))
+            return "7B";
+          if (!model.cpu && model.name.includes("CodeLlama"))
+            return "7B GPU";
+          if (model.foundation === pieces_os_client_1.ModelFoundationEnum.Gpt4)
+            return "GPT 4";
+          if (model.name.includes("16k"))
+            return "GPT 3.5 16k";
+          if (model.foundation === pieces_os_client_1.ModelFoundationEnum.ChatBison)
+            return "Chat Bison";
+          if (model.foundation === pieces_os_client_1.ModelFoundationEnum.CodechatBison)
+            return "Code Chat Bison";
+          return "GPT 3.5 Turbo";
+        };
+        this.getModelName = (model) => {
+          const svgBox = document.createElement("div");
+          svgBox.classList.add("h-4", "w-auto", "svg-box");
+          const textBox = document.createElement("p");
+          textBox.classList.add("m-0", "line-clamp-1");
+          if (model.cpu && model.foundation === pieces_os_client_1.ModelFoundationEnum.Llama27B && !model.name.includes("CodeLlama")) {
+            svgBox.innerHTML = const_1.Constants.META_SVG;
+            textBox.innerText = "Llama2 7B CPU";
+            return svgBox.outerHTML + textBox.outerHTML;
+          }
+          if (!model.cpu && model.foundation === pieces_os_client_1.ModelFoundationEnum.Llama27B && !model.name.includes("CodeLlama")) {
+            svgBox.innerHTML = const_1.Constants.META_SVG;
+            textBox.innerText = "Llama2 7B GPU";
+            return svgBox.outerHTML + textBox.outerHTML;
+          }
+          if (model.cpu && model.name.includes("CodeLlama")) {
+            svgBox.innerHTML = const_1.Constants.META_SVG;
+            textBox.innerText = "CodeLlama 7B CPU";
+            return svgBox.outerHTML + textBox.outerHTML;
+          }
+          if (!model.cpu && model.name.includes("CodeLlama")) {
+            svgBox.innerHTML = const_1.Constants.META_SVG;
+            textBox.innerText = "CodeLlama 7B GPU";
+            return svgBox.outerHTML + textBox.outerHTML;
+          }
+          if (model.name.includes("16k")) {
+            svgBox.innerHTML = const_1.Constants.OPENAI_SVG;
+            textBox.innerText = "GPT 3.5 16k";
+            return svgBox.outerHTML + textBox.outerHTML;
+          }
+          if (model.foundation === pieces_os_client_1.ModelFoundationEnum.Gpt4) {
+            svgBox.innerHTML = const_1.Constants.OPENAI_SVG;
+            textBox.innerText = "GPT 4";
+            return svgBox.outerHTML + textBox.outerHTML;
+          }
+          if (model.foundation === pieces_os_client_1.ModelFoundationEnum.ChatBison) {
+            svgBox.innerHTML = const_1.Constants.PALM2_SVG;
+            textBox.innerText = "Chat Bison";
+            return svgBox.outerHTML + textBox.outerHTML;
+          }
+          if (model.foundation === pieces_os_client_1.ModelFoundationEnum.CodechatBison) {
+            svgBox.innerHTML = const_1.Constants.PALM2_SVG;
+            textBox.innerText = "Code Chat Bison";
+            return svgBox.outerHTML + textBox.outerHTML;
+          }
+          svgBox.innerHTML = const_1.Constants.OPENAI_SVG;
+          textBox.innerText = "GPT 3.5 Turbo";
+          return svgBox.outerHTML + textBox.outerHTML;
+        };
+        this.refresh = () => __awaiter(this, void 0, void 0, function* () {
+          var _a, _b;
+          const now = new Date();
+          if (now.getTime() - ((_b = (_a = this.lastUserAction) === null || _a === void 0 ? void 0 : _a.getTime()) !== null && _b !== void 0 ? _b : 0) < 5e3) {
+            return;
+          }
+          this.close();
+          yield ModelProgressController_1.default.getInstance().refreshWithSnapshot();
+          this.open();
+        });
+      }
+      onOpen() {
+        return __awaiter(this, void 0, void 0, function* () {
+          this.modelButtons = [];
+          const modelProgress = ModelProgressController_1.default.getInstance();
+          modelProgress.registerCallback(this.refresh);
+          const models = yield modelProgress.models;
+          modelProgress.openSockets(models.iterable.filter(
+            // this will open any socket for a model id that is not currently open
+            (el) => el.foundation === pieces_os_client_1.ModelFoundationEnum.Llama27B && el.unique !== "llama-2-7b-chat.ggmlv3.q4_K_M"
+          ));
+          const defaultModel = models.iterable.find((el) => el.unique === "gpt-3.5-turbo");
+          if (!defaultModel)
+            throw new Error("Default model is broken in LLMConfigModal");
+          if (!CopilotLLMConfigModal.selectedModel) {
+            CopilotLLMConfigModal.selectedModel = defaultModel.id;
+          }
+          this.titleEl.innerText = "Copilot Runtime";
+          const titleDesc = (0, globals_1.createEl)(this.titleEl, "p");
+          titleDesc.classList.add("m-0", "text-xs", "font-normal", "text-[var(--text-faint)]");
+          titleDesc.innerText = "Choose between different LLM's and runtime types";
+          (0, globals_1.emptyEl)(this.contentEl);
+          this.contentEl.classList.add("min-h-[50vh]", "!flex", "flex-col");
+          const container = (0, globals_1.createDiv)(this.contentEl);
+          container.classList.add("flex", "flex-col", "w-full", "h-full", "flex-grow");
+          const tabs = (0, globals_1.createDiv)(container);
+          tabs.classList.add("flex-row", "justify-around", "flex", "py-3");
+          const cloudModels = (0, globals_1.createDiv)(container);
+          cloudModels.classList.add("hidden", "flex", "w-full", "h-full", "flex-col", "gap-3", "flex-grow");
+          const localModels = (0, globals_1.createDiv)(container);
+          localModels.classList.add("flex", "w-full", "h-full", "flex-col", "gap-3", "flex-grow");
+          const localRecommendation = (0, globals_1.createDiv)(localModels);
+          localRecommendation.classList.add("flex", "flex-col", "rounded-md", "p-2", "bg-[var(--background-secondary)]", "gap-2", "cursor-pointer");
+          const recommendationTitleRow = (0, globals_1.createDiv)(localRecommendation);
+          recommendationTitleRow.classList.add("flex", "flex-row", "justify-between", "items-center", "px-[2px]");
+          const recommendationTitle = (0, globals_1.createEl)(recommendationTitleRow, "p");
+          recommendationTitle.classList.add("font-light", "text-[var(--text-muted)]", "m-0", "text-xs");
+          recommendationTitle.innerText = "MODEL RECOMMENDATIONS";
+          const recommendationCaret = (0, globals_1.createEl)(recommendationTitleRow, "p");
+          recommendationCaret.classList.add("m-0", "font-semibold", "-mt-1.5");
+          recommendationCaret.innerHTML = "\u2335";
+          const recommendationExpandContainer = (0, globals_1.createDiv)(localRecommendation);
+          recommendationExpandContainer.classList.add("hidden");
+          localRecommendation.onclick = (e) => {
+            recommendationExpandContainer.classList.toggle("hidden");
+            recommendationCaret.innerHTML = recommendationExpandContainer.classList.contains("hidden") ? "\u2335" : "&times;";
+            e.stopPropagation();
+          };
+          const recommendationDesc = (0, globals_1.createEl)(recommendationExpandContainer, "p");
+          recommendationDesc.classList.add("m-0", "text-[var(--text-muted)]", "text-sm");
+          recommendationDesc.innerText = "Local LLM's are not recommended for low power or older machines, to ensure a good experience please follow the recommended practices for choosing a model.";
+          const recommendationList = (0, globals_1.createEl)(recommendationExpandContainer, "ul");
+          recommendationList.classList.add("text-xs", "!list-disc", "text-[var(--text-muted)]", "pl-2", "gap-1", "flex", "flex-col");
+          const gpuRecommendation = (0, globals_1.createEl)(recommendationList, "li");
+          gpuRecommendation.innerHTML = "<strong>GPU</strong> LLM's are designed for machines with a modern, dedicated graphics chip (i.e: ARM Mac, NVIDIA GPU with 6gb VRAM or more)";
+          const cpuRecommendation = (0, globals_1.createEl)(recommendationList, "li");
+          cpuRecommendation.innerHTML = "<strong>CPU</strong> models are recommended if you do not have a strong enough graphics card for the GPU LLM's. Be aware this model will be as slow or as fast as your machine specs allow.";
+          const cloudRecommendation = (0, globals_1.createEl)(recommendationList, "li");
+          cloudRecommendation.innerHTML = "<strong>CLOUD</strong> models are recommended if performance issues arise while using the local models (for older or lower powered machines).";
+          this.createModelBox(ModelBoxEnum.LLaMa2, localModels, models.iterable.filter((el) => el.foundation === pieces_os_client_1.ModelFoundationEnum.Llama27B && !el.name.includes("CodeLlama")));
+          this.createModelBox(ModelBoxEnum.CodeLlaMa, localModels, models.iterable.filter((el) => el.name.includes("CodeLlama")));
+          this.createModelBox(ModelBoxEnum.OpenAi, cloudModels, models.iterable.filter((el) => el.foundation === pieces_os_client_1.ModelFoundationEnum.Gpt35 || el.foundation === pieces_os_client_1.ModelFoundationEnum.Gpt4));
+          this.createModelBox(ModelBoxEnum.Palm2, cloudModels, models.iterable.filter((el) => el.foundation === pieces_os_client_1.ModelFoundationEnum.CodechatBison || el.foundation === pieces_os_client_1.ModelFoundationEnum.ChatBison));
+          const localTab = (0, globals_1.createDiv)(tabs);
+          const cloudTab = (0, globals_1.createDiv)(tabs);
+          const localSvgBox = (0, globals_1.createDiv)(localTab);
+          localSvgBox.classList.add("h-4", "svg-box");
+          localSvgBox.innerHTML = const_1.Constants.LAPTOP_SVG;
+          const localTabText = (0, globals_1.createEl)(localTab, "p");
+          localTabText.classList.add("m-0");
+          localTabText.innerText = "On-Device";
+          localTab.classList.add("cursor-pointer", "underline", "flex", "flex-row", "gap-1", "items-center");
+          localTab.onclick = () => {
+            localTab.classList.add("underline");
+            cloudTab.classList.remove("underline");
+            localModels.classList.remove("hidden");
+            cloudModels.classList.add("hidden");
+          };
+          const cloudSvgBox = (0, globals_1.createDiv)(cloudTab);
+          cloudSvgBox.classList.add("svg-box", "h-4");
+          cloudSvgBox.innerHTML = const_1.Constants.CLOUD_SVG;
+          const cloudTabText = (0, globals_1.createEl)(cloudTab, "p");
+          cloudTabText.classList.add("m-0");
+          cloudTabText.innerText = "Cloud";
+          cloudTab.classList.add("cursor-pointer", "flex", "flex-row", "gap-1", "items-center");
+          cloudTab.onclick = () => {
+            cloudTab.classList.add("underline");
+            localTab.classList.remove("underline");
+            localModels.classList.add("hidden");
+            cloudModels.classList.remove("hidden");
+          };
+          const activeModel = (0, globals_1.createDiv)(this.contentEl);
+          activeModel.classList.add("flex", "flex-col", "h-full", "gap-2", "pb-2");
+          const activeModelText = (0, globals_1.createEl)(activeModel, "p");
+          activeModelText.classList.add("text-xs", "text-[var(--text-faint)]", "pt-2", "m-0");
+          activeModelText.innerText = "ACTIVE MODEL";
+          this.createActiveModelPill(activeModel, models);
+          (0, view_1.track)(CopilotAnalytics_enum_1.CopilotAnalytics.LLM_CONFIG_BUTTON);
+        });
+      }
+      /**
+       * Creates an active model pill and registers it in the 'activeModels' array to make sure it is up to date with user's selection
+       * @param container the container for the model pill
+       * @param models list of the models (should contain the active model)
+       * @param applyStyles defaults to true, this is whether or not we should apply visual effects such as a border, padding, etc
+       * @returns
+       */
+      createActiveModelPill(container, models, applyStyles = true) {
+        var _a;
+        const activeModelPill = (0, globals_1.createDiv)(container);
+        if (applyStyles)
+          activeModelPill.classList.add("border", "rounded-lg", "p-2", "w-fit", "border-solid", "border-[var(--background-modifier-border)]", "flex-row", "flex", "gap-2", "items-center");
+        else
+          activeModelPill.classList.add("flex", "flex-row", "gap-2", "items-center", "hover:text-[var(--text-accent)]");
+        const selectedModel = (_a = models.iterable.find((el) => el.id === CopilotLLMConfigModal.selectedModel)) !== null && _a !== void 0 ? _a : models.iterable.find((el) => el.unique === "gpt-3.5-turbo");
+        activeModelPill.innerHTML = this.getModelName(selectedModel);
+        this.activeModelPills.push(activeModelPill);
+        return activeModelPill;
+      }
+      buildModelElements(containerEl, models) {
+        return __awaiter(this, void 0, void 0, function* () {
+          for (let i = 0; i < models.length; i++) {
+            this.buildModelElement(models[i], containerEl);
+          }
+        });
+      }
+      // builds the element for each individual model
+      buildModelElement(model, containerEl) {
+        if (model.cloud)
+          model.downloaded = true;
+        const modelElement = (0, globals_1.createDiv)(containerEl);
+        modelElement.classList.add("flex", "flex-col", "rounded-md", "p-2", "bg-[var(--background-secondary)]", "gap-2");
+        const modelTitleRow = (0, globals_1.createDiv)(modelElement);
+        modelTitleRow.classList.add("flex", "flex-row", "justify-between", "items-center");
+        const modelTitle = (0, globals_1.createEl)(modelTitleRow, "p");
+        modelTitle.innerText = this.getModelTitle(model);
+        modelTitle.classList.add("m-0");
+        const modelButton = (0, globals_1.createDiv)(modelTitleRow);
+        this.modelButtons.push({
+          btn: modelButton,
+          selected: CopilotLLMConfigModal.selectedModel === model.id,
+          model: model.id
+        });
+        modelButton.classList.add("cursor-pointer", "hover:text-[var(--text-accent)]", "flex", "items-center", "text-xs");
+        const status = ModelProgressController_1.default.getInstance().modelDownloadStatus.get(model.id);
+        if (model.name.includes("CodeLlama")) {
+          modelButton.innerHTML = "Coming Soon";
+        } else if (model.downloaded) {
+          modelButton.innerHTML = const_1.Constants.PLUG_SVG;
+          modelButton.title = `Select ${modelTitle.innerText}`;
+        } else if (status === pieces_os_client_2.ModelDownloadProgressStatusEnum.InProgress || status === pieces_os_client_2.ModelDownloadProgressStatusEnum.Initialized) {
+          modelButton.innerHTML = "&times;";
+          modelButton.title = `Cancel ${modelTitle.innerText} download`;
+        } else {
+          modelButton.innerHTML = const_1.Constants.DOWNLOAD_SVG;
+          modelButton.title = `Download ${modelTitle.innerText}`;
+        }
+        if (CopilotLLMConfigModal.selectedModel === model.id) {
+          modelButton.innerHTML = const_1.Constants.CHECK_SVG;
+          modelButton.style.color = "var(--text-accent)";
+        }
+        const modelRequirementsButton = (0, globals_1.createDiv)(modelElement);
+        modelRequirementsButton.classList.add("cursor-pointer", "text-xs", "text-[var(--text-faint)]", "flex", "gap-1");
+        modelRequirementsButton.innerHTML = 'System Requirements  <p class="leading-[1] m-0">\u2335</p>';
+        const modelRequirements = (0, globals_1.createEl)(modelElement, "p");
+        modelRequirements.classList.add("hidden", "text-xs", "pt-1", "text-[var(--text-faint)]", "m-0");
+        modelRequirements.innerText = this.getModelRequirements(model);
+        modelElement.onclick = (e) => {
+          modelRequirementsButton.innerHTML = modelRequirements.classList.contains("hidden") ? "System Requirements  &times;" : 'System Requirements  <p class="leading-[1] m-0">\u2335</p>';
+          modelRequirements.classList.toggle("hidden");
+          e.stopPropagation();
+        };
+        const progressBar = new ProgressBar_1.default({
+          current: 0,
+          end: 100,
+          contentEl: modelElement
+        });
+        if (status === pieces_os_client_2.ModelDownloadProgressStatusEnum.InProgress || status === pieces_os_client_2.ModelDownloadProgressStatusEnum.Initialized) {
+          progressBar.bounce();
+        } else {
+          progressBar.hide();
+        }
+        modelButton.onclick = (e) => {
+          e.stopPropagation();
+          if (model.name.includes("CodeLlama")) {
+            (0, view_1.sendNotification)({
+              type: "info",
+              message: "The CodeLlama models are not quite ready for production, but are coming soon!"
+            });
+            return;
+          }
+          this.handleDownloadSelectCancel(model);
+          (0, timeoutPromise_1.timeoutPromise)(200).then(() => {
+            const newStatus = ModelProgressController_1.default.getInstance().modelDownloadStatus.get(model.id);
+            if (model.downloaded) {
+              this.setModelButtonsColor();
+              modelButton.innerHTML = const_1.Constants.CHECK_SVG;
+              modelButton.title = `Select ${modelTitle.innerText}`;
+              const buttonObj = this.modelButtons.find((el) => el.model === model.id);
+              if (buttonObj)
+                buttonObj.selected = true;
+              modelButton.style.color = "var(--text-accent)";
+              this.activeModelPills.forEach((el) => el.innerHTML = this.getModelName(model));
+              (0, view_1.track)(CopilotAnalytics_enum_1.CopilotAnalytics.SELECT_LLM);
+            } else if (newStatus === pieces_os_client_2.ModelDownloadProgressStatusEnum.InProgress || newStatus === pieces_os_client_2.ModelDownloadProgressStatusEnum.Initialized) {
+              modelButton.innerHTML = "&times;";
+              modelButton.title = `Cancel ${modelTitle.innerText} download`;
+              progressBar.show();
+              progressBar.bounce();
+              (0, view_1.track)(CopilotAnalytics_enum_1.CopilotAnalytics.LLM_START_DOWNLOAD);
+            } else {
+              modelButton.innerHTML = const_1.Constants.DOWNLOAD_SVG;
+              modelButton.title = `Download ${modelTitle.innerText}`;
+              progressBar.hide();
+              (0, view_1.track)(CopilotAnalytics_enum_1.CopilotAnalytics.LLM_CANCEL_DOWNLOAD);
+            }
+          });
+        };
+      }
+      getModelSvg(type) {
+        if (type === ModelBoxEnum.CodeLlaMa || type === ModelBoxEnum.LLaMa2)
+          return const_1.Constants.META_SVG;
+        if (type === ModelBoxEnum.Palm2)
+          return const_1.Constants.PALM2_SVG;
+        return const_1.Constants.OPENAI_SVG;
+      }
+      handleDownloadSelectCancel(model) {
+        this.lastUserAction = new Date();
+        ModelProgressController_1.default.getInstance().openSockets([model]);
+        const status = ModelProgressController_1.default.getInstance().modelDownloadStatus.get(model.id);
+        if (status === pieces_os_client_2.ModelDownloadProgressStatusEnum.InProgress || status === pieces_os_client_2.ModelDownloadProgressStatusEnum.Initialized) {
+          ConnectorSingleton_1.default.getInstance().modelApi.modelSpecificModelDownloadCancel({ model: model.id }).then(() => {
+            (0, view_1.sendNotification)({
+              message: "Cancelling model download was a success",
+              type: "info"
+            });
+          }).catch(() => {
+            (0, view_1.sendNotification)({
+              message: "Failed to cancel model download, please make sure that Pieces OS is installed, running, and updated. If the issue persists, please contact support@pieces.app",
+              type: "error"
+            });
+          });
+        } else if (model.downloaded) {
+          CopilotLLMConfigModal.selectedModel = model.id;
+          CopilotLLMConfigModal.selectedRuntime = model.cloud ? "CLOUD" : model.cpu ? "CPU" : "GPU";
+          (0, view_1.saveState)({
+            conversation: QGPTView_1.default.currentConversation,
+            selectedModel: CopilotLLMConfigModal.selectedModel,
+            migration: view_1.migration,
+            conversationId: QGPTView_1.default.conversationId,
+            codeBlocks: QGPTView_1.default.codeBlocks,
+            directives: Directives_1.default.getInstance().directiveList
+          });
+          (0, view_1.sendNotification)({
+            type: "info",
+            message: `${model.foundation} ${model.cloud ? "CLOUD" : model.cpu ? "CPU" : "GPU"} selected!`
+          });
+        } else {
+          ConnectorSingleton_1.default.getInstance().modelApi.modelSpecificModelDownload({ model: model.id }).catch(() => {
+            (0, view_1.sendNotification)({
+              message: "Failed to initiate model download, please make sure that Pieces OS is installed, running, and updated. If the issue persists, please contact support@pieces.app",
+              type: "error"
+            });
+          });
+          ModelProgressController_1.default.getInstance().modelDownloadStatus.set(model.id, pieces_os_client_2.ModelDownloadProgressStatusEnum.InProgress);
+        }
+      }
+      onClose() {
+        ModelProgressController_1.default.getInstance().deregisterCallback(this.refresh);
+      }
+    };
+    CopilotLLMConfigModal.selectedRuntime = "CLOUD";
+    CopilotLLMConfigModal.selectedModel = "";
+    exports.default = CopilotLLMConfigModal;
+  }
+});
+
+// ../copilot-ts/dist/components/Tooltip.js
+var require_Tooltip = __commonJS({
+  "../copilot-ts/dist/components/Tooltip.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var globals_1 = require_globals();
+    var Tooltip = class {
+      /**
+       *
+       * @param content html string of the inner content for the tooltip
+       * @param triggerElement when the user hovers this element, the tooltip will show
+       */
+      constructor(content, triggerElement) {
+        const tooltip = (0, globals_1.createDiv)(document.body);
+        tooltip.classList.add("cursor-default", "opacity-90", "hidden", "absolute", "bg-[var(--background-modifier-border-hover)]", "p-2", "rounded", "z-[999]");
+        this.container = tooltip;
+        tooltip.innerHTML = content;
+        triggerElement.onmouseenter = (event) => {
+          if (!tooltip.classList.contains("hidden"))
+            return;
+          tooltip.classList.remove("hidden");
+          const tooltipWidth = tooltip.offsetWidth;
+          const tooltipHeight = tooltip.offsetHeight;
+          const windowWidth = window.innerWidth;
+          const windowHeight = window.innerHeight;
+          const rect = triggerElement.getBoundingClientRect();
+          let topPosition = rect.bottom + 8;
+          let leftPosition = event.clientX - tooltipWidth / 2;
+          if (leftPosition + tooltipWidth > windowWidth) {
+            leftPosition = windowWidth - tooltipWidth - 10;
+          }
+          if (leftPosition < 0) {
+            leftPosition = 10;
+          }
+          if (topPosition + tooltipHeight > windowHeight) {
+            topPosition = windowHeight - tooltipHeight - 10;
+          }
+          if (topPosition < 0) {
+            topPosition = 10;
+          }
+          tooltip.style.top = topPosition + "px";
+          tooltip.style.left = leftPosition + "px";
+          const toolTipRect = tooltip.getBoundingClientRect();
+          if (event.clientX > toolTipRect.left && event.clientX < toolTipRect.right && event.clientY < toolTipRect.bottom && event.clientY > toolTipRect.top) {
+            triggerElement.onmouseleave = () => {
+            };
+            tooltip.onmouseleave = () => {
+              tooltip.classList.add("hidden");
+            };
+          } else {
+            tooltip.onmouseleave = () => {
+            };
+            triggerElement.onmouseleave = () => {
+              tooltip.classList.add("hidden");
+            };
+          }
+        };
+      }
+      remove() {
+        this.container.remove();
+      }
+    };
+    exports.default = Tooltip;
+  }
+});
+
+// ../copilot-ts/dist/modals/ContextSelectionModal.js
+var require_ContextSelectionModal = __commonJS({
+  "../copilot-ts/dist/modals/ContextSelectionModal.js"(exports) {
+    "use strict";
+    var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __importDefault = exports && exports.__importDefault || function(mod) {
+      return mod && mod.__esModule ? mod : { "default": mod };
+    };
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var pieces_os_client_1 = require_dist();
+    var view_1 = require_view();
+    var pieces_os_client_2 = require_dist();
+    var ConnectorSingleton_1 = __importDefault(require_ConnectorSingleton());
+    var const_1 = require_const();
+    var LLMConfigModal_1 = __importDefault(require_LLMConfigModal());
+    var Modal_1 = __importDefault(require_Modal());
+    var QGPTView_1 = __importDefault(require_QGPTView());
+    var Tooltip_1 = __importDefault(require_Tooltip());
+    var getIcon_1 = require_getIcon();
+    var getNotDeletedIndicies_1 = __importDefault(require_getNotDeletedIndicies());
+    var globals_1 = require_globals();
+    var Directives_1 = __importDefault(require_Directives());
+    var ContextSelectionModal = class extends Modal_1.default {
+      constructor() {
+        super();
+        this.fileTabContentEl = [];
+        this.folderTabContentEl = [];
+        this.snippetTabContentEl = [];
+        this.messagesTabContentEl = [];
+        this.tooltip = null;
+        this.paths = [];
+        this.assets = [];
+        this.grounding = [];
+        this.folderToFileCount = {};
+        this.DEBOUNCE_TIMER_MS = 200;
+        this.resolvers = [];
+        const titleEl = (0, globals_1.createDiv)(this.titleEl);
+        titleEl.innerText = "Manage Context";
+        const subTitle = (0, globals_1.createDiv)(this.titleEl);
+        subTitle.classList.add("text-[var(--text-faint)]", "text-xs");
+        subTitle.innerText = "Configure the files, folders, and snippets the Pieces Copilot should use for this conversation";
+        const tabs = (0, globals_1.createDiv)(this.contentEl);
+        tabs.classList.add("flex", "flex-row", "justify-evenly", "py-3", "flex-wrap", "gap-2");
+        const fileTab = (0, globals_1.createDiv)(tabs);
+        fileTab.classList.add("cursor-pointer", "underline", "flex", "flex-row", "items-center", "gap-1");
+        this.selectedTabEl = fileTab;
+        const fileIcon = (0, globals_1.createDiv)(fileTab);
+        fileIcon.classList.add("svg-box", "h-4");
+        fileIcon.innerHTML = const_1.Constants.FILE_SVG;
+        const fileTabText = (0, globals_1.createEl)(fileTab, "p");
+        fileTabText.innerText = "Files";
+        fileTabText.classList.add("m-0");
+        const folderTab = (0, globals_1.createDiv)(tabs);
+        folderTab.classList.add("cursor-pointer", "flex", "flex-row", "items-center", "gap-1");
+        const folderIcon = (0, globals_1.createDiv)(folderTab);
+        folderIcon.classList.add("svg-box", "h-4");
+        folderIcon.innerHTML = const_1.Constants.OPEN_FILE_SVG;
+        const folderTabText = (0, globals_1.createEl)(folderTab, "p");
+        folderTabText.innerText = "Folders";
+        folderTabText.classList.add("m-0");
+        const snippetTab = (0, globals_1.createDiv)(tabs);
+        snippetTab.classList.add("cursor-pointer", "flex", "flex-row", "items-center", "gap-1");
+        const snippetIcon = (0, globals_1.createDiv)(snippetTab);
+        snippetIcon.classList.add("svg-box", "h-4");
+        snippetIcon.innerHTML = const_1.Constants.SNIPPET_SVG;
+        const snippetTabText = (0, globals_1.createEl)(snippetTab, "p");
+        snippetTabText.innerText = "Snippets";
+        snippetTabText.classList.add("m-0");
+        const messagesTab = (0, globals_1.createDiv)(tabs);
+        messagesTab.classList.add("cursor-pointer", "flex", "flex-row", "items-center", "gap-1");
+        const messagesIcon = (0, globals_1.createDiv)(messagesTab);
+        messagesIcon.classList.add("svg-box", "h-4");
+        messagesIcon.innerHTML = const_1.Constants.MESSAGE_CONTEXT_SVG;
+        const messagesTabText = (0, globals_1.createEl)(messagesTab, "p");
+        messagesTabText.innerText = "Messages";
+        messagesTabText.classList.add("m-0");
+        const fileTabContent = (0, globals_1.createDiv)(this.contentEl);
+        fileTabContent.classList.add("flex", "flex-col", "rounded-lg", "border", "border-solid", "border-[var(--background-modifier-border)]", "p-2", "gap-1");
+        this.selectedTabContentEl = fileTabContent;
+        this.fileTabContentEl.push(fileTabContent);
+        const folderTabContent = (0, globals_1.createDiv)(this.contentEl);
+        folderTabContent.classList.add("hidden", "flex", "flex-col", "border", "border-solid", "border-[var(--background-modifier-border)]", "p-2", "rounded-lg", "gap-1");
+        this.folderTabContentEl.push(folderTabContent);
+        const snippetTabContent = (0, globals_1.createDiv)(this.contentEl);
+        snippetTabContent.classList.add("hidden", "flex", "flex-col", "border", "border-solid", "border-[var(--background-modifier-border)]", "p-2", "rounded-lg", "gap-1");
+        this.snippetTabContentEl.push(snippetTabContent);
+        const messagesTabContent = (0, globals_1.createDiv)(this.contentEl);
+        messagesTabContent.classList.add("hidden", "flex", "flex-col", "border", "border-solid", "border-[var(--background-modifier-border)]", "p-2", "rounded-lg", "gap-1");
+        this.messagesTabContentEl.push(messagesTabContent);
+        tabs.onclick = (event) => {
+          this.selectedTabContentEl.classList.add("hidden");
+          this.selectedTabEl.classList.remove("underline");
+          if (snippetTab.contains(event.target)) {
+            this.selectedTabContentEl = snippetTabContent;
+            this.selectedTabEl = snippetTab;
+          }
+          if (folderTab.contains(event.target)) {
+            this.selectedTabContentEl = folderTabContent;
+            this.selectedTabEl = folderTab;
+          }
+          if (fileTab.contains(event.target)) {
+            this.selectedTabContentEl = fileTabContent;
+            this.selectedTabEl = fileTab;
+          }
+          if (messagesTab.contains(event.target)) {
+            this.selectedTabContentEl = messagesTabContent;
+            this.selectedTabEl = messagesTab;
+          }
+          this.selectedTabContentEl.classList.remove("hidden");
+          this.selectedTabEl.classList.add("underline");
+        };
+        this.debouncedConversationChangeHandler(QGPTView_1.default.conversationId);
+      }
+      /**
+       * This will add context to a conversation, either an asset or a file path
+       * @param type type of context to be added
+       */
+      addToContext(type) {
+        var _a;
+        return __awaiter(this, void 0, void 0, function* () {
+          if (!((_a = QGPTView_1.default.conversationId) === null || _a === void 0 ? void 0 : _a.length)) {
+            const conversation = yield ConnectorSingleton_1.default.getInstance().conversationsApi.conversationsCreateSpecificConversation({
+              transferables: false,
+              seededConversation: { type: pieces_os_client_1.ConversationTypeEnum.Copilot }
+            });
+            QGPTView_1.default.conversationId = conversation.id;
+            (0, view_1.saveState)({
+              conversation: QGPTView_1.default.currentConversation,
+              conversationId: conversation.id,
+              selectedModel: LLMConfigModal_1.default.selectedModel,
+              migration: view_1.migration,
+              codeBlocks: QGPTView_1.default.codeBlocks,
+              directives: Directives_1.default.getInstance().directiveList
+            });
+          }
+          (0, view_1.requestContextPicker)(type, QGPTView_1.default.conversationId);
+        });
+      }
+      // user switched to a new conversation
+      empty() {
+        this.paths = [];
+        this.assets = [];
+        this.fileTabContentEl.forEach((el) => this.buildContentEl("files", el, []));
+        this.folderTabContentEl.forEach((el) => this.buildContentEl("folders", el, []));
+        this.snippetTabContentEl.forEach((el) => this.buildContentEl("snippets", el, []));
+        this.messagesTabContentEl.forEach((el) => this.buildContentEl("messages", el, []));
+      }
+      /**
+       *
+       * @param type what type of content el we are building
+       * @param container the container element
+       * @param items list of snippets or anchorpoints
+       */
+      buildContentEl(type, container, items) {
+        (0, globals_1.emptyEl)(container);
+        const header = (0, globals_1.createDiv)(container);
+        header.classList.add("flex", "flex-row", "justify-between", "items-center", "pb-1");
+        const title = (0, globals_1.createDiv)(header);
+        title.classList.add("text-sm", "text-[var(--text-muted)]");
+        title.innerText = type.toUpperCase();
+        if (type !== "messages") {
+          const addBtn = (0, globals_1.createDiv)(header);
+          addBtn.classList.add("bg-[var(--background-secondary)]", "hover:bg-[var(--background-modifier-border-hover)]", "shadow", "shadow-[var(--background-modifier-box-shadow)]", "px-2", "rounded", "py-1", "cursor-pointer", "text-sm");
+          addBtn.innerText = "Add";
+          addBtn.onclick = () => {
+            this.addToContext(type);
+            this.close();
+          };
+        }
+        if (!items.length) {
+          this.buildEmptyContentEl(type, container);
+        } else {
+          if (type === "snippets") {
+            this.buildSnippetListEl(items, container);
+          } else if (type === "files" || type === "folders") {
+            this.buildAnchorEl(items, container, type);
+          } else {
+            this.buildMessagesEl(items, container, type);
+          }
+        }
+        if (type === "folders") {
+          const infoRow = (0, globals_1.createDiv)(container);
+          infoRow.classList.add("flex", "flex-row", "justify-end");
+          const shieldBoxContainer = (0, globals_1.createDiv)(infoRow);
+          shieldBoxContainer.classList.add("p-1", "rounded", "hover:bg-[var(--background-secondary)]", "cursor-pointer");
+          const shieldSvgBox = (0, globals_1.createDiv)(shieldBoxContainer);
+          shieldSvgBox.classList.add("h-4", "svg-box");
+          shieldSvgBox.innerHTML = const_1.Constants.SHIELD_CHECK_SVG;
+          const tooltipContent = `
+        <strong>Folders are verified to avoid:</strong>
+        <ul class="list-disc pl-4">
+          <li>.gitignore files if applicable</li>
+          <li>files over 500KB</li>
+          <li>unsupported file extensions</li>
+          <li>hidden files (i.e: .env)</li>
+        </ul>
+      `;
+          this.tooltip = new Tooltip_1.default(tooltipContent, shieldBoxContainer);
+        }
+      }
+      // builds the snippet tab content element
+      buildSnippetListEl(assets, container) {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function* () {
+          for (const asset of assets) {
+            const assetRow = (0, globals_1.createDiv)(container);
+            assetRow.classList.add("p-1", "flex", "flex-row", "justify-between", "gap-1");
+            const assetTitle = (0, globals_1.createDiv)(assetRow);
+            assetTitle.classList.add("flex", "flex-row", "items-center", "h-5", "gap-1");
+            const assetImg = (0, globals_1.createEl)(assetTitle, "div");
+            assetImg.classList.add("w-5", "h-5", "bg-cover");
+            const classification = yield this.getAssetClassification(asset);
+            assetImg.classList.add((0, getIcon_1.getIcon)(classification));
+            const assetName = (0, globals_1.createDiv)(assetTitle);
+            assetName.classList.add("text-xs", "line-clamp-2", "text-ellipsis");
+            assetName.innerText = (_a = asset.name) !== null && _a !== void 0 ? _a : "Unnamed Snippet";
+            const removeAssetButton = (0, globals_1.createDiv)(assetRow);
+            removeAssetButton.classList.add("text-sm", "cursor-pointer");
+            removeAssetButton.innerHTML = "&times;";
+            removeAssetButton.onclick = () => {
+              this.removeAssetFromConversation(asset);
+            };
+            removeAssetButton.title = `remove ${(_b = asset.name) !== null && _b !== void 0 ? _b : "Unnamed Asset"} from conversation`;
+          }
+        });
+      }
+      // removes a snippet from a conversation
+      removeAssetFromConversation(asset) {
+        return __awaiter(this, void 0, void 0, function* () {
+          ConnectorSingleton_1.default.getInstance().conversationApi.conversationDeleteAsset({
+            conversation: QGPTView_1.default.conversationId,
+            asset: asset.id
+          }).then(() => {
+            (0, view_1.sendNotification)({
+              type: "info",
+              message: "Removing snippet from conversation was a success"
+            });
+          }).catch(() => {
+            (0, view_1.sendNotification)({
+              type: "error",
+              message: "Failed to remove snippet from conversation, please make sure Pieces OS is installed, running and up to date, if the issue persists please contact support@pieces.app"
+            });
+          });
+        });
+      }
+      // TODO put this in a util
+      // gets the specific classification of an asset
+      getAssetClassification(asset) {
+        var _a, _b, _c, _d, _e, _f;
+        return __awaiter(this, void 0, void 0, function* () {
+          if (((_a = asset.original.reference) === null || _a === void 0 ? void 0 : _a.classification.generic) !== pieces_os_client_1.ClassificationGenericEnum.Image) {
+            return (_c = (_b = asset.original.reference) === null || _b === void 0 ? void 0 : _b.classification.specific) !== null && _c !== void 0 ? _c : pieces_os_client_1.ClassificationSpecificEnum.Ts;
+          }
+          const ocrId = (_f = (_e = (_d = asset.original.reference.analysis) === null || _d === void 0 ? void 0 : _d.image) === null || _e === void 0 ? void 0 : _e.ocr) === null || _f === void 0 ? void 0 : _f.id;
+          if (!ocrId)
+            return pieces_os_client_1.ClassificationSpecificEnum.Ts;
+          const format = yield ConnectorSingleton_1.default.getInstance().formatApi.formatSnapshot({
+            format: ocrId
+          });
+          return format.classification.specific;
+        });
+      }
+      buildMessagesEl(messages, container, type) {
+        var _a, _b, _c;
+        return __awaiter(this, void 0, void 0, function* () {
+          for (const message of messages) {
+            const messageRow = (0, globals_1.createDiv)(container);
+            messageRow.classList.add("p-1", "flex", "flex-row", "justify-between", "gap-1", "items-center");
+            const messageTitleContainer = (0, globals_1.createDiv)(messageRow);
+            messageTitleContainer.classList.add("flex", "flex-row", "gap-1", "items-center");
+            const messageTitle = (0, globals_1.createDiv)(messageTitleContainer);
+            messageTitle.classList.add("text-xs", "text-ellipsis", "line-clamp-1", "break-all");
+            messageTitle.innerText = `\u2022 ${(_c = (_b = (_a = message.fragment) === null || _a === void 0 ? void 0 : _a.string) === null || _b === void 0 ? void 0 : _b.raw) !== null && _c !== void 0 ? _c : "Unable to fetch message content".replace(/\\/g, "/").split("/").pop()}`;
+            const removeAnchorButton = (0, globals_1.createDiv)(messageRow);
+            removeAnchorButton.classList.add("cursor-pointer", "text-sm", "leading-[1.13]");
+            removeAnchorButton.innerHTML = "&times;";
+            removeAnchorButton.onclick = () => {
+              ConnectorSingleton_1.default.getInstance().conversationApi.conversationGroundingMessagesDisassociateMessage({
+                conversation: QGPTView_1.default.conversationId,
+                message: message.id
+              }).then(() => {
+                (0, view_1.sendNotification)({
+                  type: "info",
+                  message: `Removing ${type} from conversation was a success`
+                });
+              }).catch(() => {
+                (0, view_1.sendNotification)({
+                  type: "error",
+                  message: `Failed to remove ${type} from conversation, please make sure Pieces OS is installed, running and up to date, if the issue persists please contact support@pieces.app`
+                });
+              });
+            };
+          }
+        });
+      }
+      // builds files and folders tab content element
+      buildAnchorEl(anchorPoints, container, type) {
+        var _a, _b, _c;
+        return __awaiter(this, void 0, void 0, function* () {
+          for (const point of anchorPoints) {
+            const pointRow = (0, globals_1.createDiv)(container);
+            pointRow.classList.add("p-1", "flex", "flex-row", "justify-between", "gap-1", "items-center");
+            const pointTitleContainer = (0, globals_1.createDiv)(pointRow);
+            pointTitleContainer.classList.add("flex", "flex-row", "gap-1", "items-center");
+            const pointTitle = (0, globals_1.createDiv)(pointTitleContainer);
+            pointTitle.classList.add("text-xs", "text-ellipsis", "line-clamp-1", "break-all");
+            pointTitle.innerText = `\u2022 ${point.fullpath.replace(/\\/g, "/").split("/").pop()}`;
+            if (type === "folders" && ((_a = yield (0, view_1.getApplication)()) === null || _a === void 0 ? void 0 : _a.name) === pieces_os_client_1.ApplicationNameEnum.VsCode) {
+              const verifiedCountContainer = (0, globals_1.createDiv)(pointTitleContainer);
+              verifiedCountContainer.classList.add("p-0.5", "rounded-lg", "flex", "flex-row", "border", "border-solid", "border-[var(--background-modifier-border)]", "text-xs", "gap-1");
+              verifiedCountContainer.title = `${((_b = this.folderToFileCount[point.fullpath]) !== null && _b !== void 0 ? _b : 0).toString()} verified files`;
+              const verifiedCount = (0, globals_1.createDiv)(verifiedCountContainer);
+              verifiedCount.innerText = ((_c = this.folderToFileCount[point.fullpath]) !== null && _c !== void 0 ? _c : 0).toString();
+              const shieldSvgBox = (0, globals_1.createDiv)(verifiedCountContainer);
+              shieldSvgBox.classList.add("svg-box", "h-4");
+              shieldSvgBox.innerHTML = const_1.Constants.SHIELD_CHECK_SVG;
+            }
+            const removeAnchorButton = (0, globals_1.createDiv)(pointRow);
+            removeAnchorButton.classList.add("cursor-pointer", "text-sm", "leading-[1.13]");
+            removeAnchorButton.innerHTML = "&times;";
+            removeAnchorButton.onclick = () => {
+              this.removeAnchorFromConversation(point, type === "files" ? "file" : "folder");
+            };
+          }
+        });
+      }
+      // removes a file / folder from a conversation
+      removeAnchorFromConversation(anchorPoint, type) {
+        return __awaiter(this, void 0, void 0, function* () {
+          ConnectorSingleton_1.default.getInstance().conversationApi.conversationDeleteAnchor({
+            conversation: QGPTView_1.default.conversationId,
+            anchor: anchorPoint.anchor.id
+          }).then(() => {
+            (0, view_1.sendNotification)({
+              type: "info",
+              message: `Removing ${type} from conversation was a success`
+            });
+          }).catch(() => {
+            (0, view_1.sendNotification)({
+              type: "error",
+              message: `Failed to remove ${type} from conversation, please make sure Pieces OS is installed, running and up to date, if the issue persists please contact support@pieces.app`
+            });
+          });
+        });
+      }
+      // builds the empty tabContentElement, aka there is no context for that tab
+      buildEmptyContentEl(type, container) {
+        const emptyText = (0, globals_1.createDiv)(container);
+        emptyText.classList.add("text-[var(--text-muted)]", "text-sm", "text-center", "px-1");
+        emptyText.innerText = `No ${type} selected, click the ${type === "messages" ? "add to context button contained within a conversation message" : "add button"} to use ${type} as context`;
+      }
+      // user switched conversations
+      // debounced to prevent spamming this function via websocket events
+      // this is also called if we get a ws event for the same conversation that is selected
+      // we return a promise here to await the debounced changes
+      debouncedConversationChangeHandler(conversationId) {
+        clearTimeout(this.renderTimeout);
+        return new Promise((resolve) => {
+          this.resolvers.push(resolve);
+          this.renderTimeout = setTimeout(() => __awaiter(this, void 0, void 0, function* () {
+            yield this.handleConversationChange(conversationId);
+            for (const res of this.resolvers) {
+              res();
+            }
+            this.resolvers = [];
+          }), this.DEBOUNCE_TIMER_MS);
+        });
+      }
+      onOpen() {
+        return __awaiter(this, void 0, void 0, function* () {
+          return;
+        });
+      }
+      onClose() {
+        return;
+      }
+      handleConversationChange(conversationId) {
+        var _a, _b, _c, _d, _e, _f;
+        return __awaiter(this, void 0, void 0, function* () {
+          (_a = this.tooltip) === null || _a === void 0 ? void 0 : _a.remove();
+          if (!conversationId) {
+            return this.empty();
+          }
+          const conversation = yield ConnectorSingleton_1.default.getInstance().conversationApi.conversationGetSpecificConversation({
+            conversation: conversationId
+          }).catch(this.empty);
+          if (!conversation)
+            return;
+          const anchorIds = (0, getNotDeletedIndicies_1.default)((_b = conversation.anchors) === null || _b === void 0 ? void 0 : _b.indices);
+          const assetIds = (0, getNotDeletedIndicies_1.default)((_c = conversation.assets) === null || _c === void 0 ? void 0 : _c.indices);
+          const groundingIds = (0, getNotDeletedIndicies_1.default)((_e = (_d = conversation.grounding) === null || _d === void 0 ? void 0 : _d.messages) === null || _e === void 0 ? void 0 : _e.indices);
+          if (!anchorIds.length && !assetIds.length && !groundingIds.length)
+            return this.empty();
+          const anchors = yield Promise.all(anchorIds.map((id) => ConnectorSingleton_1.default.getInstance().anchorApi.anchorSpecificAnchorSnapshot({
+            anchor: id,
+            transferables: false
+          })));
+          const assets = yield Promise.all(assetIds.map((id) => ConnectorSingleton_1.default.getInstance().assetApi.assetSnapshot({
+            asset: id,
+            transferables: false
+          })));
+          this.assets = assets;
+          const messages = yield Promise.all(groundingIds.map((id) => ConnectorSingleton_1.default.getInstance().conversationMessageApi.messageSpecificMessageSnapshot({ message: id })));
+          this.grounding = messages;
+          this.messagesTabContentEl.forEach((el) => this.buildContentEl("messages", el, messages));
+          const fileAnchorPointsIds = [];
+          const folderAnchorPointsIds = [];
+          for (const anchor of anchors) {
+            if (anchor.type === pieces_os_client_2.AnchorTypeEnum.File) {
+              fileAnchorPointsIds.push(...(0, getNotDeletedIndicies_1.default)(anchor.points.indices));
+            } else {
+              folderAnchorPointsIds.push(...(0, getNotDeletedIndicies_1.default)(anchor.points.indices));
+            }
+          }
+          const files = (yield Promise.all(fileAnchorPointsIds.map((id) => ConnectorSingleton_1.default.getInstance().anchorPointApi.anchorPointSpecificAnchorPointSnapshot({
+            anchorPoint: id
+          }))).catch(() => [])).filter((anchorPoint) => anchorPoint.platform === view_1.platform);
+          const folders = (yield Promise.all(folderAnchorPointsIds.map((id) => ConnectorSingleton_1.default.getInstance().anchorPointApi.anchorPointSpecificAnchorPointSnapshot({
+            anchorPoint: id
+          }))).catch(() => [])).filter((anchorPoint) => anchorPoint.platform === view_1.platform);
+          this.fileTabContentEl.forEach((el) => this.buildContentEl("files", el, files));
+          this.snippetTabContentEl.forEach((el) => this.buildContentEl("snippets", el, assets));
+          const filteredPaths = yield (0, view_1.filterFolders)(folders.map((el) => el.fullpath));
+          this.folderToFileCount = {};
+          for (const folder of folders) {
+            for (const filePath of filteredPaths) {
+              if (filePath.slice(0, folder.fullpath.length) === folder.fullpath) {
+                this.folderToFileCount[folder.fullpath] = ((_f = this.folderToFileCount[folder.fullpath]) !== null && _f !== void 0 ? _f : 0) + 1;
+              }
+            }
+          }
+          this.folderTabContentEl.forEach((el) => this.buildContentEl("folders", el, folders));
+          this.paths = filteredPaths.concat(files.map((el) => el.fullpath));
+          (0, view_1.loadContext)(this.paths);
+          return;
+        });
+      }
+    };
+    exports.default = ContextSelectionModal;
   }
 });
 
@@ -45552,13 +46639,13 @@ var require_ErrorView = __commonJS({
       const launchBtnDiv = (0, globals_1.createDiv)(container);
       launchBtnDiv.classList.add("pt-4", "flex-row", "gap-2", "flex", "justify-center");
       const launchBtn = (0, globals_1.createEl)(launchBtnDiv, "button");
-      launchBtn.classList.add(`vs-btn-${theme2}`, "p-2", "rounded", "vs-btn", "shadow-sm", "shadow-[var(--background-modifier-box-shadow)]");
+      launchBtn.classList.add(`vs-btn-${theme2}`, "p-2", "rounded", "vs-btn", "shadow-sm", "shadow-[var(--background-modifier-box-shadow)]", "w-fit");
       launchBtn.innerText = "Launch";
       launchBtn.onclick = () => {
         (0, _1.openLink)("pieces://launch");
       };
       const installBtn = (0, globals_1.createEl)(launchBtnDiv, "button");
-      installBtn.classList.add(`vs-btn-${theme2}`, "p-2", "rounded", "vs-btn", "shadow-sm", "shadow-[var(--background-modifier-box-shadow)]");
+      installBtn.classList.add(`vs-btn-${theme2}`, "p-2", "rounded", "vs-btn", "shadow-sm", "shadow-[var(--background-modifier-box-shadow)]", "w-fit");
       installBtn.innerText = "Install";
       installBtn.onclick = () => {
         (0, _1.openLink)("https://docs.pieces.app/installation-getting-started/what-am-i-installing");
@@ -46305,7 +47392,7 @@ var require_view = __commonJS({
       return mod && mod.__esModule ? mod : { "default": mod };
     };
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.initCopilot = exports.connectionPoller = exports.port = exports.getNextMessageId = exports.platform = exports.copyToClipboard = exports.track = exports.openLink = exports.loadContext = exports.sendNotification = exports.getState = exports.saveState = exports.filterFolders = exports.requestContextPicker = exports.getApplication = exports.generateShareableLink = exports.openFile = exports.migration = void 0;
+    exports.initCopilot = exports.connectionPoller = exports.port = exports.getNextMessageId = exports.platform = exports.getWorkspacePaths = exports.getRecentFiles = exports.runInTerminal = exports.insertAtCursor = exports.copyToClipboard = exports.track = exports.openLink = exports.loadContext = exports.sendNotification = exports.getState = exports.saveState = exports.filterFolders = exports.requestContextPicker = exports.getApplication = exports.generateShareableLink = exports.openFile = exports.migration = void 0;
     var buffer_1 = require("buffer");
     var ConnectorSingleton_1 = __importDefault(require_ConnectorSingleton());
     var ContextSelectionModal_1 = __importDefault(require_ContextSelectionModal());
@@ -46313,7 +47400,7 @@ var require_view = __commonJS({
     var LLMConfigModal_1 = __importDefault(require_LLMConfigModal());
     var CopilotStreamController_1 = __importDefault(require_CopilotStreamController());
     var ModelProgressController_1 = __importDefault(require_ModelProgressController());
-    var client_1 = require_dist();
+    var pieces_os_client_1 = require_dist();
     var QGPTView_1 = __importDefault(require_QGPTView());
     var getNotDeletedIndicies_1 = __importDefault(require_getNotDeletedIndicies());
     var ConversationList_1 = require_ConversationList();
@@ -46321,6 +47408,8 @@ var require_view = __commonJS({
     var ErrorView_1 = require_ErrorView();
     var timeoutPromise_1 = require_timeoutPromise();
     var uuid_1 = require_commonjs_browser();
+    var ConversationBuilder_1 = __importDefault(require_ConversationBuilder());
+    var Directives_1 = __importDefault(require_Directives());
     var GPTMinVersion = "7.0.0";
     var MaxVersion = "8.0.0";
     exports.migration = 0;
@@ -46332,7 +47421,7 @@ var require_view = __commonJS({
       }
     });
     exports.copyToClipboard = copyToClipboard2;
-    exports.platform = navigator.userAgent.toLowerCase().includes("linux") ? client_1.PlatformEnum.Linux : navigator.userAgent.toLowerCase().includes("win") ? client_1.PlatformEnum.Windows : client_1.PlatformEnum.Macos;
+    exports.platform = navigator.userAgent.toLowerCase().includes("linux") ? pieces_os_client_1.PlatformEnum.Linux : navigator.userAgent.toLowerCase().includes("win") ? pieces_os_client_1.PlatformEnum.Windows : pieces_os_client_1.PlatformEnum.Macos;
     function getNextMessageId() {
       return (0, uuid_1.v4)();
     }
@@ -46340,7 +47429,7 @@ var require_view = __commonJS({
     exports.port = navigator.userAgent.toLowerCase().includes("linux") ? 5323 : 1e3;
     var connectionState = { versionValid: true, connected: true };
     var connectionPoller = () => __awaiter(void 0, void 0, void 0, function* () {
-      var _a, _b, _c, _d, _e;
+      var _a, _b, _c, _d, _e, _f, _g;
       let title = "Pieces OS needs to be updated!";
       let connected = true;
       const version2 = yield fetch(`http://localhost:${exports.port}/.well-known/version`).catch(() => {
@@ -46364,6 +47453,8 @@ var require_view = __commonJS({
         connectionState.versionValid = true;
         LLMConfigModal_1.default.selectedModel = (_b = (_a = state === null || state === void 0 ? void 0 : state.pieces) === null || _a === void 0 ? void 0 : _a.selectedModel) !== null && _b !== void 0 ? _b : "";
         if ((_d = (_c = state === null || state === void 0 ? void 0 : state.pieces) === null || _c === void 0 ? void 0 : _c.conversationId) === null || _d === void 0 ? void 0 : _d.length) {
+          QGPTView_1.default.conversationId = state.pieces.conversationId;
+          ConversationBuilder_1.default.getInstance().highlightSelectedConversation();
           const connector = ConnectorSingleton_1.default.getInstance();
           const conversation = yield connector.conversationApi.conversationGetSpecificConversation({
             conversation: state.pieces.conversationId
@@ -46381,19 +47472,22 @@ var require_view = __commonJS({
               message
             }))).catch(() => []);
             state.pieces.conversation = messages.sort((a, b) => a.created.value.getTime() - b.created.value.getTime()).map((message) => {
-              var _a2, _b2, _c2, _d2, _e2, _f;
+              var _a2, _b2, _c2, _d2, _e2, _f2;
               const messageData = ((_b2 = (_a2 = message.fragment) === null || _a2 === void 0 ? void 0 : _a2.bytes) === null || _b2 === void 0 ? void 0 : _b2.raw) ? `data:image/png;base64,${buffer_1.Buffer.from(message.fragment.bytes.raw).toString("base64")}` : (_d2 = (_c2 = message.fragment) === null || _c2 === void 0 ? void 0 : _c2.string) === null || _d2 === void 0 ? void 0 : _d2.raw;
-              const isImage = ((_f = (_e2 = message.fragment) === null || _e2 === void 0 ? void 0 : _e2.bytes) === null || _f === void 0 ? void 0 : _f.raw) != void 0;
+              const isImage = ((_f2 = (_e2 = message.fragment) === null || _e2 === void 0 ? void 0 : _e2.bytes) === null || _f2 === void 0 ? void 0 : _f2.raw) != void 0;
               return {
                 message: {
                   text: messageData !== null && messageData !== void 0 ? messageData : "Unable to fetch message data",
                   role: message.role,
                   timestamp: message.created
                 },
-                image: isImage
+                image: isImage,
+                messageId: message.id
               };
             });
           }
+          QGPTView_1.default.contextSelectionModal = new ContextSelectionModal_1.default();
+          yield QGPTView_1.default.contextSelectionModal.debouncedConversationChangeHandler(state.pieces.conversationId);
         }
         yield QGPTView_1.default.createGPTView({
           containerVar: document.getElementById("gpt-tab"),
@@ -46404,7 +47498,8 @@ var require_view = __commonJS({
         CopilotStreamController_1.default.getInstance();
         ModelProgressController_1.default.getInstance();
         ConversationsStreamController_1.default.getInstance();
-        if ((_e = LLMConfigModal_1.default.selectedModel) === null || _e === void 0 ? void 0 : _e.length) {
+        Directives_1.default.getInstance().initDirectives((_f = (_e = state === null || state === void 0 ? void 0 : state.pieces) === null || _e === void 0 ? void 0 : _e.directives) !== null && _f !== void 0 ? _f : []);
+        if ((_g = LLMConfigModal_1.default.selectedModel) === null || _g === void 0 ? void 0 : _g.length) {
           fetch(`http://localhost:${exports.port}/model/${LLMConfigModal_1.default.selectedModel}`).then((res) => res.json()).catch(() => LLMConfigModal_1.default.selectedModel = "");
         }
         if (!QGPTView_1.default.contextSelectionModal) {
@@ -46432,11 +47527,391 @@ var require_view = __commonJS({
       exports.loadContext = params.loadContext;
       exports.track = params.track;
       exports.openLink = params.openLink;
+      exports.insertAtCursor = params.insertAtCursor;
+      exports.getRecentFiles = params.getRecentFiles;
+      exports.getWorkspacePaths = params.getWorkspacePaths;
       if (params.copyToClipboard)
         exports.copyToClipboard = params.copyToClipboard;
+      if (params.runInTerminal)
+        exports.runInTerminal = params.runInTerminal;
       return (0, exports.connectionPoller)();
     }
     exports.initCopilot = initCopilot2;
+  }
+});
+
+// ../copilot-ts/dist/utils/shuffle.js
+var require_shuffle = __commonJS({
+  "../copilot-ts/dist/utils/shuffle.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+    exports.default = shuffleArray;
+  }
+});
+
+// ../copilot-ts/dist/components/Commands.js
+var require_Commands = __commonJS({
+  "../copilot-ts/dist/components/Commands.js"(exports) {
+    "use strict";
+    var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __importDefault = exports && exports.__importDefault || function(mod) {
+      return mod && mod.__esModule ? mod : { "default": mod };
+    };
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var pieces_os_client_1 = require_dist();
+    var ConnectorSingleton_1 = __importDefault(require_ConnectorSingleton());
+    var CopilotStreamController_1 = __importDefault(require_CopilotStreamController());
+    var view_1 = require_view();
+    var QGPTView_1 = __importDefault(require_QGPTView());
+    var globals_1 = require_globals();
+    var QGPTViewBuilder_1 = __importDefault(require_QGPTViewBuilder());
+    var const_1 = require_const();
+    var SlashCommandEnum;
+    (function(SlashCommandEnum2) {
+      SlashCommandEnum2["SAVE"] = "save";
+      SlashCommandEnum2["SAVEALL"] = "saveall";
+      SlashCommandEnum2["MODIFY"] = "modify";
+      SlashCommandEnum2["EXPLAIN"] = "explain";
+      SlashCommandEnum2["WHO"] = "who";
+      SlashCommandEnum2["COMMENT"] = "comment";
+      SlashCommandEnum2["HELP"] = "help";
+    })(SlashCommandEnum || (SlashCommandEnum = {}));
+    var Commands = class {
+      constructor() {
+        this.selectedIndex = 0;
+        this.commandToDescription = {
+          // map a command to its description
+          help: "What is this anyways?",
+          modify: "Modify the code to suit my needs.",
+          who: "Who should I ask about this?",
+          save: "Save the last code snippet.",
+          saveall: "Save all the code snippets.",
+          comment: "Add comments to the code.",
+          explain: "Robot, please explain the code."
+        };
+        this.commandArray = Object.values(
+          // array of commands
+          SlashCommandEnum
+        );
+        const completionContainer = (0, globals_1.createDiv)(document.getElementById("gpt-tab"));
+        this.containerEl = completionContainer;
+        completionContainer.classList.add("z-10", "w-11/12", "max-w-xs", "rounded", "bg-[var(--background-secondary)]", "absolute", "bottom-24", "hidden", "flex", "flex-col");
+        (0, view_1.getApplication)().then((application) => {
+          if ((application === null || application === void 0 ? void 0 : application.name) === pieces_os_client_1.ApplicationNameEnum.Obsidian) {
+            completionContainer.classList.remove("bottom-24");
+            completionContainer.classList.add("bottom-28");
+          }
+        });
+        this.buildCommandElements(Object.values(SlashCommandEnum));
+      }
+      static getInstance() {
+        var _a;
+        return (_a = this.instance) !== null && _a !== void 0 ? _a : this.instance = new Commands();
+      }
+      /**
+       * This is here because the completion elements are mounted to the container, which gets cleared each time you navigate to a new conversation
+       * so we need to call constructor again and remount
+       * @returns void
+       */
+      refreshInstance() {
+        var _a;
+        (_a = document.getElementById("gpt-tab")) === null || _a === void 0 ? void 0 : _a.appendChild(this.containerEl);
+      }
+      /**
+       * This is the handler for up or down arrows
+       * @param up if we are moving up
+       */
+      changeSelection(up, prompt) {
+        var _a, _b;
+        (_a = this.containerEl.children[this.selectedIndex]) === null || _a === void 0 ? void 0 : _a.classList.remove("border-[var(--text-accent)]", "border");
+        const searchSize = this.performSearch(prompt).length - 1;
+        if (up && this.selectedIndex < searchSize) {
+          this.selectedIndex++;
+        } else if (up && this.selectedIndex >= searchSize) {
+          this.selectedIndex = 0;
+        } else if (!up && this.selectedIndex > 0) {
+          this.selectedIndex--;
+        } else if (!up && this.selectedIndex <= 0) {
+          this.selectedIndex = searchSize;
+        }
+        (_b = this.containerEl.children[this.selectedIndex]) === null || _b === void 0 ? void 0 : _b.classList.add("border-[var(--text-accent)]", "border");
+      }
+      /**
+       * This will rerender the list of command completions available to the user
+       * @param commands the list of commands to render
+       */
+      buildCommandElements(commands) {
+        var _a;
+        (0, globals_1.emptyEl)(this.containerEl);
+        this.selectedIndex = 0;
+        let i = 0;
+        for (const command of commands) {
+          const slashCommandContainer = (0, globals_1.createDiv)(this.containerEl);
+          if (i === 0) {
+            slashCommandContainer.classList.add("border-[var(--text-accent)]");
+          }
+          i++;
+          slashCommandContainer.classList.add("first:rounded-t", "first:border-b", "last:rounded-b", "last:border-b", "border-t", "border-x", "border-solid", "bg-[var(--background-primary)]", "border-[var(--background-modifier-border)]", "p-1", "flex", "flex-row", "justify-between", "hover:bg-[var(--background-secondary)]", "cursor-pointer");
+          slashCommandContainer.onclick = (e) => {
+            QGPTView_1.default.inputBox.focus();
+            QGPTView_1.default.inputBox.innerText = `/${command}`;
+            QGPTView_1.default.handleChat({
+              inputText: QGPTView_1.default.inputBox,
+              textAreaDiv: QGPTView_1.default.textAreaDiv,
+              currentConversation: QGPTView_1.default.currentConversation,
+              introText: QGPTView_1.default.introText
+            });
+          };
+          const commandText = (0, globals_1.createDiv)(slashCommandContainer);
+          commandText.classList.add("font-semibold");
+          commandText.innerText = "/" + command;
+          const commandDesc = (0, globals_1.createDiv)(slashCommandContainer);
+          commandDesc.classList.add("text-xs", "text-[var(--text-faint)]");
+          commandDesc.innerText = (_a = this.commandToDescription[command]) !== null && _a !== void 0 ? _a : "Undefined";
+        }
+      }
+      /**
+       * This will parse the command out of a prompt
+       * @param prompt the prompt to parse
+       * @returns the command if it exists, or an empty string
+       */
+      parseCommand(prompt) {
+        const trimmed = prompt.trim();
+        let i = 1;
+        if (!trimmed.startsWith("/"))
+          return "";
+        else
+          while (i < prompt.length && trimmed[i] !== " ") {
+            if (i > 1e3)
+              return "";
+            i++;
+          }
+        return prompt.slice(1, i).trim();
+      }
+      /**
+       * Will extract the user prompt from a string that contains a command
+       * @param command the command comtained in the prompt
+       * @param prompt the prompt to parse
+       * @returns the extracted prompt
+       */
+      parsePrompt(command, prompt) {
+        return prompt.slice(command.length + 1).trim();
+      }
+      /**
+       * This will return the list of commands that have an exact string containing the user's input
+       * @param prompt the prmopt tp parse
+       * @returns the list of searched commands
+       */
+      performSearch(prompt) {
+        if (!prompt.trim().startsWith("/"))
+          return [];
+        const query = this.parseCommand(prompt);
+        const results = this.commandArray.filter((el) => el.includes(query));
+        return results;
+      }
+      /**
+       * This will update the completion box with what the user has typed
+       * @param prompt the user's prompt
+       */
+      updateWithPrompt(prompt) {
+        this.buildCommandElements(this.performSearch(prompt));
+      }
+      /**
+       * This will get the command that the user's prompt is closest to
+       * @param prompt the user's prompt
+       * @returns
+       */
+      getCompletion(prompt) {
+        return this.performSearch(prompt)[this.selectedIndex];
+      }
+      /**
+       * hide the completion box
+       */
+      hide() {
+        this.containerEl.classList.add("hidden");
+      }
+      /**
+       * show the completion box
+       */
+      show() {
+        this.containerEl.classList.remove("hidden");
+      }
+      /**
+       * Helper to create a seededAsset
+       * @param codeBlock the code block
+       * @param application the application
+       * @returns
+       */
+      createSeed(codeBlock, application) {
+        return {
+          seed: {
+            type: pieces_os_client_1.SeedTypeEnum.Asset,
+            asset: {
+              application,
+              format: {
+                fragment: {
+                  string: {
+                    raw: codeBlock.text
+                  },
+                  metadata: {
+                    ext: codeBlock.extension
+                  }
+                }
+              }
+            }
+          }
+        };
+      }
+      /**
+       * This will parse and run a command if one is found
+       * @param prompt the user's prompt
+       * @param textAreaDiv the copilot text container
+       * @returns the parsed prompt and whether or not a command was executed
+       */
+      executeCommand(prompt, textAreaDiv) {
+        return __awaiter(this, void 0, void 0, function* () {
+          const command = this.parseCommand(prompt);
+          const parsedPrompt = this.parsePrompt(command, prompt);
+          const ret = { commandExecuted: false, prompt: "" };
+          if (command === SlashCommandEnum.COMMENT) {
+            ret.prompt = `Add comments to this code ${parsedPrompt}`;
+          } else if (command === SlashCommandEnum.EXPLAIN) {
+            ret.prompt = `Explain this code ${parsedPrompt}`;
+          } else if (command === SlashCommandEnum.HELP) {
+            ret.commandExecuted = true;
+            const queryEl = QGPTViewBuilder_1.default.buildQueryElement("What even is this anyways?", [], false);
+            textAreaDiv.appendChild(queryEl.queryDiv);
+            const answerEl = QGPTViewBuilder_1.default.buildAnswerElement(const_1.Constants.COPILOT_HELP_TEXT, []);
+            textAreaDiv.appendChild(answerEl.answerDiv);
+            CopilotStreamController_1.default.getInstance().forceScroll(answerEl.answerText);
+          } else if (command === SlashCommandEnum.MODIFY) {
+            ret.prompt = `Modify this code so that it adheres to the following statment: ${parsedPrompt}`;
+          } else if (command === SlashCommandEnum.SAVE) {
+            const queryEl = QGPTViewBuilder_1.default.buildQueryElement("Save the last code snippet", [], false);
+            textAreaDiv.appendChild(queryEl.queryDiv);
+            if (!QGPTView_1.default.codeBlocks.length) {
+              const answerEl = QGPTViewBuilder_1.default.buildAnswerElement("There does not appear to be any code blocks present in the chat", []);
+              textAreaDiv.appendChild(answerEl.answerDiv);
+              ret.commandExecuted = true;
+              return ret;
+            }
+            const application = yield (0, view_1.getApplication)();
+            if (!application) {
+              return ret;
+            }
+            const codeBlock = QGPTView_1.default.codeBlocks[QGPTView_1.default.codeBlocks.length - 1];
+            ConnectorSingleton_1.default.getInstance().assetsApi.assetsCreateNewAsset(this.createSeed(codeBlock, application)).then(() => {
+              const answerEl = QGPTViewBuilder_1.default.buildAnswerElement("Successfully saved code snippet", []);
+              textAreaDiv.appendChild(answerEl.answerDiv);
+            }).catch(() => {
+              const answerEl = QGPTViewBuilder_1.default.buildAnswerElement("Failed to save code snippet, please ensure that Pieces OS is installed, updated, and running. If the problem persists, please contact support@pieces.app", []);
+              textAreaDiv.appendChild(answerEl.answerDiv);
+            });
+            ret.commandExecuted = true;
+          } else if (command === SlashCommandEnum.SAVEALL) {
+            const queryEl = QGPTViewBuilder_1.default.buildQueryElement("Save all the code snippets", [], false);
+            textAreaDiv.appendChild(queryEl.queryDiv);
+            const application = yield (0, view_1.getApplication)();
+            if (!application) {
+              return ret;
+            }
+            const results = [];
+            for (let codeBlock of QGPTView_1.default.codeBlocks) {
+              results.push(ConnectorSingleton_1.default.getInstance().assetsApi.assetsCreateNewAsset(this.createSeed(codeBlock, application)));
+            }
+            yield Promise.all(results).then(() => {
+              const answerEl = QGPTViewBuilder_1.default.buildAnswerElement("Successfully saved code snippets", []);
+              textAreaDiv.appendChild(answerEl.answerDiv);
+            }).catch(() => {
+              const answerEl = QGPTViewBuilder_1.default.buildAnswerElement("Failed to save snippets, please ensure that Pieces OS is installed, updated, and running. If the problem persists, please contact support@pieces.app", []);
+              textAreaDiv.appendChild(answerEl.answerDiv);
+            });
+            ret.commandExecuted = true;
+          } else if (command === SlashCommandEnum.WHO) {
+            const queryEl = QGPTViewBuilder_1.default.buildQueryElement("Who should I ask about this?", [], false);
+            textAreaDiv.appendChild(queryEl.queryDiv);
+            const loadingAnswerEl = QGPTViewBuilder_1.default.buildAnswerElement("Analyzing your question, please wait...", []);
+            textAreaDiv.appendChild(loadingAnswerEl.answerDiv);
+            const peoplePromise = ConnectorSingleton_1.default.getInstance().QGPTApi.personsRelated({
+              transferables: false,
+              qGPTPersonsRelatedInput: {
+                conversation: {
+                  iterable: QGPTView_1.default.currentConversation.map((el) => el.message)
+                }
+              }
+            }).catch(() => {
+              error = true;
+              answerText = "Failed to get related people, please ensure that Pieces OS is installed, running, and updated. If the issue persists, please contact support@pieces.app.";
+              return { persons: { iterable: [] } };
+            });
+            const timeouts = [];
+            timeouts.push(setTimeout(() => {
+              loadingAnswerEl.answerText.innerText = "Scanning knowledge base for relevant experts...";
+            }, 2e3));
+            timeouts.push(setTimeout(() => {
+              loadingAnswerEl.answerText.innerText = "Identifying top authorities on your topic...";
+            }, 4e3));
+            timeouts.push(setTimeout(() => {
+              loadingAnswerEl.answerText.innerText = "Executing machine learning model...";
+            }, 6e3));
+            timeouts.push(setTimeout(() => {
+              loadingAnswerEl.answerText.innerText = "Finalizing people recommendations...";
+            }, 8e3));
+            timeouts.push(setTimeout(() => {
+              loadingAnswerEl.answerText.innerText = "Almost there...";
+            }, 1e4));
+            CopilotStreamController_1.default.getInstance().forceScroll(loadingAnswerEl.answerText);
+            let answerText = "According to this conversation, you should ask the following people about this";
+            let error = false;
+            const people = yield peoplePromise;
+            timeouts.forEach(clearTimeout);
+            if (!error && !people.persons.iterable.length) {
+              answerText = "I was unable to find related people this time. Don't worry though, I will get better at this soon!";
+            }
+            loadingAnswerEl.answerDiv.remove();
+            const answerEl = QGPTViewBuilder_1.default.buildAnswerElement(answerText, [], people);
+            textAreaDiv.appendChild(answerEl.answerDiv);
+            CopilotStreamController_1.default.getInstance().forceScroll(answerEl.answerText);
+            ret.commandExecuted = true;
+          }
+          return ret;
+        });
+      }
+    };
+    exports.default = Commands;
   }
 });
 
@@ -46476,7 +47951,7 @@ var require_QGPTView = __commonJS({
     };
     var _a;
     Object.defineProperty(exports, "__esModule", { value: true });
-    var client_1 = require_dist();
+    var pieces_os_client_1 = require_dist();
     var _1 = require_view();
     var ConnectorSingleton_1 = __importDefault(require_ConnectorSingleton());
     var ContextSelectionModal_1 = __importDefault(require_ContextSelectionModal());
@@ -46492,6 +47967,9 @@ var require_QGPTView = __commonJS({
     var marked_1 = require_marked();
     var ConversationList_1 = require_ConversationList();
     var globals_1 = require_globals();
+    var shuffle_1 = __importDefault(require_shuffle());
+    var Commands_1 = __importDefault(require_Commands());
+    var Directives_1 = __importDefault(require_Directives());
     var QGPTView6 = class {
       /**
         Creates top level elements for the copilot view
@@ -46502,6 +47980,9 @@ var require_QGPTView = __commonJS({
       static createGPTView({ containerVar, newInstance = false, query, state }) {
         var _b, _c, _d, _e, _f, _g;
         return __awaiter(this, void 0, void 0, function* () {
+          if (!this.introQueries) {
+            this.introQueries = ConnectorSingleton_1.default.getInstance().HintsApi.hintsSnapshot();
+          }
           _a.relevant = query === null || query === void 0 ? void 0 : query.relevant;
           _a.codeBlocks = [];
           this.onLoad();
@@ -46529,22 +48010,31 @@ var require_QGPTView = __commonJS({
           const application = yield (0, _1.getApplication)();
           containerVar.className = "";
           containerVar.innerHTML = "";
-          containerVar.classList.add("m-0", "flex", "flex-col", "overflow-hidden", (application === null || application === void 0 ? void 0 : application.name) === client_1.ApplicationNameEnum.JupyterHub ? "h-[calc(100%-28px)]" : "h-full", "w-full");
+          containerVar.classList.add("m-0", "flex", "flex-col", "overflow-hidden", (application === null || application === void 0 ? void 0 : application.name) === pieces_os_client_1.ApplicationNameEnum.JupyterHub ? "h-[calc(100%-28px)]" : "h-full", "w-full");
           const containerDiv = containerVar;
-          if ((application === null || application === void 0 ? void 0 : application.name) !== client_1.ApplicationNameEnum.VsCode)
+          Commands_1.default.getInstance().refreshInstance();
+          Directives_1.default.getInstance().refreshInstance();
+          if ((application === null || application === void 0 ? void 0 : application.name) !== pieces_os_client_1.ApplicationNameEnum.VsCode)
             containerVar.classList.add("pt-6");
-          if ((application === null || application === void 0 ? void 0 : application.name) === client_1.ApplicationNameEnum.JupyterHub) {
+          if ((application === null || application === void 0 ? void 0 : application.name) === pieces_os_client_1.ApplicationNameEnum.JupyterHub) {
             containerVar.classList.add("pt-8", "px-2");
           }
           const textDiv = document.createElement("div");
-          textDiv.classList.add("shadow-sm", "flex", "flex-col", "basis-full", "overflow-y-scroll", "rounded-xl", "mt-1", "scrollbar-hide", "shadow-[var(--background-modifier-box-shadow)]");
+          textDiv.classList.add("shadow-sm", "flex", "flex-col", "basis-full", "overflow-y-scroll", "rounded", "mt-1", "scrollbar-hide", "shadow-[var(--background-modifier-box-shadow)]");
           containerDiv.appendChild(textDiv);
           const contextDiv = (0, globals_1.createDiv)(textDiv);
           contextDiv.classList.add("flex", "flex-col");
           const actionHeader = (0, globals_1.createDiv)(contextDiv);
-          actionHeader.classList.add("flex", "flex-row", "justify-between", "pt-1", "px-1", "items-center");
-          const conversationTitle = (0, globals_1.createDiv)(contextDiv);
-          conversationTitle.classList.add("text-center", "text-[var(--text-muted)]", "py-1", "text-lg", "font-semibold");
+          actionHeader.classList.add("flex", "flex-row", "pt-1", "px-1", "items-center", "gap-1");
+          const conversationsInfo = (0, globals_1.createDiv)(actionHeader);
+          conversationsInfo.classList.add("flex", "flex-row", "items-center", "gap-1", "cursor-pointer", "hover:text-[var(--text-accent)]");
+          conversationsInfo.onclick = ConversationList_1.toggleConversationBox;
+          const openConversationsButton = (0, globals_1.createDiv)(conversationsInfo);
+          openConversationsButton.classList.add("svg-box", "h-5");
+          openConversationsButton.innerHTML = const_1.Constants.OPEN_PANEL_SVG;
+          openConversationsButton.title = "Open list of Pieces Copilot Conversations";
+          const conversationTitle = (0, globals_1.createDiv)(conversationsInfo);
+          conversationTitle.classList.add("py-1", "text-ellipsis", "line-clamp-1", "break-all", "overflow-hidden", "max-w-[50%]");
           conversationTitle.id = "pieces-current-conversation-title";
           if (_a.conversationId.length) {
             const conversation = yield ConnectorSingleton_1.default.getInstance().conversationApi.conversationGetSpecificConversation({ conversation: _a.conversationId, transferables: false });
@@ -46552,24 +48042,23 @@ var require_QGPTView = __commonJS({
           } else {
             conversationTitle.innerText = "New Conversation";
           }
-          const openConversationsButton = (0, globals_1.createDiv)(actionHeader);
-          openConversationsButton.classList.add("cursor-pointer", "svg-box", "h-5", "hover:text-[var(--text-accent)]");
-          openConversationsButton.innerHTML = const_1.Constants.OPEN_PANEL_SVG;
-          openConversationsButton.onclick = ConversationList_1.toggleConversationBox;
-          openConversationsButton.title = "Open list of Pieces Copilot Conversations";
           const activeModelContainer = (0, globals_1.createDiv)(actionHeader);
-          activeModelContainer.classList.add("cursor-pointer", "items-center");
+          activeModelContainer.classList.add("cursor-pointer", "items-center", "ml-auto", "p-1", "w-full", "justify-end", "flex");
           this.LLMConfigModal.createActiveModelPill(activeModelContainer, yield ModelProgressController_1.default.getInstance().models, false);
-          activeModelContainer.onclick = () => this.LLMConfigModal.open();
+          activeModelContainer.onclick = () => __awaiter(this, void 0, void 0, function* () {
+            yield ModelProgressController_1.default.getInstance().refreshWithSnapshot();
+            this.LLMConfigModal.open();
+          });
           activeModelContainer.title = "Change copilot runtime";
           const textContent = document.createElement("div");
-          textContent.classList.add("flex", "flex-col", "p-2", "rounded-xl", "overflow-y-scroll", "scrollbar-hide", "flex-1");
+          textContent.classList.add("flex", "flex-col", "rounded", "overflow-y-scroll", "scrollbar-hide", "flex-1");
           textDiv.appendChild(textContent);
           let introText;
           if (!((_c = this.currentConversation) === null || _c === void 0 ? void 0 : _c.length) || newInstance) {
             _a.codeBlocks = [];
             textContent.style.display = "none";
             introText = document.createElement("div");
+            this.introText = introText;
             introText.id = "gpt-intro-text";
             const imageHolder = document.createElement("div");
             imageHolder.classList.add("flex", "justify-center", "px-2", "h-auto", "max-w-[80%]");
@@ -46588,7 +48077,7 @@ var require_QGPTView = __commonJS({
             introText.appendChild(titleDiv);
             const introTextSub = document.createElement("p");
             introTextSub.classList.add("text-center", "px-4", "m-0");
-            introTextSub.innerText = ((_d = yield (0, _1.getApplication)()) === null || _d === void 0 ? void 0 : _d.name) === client_1.ApplicationNameEnum.Obsidian ? "Your personal assistant, contextually grounded by the contents of your vault" : "Your personal coding assistant, contextually grounded by your workspace";
+            introTextSub.innerText = ((_d = yield (0, _1.getApplication)()) === null || _d === void 0 ? void 0 : _d.name) === pieces_os_client_1.ApplicationNameEnum.Obsidian ? "Your personal assistant, contextually grounded by the contents of your vault" : "Your personal coding assistant, contextually grounded by your workspace";
             introText.appendChild(introTextSub);
             const setContextIntro = (0, globals_1.createDiv)(introText);
             setContextIntro.innerText = "Set Context";
@@ -46609,18 +48098,225 @@ var require_QGPTView = __commonJS({
             setConversationIntro.innerText = "Select Conversation";
             setConversationIntro.classList.add("cursor-pointer", "text-center", "text-[var(--text-accent)]");
             setConversationIntro.onclick = ConversationList_1.toggleConversationBox;
+            this.introQueries.then((hints) => {
+              if (!hints.iterable.length)
+                return;
+              hints.iterable = (0, shuffle_1.default)(hints.iterable);
+              const introQueries = (0, globals_1.createDiv)(introText);
+              introQueries.classList.add("rounded-lg", "border", "border-solid", "border-[var(--background-modifier-border)]", "p-2", "text-sm", "flex", "flex-col", "w-full", "mt-3");
+              const headerRow = (0, globals_1.createDiv)(introQueries);
+              headerRow.classList.add("flex", "flex-row", "justify-center", "px-2", "items-center", "gap-2");
+              const hintContainer = (0, globals_1.createDiv)(introQueries);
+              hintContainer.classList.add("flex", "flex-col", "gap-2", "text-xs", "p-2", "text-center");
+              const headerText = (0, globals_1.createDiv)(headerRow);
+              headerText.innerText = "Suggestions";
+              headerText.classList.add("text-lg", "text-[var(--text-muted)]");
+              let i = 0;
+              const getNextHints = () => {
+                (0, globals_1.emptyEl)(hintContainer);
+                const nextHints = hints.iterable.slice(i, i + 4);
+                i += 4;
+                for (const hint of nextHints) {
+                  const hintButton = (0, globals_1.createDiv)(hintContainer);
+                  hintButton.classList.add("cursor-pointer", "hover:text-[var(--text-accent)]");
+                  hintButton.innerText = hint.text;
+                  hintButton.onclick = () => __awaiter(this, void 0, void 0, function* () {
+                    var _b2, _c2;
+                    if (!((_b2 = _a.conversationId) === null || _b2 === void 0 ? void 0 : _b2.length) && ((_c2 = hint.asset) === null || _c2 === void 0 ? void 0 : _c2.id)) {
+                      const conversation = yield ConnectorSingleton_1.default.getInstance().conversationsApi.conversationsCreateSpecificConversation({
+                        transferables: false,
+                        seededConversation: {
+                          type: pieces_os_client_1.ConversationTypeEnum.Copilot
+                        }
+                      });
+                      _a.conversationId = conversation.id;
+                      (0, _1.saveState)({
+                        conversation: _a.currentConversation,
+                        conversationId: conversation.id,
+                        selectedModel: LLMConfigModal_1.default.selectedModel,
+                        migration: _1.migration,
+                        codeBlocks: _a.codeBlocks,
+                        directives: Directives_1.default.getInstance().directiveList
+                      });
+                      _a.lastConversationMessage = new Date();
+                      yield ConnectorSingleton_1.default.getInstance().conversationApi.conversationAssociateAsset({ conversation: conversation.id, asset: hint.asset.id });
+                      yield _a.contextSelectionModal.debouncedConversationChangeHandler(conversation.id);
+                    }
+                    inputText.innerText = hint.text;
+                    _a.handleChat({
+                      inputText,
+                      textAreaDiv,
+                      currentConversation: this.currentConversation,
+                      introText
+                    });
+                  });
+                }
+              };
+              const refreshButton = (0, globals_1.createDiv)(headerRow);
+              refreshButton.innerHTML = "&#10227;";
+              refreshButton.classList.add("cursor-pointer", "hover:text-[var(--text-accent)]", "text-xl");
+              refreshButton.onclick = () => {
+                getNextHints();
+              };
+              getNextHints();
+            });
           }
           const hintCol = document.createElement("div");
-          hintCol.classList.add("px-2", "pb-0.5", "max-h-24", "flex", "flex-col");
+          hintCol.classList.add("pb-0.5", "max-h-16", "flex", "flex-col");
           hintCol.id = "gpt-hints-container";
           textDiv.appendChild(hintCol);
           const textAreaDiv = document.createElement("div");
-          textAreaDiv.classList.add("overflow-y-scroll", "scrollbar-hide", "flex", "flex-col", "max-w-full", "gap-4");
+          textAreaDiv.classList.add("overflow-y-scroll", "scrollbar-hide", "flex", "flex-col", "max-w-full", "gap-3", "pt-3");
           textContent.appendChild(textAreaDiv);
+          this.textAreaDiv = textAreaDiv;
           const inputDiv = document.createElement("div");
-          inputDiv.classList.add("flex", "flex-row", "h-fit", "py-4", "rounded-lg", "items-center", "justify-center", "pl-4", "my-2", "shadow-sm", "shadow-[var(--background-modifier-box-shadow)]", "scrollbar-hide");
+          inputDiv.classList.add("border", "border-[var(--background-modifier-border)]", "border-solid", "flex", "flex-row", "h-fit", "py-4", "rounded", "items-center", "justify-center", "pl-4", "my-1", "scrollbar-hide", "gap-2");
           containerDiv.appendChild(inputDiv);
+          const imageButton = (0, globals_1.createDiv)(inputDiv);
+          imageButton.classList.add("svg-box", "h-5", "cursor-pointer", "hover:text-[var(--text-accent)]");
+          imageButton.innerHTML = const_1.Constants.IMAGE_PLUS_SVG;
+          imageButton.title = "Extract code from an image";
+          const fileInput = (0, globals_1.createEl)(inputDiv, "input");
+          fileInput.type = "file";
+          fileInput.accept = "image/png, image/jpeg, image/jpg";
+          fileInput.classList.add("hidden");
+          fileInput.onchange = () => {
+            var _b2;
+            this.generatingResults = true;
+            const file = (_b2 = fileInput.files) === null || _b2 === void 0 ? void 0 : _b2[0];
+            if (file) {
+              const reader = new FileReader();
+              reader.onload = function(e) {
+                var _b3;
+                return __awaiter(this, void 0, void 0, function* () {
+                  const data = (_b3 = e.target) === null || _b3 === void 0 ? void 0 : _b3.result;
+                  yield QGPTViewBuilder_1.default.performOcrAction(data, textAreaDiv);
+                  _a.generatingResults = false;
+                });
+              };
+              reader.readAsArrayBuffer(file);
+            }
+          };
+          imageButton.onclick = () => {
+            fileInput.click();
+          };
+          const commands = Commands_1.default.getInstance();
+          const directives = Directives_1.default.getInstance();
           const inputText = document.createElement("span");
+          inputText.onpaste = (event) => __awaiter(this, void 0, void 0, function* () {
+            var _h;
+            const items = (_h = event.clipboardData) === null || _h === void 0 ? void 0 : _h.items;
+            for (let item of items !== null && items !== void 0 ? items : []) {
+              if (item.kind === "file") {
+                const blob = item.getAsFile();
+                if (blob) {
+                  if (!["image/png", "image/jpeg", "image/jpg"].includes(blob.type))
+                    continue;
+                  const reader = new FileReader();
+                  reader.onload = function(e) {
+                    var _b2;
+                    return __awaiter(this, void 0, void 0, function* () {
+                      const data = (_b2 = e.target) === null || _b2 === void 0 ? void 0 : _b2.result;
+                      _a.generatingResults = true;
+                      yield QGPTViewBuilder_1.default.performOcrAction(data, textAreaDiv);
+                      _a.generatingResults = false;
+                    });
+                  };
+                  reader.readAsArrayBuffer(blob);
+                }
+              }
+            }
+          });
+          const moveCursor = () => {
+            const range = document.createRange();
+            const selection = window.getSelection();
+            range.selectNodeContents(inputText);
+            range.collapse(false);
+            selection === null || selection === void 0 ? void 0 : selection.removeAllRanges();
+            selection === null || selection === void 0 ? void 0 : selection.addRange(range);
+          };
+          inputText.onfocus = () => {
+            if (inputText.innerText.trim().startsWith("/"))
+              commands.show();
+            inputDiv.classList.add("border-[var(--interactive-accent)]");
+            if (inputText.innerText.trim().startsWith("@"))
+              directives.show();
+          };
+          inputText.onblur = () => {
+            setTimeout(() => {
+              commands.hide();
+              directives.hide();
+              inputDiv.classList.remove("border-[var(--interactive-accent)]");
+            }, 250);
+          };
+          const showCompletion = (prompt) => {
+            const command = commands.getCompletion(prompt);
+            const directive = directives.getCompletion(prompt);
+            if (command || directive) {
+              inputText.innerHTML = `<span aria-contenteditable="true" class="text-[var(--text-accent)] pr-1">${command ? "/" : "@"}${command || directive}</span>
+        <span aria-contenteditable="true" class="whitespace-pre-wrap"> ${inputText.innerText.slice((command || directive).length + 1, inputText.innerText.length).trimStart()}</span>`;
+              moveCursor();
+              commands.hide();
+              directives.hide();
+              return true;
+            }
+            return false;
+          };
+          inputText.oninput = (event) => {
+            var _b2;
+            const prompt = (_b2 = inputText.textContent) !== null && _b2 !== void 0 ? _b2 : "";
+            if (prompt.trim().startsWith("/") && !prompt.includes(" "))
+              commands.show();
+            else if (prompt.trim().startsWith("@") && !prompt.includes(" ")) {
+              directives.show();
+            } else {
+              commands.hide();
+              directives.hide();
+            }
+            commands.updateWithPrompt(prompt);
+            directives.updateWithPrompt(prompt);
+            if (!prompt.includes(" ") && !prompt.includes("	")) {
+              inputText.innerHTML = prompt;
+              moveCursor();
+              return;
+            }
+            showCompletion(prompt);
+          };
+          inputText.onkeydown = (event) => {
+            var _b2, _c2, _d2;
+            if (inputText.innerText !== "") {
+              sendDiv.classList.remove("hide");
+            } else {
+              sendDiv.classList.add("hide");
+              return;
+            }
+            if (inputText.innerText.includes(" ")) {
+              if (event.key !== "Enter" || event.shiftKey) {
+                return;
+              }
+              cancelDiv.classList.remove("hide");
+              sendDiv.classList.add("hide");
+              hintCol.innerHTML = "";
+              this.handleChat({
+                inputText,
+                textAreaDiv,
+                currentConversation: this.currentConversation,
+                introText
+              });
+              (0, _1.track)(CopilotAnalytics_enum_1.CopilotAnalytics.SEND_CHAT_ENTER);
+              return;
+            }
+            if (event.key === "ArrowUp" || event.key === "ArrowDown") {
+              Directives_1.default.getInstance().changeSelection(event.key !== "ArrowUp", (_b2 = inputText.textContent) !== null && _b2 !== void 0 ? _b2 : "");
+              Commands_1.default.getInstance().changeSelection(event.key !== "ArrowUp", (_c2 = inputText.textContent) !== null && _c2 !== void 0 ? _c2 : "");
+              event.preventDefault();
+            }
+            if (event.key === "Tab" || event.key === "Enter") {
+              const completed = showCompletion((_d2 = inputText.textContent) !== null && _d2 !== void 0 ? _d2 : "");
+              if (completed)
+                event.preventDefault();
+            }
+          };
           this.inputBox = inputText;
           inputText.title = "Ask a question about your workspace";
           inputText.contentEditable = "true";
@@ -46647,7 +48343,7 @@ var require_QGPTView = __commonJS({
           });
           const actionDiv = (0, globals_1.createDiv)(containerDiv);
           actionDiv.classList.add("flex", "flex-row", "justify-between");
-          if ((application === null || application === void 0 ? void 0 : application.name) === client_1.ApplicationNameEnum.Obsidian)
+          if ((application === null || application === void 0 ? void 0 : application.name) === pieces_os_client_1.ApplicationNameEnum.Obsidian)
             actionDiv.classList.add("mb-1");
           const cancelDiv = document.createElement("div");
           cancelDiv.classList.add("hide", "w-fit", "items-center", "flex", "pl-0.5", "cursor-pointer", "mb-2.5", "hover:text-[var(--text-accent)]", "gap-1");
@@ -46655,15 +48351,31 @@ var require_QGPTView = __commonJS({
           cancelSpan.innerHTML = "&plus;";
           cancelSpan.classList.add("w-fit", "font-semibold", "text-sm");
           cancelDiv.appendChild(cancelSpan);
-          (0, globals_1.setText)((0, globals_1.createDiv)(cancelDiv), "New Chat");
+          (0, globals_1.setText)((0, globals_1.createDiv)(cancelDiv), "New");
           actionDiv.appendChild(cancelDiv);
+          if ((application === null || application === void 0 ? void 0 : application.name) !== pieces_os_client_1.ApplicationNameEnum.Obsidian) {
+            const feedBackButton = (0, globals_1.createDiv)(actionDiv);
+            feedBackButton.classList.add("cursor-pointer", "hover:text-[var(--text-accent)]", "flex", "flex-row", "items-center", "gap-1", "mb-2.5");
+            feedBackButton.onclick = () => __awaiter(this, void 0, void 0, function* () {
+              var _j;
+              const models = yield ModelProgressController_1.default.getInstance().models;
+              const model = models.iterable.find((el) => el.id === LLMConfigModal_1.default.selectedModel);
+              (0, _1.openLink)(`https://getpieces.typeform.com/to/VaYnPXO9?os=e1bb93ae-defb-46c4-844b-7cbf5d508aa7?os=${application === null || application === void 0 ? void 0 : application.id}&platform=${_1.platform}&model=${(_j = model === null || model === void 0 ? void 0 : model.name) !== null && _j !== void 0 ? _j : "GPT_3.5_Turbo"}`);
+            });
+            feedBackButton.title = "Leave feedback about the Pieces Copilot";
+            const feedbackIcon = (0, globals_1.createDiv)(feedBackButton);
+            feedbackIcon.classList.add("svg-box", "h-4");
+            feedbackIcon.innerHTML = const_1.Constants.MESSAGE_SQUARE_PLUS_SVG;
+            const feedbackText = (0, globals_1.createDiv)(feedBackButton);
+            feedbackText.innerText = "Feedback";
+          }
           const contextBtn = (0, globals_1.createDiv)(actionDiv);
           contextBtn.classList.add("flex", "flex-row", "items-center", "justify-center", "gap-1", "hover:text-[var(--text-accent)]", "cursor-pointer", "mb-2.5");
           const svgBox = (0, globals_1.createDiv)(contextBtn, "cursor-pointer");
           svgBox.classList.add("flex", "items-center");
           svgBox.innerHTML = const_1.Constants.SETTINGS_SVG;
           const contextText = (0, globals_1.createDiv)(contextBtn);
-          contextText.innerText = "Manage Context";
+          contextText.innerText = "Context";
           contextBtn.onclick = () => {
             ConversationsStreamController_1.default.getInstance().resetConnection();
             if (!this.contextSelectionModal) {
@@ -46673,7 +48385,7 @@ var require_QGPTView = __commonJS({
             (0, _1.track)(CopilotAnalytics_enum_1.CopilotAnalytics.CONTEXT_SELECTION_BUTTON);
           };
           cancelDiv.onclick = () => __awaiter(this, void 0, void 0, function* () {
-            var _h;
+            var _k;
             this.currentConversation = [];
             _a.codeBlocks = [];
             this.generatingResults = false;
@@ -46687,36 +48399,16 @@ var require_QGPTView = __commonJS({
               conversation: [],
               selectedModel: LLMConfigModal_1.default.selectedModel,
               migration: _1.migration,
-              conversationId: (_h = this.conversationId) !== null && _h !== void 0 ? _h : "",
-              codeBlocks: _a.codeBlocks
+              conversationId: (_k = this.conversationId) !== null && _k !== void 0 ? _k : "",
+              codeBlocks: _a.codeBlocks,
+              directives: Directives_1.default.getInstance().directiveList
             });
             (0, _1.track)(CopilotAnalytics_enum_1.CopilotAnalytics.CLEAR_CHAT_BUTTON);
-          });
-          inputText.onkeyup = (evt) => __awaiter(this, void 0, void 0, function* () {
-            if (inputText.innerText !== "") {
-              sendDiv.classList.remove("hide");
-            } else {
-              sendDiv.classList.add("hide");
-              return;
-            }
-            if (evt.key !== "Enter" || evt.shiftKey) {
-              return;
-            }
-            cancelDiv.classList.remove("hide");
-            sendDiv.classList.add("hide");
-            hintCol.innerHTML = "";
-            yield this.handleChat({
-              inputText,
-              textAreaDiv,
-              currentConversation: this.currentConversation,
-              introText
-            });
-            (0, _1.track)(CopilotAnalytics_enum_1.CopilotAnalytics.SEND_CHAT_ENTER);
           });
           if (((_e = state === null || state === void 0 ? void 0 : state.conversation) === null || _e === void 0 ? void 0 : _e.length) && !newInstance && !query) {
             _a.codeBlocks = (_f = state === null || state === void 0 ? void 0 : state.codeBlocks) !== null && _f !== void 0 ? _f : [];
             _a.currentConversation = state.conversation;
-            this.buildCurrentConversation(textAreaDiv, inputText, introText, state);
+            _a.buildCurrentConversation(textAreaDiv, inputText, introText, state);
             cancelDiv.classList.remove("hide");
           }
           if (query) {
@@ -46738,6 +48430,7 @@ ${query.relevant.text}
               query
             });
           }
+          _a.createScrollButton();
         });
       }
       /**
@@ -46790,6 +48483,7 @@ ${query.relevant.text}
     QGPTView6.relevant = void 0;
     QGPTView6.codeBlocks = [];
     QGPTView6.generatingResults = false;
+    QGPTView6.hideHints = false;
     QGPTView6.getUserSVG = () => {
       return _a.userSVG;
     };
@@ -46797,15 +48491,17 @@ ${query.relevant.text}
       var _b, _c, _d;
       state.conversation.forEach((element) => {
         var _b2, _c2;
-        if (element.message.role === client_1.QGPTConversationMessageRoleEnum.User) {
+        if (element.message.role === pieces_os_client_1.QGPTConversationMessageRoleEnum.User) {
           if (element.files) {
             _a.relevant = void 0;
             textAreaDiv.append(_a.buildFilesDetailsEl(element.files).answerDiv);
           }
-          const queryDiv = QGPTViewBuilder_1.default.buildQueryElement(element.message, [], element.image);
+          const { queryDiv, queryAnswerText, queryTextContainer } = QGPTViewBuilder_1.default.buildQueryElement(element.message, [], element.image);
+          QGPTViewBuilder_1.default.addMessageActions(queryTextContainer, true, element.messageId);
           textAreaDiv.append(queryDiv);
-        } else if (element.message.role === client_1.QGPTConversationMessageRoleEnum.Assistant) {
-          const { answerDiv } = QGPTViewBuilder_1.default.buildAnswerElement(element.message, (_b2 = element.relevant) !== null && _b2 !== void 0 ? _b2 : []);
+        } else if (element.message.role === pieces_os_client_1.QGPTConversationMessageRoleEnum.Assistant) {
+          const { answerDiv, answerText, textContainer } = QGPTViewBuilder_1.default.buildAnswerElement(element.message, (_b2 = element.relevant) !== null && _b2 !== void 0 ? _b2 : []);
+          QGPTViewBuilder_1.default.addMessageActions(textContainer, false, element.messageId);
           textAreaDiv.append(answerDiv);
           if ((_c2 = element.relevant) === null || _c2 === void 0 ? void 0 : _c2.length) {
             const relevantDiv = QGPTViewBuilder_1.default.buildRelevantElement({
@@ -46866,7 +48562,7 @@ ${sortedPaths.map((el) => `- ${el}`).join("\n")}
         });
         return;
       }
-      const curQuery = (_c = (_b = inputText.textContent) === null || _b === void 0 ? void 0 : _b.trim()) !== null && _c !== void 0 ? _c : "";
+      let curQuery = (_c = (_b = inputText.textContent) === null || _b === void 0 ? void 0 : _b.trim()) !== null && _c !== void 0 ? _c : "";
       inputText.innerText = "";
       if (curQuery == "") {
         return;
@@ -46879,14 +48575,28 @@ ${sortedPaths.map((el) => `- ${el}`).join("\n")}
         textAreaDiv.parentElement.style.display = "flex";
         introText.remove();
       }
+      const commandResult = yield Commands_1.default.getInstance().executeCommand(curQuery, textAreaDiv);
+      if (commandResult.commandExecuted) {
+        _a.generatingResults = false;
+        return;
+      }
+      const directivePrompt = yield Directives_1.default.getInstance().executeDirective(curQuery);
+      if (directivePrompt.executed && !directivePrompt.prompt) {
+        _a.generatingResults = false;
+        return;
+      }
+      curQuery = directivePrompt.executed ? directivePrompt.prompt : commandResult.prompt || curQuery;
+      if (!curQuery && !query)
+        return;
       if (query && query.files) {
         const pathsDiv = _a.buildFilesDetailsEl(query.files);
         textAreaDiv.append(pathsDiv.answerDiv);
       }
-      const queryDiv = QGPTViewBuilder_1.default.buildQueryElement(curQuery, [], false);
+      const { queryDiv, queryTextContainer } = QGPTViewBuilder_1.default.buildQueryElement(curQuery, [], false);
       textAreaDiv.append(queryDiv);
       const { answerDiv, answerText } = QGPTViewBuilder_1.default.buildAnswerElement("Let's see what I got here...", []);
       textAreaDiv.append(answerDiv);
+      CopilotStreamController_1.default.getInstance().forceScroll(answerText);
       const startDate = new Date();
       setTimeout(() => {
         if (answerText.innerText == "Let's see what I got here...") {
@@ -46912,23 +48622,26 @@ ${sortedPaths.map((el) => `- ${el}`).join("\n")}
         return;
       }
       if (result) {
+        QGPTViewBuilder_1.default.addMessageActions(queryTextContainer, true, result.queryId);
         currentConversation.push({
           message: {
             text: curQuery,
-            role: client_1.QGPTConversationMessageRoleEnum.User,
+            role: pieces_os_client_1.QGPTConversationMessageRoleEnum.User,
             timestamp: { value: startDate }
           },
           files: query === null || query === void 0 ? void 0 : query.files,
-          image: false
+          image: false,
+          messageId: result.queryId
         });
         currentConversation.push({
           message: {
             text: result.answer,
-            role: client_1.QGPTConversationMessageRoleEnum.Assistant,
+            role: pieces_os_client_1.QGPTConversationMessageRoleEnum.Assistant,
             timestamp: { value: new Date() }
           },
           image: false,
-          relevant: result.relevant.iterable
+          relevant: result.relevant.iterable,
+          messageId: result.answerId
         });
         _a.currentConversation = currentConversation;
         (0, _1.saveState)({
@@ -46936,21 +48649,12 @@ ${sortedPaths.map((el) => `- ${el}`).join("\n")}
           selectedModel: LLMConfigModal_1.default.selectedModel,
           migration: _1.migration,
           conversationId: (_d = _a.conversationId) !== null && _d !== void 0 ? _d : "",
-          codeBlocks: _a.codeBlocks
+          codeBlocks: _a.codeBlocks,
+          directives: Directives_1.default.getInstance().directiveList
         });
         const responseText = result.answer;
         const controller = CopilotStreamController_1.default.getInstance();
         if (responseText && result.relevant.iterable.length) {
-          let isAtBottom = controller.isAtBottom(answerText);
-          const relevantDiv = QGPTViewBuilder_1.default.buildRelevantElement({
-            answerDiv,
-            files: result.relevant.iterable
-          });
-          if (relevantDiv) {
-            textAreaDiv.append(relevantDiv);
-          }
-          if (isAtBottom)
-            controller.forceScroll(answerText);
           ConnectorSingleton_1.default.getInstance().QGPTApi.hints({
             qGPTHintsInput: {
               query: curQuery,
@@ -46971,9 +48675,10 @@ ${sortedPaths.map((el) => `- ${el}`).join("\n")}
                 selectedModel: LLMConfigModal_1.default.selectedModel,
                 migration: _1.migration,
                 conversationId: (_b2 = _a.conversationId) !== null && _b2 !== void 0 ? _b2 : "",
-                codeBlocks: _a.codeBlocks
+                codeBlocks: _a.codeBlocks,
+                directives: Directives_1.default.getInstance().directiveList
               });
-              isAtBottom = controller.isAtBottom(answerText);
+              const isAtBottom = controller.isAtBottom(answerText);
               _a.renderHints({
                 hints: hintsRes,
                 inputText,
@@ -46991,19 +48696,52 @@ ${sortedPaths.map((el) => `- ${el}`).join("\n")}
       }
       _a.generatingResults = false;
     });
+    QGPTView6.createScrollButton = () => {
+      const scrollButton = (0, globals_1.createDiv)(document.body);
+      scrollButton.classList.add("bottom-32", "right-2", "absolute", "hover:text-[var(--text-accent)]", "text-[var(--text-muted)]", "h-8", "hidden", "cursor-pointer");
+      scrollButton.innerHTML = const_1.Constants.ARROW_DOWN_CIRCLE_SVG;
+      scrollButton.onclick = () => {
+        _a.textAreaDiv.scrollTop = _a.textAreaDiv.scrollHeight;
+      };
+      _a.textAreaDiv.onscroll = () => {
+        if (_a.textAreaDiv.scrollTop + _a.textAreaDiv.offsetHeight >= _a.textAreaDiv.scrollHeight - 1) {
+          scrollButton.classList.add("hidden");
+        } else {
+          scrollButton.classList.remove("hidden");
+        }
+      };
+    };
     QGPTView6.renderHints = ({ hints, inputText, textAreaDiv, introText }) => {
       const hintCol = document.getElementById("gpt-hints-container");
       hintCol.innerHTML = "";
-      const hintTitle = (0, globals_1.createEl)(hintCol, "p");
-      hintTitle.innerText = "Suggested Queries: ";
-      hintTitle.classList.add("text-[var(--text-faint)]", "mb-1", "text-xs", "m-0", "py-1");
+      const hintHeader = (0, globals_1.createDiv)(hintCol);
+      hintHeader.classList.add("py-1", "flex", "flex-row", "w-fit", "items-center", "text-[var(--text-faint)]", "hover:text-[var(--text-accent)]", "cursor-pointer");
+      const hintTitle = (0, globals_1.createEl)(hintHeader, "p");
+      hintTitle.innerText = "Suggested Queries ";
+      hintTitle.classList.add("text-xs", "m-0");
+      const collapseHints = (0, globals_1.createDiv)(hintHeader);
+      collapseHints.classList.add("svg-box", "h-4", "pl-2", "cursor-pointer");
+      collapseHints.innerHTML = _a.hideHints ? const_1.Constants.CHEVRON_UP_SVG : const_1.Constants.CHEVRON_DOWN_SVG;
       const btnContainer = (0, globals_1.createDiv)(hintCol);
       btnContainer.classList.add("flex-col", "overflow-y-scroll", "scrollbar-hide", "gap-1", "flex");
+      if (_a.hideHints)
+        btnContainer.classList.add("hidden");
+      hintHeader.onclick = () => {
+        _a.hideHints = !_a.hideHints;
+        if (_a.hideHints) {
+          collapseHints.innerHTML = const_1.Constants.CHEVRON_UP_SVG;
+          btnContainer.classList.add("hidden");
+        } else {
+          collapseHints.innerHTML = const_1.Constants.CHEVRON_DOWN_SVG;
+          btnContainer.classList.remove("hidden");
+        }
+      };
       for (let i = 0; i < hints.answers.iterable.length; i++) {
-        const hintButton = QGPTComponentBuilder_1.default.createHintButton(hints.answers.iterable[i].text);
+        hints.answers.iterable[i].text = hints.answers.iterable[i].text.replace(/Possible follow-up questions:\n?\d*.?\s?/g, "");
+        const hintButton = QGPTComponentBuilder_1.default.createHintButton(hints.answers.iterable[i].text.trim());
         hintButton.onclick = () => {
           hintCol.innerHTML = "";
-          inputText.innerText = hints.answers.iterable[i].text;
+          inputText.innerText = hints.answers.iterable[i].text.trim();
           _a.handleChat({
             inputText,
             textAreaDiv,
@@ -47744,6 +49482,36 @@ function AssetsFromJSONTyped(json, ignoreDiscriminator) {
   };
 }
 
+// ../generated_runtime/sdk/http/typescript/connector/models/Auth0OpenAIUserMetadata.ts
+function Auth0OpenAIUserMetadataFromJSON(json) {
+  return Auth0OpenAIUserMetadataFromJSONTyped(json, false);
+}
+function Auth0OpenAIUserMetadataFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "apiKey": !exists(json, "api_key") ? void 0 : json["api_key"],
+    "apiKeyName": !exists(json, "api_key_name") ? void 0 : json["api_key_name"],
+    "organizationKey": !exists(json, "organization_key") ? void 0 : json["organization_key"]
+  };
+}
+function Auth0OpenAIUserMetadataToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON(value.schema),
+    "api_key": value.apiKey,
+    "api_key_name": value.apiKeyName,
+    "organization_key": value.organizationKey
+  };
+}
+
 // ../generated_runtime/sdk/http/typescript/connector/models/Auth0UserAllocationMetadata.ts
 function Auth0UserAllocationMetadataFromJSON(json) {
   return Auth0UserAllocationMetadataFromJSONTyped(json, false);
@@ -47784,7 +49552,8 @@ function Auth0UserMetadataFromJSONTyped(json, ignoreDiscriminator) {
     "cloudKey": !exists(json, "cloud_key") ? void 0 : json["cloud_key"],
     "stripeCustomerId": !exists(json, "stripe_customer_id") ? void 0 : json["stripe_customer_id"],
     "vanityname": !exists(json, "vanityname") ? void 0 : json["vanityname"],
-    "allocation": !exists(json, "allocation") ? void 0 : Auth0UserAllocationMetadataFromJSON(json["allocation"])
+    "allocation": !exists(json, "allocation") ? void 0 : Auth0UserAllocationMetadataFromJSON(json["allocation"]),
+    "openAI": !exists(json, "open_AI") ? void 0 : Auth0OpenAIUserMetadataFromJSON(json["open_AI"])
   };
 }
 function Auth0UserMetadataToJSON(value) {
@@ -47800,7 +49569,8 @@ function Auth0UserMetadataToJSON(value) {
     "cloud_key": value.cloudKey,
     "stripe_customer_id": value.stripeCustomerId,
     "vanityname": value.vanityname,
-    "allocation": Auth0UserAllocationMetadataToJSON(value.allocation)
+    "allocation": Auth0UserAllocationMetadataToJSON(value.allocation),
+    "open_AI": Auth0OpenAIUserMetadataToJSON(value.openAI)
   };
 }
 
@@ -48134,9 +49904,9 @@ function EdgesToJSON(value) {
 
 // ../generated_runtime/sdk/http/typescript/connector/models/EmbeddedModelSchema.ts
 function EmbeddedModelSchemaFromJSON(json) {
-  return EmbeddedModelSchemaFromJSONTyped30(json, false);
+  return EmbeddedModelSchemaFromJSONTyped31(json, false);
 }
-function EmbeddedModelSchemaFromJSONTyped30(json, ignoreDiscriminator) {
+function EmbeddedModelSchemaFromJSONTyped31(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -50488,7 +52258,9 @@ function ModelFromJSONTyped5(json, ignoreDiscriminator) {
     "parameters": !exists(json, "parameters") ? void 0 : json["parameters"],
     "provider": !exists(json, "provider") ? void 0 : ExternalMLProviderEnumFromJSON(json["provider"]),
     "cpu": !exists(json, "cpu") ? void 0 : json["cpu"],
-    "downloading": !exists(json, "downloading") ? void 0 : json["downloading"]
+    "downloading": !exists(json, "downloading") ? void 0 : json["downloading"],
+    "maxTokens": !exists(json, "maxTokens") ? void 0 : ModelMaxTokensFromJSON(json["maxTokens"]),
+    "custom": !exists(json, "custom") ? void 0 : json["custom"]
   };
 }
 function ModelToJSON(value) {
@@ -50518,7 +52290,9 @@ function ModelToJSON(value) {
     "parameters": value.parameters,
     "provider": ExternalMLProviderEnumToJSON(value.provider),
     "cpu": value.cpu,
-    "downloading": value.downloading
+    "downloading": value.downloading,
+    "maxTokens": ModelMaxTokensToJSON(value.maxTokens),
+    "custom": value.custom
   };
 }
 
@@ -50531,6 +52305,36 @@ function ModelFoundationEnumFromJSONTyped2(json, ignoreDiscriminator) {
 }
 function ModelFoundationEnumToJSON(value) {
   return value;
+}
+
+// ../generated_runtime/sdk/http/typescript/connector/models/ModelMaxTokens.ts
+function ModelMaxTokensFromJSON(json) {
+  return ModelMaxTokensFromJSONTyped2(json, false);
+}
+function ModelMaxTokensFromJSONTyped2(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "total": json["total"],
+    "input": !exists(json, "input") ? void 0 : json["input"],
+    "output": !exists(json, "output") ? void 0 : json["output"]
+  };
+}
+function ModelMaxTokensToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON(value.schema),
+    "total": value.total,
+    "input": value.input,
+    "output": value.output
+  };
 }
 
 // ../generated_runtime/sdk/http/typescript/connector/models/ModelTypeEnum.ts
@@ -54397,7 +56201,7 @@ function querystring2(params, prefix = "") {
     return `${encodeURIComponent(fullKey)}=${encodeURIComponent(String(value))}`;
   }).filter((part) => part.length > 0).join("&");
 }
-function mapValues201(data, fn) {
+function mapValues203(data, fn) {
   return Object.keys(data).reduce(
     (acc, key) => ({ ...acc, [key]: fn(data[key]) }),
     {}
@@ -55369,6 +57173,36 @@ function Auth0IdentityToJSON(value) {
   };
 }
 
+// ../generated_runtime/sdk/http/typescript/core/models/Auth0OpenAIUserMetadata.ts
+function Auth0OpenAIUserMetadataFromJSON2(json) {
+  return Auth0OpenAIUserMetadataFromJSONTyped3(json, false);
+}
+function Auth0OpenAIUserMetadataFromJSONTyped3(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists2(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON2(json["schema"]),
+    "apiKey": !exists2(json, "api_key") ? void 0 : json["api_key"],
+    "apiKeyName": !exists2(json, "api_key_name") ? void 0 : json["api_key_name"],
+    "organizationKey": !exists2(json, "organization_key") ? void 0 : json["organization_key"]
+  };
+}
+function Auth0OpenAIUserMetadataToJSON2(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON2(value.schema),
+    "api_key": value.apiKey,
+    "api_key_name": value.apiKeyName,
+    "organization_key": value.organizationKey
+  };
+}
+
 // ../generated_runtime/sdk/http/typescript/core/models/Auth0User.ts
 function Auth0UserToJSON(value) {
   if (value === void 0) {
@@ -55440,7 +57274,8 @@ function Auth0UserMetadataFromJSONTyped5(json, ignoreDiscriminator) {
     "cloudKey": !exists2(json, "cloud_key") ? void 0 : json["cloud_key"],
     "stripeCustomerId": !exists2(json, "stripe_customer_id") ? void 0 : json["stripe_customer_id"],
     "vanityname": !exists2(json, "vanityname") ? void 0 : json["vanityname"],
-    "allocation": !exists2(json, "allocation") ? void 0 : Auth0UserAllocationMetadataFromJSON2(json["allocation"])
+    "allocation": !exists2(json, "allocation") ? void 0 : Auth0UserAllocationMetadataFromJSON2(json["allocation"]),
+    "openAI": !exists2(json, "open_AI") ? void 0 : Auth0OpenAIUserMetadataFromJSON2(json["open_AI"])
   };
 }
 function Auth0UserMetadataToJSON2(value) {
@@ -55456,7 +57291,8 @@ function Auth0UserMetadataToJSON2(value) {
     "cloud_key": value.cloudKey,
     "stripe_customer_id": value.stripeCustomerId,
     "vanityname": value.vanityname,
-    "allocation": Auth0UserAllocationMetadataToJSON2(value.allocation)
+    "allocation": Auth0UserAllocationMetadataToJSON2(value.allocation),
+    "open_AI": Auth0OpenAIUserMetadataToJSON2(value.openAI)
   };
 }
 
@@ -55523,6 +57359,20 @@ function CapabilitiesEnumFromJSONTyped5(json, ignoreDiscriminator) {
 }
 function CapabilitiesEnumToJSON2(value) {
   return value;
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/CheckedOSUpdate.ts
+function CheckedOSUpdateFromJSON(json) {
+  return CheckedOSUpdateFromJSONTyped(json, false);
+}
+function CheckedOSUpdateFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists2(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON2(json["schema"]),
+    "status": UpdatingStatusEnumFromJSON(json["status"])
+  };
 }
 
 // ../generated_runtime/sdk/http/typescript/core/models/Classification.ts
@@ -56081,9 +57931,9 @@ function EdgesToJSON2(value) {
 
 // ../generated_runtime/sdk/http/typescript/core/models/EmbeddedModelSchema.ts
 function EmbeddedModelSchemaFromJSON2(json) {
-  return EmbeddedModelSchemaFromJSONTyped255(json, false);
+  return EmbeddedModelSchemaFromJSONTyped261(json, false);
 }
-function EmbeddedModelSchemaFromJSONTyped255(json, ignoreDiscriminator) {
+function EmbeddedModelSchemaFromJSONTyped261(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -57376,12 +59226,12 @@ function FlattenedPersonFromJSONTyped3(json, ignoreDiscriminator) {
     "deleted": !exists2(json, "deleted") ? void 0 : GroupedTimestampFromJSON2(json["deleted"]),
     "type": PersonTypeFromJSON2(json["type"]),
     "assets": !exists2(json, "assets") ? void 0 : FlattenedAssetsFromJSON2(json["assets"]),
-    "mechanisms": !exists2(json, "mechanisms") ? void 0 : mapValues201(json["mechanisms"], MechanismEnumFromJSON2),
+    "mechanisms": !exists2(json, "mechanisms") ? void 0 : mapValues203(json["mechanisms"], MechanismEnumFromJSON2),
     "interactions": !exists2(json, "interactions") ? void 0 : json["interactions"],
-    "access": !exists2(json, "access") ? void 0 : mapValues201(json["access"], PersonAccessFromJSON2),
+    "access": !exists2(json, "access") ? void 0 : mapValues203(json["access"], PersonAccessFromJSON2),
     "tags": !exists2(json, "tags") ? void 0 : FlattenedTagsFromJSON2(json["tags"]),
     "websites": !exists2(json, "websites") ? void 0 : FlattenedWebsitesFromJSON2(json["websites"]),
-    "models": !exists2(json, "models") ? void 0 : mapValues201(json["models"], PersonModelFromJSON2),
+    "models": !exists2(json, "models") ? void 0 : mapValues203(json["models"], PersonModelFromJSON2),
     "annotations": !exists2(json, "annotations") ? void 0 : FlattenedAnnotationsFromJSON2(json["annotations"]),
     "score": !exists2(json, "score") ? void 0 : ScoreFromJSON2(json["score"])
   };
@@ -57401,12 +59251,12 @@ function FlattenedPersonToJSON2(value) {
     "deleted": GroupedTimestampToJSON2(value.deleted),
     "type": PersonTypeToJSON2(value.type),
     "assets": FlattenedAssetsToJSON2(value.assets),
-    "mechanisms": value.mechanisms === void 0 ? void 0 : mapValues201(value.mechanisms, MechanismEnumToJSON2),
+    "mechanisms": value.mechanisms === void 0 ? void 0 : mapValues203(value.mechanisms, MechanismEnumToJSON2),
     "interactions": value.interactions,
-    "access": value.access === void 0 ? void 0 : mapValues201(value.access, PersonAccessToJSON2),
+    "access": value.access === void 0 ? void 0 : mapValues203(value.access, PersonAccessToJSON2),
     "tags": FlattenedTagsToJSON2(value.tags),
     "websites": FlattenedWebsitesToJSON2(value.websites),
-    "models": value.models === void 0 ? void 0 : mapValues201(value.models, PersonModelToJSON2),
+    "models": value.models === void 0 ? void 0 : mapValues203(value.models, PersonModelToJSON2),
     "annotations": FlattenedAnnotationsToJSON2(value.annotations),
     "score": ScoreToJSON2(value.score)
   };
@@ -57638,7 +59488,7 @@ function FlattenedTagFromJSONTyped3(json, ignoreDiscriminator) {
     "schema": !exists2(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON2(json["schema"]),
     "id": json["id"],
     "text": json["text"],
-    "mechanisms": !exists2(json, "mechanisms") ? void 0 : mapValues201(json["mechanisms"], MechanismEnumFromJSON2),
+    "mechanisms": !exists2(json, "mechanisms") ? void 0 : mapValues203(json["mechanisms"], MechanismEnumFromJSON2),
     "assets": !exists2(json, "assets") ? void 0 : FlattenedAssetsFromJSON2(json["assets"]),
     "created": GroupedTimestampFromJSON2(json["created"]),
     "updated": GroupedTimestampFromJSON2(json["updated"]),
@@ -57661,7 +59511,7 @@ function FlattenedTagToJSON2(value) {
     "schema": EmbeddedModelSchemaToJSON2(value.schema),
     "id": value.id,
     "text": value.text,
-    "mechanisms": value.mechanisms === void 0 ? void 0 : mapValues201(value.mechanisms, MechanismEnumToJSON2),
+    "mechanisms": value.mechanisms === void 0 ? void 0 : mapValues203(value.mechanisms, MechanismEnumToJSON2),
     "assets": FlattenedAssetsToJSON2(value.assets),
     "created": GroupedTimestampToJSON2(value.created),
     "updated": GroupedTimestampToJSON2(value.updated),
@@ -57757,7 +59607,7 @@ function FlattenedWebsiteFromJSONTyped3(json, ignoreDiscriminator) {
     "created": GroupedTimestampFromJSON2(json["created"]),
     "updated": GroupedTimestampFromJSON2(json["updated"]),
     "deleted": !exists2(json, "deleted") ? void 0 : GroupedTimestampFromJSON2(json["deleted"]),
-    "mechanisms": !exists2(json, "mechanisms") ? void 0 : mapValues201(json["mechanisms"], MechanismEnumFromJSON2),
+    "mechanisms": !exists2(json, "mechanisms") ? void 0 : mapValues203(json["mechanisms"], MechanismEnumFromJSON2),
     "interactions": !exists2(json, "interactions") ? void 0 : json["interactions"],
     "persons": !exists2(json, "persons") ? void 0 : FlattenedPersonsFromJSON2(json["persons"]),
     "score": !exists2(json, "score") ? void 0 : ScoreFromJSON2(json["score"])
@@ -57779,7 +59629,7 @@ function FlattenedWebsiteToJSON2(value) {
     "created": GroupedTimestampToJSON2(value.created),
     "updated": GroupedTimestampToJSON2(value.updated),
     "deleted": GroupedTimestampToJSON2(value.deleted),
-    "mechanisms": value.mechanisms === void 0 ? void 0 : mapValues201(value.mechanisms, MechanismEnumToJSON2),
+    "mechanisms": value.mechanisms === void 0 ? void 0 : mapValues203(value.mechanisms, MechanismEnumToJSON2),
     "interactions": value.interactions,
     "persons": FlattenedPersonsToJSON2(value.persons),
     "score": ScoreToJSON2(value.score)
@@ -58639,7 +60489,9 @@ function ModelFromJSONTyped12(json, ignoreDiscriminator) {
     "parameters": !exists2(json, "parameters") ? void 0 : json["parameters"],
     "provider": !exists2(json, "provider") ? void 0 : ExternalMLProviderEnumFromJSON2(json["provider"]),
     "cpu": !exists2(json, "cpu") ? void 0 : json["cpu"],
-    "downloading": !exists2(json, "downloading") ? void 0 : json["downloading"]
+    "downloading": !exists2(json, "downloading") ? void 0 : json["downloading"],
+    "maxTokens": !exists2(json, "maxTokens") ? void 0 : ModelMaxTokensFromJSON2(json["maxTokens"]),
+    "custom": !exists2(json, "custom") ? void 0 : json["custom"]
   };
 }
 function ModelToJSON2(value) {
@@ -58669,7 +60521,36 @@ function ModelToJSON2(value) {
     "parameters": value.parameters,
     "provider": ExternalMLProviderEnumToJSON2(value.provider),
     "cpu": value.cpu,
-    "downloading": value.downloading
+    "downloading": value.downloading,
+    "maxTokens": ModelMaxTokensToJSON2(value.maxTokens),
+    "custom": value.custom
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/ModelDeleteCacheInput.ts
+function ModelDeleteCacheInputToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON2(value.schema)
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/ModelDeleteCacheOutput.ts
+function ModelDeleteCacheOutputFromJSON(json) {
+  return ModelDeleteCacheOutputFromJSONTyped(json, false);
+}
+function ModelDeleteCacheOutputFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists2(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON2(json["schema"]),
+    "model": ReferencedModelFromJSON2(json["model"])
   };
 }
 
@@ -58683,7 +60564,8 @@ function ModelDownloadProgressFromJSONTyped(json, ignoreDiscriminator) {
   }
   return {
     "schema": !exists2(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON2(json["schema"]),
-    "status": !exists2(json, "status") ? void 0 : ModelDownloadProgressStatusEnumFromJSON(json["status"])
+    "status": !exists2(json, "status") ? void 0 : ModelDownloadProgressStatusEnumFromJSON(json["status"]),
+    "percentage": !exists2(json, "percentage") ? void 0 : json["percentage"]
   };
 }
 
@@ -58704,6 +60586,36 @@ function ModelFoundationEnumFromJSONTyped4(json, ignoreDiscriminator) {
 }
 function ModelFoundationEnumToJSON2(value) {
   return value;
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/ModelMaxTokens.ts
+function ModelMaxTokensFromJSON2(json) {
+  return ModelMaxTokensFromJSONTyped4(json, false);
+}
+function ModelMaxTokensFromJSONTyped4(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists2(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON2(json["schema"]),
+    "total": json["total"],
+    "input": !exists2(json, "input") ? void 0 : json["input"],
+    "output": !exists2(json, "output") ? void 0 : json["output"]
+  };
+}
+function ModelMaxTokensToJSON2(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON2(value.schema),
+    "total": value.total,
+    "input": value.input,
+    "output": value.output
+  };
 }
 
 // ../generated_runtime/sdk/http/typescript/core/models/ModelTypeEnum.ts
@@ -58833,12 +60745,12 @@ function PersonFromJSONTyped3(json, ignoreDiscriminator) {
     "deleted": !exists2(json, "deleted") ? void 0 : GroupedTimestampFromJSON2(json["deleted"]),
     "type": PersonTypeFromJSON2(json["type"]),
     "assets": !exists2(json, "assets") ? void 0 : FlattenedAssetsFromJSON2(json["assets"]),
-    "mechanisms": !exists2(json, "mechanisms") ? void 0 : mapValues201(json["mechanisms"], MechanismEnumFromJSON2),
+    "mechanisms": !exists2(json, "mechanisms") ? void 0 : mapValues203(json["mechanisms"], MechanismEnumFromJSON2),
     "interactions": !exists2(json, "interactions") ? void 0 : json["interactions"],
-    "access": !exists2(json, "access") ? void 0 : mapValues201(json["access"], PersonAccessFromJSON2),
+    "access": !exists2(json, "access") ? void 0 : mapValues203(json["access"], PersonAccessFromJSON2),
     "tags": !exists2(json, "tags") ? void 0 : FlattenedTagsFromJSON2(json["tags"]),
     "websites": !exists2(json, "websites") ? void 0 : FlattenedWebsitesFromJSON2(json["websites"]),
-    "models": !exists2(json, "models") ? void 0 : mapValues201(json["models"], PersonModelFromJSON2),
+    "models": !exists2(json, "models") ? void 0 : mapValues203(json["models"], PersonModelFromJSON2),
     "annotations": !exists2(json, "annotations") ? void 0 : FlattenedAnnotationsFromJSON2(json["annotations"]),
     "score": !exists2(json, "score") ? void 0 : ScoreFromJSON2(json["score"])
   };
@@ -58858,12 +60770,12 @@ function PersonToJSON2(value) {
     "deleted": GroupedTimestampToJSON2(value.deleted),
     "type": PersonTypeToJSON2(value.type),
     "assets": FlattenedAssetsToJSON2(value.assets),
-    "mechanisms": value.mechanisms === void 0 ? void 0 : mapValues201(value.mechanisms, MechanismEnumToJSON2),
+    "mechanisms": value.mechanisms === void 0 ? void 0 : mapValues203(value.mechanisms, MechanismEnumToJSON2),
     "interactions": value.interactions,
-    "access": value.access === void 0 ? void 0 : mapValues201(value.access, PersonAccessToJSON2),
+    "access": value.access === void 0 ? void 0 : mapValues203(value.access, PersonAccessToJSON2),
     "tags": FlattenedTagsToJSON2(value.tags),
     "websites": FlattenedWebsitesToJSON2(value.websites),
-    "models": value.models === void 0 ? void 0 : mapValues201(value.models, PersonModelToJSON2),
+    "models": value.models === void 0 ? void 0 : mapValues203(value.models, PersonModelToJSON2),
     "annotations": FlattenedAnnotationsToJSON2(value.annotations),
     "score": ScoreToJSON2(value.score)
   };
@@ -59382,7 +61294,9 @@ function QGPTStreamOutputFromJSONTyped(json, ignoreDiscriminator) {
     "relevance": !exists2(json, "relevance") ? void 0 : QGPTRelevanceOutputFromJSON(json["relevance"]),
     "question": !exists2(json, "question") ? void 0 : QGPTQuestionOutputFromJSON(json["question"]),
     "status": !exists2(json, "status") ? void 0 : QGPTStreamEnumFromJSON(json["status"]),
-    "conversation": json["conversation"]
+    "conversation": json["conversation"],
+    "statusCode": !exists2(json, "statusCode") ? void 0 : json["statusCode"],
+    "errorMessage": !exists2(json, "errorMessage") ? void 0 : json["errorMessage"]
   };
 }
 
@@ -59694,9 +61608,9 @@ function ReferencedHintToJSON2(value) {
 
 // ../generated_runtime/sdk/http/typescript/core/models/ReferencedModel.ts
 function ReferencedModelFromJSON2(json) {
-  return ReferencedModelFromJSONTyped16(json, false);
+  return ReferencedModelFromJSONTyped17(json, false);
 }
-function ReferencedModelFromJSONTyped16(json, ignoreDiscriminator) {
+function ReferencedModelFromJSONTyped17(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -60888,7 +62802,9 @@ function SeededModelToJSON(value) {
     "unique": value.unique,
     "parameters": value.parameters,
     "provider": ExternalMLProviderEnumToJSON2(value.provider),
-    "cpu": value.cpu
+    "cpu": value.cpu,
+    "maxTokens": ModelMaxTokensToJSON2(value.maxTokens),
+    "custom": value.custom
   };
 }
 
@@ -62323,7 +64239,7 @@ function TagFromJSONTyped3(json, ignoreDiscriminator) {
     "schema": !exists2(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON2(json["schema"]),
     "id": json["id"],
     "text": json["text"],
-    "mechanisms": !exists2(json, "mechanisms") ? void 0 : mapValues201(json["mechanisms"], MechanismEnumFromJSON2),
+    "mechanisms": !exists2(json, "mechanisms") ? void 0 : mapValues203(json["mechanisms"], MechanismEnumFromJSON2),
     "assets": !exists2(json, "assets") ? void 0 : FlattenedAssetsFromJSON2(json["assets"]),
     "created": GroupedTimestampFromJSON2(json["created"]),
     "updated": GroupedTimestampFromJSON2(json["updated"]),
@@ -62346,7 +64262,7 @@ function TagToJSON2(value) {
     "schema": EmbeddedModelSchemaToJSON2(value.schema),
     "id": value.id,
     "text": value.text,
-    "mechanisms": value.mechanisms === void 0 ? void 0 : mapValues201(value.mechanisms, MechanismEnumToJSON2),
+    "mechanisms": value.mechanisms === void 0 ? void 0 : mapValues203(value.mechanisms, MechanismEnumToJSON2),
     "assets": FlattenedAssetsToJSON2(value.assets),
     "created": GroupedTimestampToJSON2(value.created),
     "updated": GroupedTimestampToJSON2(value.updated),
@@ -63065,6 +64981,27 @@ function TransferableStringToJSON2(value) {
   };
 }
 
+// ../generated_runtime/sdk/http/typescript/core/models/UncheckedOSUpdate.ts
+function UncheckedOSUpdateToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON2(value.schema)
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/UpdatingStatusEnum.ts
+function UpdatingStatusEnumFromJSON(json) {
+  return UpdatingStatusEnumFromJSONTyped2(json, false);
+}
+function UpdatingStatusEnumFromJSONTyped2(json, ignoreDiscriminator) {
+  return json;
+}
+
 // ../generated_runtime/sdk/http/typescript/core/models/UserProfile.ts
 function UserProfileFromJSON2(json) {
   return UserProfileFromJSONTyped7(json, false);
@@ -63144,7 +65081,7 @@ function WebsiteFromJSONTyped3(json, ignoreDiscriminator) {
     "created": GroupedTimestampFromJSON2(json["created"]),
     "updated": GroupedTimestampFromJSON2(json["updated"]),
     "deleted": !exists2(json, "deleted") ? void 0 : GroupedTimestampFromJSON2(json["deleted"]),
-    "mechanisms": !exists2(json, "mechanisms") ? void 0 : mapValues201(json["mechanisms"], MechanismEnumFromJSON2),
+    "mechanisms": !exists2(json, "mechanisms") ? void 0 : mapValues203(json["mechanisms"], MechanismEnumFromJSON2),
     "interactions": !exists2(json, "interactions") ? void 0 : json["interactions"],
     "persons": !exists2(json, "persons") ? void 0 : FlattenedPersonsFromJSON2(json["persons"]),
     "score": !exists2(json, "score") ? void 0 : ScoreFromJSON2(json["score"])
@@ -63166,7 +65103,7 @@ function WebsiteToJSON2(value) {
     "created": GroupedTimestampToJSON2(value.created),
     "updated": GroupedTimestampToJSON2(value.updated),
     "deleted": GroupedTimestampToJSON2(value.deleted),
-    "mechanisms": value.mechanisms === void 0 ? void 0 : mapValues201(value.mechanisms, MechanismEnumToJSON2),
+    "mechanisms": value.mechanisms === void 0 ? void 0 : mapValues203(value.mechanisms, MechanismEnumToJSON2),
     "interactions": value.interactions,
     "persons": FlattenedPersonsToJSON2(value.persons),
     "score": ScoreToJSON2(value.score)
@@ -63739,6 +65676,34 @@ var AnchorPointApi = class extends BaseAPI2 {
 // ../generated_runtime/sdk/http/typescript/core/apis/AnchorsApi.ts
 var AnchorsApi = class extends BaseAPI2 {
   /**
+   * This will update both the asset and the anchor reference, that will remove a anchor from an asset(only the references).  This will NOT remove the anchor. This will NOT remove the asset. This will only update the references so that they are disconnected from one another.
+   * /anchors/{anchor}/assets/delete/{asset} [POST]
+   */
+  async anchorDisassociateAssetRaw(requestParameters) {
+    if (requestParameters.anchor === null || requestParameters.anchor === void 0) {
+      throw new RequiredError2("anchor", "Required parameter requestParameters.anchor was null or undefined when calling anchorDisassociateAsset.");
+    }
+    if (requestParameters.asset === null || requestParameters.asset === void 0) {
+      throw new RequiredError2("asset", "Required parameter requestParameters.asset was null or undefined when calling anchorDisassociateAsset.");
+    }
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/anchors/{anchor}/assets/delete/{asset}`.replace(`{${"anchor"}}`, encodeURIComponent(String(requestParameters.anchor))).replace(`{${"asset"}}`, encodeURIComponent(String(requestParameters.asset))),
+      method: "POST",
+      headers: headerParameters,
+      query: queryParameters
+    });
+    return new VoidApiResponse(response);
+  }
+  /**
+   * This will update both the asset and the anchor reference, that will remove a anchor from an asset(only the references).  This will NOT remove the anchor. This will NOT remove the asset. This will only update the references so that they are disconnected from one another.
+   * /anchors/{anchor}/assets/delete/{asset} [POST]
+   */
+  async anchorDisassociateAsset(requestParameters) {
+    await this.anchorDisassociateAssetRaw(requestParameters);
+  }
+  /**
    * This will create a anchor and attach it to a specific asset(s) This will also ensure the anchor is normalized.
    * /anchors/create [POST]
    */
@@ -63816,34 +65781,6 @@ var AnchorsApi = class extends BaseAPI2 {
   async anchorsSnapshot(requestParameters) {
     const response = await this.anchorsSnapshotRaw(requestParameters);
     return await response.value();
-  }
-  /**
-   * This will update both the asset and the anchor reference, that will remove a anchor from an asset(only the references).  This will NOT remove the anchor. This will NOT remove the asset. This will only update the references so that they are disconnected from one another.
-   * /anchors/{anchor}/assets/delete/{asset} [POST]
-   */
-  async removeAnchorReferenceFromAssetRaw(requestParameters) {
-    if (requestParameters.anchor === null || requestParameters.anchor === void 0) {
-      throw new RequiredError2("anchor", "Required parameter requestParameters.anchor was null or undefined when calling removeAnchorReferenceFromAsset.");
-    }
-    if (requestParameters.asset === null || requestParameters.asset === void 0) {
-      throw new RequiredError2("asset", "Required parameter requestParameters.asset was null or undefined when calling removeAnchorReferenceFromAsset.");
-    }
-    const queryParameters = {};
-    const headerParameters = {};
-    const response = await this.request({
-      path: `/anchors/{anchor}/assets/delete/{asset}`.replace(`{${"anchor"}}`, encodeURIComponent(String(requestParameters.anchor))).replace(`{${"asset"}}`, encodeURIComponent(String(requestParameters.asset))),
-      method: "POST",
-      headers: headerParameters,
-      query: queryParameters
-    });
-    return new VoidApiResponse(response);
-  }
-  /**
-   * This will update both the asset and the anchor reference, that will remove a anchor from an asset(only the references).  This will NOT remove the anchor. This will NOT remove the asset. This will only update the references so that they are disconnected from one another.
-   * /anchors/{anchor}/assets/delete/{asset} [POST]
-   */
-  async removeAnchorReferenceFromAsset(requestParameters) {
-    await this.removeAnchorReferenceFromAssetRaw(requestParameters);
   }
 };
 
@@ -64069,6 +66006,34 @@ var AssetApi = class extends BaseAPI2 {
     await this.assetAssociateTagRaw(requestParameters);
   }
   /**
+   * This will associate a website with a asset. This will do the same thing as the website equivilant.
+   * /asset/{asset}/websites/associate/{website} [POST]
+   */
+  async assetAssociateWebsiteRaw(requestParameters) {
+    if (requestParameters.asset === null || requestParameters.asset === void 0) {
+      throw new RequiredError2("asset", "Required parameter requestParameters.asset was null or undefined when calling assetAssociateWebsite.");
+    }
+    if (requestParameters.website === null || requestParameters.website === void 0) {
+      throw new RequiredError2("website", "Required parameter requestParameters.website was null or undefined when calling assetAssociateWebsite.");
+    }
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/asset/{asset}/websites/associate/{website}`.replace(`{${"asset"}}`, encodeURIComponent(String(requestParameters.asset))).replace(`{${"website"}}`, encodeURIComponent(String(requestParameters.website))),
+      method: "POST",
+      headers: headerParameters,
+      query: queryParameters
+    });
+    return new VoidApiResponse(response);
+  }
+  /**
+   * This will associate a website with a asset. This will do the same thing as the website equivilant.
+   * /asset/{asset}/websites/associate/{website} [POST]
+   */
+  async assetAssociateWebsite(requestParameters) {
+    await this.assetAssociateWebsiteRaw(requestParameters);
+  }
+  /**
    * This will enable us to dissassociate a tag from a asset. This will do the same thing as the tag equivilant.
    * /asset/{asset}/tags/disassociate/{tag} [POST]
    */
@@ -64095,6 +66060,34 @@ var AssetApi = class extends BaseAPI2 {
    */
   async assetDisassociateTag(requestParameters) {
     await this.assetDisassociateTagRaw(requestParameters);
+  }
+  /**
+   * This will enable us to dissassociate a website from a asset. This will do the same thing as the website equivilant.
+   * /asset/{asset}/websites/disassociate/{website} [POST]
+   */
+  async assetDisassociateWebsiteRaw(requestParameters) {
+    if (requestParameters.website === null || requestParameters.website === void 0) {
+      throw new RequiredError2("website", "Required parameter requestParameters.website was null or undefined when calling assetDisassociateWebsite.");
+    }
+    if (requestParameters.asset === null || requestParameters.asset === void 0) {
+      throw new RequiredError2("asset", "Required parameter requestParameters.asset was null or undefined when calling assetDisassociateWebsite.");
+    }
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/asset/{asset}/websites/disassociate/{website}`.replace(`{${"website"}}`, encodeURIComponent(String(requestParameters.website))).replace(`{${"asset"}}`, encodeURIComponent(String(requestParameters.asset))),
+      method: "POST",
+      headers: headerParameters,
+      query: queryParameters
+    });
+    return new VoidApiResponse(response);
+  }
+  /**
+   * This will enable us to dissassociate a website from a asset. This will do the same thing as the website equivilant.
+   * /asset/{asset}/websites/disassociate/{website} [POST]
+   */
+  async assetDisassociateWebsite(requestParameters) {
+    await this.assetDisassociateWebsiteRaw(requestParameters);
   }
   /**
    * Get the formats for a given asset.
@@ -64328,62 +66321,6 @@ var AssetApi = class extends BaseAPI2 {
   async assetUpdate(requestParameters) {
     const response = await this.assetUpdateRaw(requestParameters);
     return await response.value();
-  }
-  /**
-   * This will associate a website with a asset. This will do the same thing as the website equivilant.
-   * /asset/{asset}/websites/associate/{website} [POST]
-   */
-  async associateWebsiteRaw(requestParameters) {
-    if (requestParameters.asset === null || requestParameters.asset === void 0) {
-      throw new RequiredError2("asset", "Required parameter requestParameters.asset was null or undefined when calling associateWebsite.");
-    }
-    if (requestParameters.website === null || requestParameters.website === void 0) {
-      throw new RequiredError2("website", "Required parameter requestParameters.website was null or undefined when calling associateWebsite.");
-    }
-    const queryParameters = {};
-    const headerParameters = {};
-    const response = await this.request({
-      path: `/asset/{asset}/websites/associate/{website}`.replace(`{${"asset"}}`, encodeURIComponent(String(requestParameters.asset))).replace(`{${"website"}}`, encodeURIComponent(String(requestParameters.website))),
-      method: "POST",
-      headers: headerParameters,
-      query: queryParameters
-    });
-    return new VoidApiResponse(response);
-  }
-  /**
-   * This will associate a website with a asset. This will do the same thing as the website equivilant.
-   * /asset/{asset}/websites/associate/{website} [POST]
-   */
-  async associateWebsite(requestParameters) {
-    await this.associateWebsiteRaw(requestParameters);
-  }
-  /**
-   * This will enable us to dissassociate a website from a asset. This will do the same thing as the website equivilant.
-   * /asset/{asset}/websites/disassociate/{website} [POST]
-   */
-  async disassociateWebsiteRaw(requestParameters) {
-    if (requestParameters.website === null || requestParameters.website === void 0) {
-      throw new RequiredError2("website", "Required parameter requestParameters.website was null or undefined when calling disassociateWebsite.");
-    }
-    if (requestParameters.asset === null || requestParameters.asset === void 0) {
-      throw new RequiredError2("asset", "Required parameter requestParameters.asset was null or undefined when calling disassociateWebsite.");
-    }
-    const queryParameters = {};
-    const headerParameters = {};
-    const response = await this.request({
-      path: `/asset/{asset}/websites/disassociate/{website}`.replace(`{${"website"}}`, encodeURIComponent(String(requestParameters.website))).replace(`{${"asset"}}`, encodeURIComponent(String(requestParameters.asset))),
-      method: "POST",
-      headers: headerParameters,
-      query: queryParameters
-    });
-    return new VoidApiResponse(response);
-  }
-  /**
-   * This will enable us to dissassociate a website from a asset. This will do the same thing as the website equivilant.
-   * /asset/{asset}/websites/disassociate/{website} [POST]
-   */
-  async disassociateWebsite(requestParameters) {
-    await this.disassociateWebsiteRaw(requestParameters);
   }
 };
 
@@ -65145,12 +67082,12 @@ var ConversationMessageApi = class extends BaseAPI2 {
    * This will associate a message with an annotation.
    * /message/{message}/annotations/associate/{annotation} [POST]
    */
-  async associateAnnotationRaw(requestParameters) {
+  async messageAssociateAnnotationRaw(requestParameters) {
     if (requestParameters.annotation === null || requestParameters.annotation === void 0) {
-      throw new RequiredError2("annotation", "Required parameter requestParameters.annotation was null or undefined when calling associateAnnotation.");
+      throw new RequiredError2("annotation", "Required parameter requestParameters.annotation was null or undefined when calling messageAssociateAnnotation.");
     }
     if (requestParameters.message === null || requestParameters.message === void 0) {
-      throw new RequiredError2("message", "Required parameter requestParameters.message was null or undefined when calling associateAnnotation.");
+      throw new RequiredError2("message", "Required parameter requestParameters.message was null or undefined when calling messageAssociateAnnotation.");
     }
     const queryParameters = {};
     const headerParameters = {};
@@ -65166,19 +67103,19 @@ var ConversationMessageApi = class extends BaseAPI2 {
    * This will associate a message with an annotation.
    * /message/{message}/annotations/associate/{annotation} [POST]
    */
-  async associateAnnotation(requestParameters) {
-    await this.associateAnnotationRaw(requestParameters);
+  async messageAssociateAnnotation(requestParameters) {
+    await this.messageAssociateAnnotationRaw(requestParameters);
   }
   /**
    * This will enable us to dissassociate a message from an annotation.
    * /message/{message}/annotations/disassociate/{annotation} [POST]
    */
-  async disassociateAnnotationRaw(requestParameters) {
+  async messageDisassociateAnnotationRaw(requestParameters) {
     if (requestParameters.annotation === null || requestParameters.annotation === void 0) {
-      throw new RequiredError2("annotation", "Required parameter requestParameters.annotation was null or undefined when calling disassociateAnnotation.");
+      throw new RequiredError2("annotation", "Required parameter requestParameters.annotation was null or undefined when calling messageDisassociateAnnotation.");
     }
     if (requestParameters.message === null || requestParameters.message === void 0) {
-      throw new RequiredError2("message", "Required parameter requestParameters.message was null or undefined when calling disassociateAnnotation.");
+      throw new RequiredError2("message", "Required parameter requestParameters.message was null or undefined when calling messageDisassociateAnnotation.");
     }
     const queryParameters = {};
     const headerParameters = {};
@@ -65194,8 +67131,8 @@ var ConversationMessageApi = class extends BaseAPI2 {
    * This will enable us to dissassociate a message from an annotation.
    * /message/{message}/annotations/disassociate/{annotation} [POST]
    */
-  async disassociateAnnotation(requestParameters) {
-    await this.disassociateAnnotationRaw(requestParameters);
+  async messageDisassociateAnnotation(requestParameters) {
+    await this.messageDisassociateAnnotationRaw(requestParameters);
   }
   /**
    * This will take in a SeededScoreIncrement and will increment the material relative to the incoming body.
@@ -65987,6 +67924,7 @@ var ModelApi = class extends BaseAPI2 {
     return await response.value();
   }
   /**
+   * This will update Machinelearning Model, this is only available for \"custom:true\" models.
    * /model/update [POST]
    */
   async modelUpdateRaw(requestParameters) {
@@ -66003,6 +67941,7 @@ var ModelApi = class extends BaseAPI2 {
     return new JSONApiResponse2(response, (jsonValue) => ModelFromJSON2(jsonValue));
   }
   /**
+   * This will update Machinelearning Model, this is only available for \"custom:true\" models.
    * /model/update [POST]
    */
   async modelUpdate(requestParameters) {
@@ -66038,6 +67977,7 @@ var ModelApi = class extends BaseAPI2 {
 // ../generated_runtime/sdk/http/typescript/core/apis/ModelsApi.ts
 var ModelsApi = class extends BaseAPI2 {
   /**
+   * This will create a ml model, this is aloud however all models will be set to custom: true.  && we will verify we dont have a model that matches this model.
    * /models/create [POST]
    */
   async modelsCreateNewModelRaw(requestParameters) {
@@ -66054,6 +67994,7 @@ var ModelsApi = class extends BaseAPI2 {
     return new JSONApiResponse2(response, (jsonValue) => ModelFromJSON2(jsonValue));
   }
   /**
+   * This will create a ml model, this is aloud however all models will be set to custom: true.  && we will verify we dont have a model that matches this model.
    * /models/create [POST]
    */
   async modelsCreateNewModel(requestParameters) {
@@ -66061,6 +68002,7 @@ var ModelsApi = class extends BaseAPI2 {
     return await response.value();
   }
   /**
+   * This will delete a model, This is only available for custom: true models.
    * /models/{model}/delete [POST]
    */
   async modelsDeleteSpecificModelRaw(requestParameters) {
@@ -66078,10 +68020,39 @@ var ModelsApi = class extends BaseAPI2 {
     return new VoidApiResponse(response);
   }
   /**
+   * This will delete a model, This is only available for custom: true models.
    * /models/{model}/delete [POST]
    */
   async modelsDeleteSpecificModel(requestParameters) {
     await this.modelsDeleteSpecificModelRaw(requestParameters);
+  }
+  /**
+   * This is going to delete and sort of data that is associated with the Model itself IE the Assets/Libraries downloaded specifically for this model.  This is only available for the LLLM models for now.
+   * /models/{model}/delete/cache [POST]
+   */
+  async modelsDeleteSpecificModelCacheRaw(requestParameters) {
+    if (requestParameters.model === null || requestParameters.model === void 0) {
+      throw new RequiredError2("model", "Required parameter requestParameters.model was null or undefined when calling modelsDeleteSpecificModelCache.");
+    }
+    const queryParameters = {};
+    const headerParameters = {};
+    headerParameters["Content-Type"] = "application/json";
+    const response = await this.request({
+      path: `/models/{model}/delete/cache`.replace(`{${"model"}}`, encodeURIComponent(String(requestParameters.model))),
+      method: "POST",
+      headers: headerParameters,
+      query: queryParameters,
+      body: ModelDeleteCacheInputToJSON(requestParameters.modelDeleteCacheInput)
+    });
+    return new JSONApiResponse2(response, (jsonValue) => ModelDeleteCacheOutputFromJSON(jsonValue));
+  }
+  /**
+   * This is going to delete and sort of data that is associated with the Model itself IE the Assets/Libraries downloaded specifically for this model.  This is only available for the LLLM models for now.
+   * /models/{model}/delete/cache [POST]
+   */
+  async modelsDeleteSpecificModelCache(requestParameters) {
+    const response = await this.modelsDeleteSpecificModelCacheRaw(requestParameters);
+    return await response.value();
   }
   /**
    * This will get a snapshot of all of your models.
@@ -66107,7 +68078,7 @@ var ModelsApi = class extends BaseAPI2 {
     return await response.value();
   }
   /**
-   * This will unload all of the ml models.
+   * This will unload all of the ml models.(that are unloadable)
    * /models/unload [POST]
    */
   async unloadModelsRaw() {
@@ -66122,7 +68093,7 @@ var ModelsApi = class extends BaseAPI2 {
     return new VoidApiResponse(response);
   }
   /**
-   * This will unload all of the ml models.
+   * This will unload all of the ml models.(that are unloadable)
    * /models/unload [POST]
    */
   async unloadModels() {
@@ -66178,6 +68149,31 @@ var OSApi = class extends BaseAPI2 {
    */
   async osRestart() {
     await this.osRestartRaw();
+  }
+  /**
+   * This is a helper endpoint that will check the status of an update for PiecesOS. IE if there is an update downloading, if there is one available, but the downloading has not started... etc
+   * /os/update/check [POST]
+   */
+  async osUpdateCheckRaw(requestParameters) {
+    const queryParameters = {};
+    const headerParameters = {};
+    headerParameters["Content-Type"] = "application/json";
+    const response = await this.request({
+      path: `/os/update/check`,
+      method: "POST",
+      headers: headerParameters,
+      query: queryParameters,
+      body: UncheckedOSUpdateToJSON(requestParameters.uncheckedOSUpdate)
+    });
+    return new JSONApiResponse2(response, (jsonValue) => CheckedOSUpdateFromJSON(jsonValue));
+  }
+  /**
+   * This is a helper endpoint that will check the status of an update for PiecesOS. IE if there is an update downloading, if there is one available, but the downloading has not started... etc
+   * /os/update/check [POST]
+   */
+  async osUpdateCheck(requestParameters) {
+    const response = await this.osUpdateCheckRaw(requestParameters);
+    return await response.value();
   }
   /**
    * This will trigger a filer picker and return the string paths of the files that were selected.
@@ -66329,7 +68325,7 @@ var QGPTApi = class extends BaseAPI2 {
     return await response.value();
   }
   /**
-   * This is a version of qGPT stream that will stream the inputs.  This will handle relevance.  This will handle question.  This will throw an error if both are passed in. That being said if you want to utalize question && relevant, you can get stream results by passing in relevance with options.question:true.  This will handle multiple conversations.  This is a Websocket.
+   * This is a version of qGPT stream that will stream the inputs.  This will handle relevance.  This will handle question.  This will throw an error if both are passed in. That being said if you want to utalize question && relevant, you can get stream results by passing in relevance with options.question:true.  This will handle multiple conversations.  This is a Websocket.  StatusCodes of the output of this will be on the output of the websocket: 200: success 401: invalid authentication/api key 429: Rate limit/Quota exceeded 500: server had an error 503: the engine is currently overloaded
    * /qgpt/stream [GET]
    */
   async qgptStreamRaw(requestParameters) {
@@ -66346,7 +68342,7 @@ var QGPTApi = class extends BaseAPI2 {
     return new JSONApiResponse2(response, (jsonValue) => QGPTStreamOutputFromJSON(jsonValue));
   }
   /**
-   * This is a version of qGPT stream that will stream the inputs.  This will handle relevance.  This will handle question.  This will throw an error if both are passed in. That being said if you want to utalize question && relevant, you can get stream results by passing in relevance with options.question:true.  This will handle multiple conversations.  This is a Websocket.
+   * This is a version of qGPT stream that will stream the inputs.  This will handle relevance.  This will handle question.  This will throw an error if both are passed in. That being said if you want to utalize question && relevant, you can get stream results by passing in relevance with options.question:true.  This will handle multiple conversations.  This is a Websocket.  StatusCodes of the output of this will be on the output of the websocket: 200: success 401: invalid authentication/api key 429: Rate limit/Quota exceeded 500: server had an error 503: the engine is currently overloaded
    * /qgpt/stream [GET]
    */
   async qgptStream(requestParameters) {
@@ -66354,7 +68350,7 @@ var QGPTApi = class extends BaseAPI2 {
     return await response.value();
   }
   /**
-   * This is going to accept, relevant code snippets or uuids returned from the /qgpt/relevance endpoint, as well as a question query and we will return possible results to answer your question.  NOTE: - The relevant seeds, must require either an id, that was used within the /qgpt/relevance endpoint or a seed with afragment/string. or else we will throw and error.  This endpoint will take your query and your relevant snippets and use them to answer your question, returning multiple answers to your question all of which with scores.
+   * This is going to accept, relevant code snippets or uuids returned from the /qgpt/relevance endpoint, as well as a question query and we will return possible results to answer your question.  NOTE: - The relevant seeds, must require either an id, that was used within the /qgpt/relevance endpoint or a seed with afragment/string. or else we will throw and error.  This endpoint will take your query and your relevant snippets and use them to answer your question, returning multiple answers to your question all of which with scores.  200: success 401: invalid authentication/api key 429: Rate limit/Quota exceeded 500: server had an error 503: the engine is currently overloaded
    * /qgpt/question [POST]
    */
   async questionRaw(requestParameters) {
@@ -66371,7 +68367,7 @@ var QGPTApi = class extends BaseAPI2 {
     return new JSONApiResponse2(response, (jsonValue) => QGPTQuestionOutputFromJSON(jsonValue));
   }
   /**
-   * This is going to accept, relevant code snippets or uuids returned from the /qgpt/relevance endpoint, as well as a question query and we will return possible results to answer your question.  NOTE: - The relevant seeds, must require either an id, that was used within the /qgpt/relevance endpoint or a seed with afragment/string. or else we will throw and error.  This endpoint will take your query and your relevant snippets and use them to answer your question, returning multiple answers to your question all of which with scores.
+   * This is going to accept, relevant code snippets or uuids returned from the /qgpt/relevance endpoint, as well as a question query and we will return possible results to answer your question.  NOTE: - The relevant seeds, must require either an id, that was used within the /qgpt/relevance endpoint or a seed with afragment/string. or else we will throw and error.  This endpoint will take your query and your relevant snippets and use them to answer your question, returning multiple answers to your question all of which with scores.  200: success 401: invalid authentication/api key 429: Rate limit/Quota exceeded 500: server had an error 503: the engine is currently overloaded
    * /qgpt/question [POST]
    */
   async question(requestParameters) {
@@ -66762,7 +68758,7 @@ var WellKnownApi = class extends BaseAPI2 {
 };
 
 // package.json
-var version = "1.8.1";
+var version = "1.9.0";
 
 // src/connection/notification_handler.ts
 var import_obsidian = require("obsidian");
@@ -71728,6 +73724,34 @@ QGPT.allFilesAsContext = () => {
   cache2.gptContextPaths = paths;
 };
 
+// src/cache/FileTracking.ts
+var FileTracking = class {
+  constructor(plugin) {
+    this.recentFiles = [];
+    const basePath = plugin.app.vault.adapter.basePath;
+    plugin.registerEvent(
+      plugin.app.workspace.on("file-open", (file) => {
+        this.recentFiles.push(basePath + "/" + file.path);
+        while (this.recentFiles.length > 10) {
+          this.recentFiles.shift();
+        }
+      })
+    );
+  }
+  get recent() {
+    return this.recentFiles;
+  }
+  static getInstance(plugin) {
+    if (this.instance)
+      return this.instance;
+    if (!plugin)
+      throw new Error(
+        "first instance of file tracking must get a plugin as well"
+      );
+    return this.instance = new FileTracking(plugin);
+  }
+};
+
 // src/ui/views/CopilotParams.ts
 var import_QGPTView2 = __toESM(require_QGPTView());
 
@@ -71738,6 +73762,9 @@ var AddSnippetToContextModal = class extends import_obsidian15.Modal {
   constructor(conversation) {
     super(app);
     this.snippetsToAdd = {};
+    this.contentEl.onclick = (e) => {
+      e.stopPropagation();
+    };
     this.conversation = conversation;
     this.titleEl.innerText = "Add snippet to context";
     for (const snippet of PiecesCacheSingleton.getInstance().assets) {
@@ -71789,6 +73816,20 @@ var AddSnippetToContextModal = class extends import_obsidian15.Modal {
 };
 
 // src/ui/views/CopilotParams.ts
+var lastSelection;
+var lastRange;
+var lastActiveFile;
+document.onselectionchange = () => {
+  var _a;
+  const editor = (_a = app.workspace.activeEditor) == null ? void 0 : _a.editor;
+  lastActiveFile = app.workspace.getActiveFile();
+  if (!editor)
+    return;
+  lastSelection = document.getSelection();
+  if (!lastSelection)
+    return;
+  lastRange = lastSelection.getRangeAt(0);
+};
 var getApplication = async () => {
   if (!ConnectorSingleton.getInstance().context)
     await loadConnect();
@@ -71799,9 +73840,18 @@ var copilotState = {
   conversation: [],
   conversationId: "",
   selectedModel: "",
-  migration: 0
+  migration: 0,
+  directives: []
 };
 var copilotParams = {
+  async getRecentFiles() {
+    var _a;
+    return { paths: (_a = FileTracking.getInstance().recent) != null ? _a : [] };
+  },
+  async getWorkspacePaths() {
+    var _a;
+    return { paths: [(_a = app.vault.adapter.basePath) != null ? _a : ""] };
+  },
   migration: 0,
   openFile: openVaultNote,
   generateShareableLink: async (params) => {
@@ -71903,10 +73953,28 @@ var copilotParams = {
   // LEAVE THIS UNIMPLEMENTED TRACKING IS STRICTLY FORBIDDEN IN OBSIDIAN
   track: (event) => {
   },
-  openLink: (url) => window.open(url)
+  openLink: (url) => window.open(url),
+  insertAtCursor(text) {
+    if (!lastRange || !lastSelection || lastActiveFile !== app.workspace.getActiveFile()) {
+      Notifications.getInstance().error({
+        message: "Cannot insert at cursor because the editor is not detected."
+      });
+      return;
+    }
+    const selectedText = lastRange.toString();
+    lastRange.deleteContents();
+    const newText = selectedText + "\n```\n" + text + "\n```\n";
+    const textNode = document.createTextNode(newText);
+    lastRange.insertNode(textNode);
+    lastRange.setStartAfter(textNode);
+    lastRange.collapse(true);
+    lastSelection.removeAllRanges();
+    lastSelection.addRange(lastRange);
+  }
 };
 
 // src/database/pieces_database.ts
+var import_Directives = __toESM(require_Directives());
 var PiecesDatabase = class {
   constructor() {
   }
@@ -71936,7 +74004,8 @@ var PiecesDatabase = class {
         gptFolderNames: cache2.gptFolderNames,
         enrichedCode: cache2.getAllIsEnriched(),
         llmModelId: copilotState.selectedModel,
-        migration
+        migration,
+        directives: import_Directives.default.getInstance().directiveList
       };
       vault.modify(dataFile, JSON.stringify(newDb));
     }, 5e3);
@@ -72657,7 +74726,7 @@ var PiecesSnippetListView = class extends import_obsidian18.ItemView {
     this.snippetsTab.id = "snippets-tab";
     this.gptTab = this.parentDiv.createDiv();
     this.gptTab.id = "gpt-tab";
-    this.gptTab.classList.add("pt-6");
+    this.gptTab.classList.add("pt-6", "relative");
     this.navTab.addEventListener("click", (event) => {
       this.changeViews(
         event,
@@ -73180,7 +75249,7 @@ var SaveToPiecesWidget = class extends import_view2.WidgetType {
     this.handleNCS(this.codeBlock);
     const { id } = this;
     const collapsedHolder = holderDiv.createDiv();
-    collapsedHolder.addClasses(["collapsed-pieces-holder", "collapsed"]);
+    collapsedHolder.addClasses(["p-collapsed-pieces-holder", "collapsed"]);
     const collapseControlButton = new import_obsidian20.ButtonComponent(holderDiv).onClick(async () => {
       clearTimeout(this.tempCollapseTimer);
       if (collapsedHolder.classList.contains("collapsed")) {
@@ -76400,6 +78469,7 @@ var _PiecesPlugin = class extends import_obsidian22.Plugin {
       this.registerEditorExtension([codeDetectionPlugin]);
     };
     this.startApplication = () => {
+      FileTracking.getInstance(this);
       DisplayController.snippetsFetched = true;
       sleep(100).then(() => {
         DisplayController.triggerUIRedraw({ searching: false, fetch: false });
@@ -76453,8 +78523,16 @@ var _PiecesPlugin = class extends import_obsidian22.Plugin {
           conversation: [],
           conversationId: "",
           selectedModel: data.llmModelId,
-          migration: 0
+          migration: 0,
+          directives: []
         });
+      }
+      if (data && data.directives && data.directives.length) {
+        const state = copilotParams.getState();
+        if (state.pieces) {
+          state.pieces.directives = data.directives;
+          copilotParams.saveState(state.pieces);
+        }
       }
       if (data && data.llmModelId) {
         const config2 = ConnectorSingleton.getInstance();
