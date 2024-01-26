@@ -1023,10 +1023,6 @@ body.pieces {
   max-width: 400px;
 }
 
-.max-w-\[50\%\] {
-  max-width: 50%;
-}
-
 .max-w-\[80\%\] {
   max-width: 80%;
 }
@@ -1324,6 +1320,10 @@ body.pieces {
   background-size: cover;
 }
 
+.bg-no-repeat {
+  background-repeat: no-repeat;
+}
+
 .\!p-2 {
   padding: 0.5rem !important;
 }
@@ -1349,19 +1349,9 @@ body.pieces {
   padding-right: 0.25rem;
 }
 
-.px-10 {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
-}
-
 .px-12 {
   padding-left: 3rem;
   padding-right: 3rem;
-}
-
-.px-14 {
-  padding-left: 3.5rem;
-  padding-right: 3.5rem;
 }
 
 .px-16 {
