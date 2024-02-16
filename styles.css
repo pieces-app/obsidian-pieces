@@ -656,6 +656,10 @@ body.pieces {
   top: -0.75rem;
 }
 
+.bottom-1 {
+  bottom: 0.25rem;
+}
+
 .bottom-24 {
   bottom: 6rem;
 }
@@ -678,6 +682,10 @@ body.pieces {
 
 .left-\[-90\%\] {
   left: -90%;
+}
+
+.right-1 {
+  right: 0.25rem;
 }
 
 .right-2 {
@@ -749,6 +757,10 @@ body.pieces {
 
 .mb-2\.5 {
   margin-bottom: 0.625rem;
+}
+
+.mb-auto {
+  margin-bottom: auto;
 }
 
 .ml-2 {
@@ -847,10 +859,6 @@ body.pieces {
 
 .h-12 {
   height: 3rem;
-}
-
-.h-16 {
-  height: 4rem;
 }
 
 .h-2 {
@@ -1402,6 +1410,10 @@ body.pieces {
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+.\!pb-4 {
+  padding-bottom: 1rem !important;
 }
 
 .pb-0 {
