@@ -759,10 +759,6 @@ body.pieces {
   margin-bottom: 0.625rem;
 }
 
-.mb-auto {
-  margin-bottom: auto;
-}
-
 .ml-2 {
   margin-left: 0.5rem;
 }
@@ -855,6 +851,10 @@ body.pieces {
 
 .\!h-auto {
   height: auto !important;
+}
+
+.h-10 {
+  height: 2.5rem;
 }
 
 .h-12 {
@@ -1060,6 +1060,10 @@ body.pieces {
   flex-grow: 1;
 }
 
+.grow-\[1\] {
+  flex-grow: 1;
+}
+
 .basis-full {
   flex-basis: 100%;
 }
@@ -1164,6 +1168,10 @@ body.pieces {
 
 .self-end {
   align-self: flex-end;
+}
+
+.self-center {
+  align-self: center;
 }
 
 .justify-self-center {
@@ -1290,10 +1298,6 @@ body.pieces {
 
 .bg-\[var\(--background-modifier-border\)\] {
   background-color: var(--background-modifier-border);
-}
-
-.bg-\[var\(--background-modifier-border-hover\)\] {
-  background-color: var(--background-modifier-border-hover);
 }
 
 .bg-\[var\(--background-primary\)\] {
@@ -2529,8 +2533,7 @@ input[id='radio-2']:checked ~ .glider {
 
 /* Remove default bullets */
 
-ul,
-	#parentFileUL {
+#parentFileUL {
   list-style-type: none !important;
 }
 
@@ -2897,6 +2900,11 @@ ul,
   color: var(--text-muted);
 }
 
+.empty\:content-\[helloworld\]:empty {
+  --tw-content: helloworld;
+  content: var(--tw-content);
+}
+
 .empty\:before\:content-\[\"Description\"\]:empty::before {
   --tw-content: "Description";
   content: var(--tw-content);
@@ -2905,6 +2913,10 @@ ul,
 .empty\:before\:content-\[\"Name\"\]:empty::before {
   --tw-content: "Name";
   content: var(--tw-content);
+}
+
+.hover\:border-\[var\(--text-accent\)\]:hover {
+  border-color: var(--text-accent);
 }
 
 .hover\:bg-\[var\(--background-modifier-border-hover\)\]:hover {
@@ -2953,4 +2965,8 @@ ul,
 
 .focus\:border-none:focus {
   border-style: none;
+}
+
+.focus\:border-\[var\(--text-accent\)\]:focus {
+  border-color: var(--text-accent);
 }
