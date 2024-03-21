@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Submit Your Bug
+    url: https://github.com/pieces-app/support/issues/new?template=bug.yml
+    about: Submit your bug or issues here for the Pieces team to resolve!
