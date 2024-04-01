@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report A Bug
+    url: https://github.com/pieces-app/support/issues/new?template=bug.yml
+    about: Submit your bug or issues here for the Pieces team to resolve!
+  - name: Feature or Enhancement Request
+    url: https://github.com/pieces-app/support/discussions
+    about: Post your idea for the Pieces Obsidian plugin in discussions for the Pieces team and community to discuss!
