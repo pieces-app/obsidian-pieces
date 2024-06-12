@@ -307,6 +307,13 @@
   padding-bottom: 4px;
 }
 
+.gpt-response,
+.gpt-query {
+  -webkit-user-select: text;
+     -moz-user-select: text;
+          user-select: text;
+}
+
 .svg-box > svg {
   height: 100% !important;
   width: auto !important;
@@ -390,6 +397,10 @@ body.pieces {
 
 .modal-header:empty {
   display: none;
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
 }
 
 .scrollbar-hide::-webkit-scrollbar {
@@ -1647,6 +1658,11 @@ body.pieces {
 
 body {
   counter-reset: katexEqnNo mmlEqnNo;
+}
+
+.gpt-text-response ul,
+.gpt-text-response ol {
+  white-space: normal;
 }
 
 *, ::before, ::after {
@@ -3863,7 +3879,7 @@ input[id='radio-2']:checked ~ .glider {
 .ask-input {
   width: 100%;
 		word-wrap: break-word;
-		word-break: break-all;
+		word-break: break-word;
 }
 
 .ask-selection {
