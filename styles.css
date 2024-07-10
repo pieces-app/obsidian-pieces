@@ -1713,6 +1713,10 @@ body {
   --tw-backdrop-opacity:  ;
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
 }
 
 ::backdrop {
@@ -1763,6 +1767,10 @@ body {
   --tw-backdrop-opacity:  ;
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
 }
 
 .\!container {
@@ -2126,8 +2134,8 @@ body {
   max-height: 3rem;
 }
 
-.max-h-16 {
-  max-height: 4rem;
+.max-h-24 {
+  max-height: 6rem;
 }
 
 .max-h-\[80px\] {
