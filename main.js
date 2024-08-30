@@ -5275,7 +5275,13 @@ var _BaseAPI = class {
     if (response && (response.status >= 200 && response.status < 300)) {
       return response;
     }
-    throw new ResponseError(response, "Response returned an error code");
+    let text;
+    try {
+      text = await response.text();
+    } catch (e3) {
+      throw new ResponseError(response, `${url} returned an error code: [${response.status}]`);
+    }
+    throw new ResponseError(response, `${url} returned an error code: [${response.status}] ${text}`);
   }
   async createFetchParams(context, initOverrides) {
     let url = this.configuration.basePath + context.path;
@@ -6527,6 +6533,44 @@ function ExternalMLProviderEnumToJSON(value) {
   return value;
 }
 
+// ../generated_runtime/sdk/http/typescript/core/models/ModelCapabilities.ts
+function ModelCapabilitiesFromJSON(json) {
+  return ModelCapabilitiesFromJSONTyped(json, false);
+}
+function ModelCapabilitiesFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "temporal": !exists(json, "temporal") ? void 0 : json["temporal"],
+    "images": !exists(json, "images") ? void 0 : json["images"],
+    "videos": !exists(json, "videos") ? void 0 : json["videos"],
+    "documents": !exists(json, "documents") ? void 0 : json["documents"],
+    "codebases": !exists(json, "codebases") ? void 0 : json["codebases"],
+    "assets": !exists(json, "assets") ? void 0 : json["assets"],
+    "websites": !exists(json, "websites") ? void 0 : json["websites"]
+  };
+}
+function ModelCapabilitiesToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON(value.schema),
+    "temporal": value.temporal,
+    "images": value.images,
+    "videos": value.videos,
+    "documents": value.documents,
+    "codebases": value.codebases,
+    "assets": value.assets,
+    "websites": value.websites
+  };
+}
+
 // ../generated_runtime/sdk/http/typescript/core/models/ModelFoundationEnum.ts
 function ModelFoundationEnumFromJSON(json) {
   return ModelFoundationEnumFromJSONTyped(json, false);
@@ -6620,7 +6664,8 @@ function ModelFromJSONTyped(json, ignoreDiscriminator) {
     "cpu": !exists(json, "cpu") ? void 0 : json["cpu"],
     "downloading": !exists(json, "downloading") ? void 0 : json["downloading"],
     "maxTokens": !exists(json, "maxTokens") ? void 0 : ModelMaxTokensFromJSON(json["maxTokens"]),
-    "custom": !exists(json, "custom") ? void 0 : json["custom"]
+    "custom": !exists(json, "custom") ? void 0 : json["custom"],
+    "capabilities": !exists(json, "capabilities") ? void 0 : ModelCapabilitiesFromJSON(json["capabilities"])
   };
 }
 function ModelToJSON(value) {
@@ -6652,7 +6697,8 @@ function ModelToJSON(value) {
     "cpu": value.cpu,
     "downloading": value.downloading,
     "maxTokens": ModelMaxTokensToJSON(value.maxTokens),
-    "custom": value.custom
+    "custom": value.custom,
+    "capabilities": ModelCapabilitiesToJSON(value.capabilities)
   };
 }
 
@@ -7453,73 +7499,6 @@ function ConversationMessageSentimentEnumToJSON(value) {
   return value;
 }
 
-// ../generated_runtime/sdk/http/typescript/core/models/QGPTConversationMessageRoleEnum.ts
-function QGPTConversationMessageRoleEnumFromJSON(json) {
-  return QGPTConversationMessageRoleEnumFromJSONTyped(json, false);
-}
-function QGPTConversationMessageRoleEnumFromJSONTyped(json, ignoreDiscriminator) {
-  return json;
-}
-function QGPTConversationMessageRoleEnumToJSON(value) {
-  return value;
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/FlattenedConversations.ts
-function FlattenedConversationsFromJSON(json) {
-  return FlattenedConversationsFromJSONTyped(json, false);
-}
-function FlattenedConversationsFromJSONTyped(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "iterable": json["iterable"].map(ReferencedConversationFromJSON),
-    "indices": !exists(json, "indices") ? void 0 : json["indices"],
-    "score": !exists(json, "score") ? void 0 : ScoreFromJSON(json["score"])
-  };
-}
-function FlattenedConversationsToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON(value.schema),
-    "iterable": value.iterable.map(ReferencedConversationToJSON),
-    "indices": value.indices,
-    "score": ScoreToJSON(value.score)
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/Applications.ts
-function ApplicationsFromJSON(json) {
-  return ApplicationsFromJSONTyped(json, false);
-}
-function ApplicationsFromJSONTyped(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "iterable": json["iterable"].map(ApplicationFromJSON)
-  };
-}
-function ApplicationsToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON(value.schema),
-    "iterable": value.iterable.map(ApplicationToJSON)
-  };
-}
-
 // ../generated_runtime/sdk/http/typescript/core/models/FlattenedAnchors.ts
 function FlattenedAnchorsFromJSON(json) {
   return FlattenedAnchorsFromJSONTyped(json, false);
@@ -7697,32 +7676,20 @@ function FlattenedTagsToJSON(value) {
   };
 }
 
-// ../generated_runtime/sdk/http/typescript/core/models/FlattenedWebsite.ts
-function FlattenedWebsiteFromJSON(json) {
-  return FlattenedWebsiteFromJSONTyped(json, false);
+// ../generated_runtime/sdk/http/typescript/core/models/Applications.ts
+function ApplicationsFromJSON(json) {
+  return ApplicationsFromJSONTyped(json, false);
 }
-function FlattenedWebsiteFromJSONTyped(json, ignoreDiscriminator) {
+function ApplicationsFromJSONTyped(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
   return {
     "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "id": json["id"],
-    "assets": !exists(json, "assets") ? void 0 : FlattenedAssetsFromJSON(json["assets"]),
-    "name": json["name"],
-    "url": json["url"],
-    "created": GroupedTimestampFromJSON(json["created"]),
-    "updated": GroupedTimestampFromJSON(json["updated"]),
-    "deleted": !exists(json, "deleted") ? void 0 : GroupedTimestampFromJSON(json["deleted"]),
-    "mechanisms": !exists(json, "mechanisms") ? void 0 : mapValues(json["mechanisms"], MechanismEnumFromJSON),
-    "interactions": !exists(json, "interactions") ? void 0 : json["interactions"],
-    "persons": !exists(json, "persons") ? void 0 : FlattenedPersonsFromJSON(json["persons"]),
-    "conversations": !exists(json, "conversations") ? void 0 : FlattenedConversationsFromJSON(json["conversations"]),
-    "score": !exists(json, "score") ? void 0 : ScoreFromJSON(json["score"]),
-    "summaries": !exists(json, "summaries") ? void 0 : FlattenedWorkstreamSummariesFromJSON(json["summaries"])
+    "iterable": json["iterable"].map(ApplicationFromJSON)
   };
 }
-function FlattenedWebsiteToJSON(value) {
+function ApplicationsToJSON(value) {
   if (value === void 0) {
     return void 0;
   }
@@ -7731,469 +7698,7 @@ function FlattenedWebsiteToJSON(value) {
   }
   return {
     "schema": EmbeddedModelSchemaToJSON(value.schema),
-    "id": value.id,
-    "assets": FlattenedAssetsToJSON(value.assets),
-    "name": value.name,
-    "url": value.url,
-    "created": GroupedTimestampToJSON(value.created),
-    "updated": GroupedTimestampToJSON(value.updated),
-    "deleted": GroupedTimestampToJSON(value.deleted),
-    "mechanisms": value.mechanisms === void 0 ? void 0 : mapValues(value.mechanisms, MechanismEnumToJSON),
-    "interactions": value.interactions,
-    "persons": FlattenedPersonsToJSON(value.persons),
-    "conversations": FlattenedConversationsToJSON(value.conversations),
-    "score": ScoreToJSON(value.score),
-    "summaries": FlattenedWorkstreamSummariesToJSON(value.summaries)
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/ReferencedWebsite.ts
-function ReferencedWebsiteFromJSON(json) {
-  return ReferencedWebsiteFromJSONTyped(json, false);
-}
-function ReferencedWebsiteFromJSONTyped(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "id": json["id"],
-    "reference": !exists(json, "reference") ? void 0 : FlattenedWebsiteFromJSON(json["reference"])
-  };
-}
-function ReferencedWebsiteToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON(value.schema),
-    "id": value.id,
-    "reference": FlattenedWebsiteToJSON(value.reference)
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/FlattenedWebsites.ts
-function FlattenedWebsitesFromJSON(json) {
-  return FlattenedWebsitesFromJSONTyped(json, false);
-}
-function FlattenedWebsitesFromJSONTyped(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "iterable": json["iterable"].map(ReferencedWebsiteFromJSON),
-    "indices": !exists(json, "indices") ? void 0 : json["indices"],
-    "score": !exists(json, "score") ? void 0 : ScoreFromJSON(json["score"])
-  };
-}
-function FlattenedWebsitesToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON(value.schema),
-    "iterable": value.iterable.map(ReferencedWebsiteToJSON),
-    "indices": value.indices,
-    "score": ScoreToJSON(value.score)
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/PersonAccessScopedEnum.ts
-function PersonAccessScopedEnumFromJSON(json) {
-  return PersonAccessScopedEnumFromJSONTyped(json, false);
-}
-function PersonAccessScopedEnumFromJSONTyped(json, ignoreDiscriminator) {
-  return json;
-}
-function PersonAccessScopedEnumToJSON(value) {
-  return value;
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/PersonAccess.ts
-function PersonAccessFromJSON(json) {
-  return PersonAccessFromJSONTyped(json, false);
-}
-function PersonAccessFromJSONTyped(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "scoped": !exists(json, "scoped") ? void 0 : PersonAccessScopedEnumFromJSON(json["scoped"]),
-    "deleted": !exists(json, "deleted") ? void 0 : GroupedTimestampFromJSON(json["deleted"])
-  };
-}
-function PersonAccessToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON(value.schema),
-    "scoped": PersonAccessScopedEnumToJSON(value.scoped),
-    "deleted": GroupedTimestampToJSON(value.deleted)
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/ReferencedModel.ts
-function ReferencedModelFromJSON(json) {
-  return ReferencedModelFromJSONTyped(json, false);
-}
-function ReferencedModelFromJSONTyped(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "id": json["id"]
-  };
-}
-function ReferencedModelToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON(value.schema),
-    "id": value.id
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/PersonModel.ts
-function PersonModelFromJSON(json) {
-  return PersonModelFromJSONTyped(json, false);
-}
-function PersonModelFromJSONTyped(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "asset": !exists(json, "asset") ? void 0 : ReferencedAssetFromJSON(json["asset"]),
-    "model": !exists(json, "model") ? void 0 : ReferencedModelFromJSON(json["model"]),
-    "deleted": !exists(json, "deleted") ? void 0 : GroupedTimestampFromJSON(json["deleted"]),
-    "explanation": !exists(json, "explanation") ? void 0 : ReferencedAnnotationFromJSON(json["explanation"])
-  };
-}
-function PersonModelToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "asset": ReferencedAssetToJSON(value.asset),
-    "model": ReferencedModelToJSON(value.model),
-    "deleted": GroupedTimestampToJSON(value.deleted),
-    "explanation": ReferencedAnnotationToJSON(value.explanation)
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/ExternallySourcedEnum.ts
-function ExternallySourcedEnumFromJSON(json) {
-  return ExternallySourcedEnumFromJSONTyped(json, false);
-}
-function ExternallySourcedEnumFromJSONTyped(json, ignoreDiscriminator) {
-  return json;
-}
-function ExternallySourcedEnumToJSON(value) {
-  return value;
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/MailgunMetadata.ts
-function MailgunMetadataFromJSON(json) {
-  return MailgunMetadataFromJSONTyped(json, false);
-}
-function MailgunMetadataFromJSONTyped(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "messageId": json["messageId"]
-  };
-}
-function MailgunMetadataToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON(value.schema),
-    "messageId": value.messageId
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/PersonBasicType.ts
-function PersonBasicTypeFromJSON(json) {
-  return PersonBasicTypeFromJSONTyped(json, false);
-}
-function PersonBasicTypeFromJSONTyped(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "username": !exists(json, "username") ? void 0 : json["username"],
-    "name": !exists(json, "name") ? void 0 : json["name"],
-    "picture": !exists(json, "picture") ? void 0 : json["picture"],
-    "email": !exists(json, "email") ? void 0 : json["email"],
-    "sourced": !exists(json, "sourced") ? void 0 : ExternallySourcedEnumFromJSON(json["sourced"]),
-    "url": !exists(json, "url") ? void 0 : json["url"],
-    "mailgun": !exists(json, "mailgun") ? void 0 : MailgunMetadataFromJSON(json["mailgun"])
-  };
-}
-function PersonBasicTypeToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON(value.schema),
-    "username": value.username,
-    "name": value.name,
-    "picture": value.picture,
-    "email": value.email,
-    "sourced": ExternallySourcedEnumToJSON(value.sourced),
-    "url": value.url,
-    "mailgun": MailgunMetadataToJSON(value.mailgun)
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/Font.ts
-function FontFromJSON(json) {
-  return FontFromJSONTyped(json, false);
-}
-function FontFromJSONTyped(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "size": json["size"]
-  };
-}
-function FontToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON(value.schema),
-    "size": value.size
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/Theme.ts
-function ThemeFromJSON(json) {
-  return ThemeFromJSONTyped(json, false);
-}
-function ThemeFromJSONTyped(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "dark": json["dark"]
-  };
-}
-function ThemeToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON(value.schema),
-    "dark": value.dark
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/Aesthetics.ts
-function AestheticsFromJSON(json) {
-  return AestheticsFromJSONTyped(json, false);
-}
-function AestheticsFromJSONTyped(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "theme": ThemeFromJSON(json["theme"]),
-    "font": FontFromJSON(json["font"])
-  };
-}
-function AestheticsToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON(value.schema),
-    "theme": ThemeToJSON(value.theme),
-    "font": FontToJSON(value.font)
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/AllocationStatusEnum.ts
-var AllocationStatusEnum = {
-  Pending: "PENDING",
-  Running: "RUNNING",
-  Failed: "FAILED",
-  Succeeded: "SUCCEEDED",
-  Unknown: "UNKNOWN"
-};
-function AllocationStatusEnumFromJSON(json) {
-  return AllocationStatusEnumFromJSONTyped(json, false);
-}
-function AllocationStatusEnumFromJSONTyped(json, ignoreDiscriminator) {
-  return json;
-}
-function AllocationStatusEnumToJSON(value) {
-  return value;
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/AllocationCloudStatus.ts
-function AllocationCloudStatusFromJSON(json) {
-  return AllocationCloudStatusFromJSONTyped(json, false);
-}
-function AllocationCloudStatusFromJSONTyped(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "cloud": AllocationStatusEnumFromJSON(json["cloud"])
-  };
-}
-function AllocationCloudStatusToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON(value.schema),
-    "cloud": AllocationStatusEnumToJSON(value.cloud)
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/AllocationCloudUrl.ts
-function AllocationCloudUrlFromJSON(json) {
-  return AllocationCloudUrlFromJSONTyped(json, false);
-}
-function AllocationCloudUrlFromJSONTyped(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "status": AllocationStatusEnumFromJSON(json["status"]),
-    "url": json["url"]
-  };
-}
-function AllocationCloudUrlToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON(value.schema),
-    "status": AllocationStatusEnumToJSON(value.status),
-    "url": value.url
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/AllocationCloudUrls.ts
-function AllocationCloudUrlsFromJSON(json) {
-  return AllocationCloudUrlsFromJSONTyped(json, false);
-}
-function AllocationCloudUrlsFromJSONTyped(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "base": AllocationCloudUrlFromJSON(json["base"]),
-    "id": AllocationCloudUrlFromJSON(json["id"]),
-    "vanity": !exists(json, "vanity") ? void 0 : AllocationCloudUrlFromJSON(json["vanity"])
-  };
-}
-function AllocationCloudUrlsToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON(value.schema),
-    "base": AllocationCloudUrlToJSON(value.base),
-    "id": AllocationCloudUrlToJSON(value.id),
-    "vanity": AllocationCloudUrlToJSON(value.vanity)
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/AllocationCloud.ts
-function AllocationCloudFromJSON(json) {
-  return AllocationCloudFromJSONTyped(json, false);
-}
-function AllocationCloudFromJSONTyped(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "id": json["id"],
-    "user": json["user"],
-    "urls": AllocationCloudUrlsFromJSON(json["urls"]),
-    "status": AllocationCloudStatusFromJSON(json["status"]),
-    "project": json["project"],
-    "updated": !exists(json, "updated") ? void 0 : GroupedTimestampFromJSON(json["updated"]),
-    "version": !exists(json, "version") ? void 0 : json["version"],
-    "region": !exists(json, "region") ? void 0 : json["region"]
-  };
-}
-function AllocationCloudToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON(value.schema),
-    "id": value.id,
-    "user": value.user,
-    "urls": AllocationCloudUrlsToJSON(value.urls),
-    "status": AllocationCloudStatusToJSON(value.status),
-    "project": value.project,
-    "updated": GroupedTimestampToJSON(value.updated),
-    "version": value.version,
-    "region": value.region
+    "iterable": value.iterable.map(ApplicationToJSON)
   };
 }
 
@@ -8226,467 +7731,6 @@ function AnonymousTemporalRangeToJSON(value) {
     "to": GroupedTimestampToJSON(value.to),
     "between": value.between,
     "continuous": value.continuous
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/Auth0OpenAIUserMetadata.ts
-function Auth0OpenAIUserMetadataFromJSON(json) {
-  return Auth0OpenAIUserMetadataFromJSONTyped(json, false);
-}
-function Auth0OpenAIUserMetadataFromJSONTyped(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "apiKey": !exists(json, "api_key") ? void 0 : json["api_key"],
-    "apiKeyName": !exists(json, "api_key_name") ? void 0 : json["api_key_name"],
-    "organizationKey": !exists(json, "organization_key") ? void 0 : json["organization_key"]
-  };
-}
-function Auth0OpenAIUserMetadataToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON(value.schema),
-    "api_key": value.apiKey,
-    "api_key_name": value.apiKeyName,
-    "organization_key": value.organizationKey
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/Auth0UserAllocationMetadata.ts
-function Auth0UserAllocationMetadataFromJSON(json) {
-  return Auth0UserAllocationMetadataFromJSONTyped(json, false);
-}
-function Auth0UserAllocationMetadataFromJSONTyped(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "project": json["project"],
-    "region": json["region"]
-  };
-}
-function Auth0UserAllocationMetadataToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "project": value.project,
-    "region": value.region
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/Auth0UserMetadata.ts
-function Auth0UserMetadataFromJSON(json) {
-  return Auth0UserMetadataFromJSONTyped(json, false);
-}
-function Auth0UserMetadataFromJSONTyped(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "globalId": json["global_id"],
-    "cloudKey": !exists(json, "cloud_key") ? void 0 : json["cloud_key"],
-    "stripeCustomerId": !exists(json, "stripe_customer_id") ? void 0 : json["stripe_customer_id"],
-    "vanityname": !exists(json, "vanityname") ? void 0 : json["vanityname"],
-    "allocation": !exists(json, "allocation") ? void 0 : Auth0UserAllocationMetadataFromJSON(json["allocation"]),
-    "openAI": !exists(json, "open_AI") ? void 0 : Auth0OpenAIUserMetadataFromJSON(json["open_AI"]),
-    "beta": !exists(json, "beta") ? void 0 : AnonymousTemporalRangeFromJSON(json["beta"])
-  };
-}
-function Auth0UserMetadataToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON(value.schema),
-    "global_id": value.globalId,
-    "cloud_key": value.cloudKey,
-    "stripe_customer_id": value.stripeCustomerId,
-    "vanityname": value.vanityname,
-    "allocation": Auth0UserAllocationMetadataToJSON(value.allocation),
-    "open_AI": Auth0OpenAIUserMetadataToJSON(value.openAI),
-    "beta": AnonymousTemporalRangeToJSON(value.beta)
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/ExternalProviderProfileData.ts
-function ExternalProviderProfileDataFromJSON(json) {
-  return ExternalProviderProfileDataFromJSONTyped(json, false);
-}
-function ExternalProviderProfileDataFromJSONTyped(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "name": !exists(json, "name") ? void 0 : json["name"],
-    "picture": !exists(json, "picture") ? void 0 : json["picture"],
-    "nickname": !exists(json, "nickname") ? void 0 : json["nickname"],
-    "email": !exists(json, "email") ? void 0 : json["email"],
-    "emailVerified": !exists(json, "email_verified") ? void 0 : json["email_verified"],
-    "nodeId": !exists(json, "node_id") ? void 0 : json["node_id"],
-    "gravatarId": !exists(json, "gravatar_id") ? void 0 : json["gravatar_id"],
-    "url": !exists(json, "url") ? void 0 : json["url"],
-    "htmlUrl": !exists(json, "html_url") ? void 0 : json["html_url"],
-    "followersUrl": !exists(json, "followers_url") ? void 0 : json["followers_url"],
-    "followingUrl": !exists(json, "following_url") ? void 0 : json["following_url"],
-    "gistsUrl": !exists(json, "gists_url") ? void 0 : json["gists_url"],
-    "starredUrl": !exists(json, "starred_url") ? void 0 : json["starred_url"],
-    "subscriptionsUrl": !exists(json, "subscriptions_url") ? void 0 : json["subscriptions_url"],
-    "organizationsUrl": !exists(json, "organizations_url") ? void 0 : json["organizations_url"],
-    "reposUrl": !exists(json, "repos_url") ? void 0 : json["repos_url"],
-    "eventsUrl": !exists(json, "events_url") ? void 0 : json["events_url"],
-    "receivedEventsUrl": !exists(json, "received_events_url") ? void 0 : json["received_events_url"],
-    "type": !exists(json, "type") ? void 0 : json["type"],
-    "siteAdmin": !exists(json, "site_admin") ? void 0 : json["site_admin"],
-    "company": !exists(json, "company") ? void 0 : json["company"],
-    "blog": !exists(json, "blog") ? void 0 : json["blog"],
-    "anchor": !exists(json, "anchor") ? void 0 : json["anchor"],
-    "hireable": !exists(json, "hireable") ? void 0 : json["hireable"],
-    "bio": !exists(json, "bio") ? void 0 : json["bio"],
-    "twitterUsername": !exists(json, "twitter_username") ? void 0 : json["twitter_username"],
-    "publicRepos": !exists(json, "public_repos") ? void 0 : json["public_repos"],
-    "publicGists": !exists(json, "public_gists") ? void 0 : json["public_gists"],
-    "followers": !exists(json, "followers") ? void 0 : json["followers"],
-    "following": !exists(json, "following") ? void 0 : json["following"],
-    "createdAt": !exists(json, "created_at") ? void 0 : json["created_at"],
-    "updatedAt": !exists(json, "updated_at") ? void 0 : json["updated_at"],
-    "privateGists": !exists(json, "private_gists") ? void 0 : json["private_gists"],
-    "totalPrivateRepos": !exists(json, "total_private_repos") ? void 0 : json["total_private_repos"],
-    "ownedPrivateRepos": !exists(json, "owned_private_repos") ? void 0 : json["owned_private_repos"],
-    "diskUsage": !exists(json, "disk_usage") ? void 0 : json["disk_usage"],
-    "collaborators": !exists(json, "collaborators") ? void 0 : json["collaborators"],
-    "twoFactorAuthentication": !exists(json, "two_factor_authentication") ? void 0 : json["two_factor_authentication"]
-  };
-}
-function ExternalProviderProfileDataToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "name": value.name,
-    "picture": value.picture,
-    "nickname": value.nickname,
-    "email": value.email,
-    "email_verified": value.emailVerified,
-    "node_id": value.nodeId,
-    "gravatar_id": value.gravatarId,
-    "url": value.url,
-    "html_url": value.htmlUrl,
-    "followers_url": value.followersUrl,
-    "following_url": value.followingUrl,
-    "gists_url": value.gistsUrl,
-    "starred_url": value.starredUrl,
-    "subscriptions_url": value.subscriptionsUrl,
-    "organizations_url": value.organizationsUrl,
-    "repos_url": value.reposUrl,
-    "events_url": value.eventsUrl,
-    "received_events_url": value.receivedEventsUrl,
-    "type": value.type,
-    "site_admin": value.siteAdmin,
-    "company": value.company,
-    "blog": value.blog,
-    "anchor": value.anchor,
-    "hireable": value.hireable,
-    "bio": value.bio,
-    "twitter_username": value.twitterUsername,
-    "public_repos": value.publicRepos,
-    "public_gists": value.publicGists,
-    "followers": value.followers,
-    "following": value.following,
-    "created_at": value.createdAt,
-    "updated_at": value.updatedAt,
-    "private_gists": value.privateGists,
-    "total_private_repos": value.totalPrivateRepos,
-    "owned_private_repos": value.ownedPrivateRepos,
-    "disk_usage": value.diskUsage,
-    "collaborators": value.collaborators,
-    "two_factor_authentication": value.twoFactorAuthentication
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/ExternalProviderTypeEnum.ts
-function ExternalProviderTypeEnumFromJSON(json) {
-  return ExternalProviderTypeEnumFromJSONTyped(json, false);
-}
-function ExternalProviderTypeEnumFromJSONTyped(json, ignoreDiscriminator) {
-  return json;
-}
-function ExternalProviderTypeEnumToJSON(value) {
-  return value;
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/ExternalProvider.ts
-function ExternalProviderFromJSON(json) {
-  return ExternalProviderFromJSONTyped(json, false);
-}
-function ExternalProviderFromJSONTyped(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "type": ExternalProviderTypeEnumFromJSON(json["type"]),
-    "userId": json["user_id"],
-    "accessToken": !exists(json, "access_token") ? void 0 : json["access_token"],
-    "expiresIn": !exists(json, "expires_in") ? void 0 : json["expires_in"],
-    "created": GroupedTimestampFromJSON(json["created"]),
-    "updated": GroupedTimestampFromJSON(json["updated"]),
-    "profileData": !exists(json, "profileData") ? void 0 : ExternalProviderProfileDataFromJSON(json["profileData"]),
-    "connection": !exists(json, "connection") ? void 0 : json["connection"],
-    "isSocial": !exists(json, "isSocial") ? void 0 : json["isSocial"]
-  };
-}
-function ExternalProviderToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON(value.schema),
-    "type": ExternalProviderTypeEnumToJSON(value.type),
-    "user_id": value.userId,
-    "access_token": value.accessToken,
-    "expires_in": value.expiresIn,
-    "created": GroupedTimestampToJSON(value.created),
-    "updated": GroupedTimestampToJSON(value.updated),
-    "profileData": ExternalProviderProfileDataToJSON(value.profileData),
-    "connection": value.connection,
-    "isSocial": value.isSocial
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/ExternalProviders.ts
-function ExternalProvidersFromJSON(json) {
-  return ExternalProvidersFromJSONTyped(json, false);
-}
-function ExternalProvidersFromJSONTyped(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "iterable": json["iterable"].map(ExternalProviderFromJSON)
-  };
-}
-function ExternalProvidersToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON(value.schema),
-    "iterable": value.iterable.map(ExternalProviderToJSON)
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/UserProfile.ts
-function UserProfileFromJSON(json) {
-  return UserProfileFromJSONTyped(json, false);
-}
-function UserProfileFromJSONTyped(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "picture": !exists(json, "picture") ? void 0 : json["picture"],
-    "email": !exists(json, "email") ? void 0 : json["email"],
-    "created": !exists(json, "created") ? void 0 : GroupedTimestampFromJSON(json["created"]),
-    "updated": !exists(json, "updated") ? void 0 : GroupedTimestampFromJSON(json["updated"]),
-    "username": !exists(json, "username") ? void 0 : json["username"],
-    "id": json["id"],
-    "name": !exists(json, "name") ? void 0 : json["name"],
-    "aesthetics": AestheticsFromJSON(json["aesthetics"]),
-    "vanityname": !exists(json, "vanityname") ? void 0 : json["vanityname"],
-    "allocation": !exists(json, "allocation") ? void 0 : AllocationCloudFromJSON(json["allocation"]),
-    "providers": !exists(json, "providers") ? void 0 : ExternalProvidersFromJSON(json["providers"]),
-    "auth0": !exists(json, "auth0") ? void 0 : Auth0UserMetadataFromJSON(json["auth0"])
-  };
-}
-function UserProfileToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON(value.schema),
-    "picture": value.picture,
-    "email": value.email,
-    "created": GroupedTimestampToJSON(value.created),
-    "updated": GroupedTimestampToJSON(value.updated),
-    "username": value.username,
-    "id": value.id,
-    "name": value.name,
-    "aesthetics": AestheticsToJSON(value.aesthetics),
-    "vanityname": value.vanityname,
-    "allocation": AllocationCloudToJSON(value.allocation),
-    "providers": ExternalProvidersToJSON(value.providers),
-    "auth0": Auth0UserMetadataToJSON(value.auth0)
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/PersonType.ts
-function PersonTypeFromJSON(json) {
-  return PersonTypeFromJSONTyped(json, false);
-}
-function PersonTypeFromJSONTyped(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "basic": !exists(json, "basic") ? void 0 : PersonBasicTypeFromJSON(json["basic"]),
-    "platform": !exists(json, "platform") ? void 0 : UserProfileFromJSON(json["platform"])
-  };
-}
-function PersonTypeToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON(value.schema),
-    "basic": PersonBasicTypeToJSON(value.basic),
-    "platform": UserProfileToJSON(value.platform)
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/FlattenedPerson.ts
-function FlattenedPersonFromJSON(json) {
-  return FlattenedPersonFromJSONTyped(json, false);
-}
-function FlattenedPersonFromJSONTyped(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "id": json["id"],
-    "created": GroupedTimestampFromJSON(json["created"]),
-    "updated": GroupedTimestampFromJSON(json["updated"]),
-    "deleted": !exists(json, "deleted") ? void 0 : GroupedTimestampFromJSON(json["deleted"]),
-    "type": PersonTypeFromJSON(json["type"]),
-    "assets": !exists(json, "assets") ? void 0 : FlattenedAssetsFromJSON(json["assets"]),
-    "mechanisms": !exists(json, "mechanisms") ? void 0 : mapValues(json["mechanisms"], MechanismEnumFromJSON),
-    "interactions": !exists(json, "interactions") ? void 0 : json["interactions"],
-    "access": !exists(json, "access") ? void 0 : mapValues(json["access"], PersonAccessFromJSON),
-    "tags": !exists(json, "tags") ? void 0 : FlattenedTagsFromJSON(json["tags"]),
-    "websites": !exists(json, "websites") ? void 0 : FlattenedWebsitesFromJSON(json["websites"]),
-    "models": !exists(json, "models") ? void 0 : mapValues(json["models"], PersonModelFromJSON),
-    "annotations": !exists(json, "annotations") ? void 0 : FlattenedAnnotationsFromJSON(json["annotations"]),
-    "score": !exists(json, "score") ? void 0 : ScoreFromJSON(json["score"]),
-    "summaries": !exists(json, "summaries") ? void 0 : FlattenedWorkstreamSummariesFromJSON(json["summaries"]),
-    "anchors": !exists(json, "anchors") ? void 0 : FlattenedAnchorsFromJSON(json["anchors"])
-  };
-}
-function FlattenedPersonToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON(value.schema),
-    "id": value.id,
-    "created": GroupedTimestampToJSON(value.created),
-    "updated": GroupedTimestampToJSON(value.updated),
-    "deleted": GroupedTimestampToJSON(value.deleted),
-    "type": PersonTypeToJSON(value.type),
-    "assets": FlattenedAssetsToJSON(value.assets),
-    "mechanisms": value.mechanisms === void 0 ? void 0 : mapValues(value.mechanisms, MechanismEnumToJSON),
-    "interactions": value.interactions,
-    "access": value.access === void 0 ? void 0 : mapValues(value.access, PersonAccessToJSON),
-    "tags": FlattenedTagsToJSON(value.tags),
-    "websites": FlattenedWebsitesToJSON(value.websites),
-    "models": value.models === void 0 ? void 0 : mapValues(value.models, PersonModelToJSON),
-    "annotations": FlattenedAnnotationsToJSON(value.annotations),
-    "score": ScoreToJSON(value.score),
-    "summaries": FlattenedWorkstreamSummariesToJSON(value.summaries),
-    "anchors": FlattenedAnchorsToJSON(value.anchors)
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/ReferencedPerson.ts
-function ReferencedPersonFromJSON(json) {
-  return ReferencedPersonFromJSONTyped(json, false);
-}
-function ReferencedPersonFromJSONTyped(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "id": json["id"],
-    "reference": !exists(json, "reference") ? void 0 : FlattenedPersonFromJSON(json["reference"])
-  };
-}
-function ReferencedPersonToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON(value.schema),
-    "id": value.id,
-    "reference": FlattenedPersonToJSON(value.reference)
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/FlattenedPersons.ts
-function FlattenedPersonsFromJSON(json) {
-  return FlattenedPersonsFromJSONTyped3(json, false);
-}
-function FlattenedPersonsFromJSONTyped3(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "iterable": json["iterable"].map(ReferencedPersonFromJSON),
-    "indices": !exists(json, "indices") ? void 0 : json["indices"],
-    "score": !exists(json, "score") ? void 0 : ScoreFromJSON(json["score"])
-  };
-}
-function FlattenedPersonsToJSON(value) {
-  if (value === void 0) {
-    return void 0;
-  }
-  if (value === null) {
-    return null;
-  }
-  return {
-    "schema": EmbeddedModelSchemaToJSON(value.schema),
-    "iterable": value.iterable.map(ReferencedPersonToJSON),
-    "indices": value.indices,
-    "score": ScoreToJSON(value.score)
   };
 }
 
@@ -8775,6 +7819,81 @@ function BrowserTabValuesToJSON(value) {
   return {
     "schema": EmbeddedModelSchemaToJSON(value.schema),
     "iterable": value.iterable.map(BrowserTabValueToJSON)
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/ExternallySourcedEnum.ts
+function ExternallySourcedEnumFromJSON(json) {
+  return ExternallySourcedEnumFromJSONTyped(json, false);
+}
+function ExternallySourcedEnumFromJSONTyped(json, ignoreDiscriminator) {
+  return json;
+}
+function ExternallySourcedEnumToJSON(value) {
+  return value;
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/MailgunMetadata.ts
+function MailgunMetadataFromJSON(json) {
+  return MailgunMetadataFromJSONTyped(json, false);
+}
+function MailgunMetadataFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "messageId": json["messageId"]
+  };
+}
+function MailgunMetadataToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON(value.schema),
+    "messageId": value.messageId
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/PersonBasicType.ts
+function PersonBasicTypeFromJSON(json) {
+  return PersonBasicTypeFromJSONTyped(json, false);
+}
+function PersonBasicTypeFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "username": !exists(json, "username") ? void 0 : json["username"],
+    "name": !exists(json, "name") ? void 0 : json["name"],
+    "picture": !exists(json, "picture") ? void 0 : json["picture"],
+    "email": !exists(json, "email") ? void 0 : json["email"],
+    "sourced": !exists(json, "sourced") ? void 0 : ExternallySourcedEnumFromJSON(json["sourced"]),
+    "url": !exists(json, "url") ? void 0 : json["url"],
+    "mailgun": !exists(json, "mailgun") ? void 0 : MailgunMetadataFromJSON(json["mailgun"])
+  };
+}
+function PersonBasicTypeToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON(value.schema),
+    "username": value.username,
+    "name": value.name,
+    "picture": value.picture,
+    "email": value.email,
+    "sourced": ExternallySourcedEnumToJSON(value.sourced),
+    "url": value.url,
+    "mailgun": MailgunMetadataToJSON(value.mailgun)
   };
 }
 
@@ -9785,9 +8904,9 @@ function ReferencedWorkstreamSummaryToJSON(value) {
 
 // ../generated_runtime/sdk/http/typescript/core/models/FlattenedWorkstreamSummaries.ts
 function FlattenedWorkstreamSummariesFromJSON(json) {
-  return FlattenedWorkstreamSummariesFromJSONTyped4(json, false);
+  return FlattenedWorkstreamSummariesFromJSONTyped2(json, false);
 }
-function FlattenedWorkstreamSummariesFromJSONTyped4(json, ignoreDiscriminator) {
+function FlattenedWorkstreamSummariesFromJSONTyped2(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -10294,6 +9413,32 @@ function QGPTPromptPipelineToJSON(value) {
   };
 }
 
+// ../generated_runtime/sdk/http/typescript/core/models/ReferencedModel.ts
+function ReferencedModelFromJSON(json) {
+  return ReferencedModelFromJSONTyped(json, false);
+}
+function ReferencedModelFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "id": json["id"]
+  };
+}
+function ReferencedModelToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON(value.schema),
+    "id": value.id
+  };
+}
+
 // ../generated_runtime/sdk/http/typescript/core/models/FlattenedConversation.ts
 function FlattenedConversationFromJSON(json) {
   return FlattenedConversationFromJSONTyped(json, false);
@@ -10358,9 +9503,9 @@ function FlattenedConversationToJSON(value) {
 
 // ../generated_runtime/sdk/http/typescript/core/models/ReferencedConversation.ts
 function ReferencedConversationFromJSON(json) {
-  return ReferencedConversationFromJSONTyped2(json, false);
+  return ReferencedConversationFromJSONTyped(json, false);
 }
-function ReferencedConversationFromJSONTyped2(json, ignoreDiscriminator) {
+function ReferencedConversationFromJSONTyped(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -10384,6 +9529,911 @@ function ReferencedConversationToJSON(value) {
   };
 }
 
+// ../generated_runtime/sdk/http/typescript/core/models/FlattenedConversations.ts
+function FlattenedConversationsFromJSON(json) {
+  return FlattenedConversationsFromJSONTyped3(json, false);
+}
+function FlattenedConversationsFromJSONTyped3(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "iterable": json["iterable"].map(ReferencedConversationFromJSON),
+    "indices": !exists(json, "indices") ? void 0 : json["indices"],
+    "score": !exists(json, "score") ? void 0 : ScoreFromJSON(json["score"])
+  };
+}
+function FlattenedConversationsToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON(value.schema),
+    "iterable": value.iterable.map(ReferencedConversationToJSON),
+    "indices": value.indices,
+    "score": ScoreToJSON(value.score)
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/FlattenedWebsite.ts
+function FlattenedWebsiteFromJSON(json) {
+  return FlattenedWebsiteFromJSONTyped(json, false);
+}
+function FlattenedWebsiteFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "id": json["id"],
+    "assets": !exists(json, "assets") ? void 0 : FlattenedAssetsFromJSON(json["assets"]),
+    "name": json["name"],
+    "url": json["url"],
+    "created": GroupedTimestampFromJSON(json["created"]),
+    "updated": GroupedTimestampFromJSON(json["updated"]),
+    "deleted": !exists(json, "deleted") ? void 0 : GroupedTimestampFromJSON(json["deleted"]),
+    "mechanisms": !exists(json, "mechanisms") ? void 0 : mapValues(json["mechanisms"], MechanismEnumFromJSON),
+    "interactions": !exists(json, "interactions") ? void 0 : json["interactions"],
+    "persons": !exists(json, "persons") ? void 0 : FlattenedPersonsFromJSON(json["persons"]),
+    "conversations": !exists(json, "conversations") ? void 0 : FlattenedConversationsFromJSON(json["conversations"]),
+    "score": !exists(json, "score") ? void 0 : ScoreFromJSON(json["score"]),
+    "summaries": !exists(json, "summaries") ? void 0 : FlattenedWorkstreamSummariesFromJSON(json["summaries"]),
+    "messages": !exists(json, "messages") ? void 0 : FlattenedConversationMessagesFromJSON(json["messages"])
+  };
+}
+function FlattenedWebsiteToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON(value.schema),
+    "id": value.id,
+    "assets": FlattenedAssetsToJSON(value.assets),
+    "name": value.name,
+    "url": value.url,
+    "created": GroupedTimestampToJSON(value.created),
+    "updated": GroupedTimestampToJSON(value.updated),
+    "deleted": GroupedTimestampToJSON(value.deleted),
+    "mechanisms": value.mechanisms === void 0 ? void 0 : mapValues(value.mechanisms, MechanismEnumToJSON),
+    "interactions": value.interactions,
+    "persons": FlattenedPersonsToJSON(value.persons),
+    "conversations": FlattenedConversationsToJSON(value.conversations),
+    "score": ScoreToJSON(value.score),
+    "summaries": FlattenedWorkstreamSummariesToJSON(value.summaries),
+    "messages": FlattenedConversationMessagesToJSON(value.messages)
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/ReferencedWebsite.ts
+function ReferencedWebsiteFromJSON(json) {
+  return ReferencedWebsiteFromJSONTyped(json, false);
+}
+function ReferencedWebsiteFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "id": json["id"],
+    "reference": !exists(json, "reference") ? void 0 : FlattenedWebsiteFromJSON(json["reference"])
+  };
+}
+function ReferencedWebsiteToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON(value.schema),
+    "id": value.id,
+    "reference": FlattenedWebsiteToJSON(value.reference)
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/FlattenedWebsites.ts
+function FlattenedWebsitesFromJSON(json) {
+  return FlattenedWebsitesFromJSONTyped3(json, false);
+}
+function FlattenedWebsitesFromJSONTyped3(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "iterable": json["iterable"].map(ReferencedWebsiteFromJSON),
+    "indices": !exists(json, "indices") ? void 0 : json["indices"],
+    "score": !exists(json, "score") ? void 0 : ScoreFromJSON(json["score"])
+  };
+}
+function FlattenedWebsitesToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON(value.schema),
+    "iterable": value.iterable.map(ReferencedWebsiteToJSON),
+    "indices": value.indices,
+    "score": ScoreToJSON(value.score)
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/PersonAccessScopedEnum.ts
+function PersonAccessScopedEnumFromJSON(json) {
+  return PersonAccessScopedEnumFromJSONTyped(json, false);
+}
+function PersonAccessScopedEnumFromJSONTyped(json, ignoreDiscriminator) {
+  return json;
+}
+function PersonAccessScopedEnumToJSON(value) {
+  return value;
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/PersonAccess.ts
+function PersonAccessFromJSON(json) {
+  return PersonAccessFromJSONTyped(json, false);
+}
+function PersonAccessFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "scoped": !exists(json, "scoped") ? void 0 : PersonAccessScopedEnumFromJSON(json["scoped"]),
+    "deleted": !exists(json, "deleted") ? void 0 : GroupedTimestampFromJSON(json["deleted"])
+  };
+}
+function PersonAccessToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON(value.schema),
+    "scoped": PersonAccessScopedEnumToJSON(value.scoped),
+    "deleted": GroupedTimestampToJSON(value.deleted)
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/PersonModel.ts
+function PersonModelFromJSON(json) {
+  return PersonModelFromJSONTyped(json, false);
+}
+function PersonModelFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "asset": !exists(json, "asset") ? void 0 : ReferencedAssetFromJSON(json["asset"]),
+    "model": !exists(json, "model") ? void 0 : ReferencedModelFromJSON(json["model"]),
+    "deleted": !exists(json, "deleted") ? void 0 : GroupedTimestampFromJSON(json["deleted"]),
+    "explanation": !exists(json, "explanation") ? void 0 : ReferencedAnnotationFromJSON(json["explanation"])
+  };
+}
+function PersonModelToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "asset": ReferencedAssetToJSON(value.asset),
+    "model": ReferencedModelToJSON(value.model),
+    "deleted": GroupedTimestampToJSON(value.deleted),
+    "explanation": ReferencedAnnotationToJSON(value.explanation)
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/Font.ts
+function FontFromJSON(json) {
+  return FontFromJSONTyped(json, false);
+}
+function FontFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "size": json["size"]
+  };
+}
+function FontToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON(value.schema),
+    "size": value.size
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/Theme.ts
+function ThemeFromJSON(json) {
+  return ThemeFromJSONTyped(json, false);
+}
+function ThemeFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "dark": json["dark"]
+  };
+}
+function ThemeToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON(value.schema),
+    "dark": value.dark
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/Aesthetics.ts
+function AestheticsFromJSON(json) {
+  return AestheticsFromJSONTyped(json, false);
+}
+function AestheticsFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "theme": ThemeFromJSON(json["theme"]),
+    "font": FontFromJSON(json["font"])
+  };
+}
+function AestheticsToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON(value.schema),
+    "theme": ThemeToJSON(value.theme),
+    "font": FontToJSON(value.font)
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/AllocationStatusEnum.ts
+var AllocationStatusEnum = {
+  Pending: "PENDING",
+  Running: "RUNNING",
+  Failed: "FAILED",
+  Succeeded: "SUCCEEDED",
+  Unknown: "UNKNOWN"
+};
+function AllocationStatusEnumFromJSON(json) {
+  return AllocationStatusEnumFromJSONTyped(json, false);
+}
+function AllocationStatusEnumFromJSONTyped(json, ignoreDiscriminator) {
+  return json;
+}
+function AllocationStatusEnumToJSON(value) {
+  return value;
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/AllocationCloudStatus.ts
+function AllocationCloudStatusFromJSON(json) {
+  return AllocationCloudStatusFromJSONTyped(json, false);
+}
+function AllocationCloudStatusFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "cloud": AllocationStatusEnumFromJSON(json["cloud"])
+  };
+}
+function AllocationCloudStatusToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON(value.schema),
+    "cloud": AllocationStatusEnumToJSON(value.cloud)
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/AllocationCloudUrl.ts
+function AllocationCloudUrlFromJSON(json) {
+  return AllocationCloudUrlFromJSONTyped(json, false);
+}
+function AllocationCloudUrlFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "status": AllocationStatusEnumFromJSON(json["status"]),
+    "url": json["url"]
+  };
+}
+function AllocationCloudUrlToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON(value.schema),
+    "status": AllocationStatusEnumToJSON(value.status),
+    "url": value.url
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/AllocationCloudUrls.ts
+function AllocationCloudUrlsFromJSON(json) {
+  return AllocationCloudUrlsFromJSONTyped(json, false);
+}
+function AllocationCloudUrlsFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "base": AllocationCloudUrlFromJSON(json["base"]),
+    "id": AllocationCloudUrlFromJSON(json["id"]),
+    "vanity": !exists(json, "vanity") ? void 0 : AllocationCloudUrlFromJSON(json["vanity"])
+  };
+}
+function AllocationCloudUrlsToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON(value.schema),
+    "base": AllocationCloudUrlToJSON(value.base),
+    "id": AllocationCloudUrlToJSON(value.id),
+    "vanity": AllocationCloudUrlToJSON(value.vanity)
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/AllocationCloud.ts
+function AllocationCloudFromJSON(json) {
+  return AllocationCloudFromJSONTyped(json, false);
+}
+function AllocationCloudFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "id": json["id"],
+    "user": json["user"],
+    "urls": AllocationCloudUrlsFromJSON(json["urls"]),
+    "status": AllocationCloudStatusFromJSON(json["status"]),
+    "project": json["project"],
+    "updated": !exists(json, "updated") ? void 0 : GroupedTimestampFromJSON(json["updated"]),
+    "version": !exists(json, "version") ? void 0 : json["version"],
+    "region": !exists(json, "region") ? void 0 : json["region"]
+  };
+}
+function AllocationCloudToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON(value.schema),
+    "id": value.id,
+    "user": value.user,
+    "urls": AllocationCloudUrlsToJSON(value.urls),
+    "status": AllocationCloudStatusToJSON(value.status),
+    "project": value.project,
+    "updated": GroupedTimestampToJSON(value.updated),
+    "version": value.version,
+    "region": value.region
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/Auth0OpenAIUserMetadata.ts
+function Auth0OpenAIUserMetadataFromJSON(json) {
+  return Auth0OpenAIUserMetadataFromJSONTyped(json, false);
+}
+function Auth0OpenAIUserMetadataFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "apiKey": !exists(json, "api_key") ? void 0 : json["api_key"],
+    "apiKeyName": !exists(json, "api_key_name") ? void 0 : json["api_key_name"],
+    "organizationKey": !exists(json, "organization_key") ? void 0 : json["organization_key"]
+  };
+}
+function Auth0OpenAIUserMetadataToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON(value.schema),
+    "api_key": value.apiKey,
+    "api_key_name": value.apiKeyName,
+    "organization_key": value.organizationKey
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/Auth0UserAllocationMetadata.ts
+function Auth0UserAllocationMetadataFromJSON(json) {
+  return Auth0UserAllocationMetadataFromJSONTyped(json, false);
+}
+function Auth0UserAllocationMetadataFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "project": json["project"],
+    "region": json["region"]
+  };
+}
+function Auth0UserAllocationMetadataToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "project": value.project,
+    "region": value.region
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/Auth0UserMetadata.ts
+function Auth0UserMetadataFromJSON(json) {
+  return Auth0UserMetadataFromJSONTyped(json, false);
+}
+function Auth0UserMetadataFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "globalId": json["global_id"],
+    "cloudKey": !exists(json, "cloud_key") ? void 0 : json["cloud_key"],
+    "stripeCustomerId": !exists(json, "stripe_customer_id") ? void 0 : json["stripe_customer_id"],
+    "vanityname": !exists(json, "vanityname") ? void 0 : json["vanityname"],
+    "allocation": !exists(json, "allocation") ? void 0 : Auth0UserAllocationMetadataFromJSON(json["allocation"]),
+    "openAI": !exists(json, "open_AI") ? void 0 : Auth0OpenAIUserMetadataFromJSON(json["open_AI"]),
+    "beta": !exists(json, "beta") ? void 0 : AnonymousTemporalRangeFromJSON(json["beta"])
+  };
+}
+function Auth0UserMetadataToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON(value.schema),
+    "global_id": value.globalId,
+    "cloud_key": value.cloudKey,
+    "stripe_customer_id": value.stripeCustomerId,
+    "vanityname": value.vanityname,
+    "allocation": Auth0UserAllocationMetadataToJSON(value.allocation),
+    "open_AI": Auth0OpenAIUserMetadataToJSON(value.openAI),
+    "beta": AnonymousTemporalRangeToJSON(value.beta)
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/ExternalProviderProfileData.ts
+function ExternalProviderProfileDataFromJSON(json) {
+  return ExternalProviderProfileDataFromJSONTyped(json, false);
+}
+function ExternalProviderProfileDataFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "name": !exists(json, "name") ? void 0 : json["name"],
+    "picture": !exists(json, "picture") ? void 0 : json["picture"],
+    "nickname": !exists(json, "nickname") ? void 0 : json["nickname"],
+    "email": !exists(json, "email") ? void 0 : json["email"],
+    "emailVerified": !exists(json, "email_verified") ? void 0 : json["email_verified"],
+    "nodeId": !exists(json, "node_id") ? void 0 : json["node_id"],
+    "gravatarId": !exists(json, "gravatar_id") ? void 0 : json["gravatar_id"],
+    "url": !exists(json, "url") ? void 0 : json["url"],
+    "htmlUrl": !exists(json, "html_url") ? void 0 : json["html_url"],
+    "followersUrl": !exists(json, "followers_url") ? void 0 : json["followers_url"],
+    "followingUrl": !exists(json, "following_url") ? void 0 : json["following_url"],
+    "gistsUrl": !exists(json, "gists_url") ? void 0 : json["gists_url"],
+    "starredUrl": !exists(json, "starred_url") ? void 0 : json["starred_url"],
+    "subscriptionsUrl": !exists(json, "subscriptions_url") ? void 0 : json["subscriptions_url"],
+    "organizationsUrl": !exists(json, "organizations_url") ? void 0 : json["organizations_url"],
+    "reposUrl": !exists(json, "repos_url") ? void 0 : json["repos_url"],
+    "eventsUrl": !exists(json, "events_url") ? void 0 : json["events_url"],
+    "receivedEventsUrl": !exists(json, "received_events_url") ? void 0 : json["received_events_url"],
+    "type": !exists(json, "type") ? void 0 : json["type"],
+    "siteAdmin": !exists(json, "site_admin") ? void 0 : json["site_admin"],
+    "company": !exists(json, "company") ? void 0 : json["company"],
+    "blog": !exists(json, "blog") ? void 0 : json["blog"],
+    "anchor": !exists(json, "anchor") ? void 0 : json["anchor"],
+    "hireable": !exists(json, "hireable") ? void 0 : json["hireable"],
+    "bio": !exists(json, "bio") ? void 0 : json["bio"],
+    "twitterUsername": !exists(json, "twitter_username") ? void 0 : json["twitter_username"],
+    "publicRepos": !exists(json, "public_repos") ? void 0 : json["public_repos"],
+    "publicGists": !exists(json, "public_gists") ? void 0 : json["public_gists"],
+    "followers": !exists(json, "followers") ? void 0 : json["followers"],
+    "following": !exists(json, "following") ? void 0 : json["following"],
+    "createdAt": !exists(json, "created_at") ? void 0 : json["created_at"],
+    "updatedAt": !exists(json, "updated_at") ? void 0 : json["updated_at"],
+    "privateGists": !exists(json, "private_gists") ? void 0 : json["private_gists"],
+    "totalPrivateRepos": !exists(json, "total_private_repos") ? void 0 : json["total_private_repos"],
+    "ownedPrivateRepos": !exists(json, "owned_private_repos") ? void 0 : json["owned_private_repos"],
+    "diskUsage": !exists(json, "disk_usage") ? void 0 : json["disk_usage"],
+    "collaborators": !exists(json, "collaborators") ? void 0 : json["collaborators"],
+    "twoFactorAuthentication": !exists(json, "two_factor_authentication") ? void 0 : json["two_factor_authentication"]
+  };
+}
+function ExternalProviderProfileDataToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "name": value.name,
+    "picture": value.picture,
+    "nickname": value.nickname,
+    "email": value.email,
+    "email_verified": value.emailVerified,
+    "node_id": value.nodeId,
+    "gravatar_id": value.gravatarId,
+    "url": value.url,
+    "html_url": value.htmlUrl,
+    "followers_url": value.followersUrl,
+    "following_url": value.followingUrl,
+    "gists_url": value.gistsUrl,
+    "starred_url": value.starredUrl,
+    "subscriptions_url": value.subscriptionsUrl,
+    "organizations_url": value.organizationsUrl,
+    "repos_url": value.reposUrl,
+    "events_url": value.eventsUrl,
+    "received_events_url": value.receivedEventsUrl,
+    "type": value.type,
+    "site_admin": value.siteAdmin,
+    "company": value.company,
+    "blog": value.blog,
+    "anchor": value.anchor,
+    "hireable": value.hireable,
+    "bio": value.bio,
+    "twitter_username": value.twitterUsername,
+    "public_repos": value.publicRepos,
+    "public_gists": value.publicGists,
+    "followers": value.followers,
+    "following": value.following,
+    "created_at": value.createdAt,
+    "updated_at": value.updatedAt,
+    "private_gists": value.privateGists,
+    "total_private_repos": value.totalPrivateRepos,
+    "owned_private_repos": value.ownedPrivateRepos,
+    "disk_usage": value.diskUsage,
+    "collaborators": value.collaborators,
+    "two_factor_authentication": value.twoFactorAuthentication
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/ExternalProviderTypeEnum.ts
+function ExternalProviderTypeEnumFromJSON(json) {
+  return ExternalProviderTypeEnumFromJSONTyped(json, false);
+}
+function ExternalProviderTypeEnumFromJSONTyped(json, ignoreDiscriminator) {
+  return json;
+}
+function ExternalProviderTypeEnumToJSON(value) {
+  return value;
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/ExternalProvider.ts
+function ExternalProviderFromJSON(json) {
+  return ExternalProviderFromJSONTyped(json, false);
+}
+function ExternalProviderFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "type": ExternalProviderTypeEnumFromJSON(json["type"]),
+    "userId": json["user_id"],
+    "accessToken": !exists(json, "access_token") ? void 0 : json["access_token"],
+    "expiresIn": !exists(json, "expires_in") ? void 0 : json["expires_in"],
+    "created": GroupedTimestampFromJSON(json["created"]),
+    "updated": GroupedTimestampFromJSON(json["updated"]),
+    "profileData": !exists(json, "profileData") ? void 0 : ExternalProviderProfileDataFromJSON(json["profileData"]),
+    "connection": !exists(json, "connection") ? void 0 : json["connection"],
+    "isSocial": !exists(json, "isSocial") ? void 0 : json["isSocial"]
+  };
+}
+function ExternalProviderToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON(value.schema),
+    "type": ExternalProviderTypeEnumToJSON(value.type),
+    "user_id": value.userId,
+    "access_token": value.accessToken,
+    "expires_in": value.expiresIn,
+    "created": GroupedTimestampToJSON(value.created),
+    "updated": GroupedTimestampToJSON(value.updated),
+    "profileData": ExternalProviderProfileDataToJSON(value.profileData),
+    "connection": value.connection,
+    "isSocial": value.isSocial
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/ExternalProviders.ts
+function ExternalProvidersFromJSON(json) {
+  return ExternalProvidersFromJSONTyped(json, false);
+}
+function ExternalProvidersFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "iterable": json["iterable"].map(ExternalProviderFromJSON)
+  };
+}
+function ExternalProvidersToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON(value.schema),
+    "iterable": value.iterable.map(ExternalProviderToJSON)
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/UserProfile.ts
+function UserProfileFromJSON(json) {
+  return UserProfileFromJSONTyped(json, false);
+}
+function UserProfileFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "picture": !exists(json, "picture") ? void 0 : json["picture"],
+    "email": !exists(json, "email") ? void 0 : json["email"],
+    "created": !exists(json, "created") ? void 0 : GroupedTimestampFromJSON(json["created"]),
+    "updated": !exists(json, "updated") ? void 0 : GroupedTimestampFromJSON(json["updated"]),
+    "username": !exists(json, "username") ? void 0 : json["username"],
+    "id": json["id"],
+    "name": !exists(json, "name") ? void 0 : json["name"],
+    "aesthetics": AestheticsFromJSON(json["aesthetics"]),
+    "vanityname": !exists(json, "vanityname") ? void 0 : json["vanityname"],
+    "allocation": !exists(json, "allocation") ? void 0 : AllocationCloudFromJSON(json["allocation"]),
+    "providers": !exists(json, "providers") ? void 0 : ExternalProvidersFromJSON(json["providers"]),
+    "auth0": !exists(json, "auth0") ? void 0 : Auth0UserMetadataFromJSON(json["auth0"])
+  };
+}
+function UserProfileToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON(value.schema),
+    "picture": value.picture,
+    "email": value.email,
+    "created": GroupedTimestampToJSON(value.created),
+    "updated": GroupedTimestampToJSON(value.updated),
+    "username": value.username,
+    "id": value.id,
+    "name": value.name,
+    "aesthetics": AestheticsToJSON(value.aesthetics),
+    "vanityname": value.vanityname,
+    "allocation": AllocationCloudToJSON(value.allocation),
+    "providers": ExternalProvidersToJSON(value.providers),
+    "auth0": Auth0UserMetadataToJSON(value.auth0)
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/PersonType.ts
+function PersonTypeFromJSON(json) {
+  return PersonTypeFromJSONTyped(json, false);
+}
+function PersonTypeFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "basic": !exists(json, "basic") ? void 0 : PersonBasicTypeFromJSON(json["basic"]),
+    "platform": !exists(json, "platform") ? void 0 : UserProfileFromJSON(json["platform"])
+  };
+}
+function PersonTypeToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON(value.schema),
+    "basic": PersonBasicTypeToJSON(value.basic),
+    "platform": UserProfileToJSON(value.platform)
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/FlattenedPerson.ts
+function FlattenedPersonFromJSON(json) {
+  return FlattenedPersonFromJSONTyped(json, false);
+}
+function FlattenedPersonFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "id": json["id"],
+    "created": GroupedTimestampFromJSON(json["created"]),
+    "updated": GroupedTimestampFromJSON(json["updated"]),
+    "deleted": !exists(json, "deleted") ? void 0 : GroupedTimestampFromJSON(json["deleted"]),
+    "type": PersonTypeFromJSON(json["type"]),
+    "assets": !exists(json, "assets") ? void 0 : FlattenedAssetsFromJSON(json["assets"]),
+    "mechanisms": !exists(json, "mechanisms") ? void 0 : mapValues(json["mechanisms"], MechanismEnumFromJSON),
+    "interactions": !exists(json, "interactions") ? void 0 : json["interactions"],
+    "access": !exists(json, "access") ? void 0 : mapValues(json["access"], PersonAccessFromJSON),
+    "tags": !exists(json, "tags") ? void 0 : FlattenedTagsFromJSON(json["tags"]),
+    "websites": !exists(json, "websites") ? void 0 : FlattenedWebsitesFromJSON(json["websites"]),
+    "models": !exists(json, "models") ? void 0 : mapValues(json["models"], PersonModelFromJSON),
+    "annotations": !exists(json, "annotations") ? void 0 : FlattenedAnnotationsFromJSON(json["annotations"]),
+    "score": !exists(json, "score") ? void 0 : ScoreFromJSON(json["score"]),
+    "summaries": !exists(json, "summaries") ? void 0 : FlattenedWorkstreamSummariesFromJSON(json["summaries"]),
+    "anchors": !exists(json, "anchors") ? void 0 : FlattenedAnchorsFromJSON(json["anchors"]),
+    "messages": !exists(json, "messages") ? void 0 : FlattenedConversationMessagesFromJSON(json["messages"])
+  };
+}
+function FlattenedPersonToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON(value.schema),
+    "id": value.id,
+    "created": GroupedTimestampToJSON(value.created),
+    "updated": GroupedTimestampToJSON(value.updated),
+    "deleted": GroupedTimestampToJSON(value.deleted),
+    "type": PersonTypeToJSON(value.type),
+    "assets": FlattenedAssetsToJSON(value.assets),
+    "mechanisms": value.mechanisms === void 0 ? void 0 : mapValues(value.mechanisms, MechanismEnumToJSON),
+    "interactions": value.interactions,
+    "access": value.access === void 0 ? void 0 : mapValues(value.access, PersonAccessToJSON),
+    "tags": FlattenedTagsToJSON(value.tags),
+    "websites": FlattenedWebsitesToJSON(value.websites),
+    "models": value.models === void 0 ? void 0 : mapValues(value.models, PersonModelToJSON),
+    "annotations": FlattenedAnnotationsToJSON(value.annotations),
+    "score": ScoreToJSON(value.score),
+    "summaries": FlattenedWorkstreamSummariesToJSON(value.summaries),
+    "anchors": FlattenedAnchorsToJSON(value.anchors),
+    "messages": FlattenedConversationMessagesToJSON(value.messages)
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/ReferencedPerson.ts
+function ReferencedPersonFromJSON(json) {
+  return ReferencedPersonFromJSONTyped(json, false);
+}
+function ReferencedPersonFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "id": json["id"],
+    "reference": !exists(json, "reference") ? void 0 : FlattenedPersonFromJSON(json["reference"])
+  };
+}
+function ReferencedPersonToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON(value.schema),
+    "id": value.id,
+    "reference": FlattenedPersonToJSON(value.reference)
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/FlattenedPersons.ts
+function FlattenedPersonsFromJSON(json) {
+  return FlattenedPersonsFromJSONTyped5(json, false);
+}
+function FlattenedPersonsFromJSONTyped5(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "iterable": json["iterable"].map(ReferencedPersonFromJSON),
+    "indices": !exists(json, "indices") ? void 0 : json["indices"],
+    "score": !exists(json, "score") ? void 0 : ScoreFromJSON(json["score"])
+  };
+}
+function FlattenedPersonsToJSON(value) {
+  if (value === void 0) {
+    return void 0;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {
+    "schema": EmbeddedModelSchemaToJSON(value.schema),
+    "iterable": value.iterable.map(ReferencedPersonToJSON),
+    "indices": value.indices,
+    "score": ScoreToJSON(value.score)
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/QGPTConversationMessageRoleEnum.ts
+function QGPTConversationMessageRoleEnumFromJSON(json) {
+  return QGPTConversationMessageRoleEnumFromJSONTyped(json, false);
+}
+function QGPTConversationMessageRoleEnumFromJSONTyped(json, ignoreDiscriminator) {
+  return json;
+}
+function QGPTConversationMessageRoleEnumToJSON(value) {
+  return value;
+}
+
 // ../generated_runtime/sdk/http/typescript/core/models/FlattenedConversationMessage.ts
 function FlattenedConversationMessageFromJSON(json) {
   return FlattenedConversationMessageFromJSONTyped(json, false);
@@ -10404,7 +10454,10 @@ function FlattenedConversationMessageFromJSONTyped(json, ignoreDiscriminator) {
     "sentiment": !exists(json, "sentiment") ? void 0 : ConversationMessageSentimentEnumFromJSON(json["sentiment"]),
     "role": QGPTConversationMessageRoleEnumFromJSON(json["role"]),
     "score": !exists(json, "score") ? void 0 : ScoreFromJSON(json["score"]),
-    "annotations": !exists(json, "annotations") ? void 0 : FlattenedAnnotationsFromJSON(json["annotations"])
+    "annotations": !exists(json, "annotations") ? void 0 : FlattenedAnnotationsFromJSON(json["annotations"]),
+    "anchors": !exists(json, "anchors") ? void 0 : FlattenedAnchorsFromJSON(json["anchors"]),
+    "persons": !exists(json, "persons") ? void 0 : FlattenedPersonsFromJSON(json["persons"]),
+    "websites": !exists(json, "websites") ? void 0 : FlattenedWebsitesFromJSON(json["websites"])
   };
 }
 function FlattenedConversationMessageToJSON(value) {
@@ -10426,7 +10479,10 @@ function FlattenedConversationMessageToJSON(value) {
     "sentiment": ConversationMessageSentimentEnumToJSON(value.sentiment),
     "role": QGPTConversationMessageRoleEnumToJSON(value.role),
     "score": ScoreToJSON(value.score),
-    "annotations": FlattenedAnnotationsToJSON(value.annotations)
+    "annotations": FlattenedAnnotationsToJSON(value.annotations),
+    "anchors": FlattenedAnchorsToJSON(value.anchors),
+    "persons": FlattenedPersonsToJSON(value.persons),
+    "websites": FlattenedWebsitesToJSON(value.websites)
   };
 }
 
@@ -10460,9 +10516,9 @@ function ReferencedConversationMessageToJSON(value) {
 
 // ../generated_runtime/sdk/http/typescript/core/models/FlattenedConversationMessages.ts
 function FlattenedConversationMessagesFromJSON(json) {
-  return FlattenedConversationMessagesFromJSONTyped4(json, false);
+  return FlattenedConversationMessagesFromJSONTyped6(json, false);
 }
-function FlattenedConversationMessagesFromJSONTyped4(json, ignoreDiscriminator) {
+function FlattenedConversationMessagesFromJSONTyped6(json, ignoreDiscriminator) {
   if (json === void 0 || json === null) {
     return json;
   }
@@ -10627,7 +10683,8 @@ function FlattenedAnchorFromJSONTyped(json, ignoreDiscriminator) {
     "conversations": !exists(json, "conversations") ? void 0 : FlattenedConversationsFromJSON(json["conversations"]),
     "score": !exists(json, "score") ? void 0 : ScoreFromJSON(json["score"]),
     "summaries": !exists(json, "summaries") ? void 0 : FlattenedWorkstreamSummariesFromJSON(json["summaries"]),
-    "persons": !exists(json, "persons") ? void 0 : FlattenedPersonsFromJSON(json["persons"])
+    "persons": !exists(json, "persons") ? void 0 : FlattenedPersonsFromJSON(json["persons"]),
+    "messages": !exists(json, "messages") ? void 0 : FlattenedConversationMessagesFromJSON(json["messages"])
   };
 }
 function FlattenedAnchorToJSON(value) {
@@ -10652,7 +10709,8 @@ function FlattenedAnchorToJSON(value) {
     "conversations": FlattenedConversationsToJSON(value.conversations),
     "score": ScoreToJSON(value.score),
     "summaries": FlattenedWorkstreamSummariesToJSON(value.summaries),
-    "persons": FlattenedPersonsToJSON(value.persons)
+    "persons": FlattenedPersonsToJSON(value.persons),
+    "messages": FlattenedConversationMessagesToJSON(value.messages)
   };
 }
 
@@ -13582,7 +13640,8 @@ function AnchorFromJSONTyped(json, ignoreDiscriminator) {
     "conversations": !exists(json, "conversations") ? void 0 : FlattenedConversationsFromJSON(json["conversations"]),
     "score": !exists(json, "score") ? void 0 : ScoreFromJSON(json["score"]),
     "summaries": !exists(json, "summaries") ? void 0 : FlattenedWorkstreamSummariesFromJSON(json["summaries"]),
-    "persons": !exists(json, "persons") ? void 0 : FlattenedPersonsFromJSON(json["persons"])
+    "persons": !exists(json, "persons") ? void 0 : FlattenedPersonsFromJSON(json["persons"]),
+    "messages": !exists(json, "messages") ? void 0 : FlattenedConversationMessagesFromJSON(json["messages"])
   };
 }
 function AnchorToJSON(value) {
@@ -13607,7 +13666,8 @@ function AnchorToJSON(value) {
     "conversations": FlattenedConversationsToJSON(value.conversations),
     "score": ScoreToJSON(value.score),
     "summaries": FlattenedWorkstreamSummariesToJSON(value.summaries),
-    "persons": FlattenedPersonsToJSON(value.persons)
+    "persons": FlattenedPersonsToJSON(value.persons),
+    "messages": FlattenedConversationMessagesToJSON(value.messages)
   };
 }
 
@@ -13988,7 +14048,8 @@ function PersonFromJSONTyped(json, ignoreDiscriminator) {
     "annotations": !exists(json, "annotations") ? void 0 : FlattenedAnnotationsFromJSON(json["annotations"]),
     "score": !exists(json, "score") ? void 0 : ScoreFromJSON(json["score"]),
     "summaries": !exists(json, "summaries") ? void 0 : FlattenedWorkstreamSummariesFromJSON(json["summaries"]),
-    "anchors": !exists(json, "anchors") ? void 0 : FlattenedAnchorsFromJSON(json["anchors"])
+    "anchors": !exists(json, "anchors") ? void 0 : FlattenedAnchorsFromJSON(json["anchors"]),
+    "messages": !exists(json, "messages") ? void 0 : FlattenedConversationMessagesFromJSON(json["messages"])
   };
 }
 function PersonToJSON(value) {
@@ -14015,7 +14076,8 @@ function PersonToJSON(value) {
     "annotations": FlattenedAnnotationsToJSON(value.annotations),
     "score": ScoreToJSON(value.score),
     "summaries": FlattenedWorkstreamSummariesToJSON(value.summaries),
-    "anchors": FlattenedAnchorsToJSON(value.anchors)
+    "anchors": FlattenedAnchorsToJSON(value.anchors),
+    "messages": FlattenedConversationMessagesToJSON(value.messages)
   };
 }
 
@@ -14397,7 +14459,8 @@ function WebsiteFromJSONTyped(json, ignoreDiscriminator) {
     "persons": !exists(json, "persons") ? void 0 : FlattenedPersonsFromJSON(json["persons"]),
     "conversations": !exists(json, "conversations") ? void 0 : FlattenedConversationsFromJSON(json["conversations"]),
     "score": !exists(json, "score") ? void 0 : ScoreFromJSON(json["score"]),
-    "summaries": !exists(json, "summaries") ? void 0 : FlattenedWorkstreamSummariesFromJSON(json["summaries"])
+    "summaries": !exists(json, "summaries") ? void 0 : FlattenedWorkstreamSummariesFromJSON(json["summaries"]),
+    "messages": !exists(json, "messages") ? void 0 : FlattenedConversationMessagesFromJSON(json["messages"])
   };
 }
 function WebsiteToJSON(value) {
@@ -14421,7 +14484,8 @@ function WebsiteToJSON(value) {
     "persons": FlattenedPersonsToJSON(value.persons),
     "conversations": FlattenedConversationsToJSON(value.conversations),
     "score": ScoreToJSON(value.score),
-    "summaries": FlattenedWorkstreamSummariesToJSON(value.summaries)
+    "summaries": FlattenedWorkstreamSummariesToJSON(value.summaries),
+    "messages": FlattenedConversationMessagesToJSON(value.messages)
   };
 }
 
@@ -15022,7 +15086,10 @@ function ConversationMessageFromJSONTyped(json, ignoreDiscriminator) {
     "sentiment": !exists(json, "sentiment") ? void 0 : ConversationMessageSentimentEnumFromJSON(json["sentiment"]),
     "role": QGPTConversationMessageRoleEnumFromJSON(json["role"]),
     "score": !exists(json, "score") ? void 0 : ScoreFromJSON(json["score"]),
-    "annotations": !exists(json, "annotations") ? void 0 : FlattenedAnnotationsFromJSON(json["annotations"])
+    "annotations": !exists(json, "annotations") ? void 0 : FlattenedAnnotationsFromJSON(json["annotations"]),
+    "websites": !exists(json, "websites") ? void 0 : FlattenedWebsitesFromJSON(json["websites"]),
+    "persons": !exists(json, "persons") ? void 0 : FlattenedPersonsFromJSON(json["persons"]),
+    "anchors": !exists(json, "anchors") ? void 0 : FlattenedAnchorsFromJSON(json["anchors"])
   };
 }
 function ConversationMessageToJSON(value) {
@@ -15044,7 +15111,10 @@ function ConversationMessageToJSON(value) {
     "sentiment": ConversationMessageSentimentEnumToJSON(value.sentiment),
     "role": QGPTConversationMessageRoleEnumToJSON(value.role),
     "score": ScoreToJSON(value.score),
-    "annotations": FlattenedAnnotationsToJSON(value.annotations)
+    "annotations": FlattenedAnnotationsToJSON(value.annotations),
+    "websites": FlattenedWebsitesToJSON(value.websites),
+    "persons": FlattenedPersonsToJSON(value.persons),
+    "anchors": FlattenedAnchorsToJSON(value.anchors)
   };
 }
 
@@ -15104,6 +15174,35 @@ function ConversationsCreateFromAssetOutputFromJSONTyped(json, ignoreDiscriminat
   return {
     "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
     "conversation": ReferencedConversationFromJSON(json["conversation"])
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/DetectedExternalApplication.ts
+function DetectedExternalApplicationFromJSON(json) {
+  return DetectedExternalApplicationFromJSONTyped(json, false);
+}
+function DetectedExternalApplicationFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "name": json["name"],
+    "version": !exists(json, "version") ? void 0 : json["version"]
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/DetectedExternalApplications.ts
+function DetectedExternalApplicationsFromJSON(json) {
+  return DetectedExternalApplicationsFromJSONTyped(json, false);
+}
+function DetectedExternalApplicationsFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "iterable": json["iterable"].map(DetectedExternalApplicationFromJSON)
   };
 }
 
@@ -15677,6 +15776,28 @@ function FilePickerInputToJSON(value) {
     "schema": EmbeddedModelSchemaToJSON(value.schema),
     "allowedExtensions": value.allowedExtensions,
     "allowMultiple": value.allowMultiple
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/FlattenedApplication.ts
+function FlattenedApplicationFromJSON(json) {
+  return FlattenedApplicationFromJSONTyped(json, false);
+}
+function FlattenedApplicationFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "id": json["id"],
+    "name": ApplicationNameEnumFromJSON(json["name"]),
+    "version": json["version"],
+    "platform": PlatformEnumFromJSON(json["platform"]),
+    "onboarded": json["onboarded"],
+    "privacy": PrivacyEnumFromJSON(json["privacy"]),
+    "capabilities": !exists(json, "capabilities") ? void 0 : CapabilitiesEnumFromJSON(json["capabilities"]),
+    "mechanism": !exists(json, "mechanism") ? void 0 : MechanismEnumFromJSON(json["mechanism"]),
+    "automaticUnload": !exists(json, "automaticUnload") ? void 0 : json["automaticUnload"]
   };
 }
 
@@ -16452,7 +16573,8 @@ function SeededModelToJSON(value) {
     "provider": ExternalMLProviderEnumToJSON(value.provider),
     "cpu": value.cpu,
     "maxTokens": ModelMaxTokensToJSON(value.maxTokens),
-    "custom": value.custom
+    "custom": value.custom,
+    "capabilities": ModelCapabilitiesToJSON(value.capabilities)
   };
 }
 
@@ -16569,6 +16691,7 @@ function RelevantQGPTSeedFromJSONTyped(json, ignoreDiscriminator) {
     "id": !exists(json, "id") ? void 0 : json["id"],
     "seed": !exists(json, "seed") ? void 0 : SeedFromJSON(json["seed"]),
     "path": !exists(json, "path") ? void 0 : json["path"],
+    "anchor": !exists(json, "anchor") ? void 0 : ReferencedAnchorFromJSON(json["anchor"]),
     "asset": !exists(json, "asset") ? void 0 : ReferencedAssetFromJSON(json["asset"])
   };
 }
@@ -16584,6 +16707,7 @@ function RelevantQGPTSeedToJSON(value) {
     "id": value.id,
     "seed": SeedToJSON(value.seed),
     "path": value.path,
+    "anchor": ReferencedAnchorToJSON(value.anchor),
     "asset": ReferencedAssetToJSON(value.asset)
   };
 }
@@ -16745,7 +16869,8 @@ function QGPTRelevanceInputToJSON(value) {
     "options": QGPTRelevanceInputOptionsToJSON(value.options),
     "application": value.application,
     "model": value.model,
-    "temporal": TemporalRangeGroundingToJSON(value.temporal)
+    "temporal": TemporalRangeGroundingToJSON(value.temporal),
+    "anchors": FlattenedAnchorsToJSON(value.anchors)
   };
 }
 
@@ -16986,6 +17111,21 @@ function ReactionToJSON(value) {
     "save": value.save,
     "reuse": ReuseReactionToJSON(value.reuse),
     "seed": SeededConnectorCreationToJSON(value.seed)
+  };
+}
+
+// ../generated_runtime/sdk/http/typescript/core/models/ReferencedApplication.ts
+function ReferencedApplicationFromJSON(json) {
+  return ReferencedApplicationFromJSONTyped(json, false);
+}
+function ReferencedApplicationFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
+    "id": json["id"],
+    "reference": !exists(json, "reference") ? void 0 : FlattenedApplicationFromJSON(json["reference"])
   };
 }
 
@@ -17661,6 +17801,21 @@ function SeededScoreIncrementToJSON(value) {
   };
 }
 
+// ../generated_runtime/sdk/http/typescript/core/models/Session.ts
+function SessionFromJSON(json) {
+  return SessionFromJSONTyped(json, false);
+}
+function SessionFromJSONTyped(json, ignoreDiscriminator) {
+  if (json === void 0 || json === null) {
+    return json;
+  }
+  return {
+    "id": json["id"],
+    "opened": GroupedTimestampFromJSON(json["opened"]),
+    "closed": !exists(json, "closed") ? void 0 : GroupedTimestampFromJSON(json["closed"])
+  };
+}
+
 // ../generated_runtime/sdk/http/typescript/core/models/StreamedIdentifier.ts
 function StreamedIdentifierFromJSON(json) {
   return StreamedIdentifierFromJSONTyped(json, false);
@@ -17672,6 +17827,20 @@ function StreamedIdentifierFromJSONTyped(json, ignoreDiscriminator) {
   return {
     "asset": !exists(json, "asset") ? void 0 : ReferencedAssetFromJSON(json["asset"]),
     "conversation": !exists(json, "conversation") ? void 0 : ReferencedConversationFromJSON(json["conversation"]),
+    "annotation": !exists(json, "annotation") ? void 0 : ReferencedAnnotationFromJSON(json["annotation"]),
+    "activity": !exists(json, "activity") ? void 0 : ReferencedActivityFromJSON(json["activity"]),
+    "anchor": !exists(json, "anchor") ? void 0 : ReferencedAnchorFromJSON(json["anchor"]),
+    "anchorPoint": !exists(json, "anchorPoint") ? void 0 : ReferencedAnchorPointFromJSON(json["anchorPoint"]),
+    "hint": !exists(json, "hint") ? void 0 : ReferencedHintFromJSON(json["hint"]),
+    "conversationMessage": !exists(json, "conversationMessage") ? void 0 : ReferencedConversationMessageFromJSON(json["conversationMessage"]),
+    "format": !exists(json, "format") ? void 0 : ReferencedFormatFromJSON(json["format"]),
+    "person": !exists(json, "person") ? void 0 : ReferencedPersonFromJSON(json["person"]),
+    "range": !exists(json, "range") ? void 0 : ReferencedRangeFromJSON(json["range"]),
+    "sensitive": !exists(json, "sensitive") ? void 0 : ReferencedSensitiveFromJSON(json["sensitive"]),
+    "tag": !exists(json, "tag") ? void 0 : ReferencedTagFromJSON(json["tag"]),
+    "website": !exists(json, "website") ? void 0 : ReferencedWebsiteFromJSON(json["website"]),
+    "application": !exists(json, "application") ? void 0 : ReferencedApplicationFromJSON(json["application"]),
+    "model": !exists(json, "model") ? void 0 : ReferencedModelFromJSON(json["model"]),
     "deleted": !exists(json, "deleted") ? void 0 : json["deleted"]
   };
 }
@@ -17736,41 +17905,6 @@ function TerminatingOSServerAppletToJSON(value) {
     "parent": ApplicationToJSON(value.parent),
     "port": value.port,
     "type": OSAppletEnumToJSON(value.type)
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/TrackedFormat.ts
-function TrackedFormatFromJSON(json) {
-  return TrackedFormatFromJSONTyped(json, false);
-}
-function TrackedFormatFromJSONTyped(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "id": json["id"],
-    "classification": ClassificationFromJSON(json["classification"]),
-    "role": RoleFromJSON(json["role"]),
-    "asset": json["asset"],
-    "fragment": json["fragment"],
-    "file": json["file"]
-  };
-}
-
-// ../generated_runtime/sdk/http/typescript/core/models/TrackedFormatEvent.ts
-function TrackedFormatEventFromJSON(json) {
-  return TrackedFormatEventFromJSONTyped(json, false);
-}
-function TrackedFormatEventFromJSONTyped(json, ignoreDiscriminator) {
-  if (json === void 0 || json === null) {
-    return json;
-  }
-  return {
-    "schema": !exists(json, "schema") ? void 0 : EmbeddedModelSchemaFromJSON(json["schema"]),
-    "format": TrackedFormatFromJSON(json[" format"]),
-    "identifierDescriptionPair": TrackedFormatEventIdentifierDescriptionPairsFromJSON(json["identifier_description_pair"]),
-    "metadata": !exists(json, "metadata") ? void 0 : TrackedFormatEventMetadataFromJSON(json["metadata"])
   };
 }
 
@@ -17930,6 +18064,29 @@ var ActivitiesApi = class extends BaseAPI {
    */
   async activitiesSnapshot(requestParameters = {}, initOverrides) {
     const response = await this.activitiesSnapshotRaw(requestParameters, initOverrides);
+    return await response.value();
+  }
+  /**
+   * Provides a WebSocket connection that emits changes to your activity identifiers (UUIDs).
+   * /activities/stream/identifiers [WS]
+   */
+  async activitiesStreamIdentifiersRaw(initOverrides) {
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/activities/stream/identifiers`,
+      method: "GET",
+      headers: headerParameters,
+      query: queryParameters
+    }, initOverrides);
+    return new JSONApiResponse(response, (jsonValue) => StreamedIdentifiersFromJSON(jsonValue));
+  }
+  /**
+   * Provides a WebSocket connection that emits changes to your activity identifiers (UUIDs).
+   * /activities/stream/identifiers [WS]
+   */
+  async activitiesStreamIdentifiers(initOverrides) {
+    const response = await this.activitiesStreamIdentifiersRaw(initOverrides);
     return await response.value();
   }
 };
@@ -18243,6 +18400,34 @@ var AnchorApi = class extends BaseAPI {
     await this.anchorAssociateConversationRaw(requestParameters, initOverrides);
   }
   /**
+   * This will associate a anchor with a message.
+   * /anchor/{anchor}/messages/associate/{message} [POST]
+   */
+  async anchorAssociateMessageRaw(requestParameters, initOverrides) {
+    if (requestParameters.anchor === null || requestParameters.anchor === void 0) {
+      throw new RequiredError("anchor", "Required parameter requestParameters.anchor was null or undefined when calling anchorAssociateMessage.");
+    }
+    if (requestParameters.message === null || requestParameters.message === void 0) {
+      throw new RequiredError("message", "Required parameter requestParameters.message was null or undefined when calling anchorAssociateMessage.");
+    }
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/anchor/{anchor}/messages/associate/{message}`.replace(`{${"anchor"}}`, encodeURIComponent(String(requestParameters.anchor))).replace(`{${"message"}}`, encodeURIComponent(String(requestParameters.message))),
+      method: "POST",
+      headers: headerParameters,
+      query: queryParameters
+    }, initOverrides);
+    return new VoidApiResponse(response);
+  }
+  /**
+   * This will associate a anchor with a message.
+   * /anchor/{anchor}/messages/associate/{message} [POST]
+   */
+  async anchorAssociateMessage(requestParameters, initOverrides) {
+    await this.anchorAssociateMessageRaw(requestParameters, initOverrides);
+  }
+  /**
    * associates an anchor and a person. It performs the same action as the person equivalent.
    * /anchor/{anchor}/persons/associate/{person} [POST]
    */
@@ -18353,6 +18538,34 @@ var AnchorApi = class extends BaseAPI {
    */
   async anchorDisassociateConversation(requestParameters, initOverrides) {
     await this.anchorDisassociateConversationRaw(requestParameters, initOverrides);
+  }
+  /**
+   * This will enable us to disassociate a anchor from a message.
+   * /anchor/{anchor}/messages/disassociate/{message} [POST]
+   */
+  async anchorDisassociateMessageRaw(requestParameters, initOverrides) {
+    if (requestParameters.anchor === null || requestParameters.anchor === void 0) {
+      throw new RequiredError("anchor", "Required parameter requestParameters.anchor was null or undefined when calling anchorDisassociateMessage.");
+    }
+    if (requestParameters.message === null || requestParameters.message === void 0) {
+      throw new RequiredError("message", "Required parameter requestParameters.message was null or undefined when calling anchorDisassociateMessage.");
+    }
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/anchor/{anchor}/messages/disassociate/{message}`.replace(`{${"anchor"}}`, encodeURIComponent(String(requestParameters.anchor))).replace(`{${"message"}}`, encodeURIComponent(String(requestParameters.message))),
+      method: "POST",
+      headers: headerParameters,
+      query: queryParameters
+    }, initOverrides);
+    return new VoidApiResponse(response);
+  }
+  /**
+   * This will enable us to disassociate a anchor from a message.
+   * /anchor/{anchor}/messages/disassociate/{message} [POST]
+   */
+  async anchorDisassociateMessage(requestParameters, initOverrides) {
+    await this.anchorDisassociateMessageRaw(requestParameters, initOverrides);
   }
   /**
    * Disassociates an anchor from a person. It performs the same action as the person equivalent.
@@ -18695,6 +18908,29 @@ var AnchorsApi = class extends BaseAPI {
     return await response.value();
   }
   /**
+   * Provides a WebSocket connection that emits changes to your anchor identifiers (UUIDs).
+   * /anchors/stream/identifiers [WS]
+   */
+  async anchorsStreamIdentifiersRaw(initOverrides) {
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/anchors/stream/identifiers`,
+      method: "GET",
+      headers: headerParameters,
+      query: queryParameters
+    }, initOverrides);
+    return new JSONApiResponse(response, (jsonValue) => StreamedIdentifiersFromJSON(jsonValue));
+  }
+  /**
+   * Provides a WebSocket connection that emits changes to your anchor identifiers (UUIDs).
+   * /anchors/stream/identifiers [WS]
+   */
+  async anchorsStreamIdentifiers(initOverrides) {
+    const response = await this.anchorsStreamIdentifiersRaw(initOverrides);
+    return await response.value();
+  }
+  /**
    * This will search your anchors for a specific anchor  note: we will search all the anchor points
    * /anchors/search [POST]
    */
@@ -18885,6 +19121,29 @@ var AnnotationsApi = class extends BaseAPI {
     return await response.value();
   }
   /**
+   * Provides a WebSocket connection that emits changes to your annotation identifiers (UUIDs).
+   * /annotations/stream/identifiers [WS]
+   */
+  async annotationsStreamIdentifiersRaw(initOverrides) {
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/annotations/stream/identifiers`,
+      method: "GET",
+      headers: headerParameters,
+      query: queryParameters
+    }, initOverrides);
+    return new JSONApiResponse(response, (jsonValue) => StreamedIdentifiersFromJSON(jsonValue));
+  }
+  /**
+   * Provides a WebSocket connection that emits changes to your annotation identifiers (UUIDs).
+   * /annotations/stream/identifiers [WS]
+   */
+  async annotationsStreamIdentifiers(initOverrides) {
+    const response = await this.annotationsStreamIdentifiersRaw(initOverrides);
+    return await response.value();
+  }
+  /**
    * This will search your annotations for a specific annotation  note: we will just search the annotation value
    * /annotations/search [POST]
    */
@@ -18939,6 +19198,207 @@ var ApplicationApi = class extends BaseAPI {
    */
   async applicationUpdate(requestParameters = {}, initOverrides) {
     const response = await this.applicationUpdateRaw(requestParameters, initOverrides);
+    return await response.value();
+  }
+};
+
+// ../generated_runtime/sdk/http/typescript/core/apis/ApplicationsApi.ts
+var ApplicationsApi = class extends BaseAPI {
+  /**
+   * Retrieves a list of external applications installed on the user\'s machine that have potential integrations with Pieces, including those not yet installed by the user and those anticipated to be supported in the future.
+   * /applications/external/related [GET]
+   */
+  async applicationsExternalRelatedRaw(initOverrides) {
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/applications/external/related`,
+      method: "GET",
+      headers: headerParameters,
+      query: queryParameters
+    }, initOverrides);
+    return new JSONApiResponse(response, (jsonValue) => DetectedExternalApplicationsFromJSON(jsonValue));
+  }
+  /**
+   * Retrieves a list of external applications installed on the user\'s machine that have potential integrations with Pieces, including those not yet installed by the user and those anticipated to be supported in the future.
+   * /applications/external/related [GET]
+   */
+  async applicationsExternalRelated(initOverrides) {
+    const response = await this.applicationsExternalRelatedRaw(initOverrides);
+    return await response.value();
+  }
+  /**
+   * Provides a snapshot of all external applications detected on the user\'s machine, such as Microsoft Teams classic, Google Chat, Obsidian, etc.
+   * /applications/external [GET]
+   */
+  async applicationsExternalSnapshotRaw(initOverrides) {
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/applications/external`,
+      method: "GET",
+      headers: headerParameters,
+      query: queryParameters
+    }, initOverrides);
+    return new JSONApiResponse(response, (jsonValue) => DetectedExternalApplicationsFromJSON(jsonValue));
+  }
+  /**
+   * Provides a snapshot of all external applications detected on the user\'s machine, such as Microsoft Teams classic, Google Chat, Obsidian, etc.
+   * /applications/external [GET]
+   */
+  async applicationsExternalSnapshot(initOverrides) {
+    const response = await this.applicationsExternalSnapshotRaw(initOverrides);
+    return await response.value();
+  }
+  /**
+   * Registers a new application within the Pieces ecosystem.
+   * /applications/register [POST]
+   * @deprecated
+   */
+  async applicationsRegisterRaw(requestParameters, initOverrides) {
+    const queryParameters = {};
+    const headerParameters = {};
+    headerParameters["Content-Type"] = "application/json";
+    const response = await this.request({
+      path: `/applications/register`,
+      method: "POST",
+      headers: headerParameters,
+      query: queryParameters,
+      body: ApplicationToJSON(requestParameters.application)
+    }, initOverrides);
+    return new JSONApiResponse(response, (jsonValue) => ApplicationFromJSON(jsonValue));
+  }
+  /**
+   * Registers a new application within the Pieces ecosystem.
+   * /applications/register [POST]
+   * @deprecated
+   */
+  async applicationsRegister(requestParameters = {}, initOverrides) {
+    const response = await this.applicationsRegisterRaw(requestParameters, initOverrides);
+    return await response.value();
+  }
+  /**
+   * Closes an active session, identified by a session UUID, marking the end of the user\'s current interaction with the Pieces application.
+   * /applications/session/close [POST]
+   * @deprecated
+   */
+  async applicationsSessionCloseRaw(requestParameters, initOverrides) {
+    const queryParameters = {};
+    const headerParameters = {};
+    headerParameters["Content-Type"] = "application/json";
+    const response = await this.request({
+      path: `/applications/session/close`,
+      method: "POST",
+      headers: headerParameters,
+      query: queryParameters,
+      body: requestParameters.body
+    }, initOverrides);
+    return new JSONApiResponse(response, (jsonValue) => SessionFromJSON(jsonValue));
+  }
+  /**
+   * Closes an active session, identified by a session UUID, marking the end of the user\'s current interaction with the Pieces application.
+   * /applications/session/close [POST]
+   * @deprecated
+   */
+  async applicationsSessionClose(requestParameters = {}, initOverrides) {
+    const response = await this.applicationsSessionCloseRaw(requestParameters, initOverrides);
+    return await response.value();
+  }
+  /**
+   * Initiates a new session, marking the start of a user\'s interaction with the Pieces application.
+   * /applications/session/open [POST]
+   * @deprecated
+   */
+  async applicationsSessionOpenRaw(initOverrides) {
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/applications/session/open`,
+      method: "POST",
+      headers: headerParameters,
+      query: queryParameters
+    }, initOverrides);
+    return new JSONApiResponse(response, (jsonValue) => SessionFromJSON(jsonValue));
+  }
+  /**
+   * Initiates a new session, marking the start of a user\'s interaction with the Pieces application.
+   * /applications/session/open [POST]
+   * @deprecated
+   */
+  async applicationsSessionOpen(initOverrides) {
+    const response = await this.applicationsSessionOpenRaw(initOverrides);
+    return await response.value();
+  }
+  /**
+   * Retrieves a comprehensive overview of all applications tracked by the Pieces system, including status, version, and engagement metrics.
+   * /applications [GET]
+   */
+  async applicationsSnapshotRaw(initOverrides) {
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/applications`,
+      method: "GET",
+      headers: headerParameters,
+      query: queryParameters
+    }, initOverrides);
+    return new JSONApiResponse(response, (jsonValue) => ApplicationsFromJSON(jsonValue));
+  }
+  /**
+   * Retrieves a comprehensive overview of all applications tracked by the Pieces system, including status, version, and engagement metrics.
+   * /applications [GET]
+   */
+  async applicationsSnapshot(initOverrides) {
+    const response = await this.applicationsSnapshotRaw(initOverrides);
+    return await response.value();
+  }
+  /**
+   * Obtains a snapshot with information about a specific application, identified by its UUID.
+   * /applications/{application} [GET]
+   */
+  async applicationsSpecificApplicationSnapshotRaw(requestParameters, initOverrides) {
+    if (requestParameters.application === null || requestParameters.application === void 0) {
+      throw new RequiredError("application", "Required parameter requestParameters.application was null or undefined when calling applicationsSpecificApplicationSnapshot.");
+    }
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/applications/{application}`.replace(`{${"application"}}`, encodeURIComponent(String(requestParameters.application))),
+      method: "GET",
+      headers: headerParameters,
+      query: queryParameters
+    }, initOverrides);
+    return new JSONApiResponse(response, (jsonValue) => ApplicationFromJSON(jsonValue));
+  }
+  /**
+   * Obtains a snapshot with information about a specific application, identified by its UUID.
+   * /applications/{application} [GET]
+   */
+  async applicationsSpecificApplicationSnapshot(requestParameters, initOverrides) {
+    const response = await this.applicationsSpecificApplicationSnapshotRaw(requestParameters, initOverrides);
+    return await response.value();
+  }
+  /**
+   * Provides a WebSocket connection that emits changes to your application identifiers (UUIDs).
+   * /applications/stream/identifiers [WS]
+   */
+  async applicationsStreamIdentifiersRaw(initOverrides) {
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/applications/stream/identifiers`,
+      method: "GET",
+      headers: headerParameters,
+      query: queryParameters
+    }, initOverrides);
+    return new JSONApiResponse(response, (jsonValue) => StreamedIdentifiersFromJSON(jsonValue));
+  }
+  /**
+   * Provides a WebSocket connection that emits changes to your application identifiers (UUIDs).
+   * /applications/stream/identifiers [WS]
+   */
+  async applicationsStreamIdentifiers(initOverrides) {
+    const response = await this.applicationsStreamIdentifiersRaw(initOverrides);
     return await response.value();
   }
 };
@@ -20748,6 +21208,34 @@ var ConversationApi = class extends BaseAPI {
 // ../generated_runtime/sdk/http/typescript/core/apis/ConversationMessageApi.ts
 var ConversationMessageApi = class extends BaseAPI {
   /**
+   * This will associate a message with an anchor.
+   * /message/{message}/anchors/associate/{anchor} [POST]
+   */
+  async messageAssociateAnchorRaw(requestParameters, initOverrides) {
+    if (requestParameters.message === null || requestParameters.message === void 0) {
+      throw new RequiredError("message", "Required parameter requestParameters.message was null or undefined when calling messageAssociateAnchor.");
+    }
+    if (requestParameters.anchor === null || requestParameters.anchor === void 0) {
+      throw new RequiredError("anchor", "Required parameter requestParameters.anchor was null or undefined when calling messageAssociateAnchor.");
+    }
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/message/{message}/anchors/associate/{anchor}`.replace(`{${"message"}}`, encodeURIComponent(String(requestParameters.message))).replace(`{${"anchor"}}`, encodeURIComponent(String(requestParameters.anchor))),
+      method: "POST",
+      headers: headerParameters,
+      query: queryParameters
+    }, initOverrides);
+    return new VoidApiResponse(response);
+  }
+  /**
+   * This will associate a message with an anchor.
+   * /message/{message}/anchors/associate/{anchor} [POST]
+   */
+  async messageAssociateAnchor(requestParameters, initOverrides) {
+    await this.messageAssociateAnchorRaw(requestParameters, initOverrides);
+  }
+  /**
    * This will associate a message with an annotation.
    * /message/{message}/annotations/associate/{annotation} [POST]
    */
@@ -20776,6 +21264,90 @@ var ConversationMessageApi = class extends BaseAPI {
     await this.messageAssociateAnnotationRaw(requestParameters, initOverrides);
   }
   /**
+   * This will associate a message with a person.
+   * /message/{message}/persons/associate/{person} [POST]
+   */
+  async messageAssociatePersonRaw(requestParameters, initOverrides) {
+    if (requestParameters.message === null || requestParameters.message === void 0) {
+      throw new RequiredError("message", "Required parameter requestParameters.message was null or undefined when calling messageAssociatePerson.");
+    }
+    if (requestParameters.person === null || requestParameters.person === void 0) {
+      throw new RequiredError("person", "Required parameter requestParameters.person was null or undefined when calling messageAssociatePerson.");
+    }
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/message/{message}/persons/associate/{person}`.replace(`{${"message"}}`, encodeURIComponent(String(requestParameters.message))).replace(`{${"person"}}`, encodeURIComponent(String(requestParameters.person))),
+      method: "POST",
+      headers: headerParameters,
+      query: queryParameters
+    }, initOverrides);
+    return new VoidApiResponse(response);
+  }
+  /**
+   * This will associate a message with a person.
+   * /message/{message}/persons/associate/{person} [POST]
+   */
+  async messageAssociatePerson(requestParameters, initOverrides) {
+    await this.messageAssociatePersonRaw(requestParameters, initOverrides);
+  }
+  /**
+   * This will associate a message with a website.
+   * Associate a message with a website
+   */
+  async messageAssociateWebsiteRaw(requestParameters, initOverrides) {
+    if (requestParameters.message === null || requestParameters.message === void 0) {
+      throw new RequiredError("message", "Required parameter requestParameters.message was null or undefined when calling messageAssociateWebsite.");
+    }
+    if (requestParameters.website === null || requestParameters.website === void 0) {
+      throw new RequiredError("website", "Required parameter requestParameters.website was null or undefined when calling messageAssociateWebsite.");
+    }
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/message/{message}/websites/associate/{website}`.replace(`{${"message"}}`, encodeURIComponent(String(requestParameters.message))).replace(`{${"website"}}`, encodeURIComponent(String(requestParameters.website))),
+      method: "POST",
+      headers: headerParameters,
+      query: queryParameters
+    }, initOverrides);
+    return new VoidApiResponse(response);
+  }
+  /**
+   * This will associate a message with a website.
+   * Associate a message with a website
+   */
+  async messageAssociateWebsite(requestParameters, initOverrides) {
+    await this.messageAssociateWebsiteRaw(requestParameters, initOverrides);
+  }
+  /**
+   * This will enable us to disassociate a message from an anchor.
+   * /message/{message}/anchors/disassociate/{anchor} [POST]
+   */
+  async messageDisassociateAnchorRaw(requestParameters, initOverrides) {
+    if (requestParameters.message === null || requestParameters.message === void 0) {
+      throw new RequiredError("message", "Required parameter requestParameters.message was null or undefined when calling messageDisassociateAnchor.");
+    }
+    if (requestParameters.anchor === null || requestParameters.anchor === void 0) {
+      throw new RequiredError("anchor", "Required parameter requestParameters.anchor was null or undefined when calling messageDisassociateAnchor.");
+    }
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/message/{message}/anchors/disassociate/{anchor}`.replace(`{${"message"}}`, encodeURIComponent(String(requestParameters.message))).replace(`{${"anchor"}}`, encodeURIComponent(String(requestParameters.anchor))),
+      method: "POST",
+      headers: headerParameters,
+      query: queryParameters
+    }, initOverrides);
+    return new VoidApiResponse(response);
+  }
+  /**
+   * This will enable us to disassociate a message from an anchor.
+   * /message/{message}/anchors/disassociate/{anchor} [POST]
+   */
+  async messageDisassociateAnchor(requestParameters, initOverrides) {
+    await this.messageDisassociateAnchorRaw(requestParameters, initOverrides);
+  }
+  /**
    * This will enable us to dissassociate a message from an annotation.
    * /message/{message}/annotations/disassociate/{annotation} [POST]
    */
@@ -20802,6 +21374,62 @@ var ConversationMessageApi = class extends BaseAPI {
    */
   async messageDisassociateAnnotation(requestParameters, initOverrides) {
     await this.messageDisassociateAnnotationRaw(requestParameters, initOverrides);
+  }
+  /**
+   * This will enable us to disassociate a message from a person.
+   * /message/{message}/persons/disassociate/{person} [POST]
+   */
+  async messageDisassociatePersonRaw(requestParameters, initOverrides) {
+    if (requestParameters.message === null || requestParameters.message === void 0) {
+      throw new RequiredError("message", "Required parameter requestParameters.message was null or undefined when calling messageDisassociatePerson.");
+    }
+    if (requestParameters.person === null || requestParameters.person === void 0) {
+      throw new RequiredError("person", "Required parameter requestParameters.person was null or undefined when calling messageDisassociatePerson.");
+    }
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/message/{message}/persons/disassociate/{person}`.replace(`{${"message"}}`, encodeURIComponent(String(requestParameters.message))).replace(`{${"person"}}`, encodeURIComponent(String(requestParameters.person))),
+      method: "POST",
+      headers: headerParameters,
+      query: queryParameters
+    }, initOverrides);
+    return new VoidApiResponse(response);
+  }
+  /**
+   * This will enable us to disassociate a message from a person.
+   * /message/{message}/persons/disassociate/{person} [POST]
+   */
+  async messageDisassociatePerson(requestParameters, initOverrides) {
+    await this.messageDisassociatePersonRaw(requestParameters, initOverrides);
+  }
+  /**
+   * This will enable us to disassociate a message from a website.
+   * /message/{message}/websites/disassociate/{website} [POST]
+   */
+  async messageDisassociateWebsiteRaw(requestParameters, initOverrides) {
+    if (requestParameters.message === null || requestParameters.message === void 0) {
+      throw new RequiredError("message", "Required parameter requestParameters.message was null or undefined when calling messageDisassociateWebsite.");
+    }
+    if (requestParameters.website === null || requestParameters.website === void 0) {
+      throw new RequiredError("website", "Required parameter requestParameters.website was null or undefined when calling messageDisassociateWebsite.");
+    }
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/message/{message}/websites/disassociate/{website}`.replace(`{${"message"}}`, encodeURIComponent(String(requestParameters.message))).replace(`{${"website"}}`, encodeURIComponent(String(requestParameters.website))),
+      method: "POST",
+      headers: headerParameters,
+      query: queryParameters
+    }, initOverrides);
+    return new VoidApiResponse(response);
+  }
+  /**
+   * This will enable us to disassociate a message from a website.
+   * /message/{message}/websites/disassociate/{website} [POST]
+   */
+  async messageDisassociateWebsite(requestParameters, initOverrides) {
+    await this.messageDisassociateWebsiteRaw(requestParameters, initOverrides);
   }
   /**
    * This will take in a SeededScoreIncrement and will increment the material relative to the incoming body.
@@ -20919,6 +21547,29 @@ var ConversationMessageApi = class extends BaseAPI {
 
 // ../generated_runtime/sdk/http/typescript/core/apis/ConversationMessagesApi.ts
 var ConversationMessagesApi = class extends BaseAPI {
+  /**
+   * Provides a WebSocket connection that emits changes to your conversation messages identifiers (UUIDs).
+   * /messages/stream/identifiers [WS]
+   */
+  async conversationMessagesStreamIdentifiersRaw(initOverrides) {
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/messages/stream/identifiers`,
+      method: "GET",
+      headers: headerParameters,
+      query: queryParameters
+    }, initOverrides);
+    return new JSONApiResponse(response, (jsonValue) => StreamedIdentifiersFromJSON(jsonValue));
+  }
+  /**
+   * Provides a WebSocket connection that emits changes to your conversation messages identifiers (UUIDs).
+   * /messages/stream/identifiers [WS]
+   */
+  async conversationMessagesStreamIdentifiers(initOverrides) {
+    const response = await this.conversationMessagesStreamIdentifiersRaw(initOverrides);
+    return await response.value();
+  }
   /**
    * This will create a Message on a specific conversation.
    * /messages/create [POST]
@@ -21439,31 +22090,6 @@ var FormatApi = class extends BaseAPI {
     const response = await this.formatUpdateValueRaw(requestParameters, initOverrides);
     return await response.value();
   }
-  /**
-   * This is an analytics endpoint that will enable us to know when a user has copied/downloaded/beamed/viewed a format.
-   * /format/usage/event [POST] Scoped to Format
-   */
-  async formatUsageEventRaw(requestParameters, initOverrides) {
-    const queryParameters = {};
-    const headerParameters = {};
-    headerParameters["Content-Type"] = "application/json";
-    const response = await this.request({
-      path: `/format/usage/event`,
-      method: "POST",
-      headers: headerParameters,
-      query: queryParameters,
-      body: SeededTrackedFormatEventToJSON(requestParameters.seededTrackedFormatEvent)
-    }, initOverrides);
-    return new JSONApiResponse(response, (jsonValue) => TrackedFormatEventFromJSON(jsonValue));
-  }
-  /**
-   * This is an analytics endpoint that will enable us to know when a user has copied/downloaded/beamed/viewed a format.
-   * /format/usage/event [POST] Scoped to Format
-   */
-  async formatUsageEvent(requestParameters = {}, initOverrides) {
-    const response = await this.formatUsageEventRaw(requestParameters, initOverrides);
-    return await response.value();
-  }
 };
 
 // ../generated_runtime/sdk/http/typescript/core/apis/LinkifyApi.ts
@@ -21836,6 +22462,29 @@ var ModelsApi = class extends BaseAPI {
    */
   async modelsSnapshot(initOverrides) {
     const response = await this.modelsSnapshotRaw(initOverrides);
+    return await response.value();
+  }
+  /**
+   * Provides a WebSocket connection that emits changes to your model identifiers (UUIDs).
+   * /models/stream/identifiers [WS]
+   */
+  async modelsStreamIdentifiersRaw(initOverrides) {
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/models/stream/identifiers`,
+      method: "GET",
+      headers: headerParameters,
+      query: queryParameters
+    }, initOverrides);
+    return new JSONApiResponse(response, (jsonValue) => StreamedIdentifiersFromJSON(jsonValue));
+  }
+  /**
+   * Provides a WebSocket connection that emits changes to your model identifiers (UUIDs).
+   * /models/stream/identifiers [WS]
+   */
+  async modelsStreamIdentifiers(initOverrides) {
+    const response = await this.modelsStreamIdentifiersRaw(initOverrides);
     return await response.value();
   }
   /**
@@ -22940,7 +23589,33 @@ var WellKnownApi = class extends BaseAPI {
     return await response.value();
   }
   /**
-   * Retrieves the version of the server. It returns a string representing the current version.
+   * This is a Streamed endpoint please use a WS connection to call this Endpoint.
+   * /.well-known/stream/health [WS]
+   */
+  async getWellKnownStreamHealthRaw(initOverrides) {
+    const queryParameters = {};
+    const headerParameters = {};
+    const response = await this.request({
+      path: `/.well-known/stream/health`,
+      method: "GET",
+      headers: headerParameters,
+      query: queryParameters
+    }, initOverrides);
+    if (this.isJsonMime(response.headers.get("content-type"))) {
+      return new JSONApiResponse(response);
+    } else {
+      return new TextApiResponse(response);
+    }
+  }
+  /**
+   * This is a Streamed endpoint please use a WS connection to call this Endpoint.
+   * /.well-known/stream/health [WS]
+   */
+  async getWellKnownStreamHealth(initOverrides) {
+    const response = await this.getWellKnownStreamHealthRaw(initOverrides);
+    return await response.value();
+  }
+  /**
    * /.well-known/version [Get]
    */
   async getWellKnownVersionRaw(initOverrides) {
@@ -22959,7 +23634,6 @@ var WellKnownApi = class extends BaseAPI {
     }
   }
   /**
-   * Retrieves the version of the server. It returns a string representing the current version.
    * /.well-known/version [Get]
    */
   async getWellKnownVersion(initOverrides) {
@@ -22969,7 +23643,7 @@ var WellKnownApi = class extends BaseAPI {
 };
 
 // package.json
-var version = "1.17.1";
+var version = "1.18.0";
 
 // src/connection/notification_handler.ts
 var import_obsidian = require("obsidian");
@@ -23061,6 +23735,9 @@ var ConnectorSingleton = class {
     this.applicationApi = new ApplicationApi(
       new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
     );
+    this.applicationsApi = new ApplicationsApi(
+      new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
+    );
     this.linkifyApi = new LinkifyApi(
       new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
     );
@@ -23150,7 +23827,7 @@ var launchRuntime = async (wait) => {
 
 // src/connection/version_check.ts
 var config = ConnectorSingleton.getInstance();
-var currentMinVersion = "10.0.0";
+var currentMinVersion = "10.1.4";
 var currentMaxVersion = "11.0.0";
 var toUpdatePlugin = false;
 var versionValid = false;
@@ -71928,6 +72605,19 @@ async function handleWebviewMessage(event) {
     copilotParams.sendNotification(params);
     return;
   }
+  if (event.data.type === "corsProxy") {
+    const res = await copilotParams.corsProxyFetch?.(
+      event.data.data.url,
+      event.data.data.options
+    );
+    const response = {
+      type: "corsProxy",
+      data: res?.content ?? "",
+      destination: "webview",
+      responseId: event.data.responseId
+    };
+    return postToFrame(response);
+  }
   if (event.data.type === "copyToClipboard") {
     window.navigator.clipboard.writeText(event.data.data);
     return;
@@ -75931,6 +76621,80 @@ var AskQGPTModal = class extends import_obsidian22.Modal {
   }
 };
 
+// src/connection/ApplicationStream.ts
+var ApplicationStream = class {
+  /**
+   * Private constructor to initialize the object and establish a connection.
+   * This constructor is typically used in singleton patterns to prevent
+   * external instantiation.
+   */
+  constructor() {
+    this.ws = null;
+    this.connect();
+  }
+  /**
+   * Closes the WebSocket connection if it is open and sets the WebSocket instance to null.
+   */
+  closeSocket() {
+    this.ws?.close();
+    this.ws = null;
+  }
+  /**
+   * Establishes a WebSocket connection if one does not already exist.
+   * Constructs the WebSocket URL based on the basePath parameter, replacing
+   * the protocol with 'wss://' or 'ws://', and appending the specific path for the stream.
+   * Sets up event handlers for message reception, error, and close events.
+   */
+  connect() {
+    if (this.ws !== null)
+      return;
+    const url = (ConnectorSingleton.getInstance().parameters.basePath ?? "http://localhost:1000").replace("https://", "wss://").replace("http://", "ws://") + "/applications/stream/identifiers";
+    this.ws = new WebSocket(url);
+    this.ws.onmessage = (event) => this.updateSettings(event);
+    const refreshSockets = (error) => {
+      if (error)
+        console.error(error);
+      this.ws = null;
+    };
+    this.ws.onerror = refreshSockets;
+    this.ws.onclose = refreshSockets;
+  }
+  /**
+   * Updates the settings based on the received message event.
+   *
+   * @param {MessageEvent} event - The message event containing the data to update settings.
+   * @returns {Promise<void>} - A promise that resolves when the settings update is complete.
+   */
+  async updateSettings(event) {
+    const identifiers = StreamedIdentifiersFromJSON(JSON.parse(event.data));
+    const storedApplication = await copilotParams.getApplication();
+    if (!storedApplication)
+      return;
+    if (!identifiers.iterable.some(
+      (el) => el.application?.id === storedApplication.id
+    ))
+      return;
+    const application = await ConnectorSingleton.getInstance().applicationsApi.applicationsSpecificApplicationSnapshot(
+      { application: storedApplication.id }
+    );
+    this.updateCapabilties(application);
+  }
+  /**
+   * Updates the cloud capabilities setting
+   *
+   * @param {Application} application - The application object containing the capabilities to be updated.
+   * @returns {Promise<void>} - A promise that resolves when the update is complete.
+   */
+  async updateCapabilties(application) {
+    const capabilities = application.capabilities === CapabilitiesEnum.Blended ? "blended" : "local";
+    PiecesPlugin.getInstance().settings.cloudCapabilities = capabilities;
+    PiecesPlugin.getInstance().saveSettings();
+  }
+  static getInstance() {
+    return this.instance ?? (this.instance = new ApplicationStream());
+  }
+};
+
 // main.ts
 var pluginSettings;
 var theme = "dark";
@@ -76059,6 +76823,7 @@ var _PiecesPlugin = class extends import_obsidian23.Plugin {
       });
       CheckVersionAndConnection.run().then(() => {
         AutoLinker.findCode();
+        ApplicationStream.getInstance();
         this.loadAnnotations().then(() => stream());
         QGPT.loadContext();
         if (pluginSettings.autoDiscover) {
