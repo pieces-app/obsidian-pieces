@@ -23643,7 +23643,7 @@ var WellKnownApi = class extends BaseAPI {
 };
 
 // package.json
-var version = "1.18.0";
+var version = "1.19.0";
 
 // src/connection/notification_handler.ts
 var import_obsidian = require("obsidian");
@@ -23698,85 +23698,6 @@ var ConnectorSingleton = class {
       fetchApi: fetch
     };
     this.configuration = new Configuration(this.parameters);
-    this.api = new ConnectorApi(this.configuration);
-    this.conversationApi = new ConversationApi(
-      new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
-    );
-    this.conversationsApi = new ConversationsApi(
-      new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
-    );
-    this.anchorApi = new AnchorApi(
-      new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
-    );
-    this.anchorsApi = new AnchorsApi(
-      new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
-    );
-    this.anchorPointApi = new AnchorPointApi(
-      new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
-    );
-    this.conversationMessagesApi = new ConversationMessagesApi(
-      new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
-    );
-    this.conversationMessageApi = new ConversationMessageApi(
-      new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
-    );
-    this.modelApi = new ModelApi(
-      new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
-    );
-    this.modelsApi = new ModelsApi(
-      new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
-    );
-    this.searchApi = new SearchApi(
-      new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
-    );
-    this.allocationsApi = new AllocationsApi(
-      new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
-    );
-    this.applicationApi = new ApplicationApi(
-      new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
-    );
-    this.applicationsApi = new ApplicationsApi(
-      new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
-    );
-    this.linkifyApi = new LinkifyApi(
-      new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
-    );
-    this.assetsApi = new AssetsApi(
-      new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
-    );
-    this.formatApi = new FormatApi(
-      new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
-    );
-    this.userApi = new UserApi(
-      new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
-    );
-    this.osApi = new OSApi(
-      new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
-    );
-    this.assetApi = new AssetApi(
-      new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
-    );
-    this.DiscoveryApi = new DiscoveryApi(
-      new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
-    );
-    this.wellKnownApi = new WellKnownApi(
-      new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
-    );
-    this.QGPTApi = new QGPTApi(
-      new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
-    );
-    this.annotationsApi = new AnnotationsApi(
-      new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
-    );
-    this.annotationApi = new AnnotationApi(
-      new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
-    );
-    this.activityApi = new ActivityApi(
-      new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
-    );
-    this.activitiesApi = new ActivitiesApi(
-      new Configuration({ fetchApi: fetch, basePath: this.parameters.basePath })
-    );
     this.application = {
       name: ApplicationNameEnum.Obsidian,
       version,
@@ -23785,12 +23706,59 @@ var ConnectorSingleton = class {
     this.seeded = {
       application: this.application
     };
+    this.createApis();
+  }
+  createApis(application) {
+    var _a;
+    if (application) {
+      ((_a = this.parameters).headers ?? (_a.headers = {}))["application"] = application;
+    }
+    this.configuration = new Configuration(this.parameters);
+    const coreConfig = new Configuration({
+      fetchApi: fetch,
+      basePath: this.parameters.basePath,
+      headers: this.parameters.headers
+    });
+    this.api = new ConnectorApi(this.configuration);
+    this.conversationApi = new ConversationApi(coreConfig);
+    this.conversationsApi = new ConversationsApi(coreConfig);
+    this.anchorApi = new AnchorApi(coreConfig);
+    this.anchorsApi = new AnchorsApi(coreConfig);
+    this.anchorPointApi = new AnchorPointApi(coreConfig);
+    this.conversationMessagesApi = new ConversationMessagesApi(coreConfig);
+    this.conversationMessageApi = new ConversationMessageApi(coreConfig);
+    this.modelApi = new ModelApi(coreConfig);
+    this.modelsApi = new ModelsApi(coreConfig);
+    this.searchApi = new SearchApi(coreConfig);
+    this.allocationsApi = new AllocationsApi(coreConfig);
+    this.applicationApi = new ApplicationApi(coreConfig);
+    this.applicationsApi = new ApplicationsApi(coreConfig);
+    this.linkifyApi = new LinkifyApi(coreConfig);
+    this.assetsApi = new AssetsApi(coreConfig);
+    this.formatApi = new FormatApi(coreConfig);
+    this.userApi = new UserApi(coreConfig);
+    this.osApi = new OSApi(coreConfig);
+    this.assetApi = new AssetApi(coreConfig);
+    this.DiscoveryApi = new DiscoveryApi(coreConfig);
+    this.wellKnownApi = new WellKnownApi(coreConfig);
+    this.QGPTApi = new QGPTApi(coreConfig);
+    this.annotationsApi = new AnnotationsApi(coreConfig);
+    this.annotationApi = new AnnotationApi(coreConfig);
+    this.activityApi = new ActivityApi(coreConfig);
+    this.activitiesApi = new ActivitiesApi(coreConfig);
+  }
+  set context(context) {
+    this.apiContext = context;
+    this.addApplicationHeaders(context.application.id);
   }
   static getInstance() {
     if (!ConnectorSingleton.instance) {
       ConnectorSingleton.instance = new ConnectorSingleton();
     }
     return ConnectorSingleton.instance;
+  }
+  addApplicationHeaders(application) {
+    this.createApis(application);
   }
   static async checkConnection({
     notification = true
@@ -23827,7 +23795,7 @@ var launchRuntime = async (wait) => {
 
 // src/connection/version_check.ts
 var config = ConnectorSingleton.getInstance();
-var currentMinVersion = "10.1.4";
+var currentMinVersion = "10.1.12";
 var currentMaxVersion = "11.0.0";
 var toUpdatePlugin = false;
 var versionValid = false;
@@ -25421,13 +25389,13 @@ var createAsset = async ({
   const config5 = ConnectorSingleton.getInstance();
   const notifications = Notifications.getInstance();
   const activeFile = app.workspace.getActiveFile();
-  let context = config5.context;
+  let context = config5.apiContext;
   if (!context) {
     try {
       config5.context = await config5.api.connect({
         seededConnectorConnection: config5.seeded
       });
-      context = config5.context;
+      context = config5.apiContext;
     } catch (error) {
       notifications.error({ message: Constants.CONNECTION_FAIL });
       return Promise.reject(new Error("Failed to Connect"));
@@ -26298,7 +26266,7 @@ var ActivitySingleton = class {
   async referenced(id, query, copied = false) {
     const config5 = ConnectorSingleton.getInstance();
     const seededActivity = {
-      application: config5.context.application,
+      application: config5.apiContext.application,
       mechanism: MechanismEnum.Automatic,
       asset: {
         id
@@ -26337,7 +26305,7 @@ var ActivitySingleton = class {
   async installed() {
     const config5 = ConnectorSingleton.getInstance();
     const seededActivity = {
-      application: config5.context.application,
+      application: config5.apiContext.application,
       mechanism: MechanismEnum.Automatic,
       event: {
         adoption: {
@@ -26513,7 +26481,7 @@ var draft_asset = ({ text }) => {
   const params = {
     seed: {
       asset: {
-        application: config5.context.application,
+        application: config5.apiContext.application,
         format: {
           fragment: {
             string: {
@@ -26629,7 +26597,7 @@ var Discovery = class {
     const params = {
       automatic: false,
       seededDiscoverableAssets: {
-        application: config5.context.application.id,
+        application: config5.apiContext.application.id,
         iterable: [discoverable]
       }
     };
@@ -28629,9 +28597,9 @@ document.onselectionchange = () => {
   lastRange = lastSelection.getRangeAt(0);
 };
 var getApplication = async () => {
-  if (!ConnectorSingleton.getInstance().context)
+  if (!ConnectorSingleton.getInstance().apiContext)
     await loadConnect();
-  return ConnectorSingleton.getInstance().context.application;
+  return ConnectorSingleton.getInstance().apiContext.application;
 };
 var copilotParams = {
   async corsProxyFetch(url, options2) {
@@ -29036,14 +29004,14 @@ var loadConnect = async () => {
 var loadPieces = async () => {
   const config5 = ConnectorSingleton.getInstance();
   const notifications = Notifications.getInstance();
-  if (!config5.context) {
+  if (!config5.apiContext) {
     try {
       config5.context = await config5.api.connect({
         seededConnectorConnection: config5.seeded
       });
     } catch (err) {
     }
-    if (!config5.context) {
+    if (!config5.apiContext) {
       notifications.error({
         message: "Failed to connect to Pieces OS. Please check that Pieces OS is installed and up to date."
       });
@@ -29460,12 +29428,12 @@ var updateConnectionType = async (settings) => {
     const cloudCapabilities = settings.cloudCapabilities === "cloud" ? CapabilitiesEnum.Cloud : settings.cloudCapabilities === "blended" ? CapabilitiesEnum.Blended : CapabilitiesEnum.Local;
     const updatedApplication = await configuration.applicationApi.applicationUpdate({
       application: {
-        ...configuration.context.application,
+        ...configuration.apiContext.application,
         capabilities: cloudCapabilities
       }
     });
     if (updatedApplication) {
-      configuration.context.application = updatedApplication;
+      configuration.apiContext.application = updatedApplication;
     }
   } catch (error) {
   }
@@ -72950,7 +72918,7 @@ var AutoLinker = class {
       const currentSeed = {
         type: SeedTypeEnum.Asset,
         asset: {
-          application: config5.context.application,
+          application: config5.apiContext.application,
           format: {
             fragment: {
               string: { raw: this.codeBlocks[i2].codeBlock.code },
@@ -73998,7 +73966,7 @@ async function suggestion(e3) {
       const basePath = app.vault.adapter.basePath;
       const filePath = basePath + "/" + activeFile?.path;
       const suggestion2 = {
-        application: config5.context.application.id,
+        application: config5.apiContext.application.id,
         seededConnectorCreation: {
           asset: {
             format: {
@@ -74106,7 +74074,7 @@ var QGPT = class {
             seed: {
               type: SeedTypeEnum.Asset,
               asset: {
-                application: config5.context.application,
+                application: config5.apiContext.application,
                 format: {
                   fragment: {
                     string: {
