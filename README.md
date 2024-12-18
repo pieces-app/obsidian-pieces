@@ -66,11 +66,11 @@ _Sept. 8, 2023_
 
 ### Requirements
 
-**You must have [Pieces OS](https://docs.pieces.app/installation-getting-started/what-am-i-installing) installed**.
+**You must have [PiecesOS](https://docs.pieces.app/installation-getting-started/what-am-i-installing) installed**.
 
-Pieces OS facilitates the local operation of Pieces products on your machine and coordinates connections to Pieces extensions. **The extension will not function as intended without Pieces OS active on your machine.**
+PiecesOS facilitates the local operation of Pieces products on your machine and coordinates connections to Pieces extensions. **The extension will not function as intended without PiecesOS active on your machine.**
 
-\*_Pieces OS installation comes with the Pieces for Developers Desktop App where your snippets can also be viewed and managed._
+\*_PiecesOS installation comes with the Pieces for Developers Desktop App where your snippets can also be viewed and managed._
 
 ## Install Instructions
 
