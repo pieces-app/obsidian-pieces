@@ -24835,7 +24835,7 @@ var WellKnownApi = class extends BaseAPI {
 };
 
 // package.json
-var version = "1.21.0";
+var version = "1.21.1";
 
 // src/connection/notification_handler.ts
 var import_obsidian = require("obsidian");
@@ -24937,18 +24937,38 @@ var _ConnectorSingleton = class {
     } catch (error) {
       for (let i2 = 39300; i2 <= 39333; i2++) {
         try {
-          const xhr = new XMLHttpRequest();
-          xhr.open("GET", `http://localhost:${i2}/.well-known/health`, false);
-          xhr.send();
-          if (xhr.status >= 200 && xhr.status < 300) {
-            _ConnectorSingleton.port = String(i2);
-            return String(i2);
-          }
+          return this.portScanning();
         } catch (error2) {
         }
       }
       throw Error("Unable to find port");
     }
+  }
+  static portScanning() {
+    const numPorts = 34;
+    const batchSize = 5;
+    const ports = Array.from({ length: numPorts }, (_, i2) => 39300 + i2);
+    for (let i2 = 0; i2 < ports.length; i2 += batchSize) {
+      const batch = ports.slice(i2, i2 + batchSize);
+      const xhrRequests = batch.map((port) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", `http://localhost:${port}/.well-known/health`, false);
+        xhr.timeout = 100;
+        return { xhr, port };
+      });
+      for (const { xhr, port } of xhrRequests) {
+        try {
+          xhr.send();
+          if (xhr.status === 200) {
+            _ConnectorSingleton.port = port.toString();
+            return port.toString();
+          }
+        } catch {
+          continue;
+        }
+      }
+    }
+    throw new Error("PiecesOS is not running");
   }
   static loadConfigFile() {
     const path2 = _ConnectorSingleton.getPortConfigFile();
@@ -25044,9 +25064,7 @@ var _ConnectorSingleton = class {
     notification = true
   }) {
     try {
-      await fetch(
-        `${_ConnectorSingleton.getHost()}/.well-known/health`
-      );
+      await fetch(`${_ConnectorSingleton.getHost()}/.well-known/health`);
       return true;
     } catch (e3) {
       const notifications = Notifications.getInstance();
@@ -72954,27 +72972,7 @@ var _Applet = class {
     );
     this.iframe.setAttribute("allow", "clipboard-read; clipboard-write;");
     tab.appendChild(this.iframe);
-    this.setupThemeObserver();
     this.setIframeUrl(this.iframe);
-  }
-  setupThemeObserver() {
-    const setTheme = () => {
-      this.iframe.contentWindow?.postMessage(
-        {
-          type: "setTheme",
-          destination: "webview",
-          data: getTheme()
-        },
-        "*"
-      );
-    };
-    const observer = new MutationObserver(() => {
-      setTheme();
-    });
-    app.workspace.on("css-change", () => {
-      setTheme();
-    });
-    observer.observe(document.body, { attributes: true });
   }
   static launchPos() {
     launchRuntime();
@@ -73060,6 +73058,18 @@ Applet.minimumVersion = "11.0.0";
 Applet.maximumVersion = "12.0.0";
 Applet.schemaNumber = 0;
 Applet.instances = [];
+Applet.setTheme = () => {
+  for (const applet of _Applet.instances) {
+    applet.iframe.contentWindow?.postMessage(
+      {
+        type: "setTheme",
+        destination: "webview",
+        data: getTheme()
+      },
+      "*"
+    );
+  }
+};
 
 // src/ui/views/copilot/index.ts
 var CopilotApplet = class extends Applet {
@@ -73321,7 +73331,7 @@ var copilotParams = {
       let lang;
       if (res.similarity == 0) {
         lang = PiecesCacheSingleton.getInstance().mappedAssets[res.comparisonID].language.toString() ?? "";
-        if (lang) {
+        if (lang && lang !== "text") {
           lang = extToLangReadable(lang);
         }
       } else {
@@ -78266,6 +78276,11 @@ var _PiecesPlugin = class extends import_obsidian24.Plugin {
           new PiecesOSUpdatingModal(app).open();
         }
       });
+      this.registerEvent(
+        this.app.workspace.on("css-change", () => {
+          Applet.setTheme();
+        })
+      );
       Prism = await (0, import_obsidian24.loadPrism)();
       theme = document.body.classList.contains("theme-dark") ? "dark" : "light";
       document.body.addEventListener("change", () => {
