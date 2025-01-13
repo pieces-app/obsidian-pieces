@@ -24835,7 +24835,7 @@ var WellKnownApi = class extends BaseAPI {
 };
 
 // package.json
-var version = "1.21.1";
+var version = "1.21.2";
 
 // src/connection/notification_handler.ts
 var import_obsidian = require("obsidian");
@@ -24935,13 +24935,7 @@ var _ConnectorSingleton = class {
     try {
       return _ConnectorSingleton.loadConfigFile();
     } catch (error) {
-      for (let i2 = 39300; i2 <= 39333; i2++) {
-        try {
-          return this.portScanning();
-        } catch (error2) {
-        }
-      }
-      throw Error("Unable to find port");
+      return this.portScanning();
     }
   }
   static portScanning() {
@@ -25143,7 +25137,12 @@ Constants.AI_ICON = `<svg width="70" height="70" viewBox="0 0 70 70" fill="none"
   `;
 Constants.SEND_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send-horizontal"><path d="m3 3 3 9-3 9 19-9Z"/><path d="M6 12h16"/></svg>`;
 Constants.ENRICH_ICON = '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>';
-Constants.CODE_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-braces"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"/><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/></svg>`;
+Constants.CODE_ICON = `<svg width="70" height="70" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<path d="M27.96 8.26875L16.96 2.25C16.6661 2.0876 16.3358 2.00242 16 2.00242C15.6642 2.00242 15.3339 2.0876 15.04 2.25L4.04 8.27125C3.72586 8.44313 3.46363 8.6962 3.28069 9.00403C3.09775 9.31186 3.00081 9.66316 3 10.0212V21.9762C3.00081 22.3343 3.09775 22.6856 3.28069 22.9935C3.46363 23.3013 3.72586 23.5544 4.04 23.7262L15.04 29.7475C15.3339 29.9099 15.6642 29.9951 16 29.9951C16.3358 29.9951 16.6661 29.9099 16.96 29.7475L27.96 23.7262C28.2741 23.5544 28.5364 23.3013 28.7193 22.9935C28.9023 22.6856 28.9992 22.3343 29 21.9762V10.0225C28.9999 9.66378 28.9032 9.31169 28.7203 9.00314C28.5373 8.69459 28.2747 8.44094 27.96 8.26875ZM16 4L26.0425 9.5L22.3213 11.5375L12.2775 6.0375L16 4ZM16 15L5.9575 9.5L10.195 7.18L20.2375 12.68L16 15ZM5 11.25L15 16.7225V27.4463L5 21.9775V11.25ZM27 21.9725L17 27.4463V16.7275C21.6275 14.1954 21.5407 14.2441 27 11.25V21.9713V21.9725Z" fill="currentColor"/>
+	<path d="M23.2717 20.6605L24.589 17.9947L22.4496 16.6711" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+	<path d="M20.7283 17.3396L19.411 20.0053L21.5503 21.3289" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+	</svg>
+	`;
 Constants.OPEN_ICON = '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-panel-right-open"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="15" x2="15" y1="3" y2="21"/><path d="m10 15-3-3 3-3"/></svg>';
 Constants.SAVE_ALL_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-save-all"><path d="M6 4a2 2 0 0 1 2-2h10l4 4v10.2a2 2 0 0 1-2 1.8H8a2 2 0 0 1-2-2Z"/><path d="M10 2v4h6"/><path d="M18 18v-7h-8v7"/><path d="M18 22H4a2 2 0 0 1-2-2V6"/></svg>`;
 Constants.META_SVG = '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 287.56 191"><defs><style>.cls-1{fill:#0081fb;}.cls-2{fill:url(#linear-gradient);}.cls-3{fill:url(#linear-gradient-2);}</style><linearGradient id="linear-gradient" x1="62.34" y1="101.45" x2="260.34" y2="91.45" gradientTransform="matrix(1, 0, 0, -1, 0, 192)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#0064e1"/><stop offset="0.4" stop-color="#0064e1"/><stop offset="0.83" stop-color="#0073ee"/><stop offset="1" stop-color="#0082fb"/></linearGradient><linearGradient id="linear-gradient-2" x1="41.42" y1="53" x2="41.42" y2="126" gradientTransform="matrix(1, 0, 0, -1, 0, 192)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#0082fb"/><stop offset="1" stop-color="#0064e0"/></linearGradient></defs><title>facebook-meta</title><path class="cls-1" d="M31.06,126c0,11,2.41,19.41,5.56,24.51A19,19,0,0,0,53.19,160c8.1,0,15.51-2,29.79-21.76,11.44-15.83,24.92-38,34-52l15.36-23.6c10.67-16.39,23-34.61,37.18-47C181.07,5.6,193.54,0,206.09,0c21.07,0,41.14,12.21,56.5,35.11,16.81,25.08,25,56.67,25,89.27,0,19.38-3.82,33.62-10.32,44.87C271,180.13,258.72,191,238.13,191V160c17.63,0,22-16.2,22-34.74,0-26.42-6.16-55.74-19.73-76.69-9.63-14.86-22.11-23.94-35.84-23.94-14.85,0-26.8,11.2-40.23,31.17-7.14,10.61-14.47,23.54-22.7,38.13l-9.06,16c-18.2,32.27-22.81,39.62-31.91,51.75C84.74,183,71.12,191,53.19,191c-21.27,0-34.72-9.21-43-23.09C3.34,156.6,0,141.76,0,124.85Z"/><path class="cls-2" d="M24.49,37.3C38.73,15.35,59.28,0,82.85,0c13.65,0,27.22,4,41.39,15.61,15.5,12.65,32,33.48,52.63,67.81l7.39,12.32c17.84,29.72,28,45,33.93,52.22,7.64,9.26,13,12,19.94,12,17.63,0,22-16.2,22-34.74l27.4-.86c0,19.38-3.82,33.62-10.32,44.87C271,180.13,258.72,191,238.13,191c-12.8,0-24.14-2.78-36.68-14.61-9.64-9.08-20.91-25.21-29.58-39.71L146.08,93.6c-12.94-21.62-24.81-37.74-31.68-45C107,40.71,97.51,31.23,82.35,31.23c-12.27,0-22.69,8.61-31.41,21.78Z"/><path class="cls-3" d="M82.35,31.23c-12.27,0-22.69,8.61-31.41,21.78C38.61,71.62,31.06,99.34,31.06,126c0,11,2.41,19.41,5.56,24.51L10.14,167.91C3.34,156.6,0,141.76,0,124.85,0,94.1,8.44,62.05,24.49,37.3,38.73,15.35,59.28,0,82.85,0Z"/></svg>';
@@ -25239,20 +25238,20 @@ Constants.PALM2_SVG = `<svg version="1.1" id="Standard_product_icon__x28_1:1_x29
 </svg>
 `;
 /*
-       -------------
-       |   Views   |
-       -------------
-       View types for different views
-    */
+      -------------
+      |   Views   |
+      -------------
+      View types for different views
+   */
 Constants.PIECES_ONBOARDING_VIEW_TYPE = "pieces-onboarding";
 Constants.PIECES_EXPANDED_SNIPPET_VIEW_TYPE = "pieces-expanded-snippet";
 Constants.PIECES_SNIPPET_LIST_VIEW_TYPE = "pieces-snippet-list";
 /*
-       ----------------
-       |   SETTINGS   |
-       ----------------
-       Front end text within the Pieces plugin settings tab
-   */
+      ----------------
+      |   SETTINGS   |
+      ----------------
+      Front end text within the Pieces plugin settings tab
+  */
 Constants.ENRICH_PERSISTENCE = "Confirm double enrichment";
 Constants.ENRICH_PERSISTENCE_DESC = "Receive a confirmation prompt if you attempt to enrich a code block that has already been processed.";
 Constants.CLOUD_SELECT = "Cloud capabilities";
@@ -25274,41 +25273,41 @@ Constants.TOGGLE_AUTODISCOVER_DESC_MAX = "Change the maximum number of snippets 
 Constants.TOGGLE_USE_NOTE_TITLE = "Use note page title for saved snippets";
 Constants.TOGGLE_USE_NOTE_TITLE_DESC = "Assign the title of your note page to the snippets you save.";
 /*
-     ---------------------
-     |   SAVE SNIPPETS   |
-     ---------------------
-     notification text for saving a piece
-   */
+    ---------------------
+    |   SAVE SNIPPETS   |
+    ---------------------
+    notification text for saving a piece
+  */
 Constants.NO_SAVE_SELECTION = "Make sure you select some text before you save a snippet";
 Constants.NO_SELECTION_SAVE = "Make sure to select some snippets before you try to save";
 Constants.SAVE_SUCCESS = "Success saving to Pieces";
 Constants.SAVE_FAIL = "Failed saving to Pieces";
 /*
-       ------------------------
-       |   SIGNIN / SIGNOUT   |
-       ------------------------
-       notification text for Pieces login / logout
-   */
+      ------------------------
+      |   SIGNIN / SIGNOUT   |
+      ------------------------
+      notification text for Pieces login / logout
+  */
 Constants.SIGNIN_SUCCESS = "Successfully signed in!";
 Constants.SIGNIN_FAIL = "Unable to sign in.";
 Constants.SIGNOUT_SUCCESS = "Successfully signed out.";
 Constants.SIGNOUT_FAIL = "Unable to sign out.";
 Constants.CONNECTION_FAIL = "Failed to connect to PiecesOS. Please check that PiecesOS is installed and running.";
 /*
-       ----------------------
-       |   SNIPPET DELETE   |
-       ----------------------
-       notification text for snippet deletions
-   */
+      ----------------------
+      |   SNIPPET DELETE   |
+      ----------------------
+      notification text for snippet deletions
+  */
 Constants.SNIPPET_DELETE_SUCCESS = "Your snippet was successfully deleted!";
 Constants.SNIPPET_IS_DELETED = "Snippet has already been deleted.";
 Constants.SNIPPET_DELETE_FAILURE = "Failed to delete snippet. Please ensure that PiecesOS is up-to-date, installed and running. If the problem persists please reach out to support.";
 /*
-       ---------------------------------
-       |  CLOUD CONNECT / DISCONNECT   |
-       ---------------------------------
-       notification text for cloud handling
-   */
+      ---------------------------------
+      |  CLOUD CONNECT / DISCONNECT   |
+      ---------------------------------
+      notification text for cloud handling
+  */
 Constants.LOGIN_TO_POS_CLOUD = "Please login to PiecesOS in order to connect to Pieces cloud.";
 Constants.CLOUD_CONNECT_FAIL = "Unable to connect to Pieces cloud, please wait a minute an try again.";
 Constants.CLOUD_CONNECT_SUCCESS = "Successfully connected to Pieces cloud.";
@@ -25322,36 +25321,36 @@ Constants.LINK_GEN_SUCCESS = "Shareable link generated!";
 Constants.LINK_GEN_COPY = "Sharable link copied to clipboard!";
 Constants.LINK_GEN_FAIL = "Failed to generate link. Please ensure that PiecesOS is up-to-date, installed and running. If the problem persists please reach out to support.";
 /*
-       -----------------------------------
-       |   TEXT FOR ExpandView Problem   |
-       -----------------------------------
-       This is shown in the 'general text view'
-       if we are not able to expand their snippet
-   */
+      -----------------------------------
+      |   TEXT FOR ExpandView Problem   |
+      -----------------------------------
+      This is shown in the 'general text view'
+      if we are not able to expand their snippet
+  */
 Constants.EXPAND_ERROR = "Error expanding snippet, check the `Snippet ID` and try again.";
 /*
-       -----------------------
-       |   SEARCH SNIPPETS   |
-       -----------------------
-   */
+      -----------------------
+      |   SEARCH SNIPPETS   |
+      -----------------------
+  */
 Constants.SEARCH_SUCCESS = "Snippet search success!";
 Constants.SEARCH_FAILURE = "Something went wrong while searching for your snippets, if the issue persists please reach out to support.";
 /*
-       -----------------------------------
-       |   TEXT FOR PiecesOS DOWNLOAD MODAL   |
-       -----------------------------------
-       This is shown in the 'download-pos-modal'
-       if we are not able to contact PiecesOS on their machine
-   */
+      -----------------------------------
+      |   TEXT FOR PiecesOS DOWNLOAD MODAL   |
+      -----------------------------------
+      This is shown in the 'download-pos-modal'
+      if we are not able to contact PiecesOS on their machine
+  */
 Constants.INSTALL_TEXT = "Please download, install, and run our core dependency to use Pieces with Obsidian:";
 Constants.PIECES_ONDEVICE_COPY = "Pieces for Developers | Core Platform runs offline and on-device to power our IDE and Browser Extensions";
 /*
-       ------------------------------
-       |   TEXT FOR WELCOME MODAL   |
-       ------------------------------
-       This is shown within 'onboarding-modal'
-       if it is the first time the user is loading the extension
-   */
+      ------------------------------
+      |   TEXT FOR WELCOME MODAL   |
+      ------------------------------
+      This is shown within 'onboarding-modal'
+      if it is the first time the user is loading the extension
+  */
 Constants.WELCOME_TEXT = "Welcome to Pieces for Developers!";
 Constants.SAVE_INSERT_SEARCH = "Save, insert, and search your snippets.";
 // Saving snippets
@@ -28098,7 +28097,7 @@ var renderNavBar = ({
   tabInput1.checked = true;
   const tabLabel1 = tabsDiv.createEl("label");
   tabLabel1.setAttr("for", "radio-1");
-  tabLabel1.addClass("pieces-tab", "svg-box");
+  tabLabel1.addClass("pieces-tab", "svg-box", "clickable-icon");
   tabLabel1.innerHTML = Constants.CODE_ICON;
   const tabInput2 = tabsDiv.createEl("input");
   tabInput2.setAttr("type", "radio");
@@ -28106,7 +28105,9 @@ var renderNavBar = ({
   tabInput2.setAttr("name", "tabs-2");
   const tabLabel2 = tabsDiv.createEl("label");
   tabLabel2.setAttr("for", "radio-2");
-  tabLabel2.addClass("pieces-tab", "svg-box");
+  tabLabel2.addClass("pieces-tab", "svg-box", "clickable-icon");
+  (0, import_obsidian10.setTooltip)(tabLabel1, "Pieces Drive");
+  (0, import_obsidian10.setTooltip)(tabLabel2, "Pieces Copilot");
   tabLabel2.innerHTML = Constants.AI_ICON;
   const slider = tabsDiv.createEl("span");
   slider.addClass("glider");
@@ -29103,10 +29104,10 @@ var SearchFiltersModal = class extends import_obsidian12.Modal {
     }
   }
   /*
-     Creates a delete button
-     - @param parent is the element that should be removed when the delete button is clicked
-     - @param container is the element the delete button should be appended to
-   */
+    Creates a delete button
+    - @param parent is the element that should be removed when the delete button is clicked
+    - @param container is the element the delete button should be appended to
+  */
   buildDeleteBtn(parent, container, filter3) {
     const delDiv = container.createDiv();
     delDiv.innerHTML = (0, import_obsidian12.getIcon)("trash-2").outerHTML;
@@ -29134,8 +29135,8 @@ var SearchFiltersModal = class extends import_obsidian12.Modal {
     return delDiv;
   }
   /*
-     Runs the filter request, and renders the results.
-   */
+    Runs the filter request, and renders the results.
+  */
   async runFilters() {
     const config5 = ConnectorSingleton.getInstance();
     const params = {
@@ -29231,8 +29232,8 @@ var SearchFiltersModal = class extends import_obsidian12.Modal {
     this.close();
   }
   /*
-     Builder for classification filter element
-   */
+    Builder for classification filter element
+  */
   buildClassificationEl(container) {
     const clsRow = container.createDiv();
     clsRow.classList.add("flex", "flex-row", "my-2");
@@ -29260,8 +29261,8 @@ var SearchFiltersModal = class extends import_obsidian12.Modal {
     this.buildDeleteBtn(clsRow, filterRow, "Language" /* Language */);
   }
   /*
-     Builder for phrase filter element
-   */
+    Builder for phrase filter element
+  */
   buildPhraseEl(container) {
     this.filters["Phrase" /* Phrase */] = {
       string: "",
@@ -29429,9 +29430,9 @@ var SearchFiltersModal = class extends import_obsidian12.Modal {
     throw new Error("Invalid filter type");
   }
   /*
-     Shows the available filter options to the user, 
-     and when an option is clicked it will build a filter element
-   */
+    Shows the available filter options to the user, 
+    and when an option is clicked it will build a filter element
+  */
   addFilter(container, filterCol, addButton) {
     const options2 = Object.keys(FilterTypeEnum).filter(
       (el) => !this.addedFilters.includes(el)
@@ -72786,7 +72787,7 @@ var showErrorView = (title, container_id) => {
   contactSupportBtn.classList.add("underline", "cursor-pointer");
   contactSupportBtn.onclick = () => {
     copilotParams.openLink(
-      "https://getpieces.typeform.com/to/mCjBSIjF#page=vscode-plugin"
+      "https://getpieces.typeform.com/to/mCjBSIjF#page=obsidian-plugin"
     );
   };
   contactSupportBtn.innerText = "contact support";
@@ -73499,9 +73500,9 @@ var PiecesCacheSingleton = class {
     }
   }
   /*
-     This will add an asset to the beginning of the assets list
-     @DEV make sure to provide transferables with the asset!!
-   */
+    This will add an asset to the beginning of the assets list
+    @DEV make sure to provide transferables with the asset!!
+  */
   prependAsset({ asset }) {
     if (this.mappedAssets[asset.id]) {
       return this.updateAsset({ asset });
@@ -74255,9 +74256,7 @@ var AppletMessageHandler = class {
     const content = await fetch(
       message.data.url,
       message.data.options
-    ).then(
-      (data) => data.text()
-    );
+    ).then((data) => data.text());
     return { content };
   }
   handleCopyToClipboard(message) {
@@ -74412,9 +74411,7 @@ var PiecesSnippetListView = class extends import_obsidian20.ItemView {
     this.gptTab.id = "gpt-tab";
     this.gptTab.classList.add("pt-6", "relative", "w-full", "h-full");
     this.navTab.addEventListener("click", (event) => {
-      this.changeViews(
-        event
-      );
+      this.changeViews(event);
     });
     if (this.navTab.children[0].checked) {
       this.gptTab.style.display = "none";
@@ -74428,9 +74425,7 @@ var PiecesSnippetListView = class extends import_obsidian20.ItemView {
   async onClose() {
     this.containerVar.empty();
     this.navTab.removeEventListener("click", async (event) => {
-      this.changeViews(
-        event
-      );
+      this.changeViews(event);
     });
     window.removeEventListener("message", handleOnMessage);
   }
@@ -75029,11 +75024,11 @@ var CodeDetectionPlugin = class {
   destroy() {
   }
   /*
-         This iterates over the current editor view
-           - finds the code blocks
-           - keeps track of the code written within the blocks
-           - appends an 'add to pieces' widget at the end of each code block
-     */
+        This iterates over the current editor view
+          - finds the code blocks
+          - keeps track of the code written within the blocks
+          - appends an 'add to pieces' widget at the end of each code block
+    */
   buildDecorations(view) {
     const builder = new import_state.RangeSetBuilder();
     let codeText = "";
@@ -75304,9 +75299,9 @@ var CheckVersionAndConnection = class {
     return this.promise;
   }
   /*
-         This will recursively call itself until BOTH POS is open AND POS has a proper version
-          - also makes sure to update ui when fetchFailed changes
-     */
+        This will recursively call itself until BOTH POS is open AND POS has a proper version
+         - also makes sure to update ui when fetchFailed changes
+    */
   static async _run() {
     const posOpen = await loadConnect();
     await versionCheck({});
@@ -78211,8 +78206,8 @@ var _PiecesPlugin = class extends import_obsidian24.Plugin {
     this.connection = ConnectorSingleton.getInstance();
     this.linkService = ShareableLinksService.getInstance();
     /*
-           Saves the current editor selection to pieces
-       */
+          Saves the current editor selection to pieces
+      */
     this.saveSelectionToPieces = async ({
       getSimilarity
     }) => {
@@ -78229,11 +78224,18 @@ var _PiecesPlugin = class extends import_obsidian24.Plugin {
           return await findSimilarity(selection);
         }
         try {
+          const langLine = editor.getValue().split("\n")[editor.getCursor().line - 1].trim();
+          const langMatch = langLine.match(/```(\w+)/);
+          let lang = langMatch ? langMatch[1] : null;
+          if (lang in extToLangReadableMap) {
+            lang = extToLangReadableMap[lang];
+          }
           const file = this.app.workspace.activeEditor?.file?.name;
           const line = editor.getCursor().line;
           const description = `This snippet came from ${file} on line ${line}`;
           return await createAsset({
             selection,
+            lang,
             annotations: [
               {
                 type: AnnotationTypeEnum.Description,
@@ -78254,11 +78256,11 @@ var _PiecesPlugin = class extends import_obsidian24.Plugin {
       }
     };
     /*
-           Handler for editor menu -> share snippet
-            - creates a snippet
-            - generates a link
-            - copies to clipboard
-       */
+          Handler for editor menu -> share snippet
+           - creates a snippet
+           - generates a link
+           - copies to clipboard
+      */
     this.saveAndShare = async () => {
       const id = await this.saveSelectionToPieces({});
       if (typeof id === "string") {
@@ -78474,7 +78476,10 @@ var _PiecesPlugin = class extends import_obsidian24.Plugin {
             menuItem.setTitle("Pieces: Add File to Copilot Context").onClick(async () => {
               this.openGPTView();
               const path2 = file.vault.adapter.basePath + "/" + file.path;
-              const json = file?.extension !== void 0 ? { "files": [path2] } : { "directories": [path2] };
+              const json = (
+                // @ts-ignore
+                file?.extension !== void 0 ? { files: [path2] } : { directories: [path2] }
+              );
               copilotApplet.postToFrame({
                 destination: "webview",
                 type: "addToContext",

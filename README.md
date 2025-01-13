@@ -18,16 +18,16 @@ Designed to be your ultimate development companion, the Pieces Obsidian plugin t
 
 - [Recent Updates](#recent-updates)
 - [Getting Started](#getting-started)
-	- [Requirements](#requirements)
-	- [Install Instructions](#install-instructions)
+  - [Requirements](#requirements)
+  - [Install Instructions](#install-instructions)
 - [Features](#features)
-	- [Meet Your New Copilot](#meet-your-new-copilot)
-	- [Save Valuable Code](#save-useful-code-to-your-pieces-micro-repo)
-	- [Find and Reuse Code Snippets](#find-and-re-use-just-the-right-snippet-when-you-need-it)
-	- [Share Code from Obsidian](#share-code-from-obsidian-without-breaking-your-flow)
-	- [Discover New Snippets](#discover-new-snippets)
-	- [Enrich your code blocks](#enrich-your-code-blocks)
-	- [Keyboard Shortcuts](#keyboard-shortcuts)
+  - [Meet Your New Copilot](#meet-your-new-copilot)
+  - [Save Valuable Code](#save-useful-code-to-your-pieces-micro-repo)
+  - [Find and Reuse Code Snippets](#find-and-re-use-just-the-right-snippet-when-you-need-it)
+  - [Share Code from Obsidian](#share-code-from-obsidian-without-breaking-your-flow)
+  - [Discover New Snippets](#discover-new-snippets)
+  - [Enrich your code blocks](#enrich-your-code-blocks)
+  - [Keyboard Shortcuts](#keyboard-shortcuts)
 - [Explore the Pieces Ecosystem](#explore-the-pieces-ecosystem)
 - [Need Help?](#need-help)
 - [Stay Connected](#stay-connected)
@@ -80,6 +80,7 @@ PiecesOS facilitates the local operation of Pieces products on your machine and 
 ## Features
 
 ### [Meet Your New Copilot](https://docs.pieces.app/features/pieces-copilot)
+
 Your personal copilot, powered by local or cloud-based LLMs (i.e. Llama 2, GPT-3.5, GPT-4, and PaLM 2) for maximum security and privacy, that’s contextualized by your workflow to help solve coding problems, onboard into new projects faster, and connect you with the right people.
 
 ![Pieces Copilot](https://storage.googleapis.com/pieces_multimedia/PROMOTIONAL/PIECES_FOR_DEVELOPERS/OBSIDIAN/MACOS/COPILOT/16X9/PIECES_FOR_DEVELOPERS-OBSIDIAN-COPILOT-MACOS-16X9-7_17_2023.gif)
@@ -108,7 +109,7 @@ snippet and its related context - tags, descriptions, where it’s from and more
 
 - **Runs locally** on your machine with the option to connect to the Cloud for backup, sync and sharing
 - **Deeply embedded into Obsidian** - save, search, and share your snippets entirely from the Pieces for Developers
-	Obsidian Plugin
+  Obsidian Plugin
 - Keyboard **shortcuts-enabled**
 
 ![Save with Button](./assets/readme/gifs/OBSIDIAN_SAVE.gif)
@@ -174,7 +175,7 @@ application, while adhering strictly to the developer policies of Obsidian, nota
 - We temporarily leverage ChatGPT API endpoints.
 - We respect Obsidian's trademark policy.
 - For any issues, feature requests, or policy violations, please feel free to open an issue in this repository. In the
-	case of severe issues or policy violations, please also contact the Obsidian team.
+  case of severe issues or policy violations, please also contact the Obsidian team.
 
 [Pieces Privacy Policy](https://docs.pieces.app/privacy-policy)
 
