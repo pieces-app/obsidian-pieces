@@ -23,9 +23,9 @@ Designed to be your ultimate development companion, the Pieces Obsidian plugin t
 - [Features](#features)
   - [Meet Your New Copilot](#meet-your-new-copilot)
   - [Save Valuable Code](#save-useful-code-to-your-pieces-micro-repo)
-  - [Find and Reuse Code Snippets](#find-and-re-use-just-the-right-snippet-when-you-need-it)
+  - [Find and Reuse Code Materials](#find-and-re-use-just-the-right-material-when-you-need-it)
   - [Share Code from Obsidian](#share-code-from-obsidian-without-breaking-your-flow)
-  - [Discover New Snippets](#discover-new-snippets)
+  - [Discover New Code Materials](#discover-new-materials)
   - [Enrich your code blocks](#enrich-your-code-blocks)
   - [Keyboard Shortcuts](#keyboard-shortcuts)
 - [Explore the Pieces Ecosystem](#explore-the-pieces-ecosystem)
@@ -52,7 +52,7 @@ _Oct. 3, 2023_
 - Theme Matching to align Copilot's appearance with your environment's theme.
 - Styling updates including new icons for an enhanced user experience.
 
-### [v1.3.0 - Filter Your Snippet List](https://code.pieces.app/updates/filter-snippet-list-obsidian-jupyterlab)
+### [v1.3.0 - Filter Your Materials List](https://code.pieces.app/updates/filter-snippet-list-obsidian-jupyterlab)
 
 _Sept. 8, 2023_
 
@@ -70,7 +70,7 @@ _Sept. 8, 2023_
 
 PiecesOS facilitates the local operation of Pieces products on your machine and coordinates connections to Pieces extensions. **The extension will not function as intended without PiecesOS active on your machine.**
 
-\*_PiecesOS installation comes with the Pieces for Developers Desktop App where your snippets can also be viewed and managed._
+\*_PiecesOS installation comes with the Pieces for Developers Desktop App where your saved materials can also be viewed and managed._
 
 ## Install Instructions
 
@@ -92,7 +92,7 @@ later.
 
 ![Save with Right Click](./assets/onboarding/saveWithMenu.png)
 
-### Find and re-use just the right snippet when you need it
+### Find and re-use just the right material when you need it
 
 Blazing fast, powerful search of your code snippets right inside Obsidian.
 
@@ -100,7 +100,7 @@ Blazing fast, powerful search of your code snippets right inside Obsidian.
 
 ### Share code from Obsidian without breaking your flow
 
-Share snippets with a simple right-click action from within Obsidian. The link ships with both the
+Share materials with a simple right-click action from within Obsidian. The link ships with both the
 snippet and its related context - tags, descriptions, where it’s from and more!
 
 ![Share your Snippets](./assets/readme/gifs/OBSIDIAN_SHARE.gif)
@@ -114,11 +114,11 @@ snippet and its related context - tags, descriptions, where it’s from and more
 
 ![Save with Button](./assets/readme/gifs/OBSIDIAN_SAVE.gif)
 
-### [Discover New Snippets](https://docs.pieces.app/product-highlights-and-benefits/in-project-snippet-discovery)
+### [Discover New Code Materials](https://docs.pieces.app/product-highlights-and-benefits/in-project-snippet-discovery)
 
-Automatically discovers new highly relevant and reusable snippets from your vault for you to save.
+Automatically discovers new highly relevant and reusable code snippets from your vault for you to save.
 
-![Snippet Discovery](./assets/readme/pngs/OBSIDIAN_DISCOVER.png)
+![Material Discovery](./assets/readme/pngs/OBSIDIAN_DISCOVER.png)
 
 ### [Enrich your code blocks](https://docs.pieces.app/features/auto-enrichment)
 
@@ -127,14 +127,14 @@ Automatically discovers new highly relevant and reusable snippets from your vaul
 
 ### [Keyboard Shortcuts](https://docs.pieces.app/features/keyboard-shortcuts)
 
-To use a Pieces command, simply highlight code in your editor or hover a snippet in your Pieces List.
+To use a Pieces command, simply highlight code or text in your editor, or hover a saved material in your Pieces Drive.
 
 _Hotkeys aren't set by default, but here are our recommended layouts._
 
-| Command         | macOS       | Windows      |
-| --------------- | ----------- | ------------ |
-| Save a snippet  | CMD+Shift+P | Ctrl+Shift+P |
-| Share a snippet | CMD+Shift+L | CMD+Shift+L  |
+| Command          | macOS       | Windows      |
+| ---------------- | ----------- | ------------ |
+| Save a material  | CMD+Shift+P | Ctrl+Shift+P |
+| Share a material | CMD+Shift+L | CMD+Shift+L  |
 
 ## Explore the Pieces Ecosystem
 
