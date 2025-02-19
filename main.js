@@ -5147,6 +5147,7 @@ var piecesOsVersionBounds_default = {
 var Constants = class {
 };
 Constants.PLUGIN_NAME = "Pieces for Developers";
+Constants.DEFAULT_TAB = "copilot";
 /*
       ----------------
       |     ICONS    |
@@ -5305,6 +5306,7 @@ Constants.UPDATE_FAILURE = "Error updating material, please try again... or cont
 */
 Constants.ASK_COPILOT_ABOUT_CURRENT_SELECTION_TEXT = "Ask Copilot about your selection";
 Constants.LLMDisclaimer = "Running LLM's locally requires a large amount of computer resources. Please thoroughly review your system's hardware to make sure it aligns with the requirements to run the local model(s).";
+Constants.CONTEXT_NOT_SUPPORTED = "Unsupported file type.";
 
 // ../generated_runtime/sdk/http/typescript/core/runtime.ts
 var BASE_PATH = "http://localhost:1000".replace(/\/+$/, "");
@@ -24996,7 +24998,7 @@ var WellKnownApi = class extends BaseAPI {
 };
 
 // package.json
-var version = "1.22.0";
+var version = "1.23.0";
 
 // src/connection/Notifications.ts
 var import_obsidian = require("obsidian");
@@ -25069,20 +25071,20 @@ var _ConnectorSingleton = class {
     return _ConnectorSingleton._port;
   }
   watchConfigFile() {
-    const file2 = _ConnectorSingleton.getPortConfigFile();
-    if (!file2) {
+    const file = _ConnectorSingleton.getPortConfigFile();
+    if (!file) {
       return;
     }
-    const dir = import_path.default.dirname(file2);
+    const dir = import_path.default.dirname(file);
     if (!fs.existsSync(dir)) {
       return;
     }
-    if (!fs.existsSync(file2)) {
+    if (!fs.existsSync(file)) {
       return;
     }
-    fs.watch(file2, (eventType, filename) => {
+    fs.watch(file, (eventType, filename) => {
       if (filename) {
-        _ConnectorSingleton.port = fs.readFileSync(file2, "utf8").trim();
+        _ConnectorSingleton.port = fs.readFileSync(file, "utf8").trim();
       }
     });
   }
@@ -25808,7 +25810,6 @@ var DisplayController = class {
   constructor() {
   }
 };
-DisplayController.defaultView = "newest" /* RECENT */;
 // TODO KEEP? fetch failed is used in some critical places
 DisplayController.fetchFailed = false;
 /**
@@ -69412,10 +69413,10 @@ var FileTracking = class {
     this.recentFiles = [];
     const basePath = plugin.app.vault.adapter.basePath;
     plugin.registerEvent(
-      plugin.app.workspace.on("file-open", (file2) => {
-        if (!file2)
+      plugin.app.workspace.on("file-open", (file) => {
+        if (!file)
           return;
-        this.recentFiles.push(basePath + "/" + file2.path);
+        this.recentFiles.push(basePath + "/" + file.path);
         while (this.recentFiles.length > 10) {
           this.recentFiles.shift();
         }
@@ -70016,6 +70017,215 @@ function createDiv(parent, className) {
   return el;
 }
 
+// src/ui/views/shared/PosDownloader.ts
+var import_child_process = require("child_process");
+var import_events = require("events");
+var defaultProgress = {
+  bytesReceived: 0,
+  totalBytes: 0,
+  percent: 0
+};
+var PosDownloader = class extends import_events.EventEmitter {
+  constructor() {
+    super();
+    this.downloadProcess = null;
+    this._state = "IDLE" /* IDLE */;
+    this._progress = defaultProgress;
+    this.platform = this.detectPlatform();
+  }
+  detectPlatform() {
+    return process.platform === "win32" ? PlatformEnum.Windows : process.platform === "linux" ? PlatformEnum.Linux : PlatformEnum.Macos;
+  }
+  static getInstance() {
+    if (!PosDownloader.instance) {
+      PosDownloader.instance = new PosDownloader();
+    }
+    return PosDownloader.instance;
+  }
+  get state() {
+    return this._state;
+  }
+  get progress() {
+    return this._progress;
+  }
+  async startDownload() {
+    if (this._state === "DOWNLOADING" /* DOWNLOADING */) {
+      return false;
+    }
+    this._state = "DOWNLOADING" /* DOWNLOADING */;
+    this.emit("stateChange", this._state);
+    try {
+      switch (this.platform) {
+        case PlatformEnum.Windows:
+          return this.downloadWindows();
+        case PlatformEnum.Linux:
+          return this.downloadLinux();
+        case PlatformEnum.Macos:
+          return this.downloadMacos();
+      }
+    } catch (error) {
+      this._state = "FAILED" /* FAILED */;
+      this.emit("error", error);
+      return false;
+    }
+  }
+  async downloadWindows() {
+    DevLogger_default.log("Starting POS download for Windows.", {
+      platform: this.platform
+    });
+    const command = "Add-AppxPackage";
+    const args = [
+      "-Appinstaller",
+      "https://builds.pieces.app/stages/production/appinstaller/os_server.appinstaller",
+      "-ErrorAction",
+      "Stop",
+      "-Verbose"
+    ];
+    return this.executeCommand("powershell.exe", command, args);
+  }
+  async downloadLinux() {
+    DevLogger_default.log("Starting POS download for Linux.", {
+      platform: this.platform
+    });
+    const command = `
+    if command -v pkexec >/dev/null 2>&1; then
+      pkexec snap install pieces-os &&       pkexec snap connect pieces-os:process-control :process-control &&       pieces-os
+    else
+      echo "Error: pkexec is not available. Exiting." >&2
+      exit 1
+    fi
+  `;
+    return this.executeCommand("bash", "-c", [command]);
+  }
+  async downloadMacos() {
+    DevLogger_default.log("Starting POS download for Macos.", {
+      platform: this.platform,
+      arch: process.arch
+    });
+    const arch = process.arch;
+    const pkgUrl = `https://builds.pieces.app/stages/production/macos_packaging/pkg-pos-launch-only${arch === "arm64" ? "-arm64" : ""}/download?product=OBSIDIAN&download=true`;
+    const command = `
+      TMP_PKG_PATH="/tmp/Pieces-OS-Launch.pkg"
+      curl -L "${pkgUrl}" -o "$TMP_PKG_PATH" && open "$TMP_PKG_PATH"
+    `;
+    return this.executeCommand("bash", "-c", [command]);
+  }
+  handleProcessOutput(output, source) {
+    try {
+      DevLogger_default.log(`${source} output:`, output);
+      const progressData = this.parseProgressByPlatform(output);
+      if (progressData) {
+        this._progress = progressData;
+        this.emit("progress", this._progress);
+      }
+    } catch (error) {
+      DevLogger_default.error(`Error processing ${source}:`, error);
+    }
+  }
+  async executeCommand(shell, command, args) {
+    return new Promise((resolve2) => {
+      try {
+        DevLogger_default.log("Spawning process:", { shell, command, args });
+        this.downloadProcess = (0, import_child_process.spawn)(shell, [command, ...args]);
+        this.downloadProcess.stdout?.on("data", (data) => {
+          this.handleProcessOutput(data.toString(), "stdout");
+        });
+        this.downloadProcess.stderr?.on("data", (data) => {
+          this.handleProcessOutput(data.toString(), "stderr");
+        });
+        this.downloadProcess.on("close", (code) => {
+          this._state = code === 0 ? "COMPLETED" /* COMPLETED */ : "FAILED" /* FAILED */;
+          this.emit("stateChange", this._state);
+          resolve2(code === 0);
+        });
+      } catch (error) {
+        console.error("Error in executeCommand:", error);
+        this._state = "FAILED" /* FAILED */;
+        this.emit("stateChange", this._state);
+        resolve2(false);
+      }
+    });
+  }
+  cancelDownload() {
+    if (this.downloadProcess && this._state === "DOWNLOADING" /* DOWNLOADING */) {
+      this.downloadProcess.kill();
+      this._state = "IDLE" /* IDLE */;
+      this._progress = defaultProgress;
+      this.emit("stateChange", this._state);
+    }
+  }
+  parseProgressByPlatform(data) {
+    switch (this.platform) {
+      case PlatformEnum.Windows:
+        return this.parseWindowsProgress(data);
+      case PlatformEnum.Linux:
+        return this.parseLinuxProgress(data);
+      case PlatformEnum.Macos:
+        return this.parseMacProgress(data);
+      default:
+        return null;
+    }
+  }
+  parseWindowsProgress(data) {
+    const match = data.match(/Downloading \[(\d+)\/(\d+)\]/);
+    if (match) {
+      const bytesReceived = parseInt(match[1]);
+      const totalBytes = parseInt(match[2]);
+      return {
+        bytesReceived,
+        totalBytes,
+        percent: bytesReceived / totalBytes * 100
+      };
+    }
+    return null;
+  }
+  parseLinuxProgress(data) {
+    const match = data.match(/(\d+)%.*?(\d+)\/(\d+)/);
+    if (match) {
+      return {
+        bytesReceived: parseInt(match[2]),
+        totalBytes: parseInt(match[3]),
+        percent: parseInt(match[1])
+      };
+    }
+    return null;
+  }
+  parseMacProgress(data) {
+    try {
+      const match = data.match(/\r?\s*(\d+)\s+(\d+)M\s+(\d+)\s+(\d+)M/);
+      if (match) {
+        const percent = parseInt(match[1]);
+        const totalMB = parseInt(match[2]);
+        const receivedMB = parseInt(match[4]);
+        if (isNaN(totalMB) || isNaN(receivedMB)) {
+          return null;
+        }
+        return {
+          bytesReceived: receivedMB * 1024 * 1024,
+          totalBytes: totalMB * 1024 * 1024,
+          percent
+        };
+      }
+      return null;
+    } catch (error) {
+      DevLogger_default.error("Error parsing progress:", error);
+      return null;
+    }
+  }
+  sendInput(input) {
+    if (this.downloadProcess?.stdin) {
+      this.downloadProcess.stdin.write(`${input}
+`);
+    }
+  }
+  reset() {
+    this._state = "IDLE" /* IDLE */;
+    this._progress = defaultProgress;
+    this.downloadProcess = null;
+    this.emit("stateChange", this._state);
+  }
+};
+
 // src/ui/views/shared/showErrorView.ts
 var showErrorView = (title, container_id) => {
   const container = document.getElementById(container_id);
@@ -70050,7 +70260,7 @@ var showErrorView = (title, container_id) => {
   loadTxtP.innerText = title;
   const expText = createDiv(errorViewContainer);
   expText.classList.add("pt-4", "px-2", "font-semibold", "break-words");
-  expText.innerHTML = "Please make sure that PiecesOS is running, and up to date to use the Pieces Copilot! If the issue persists, please ";
+  expText.innerHTML = "Please make sure that PiecesOS is running and up to date to use Pieces! If the issue persists, please ";
   const contactSupportBtn = createEl(expText, "a");
   contactSupportBtn.classList.add("underline", "cursor-pointer");
   contactSupportBtn.onclick = () => {
@@ -70075,7 +70285,8 @@ var showErrorView = (title, container_id) => {
     "vs-btn",
     "shadow-sm",
     "shadow-[var(--pieces-background-modifier-box-shadow)]",
-    "w-fit"
+    "w-fit",
+    "cursor-pointer"
   );
   launchBtn.innerText = "Launch";
   launchBtn.onclick = () => {
@@ -70089,13 +70300,78 @@ var showErrorView = (title, container_id) => {
     "vs-btn",
     "shadow-sm",
     "shadow-[var(--pieces-background-modifier-box-shadow)]",
+    "w-fit",
+    "cursor-pointer"
+  );
+  const downloadDiv = createDiv(errorViewContainer);
+  downloadDiv.classList.add(
+    "pt-4",
+    "flex-row",
+    "gap-2",
+    "flex",
+    "justify-center",
+    "items-center"
+  );
+  const downloader = PosDownloader.getInstance();
+  const successMsg = createEl(downloadDiv, "p");
+  successMsg.innerText = "Follow the installer instructions, then run PiecesOS to continue";
+  successMsg.style.display = "none";
+  const cancelBtn = createEl(downloadDiv, "button");
+  cancelBtn.classList.add(
+    `vs-btn-${darkMode ? "dark" : "light"}`,
+    "p-2",
+    "rounded",
+    "vs-btn",
+    "shadow-sm",
     "w-fit"
   );
+  cancelBtn.innerText = "Cancel";
+  cancelBtn.style.display = "none";
+  cancelBtn.style.cursor = "pointer";
+  const progressEl = createEl(downloadDiv, "progress");
+  progressEl.value = 0;
+  progressEl.max = 100;
+  progressEl.style.display = "none";
+  const cleanup = () => {
+    downloader.removeAllListeners();
+    progressEl.style.display = "none";
+    progressEl.value = 0;
+    successMsg.style.display = "none";
+    cancelBtn.style.display = "none";
+    installBtn.disabled = false;
+    installBtn.innerText = "Install";
+  };
   installBtn.innerText = "Install";
-  installBtn.onclick = () => {
-    window.open(
-      "https://docs.pieces.app/installation-getting-started/what-am-i-installing"
-    );
+  installBtn.onclick = async () => {
+    installBtn.innerText = "Downloading...";
+    installBtn.disabled = true;
+    installBtn.disabled = true;
+    progressEl.style.display = process.platform === "linux" || process.platform === "win32" ? "none" : "block";
+    cancelBtn.style.display = "block";
+    successMsg.style.display = "none";
+    cancelBtn.onclick = () => {
+      downloader.cancelDownload();
+      cleanup();
+    };
+    downloader.on("progress", (progress) => {
+      DevLogger_default.log("PROGRESS: ", progress);
+      progressEl.value = progress.percent;
+      installBtn.innerText = `Downloading ${progress.percent.toFixed(0)}%`;
+    });
+    downloader.on("stateChange", (state) => {
+      if (state === "COMPLETED" /* COMPLETED */) {
+        cleanup();
+        successMsg.style.display = "block";
+        installBtn.innerText = "Download again?";
+        if (process.platform === "win32") {
+          Applet.launchPos();
+        }
+      } else if (state === "FAILED" /* FAILED */) {
+        cleanup();
+        installBtn.innerText = "Download Failed (Retry)";
+      }
+    });
+    await downloader.startDownload();
   };
 };
 
@@ -70343,7 +70619,7 @@ Applet.setTheme = () => {
 // src/ui/views/copilot/CopilotApplet.ts
 var CopilotApplet = class extends Applet {
   constructor() {
-    super("pieces-copilot", "copilot-tab", OSAppletEnum.Copilot);
+    super("pieces-copilot", "copilot-applet-container", OSAppletEnum.Copilot);
   }
   async getUrl() {
     const application = await copilotParams.getApplication();
@@ -70373,7 +70649,11 @@ var copilotApplet = new CopilotApplet();
 // src/ui/views/drive/DriveApplet.ts
 var DriveApplet = class extends Applet {
   constructor() {
-    super("pieces-drive", "drive-tab", OSAppletEnum.SavedMaterials);
+    super(
+      "pieces-drive",
+      "drive-applet-container",
+      OSAppletEnum.SavedMaterials
+    );
   }
   async getUrl() {
     const application = await copilotParams.getApplication();
@@ -70634,6 +70914,20 @@ async function handleOnMessage(event) {
     });
     return;
   }
+  if (event.data.type === "corsProxy") {
+    const res = await copilotParams.corsProxyFetch?.(
+      event.data.data.url,
+      event.data.data.options
+    );
+    if (!res)
+      return;
+    return Applet.activeApplet.postToFrame({
+      destination: "webview",
+      type: "corsProxy",
+      data: res.content,
+      responseId: event.data.responseId
+    });
+  }
   if (message.type === "persistState") {
     copilotParams.saveState(JSON.stringify(message.data));
     return;
@@ -70650,14 +70944,16 @@ async function handleOnMessage(event) {
 // src/ui/views/PiecesPluginView.ts
 var import_obsidian10 = require("obsidian");
 var PiecesPluginView = class extends import_obsidian9.ItemView {
-  // Current Tab that is selected
   constructor(leaf) {
     super(leaf);
     this.changeViews = (event) => {
-      if (event.target !== this.currentTab) {
-        if (event.target === this.navTab.children[1]) {
+      event.stopPropagation();
+      event.preventDefault();
+      const target = event.target;
+      if (target.id !== this.currentTab) {
+        if (target.id === "drive") {
           this.switchTab("drive");
-        } else if (event.target === this.navTab.children[3]) {
+        } else if (target.id === "copilot") {
           this.switchTab("copilot");
         }
       }
@@ -70665,49 +70961,85 @@ var PiecesPluginView = class extends import_obsidian9.ItemView {
     this.renderNavBar = (containerVar) => {
       const wrapperDiv = containerVar.createDiv();
       wrapperDiv.addClass("wrapper");
-      const tabsDiv = wrapperDiv.createDiv();
-      tabsDiv.addClass("pieces-tabs");
-      tabsDiv.setAttr("id", "pieces-tabs");
-      const tabInput1 = tabsDiv.createEl("input");
-      tabInput1.setAttr("type", "radio");
-      tabInput1.setAttr("id", "drive-tab-radio");
-      tabInput1.setAttr("name", "drive-tab-radio");
-      tabInput1.checked = true;
-      const tabLabel1 = tabsDiv.createEl("label");
-      tabLabel1.setAttr("for", "drive-tab-radio");
-      tabLabel1.addClass("pieces-tab", "svg-box", "clickable-icon");
-      tabLabel1.innerHTML = Constants.PIECES_DRIVE_ICON;
-      const tabInput2 = tabsDiv.createEl("input");
-      tabInput2.setAttr("type", "radio");
-      tabInput2.setAttr("id", "copilot-tab-radio");
-      tabInput2.setAttr("name", "copilot-tab-radio");
-      const tabLabel2 = tabsDiv.createEl("label");
-      tabLabel2.setAttr("for", "copilot-tab-radio");
-      tabLabel2.addClass("pieces-tab", "svg-box", "clickable-icon");
-      tabLabel2.innerHTML = Constants.COPILOT_ICON;
-      (0, import_obsidian10.setTooltip)(tabLabel1, "Pieces Drive");
-      (0, import_obsidian10.setTooltip)(tabLabel2, "Pieces Copilot");
-      const glider = tabsDiv.createEl("span");
+      const navTabsDiv = wrapperDiv.createDiv();
+      navTabsDiv.addClass("pieces-tabs");
+      navTabsDiv.id = "pieces-tabs";
+      const copilotTabRadio = navTabsDiv.createEl("input");
+      copilotTabRadio.setAttr("type", "radio");
+      copilotTabRadio.id = "copilot-tab-radio";
+      copilotTabRadio.setAttr("name", "copilot-tab-radio");
+      const copilotTabRadioLabel = navTabsDiv.createEl("label");
+      copilotTabRadioLabel.setAttr("for", "copilot-tab-radio");
+      copilotTabRadioLabel.id = "copilot";
+      copilotTabRadioLabel.addClass("pieces-tab", "svg-box", "clickable-icon");
+      copilotTabRadioLabel.innerHTML = Constants.COPILOT_ICON;
+      const driveTabRadio = navTabsDiv.createEl("input");
+      driveTabRadio.setAttr("type", "radio");
+      driveTabRadio.id = "drive-tab-radio";
+      driveTabRadio.setAttr("name", "drive-tab-radio");
+      driveTabRadio.checked = true;
+      const driveTabRadioLabel = navTabsDiv.createEl("label");
+      driveTabRadioLabel.setAttr("for", "drive-tab-radio");
+      driveTabRadioLabel.id = "drive";
+      driveTabRadioLabel.addClass("pieces-tab", "svg-box", "clickable-icon");
+      driveTabRadioLabel.innerHTML = Constants.PIECES_DRIVE_ICON;
+      (0, import_obsidian10.setTooltip)(copilotTabRadioLabel, "Pieces Copilot");
+      (0, import_obsidian10.setTooltip)(driveTabRadioLabel, "Pieces Drive");
+      const glider = navTabsDiv.createEl("span");
       glider.addClass("glider");
       if (!(PluginGlobalVars.theme === "dark")) {
         glider.addClass("glider-light");
       }
-      this.navTab = wrapperDiv.children[0];
-      this.currentTab = this.navTab.children[1];
-      this.parentDiv = this.containerVar.createEl("div");
-      this.parentDiv.classList.add("flex", "flex-col", "w-full", "h-full");
-      this.parentDiv.id = "pieces-parent";
-      this.driveTab = this.parentDiv.createDiv();
-      this.driveTab.classList.add("flex", "flex-col", "w-full", "h-full", "mt-3");
-      this.driveTab.id = "drive-tab";
-      this.copilotTab = this.parentDiv.createDiv();
-      this.copilotTab.id = "copilot-tab";
-      this.copilotTab.classList.add("pt-6", "relative", "w-full", "h-full");
-      if (this.navTab.children[0].checked) {
-        this.copilotTab.style.display = "none";
-      } else if (this.navTab.children[2].checked) {
-        this.driveTab.style.display = "none";
+      this.navTab = navTabsDiv;
+      this.driveTabLabel = driveTabRadioLabel;
+      this.driveTabRadio = driveTabRadio;
+      this.copilotTabLabel = copilotTabRadioLabel;
+      this.copilotTabRadio = copilotTabRadio;
+      this.currentTab = "copilot";
+      this.appletsContainer = this.containerVar.createEl("div");
+      this.appletsContainer.classList.add("flex", "flex-col", "w-full", "h-full");
+      this.appletsContainer.id = "pieces-applets-container";
+      this.copilotAppletContainer = this.appletsContainer.createDiv();
+      this.copilotAppletContainer.id = "copilot-applet-container";
+      this.copilotAppletContainer.classList.add(
+        "pt-6",
+        "relative",
+        "w-full",
+        "h-full"
+      );
+      this.driveAppletContainer = this.appletsContainer.createDiv();
+      this.driveAppletContainer.classList.add(
+        "flex",
+        "flex-col",
+        "w-full",
+        "h-full",
+        "mt-3"
+      );
+      this.driveAppletContainer.id = "drive-applet-container";
+      if (this.driveTabRadio.checked) {
+        this._hideCopilot();
+      } else if (this.copilotTabRadio.checked) {
+        this._hideDrive();
       }
+      this.switchTab(Constants.DEFAULT_TAB);
+    };
+    /** Includes the logic for updated the selected tab */
+    this.activateDriveTab = () => {
+      this._hideCopilot();
+      this._showDrive();
+      Applet.activeApplet = driveApplet;
+      this.driveTabRadio.checked = true;
+      this.copilotTabRadio.checked = false;
+      this.currentTab = "drive";
+    };
+    /** Includes the logic for updated the selected tab */
+    this.activateCopilotTab = () => {
+      this._hideDrive();
+      this._showCopilot();
+      Applet.activeApplet = copilotApplet;
+      this.driveTabRadio.checked = false;
+      this.copilotTabRadio.checked = true;
+      this.currentTab = "copilot";
     };
   }
   getViewType() {
@@ -70724,28 +71056,21 @@ var PiecesPluginView = class extends import_obsidian9.ItemView {
     return Constants.PLUGIN_NAME;
   }
   switchTab(tabName) {
+    if (!this.driveTabRadio || !this.copilotTabRadio || !this.driveTabLabel || !this.copilotTabLabel) {
+      this.renderNavBar(this.containerVar);
+    }
     if (tabName === "drive") {
-      this.navTab.children[0].checked = true;
-      this.navTab.children[2].checked = false;
-      this.currentTab = this.navTab.children[1];
-      this.copilotTab.style.display = "none";
-      this.driveTab.style.display = "block";
-      Applet.activeApplet = driveApplet;
+      this.activateDriveTab();
     } else if (tabName === "copilot") {
-      this.navTab.children[0].checked = false;
-      this.navTab.children[2].checked = true;
-      this.currentTab = this.navTab.children[3];
-      this.driveTab.style.display = "none";
-      this.copilotTab.style.display = "flex";
-      Applet.activeApplet = copilotApplet;
+      this.activateCopilotTab();
     }
   }
   async onOpen() {
     this.containerVar = this.containerEl.children[1];
     this.containerVar.empty();
     this.renderNavBar(this.containerVar);
-    await driveApplet.init(this.driveTab);
-    await copilotApplet.init(this.copilotTab);
+    await driveApplet.init(this.driveAppletContainer);
+    await copilotApplet.init(this.copilotAppletContainer);
     this.registerEventHandlers();
   }
   registerEventHandlers() {
@@ -70759,6 +71084,26 @@ var PiecesPluginView = class extends import_obsidian9.ItemView {
   async onClose() {
     this.containerVar.empty();
     this.unregisterEventHandlers();
+  }
+  _hideCopilot() {
+    if (this.copilotAppletContainer) {
+      this.copilotAppletContainer.style.display = "none";
+    }
+  }
+  _hideDrive() {
+    if (this.driveAppletContainer) {
+      this.driveAppletContainer.style.display = "none";
+    }
+  }
+  _showCopilot() {
+    if (this.copilotAppletContainer) {
+      this.copilotAppletContainer.style.display = "flex";
+    }
+  }
+  _showDrive() {
+    if (this.driveAppletContainer) {
+      this.driveAppletContainer.style.display = "block";
+    }
   }
 };
 
@@ -71443,7 +71788,7 @@ var highlightMaterial = ({
   }
 };
 
-// src/actions/update_asset.ts
+// src/actions/updateAsset.ts
 var reclassify = async ({
   asset,
   ext
@@ -72583,7 +72928,7 @@ var ApplicationStream = class {
   }
 };
 
-// src/connection/stream_assets.ts
+// src/connection/streamAssets.ts
 var identifierWs;
 var cache = PiecesCacheSingleton.getInstance();
 var fetchQueue = new DedupeAssetQueue();
@@ -72659,17 +73004,11 @@ var streamIdentifiers = async () => {
 };
 var renderFetched = async ({ assets }) => {
   const config5 = ConnectorSingleton.getInstance();
-  const loadingDivs = document.querySelectorAll(".loading-div");
-  if (DisplayController.defaultView !== "discovery" /* DISCOVERY */) {
-    loadingDivs.forEach((loadingDiv) => {
-      loadingDiv.remove();
-    });
-  }
   const newDivs = document.querySelectorAll(".new-div");
   newDivs.forEach((newDiv) => {
     newDiv.remove();
   });
-  if (newDivs.length || loadingDivs.length) {
+  if (newDivs.length) {
     const onlyDiv = document.querySelectorAll(".only-material");
     onlyDiv.forEach((el) => {
       el.remove();
@@ -75078,12 +75417,14 @@ var AskCopilotModal = class extends import_obsidian16.Modal {
       selectionCol.children[0].children[0].scrollTop = 0;
   }
   async handleQuery() {
-    await PiecesPlugin.activateView();
+    await PiecesPlugin.getInstance().activateView();
     const query = this.inputText.innerText;
     if (!query) {
       return;
     }
-    const copilotTab = document.getElementById("copilot-tab");
+    const copilotTab = document.getElementById(
+      "copilot-applet-container"
+    );
     if (copilotTab.style.display === "none") {
       const navTab = document.getElementById("pieces-tabs");
       const clickEvt = new Event("click", { bubbles: true });
@@ -75107,7 +75448,7 @@ var AskCopilotModal = class extends import_obsidian16.Modal {
 };
 
 // main.ts
-var _PiecesPlugin = class extends import_obsidian17.Plugin {
+var PiecesPlugin = class extends import_obsidian17.Plugin {
   constructor() {
     super(...arguments);
     this.notifications = Notifications.getInstance();
@@ -75117,12 +75458,14 @@ var _PiecesPlugin = class extends import_obsidian17.Plugin {
       console.log(`${Constants.PLUGIN_NAME}: Loading plugin...`);
       try {
         await this.initializePlugin();
+        DevLogger_default.info("Plugin initialized");
         this.addRibbonIcon(
           Constants.PIECES_LOGO_ICON_NAME,
           Constants.PLUGIN_NAME,
           this.handleLeftSidebarIconClick
         );
         await this.handleOnboarding();
+        this.app.workspace.onLayoutReady(this.onLayoutReady);
       } catch (error) {
         console.error("Error during plugin initialization:", error);
       }
@@ -75172,12 +75515,12 @@ var _PiecesPlugin = class extends import_obsidian17.Plugin {
     /** Menu that opens when right clicking on file tree  */
     this.registerFileMenuItems = () => {
       this.registerEvent(
-        this.app.workspace.on("file-menu", (menu, file2) => {
+        this.app.workspace.on("file-menu", (menu, file) => {
           menu.addItem((menuItem) => {
-            menuItem.setTitle("Pieces: Add Vault to Copilot Context").onClick(() => this.addVaultToCopilotContext());
+            menuItem.setTitle("Pieces: Add Vault to Copilot Context").onClick(() => this.addVaultToCopilotContext(file));
           });
           menu.addItem((menuItem) => {
-            menuItem.setTitle("Pieces: Add File to Copilot Context").onClick(() => this.addFileToCopilotContext(file2));
+            menuItem.setTitle("Pieces: Add File to Copilot Context").onClick(() => this.addFileToCopilotContext(file));
           });
         })
       );
@@ -75212,25 +75555,31 @@ var _PiecesPlugin = class extends import_obsidian17.Plugin {
         id: "save",
         name: "Save to Pieces",
         hotkeys: [],
-        editorCallback: () => this.handleSaveSelectionToPieces()
+        editorCallback: this.handleSaveSelectionToPieces
       });
       this.addCommand({
         id: "share",
         name: "Share via Pieces",
         hotkeys: [],
-        editorCallback: () => this.handleShareViaPieces()
-      });
-      this.addCommand({
-        id: "switch_context",
-        name: "Switch Pieces Context",
-        hotkeys: [],
-        callback: () => this.handleSwitchPiecesContext()
+        editorCallback: this.handleShareViaPieces
       });
       this.addCommand({
         id: "ask-copilot",
-        name: Constants.ASK_COPILOT_ABOUT_CURRENT_SELECTION_TEXT,
+        name: "Ask Copilot about Selection",
         hotkeys: [],
         callback: this.askCopilotAboutCurrentSelection
+      });
+      this.addCommand({
+        id: "open-copilot",
+        name: "Open Copilot",
+        hotkeys: [],
+        editorCallback: this.openCopilotView
+      });
+      this.addCommand({
+        id: "open-drive",
+        name: "Open Pieces Drive",
+        hotkeys: [],
+        editorCallback: this.openDriveView
       });
     };
     this.registerIcons = () => {
@@ -75247,38 +75596,56 @@ var _PiecesPlugin = class extends import_obsidian17.Plugin {
      *                                                *
      **************************************************/
     this.openCopilotView = async () => {
-      await _PiecesPlugin.activateView();
-      const copilotTab = document.getElementById("copilot-tab");
-      if (copilotTab.style.display === "none") {
-        const leaf = app.workspace.getLeavesOfType(
-          Constants.PIECES_PLUGIN_VIEW
-        )[0];
-        if (leaf) {
-          const view = leaf.view;
-          view.switchTab("copilot");
-        }
+      await this.openPiecesPluginIfClosed();
+      const activeView = this.getActiveView();
+      activeView.activateCopilotTab();
+    };
+    this.openDriveView = async () => {
+      await this.openPiecesPluginIfClosed();
+      const activeView = this.getActiveView();
+      activeView.activateDriveTab();
+    };
+    this.getActiveView = () => {
+      const leaves = this.app.workspace.getLeavesOfType(
+        Constants.PIECES_PLUGIN_VIEW
+      );
+      if (leaves.length && !!leaves[0].view.renderNavBar) {
+        return leaves[0].view;
+      } else {
+        return null;
       }
     };
     this.openPiecesPluginIfClosed = async () => {
-      const leaf = this.app.workspace.getLeavesOfType(
-        Constants.PIECES_PLUGIN_VIEW
-      );
-      if (!leaf.length) {
-        _PiecesPlugin.activateView();
+      if (this.app.workspace.rightSplit.collapsed) {
+        await this.app.workspace.rightSplit.expand();
+      }
+      if (!this.getActiveView()) {
+        await this.activateView();
       }
     };
-    this.toggleView = async () => {
-      const leaf = this.app.workspace.getLeavesOfType(
+    this.activateView = async () => {
+      const existingView = app.workspace.getLeavesOfType(
         Constants.PIECES_PLUGIN_VIEW
-      );
-      if (leaf.length) {
-        this.app.workspace.detachLeavesOfType(Constants.PIECES_PLUGIN_VIEW);
-        const rightSplit = this.app.workspace.rightSplit;
-        if (rightSplit && rightSplit.collapsed === false) {
-          rightSplit.collapse();
-        }
+      )[0];
+      if (existingView) {
+        this.app.workspace.revealLeaf(existingView);
+        return;
+      }
+      const rightLeaf = app.workspace.getRightLeaf(false);
+      await rightLeaf?.setViewState({
+        type: Constants.PIECES_PLUGIN_VIEW,
+        active: true
+      });
+      if (rightLeaf)
+        app.workspace.revealLeaf(rightLeaf);
+    };
+    this.toggleView = async () => {
+      const rightSplit = this.app.workspace.rightSplit;
+      if (rightSplit.collapsed) {
+        await this.openPiecesPluginIfClosed();
+        rightSplit.expand();
       } else {
-        _PiecesPlugin.activateView();
+        rightSplit.collapse();
       }
     };
     this.showOnboarding = async () => {
@@ -75291,25 +75658,37 @@ var _PiecesPlugin = class extends import_obsidian17.Plugin {
         active: true
       });
     };
-    this.addVaultToCopilotContext = async () => {
+    this.addVaultToCopilotContext = async (file) => {
+      const markdownFiles = file.vault.getAllLoadedFiles().filter((file2) => file2 instanceof import_obsidian17.TFile && file2.extension === "md").map((file2) => file2.vault.adapter.basePath + "/" + file2.path);
+      if (!markdownFiles.length) {
+        this.notifications.error({
+          message: "No supported file types found in vault. Copilot can talk to markdown files."
+        });
+        return;
+      }
       this.openCopilotView();
       copilotApplet.postToFrame({
         destination: "webview",
         type: "addToContext",
         data: {
           action: "addAnchorsToContext",
-          // @ts-ignore
-          directories: [file.vault.adapter.basePath]
+          files: markdownFiles
         }
       });
     };
-    this.addFileToCopilotContext = async (file2) => {
+    this.addFileToCopilotContext = async (file) => {
       this.openCopilotView();
-      const path2 = file2.vault.adapter.basePath + "/" + file2.path;
-      const json = (
-        // @ts-ignore
-        file2?.extension !== void 0 ? { files: [path2] } : { directories: [path2] }
-      );
+      const json = file instanceof import_obsidian17.TFile ? { files: [file.vault.adapter.basePath + "/" + file.path] } : {
+        directories: [
+          file.vault.adapter.basePath + "/" + file.path
+        ]
+      };
+      if (file instanceof import_obsidian17.TFile && file.extension !== "md") {
+        this.notifications.error({
+          message: Constants.CONTEXT_NOT_SUPPORTED
+        });
+        return;
+      }
       copilotApplet.postToFrame({
         destination: "webview",
         type: "addToContext",
@@ -75344,9 +75723,9 @@ var _PiecesPlugin = class extends import_obsidian17.Plugin {
           } else if (lang !== null) {
             lang_classification_specific = langExtToClassificationSpecificEnum(lang);
           }
-          const file2 = this.app.workspace.activeEditor?.file?.name;
+          const file = this.app.workspace.activeEditor?.file?.name;
           const line = editor.getCursor().line;
-          const description = `This material came from ${file2} on line ${line}`;
+          const description = `This material came from ${file} on line ${line}`;
           return await createAsset({
             selection,
             lang: lang_classification_specific,
@@ -75373,6 +75752,8 @@ var _PiecesPlugin = class extends import_obsidian17.Plugin {
       await this.saveSelectionToPieces({});
       if (this.settings.autoOpen) {
         this.openPiecesPluginIfClosed();
+        const view = this.getActiveView();
+        view.activateDriveTab();
       }
     };
     this.handleShareViaPieces = async () => {
@@ -75429,10 +75810,13 @@ var _PiecesPlugin = class extends import_obsidian17.Plugin {
   static getInstance() {
     return this.instance;
   }
+  async onLayoutReady() {
+    DevLogger_default.info("Getting Copilot state");
+    PluginGlobalVars.remoteCopilotStateStr = (await PiecesDatabase.getData()).remoteCopilotStateStr;
+  }
   async initializePlugin() {
     PluginGlobalVars.Prism = await (0, import_obsidian17.loadPrism)();
-    PluginGlobalVars.remoteCopilotStateStr = (await PiecesDatabase.getData()).remoteCopilotStateStr;
-    _PiecesPlugin.instance = this;
+    PiecesPlugin.instance = this;
     versionCheck({}).then((val) => {
       if (val === false) {
         this.notifications.error({ message: Constants.UPDATE_OS });
@@ -75476,23 +75860,6 @@ var _PiecesPlugin = class extends import_obsidian17.Plugin {
       })
     );
   }
-};
-var PiecesPlugin = _PiecesPlugin;
-PiecesPlugin.activateView = async () => {
-  const piecesLeaves = app.workspace.getLeavesOfType(
-    Constants.PIECES_PLUGIN_VIEW
-  );
-  if (piecesLeaves[0]) {
-    app.workspace.revealLeaf(piecesLeaves[0]);
-    return;
-  }
-  const rightLeaf = app.workspace.getRightLeaf(false);
-  await rightLeaf?.setViewState({
-    type: Constants.PIECES_PLUGIN_VIEW,
-    active: true
-  });
-  if (rightLeaf)
-    app.workspace.revealLeaf(rightLeaf);
 };
 /*! Bundled license information:
 

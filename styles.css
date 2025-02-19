@@ -303,7 +303,7 @@
 .filter {
     filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
-#drive-tab {
+#drive-applet-container {
     background-color: var(--background-secondary);
 }
 /* All
@@ -430,6 +430,12 @@
 /* All
 		Button
 		Styles */
+.buttonDiv {
+    margin-top: 15.5px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+}
 .button,
   .button_delete,
   .button_refresh,
@@ -451,6 +457,10 @@
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity));
     pointer-events: painted;
+}
+.button_delete_modal_title {
+    --tw-text-opacity: 1;
+    color: rgb(244 67 54 / var(--tw-text-opacity));
 }
 .settings_divider {
     margin-top: 5px;
@@ -670,11 +680,11 @@ input[type='radio'] {
     vertical-align: center;
 }
 input[id='drive-tab-radio']:checked ~ .glider {
-    --tw-translate-x: 0px;
+    --tw-translate-x: 101%;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 input[id='copilot-tab-radio']:checked ~ .glider {
-    --tw-translate-x: 101%;
+    --tw-translate-x: 0px;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .glider {
