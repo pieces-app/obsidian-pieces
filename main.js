@@ -5264,7 +5264,7 @@ Constants.CLOUD_DISCONNECT_SUCCESS = "Successfully disconnected from Pieces Clou
 Constants.CLOUD_DISCONNECT_FAIL = "Failed to disconnect from Pieces Cloud, please try again.";
 Constants.CORE_PLATFORM_MSG = "Pieces for Developers \u23B8 Core Platform runs offline and on-device to power our IDE and Browser extensions.";
 Constants.LOGIN_TO_POS = "Please login to PiecesOS";
-Constants.LINK_GEN_SUCCESS = "Shareable link generated!";
+Constants.LINK_GEN_SUCCESS = "Shareable link generated and copied to clipboard!";
 Constants.LINK_GEN_COPY = "Sharable link copied to clipboard!";
 Constants.LINK_GEN_FAIL = "Failed to generate link. Please ensure that PiecesOS is up-to-date, installed and running. If the problem persists please reach out to support.";
 /*
@@ -24998,7 +24998,7 @@ var WellKnownApi = class extends BaseAPI {
 };
 
 // package.json
-var version = "1.23.0";
+var version = "1.24.0";
 
 // src/connection/Notifications.ts
 var import_obsidian = require("obsidian");
@@ -75678,8 +75678,12 @@ var PiecesPlugin = class extends import_obsidian17.Plugin {
     };
     this.addFileToCopilotContext = async (file) => {
       this.openCopilotView();
-      const json = file instanceof import_obsidian17.TFile ? { files: [file.vault.adapter.basePath + "/" + file.path] } : {
+      const json = file instanceof import_obsidian17.TFile ? (
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        { files: [file.vault.adapter.basePath + "/" + file.path] }
+      ) : {
         directories: [
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           file.vault.adapter.basePath + "/" + file.path
         ]
       };
