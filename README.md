@@ -56,7 +56,7 @@ _Oct. 3, 2023_
 
 _Sept. 8, 2023_
 
-- Snippet list filtering based on tags, titles, language, etc., similar to the feature in [Pieces Desktop App](https://docs.pieces.app/installation-getting-started/what-am-i-installing).
+- Snippet list filtering based on tags, titles, language, etc., similar to the feature in [Pieces Desktop App](https://docs.pieces.app/products/meet-pieces).
 - Easy access to filtering options via a filter button and a user-friendly interface for setting up filters.
 - Efficient narrowing down of snippet shortlist to find relevant snippets swiftly.
 
@@ -66,7 +66,7 @@ _Sept. 8, 2023_
 
 ### Requirements
 
-**You must have [PiecesOS](https://docs.pieces.app/installation-getting-started/what-am-i-installing) installed**.
+**You must have [PiecesOS](https://docs.pieces.app/products/meet-pieces) installed**.
 
 PiecesOS facilitates the local operation of Pieces products on your machine and coordinates connections to Pieces extensions. **The extension will not function as intended without PiecesOS active on your machine.**
 
@@ -79,7 +79,7 @@ PiecesOS facilitates the local operation of Pieces products on your machine and 
 
 ## Features
 
-### [Meet Your New Copilot](https://docs.pieces.app/features/pieces-copilot)
+### [Meet Your New Copilot](https://docs.pieces.app/products/obsidian/copilot)
 
 Your personal copilot, powered by local or cloud-based LLMs (i.e. Llama 2, GPT-3.5, GPT-4, and PaLM 2) for maximum security and privacy, that’s contextualized by your workflow to help solve coding problems, onboard into new projects faster, and connect you with the right people.
 
@@ -114,18 +114,18 @@ snippet and its related context - tags, descriptions, where it’s from and more
 
 ![Save with Button](./assets/readme/gifs/OBSIDIAN_SAVE.gif)
 
-### [Discover New Code Materials](https://docs.pieces.app/product-highlights-and-benefits/in-project-snippet-discovery)
+### [Discover New Code Materials](https://docs.pieces.app/products/desktop/navigation/snippet-discovery)
 
 Automatically discovers new highly relevant and reusable code snippets from your vault for you to save.
 
 ![Material Discovery](./assets/readme/pngs/OBSIDIAN_DISCOVER.png)
 
-### [Enrich your code blocks](https://docs.pieces.app/features/auto-enrichment)
+### [Enrich your code blocks](https://docs.pieces.app/products/desktop/drive/enrichment-and-metadata)
 
 - Automatically generate tags, titles, descriptions, and links to other similar code snippets with the simple press of a button!
 - Just click on the 'P' button embedded in your code blocks, and click on the enrich icon!
 
-### [Keyboard Shortcuts](https://docs.pieces.app/features/keyboard-shortcuts)
+### [Keyboard Shortcuts](https://docs.pieces.app/products/desktop/actions/keyboard-shortcuts)
 
 To use a Pieces command, simply highlight code or text in your editor, or hover a saved material in your Pieces Drive.
 
@@ -142,7 +142,7 @@ Explore our suite of products designed to streamline your coding workflow across
 
 ![Pieces Product Suite](https://storage.googleapis.com/pieces_multimedia/ILLUSTRATIONS/PIECES_FOR_DEVELOPERS/ANY_INTEGRATION/ANY_THEME/PLUGINS/1X1/PIECES_FOR_DEVELOPERS-ANY_INTEGRATION-PLUGINS-ANY_THEME-1X1-10_16_2023.PNG)
 
-For detailed descriptions and features of our Obsidian plugin, visit our [docs for Obsidian](https://docs.pieces.app/extensions-plugins/obsidian).
+For detailed descriptions and features of our Obsidian plugin, visit our [docs for Obsidian](https://docs.pieces.app/products/obsidian).
 
 ## Need Help?
 
@@ -177,7 +177,7 @@ application, while adhering strictly to the developer policies of Obsidian, nota
 - For any issues, feature requests, or policy violations, please feel free to open an issue in this repository. In the
   case of severe issues or policy violations, please also contact the Obsidian team.
 
-[Pieces Privacy Policy](https://docs.pieces.app/privacy-policy)
+[Pieces Privacy Policy](https://docs.pieces.app/products/privacy-security-your-data)
 
 To ensure the continued functionality and reliability of the Pieces For Developers Obsidian Plugin, we commit to
 providing updates and addressing any issues in a timely manner.

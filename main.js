@@ -24998,7 +24998,7 @@ var WellKnownApi = class extends BaseAPI {
 };
 
 // package.json
-var version = "1.24.0";
+var version = "1.24.1";
 
 // src/connection/Notifications.ts
 var import_obsidian = require("obsidian");
@@ -25853,6 +25853,39 @@ DisplayController.createExpandedView = async ({
   });
 };
 
+// src/utils/BrowserUrl.ts
+var BrowserUrl = class {
+  /**
+   * Wraps a URL with additional query parameters based on the current connector state
+   * @param url - Base URL to launch
+   * @returns The modified URL with appended parameters
+   */
+  static appendParams(url) {
+    const connector = ConnectorSingleton.getInstance();
+    if (!connector.apiContext || !connector.apiContext.os) {
+      DevLogger_default.log("No OS information in API Context");
+      return url;
+    }
+    const urlObj = new URL(url);
+    const searchParams = urlObj.searchParams;
+    searchParams.set("os", connector.apiContext.os);
+    if (connector.apiContext.user?.id) {
+      searchParams.set("user", connector.apiContext.user.id);
+    }
+    const urlWithParams = urlObj.toString();
+    return urlWithParams;
+  }
+  /**
+   * Wraps a URL with additional query parameters based on the current connector state and launches in browser
+   * @param url - Base URL to launch
+   * @returns The modified URL with appended parameters
+   */
+  static launch(url) {
+    const urlWithParams = this.appendParams(url);
+    window.open(urlWithParams, "_blank");
+  }
+};
+
 // src/connection/api_wrapper.ts
 var loadConnect = async () => {
   const config5 = ConnectorSingleton.getInstance();
@@ -26231,12 +26264,16 @@ var PiecesSettingTab = class extends import_obsidian4.PluginSettingTab {
 var createExternalLinksSection = (containerEl) => {
   const externalLinks = [
     {
-      href: "https://docs.pieces.app/extensions-plugins/obsidian",
+      href: BrowserUrl.appendParams(
+        "https://docs.pieces.app/products/obsidian"
+      ),
       text: "Docs",
       class: ["settings_external_links", "button"]
     },
     {
-      href: "https://getpieces.typeform.com/obsidian-plugin?typeform-source=pfo-settings",
+      href: BrowserUrl.appendParams(
+        "https://getpieces.typeform.com/obsidian-plugin?typeform-source=pfo-settings"
+      ),
       text: "Leave feedback",
       class: ["settings_external_links", "button"]
     }
@@ -26266,7 +26303,7 @@ var createSocialLinksSection = (containerEl) => {
       height: 30
     },
     {
-      href: "https://www.youtube.com/@getpieces",
+      href: BrowserUrl.appendParams("https://www.youtube.com/@getpieces"),
       text: "YouTube",
       icon: youtube_default,
       class: ["settings_external_links", "button"],
@@ -69512,6 +69549,9 @@ var ShareableLinksService = class {
       notifications.information({
         message: Constants.LINK_GEN_SUCCESS
       });
+      notifications.information({
+        message: Constants.MATERIAL_DELETE_SUCCESS
+      });
       return link.iterable[0].link;
     } catch (error) {
       const { config: config5, notifications } = this;
@@ -69523,7 +69563,11 @@ var ShareableLinksService = class {
               {
                 title: "Contact Support",
                 type: "OPEN_LINK" /* OPEN_LINK */,
-                params: { url: "https://docs.pieces.app/support" }
+                params: {
+                  url: BrowserUrl.appendParams(
+                    "https://docs.pieces.app/products/support"
+                  )
+                }
               }
             ]
           });
@@ -69550,7 +69594,11 @@ var ShareableLinksService = class {
             {
               title: "Contact Support",
               type: "OPEN_LINK" /* OPEN_LINK */,
-              params: { url: "https://docs.pieces.app/support" }
+              params: {
+                url: BrowserUrl.appendParams(
+                  "https://docs.pieces.app/products/support"
+                )
+              }
             }
           ]
         });
@@ -70265,7 +70313,9 @@ var showErrorView = (title, container_id) => {
   contactSupportBtn.classList.add("underline", "cursor-pointer");
   contactSupportBtn.onclick = () => {
     copilotParams.openLink(
-      "https://getpieces.typeform.com/to/mCjBSIjF#page=obsidian-plugin"
+      BrowserUrl.appendParams(
+        "https://getpieces.typeform.com/to/mCjBSIjF#page=obsidian-plugin"
+      )
     );
   };
   contactSupportBtn.innerText = "contact support";
@@ -70467,7 +70517,7 @@ var PiecesOSUpdatingModal = class extends import_obsidian8.Modal {
       case UpdatingStatusEnum.Available:
         return "Update detected...";
       case UpdatingStatusEnum.ContactSupport:
-        return "Something went wrong. Please contact support at https://docs.pieces.app/support";
+        return "Something went wrong. Please contact support at https://docs.pieces.app/products/support";
       case UpdatingStatusEnum.Downloading:
         return "Update is downloading...";
       case UpdatingStatusEnum.ReadyToRestart:
@@ -70479,7 +70529,7 @@ var PiecesOSUpdatingModal = class extends import_obsidian8.Modal {
       case UpdatingStatusEnum.UpToDate:
         return "PiecesOS is up to date.";
       case void 0:
-        return "Failed to get update status, please contact support at https://docs.pieces.app/support";
+        return "Failed to get update status, please contact support at https://docs.pieces.app/products/support";
     }
   }
 };
@@ -70772,7 +70822,11 @@ var AppletMessageHandler = class {
           {
             title: "Get Support",
             type: "OPEN_LINK" /* OPEN_LINK */,
-            params: { url: "https://docs.pieces.app/support" }
+            params: {
+              url: BrowserUrl.appendParams(
+                "https://docs.pieces.app/products/support"
+              )
+            }
           }
         ]
       });
@@ -71528,7 +71582,11 @@ var AnnotationsModal = class extends import_obsidian12.Modal {
               {
                 title: "Contact Support",
                 type: "OPEN_LINK" /* OPEN_LINK */,
-                params: { url: "https://docs.pieces.app/support" }
+                params: {
+                  url: BrowserUrl.appendParams(
+                    "https://docs.pieces.app/products/support"
+                  )
+                }
               }
             ]
           });
@@ -71569,7 +71627,11 @@ var AnnotationsModal = class extends import_obsidian12.Modal {
               {
                 title: "Contact Support",
                 type: "OPEN_LINK" /* OPEN_LINK */,
-                params: { url: "https://docs.pieces.app/support" }
+                params: {
+                  url: BrowserUrl.appendParams(
+                    "https://docs.pieces.app/products/support"
+                  )
+                }
               }
             ]
           });
@@ -71645,7 +71707,11 @@ var AnnotationsModal = class extends import_obsidian12.Modal {
           {
             title: "Contact Support",
             type: "OPEN_LINK" /* OPEN_LINK */,
-            params: { url: "https://docs.pieces.app/support" }
+            params: {
+              url: BrowserUrl.appendParams(
+                "https://docs.pieces.app/products/support"
+              )
+            }
           }
         ]
       });
@@ -71856,7 +71922,11 @@ var update = async ({
         {
           title: "Contact Support",
           type: "OPEN_LINK" /* OPEN_LINK */,
-          params: { url: "https://docs.pieces.app/support" }
+          params: {
+            url: BrowserUrl.appendParams(
+              "https://docs.pieces.app/products/support"
+            )
+          }
         }
       ]
     });
@@ -72657,7 +72727,23 @@ var SEARCH = "https://storage.googleapis.com/pieces_multimedia/PROMOTIONAL/PIECE
 var SHARE = "https://storage.googleapis.com/pieces_multimedia/PROMOTIONAL/PIECES_FOR_DEVELOPERS/OBSIDIAN/MACOS/SHARE/16X9/PIECES_FOR_DEVELOPERS-OBSIDIAN-SHARE-MACOS-16X9-6_22_2023.gif";
 var DISCOVERY = "https://storage.googleapis.com/pieces_multimedia/PROMOTIONAL/PIECES_FOR_DEVELOPERS/OBSIDIAN/MACOS/DISCOVERY/16X9/PIECES_FOR_DEVELOPERS-OBSIDIAN-DISCOVERY-MACOS-16X9-7_17_2023.png";
 var COPILOT = "https://storage.googleapis.com/pieces_multimedia/PROMOTIONAL/PIECES_FOR_DEVELOPERS/OBSIDIAN/MACOS/COPILOT/16X9/PIECES_FOR_DEVELOPERS-OBSIDIAN-COPILOT-MACOS-16X9-7_17_2023.gif";
-var onboardingMD = `<a href="https://docs.pieces.app/extensions-plugins/obsidian" style="display: inline-block; text-decoration: none; border-radius: 4px;">Docs</a>		<a href="https://pieces.app" style="display: inline-block; text-decoration: none; border-radius: 4px;">Learn More</a>
+function appendParams(url, osId, userId) {
+  const urlObj = new URL(url);
+  urlObj.searchParams.set("os", osId);
+  if (userId) {
+    urlObj.searchParams.set("user", userId);
+  }
+  return urlObj.toString();
+}
+var onboardingMD = (osId, userId) => `<a href="${appendParams(
+  "https://docs.pieces.app/products/obsidian",
+  osId,
+  userId
+)}" style="display: inline-block; text-decoration: none; border-radius: 4px;">Docs</a>		<a href="${appendParams(
+  "https://pieces.app",
+  osId,
+  userId
+)}" style="display: inline-block; text-decoration: none; border-radius: 4px;">Learn More</a>
 
 ### Elevate your Obsidian experience with Pieces
 
@@ -72713,7 +72799,11 @@ var onboardingMD = `<a href="https://docs.pieces.app/extensions-plugins/obsidian
 
 
 ### Maximize productivity with our Flagship Desktop App
-Utilize the Pieces [Flagship Desktop App](https://pieces.app) in combination with our Obsidian Plugin to streamline your workflow and enhance your development productivity.
+Utilize the Pieces [Flagship Desktop App]('${appendParams(
+  "https://pieces.app",
+  osId,
+  userId
+)}') in combination with our Obsidian Plugin to streamline your workflow and enhance your development productivity.
 
 - Get back in flow with our Workflow Activity View
 - Save time with In-Project Material Discovery
@@ -72725,7 +72815,11 @@ Utilize the Pieces [Flagship Desktop App](https://pieces.app) in combination wit
 
 ### Socials
 
-<a href="https://discord.gg/GkmyfqWf3W" style="display: inline-block; text-decoration: none; border-radius: 4px;">Discord</a>		<a href="https://www.youtube.com/@getpieces" style="display: inline-block; text-decoration: none; border-radius: 4px;">YouTube</a>		<a href="https://twitter.com/@getpieces" style="display: inline-block; text-decoration: none; border-radius: 4px;">Twitter</a>		<a href="https://www.linkedin.com/company/getpieces" style="display: inline-block; text-decoration: none; border-radius: 4px;">LinkedIn</a>		<a href="https://www.facebook.com/getpieces" style="display: inline-block; text-decoration: none; border-radius: 4px;">Facebook</a>
+<a href="https://discord.gg/GkmyfqWf3W" style="display: inline-block; text-decoration: none; border-radius: 4px;">Discord</a>		<a href="${appendParams(
+  "https://www.youtube.com/@getpieces",
+  osId,
+  userId
+)}" style="display: inline-block; text-decoration: none; border-radius: 4px;">YouTube</a>		<a href="https://twitter.com/@getpieces" style="display: inline-block; text-decoration: none; border-radius: 4px;">Twitter</a>		<a href="https://www.linkedin.com/company/getpieces" style="display: inline-block; text-decoration: none; border-radius: 4px;">LinkedIn</a>		<a href="https://www.facebook.com/getpieces" style="display: inline-block; text-decoration: none; border-radius: 4px;">Facebook</a>
 `;
 
 // src/connection/versionCheck.ts
@@ -75649,11 +75743,16 @@ var PiecesPlugin = class extends import_obsidian17.Plugin {
       }
     };
     this.showOnboarding = async () => {
+      const connector = ConnectorSingleton.getInstance();
+      if (!ConnectorSingleton.getInstance().apiContext) {
+        await loadConnect();
+      }
+      const { os, user } = connector.apiContext;
       const leaf = await this.app.workspace.getLeaf(true);
       await displayPiecesView({
         leaf,
         type: Constants.PIECES_ONBOARDING_VIEW_TYPE,
-        markdown: onboardingMD,
+        markdown: onboardingMD(os, user?.id),
         inlineTitle: "Welcome to Pieces for Developers!",
         active: true
       });
