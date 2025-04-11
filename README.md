@@ -1,164 +1,57 @@
-# [Pieces for Developers](https://pieces.app) | Obsidian Plugin
+# Pieces for Obsidian
+See the [full docs](https://docs.pieces.app/products/obsidian)
 
-> This plugin is closed source. The Obsidian team has full access to our private codebase.
+Pieces is an all-in-one productivity tool that gives creators complete contextual awareness of their workflow, no matter the source.
 
-In 2022, our team embarked on a mission to transform the way you code with your personal micro-repo.
+Leverage the power of the Pieces Copilot, the Long-Term Memory Engine, and Pieces Drive—all directly within Obsidian.
 
-With the debut release of our Flagship Desktop App, we laid the foundation, and now our Obsidian plugin is here to revolutionize your coding workflow further by incorporating key capabilities and our users' favorite features directly into their Obsidian environment.
+## Enhanced AI Assistance
+Pieces provides comprehensive AI-driven capabilities, enabling users to:
+- **Query cloud and local LLMs** directly within Obsidian
+- **Access Long-Term Memory** across your workflows and apps
+- **Talk to your notes or entire vault** with Pieces Copilot 
+- **Save materials** to quickly reference in the future, in any context
 
-[![Pieces For Developers Banner](./assets/readme/pfd-obisidan-plugin-hero.png)](https://youtu.be/x2JdssFEk2I)
+![img](https://storage.googleapis.com/hashnode_product_documentation_assets/obsidian_plugin_assets/MAIN_obsidian_plugin/right_click_context_menu_OBS.png)
 
-Pieces Copilot for Obsidian is here to elevate your coding and problem-solving experience. Interact with the Copilot directly in any Obsidian workspace. Ask questions about code or content within a file, gain insights on patterns or keywords in code snippets, request the Copilot to generate samples using an SDK you're exploring, and even use it to navigate through PRs.
+## Pieces Drive
 
-As you progress through your workflow, the Pieces for Developers Obsidian plugin enables you to capture, manage, share, and discover code snippets and other developer materials, like code screenshots, with simple clicks.
+With Pieces Drive embedded in Obsidian, developers can save, edit, search, and share saved materials, boosting productivity by keeping reusable code easily accessible and organized within their notes and project files.
 
-Designed to be your ultimate development companion, the Pieces Obsidian plugin transforms your workflow, bringing unparalleled efficiency and organization to your coding experience.
+![img](https://storage.googleapis.com/hashnode_product_documentation_assets/obsidian_plugin_assets/MAIN_obsidian_plugin/pieces_snippet_manager_OBS.png)
 
-## Table of Contents
+## Pieces Copilot
 
-- [Recent Updates](#recent-updates)
-- [Getting Started](#getting-started)
-  - [Requirements](#requirements)
-  - [Install Instructions](#install-instructions)
-- [Features](#features)
-  - [Meet Your New Copilot](#meet-your-new-copilot)
-  - [Save Valuable Code](#save-useful-code-to-your-pieces-micro-repo)
-  - [Find and Reuse Code Materials](#find-and-re-use-just-the-right-material-when-you-need-it)
-  - [Share Code from Obsidian](#share-code-from-obsidian-without-breaking-your-flow)
-  - [Discover New Code Materials](#discover-new-materials)
-  - [Enrich your code blocks](#enrich-your-code-blocks)
-  - [Keyboard Shortcuts](#keyboard-shortcuts)
-- [Explore the Pieces Ecosystem](#explore-the-pieces-ecosystem)
-- [Need Help?](#need-help)
-- [Stay Connected](#stay-connected)
-- [Obsidian Community Disclosure](#obsidian-community-disclosure)
+Initiate a conversation with the LLM of your choice, providing as much context as needed by adding files, folders, or even your entire Obsidian vault to the chat.
 
-## Recent Updates
+To initiate Copilot from the editor, select a portion of code, right-click, and hover over the Pieces item in the context menu.
 
-### [v1.8.0 - Persistent Copilot Chats](https://code.pieces.app/updates/persistent-copilot-chats-pieces-vs-code-obsidian)
+![image](https://storage.googleapis.com/hashnode_product_documentation_assets/obsidian_plugin_assets/pieces_copilot/MAIN_pieces_copilot/right_context_ask_copilot_OBS.png)
 
-_Nov. 1, 2023_
+## Quick Actions 
 
-- Adds persistent copilot conversations, you can not come back to a copilot chat at any time after you leave it
-- Overhauls the context selector to be much simpler and easier to use
-- Context is also persisted per conversation, so each conversation will maintain its context indefinitely
-- Snippets can now be used as context
+Pieces adds inline actions to your block elements in Obsidian, making it simple to save and share materials in your notes. 
+ 
+![img](https://storage.googleapis.com/hashnode_product_documentation_assets/obsidian_plugin_assets/MAIN_obsidian_plugin/code_block_quick_actions_OBS.png)
 
-### [v1.5.3 - Improved Pieces Copilot Experience](https://code.pieces.app/updates/improved-pieces-copilot-experiences)
+## Connect with Pieces 
+ 
+#### Join our Discord 
 
-_Oct. 3, 2023_
+Become a part of our [Discord community](https://discord.gg/getpieces) to stay updated and engage in discussions about our features.
 
-- New Quick Actions feature for easily selecting LLM runtime and file context in a Copilot conversation.
-- Theme Matching to align Copilot's appearance with your environment's theme.
-- Styling updates including new icons for an enhanced user experience.
+#### Submit a Feature Request or Feedback
 
-### [v1.3.0 - Filter Your Materials List](https://code.pieces.app/updates/filter-snippet-list-obsidian-jupyterlab)
+Have an idea for a new feature? Feel free to submit your suggestions on our [GitHub support repo](https://github.com/pieces-app/support).
 
-_Sept. 8, 2023_
+#### Tech Blogs
 
-- Snippet list filtering based on tags, titles, language, etc., similar to the feature in [Pieces Desktop App](https://docs.pieces.app/products/meet-pieces).
-- Easy access to filtering options via a filter button and a user-friendly interface for setting up filters.
-- Efficient narrowing down of snippet shortlist to find relevant snippets swiftly.
+Stay connected and up-to-date with our latest [blogs](https://pieces.app/blog).
 
-[View all updates](https://code.pieces.app/updates)
+#### Plugins
 
-## Getting Started
+Explore our collection of awesome Pieces [plugins](https://pieces.app/plugins).
 
-### Requirements
-
-**You must have [PiecesOS](https://docs.pieces.app/products/meet-pieces) installed**.
-
-PiecesOS facilitates the local operation of Pieces products on your machine and coordinates connections to Pieces extensions. **The extension will not function as intended without PiecesOS active on your machine.**
-
-\*_PiecesOS installation comes with the Pieces for Developers Desktop App where your saved materials can also be viewed and managed._
-
-## Install Instructions
-
-1. Visit the [Pieces for Developers Obsidian Plugin](https://obsidian.md/plugins?id=pieces-for-developers) install page.
-2. Click the `Install` button and then `Enable` to activate the plugin.
-
-## Features
-
-### [Meet Your New Copilot](https://docs.pieces.app/products/obsidian/copilot)
-
-Your personal copilot, powered by local or cloud-based LLMs (i.e. Llama 2, GPT-3.5, GPT-4, and PaLM 2) for maximum security and privacy, that’s contextualized by your workflow to help solve coding problems, onboard into new projects faster, and connect you with the right people.
-
-![Pieces Copilot](https://storage.googleapis.com/pieces_multimedia/PROMOTIONAL/PIECES_FOR_DEVELOPERS/OBSIDIAN/MACOS/COPILOT/16X9/PIECES_FOR_DEVELOPERS-OBSIDIAN-COPILOT-MACOS-16X9-7_17_2023.gif)
-
-### Save useful code to your Pieces micro-repo
-
-Templates, terminal commands, useful snippets, notes...save elements of your notes in one-click to reference or re-use
-later.
-
-![Save with Right Click](./assets/onboarding/saveWithMenu.png)
-
-### Find and re-use just the right material when you need it
-
-Blazing fast, powerful search of your code snippets right inside Obsidian.
-
-![Manage your Snippets](./assets/readme/gifs/OBSIDIAN_SEARCH.gif)
-
-### Share code from Obsidian without breaking your flow
-
-Share materials with a simple right-click action from within Obsidian. The link ships with both the
-snippet and its related context - tags, descriptions, where it’s from and more!
-
-![Share your Snippets](./assets/readme/gifs/OBSIDIAN_SHARE.gif)
-
-### Thoughtfully designed by fellow developers
-
-- **Runs locally** on your machine with the option to connect to the Cloud for backup, sync and sharing
-- **Deeply embedded into Obsidian** - save, search, and share your snippets entirely from the Pieces for Developers
-  Obsidian Plugin
-- Keyboard **shortcuts-enabled**
-
-![Save with Button](./assets/readme/gifs/OBSIDIAN_SAVE.gif)
-
-### [Discover New Code Materials](https://docs.pieces.app/products/desktop/navigation/snippet-discovery)
-
-Automatically discovers new highly relevant and reusable code snippets from your vault for you to save.
-
-![Material Discovery](./assets/readme/pngs/OBSIDIAN_DISCOVER.png)
-
-### [Enrich your code blocks](https://docs.pieces.app/products/desktop/drive/enrichment-and-metadata)
-
-- Automatically generate tags, titles, descriptions, and links to other similar code snippets with the simple press of a button!
-- Just click on the 'P' button embedded in your code blocks, and click on the enrich icon!
-
-### [Keyboard Shortcuts](https://docs.pieces.app/products/desktop/actions/keyboard-shortcuts)
-
-To use a Pieces command, simply highlight code or text in your editor, or hover a saved material in your Pieces Drive.
-
-_Hotkeys aren't set by default, but here are our recommended layouts._
-
-| Command          | macOS       | Windows      |
-| ---------------- | ----------- | ------------ |
-| Save a material  | CMD+Shift+P | Ctrl+Shift+P |
-| Share a material | CMD+Shift+L | CMD+Shift+L  |
-
-## Explore the Pieces Ecosystem
-
-Explore our suite of products designed to streamline your coding workflow across different platforms.
-
-![Pieces Product Suite](https://storage.googleapis.com/pieces_multimedia/ILLUSTRATIONS/PIECES_FOR_DEVELOPERS/ANY_INTEGRATION/ANY_THEME/PLUGINS/1X1/PIECES_FOR_DEVELOPERS-ANY_INTEGRATION-PLUGINS-ANY_THEME-1X1-10_16_2023.PNG)
-
-For detailed descriptions and features of our Obsidian plugin, visit our [docs for Obsidian](https://docs.pieces.app/products/obsidian).
-
-## Need Help?
-
-Encountered a hurdle? We've got you covered. Reach out for support:
-
-- **[Support Form](https://getpieces.typeform.com/to/mCjBSIjF)**
-- **[Join our Discord Community](https://discord.gg/getpieces)**
-
-## Stay Connected
-
-Stay in the loop! Follow us for the latest updates, tips, and insights:
-
-- **[Twitter / X](https://twitter.com/getpieces)**
-- **[YouTube](https://youtube.com/@getpieces)**
-- **[Facebook](https://facebook.com/getpieces)**
-- **[LinkedIn](https://linkedin.com/company/getpieces)**
 
 ## Obsidian Community Disclosure
 
@@ -172,16 +65,10 @@ application, while adhering strictly to the developer policies of Obsidian, nota
 - We do not obfuscate our code to hide its purpose.
 - We do not insert dynamic ads or static ads outside the Pieces For Developers Obsidian Plugin interface.
 - We do not include client-side telemetry.
-- We temporarily leverage ChatGPT API endpoints.
+- We temporarily leverage Cloud LLM API endpoints.
 - We respect Obsidian's trademark policy.
 - For any issues, feature requests, or policy violations, please feel free to open an issue in this repository. In the
   case of severe issues or policy violations, please also contact the Obsidian team.
 
 [Pieces Privacy Policy](https://docs.pieces.app/products/privacy-security-your-data)
 
-To ensure the continued functionality and reliability of the Pieces For Developers Obsidian Plugin, we commit to
-providing updates and addressing any issues in a timely manner.
-
-Please refer to the included LICENSE file for details on the terms of use for our plugin.
-
-Thank you for your understanding, and we hope you enjoy using the Pieces For Developers Obsidian Plugin.
