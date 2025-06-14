@@ -147,6 +147,9 @@
 .m-0 {
     margin: 0px;
 }
+.mt-2 {
+    margin-top: 0.5rem;
+}
 .mt-3 {
     margin-top: 0.75rem;
 }
@@ -214,6 +217,9 @@
 .gap-2 {
     gap: 0.5rem;
 }
+.gap-4 {
+    gap: 1rem;
+}
 .self-center {
     align-self: center;
 }
@@ -226,11 +232,17 @@
 .border {
     border-width: 1px;
 }
+.border-\[var\(--divider-color\)\] {
+    border-color: var(--divider-color);
+}
 .bg-\[var\(--background-primary\)\] {
     background-color: var(--background-primary);
 }
 .bg-\[var\(--background-secondary\)\] {
     background-color: var(--background-secondary);
+}
+.bg-\[var\(--interactive-accent\)\] {
+    background-color: var(--interactive-accent);
 }
 .bg-contain {
     background-size: contain;
@@ -256,11 +268,18 @@
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
 }
+.py-3 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
 .pt-4 {
     padding-top: 1rem;
 }
 .pt-6 {
     padding-top: 1.5rem;
+}
+.text-left {
+    text-align: left;
 }
 .text-center {
     text-align: center;
@@ -268,6 +287,10 @@
 .text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem;
+}
+.text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
 }
 .font-bold {
     font-weight: 700;
@@ -285,8 +308,17 @@
 .text-\[var\(--pieces-text-muted\)\] {
     color: var(--pieces-text-muted);
 }
+.text-\[var\(--text-error\)\] {
+    color: var(--text-error);
+}
 .text-\[var\(--text-muted\)\] {
     color: var(--text-muted);
+}
+.text-\[var\(--text-normal\)\] {
+    color: var(--text-normal);
+}
+.text-\[var\(--text-on-accent\)\] {
+    color: var(--text-on-accent);
 }
 .underline {
     text-decoration-line: underline;
@@ -992,6 +1024,9 @@ body {
   consider using classes instead of the `@apply` directive
   @see https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction
 */
+.hover\:bg-\[var\(--interactive-accent-hover\)\]:hover {
+    background-color: var(--interactive-accent-hover);
+}
 .hover\:text-\[var\(--text-accent\)\]:hover {
     color: var(--text-accent);
 }
