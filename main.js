@@ -31908,7 +31908,7 @@ var WellKnownApi = class extends BaseAPI {
 };
 
 // package.json
-var version = "2.0.0";
+var version = "2.0.1";
 
 // src/connection/Notifications.ts
 var import_obsidian = require("obsidian");
@@ -32021,7 +32021,6 @@ var _ConnectorSingleton = class {
       const xhrRequests = batch.map((port) => {
         const xhr = new XMLHttpRequest();
         xhr.open("GET", `http://localhost:${port}/.well-known/health`, false);
-        xhr.timeout = 100;
         return { xhr, port };
       });
       for (const { xhr, port } of xhrRequests) {
@@ -32050,16 +32049,56 @@ var _ConnectorSingleton = class {
   }
   static getPortConfigFile(isDebug) {
     const releaseMode = isDebug ? "debug" : "production";
+    let baseDir;
     switch (process.platform) {
       case "win32":
-        return `${process.env.HOMEPATH}/Documents/com.pieces.os/${releaseMode}/Config/.port.txt`;
+        baseDir = process.env.LOCALAPPDATA || process.env.USERPROFILE;
+        if (!baseDir) {
+          console.error(
+            "Windows environment variable LOCALAPPDATA or USERPROFILE is not set"
+          );
+          return null;
+        }
+        return import_path.default.join(
+          baseDir,
+          "Mesh Intelligent Technologies, Inc",
+          "Pieces OS",
+          "com.pieces.os",
+          releaseMode,
+          "Config",
+          ".port.txt"
+        );
       case "linux":
-        return `${process.env.HOME}/Documents/com.pieces.os/${releaseMode}/Config/.port.txt`;
+        baseDir = process.env.HOME;
+        if (!baseDir) {
+          console.error("HOME environment variable is not set on Linux");
+          return null;
+        }
+        return import_path.default.join(
+          baseDir,
+          "Documents",
+          "com.pieces.os",
+          releaseMode,
+          "Config",
+          ".port.txt"
+        );
       case "darwin":
-        return `${process.env.HOME}/Library/com.pieces.os/${releaseMode}/Config/.port.txt`;
+        baseDir = process.env.HOME;
+        if (!baseDir) {
+          console.error("HOME environment variable is not set on macOS");
+          return null;
+        }
+        return import_path.default.join(
+          baseDir,
+          "Library",
+          "com.pieces.os",
+          releaseMode,
+          "Config",
+          ".port.txt"
+        );
       default:
         Notifications.getInstance().error({
-          message: `Pieces for Obsidan extension does not support platform: ${process.platform}`
+          message: `Pieces for Obsidian extension does not support platform: ${process.platform}`
         });
         return null;
     }
@@ -77913,7 +77952,7 @@ var createAsset = async ({
   lang,
   anchors
 }) => {
-  if (PluginGlobalVars.remoteSettingsState.savedMaterials.autoOpen) {
+  if (PluginGlobalVars.remoteSettingsState && PluginGlobalVars.remoteSettingsState.savedMaterials.autoOpen) {
     const plugin = PiecesPlugin.getInstance();
     plugin.openPiecesPluginIfClosed();
     const view = plugin.getActiveView();
@@ -77960,7 +77999,7 @@ var createAsset = async ({
     };
   }
   seededAsset.asset.metadata = {};
-  if (name314 && name314.length || PluginGlobalVars.remoteSettingsState.savedMaterials.usePageTitle) {
+  if (name314 && name314.length || PluginGlobalVars.remoteSettingsState && PluginGlobalVars.remoteSettingsState.savedMaterials.usePageTitle) {
     name314 = name314 || app.workspace.getActiveFile().name;
     seededAsset.asset.metadata = {
       ...seededAsset.asset.metadata,
